@@ -1,0 +1,15 @@
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\bin\Debug\net8.0\RentACar.Models.deps.json
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\bin\Debug\net8.0\RentACar.Models.runtimeconfig.json
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\bin\Debug\net8.0\RentACar.Models.dll
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\bin\Debug\net8.0\RentACar.Models.pdb
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.csproj.AssemblyReference.cache
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.AssemblyInfoInputs.cache
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.AssemblyInfo.cs
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.sourcelink.json
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.dll
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\refint\RentACar.Models.dll
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.pdb
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\RentACar.Models.genruntimeconfig.cache
+C:\Users\User\Documents\Software engineering\RentACar\RentACar.Models\obj\Debug\net8.0\ref\RentACar.Models.dll
