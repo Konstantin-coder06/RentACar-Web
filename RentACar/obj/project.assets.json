@@ -2962,6 +2962,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.11",
           "Microsoft.EntityFrameworkCore": "9.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
           "RentACar.Models": "1.0.0"
@@ -2985,6 +2986,21 @@
         },
         "runtime": {
           "bin/placeholder/RentACar.Models.dll": {}
+        }
+      },
+      "RentACar.Utility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "8.0.11",
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RentACar.Utility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentACar.Utility.dll": {}
         }
       }
     }
@@ -8201,6 +8217,11 @@
       "type": "project",
       "path": "../RentACar.Models/RentACar.Models.csproj",
       "msbuildProject": "../RentACar.Models/RentACar.Models.csproj"
+    },
+    "RentACar.Utility/1.0.0": {
+      "type": "project",
+      "path": "../RentACar.Utility/RentACar.Utility.csproj",
+      "msbuildProject": "../RentACar.Utility/RentACar.Utility.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8212,7 +8233,8 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.7",
-      "RentACar.DataAccess >= 1.0.0"
+      "RentACar.DataAccess >= 1.0.0",
+      "RentACar.Utility >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8249,6 +8271,9 @@
           "projectReferences": {
             "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar.DataAccess\\RentACar.DataAccess.csproj": {
               "projectPath": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar.DataAccess\\RentACar.DataAccess.csproj"
+            },
+            "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar.Utility\\RentACar.Utility.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar.Utility\\RentACar.Utility.csproj"
             }
           }
         }

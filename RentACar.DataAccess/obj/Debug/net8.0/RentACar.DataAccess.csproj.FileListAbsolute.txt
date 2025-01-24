@@ -33,3 +33,4 @@ C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar.Data
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar.DataAccess\obj\Debug\net8.0\RentACar.DataAccess.pdb
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar.DataAccess\obj\Debug\net8.0\RentACar.DataAccess.genruntimeconfig.cache
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar.DataAccess\obj\Debug\net8.0\ref\RentACar.DataAccess.dll
+C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar.DataAccess\obj\Debug\net8.0\RentACar.DataAccess.sourcelink.json

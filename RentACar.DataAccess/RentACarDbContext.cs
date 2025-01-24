@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RentACar.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RentACar.DataAccess
 {
-    public class RentACarDbContext:DbContext
+    public class RentACarDbContext:IdentityDbContext<IdentityUser>
     {
         public RentACarDbContext(DbContextOptions<RentACarDbContext> options) : base(options) { }   
         public DbSet<Car> Cars { get; set; }

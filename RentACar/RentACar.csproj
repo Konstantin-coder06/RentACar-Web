@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RentACar.DataAccess\RentACar.DataAccess.csproj" />
+    <ProjectReference Include="..\RentACar.Utility\RentACar.Utility.csproj" />
   </ItemGroup>
 
 </Project>
