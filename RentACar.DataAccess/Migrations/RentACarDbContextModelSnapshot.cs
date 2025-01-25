@@ -167,12 +167,10 @@ namespace RentACar.DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -209,12 +207,10 @@ namespace RentACar.DataAccess.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -262,6 +258,9 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -274,10 +273,6 @@ namespace RentACar.DataAccess.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Gearbox")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Images")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -302,7 +297,371 @@ namespace RentACar.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Cars");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AdditionalMileageCharge = 0.20000000000000001,
+                            Available = true,
+                            Brand = "Toyota",
+                            CategoryId = 9,
+                            Color = "White",
+                            Description = "Compact and fuel-efficient",
+                            EngineCapacity = 1.8,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 150.0,
+                            MileageLimitForWeek = 1000.0,
+                            Model = "Corolla",
+                            PricePerDay = 40.0,
+                            PricePerWeek = 250.0,
+                            Year = 2021
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AdditionalMileageCharge = 0.25,
+                            Available = true,
+                            Brand = "Honda",
+                            CategoryId = 3,
+                            Color = "Black",
+                            Description = "Sporty and reliable",
+                            EngineCapacity = 2.0,
+                            Gearbox = "Manual",
+                            MileageLimitForDay = 200.0,
+                            MileageLimitForWeek = 1200.0,
+                            Model = "Civic",
+                            PricePerDay = 50.0,
+                            PricePerWeek = 300.0,
+                            Year = 2022
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AdditionalMileageCharge = 0.22,
+                            Available = true,
+                            Brand = "Ford",
+                            CategoryId = 7,
+                            Color = "Blue",
+                            Description = "Comfortable and stylish",
+                            EngineCapacity = 5.2000000000000002,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 250.0,
+                            MileageLimitForWeek = 1500.0,
+                            Model = "Mustang",
+                            PricePerDay = 85.0,
+                            PricePerWeek = 510.0,
+                            Year = 2018
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AdditionalMileageCharge = 0.5,
+                            Available = true,
+                            Brand = "BMW",
+                            CategoryId = 2,
+                            Color = "Gray",
+                            Description = "Luxury and performance",
+                            EngineCapacity = 0.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "420i",
+                            PricePerDay = 100.0,
+                            PricePerWeek = 600.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AdditionalMileageCharge = 0.55000000000000004,
+                            Available = true,
+                            Brand = "Mercedes-Benz",
+                            CategoryId = 2,
+                            Color = "Silver",
+                            Description = "Premium luxury",
+                            EngineCapacity = 2.1000000000000001,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "C-Class",
+                            PricePerDay = 110.0,
+                            PricePerWeek = 650.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AdditionalMileageCharge = 1.0,
+                            Available = true,
+                            Brand = "Audi",
+                            CategoryId = 3,
+                            Color = "Red",
+                            Description = "High-performance sports car",
+                            EngineCapacity = 5.2000000000000002,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 400.0,
+                            MileageLimitForWeek = 2500.0,
+                            Model = "R8",
+                            PricePerDay = 300.0,
+                            PricePerWeek = 1800.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AdditionalMileageCharge = 1.5,
+                            Available = true,
+                            Brand = "Lamborghini",
+                            CategoryId = 3,
+                            Color = "Yellow",
+                            Description = "Exotic sports car",
+                            EngineCapacity = 5.2000000000000002,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 400.0,
+                            MileageLimitForWeek = 3000.0,
+                            Model = "Huracan",
+                            PricePerDay = 500.0,
+                            PricePerWeek = 3000.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AdditionalMileageCharge = 1.3,
+                            Available = true,
+                            Brand = "Porsche",
+                            CategoryId = 2,
+                            Color = "Blue",
+                            Description = "Luxury sports car",
+                            EngineCapacity = 3.7999999999999998,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 400.0,
+                            MileageLimitForWeek = 3000.0,
+                            Model = "911 Turbo S",
+                            PricePerDay = 400.0,
+                            PricePerWeek = 2400.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AdditionalMileageCharge = 1.0,
+                            Available = true,
+                            Brand = "Tesla",
+                            CategoryId = 5,
+                            Color = "Black",
+                            Description = "Electric luxury sedan",
+                            EngineCapacity = 0.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 400.0,
+                            MileageLimitForWeek = 2500.0,
+                            Model = "Model S Plaid",
+                            PricePerDay = 350.0,
+                            PricePerWeek = 2100.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AdditionalMileageCharge = 2.0,
+                            Available = true,
+                            Brand = "Ferrari",
+                            CategoryId = 3,
+                            Color = "Red",
+                            Description = "Iconic Italian sports car",
+                            EngineCapacity = 3.8999999999999999,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 400.0,
+                            MileageLimitForWeek = 3000.0,
+                            Model = "F8 Tributo",
+                            PricePerDay = 600.0,
+                            PricePerWeek = 3600.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AdditionalMileageCharge = 3.0,
+                            Available = true,
+                            Brand = "Rolls-Royce",
+                            CategoryId = 2,
+                            Color = "White",
+                            Description = "Ultimate luxury car",
+                            EngineCapacity = 6.7000000000000002,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "Phantom",
+                            PricePerDay = 1000.0,
+                            PricePerWeek = 7000.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 12,
+                            AdditionalMileageCharge = 2.5,
+                            Available = true,
+                            Brand = "Bentley",
+                            CategoryId = 2,
+                            Color = "Silver",
+                            Description = "Grand luxury tourer",
+                            EngineCapacity = 6.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "Continental GT",
+                            PricePerDay = 800.0,
+                            PricePerWeek = 5000.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AdditionalMileageCharge = 2.0,
+                            Available = true,
+                            Brand = "McLaren",
+                            CategoryId = 3,
+                            Color = "Orange",
+                            Description = "Exquisite British engineering",
+                            EngineCapacity = 4.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 400.0,
+                            MileageLimitForWeek = 3000.0,
+                            Model = "720S",
+                            PricePerDay = 700.0,
+                            PricePerWeek = 4200.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 14,
+                            AdditionalMileageCharge = 0.80000000000000004,
+                            Available = true,
+                            Brand = "Lexus",
+                            CategoryId = 6,
+                            Color = "Blue",
+                            Description = "Luxury hybrid SUV",
+                            EngineCapacity = 2.3999999999999999,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "RX 500h",
+                            PricePerDay = 250.0,
+                            PricePerWeek = 1500.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 15,
+                            AdditionalMileageCharge = 2.0,
+                            Available = true,
+                            Brand = "Aston Martin",
+                            CategoryId = 2,
+                            Color = "Green",
+                            Description = "Luxury British grand tourer",
+                            EngineCapacity = 5.2000000000000002,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "DB11",
+                            PricePerDay = 600.0,
+                            PricePerWeek = 3600.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 16,
+                            AdditionalMileageCharge = 1.8,
+                            Available = true,
+                            Brand = "Lexus",
+                            CategoryId = 2,
+                            Color = "Black",
+                            Description = "Sophisticated luxury coupe",
+                            EngineCapacity = 5.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "LC 500",
+                            PricePerDay = 500.0,
+                            PricePerWeek = 3000.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 17,
+                            AdditionalMileageCharge = 2.2000000000000002,
+                            Available = true,
+                            Brand = "Mercedes-Benz",
+                            CategoryId = 3,
+                            Color = "Yellow",
+                            Description = "German engineering excellence",
+                            EngineCapacity = 4.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 400.0,
+                            MileageLimitForWeek = 2500.0,
+                            Model = "AMG GT",
+                            PricePerDay = 700.0,
+                            PricePerWeek = 4200.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 18,
+                            AdditionalMileageCharge = 1.0,
+                            Available = true,
+                            Brand = "Audi",
+                            CategoryId = 6,
+                            Color = "White",
+                            Description = "Luxury SUV",
+                            EngineCapacity = 3.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "Q8",
+                            PricePerDay = 300.0,
+                            PricePerWeek = 1800.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 19,
+                            AdditionalMileageCharge = 1.5,
+                            Available = true,
+                            Brand = "Toyota",
+                            CategoryId = 3,
+                            Color = "Red",
+                            Description = "Sporty and agile",
+                            EngineCapacity = 3.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "Supra",
+                            PricePerDay = 350.0,
+                            PricePerWeek = 2000.0,
+                            Year = 2023
+                        },
+                        new
+                        {
+                            Id = 20,
+                            AdditionalMileageCharge = 0.25,
+                            Available = true,
+                            Brand = "Toyota",
+                            CategoryId = 9,
+                            Color = "Blue",
+                            Description = "Dependable sedan",
+                            EngineCapacity = 2.5,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 200.0,
+                            MileageLimitForWeek = 1200.0,
+                            Model = "Camry",
+                            PricePerDay = 50.0,
+                            PricePerWeek = 300.0,
+                            Year = 2021
+                        });
                 });
 
             modelBuilder.Entity("RentACar.Models.CarFeature", b =>
@@ -351,6 +710,75 @@ namespace RentACar.DataAccess.Migrations
                     b.ToTable("CarsTypes");
                 });
 
+            modelBuilder.Entity("RentACar.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Economy"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Luxury"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Sport"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "German Cars"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Electric"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "SUV"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Muscle Cars"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "JDM Cars"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Compact"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Classic"
+                        });
+                });
+
             modelBuilder.Entity("RentACar.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -394,6 +822,408 @@ namespace RentACar.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Features");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            NameOfFeatures = "Air Conditioning"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            NameOfFeatures = "Heated Seats"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            NameOfFeatures = "Bluetooth Connectivity"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            NameOfFeatures = "Navigation System"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            NameOfFeatures = "Cruise Control"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            NameOfFeatures = "Rearview Camera"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            NameOfFeatures = "Lane Departure Warning"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            NameOfFeatures = "Adaptive Headlights"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            NameOfFeatures = "Blind Spot Detection"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            NameOfFeatures = "Automatic Parking"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            NameOfFeatures = "Push-Button Start"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            NameOfFeatures = "Wireless Charging"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            NameOfFeatures = "Panoramic Sunroof"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            NameOfFeatures = "Power Adjustable Seats"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            NameOfFeatures = "Backup Sensors"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            NameOfFeatures = "Heated Steering Wheel"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            NameOfFeatures = "Keyless Entry"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            NameOfFeatures = "Surround-View Camera"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            NameOfFeatures = "Remote Start"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            NameOfFeatures = "Apple CarPlay"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            NameOfFeatures = "Android Auto"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            NameOfFeatures = "Rear Cross Traffic Alert"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            NameOfFeatures = "Adaptive Cruise Control"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            NameOfFeatures = "Heads-Up Display (HUD)"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            NameOfFeatures = "Ambient Lighting"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            NameOfFeatures = "Wireless Apple CarPlay"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            NameOfFeatures = "Power Tailgate"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            NameOfFeatures = "Automatic Emergency Braking"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            NameOfFeatures = "Traffic Sign Recognition"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            NameOfFeatures = "Rain-Sensing Wipers"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            NameOfFeatures = "Dual-Zone Climate Control"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            NameOfFeatures = "Power Folding Mirrors"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            NameOfFeatures = "Lane Keeping Assist"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            NameOfFeatures = "Electric Power Steering"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            NameOfFeatures = "Turbocharged Engine"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            NameOfFeatures = "Carbon Fiber Trim"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            NameOfFeatures = "Active Noise Cancellation"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            NameOfFeatures = "All-Wheel Drive"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            NameOfFeatures = "Front Parking Sensors"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            NameOfFeatures = "Sport Mode"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            NameOfFeatures = "Wireless Smartphone Charging"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            NameOfFeatures = "Massaging Seats"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            NameOfFeatures = "Self-Healing Paint"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            NameOfFeatures = "Night Vision"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            NameOfFeatures = "Active Rear Spoiler"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            NameOfFeatures = "Heads-Up Display with Navigation"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            NameOfFeatures = "Wireless Internet Access"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            NameOfFeatures = "Active Suspension"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            NameOfFeatures = "Power Adjustable Steering Wheel"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            NameOfFeatures = "Touchscreen Control Panel"
+                        });
+                });
+
+            modelBuilder.Entity("RentACar.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("Images");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarId = 1,
+                            Url = "/images/toyota-corolla1.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CarId = 1,
+                            Url = "/images/toyota-corolla2.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CarId = 1,
+                            Url = "/images/toyota-corolla3.jpg"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CarId = 1,
+                            Url = "/images/toyota-corolla4.jpg"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CarId = 2,
+                            Url = "/images/honda-civic1.png"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CarId = 2,
+                            Url = "/images/honda-civic2.png"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CarId = 2,
+                            Url = "/images/honda-civic3.png"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CarId = 2,
+                            Url = "/images/honda-civic4.png"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CarId = 3,
+                            Url = "/images/bmw-420i1.png"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CarId = 3,
+                            Url = "/images/bmw-420i2.png"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CarId = 3,
+                            Url = "/images/bmw-420i7.png"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CarId = 3,
+                            Url = "/images/bmw-420i3.png"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CarId = 3,
+                            Url = "/images/bmw-420i4.png"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CarId = 3,
+                            Url = "/images/bmw-420i5.png"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CarId = 3,
+                            Url = "/images/bmw-420i6.png"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CarId = 4,
+                            Url = "/images/c300-1.webp"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CarId = 4,
+                            Url = "/images/c300-2.webp"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CarId = 4,
+                            Url = "/images/c300-3.webp"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CarId = 4,
+                            Url = "/images/c300-4.webp"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CarId = 4,
+                            Url = "/images/c300-5.webp"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CarId = 4,
+                            Url = "/images/c300-6.webp"
+                        });
                 });
 
             modelBuilder.Entity("RentACar.Models.Reservation", b =>
@@ -486,6 +1316,17 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("RentACar.Models.Car", b =>
+                {
+                    b.HasOne("RentACar.Models.Category", "Category")
+                        .WithMany("Cars")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("RentACar.Models.CarFeature", b =>
                 {
                     b.HasOne("RentACar.Models.Car", "Car")
@@ -524,6 +1365,17 @@ namespace RentACar.DataAccess.Migrations
                     b.Navigation("Type");
                 });
 
+            modelBuilder.Entity("RentACar.Models.Image", b =>
+                {
+                    b.HasOne("RentACar.Models.Car", "Car")
+                        .WithMany("Images")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+                });
+
             modelBuilder.Entity("RentACar.Models.Reservation", b =>
                 {
                     b.HasOne("RentACar.Models.Car", "Car")
@@ -541,6 +1393,16 @@ namespace RentACar.DataAccess.Migrations
                     b.Navigation("Car");
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("RentACar.Models.Car", b =>
+                {
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("RentACar.Models.Category", b =>
+                {
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("RentACar.Models.Customer", b =>

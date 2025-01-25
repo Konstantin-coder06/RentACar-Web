@@ -6,6 +6,11 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using RentACar.Utility;
 using Microsoft.Extensions.Options;
+using RentACar.Core.Services;
+using RentACar.Core.IServices;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using RentACar.DataAccess.IRepository;
+using RentACar.DataAccess.IRepository.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,15 +18,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RentACarDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("RentACar.DataAccess")));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<RentACarDbContext>().AddDefaultTokenProviders();
+builder.Services.AddRazorPages(); 
+
+builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
+builder.Services.AddScoped<ICarService, CarService>();
+builder.Services.AddScoped<IImageService, ImageService>(); 
 builder.Services.AddScoped<IEmailSender, EmailSender>();
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<RentACarDbContext>();
-builder.Services.AddRazorPages();
+
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Account/Login";          
         options.AccessDeniedPath = "/Account/AccessDenied"; 
-    }); var app = builder.Build();
+    }); 
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

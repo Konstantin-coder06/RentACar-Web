@@ -12,7 +12,7 @@ namespace RentACar.Models
         public int Id { get; set; }
         public string Brand { get; set; }   
         public string Model { get; set; }
-        public string Images { get; set; }
+      
         public string Gearbox {  get; set; }
         public int Year { get; set; }   
         public double PricePerDay {  get; set; }
@@ -24,7 +24,8 @@ namespace RentACar.Models
         public string Color {  get; set; }
         public bool Available {  get; set; }
        public string Description {  get; set; }
-       
-       
+       public int CategoryId {  get; set; }
+        public Category Category { get; set; }
+       public ICollection<Image> Images { get; set; }
     }
 }

@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CarImagesViewModel
+
+<div class="cars-list">
+    @foreach (var carWithImages in Model.CarWithImages)
+    {
+        <div class="car-item">
+            <h2>@carWithImages.Car.Brand</h2>
+            <p>@carWithImages.Car.Model</p>
+
+            <div class="car-images">
+                @foreach (var image in carWithImages.Images)
+                {
+                    <img src="@image.Url" alt="@carWithImages.Car.Brand" class="car-image" />
+                }
+            </div>
+        </div>
+        <hr />
+    }
+</div>
+
+<style>
+    .cars-list { margin: 20px; }
+    .car-item { margin-bottom: 40px; }
+    .car-images { display: flex; gap: 10px; flex-wrap: wrap; }
+    .car-image { width: 200px; height: auto; border: 1px solid #ddd; border-radius: 5px; }
+</style>

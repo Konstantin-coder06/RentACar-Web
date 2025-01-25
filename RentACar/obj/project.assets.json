@@ -2958,6 +2958,21 @@
           }
         }
       },
+      "RentACar.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0",
+          "RentACar.DataAccess": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RentACar.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentACar.Core.dll": {}
+        }
+      },
       "RentACar.DataAccess/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -8208,6 +8223,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "RentACar.Core/1.0.0": {
+      "type": "project",
+      "path": "../RentACar.Core/RentACar.Core.csproj",
+      "msbuildProject": "../RentACar.Core/RentACar.Core.csproj"
+    },
     "RentACar.DataAccess/1.0.0": {
       "type": "project",
       "path": "../RentACar.DataAccess/RentACar.DataAccess.csproj",
@@ -8233,6 +8253,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.7",
+      "RentACar.Core >= 1.0.0",
       "RentACar.DataAccess >= 1.0.0",
       "RentACar.Utility >= 1.0.0"
     ]
@@ -8269,6 +8290,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar.Core\\RentACar.Core.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar.Core\\RentACar.Core.csproj"
+            },
             "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar.DataAccess\\RentACar.DataAccess.csproj": {
               "projectPath": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar.DataAccess\\RentACar.DataAccess.csproj"
             },

@@ -476,3 +476,7 @@ C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\obj\Debug\net8.0\RentACar.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\obj\Debug\net8.0\RentACar.sourcelink.json
+C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\RentACar.Core.dll
+C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\RentACar.Utility.dll
+C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\RentACar.Core.pdb
+C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\RentACar.Utility.pdb

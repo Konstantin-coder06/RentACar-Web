@@ -13,6 +13,90 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\bmw-420i1.png",
+      "PackagePath": "staticwebassets\\images\\bmw-420i1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\bmw-420i2.png",
+      "PackagePath": "staticwebassets\\images\\bmw-420i2.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\bmw-420i3.png",
+      "PackagePath": "staticwebassets\\images\\bmw-420i3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\bmw-420i4.png",
+      "PackagePath": "staticwebassets\\images\\bmw-420i4.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\bmw-420i5.png",
+      "PackagePath": "staticwebassets\\images\\bmw-420i5.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\bmw-420i6.png",
+      "PackagePath": "staticwebassets\\images\\bmw-420i6.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\bmw-420i7.png",
+      "PackagePath": "staticwebassets\\images\\bmw-420i7.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\c300-1.webp",
+      "PackagePath": "staticwebassets\\images\\c300-1.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\c300-2.webp",
+      "PackagePath": "staticwebassets\\images\\c300-2.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\c300-3.webp",
+      "PackagePath": "staticwebassets\\images\\c300-3.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\c300-4.webp",
+      "PackagePath": "staticwebassets\\images\\c300-4.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\c300-5.webp",
+      "PackagePath": "staticwebassets\\images\\c300-5.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\c300-6.webp",
+      "PackagePath": "staticwebassets\\images\\c300-6.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\honda-civic1.png",
+      "PackagePath": "staticwebassets\\images\\honda-civic1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\honda-civic2.png",
+      "PackagePath": "staticwebassets\\images\\honda-civic2.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\honda-civic3.png",
+      "PackagePath": "staticwebassets\\images\\honda-civic3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\honda-civic4.png",
+      "PackagePath": "staticwebassets\\images\\honda-civic4.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-corolla1.jpg",
+      "PackagePath": "staticwebassets\\images\\toyota-corolla1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-corolla2.jpg",
+      "PackagePath": "staticwebassets\\images\\toyota-corolla2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-corolla3.jpg",
+      "PackagePath": "staticwebassets\\images\\toyota-corolla3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-corolla4.jpg",
+      "PackagePath": "staticwebassets\\images\\toyota-corolla4.jpg"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
