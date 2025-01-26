@@ -316,8 +316,8 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 150.0,
                             MileageLimitForWeek = 1000.0,
                             Model = "Corolla",
-                            PricePerDay = 40.0,
-                            PricePerWeek = 250.0,
+                            PricePerDay = 80.0,
+                            PricePerWeek = 450.0,
                             Year = 2021
                         },
                         new
@@ -334,8 +334,8 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 200.0,
                             MileageLimitForWeek = 1200.0,
                             Model = "Civic",
-                            PricePerDay = 50.0,
-                            PricePerWeek = 300.0,
+                            PricePerDay = 140.0,
+                            PricePerWeek = 600.0,
                             Year = 2022
                         },
                         new
@@ -345,16 +345,16 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Ford",
                             CategoryId = 7,
-                            Color = "Blue",
+                            Color = "Black",
                             Description = "Comfortable and stylish",
-                            EngineCapacity = 5.2000000000000002,
+                            EngineCapacity = 5.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 250.0,
                             MileageLimitForWeek = 1500.0,
                             Model = "Mustang",
-                            PricePerDay = 85.0,
-                            PricePerWeek = 510.0,
-                            Year = 2018
+                            PricePerDay = 200.0,
+                            PricePerWeek = 910.0,
+                            Year = 2020
                         },
                         new
                         {
@@ -370,9 +370,9 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "420i",
-                            PricePerDay = 100.0,
-                            PricePerWeek = 600.0,
-                            Year = 2023
+                            PricePerDay = 250.0,
+                            PricePerWeek = 1000.0,
+                            Year = 2022
                         },
                         new
                         {
@@ -381,16 +381,16 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Mercedes-Benz",
                             CategoryId = 2,
-                            Color = "Silver",
+                            Color = "Red",
                             Description = "Premium luxury",
-                            EngineCapacity = 2.1000000000000001,
+                            EngineCapacity = 3.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "C-Class",
-                            PricePerDay = 110.0,
-                            PricePerWeek = 650.0,
-                            Year = 2023
+                            PricePerDay = 210.0,
+                            PricePerWeek = 850.0,
+                            Year = 2021
                         },
                         new
                         {
@@ -399,16 +399,16 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Audi",
                             CategoryId = 3,
-                            Color = "Red",
+                            Color = "Green",
                             Description = "High-performance sports car",
                             EngineCapacity = 5.2000000000000002,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
-                            Model = "R8",
-                            PricePerDay = 300.0,
-                            PricePerWeek = 1800.0,
-                            Year = 2023
+                            Model = "R8 Spyder",
+                            PricePerDay = 750.0,
+                            PricePerWeek = 6400.0,
+                            Year = 2021
                         },
                         new
                         {
@@ -417,15 +417,15 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Lamborghini",
                             CategoryId = 3,
-                            Color = "Yellow",
+                            Color = "Black",
                             Description = "Exotic sports car",
                             EngineCapacity = 5.2000000000000002,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "Huracan",
-                            PricePerDay = 500.0,
-                            PricePerWeek = 3000.0,
+                            PricePerDay = 1700.0,
+                            PricePerWeek = 9000.0,
                             Year = 2023
                         },
                         new
@@ -435,15 +435,15 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Porsche",
                             CategoryId = 2,
-                            Color = "Blue",
+                            Color = "Silver",
                             Description = "Luxury sports car",
-                            EngineCapacity = 3.7999999999999998,
+                            EngineCapacity = 4.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
-                            Model = "911 Turbo S",
-                            PricePerDay = 400.0,
-                            PricePerWeek = 2400.0,
+                            Model = "911 GT3",
+                            PricePerDay = 1400.0,
+                            PricePerWeek = 8400.0,
                             Year = 2023
                         },
                         new
@@ -453,7 +453,7 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Tesla",
                             CategoryId = 5,
-                            Color = "Black",
+                            Color = "White",
                             Description = "Electric luxury sedan",
                             EngineCapacity = 0.0,
                             Gearbox = "Automatic",
@@ -477,10 +477,10 @@ namespace RentACar.DataAccess.Migrations
                             Gearbox = "Automatic",
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
-                            Model = "F8 Tributo",
-                            PricePerDay = 600.0,
-                            PricePerWeek = 3600.0,
-                            Year = 2023
+                            Model = "F8 Spider",
+                            PricePerDay = 2300.0,
+                            PricePerWeek = 10000.0,
+                            Year = 2022
                         },
                         new
                         {
@@ -489,7 +489,7 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Rolls-Royce",
                             CategoryId = 2,
-                            Color = "White",
+                            Color = "Black",
                             Description = "Ultimate luxury car",
                             EngineCapacity = 6.7000000000000002,
                             Gearbox = "Automatic",
@@ -498,7 +498,7 @@ namespace RentACar.DataAccess.Migrations
                             Model = "Phantom",
                             PricePerDay = 1000.0,
                             PricePerWeek = 7000.0,
-                            Year = 2023
+                            Year = 2021
                         },
                         new
                         {
@@ -507,15 +507,15 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Bentley",
                             CategoryId = 2,
-                            Color = "Silver",
+                            Color = "Black",
                             Description = "Grand luxury tourer",
-                            EngineCapacity = 6.0,
+                            EngineCapacity = 4.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
-                            Model = "Continental GT",
-                            PricePerDay = 800.0,
-                            PricePerWeek = 5000.0,
+                            Model = "Continental GT-GTC",
+                            PricePerDay = 1300.0,
+                            PricePerWeek = 7600.0,
                             Year = 2023
                         },
                         new
@@ -525,142 +525,160 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "McLaren",
                             CategoryId = 3,
-                            Color = "Orange",
+                            Color = "Blue",
                             Description = "Exquisite British engineering",
                             EngineCapacity = 4.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "720S",
-                            PricePerDay = 700.0,
-                            PricePerWeek = 4200.0,
+                            PricePerDay = 1700.0,
+                            PricePerWeek = 8000.0,
                             Year = 2023
                         },
                         new
                         {
                             Id = 14,
-                            AdditionalMileageCharge = 0.80000000000000004,
-                            Available = true,
-                            Brand = "Lexus",
-                            CategoryId = 6,
-                            Color = "Blue",
-                            Description = "Luxury hybrid SUV",
-                            EngineCapacity = 2.3999999999999999,
-                            Gearbox = "Automatic",
-                            MileageLimitForDay = 300.0,
-                            MileageLimitForWeek = 2000.0,
-                            Model = "RX 500h",
-                            PricePerDay = 250.0,
-                            PricePerWeek = 1500.0,
-                            Year = 2023
-                        },
-                        new
-                        {
-                            Id = 15,
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Aston Martin",
-                            CategoryId = 2,
-                            Color = "Green",
-                            Description = "Luxury British grand tourer",
-                            EngineCapacity = 5.2000000000000002,
+                            CategoryId = 6,
+                            Color = "Black",
+                            Description = "Luxury British SUV",
+                            EngineCapacity = 4.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
-                            Model = "DB11",
+                            Model = "DBX",
                             PricePerDay = 600.0,
                             PricePerWeek = 3600.0,
                             Year = 2023
                         },
                         new
                         {
-                            Id = 16,
+                            Id = 15,
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Lexus",
-                            CategoryId = 2,
-                            Color = "Black",
-                            Description = "Sophisticated luxury coupe",
-                            EngineCapacity = 5.0,
+                            CategoryId = 6,
+                            Color = "Silver",
+                            Description = "Sophisticated luxury SUV",
+                            EngineCapacity = 3.3999999999999999,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
-                            Model = "LC 500",
+                            Model = "LX",
                             PricePerDay = 500.0,
                             PricePerWeek = 3000.0,
                             Year = 2023
                         },
                         new
                         {
-                            Id = 17,
+                            Id = 16,
                             AdditionalMileageCharge = 2.2000000000000002,
                             Available = true,
                             Brand = "Mercedes-Benz",
                             CategoryId = 3,
-                            Color = "Yellow",
+                            Color = "Orange",
                             Description = "German engineering excellence",
                             EngineCapacity = 4.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "AMG GT",
-                            PricePerDay = 700.0,
-                            PricePerWeek = 4200.0,
-                            Year = 2023
+                            PricePerDay = 2500.0,
+                            PricePerWeek = 1100.0,
+                            Year = 2022
                         },
                         new
                         {
-                            Id = 18,
+                            Id = 17,
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Audi",
                             CategoryId = 6,
-                            Color = "White",
+                            Color = "Orange",
                             Description = "Luxury SUV",
-                            EngineCapacity = 3.0,
+                            EngineCapacity = 4.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Q8",
-                            PricePerDay = 300.0,
-                            PricePerWeek = 1800.0,
-                            Year = 2023
+                            PricePerDay = 400.0,
+                            PricePerWeek = 2300.0,
+                            Year = 2021
                         },
                         new
                         {
-                            Id = 19,
+                            Id = 18,
                             AdditionalMileageCharge = 1.5,
                             Available = true,
-                            Brand = "Toyota",
+                            Brand = "BMW",
                             CategoryId = 3,
-                            Color = "Red",
+                            Color = "Yellow",
                             Description = "Sporty and agile",
                             EngineCapacity = 3.0,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
-                            Model = "Supra",
-                            PricePerDay = 350.0,
-                            PricePerWeek = 2000.0,
+                            Model = "M4",
+                            PricePerDay = 700.0,
+                            PricePerWeek = 4000.0,
                             Year = 2023
                         },
                         new
                         {
-                            Id = 20,
+                            Id = 19,
                             AdditionalMileageCharge = 0.25,
                             Available = true,
                             Brand = "Toyota",
                             CategoryId = 9,
-                            Color = "Blue",
+                            Color = "Red",
                             Description = "Dependable sedan",
                             EngineCapacity = 2.5,
                             Gearbox = "Automatic",
                             MileageLimitForDay = 200.0,
                             MileageLimitForWeek = 1200.0,
                             Model = "Camry",
-                            PricePerDay = 50.0,
-                            PricePerWeek = 300.0,
+                            PricePerDay = 130.0,
+                            PricePerWeek = 670.0,
                             Year = 2021
+                        },
+                        new
+                        {
+                            Id = 20,
+                            AdditionalMileageCharge = 1.8,
+                            Available = true,
+                            Brand = "Tesla",
+                            CategoryId = 6,
+                            Color = "Black",
+                            Description = "Sophisticated luxury SUV",
+                            EngineCapacity = 0.0,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "Cybertruck",
+                            PricePerDay = 2000.0,
+                            PricePerWeek = 12000.0,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            Id = 21,
+                            AdditionalMileageCharge = 1.8,
+                            Available = true,
+                            Brand = "Land Rover",
+                            CategoryId = 6,
+                            Color = "Black",
+                            Description = "Sophisticated luxury SUV",
+                            EngineCapacity = 4.4000000000000004,
+                            Gearbox = "Automatic",
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "Range Rover",
+                            PricePerDay = 1200.0,
+                            PricePerWeek = 7000.0,
+                            Year = 2023
                         });
                 });
 
@@ -1149,80 +1167,872 @@ namespace RentACar.DataAccess.Migrations
                         new
                         {
                             Id = 9,
-                            CarId = 3,
+                            CarId = 4,
                             Url = "/images/bmw-420i1.png"
                         },
                         new
                         {
                             Id = 10,
-                            CarId = 3,
+                            CarId = 4,
                             Url = "/images/bmw-420i2.png"
                         },
                         new
                         {
                             Id = 11,
-                            CarId = 3,
+                            CarId = 4,
                             Url = "/images/bmw-420i7.png"
                         },
                         new
                         {
                             Id = 12,
-                            CarId = 3,
+                            CarId = 4,
                             Url = "/images/bmw-420i3.png"
                         },
                         new
                         {
                             Id = 13,
-                            CarId = 3,
+                            CarId = 4,
                             Url = "/images/bmw-420i4.png"
                         },
                         new
                         {
                             Id = 14,
-                            CarId = 3,
+                            CarId = 4,
                             Url = "/images/bmw-420i5.png"
                         },
                         new
                         {
                             Id = 15,
-                            CarId = 3,
+                            CarId = 4,
                             Url = "/images/bmw-420i6.png"
                         },
                         new
                         {
                             Id = 16,
-                            CarId = 4,
+                            CarId = 5,
                             Url = "/images/c300-1.webp"
                         },
                         new
                         {
                             Id = 17,
-                            CarId = 4,
+                            CarId = 5,
                             Url = "/images/c300-2.webp"
                         },
                         new
                         {
                             Id = 18,
-                            CarId = 4,
+                            CarId = 5,
                             Url = "/images/c300-3.webp"
                         },
                         new
                         {
                             Id = 19,
-                            CarId = 4,
+                            CarId = 5,
                             Url = "/images/c300-4.webp"
                         },
                         new
                         {
                             Id = 20,
-                            CarId = 4,
+                            CarId = 5,
                             Url = "/images/c300-5.webp"
                         },
                         new
                         {
                             Id = 21,
-                            CarId = 4,
+                            CarId = 5,
                             Url = "/images/c300-6.webp"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CarId = 3,
+                            Url = "/images/ford-mustang1.jpg"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CarId = 3,
+                            Url = "/images/ford-mustang2.jpg"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CarId = 3,
+                            Url = "/images/ford-mustang3.jpg"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CarId = 3,
+                            Url = "/images/ford-mustang4.jpg"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CarId = 3,
+                            Url = "/images/ford-mustang5.jpg"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CarId = 3,
+                            Url = "/images/ford-mustang6.jpg"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CarId = 3,
+                            Url = "/images/ford-mustang7.jpg"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CarId = 3,
+                            Url = "/images/ford-mustang8.jpg"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CarId = 6,
+                            Url = "/images/audi-r8-1.jpg"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CarId = 6,
+                            Url = "/images/audi-r8-2.jpg"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CarId = 6,
+                            Url = "/images/audi-r8-3.jpg"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CarId = 6,
+                            Url = "/images/audi-r8-4.jpg"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CarId = 6,
+                            Url = "/images/audi-r8-5.jpg"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CarId = 6,
+                            Url = "/images/audi-r8-6.jpg"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CarId = 6,
+                            Url = "/images/audi-r8-7.jpg"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CarId = 6,
+                            Url = "/images/audi-r8-8.jpg"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CarId = 7,
+                            Url = "/images/lambo-hur-1.jpg"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CarId = 7,
+                            Url = "/images/lambo-hur-2.jpg"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CarId = 7,
+                            Url = "/images/lambo-hur-3.jpg"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CarId = 7,
+                            Url = "/images/lambo-hur-4.jpg"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CarId = 7,
+                            Url = "/images/lambo-hur-5.jpg"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            CarId = 8,
+                            Url = "/images/porsche-gt3-1.webp"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CarId = 8,
+                            Url = "/images/porsche-gt3-2.webp"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CarId = 8,
+                            Url = "/images/porsche-gt3-3.webp"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CarId = 8,
+                            Url = "/images/porsche-gt3-4.webp"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CarId = 8,
+                            Url = "/images/porsche-gt3-5.webp"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            CarId = 8,
+                            Url = "/images/porsche-gt3-6.webp"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            CarId = 8,
+                            Url = "/images/porsche-gt3-7.webp"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            CarId = 8,
+                            Url = "/images/porsche-gt3-8.webp"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            CarId = 9,
+                            Url = "/images/tesla-s-1.webp"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            CarId = 9,
+                            Url = "/images/tesla-s-2.webp"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            CarId = 9,
+                            Url = "/images/tesla-s-3.webp"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            CarId = 9,
+                            Url = "/images/tesla-s-4.webp"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            CarId = 9,
+                            Url = "/images/tesla-s-5.webp"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CarId = 9,
+                            Url = "/images/tesla-s-6.webp"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CarId = 10,
+                            Url = "/images/ferrari-f-1.webp"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            CarId = 10,
+                            Url = "/images/ferrari-f-2.webp"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            CarId = 10,
+                            Url = "/images/ferrari-f-3.webp"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            CarId = 10,
+                            Url = "/images/ferrari-f-4.webp"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            CarId = 10,
+                            Url = "/images/ferrari-f-5.webp"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            CarId = 10,
+                            Url = "/images/ferrari-f-6.webp"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            CarId = 10,
+                            Url = "/images/ferrari-f-7.webp"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            CarId = 10,
+                            Url = "/images/ferrari-f-8.webp"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            CarId = 11,
+                            Url = "/images/phanthom-1.webp"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            CarId = 11,
+                            Url = "/images/phanthom-2.webp"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            CarId = 11,
+                            Url = "/images/phanthom-3.webp"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            CarId = 11,
+                            Url = "/images/phanthom-4.webp"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            CarId = 11,
+                            Url = "/images/phanthom-5.webp"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            CarId = 11,
+                            Url = "/images/phanthom-6.webp"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            CarId = 11,
+                            Url = "/images/phanthom-7.webp"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            CarId = 11,
+                            Url = "/images/phanthom-8.webp"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            CarId = 11,
+                            Url = "/images/phanthom-9.webp"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            CarId = 11,
+                            Url = "/images/phanthom-10.webp"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            CarId = 11,
+                            Url = "/images/phanthom-11.webp"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-1.webp"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-2.webp"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-3.webp"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-4.webp"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-5.webp"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-6.webp"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-7.webp"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-8.webp"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-9.webp"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-10.webp"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-11.webp"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            CarId = 12,
+                            Url = "/images/bentley-continental-gt-12.webp"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            CarId = 13,
+                            Url = "/images/mc-720s-1.webp"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            CarId = 13,
+                            Url = "/images/mc-720s-2.webp"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            CarId = 13,
+                            Url = "/images/mc-720s-3.webp"
+                        },
+                        new
+                        {
+                            Id = 91,
+                            CarId = 13,
+                            Url = "/images/mc-720s-4.webp"
+                        },
+                        new
+                        {
+                            Id = 92,
+                            CarId = 13,
+                            Url = "/images/mc-720s-5.webp"
+                        },
+                        new
+                        {
+                            Id = 93,
+                            CarId = 13,
+                            Url = "/images/mc-720s-6.webp"
+                        },
+                        new
+                        {
+                            Id = 94,
+                            CarId = 13,
+                            Url = "/images/mc-720s-7.webp"
+                        },
+                        new
+                        {
+                            Id = 95,
+                            CarId = 14,
+                            Url = "/images/aston-dbx-1.webp"
+                        },
+                        new
+                        {
+                            Id = 96,
+                            CarId = 14,
+                            Url = "/images/aston-dbx-2.webp"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            CarId = 14,
+                            Url = "/images/aston-dbx-3.webp"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            CarId = 14,
+                            Url = "/images/aston-dbx-4.webp"
+                        },
+                        new
+                        {
+                            Id = 99,
+                            CarId = 14,
+                            Url = "/images/aston-dbx-5.webp"
+                        },
+                        new
+                        {
+                            Id = 100,
+                            CarId = 14,
+                            Url = "/images/aston-dbx-6.webp"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CarId = 14,
+                            Url = "/images/aston-dbx-7.webp"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CarId = 14,
+                            Url = "/images/aston-dbx-8.webp"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CarId = 15,
+                            Url = "/images/lexus-lx-1.webp"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CarId = 15,
+                            Url = "/images/lexus-lx-2.webp"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            CarId = 15,
+                            Url = "/images/lexus-lx-3.webp"
+                        },
+                        new
+                        {
+                            Id = 106,
+                            CarId = 15,
+                            Url = "/images/lexus-lx-4.webp"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            CarId = 15,
+                            Url = "/images/lexus-lx-5.webp"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            CarId = 15,
+                            Url = "/images/lexus-lx-6.webp"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            CarId = 15,
+                            Url = "/images/lexus-lx-7.webp"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            CarId = 16,
+                            Url = "/images/amg-gt-1.webp"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            CarId = 16,
+                            Url = "/images/amg-gt-2.webp"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            CarId = 16,
+                            Url = "/images/amg-gt-3.webp"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CarId = 16,
+                            Url = "/images/amg-gt-4.webp"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            CarId = 16,
+                            Url = "/images/amg-gt-5.webp"
+                        },
+                        new
+                        {
+                            Id = 115,
+                            CarId = 16,
+                            Url = "/images/amg-gt-6.webp"
+                        },
+                        new
+                        {
+                            Id = 116,
+                            CarId = 16,
+                            Url = "/images/amg-gt-7.webp"
+                        },
+                        new
+                        {
+                            Id = 117,
+                            CarId = 16,
+                            Url = "/images/amg-gt-8.webp"
+                        },
+                        new
+                        {
+                            Id = 118,
+                            CarId = 17,
+                            Url = "/images/audi-q8-1.webp"
+                        },
+                        new
+                        {
+                            Id = 119,
+                            CarId = 17,
+                            Url = "/images/audi-q8-2.webp"
+                        },
+                        new
+                        {
+                            Id = 120,
+                            CarId = 17,
+                            Url = "/images/audi-q8-3.webp"
+                        },
+                        new
+                        {
+                            Id = 121,
+                            CarId = 17,
+                            Url = "/images/audi-q8-4.webp"
+                        },
+                        new
+                        {
+                            Id = 122,
+                            CarId = 17,
+                            Url = "/images/audi-q8-5.webp"
+                        },
+                        new
+                        {
+                            Id = 123,
+                            CarId = 17,
+                            Url = "/images/audi-q8-6.webp"
+                        },
+                        new
+                        {
+                            Id = 124,
+                            CarId = 17,
+                            Url = "/images/audi-q8-7.webp"
+                        },
+                        new
+                        {
+                            Id = 125,
+                            CarId = 17,
+                            Url = "/images/audi-q8-8.webp"
+                        },
+                        new
+                        {
+                            Id = 126,
+                            CarId = 17,
+                            Url = "/images/audi-q8-9.webp"
+                        },
+                        new
+                        {
+                            Id = 127,
+                            CarId = 18,
+                            Url = "/images/bmw-m4-1.webp"
+                        },
+                        new
+                        {
+                            Id = 128,
+                            CarId = 18,
+                            Url = "/images/bmw-m4-2.webp"
+                        },
+                        new
+                        {
+                            Id = 129,
+                            CarId = 18,
+                            Url = "/images/bmw-m4-3.webp"
+                        },
+                        new
+                        {
+                            Id = 130,
+                            CarId = 18,
+                            Url = "/images/bmw-m4-4.webp"
+                        },
+                        new
+                        {
+                            Id = 131,
+                            CarId = 18,
+                            Url = "/images/bmw-m4-5.webp"
+                        },
+                        new
+                        {
+                            Id = 132,
+                            CarId = 18,
+                            Url = "/images/bmw-m4-6.webp"
+                        },
+                        new
+                        {
+                            Id = 133,
+                            CarId = 19,
+                            Url = "/images/camry-1.webp"
+                        },
+                        new
+                        {
+                            Id = 134,
+                            CarId = 19,
+                            Url = "/images/camry-2.webp"
+                        },
+                        new
+                        {
+                            Id = 135,
+                            CarId = 19,
+                            Url = "/images/camry-3.webp"
+                        },
+                        new
+                        {
+                            Id = 136,
+                            CarId = 19,
+                            Url = "/images/camry-4.webp"
+                        },
+                        new
+                        {
+                            Id = 137,
+                            CarId = 19,
+                            Url = "/images/camry-5.webp"
+                        },
+                        new
+                        {
+                            Id = 138,
+                            CarId = 19,
+                            Url = "/images/camry-6.webp"
+                        },
+                        new
+                        {
+                            Id = 139,
+                            CarId = 19,
+                            Url = "/images/camry-7.webp"
+                        },
+                        new
+                        {
+                            Id = 140,
+                            CarId = 20,
+                            Url = "/images/cybertruck-1.webp"
+                        },
+                        new
+                        {
+                            Id = 141,
+                            CarId = 20,
+                            Url = "/images/cybertruck-2.webp"
+                        },
+                        new
+                        {
+                            Id = 142,
+                            CarId = 20,
+                            Url = "/images/cybertruck-3.webp"
+                        },
+                        new
+                        {
+                            Id = 143,
+                            CarId = 20,
+                            Url = "/images/cybertruck-4.webp"
+                        },
+                        new
+                        {
+                            Id = 144,
+                            CarId = 20,
+                            Url = "/images/cybertruck-5.webp"
+                        },
+                        new
+                        {
+                            Id = 145,
+                            CarId = 21,
+                            Url = "/images/rover-1.webp"
+                        },
+                        new
+                        {
+                            Id = 146,
+                            CarId = 21,
+                            Url = "/images/rover-2.webp"
+                        },
+                        new
+                        {
+                            Id = 147,
+                            CarId = 21,
+                            Url = "/images/rover-3.webp"
+                        },
+                        new
+                        {
+                            Id = 148,
+                            CarId = 21,
+                            Url = "/images/rover-4.webp"
+                        },
+                        new
+                        {
+                            Id = 149,
+                            CarId = 21,
+                            Url = "/images/rover-5.webp"
+                        },
+                        new
+                        {
+                            Id = 150,
+                            CarId = 21,
+                            Url = "/images/rover-6.webp"
+                        },
+                        new
+                        {
+                            Id = 151,
+                            CarId = 21,
+                            Url = "/images/rover-7.webp"
+                        },
+                        new
+                        {
+                            Id = 152,
+                            CarId = 12,
+                            Url = "/images/rover-8.webp"
+                        },
+                        new
+                        {
+                            Id = 153,
+                            CarId = 12,
+                            Url = "/images/rover-9.webp"
                         });
                 });
 
