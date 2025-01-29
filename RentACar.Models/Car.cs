@@ -22,8 +22,13 @@ namespace RentACar.Models
         public double AdditionalMileageCharge { get; set; }
         public double EngineCapacity {  get; set; }
         public string Color {  get; set; }
+      
         public bool Available {  get; set; }
        public string Description {  get; set; }
+        public string DriveTrain {  get; set; }
+        public int HorsePower {  get; set; }
+        public double  OneToHundred { get; set; }
+        public double TopSpeed { get; set; }
        public int CategoryId {  get; set; }
         public Category Category { get; set; }
        public ICollection<Image> Images { get; set; }

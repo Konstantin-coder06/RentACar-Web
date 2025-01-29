@@ -24,22 +24,22 @@ namespace RentACar.Core.Services
 
         public IEnumerable<Car> AllWithInclude(params Expression<Func<Car, object>>[] filters)
         {
-            throw new NotImplementedException();
+            return carRepository.AllWithInclude(filters).ToList();
         }
 
         public void Delete(Car entity)
         {
-            throw new NotImplementedException();
+           carRepository.Delete(entity);
         }
 
         public IEnumerable<Car> FindAll(Expression<Func<Car, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return carRepository.FindAll(predicate).ToList();
         }
 
         public Car FindOne(Expression<Func<Car, bool>> predicate)
         {
-            throw new NotImplementedException();
+           return carRepository.FindOne(predicate);
         }
 
         public IEnumerable<Car> GetAll()
@@ -49,7 +49,7 @@ namespace RentACar.Core.Services
 
         public void Update(Car entity)
         {
-            throw new NotImplementedException();
+            carRepository.Update(entity);
         }
     }
 }

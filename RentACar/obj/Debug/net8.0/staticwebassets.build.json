@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Oaz5w6lz9GTxiyo62+aoXiHdaWRgpkNawALs4Vw3TG0=",
+  "Hash": "Oa9s4NduQFT9yvhoyOYFVUrZ+UAb3TVu4RoUrWIyzzo=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -3125,12 +3125,12 @@
       "OriginalItemSpec": "wwwroot\\images\\ferrari-f-8.webp"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang1.jpg",
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-1.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
       "BasePath": "_content/RentACar",
-      "RelativePath": "images/ford-mustang1#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/ford-mustang-1#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3139,19 +3139,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "6vbzm9q7yy",
-      "Integrity": "Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA=",
+      "Fingerprint": "q2bs6lvkwh",
+      "Integrity": "ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\ford-mustang1.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\ford-mustang-1.webp"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang2.jpg",
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-2.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
       "BasePath": "_content/RentACar",
-      "RelativePath": "images/ford-mustang2#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/ford-mustang-2#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3160,19 +3160,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "16gd3duim1",
-      "Integrity": "59VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM=",
+      "Fingerprint": "bye2igp2re",
+      "Integrity": "zaXODZt9s5+7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\ford-mustang2.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\ford-mustang-2.webp"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang3.jpg",
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-3.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
       "BasePath": "_content/RentACar",
-      "RelativePath": "images/ford-mustang3#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/ford-mustang-3#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3181,19 +3181,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "mdk8iuzget",
-      "Integrity": "1ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl+Lcintzuwgg=",
+      "Fingerprint": "7kq9vwacp8",
+      "Integrity": "t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\ford-mustang3.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\ford-mustang-3.webp"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang4.jpg",
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-4.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
       "BasePath": "_content/RentACar",
-      "RelativePath": "images/ford-mustang4#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/ford-mustang-4#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3202,19 +3202,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ocw6kqsihy",
-      "Integrity": "uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis=",
+      "Fingerprint": "lz9ni9n81d",
+      "Integrity": "r+cwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A+kLo4U=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\ford-mustang4.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\ford-mustang-4.webp"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang5.jpg",
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-5.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
       "BasePath": "_content/RentACar",
-      "RelativePath": "images/ford-mustang5#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/ford-mustang-5#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3223,19 +3223,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "k8zhfur0ii",
-      "Integrity": "pCNdN+ALI+oSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc=",
+      "Fingerprint": "4rajlcuvbf",
+      "Integrity": "0L0DRa5i8SKC3hzhCMLIz7Nx/+j3VC9Ry9ESPwWEY7s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\ford-mustang5.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\ford-mustang-5.webp"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang6.jpg",
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-6.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
       "BasePath": "_content/RentACar",
-      "RelativePath": "images/ford-mustang6#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/ford-mustang-6#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3244,19 +3244,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "czc78nlvn3",
-      "Integrity": "iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU=",
+      "Fingerprint": "ltue8qjzyq",
+      "Integrity": "d8zY+1PuKiqNDLfgSw6p+r/wXz1/se5xeRHjfIVAcOQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\ford-mustang6.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\ford-mustang-6.webp"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang7.jpg",
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-7.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
       "BasePath": "_content/RentACar",
-      "RelativePath": "images/ford-mustang7#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/ford-mustang-7#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3265,19 +3265,19 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "8y0zfqf0e3",
-      "Integrity": "kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE=",
+      "Fingerprint": "66r8jp970v",
+      "Integrity": "joKOiz6TGh4EBKMZr9Ryn70zNn0+Z2POYwR8CJLeDJU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\ford-mustang7.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\ford-mustang-7.webp"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang8.jpg",
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-8.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
       "BasePath": "_content/RentACar",
-      "RelativePath": "images/ford-mustang8#[.{fingerprint}]?.jpg",
+      "RelativePath": "images/ford-mustang-8#[.{fingerprint}]?.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3286,11 +3286,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "qa7fkum2hs",
-      "Integrity": "ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak=",
+      "Fingerprint": "b13t32tz3k",
+      "Integrity": "YZCOFL7yfU2ND+vU+0kPMfCNoZnh4trVEGU9F1fb5yc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\ford-mustang8.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\ford-mustang-8.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\honda-civic1.png",
@@ -4572,6 +4572,132 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\toyota-corolla4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-1.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "images/toyota-supra-1#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3zpbhdpsdv",
+      "Integrity": "P+3mN6JiXb5IwBsrao+wulqQuXP1qptVeZii/PW6Tcg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\toyota-supra-1.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-2.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "images/toyota-supra-2#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kvke5zjne9",
+      "Integrity": "MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\toyota-supra-2.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-3.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "images/toyota-supra-3#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vsnlucrfuh",
+      "Integrity": "v2l+r8WCTJFuYbZTVi4qhB+bbzQ/u7dYiE3LWqKKdzc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\toyota-supra-3.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-4.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "images/toyota-supra-4#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ioic4ax9gi",
+      "Integrity": "btr8e86cLnaDtl5frYvyEviAcneo+LlJgNvZs+YxX0U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\toyota-supra-4.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-5.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "images/toyota-supra-5#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cixmpq7a9s",
+      "Integrity": "JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\toyota-supra-5.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-6.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "images/toyota-supra-6#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "afjl79ps4u",
+      "Integrity": "au+p10yfsS+Nlfi+EuRaTySaIfLxkSFfHdyXuH5hvXk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\toyota-supra-6.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\site.js",
@@ -15066,8 +15192,8 @@
       ]
     },
     {
-      "Route": "images/ford-mustang1.6vbzm9q7yy.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang1.jpg",
+      "Route": "images/ford-mustang-1.q2bs6lvkwh.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-1.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15076,19 +15202,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "905509"
+          "Value": "37230"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA=\""
+          "Value": "\"ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:06:14 GMT"
+          "Value": "Wed, 29 Jan 2025 11:12:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15098,21 +15224,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6vbzm9q7yy"
+          "Value": "q2bs6lvkwh"
         },
         {
           "Name": "label",
-          "Value": "images/ford-mustang1.jpg"
+          "Value": "images/ford-mustang-1.webp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA="
+          "Value": "sha256-ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang1.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang1.jpg",
+      "Route": "images/ford-mustang-1.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-1.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15121,19 +15247,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "905509"
+          "Value": "37230"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA=\""
+          "Value": "\"ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:06:14 GMT"
+          "Value": "Wed, 29 Jan 2025 11:12:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15143,13 +15269,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA="
+          "Value": "sha256-ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang2.16gd3duim1.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang2.jpg",
+      "Route": "images/ford-mustang-2.bye2igp2re.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-2.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15158,19 +15284,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1060683"
+          "Value": "34032"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"59VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM=\""
+          "Value": "\"zaXODZt9s5+7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:06:22 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15180,21 +15306,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "16gd3duim1"
+          "Value": "bye2igp2re"
         },
         {
           "Name": "label",
-          "Value": "images/ford-mustang2.jpg"
+          "Value": "images/ford-mustang-2.webp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-59VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM="
+          "Value": "sha256-zaXODZt9s5+7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang2.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang2.jpg",
+      "Route": "images/ford-mustang-2.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-2.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15203,19 +15329,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1060683"
+          "Value": "34032"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"59VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM=\""
+          "Value": "\"zaXODZt9s5+7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:06:22 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15225,13 +15351,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-59VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM="
+          "Value": "sha256-zaXODZt9s5+7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang3.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang3.jpg",
+      "Route": "images/ford-mustang-3.7kq9vwacp8.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-3.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15240,56 +15366,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "925005"
+          "Value": "21522"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"1ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl+Lcintzuwgg=\""
+          "Value": "\"t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:06:49 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-1ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl+Lcintzuwgg="
-        }
-      ]
-    },
-    {
-      "Route": "images/ford-mustang3.mdk8iuzget.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang3.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "925005"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"1ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl+Lcintzuwgg=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:06:49 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15299,21 +15388,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "mdk8iuzget"
+          "Value": "7kq9vwacp8"
         },
         {
           "Name": "label",
-          "Value": "images/ford-mustang3.jpg"
+          "Value": "images/ford-mustang-3.webp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl+Lcintzuwgg="
+          "Value": "sha256-t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang4.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang4.jpg",
+      "Route": "images/ford-mustang-3.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-3.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15322,19 +15411,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "864202"
+          "Value": "21522"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis=\""
+          "Value": "\"t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:06:36 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:09 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15344,13 +15433,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis="
+          "Value": "sha256-t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang4.ocw6kqsihy.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang4.jpg",
+      "Route": "images/ford-mustang-4.lz9ni9n81d.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-4.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15359,19 +15448,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "864202"
+          "Value": "35632"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis=\""
+          "Value": "\"r+cwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A+kLo4U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:06:36 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15381,21 +15470,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ocw6kqsihy"
+          "Value": "lz9ni9n81d"
         },
         {
           "Name": "label",
-          "Value": "images/ford-mustang4.jpg"
+          "Value": "images/ford-mustang-4.webp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis="
+          "Value": "sha256-r+cwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A+kLo4U="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang5.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang5.jpg",
+      "Route": "images/ford-mustang-4.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-4.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15404,19 +15493,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "980746"
+          "Value": "35632"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"pCNdN+ALI+oSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc=\""
+          "Value": "\"r+cwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A+kLo4U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:07:18 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:16 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15426,13 +15515,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pCNdN+ALI+oSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc="
+          "Value": "sha256-r+cwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A+kLo4U="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang5.k8zhfur0ii.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang5.jpg",
+      "Route": "images/ford-mustang-5.4rajlcuvbf.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-5.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15441,19 +15530,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "980746"
+          "Value": "96584"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"pCNdN+ALI+oSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc=\""
+          "Value": "\"0L0DRa5i8SKC3hzhCMLIz7Nx/+j3VC9Ry9ESPwWEY7s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:07:18 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15463,21 +15552,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "k8zhfur0ii"
+          "Value": "4rajlcuvbf"
         },
         {
           "Name": "label",
-          "Value": "images/ford-mustang5.jpg"
+          "Value": "images/ford-mustang-5.webp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-pCNdN+ALI+oSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc="
+          "Value": "sha256-0L0DRa5i8SKC3hzhCMLIz7Nx/+j3VC9Ry9ESPwWEY7s="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang6.czc78nlvn3.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang6.jpg",
+      "Route": "images/ford-mustang-5.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-5.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15486,64 +15575,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "831830"
+          "Value": "96584"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU=\""
+          "Value": "\"0L0DRa5i8SKC3hzhCMLIz7Nx/+j3VC9Ry9ESPwWEY7s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:07:31 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "czc78nlvn3"
-        },
-        {
-          "Name": "label",
-          "Value": "images/ford-mustang6.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU="
-        }
-      ]
-    },
-    {
-      "Route": "images/ford-mustang6.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang6.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "831830"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:07:31 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:17 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15553,13 +15597,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU="
+          "Value": "sha256-0L0DRa5i8SKC3hzhCMLIz7Nx/+j3VC9Ry9ESPwWEY7s="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang7.8y0zfqf0e3.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang7.jpg",
+      "Route": "images/ford-mustang-6.ltue8qjzyq.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-6.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15568,19 +15612,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "799579"
+          "Value": "79456"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE=\""
+          "Value": "\"d8zY+1PuKiqNDLfgSw6p+r/wXz1/se5xeRHjfIVAcOQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:07:44 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15590,21 +15634,21 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8y0zfqf0e3"
+          "Value": "ltue8qjzyq"
         },
         {
           "Name": "label",
-          "Value": "images/ford-mustang7.jpg"
+          "Value": "images/ford-mustang-6.webp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE="
+          "Value": "sha256-d8zY+1PuKiqNDLfgSw6p+r/wXz1/se5xeRHjfIVAcOQ="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang7.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang7.jpg",
+      "Route": "images/ford-mustang-6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-6.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15613,19 +15657,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "799579"
+          "Value": "79456"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE=\""
+          "Value": "\"d8zY+1PuKiqNDLfgSw6p+r/wXz1/se5xeRHjfIVAcOQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:07:44 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15635,13 +15679,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE="
+          "Value": "sha256-d8zY+1PuKiqNDLfgSw6p+r/wXz1/se5xeRHjfIVAcOQ="
         }
       ]
     },
     {
-      "Route": "images/ford-mustang8.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang8.jpg",
+      "Route": "images/ford-mustang-7.66r8jp970v.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-7.webp",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -15650,56 +15694,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "889313"
+          "Value": "90332"
         },
         {
           "Name": "Content-Type",
-          "Value": "image/jpeg"
+          "Value": "image/webp"
         },
         {
           "Name": "ETag",
-          "Value": "\"ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak=\""
+          "Value": "\"joKOiz6TGh4EBKMZr9Ryn70zNn0+Z2POYwR8CJLeDJU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:07:50 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak="
-        }
-      ]
-    },
-    {
-      "Route": "images/ford-mustang8.qa7fkum2hs.jpg",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang8.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "889313"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 26 Jan 2025 07:07:50 GMT"
+          "Value": "Wed, 29 Jan 2025 11:13:22 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -15709,15 +15716,134 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qa7fkum2hs"
+          "Value": "66r8jp970v"
         },
         {
           "Name": "label",
-          "Value": "images/ford-mustang8.jpg"
+          "Value": "images/ford-mustang-7.webp"
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak="
+          "Value": "sha256-joKOiz6TGh4EBKMZr9Ryn70zNn0+Z2POYwR8CJLeDJU="
+        }
+      ]
+    },
+    {
+      "Route": "images/ford-mustang-7.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "90332"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"joKOiz6TGh4EBKMZr9Ryn70zNn0+Z2POYwR8CJLeDJU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 11:13:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-joKOiz6TGh4EBKMZr9Ryn70zNn0+Z2POYwR8CJLeDJU="
+        }
+      ]
+    },
+    {
+      "Route": "images/ford-mustang-8.b13t32tz3k.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82216"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YZCOFL7yfU2ND+vU+0kPMfCNoZnh4trVEGU9F1fb5yc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 11:13:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b13t32tz3k"
+        },
+        {
+          "Name": "label",
+          "Value": "images/ford-mustang-8.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YZCOFL7yfU2ND+vU+0kPMfCNoZnh4trVEGU9F1fb5yc="
+        }
+      ]
+    },
+    {
+      "Route": "images/ford-mustang-8.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82216"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YZCOFL7yfU2ND+vU+0kPMfCNoZnh4trVEGU9F1fb5yc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 11:13:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YZCOFL7yfU2ND+vU+0kPMfCNoZnh4trVEGU9F1fb5yc="
         }
       ]
     },
@@ -20720,6 +20846,498 @@
         {
           "Name": "integrity",
           "Value": "sha256-HnYeTREVFXU0Cv0u3vC6ViB/DwU/JYSc+Y6RgDWjXV8="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-1.3zpbhdpsdv.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "251036"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P+3mN6JiXb5IwBsrao+wulqQuXP1qptVeZii/PW6Tcg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:51:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3zpbhdpsdv"
+        },
+        {
+          "Name": "label",
+          "Value": "images/toyota-supra-1.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-P+3mN6JiXb5IwBsrao+wulqQuXP1qptVeZii/PW6Tcg="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-1.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "251036"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"P+3mN6JiXb5IwBsrao+wulqQuXP1qptVeZii/PW6Tcg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:51:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-P+3mN6JiXb5IwBsrao+wulqQuXP1qptVeZii/PW6Tcg="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-2.kvke5zjne9.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "300106"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:51:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kvke5zjne9"
+        },
+        {
+          "Name": "label",
+          "Value": "images/toyota-supra-2.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-2.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "300106"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:51:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-3.vsnlucrfuh.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "280434"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v2l+r8WCTJFuYbZTVi4qhB+bbzQ/u7dYiE3LWqKKdzc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:52:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vsnlucrfuh"
+        },
+        {
+          "Name": "label",
+          "Value": "images/toyota-supra-3.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-v2l+r8WCTJFuYbZTVi4qhB+bbzQ/u7dYiE3LWqKKdzc="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-3.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "280434"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v2l+r8WCTJFuYbZTVi4qhB+bbzQ/u7dYiE3LWqKKdzc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:52:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-v2l+r8WCTJFuYbZTVi4qhB+bbzQ/u7dYiE3LWqKKdzc="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-4.ioic4ax9gi.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "312240"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"btr8e86cLnaDtl5frYvyEviAcneo+LlJgNvZs+YxX0U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:52:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ioic4ax9gi"
+        },
+        {
+          "Name": "label",
+          "Value": "images/toyota-supra-4.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-btr8e86cLnaDtl5frYvyEviAcneo+LlJgNvZs+YxX0U="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-4.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "312240"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"btr8e86cLnaDtl5frYvyEviAcneo+LlJgNvZs+YxX0U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:52:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-btr8e86cLnaDtl5frYvyEviAcneo+LlJgNvZs+YxX0U="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-5.cixmpq7a9s.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "166184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:53:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cixmpq7a9s"
+        },
+        {
+          "Name": "label",
+          "Value": "images/toyota-supra-5.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-5.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "166184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:53:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-6.afjl79ps4u.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"au+p10yfsS+Nlfi+EuRaTySaIfLxkSFfHdyXuH5hvXk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:53:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "afjl79ps4u"
+        },
+        {
+          "Name": "label",
+          "Value": "images/toyota-supra-6.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-au+p10yfsS+Nlfi+EuRaTySaIfLxkSFfHdyXuH5hvXk="
+        }
+      ]
+    },
+    {
+      "Route": "images/toyota-supra-6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "100184"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"au+p10yfsS+Nlfi+EuRaTySaIfLxkSFfHdyXuH5hvXk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 29 Jan 2025 10:53:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-au+p10yfsS+Nlfi+EuRaTySaIfLxkSFfHdyXuH5hvXk="
         }
       ]
     },

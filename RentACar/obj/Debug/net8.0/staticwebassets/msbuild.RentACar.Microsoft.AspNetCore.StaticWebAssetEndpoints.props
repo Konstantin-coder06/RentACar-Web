@@ -1032,101 +1032,101 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-tfXm/p8BVhENYXco3XRM0MAnTmk21QNqm\u002BO/jDZacLk="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"48148"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022tfXm/p8BVhENYXco3XRM0MAnTmk21QNqm\u002BO/jDZacLk=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 08:08:15 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang1.6vbzm9q7yy.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang1.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-1.q2bs6lvkwh.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-1.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"6vbzm9q7yy"},{"Name":"integrity","Value":"sha256-Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang1.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"905509"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:06:14 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"q2bs6lvkwh"},{"Name":"integrity","Value":"sha256-ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang-1.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"37230"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:12:52 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang1.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang1.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-1.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-1.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"905509"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022Lt/9KEDsnMu7maa4J1fAbIs8SDzb0apLt06ESU/34tA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:06:14 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"37230"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022ElFhB2M3iiNIqqUmc7oGUBYIKUgMaxuZYDNgh00VO08=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:12:52 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang2.16gd3duim1.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang2.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-2.bye2igp2re.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-2.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"16gd3duim1"},{"Name":"integrity","Value":"sha256-59VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang2.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1060683"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u002259VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:06:22 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"bye2igp2re"},{"Name":"integrity","Value":"sha256-zaXODZt9s5\u002B7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang-2.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"34032"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022zaXODZt9s5\u002B7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:13 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang2.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang2.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-2.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-2.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-59VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"1060683"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u002259VQerUAUmnV0J3YEjoNSrzX6rJqkrPpG4qcMO34CQM=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:06:22 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-zaXODZt9s5\u002B7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"34032"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022zaXODZt9s5\u002B7zTCRaQU0JUdNyvMUlYFs7Y6z/4oGxiI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:13 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang3.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang3.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-3.7kq9vwacp8.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-3.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-1ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl\u002BLcintzuwgg="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"925005"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00221ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl\u002BLcintzuwgg=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:06:49 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"7kq9vwacp8"},{"Name":"integrity","Value":"sha256-t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang-3.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"21522"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:09 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang3.mdk8iuzget.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang3.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-3.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-3.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"mdk8iuzget"},{"Name":"integrity","Value":"sha256-1ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl\u002BLcintzuwgg="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang3.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"925005"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00221ix4ZVFiF7WSKamgtG9T65jaZ0O1eQyl\u002BLcintzuwgg=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:06:49 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"21522"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022t41gjNZTIm0q8l0LYBVf/Ui4dLEXdO7QEkTj0jWTif4=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:09 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang4.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang4.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-4.lz9ni9n81d.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-4.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"864202"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:06:36 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"lz9ni9n81d"},{"Name":"integrity","Value":"sha256-r\u002BcwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A\u002BkLo4U="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang-4.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"35632"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022r\u002BcwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A\u002BkLo4U=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:16 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang4.ocw6kqsihy.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang4.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-4.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-4.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ocw6kqsihy"},{"Name":"integrity","Value":"sha256-uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang4.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"864202"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022uJrW/MJXluiXKc/MoB21zdp00uBwJ8vo8yfWO02FMis=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:06:36 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-r\u002BcwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A\u002BkLo4U="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"35632"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022r\u002BcwsteSdJXkDIp5g/71o6/zuMRyLTCn6eG5A\u002BkLo4U=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:16 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang5.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang5.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-5.4rajlcuvbf.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-5.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-pCNdN\u002BALI\u002BoSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"980746"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022pCNdN\u002BALI\u002BoSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:07:18 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4rajlcuvbf"},{"Name":"integrity","Value":"sha256-0L0DRa5i8SKC3hzhCMLIz7Nx/\u002Bj3VC9Ry9ESPwWEY7s="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang-5.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"96584"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u00220L0DRa5i8SKC3hzhCMLIz7Nx/\u002Bj3VC9Ry9ESPwWEY7s=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:17 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang5.k8zhfur0ii.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang5.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-5.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-5.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"k8zhfur0ii"},{"Name":"integrity","Value":"sha256-pCNdN\u002BALI\u002BoSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang5.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"980746"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022pCNdN\u002BALI\u002BoSwuqoLZh68jRVuagk8Ine/d1Ge4dH6Mc=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:07:18 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0L0DRa5i8SKC3hzhCMLIz7Nx/\u002Bj3VC9Ry9ESPwWEY7s="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"96584"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u00220L0DRa5i8SKC3hzhCMLIz7Nx/\u002Bj3VC9Ry9ESPwWEY7s=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:17 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang6.czc78nlvn3.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang6.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-6.ltue8qjzyq.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-6.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"czc78nlvn3"},{"Name":"integrity","Value":"sha256-iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang6.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"831830"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:07:31 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ltue8qjzyq"},{"Name":"integrity","Value":"sha256-d8zY\u002B1PuKiqNDLfgSw6p\u002Br/wXz1/se5xeRHjfIVAcOQ="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang-6.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"79456"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022d8zY\u002B1PuKiqNDLfgSw6p\u002Br/wXz1/se5xeRHjfIVAcOQ=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:18 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang6.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang6.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-6.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-6.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"831830"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022iO6/Vzgh2hTzXkt19qOmRgqt2NvMehMEdN4DK2hI1FU=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:07:31 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-d8zY\u002B1PuKiqNDLfgSw6p\u002Br/wXz1/se5xeRHjfIVAcOQ="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"79456"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022d8zY\u002B1PuKiqNDLfgSw6p\u002Br/wXz1/se5xeRHjfIVAcOQ=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:18 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang7.8y0zfqf0e3.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang7.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-7.66r8jp970v.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-7.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8y0zfqf0e3"},{"Name":"integrity","Value":"sha256-kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang7.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"799579"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:07:44 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"66r8jp970v"},{"Name":"integrity","Value":"sha256-joKOiz6TGh4EBKMZr9Ryn70zNn0\u002BZ2POYwR8CJLeDJU="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang-7.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"90332"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022joKOiz6TGh4EBKMZr9Ryn70zNn0\u002BZ2POYwR8CJLeDJU=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:22 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang7.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang7.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-7.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-7.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"799579"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022kPYpjE7eYrhDWgvCr457ZjGOwFddGA0KL8gnQxnU2hE=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:07:44 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-joKOiz6TGh4EBKMZr9Ryn70zNn0\u002BZ2POYwR8CJLeDJU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"90332"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022joKOiz6TGh4EBKMZr9Ryn70zNn0\u002BZ2POYwR8CJLeDJU=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:22 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang8.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang8.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-8.b13t32tz3k.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-8.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"889313"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:07:50 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"b13t32tz3k"},{"Name":"integrity","Value":"sha256-YZCOFL7yfU2ND\u002BvU\u002B0kPMfCNoZnh4trVEGU9F1fb5yc="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang-8.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"82216"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022YZCOFL7yfU2ND\u002BvU\u002B0kPMfCNoZnh4trVEGU9F1fb5yc=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:23 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang8.qa7fkum2hs.jpg">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang8.jpg'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/ford-mustang-8.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\ford-mustang-8.webp'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qa7fkum2hs"},{"Name":"integrity","Value":"sha256-ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak="},{"Name":"label","Value":"_content/RentACar/images/ford-mustang8.jpg"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"889313"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022ToEcSgnJrvicgcOIzdl2bwC7aw51MMv1p0NOxr128Ak=\u0022"},{"Name":"Last-Modified","Value":"Sun, 26 Jan 2025 07:07:50 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-YZCOFL7yfU2ND\u002BvU\u002B0kPMfCNoZnh4trVEGU9F1fb5yc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"82216"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022YZCOFL7yfU2ND\u002BvU\u002B0kPMfCNoZnh4trVEGU9F1fb5yc=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 11:13:23 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RentACar/images/honda-civic1.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\honda-civic1.png'))</AssetFile>
@@ -1859,6 +1859,78 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"u8mmkqudcs"},{"Name":"integrity","Value":"sha256-HnYeTREVFXU0Cv0u3vC6ViB/DwU/JYSc\u002BY6RgDWjXV8="},{"Name":"label","Value":"_content/RentACar/images/toyota-corolla4.jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"137783"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022HnYeTREVFXU0Cv0u3vC6ViB/DwU/JYSc\u002BY6RgDWjXV8=\u0022"},{"Name":"Last-Modified","Value":"Fri, 24 Jan 2025 07:37:11 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-1.3zpbhdpsdv.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-1.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3zpbhdpsdv"},{"Name":"integrity","Value":"sha256-P\u002B3mN6JiXb5IwBsrao\u002BwulqQuXP1qptVeZii/PW6Tcg="},{"Name":"label","Value":"_content/RentACar/images/toyota-supra-1.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"251036"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022P\u002B3mN6JiXb5IwBsrao\u002BwulqQuXP1qptVeZii/PW6Tcg=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:51:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-1.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-1.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-P\u002B3mN6JiXb5IwBsrao\u002BwulqQuXP1qptVeZii/PW6Tcg="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"251036"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022P\u002B3mN6JiXb5IwBsrao\u002BwulqQuXP1qptVeZii/PW6Tcg=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:51:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-2.kvke5zjne9.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-2.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"kvke5zjne9"},{"Name":"integrity","Value":"sha256-MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU="},{"Name":"label","Value":"_content/RentACar/images/toyota-supra-2.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"300106"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:51:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-2.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-2.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"300106"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022MOLmalpepqJHo2urMOVLj1sWY11XisdaUoS3kP9BGjU=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:51:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-3.vsnlucrfuh.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-3.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vsnlucrfuh"},{"Name":"integrity","Value":"sha256-v2l\u002Br8WCTJFuYbZTVi4qhB\u002BbbzQ/u7dYiE3LWqKKdzc="},{"Name":"label","Value":"_content/RentACar/images/toyota-supra-3.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"280434"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022v2l\u002Br8WCTJFuYbZTVi4qhB\u002BbbzQ/u7dYiE3LWqKKdzc=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:52:14 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-3.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-3.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-v2l\u002Br8WCTJFuYbZTVi4qhB\u002BbbzQ/u7dYiE3LWqKKdzc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"280434"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022v2l\u002Br8WCTJFuYbZTVi4qhB\u002BbbzQ/u7dYiE3LWqKKdzc=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:52:14 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-4.ioic4ax9gi.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-4.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ioic4ax9gi"},{"Name":"integrity","Value":"sha256-btr8e86cLnaDtl5frYvyEviAcneo\u002BLlJgNvZs\u002BYxX0U="},{"Name":"label","Value":"_content/RentACar/images/toyota-supra-4.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"312240"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022btr8e86cLnaDtl5frYvyEviAcneo\u002BLlJgNvZs\u002BYxX0U=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:52:29 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-4.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-4.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-btr8e86cLnaDtl5frYvyEviAcneo\u002BLlJgNvZs\u002BYxX0U="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"312240"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022btr8e86cLnaDtl5frYvyEviAcneo\u002BLlJgNvZs\u002BYxX0U=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:52:29 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-5.cixmpq7a9s.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-5.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"cixmpq7a9s"},{"Name":"integrity","Value":"sha256-JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec="},{"Name":"label","Value":"_content/RentACar/images/toyota-supra-5.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"166184"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:53:05 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-5.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-5.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"166184"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022JKSmG4CsWd8zJRBPhh7yKYnEkb7kRDNbpbU480Ch5Ec=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:53:05 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-6.afjl79ps4u.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-6.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"afjl79ps4u"},{"Name":"integrity","Value":"sha256-au\u002Bp10yfsS\u002BNlfi\u002BEuRaTySaIfLxkSFfHdyXuH5hvXk="},{"Name":"label","Value":"_content/RentACar/images/toyota-supra-6.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100184"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022au\u002Bp10yfsS\u002BNlfi\u002BEuRaTySaIfLxkSFfHdyXuH5hvXk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:53:25 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/RentACar/images/toyota-supra-6.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\toyota-supra-6.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-au\u002Bp10yfsS\u002BNlfi\u002BEuRaTySaIfLxkSFfHdyXuH5hvXk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100184"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022au\u002Bp10yfsS\u002BNlfi\u002BEuRaTySaIfLxkSFfHdyXuH5hvXk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 29 Jan 2025 10:53:25 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RentACar/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>

@@ -349,36 +349,36 @@
       "PackagePath": "staticwebassets\\images\\ferrari-f-8.webp"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang1.jpg",
-      "PackagePath": "staticwebassets\\images\\ford-mustang1.jpg"
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-1.webp",
+      "PackagePath": "staticwebassets\\images\\ford-mustang-1.webp"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang2.jpg",
-      "PackagePath": "staticwebassets\\images\\ford-mustang2.jpg"
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-2.webp",
+      "PackagePath": "staticwebassets\\images\\ford-mustang-2.webp"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang3.jpg",
-      "PackagePath": "staticwebassets\\images\\ford-mustang3.jpg"
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-3.webp",
+      "PackagePath": "staticwebassets\\images\\ford-mustang-3.webp"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang4.jpg",
-      "PackagePath": "staticwebassets\\images\\ford-mustang4.jpg"
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-4.webp",
+      "PackagePath": "staticwebassets\\images\\ford-mustang-4.webp"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang5.jpg",
-      "PackagePath": "staticwebassets\\images\\ford-mustang5.jpg"
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-5.webp",
+      "PackagePath": "staticwebassets\\images\\ford-mustang-5.webp"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang6.jpg",
-      "PackagePath": "staticwebassets\\images\\ford-mustang6.jpg"
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-6.webp",
+      "PackagePath": "staticwebassets\\images\\ford-mustang-6.webp"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang7.jpg",
-      "PackagePath": "staticwebassets\\images\\ford-mustang7.jpg"
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-7.webp",
+      "PackagePath": "staticwebassets\\images\\ford-mustang-7.webp"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang8.jpg",
-      "PackagePath": "staticwebassets\\images\\ford-mustang8.jpg"
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\ford-mustang-8.webp",
+      "PackagePath": "staticwebassets\\images\\ford-mustang-8.webp"
     },
     {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\honda-civic1.png",
@@ -623,6 +623,30 @@
     {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-corolla4.jpg",
       "PackagePath": "staticwebassets\\images\\toyota-corolla4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-1.webp",
+      "PackagePath": "staticwebassets\\images\\toyota-supra-1.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-2.webp",
+      "PackagePath": "staticwebassets\\images\\toyota-supra-2.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-3.webp",
+      "PackagePath": "staticwebassets\\images\\toyota-supra-3.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-4.webp",
+      "PackagePath": "staticwebassets\\images\\toyota-supra-4.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-5.webp",
+      "PackagePath": "staticwebassets\\images\\toyota-supra-5.webp"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\images\\toyota-supra-6.webp",
+      "PackagePath": "staticwebassets\\images\\toyota-supra-6.webp"
     },
     {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\site.js",

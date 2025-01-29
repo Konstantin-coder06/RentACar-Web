@@ -238,6 +238,80 @@ namespace RentACar.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Types");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Sedan",
+                            SeatCapacity = 4
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "SUV",
+                            SeatCapacity = 5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "SUV",
+                            SeatCapacity = 7
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Hatchback",
+                            SeatCapacity = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Coupe",
+                            SeatCapacity = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Grand Coupe",
+                            SeatCapacity = 4
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Convertible",
+                            SeatCapacity = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Convertible",
+                            SeatCapacity = 4
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Minivan",
+                            SeatCapacity = 7
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Pickup",
+                            SeatCapacity = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Pickup",
+                            SeatCapacity = 4
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Wagon",
+                            SeatCapacity = 5
+                        });
                 });
 
             modelBuilder.Entity("RentACar.Models.Car", b =>
@@ -269,12 +343,19 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DriveTrain")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("EngineCapacity")
                         .HasColumnType("float");
 
                     b.Property<string>("Gearbox")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HorsePower")
+                        .HasColumnType("int");
 
                     b.Property<double>("MileageLimitForDay")
                         .HasColumnType("float");
@@ -286,10 +367,16 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("OneToHundred")
+                        .HasColumnType("float");
+
                     b.Property<double>("PricePerDay")
                         .HasColumnType("float");
 
                     b.Property<double>("PricePerWeek")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TopSpeed")
                         .HasColumnType("float");
 
                     b.Property<int>("Year")
@@ -311,13 +398,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 9,
                             Color = "White",
                             Description = "Compact and fuel-efficient",
-                            EngineCapacity = 1.8,
+                            DriveTrain = "Front",
+                            EngineCapacity = 1.6000000000000001,
                             Gearbox = "Automatic",
+                            HorsePower = 122,
                             MileageLimitForDay = 150.0,
                             MileageLimitForWeek = 1000.0,
                             Model = "Corolla",
+                            OneToHundred = 10.800000000000001,
                             PricePerDay = 80.0,
                             PricePerWeek = 450.0,
+                            TopSpeed = 185.0,
                             Year = 2021
                         },
                         new
@@ -329,13 +420,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 3,
                             Color = "Black",
                             Description = "Sporty and reliable",
-                            EngineCapacity = 2.0,
+                            DriveTrain = "Front",
+                            EngineCapacity = 1.5,
                             Gearbox = "Manual",
+                            HorsePower = 205,
                             MileageLimitForDay = 200.0,
                             MileageLimitForWeek = 1200.0,
                             Model = "Civic",
+                            OneToHundred = 7.2999999999999998,
                             PricePerDay = 140.0,
                             PricePerWeek = 600.0,
+                            TopSpeed = 170.0,
                             Year = 2022
                         },
                         new
@@ -345,15 +440,19 @@ namespace RentACar.DataAccess.Migrations
                             Available = true,
                             Brand = "Ford",
                             CategoryId = 7,
-                            Color = "Black",
+                            Color = "Dark Gray",
                             Description = "Comfortable and stylish",
-                            EngineCapacity = 5.0,
+                            DriveTrain = "Rear",
+                            EngineCapacity = 2.2999999999999998,
                             Gearbox = "Automatic",
+                            HorsePower = 317,
                             MileageLimitForDay = 250.0,
                             MileageLimitForWeek = 1500.0,
                             Model = "Mustang",
+                            OneToHundred = 5.7999999999999998,
                             PricePerDay = 200.0,
                             PricePerWeek = 910.0,
+                            TopSpeed = 250.0,
                             Year = 2020
                         },
                         new
@@ -365,13 +464,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 2,
                             Color = "Gray",
                             Description = "Luxury and performance",
-                            EngineCapacity = 0.0,
+                            DriveTrain = "Rear",
+                            EngineCapacity = 2.0,
                             Gearbox = "Automatic",
+                            HorsePower = 190,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
-                            Model = "420i",
+                            Model = "420",
+                            OneToHundred = 7.0999999999999996,
                             PricePerDay = 250.0,
                             PricePerWeek = 1000.0,
+                            TopSpeed = 240.0,
                             Year = 2022
                         },
                         new
@@ -383,13 +486,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 2,
                             Color = "Red",
                             Description = "Premium luxury",
+                            DriveTrain = "Rear",
                             EngineCapacity = 3.0,
                             Gearbox = "Automatic",
+                            HorsePower = 258,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "C-Class",
+                            OneToHundred = 6.2000000000000002,
                             PricePerDay = 210.0,
                             PricePerWeek = 850.0,
+                            TopSpeed = 250.0,
                             Year = 2021
                         },
                         new
@@ -401,13 +508,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 3,
                             Color = "Green",
                             Description = "High-performance sports car",
+                            DriveTrain = "Rear",
                             EngineCapacity = 5.2000000000000002,
                             Gearbox = "Automatic",
+                            HorsePower = 570,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "R8 Spyder",
+                            OneToHundred = 3.7999999999999998,
                             PricePerDay = 750.0,
                             PricePerWeek = 6400.0,
+                            TopSpeed = 327.0,
                             Year = 2021
                         },
                         new
@@ -419,13 +530,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 3,
                             Color = "Black",
                             Description = "Exotic sports car",
+                            DriveTrain = "Rear",
                             EngineCapacity = 5.2000000000000002,
                             Gearbox = "Automatic",
+                            HorsePower = 640,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "Huracan",
+                            OneToHundred = 3.0,
                             PricePerDay = 1700.0,
                             PricePerWeek = 9000.0,
+                            TopSpeed = 310.0,
                             Year = 2023
                         },
                         new
@@ -437,13 +552,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 2,
                             Color = "Silver",
                             Description = "Luxury sports car",
-                            EngineCapacity = 4.0,
+                            DriveTrain = "Full Wheels",
+                            EngineCapacity = 3.0,
                             Gearbox = "Automatic",
+                            HorsePower = 450,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "911 GT3",
+                            OneToHundred = 3.7999999999999998,
                             PricePerDay = 1400.0,
                             PricePerWeek = 8400.0,
+                            TopSpeed = 304.0,
                             Year = 2023
                         },
                         new
@@ -455,13 +574,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 5,
                             Color = "White",
                             Description = "Electric luxury sedan",
+                            DriveTrain = "Rear",
                             EngineCapacity = 0.0,
                             Gearbox = "Automatic",
+                            HorsePower = 1020,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "Model S Plaid",
+                            OneToHundred = 2.1000000000000001,
                             PricePerDay = 350.0,
                             PricePerWeek = 2100.0,
+                            TopSpeed = 322.0,
                             Year = 2023
                         },
                         new
@@ -473,31 +596,39 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 3,
                             Color = "Red",
                             Description = "Iconic Italian sports car",
+                            DriveTrain = "Rear",
                             EngineCapacity = 3.8999999999999999,
                             Gearbox = "Automatic",
+                            HorsePower = 720,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "F8 Spider",
+                            OneToHundred = 2.8999999999999999,
                             PricePerDay = 2300.0,
                             PricePerWeek = 10000.0,
+                            TopSpeed = 340.0,
                             Year = 2022
                         },
                         new
                         {
                             Id = 11,
-                            AdditionalMileageCharge = 3.0,
+                            AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Rolls-Royce",
                             CategoryId = 2,
                             Color = "Black",
                             Description = "Ultimate luxury car",
-                            EngineCapacity = 6.7000000000000002,
+                            DriveTrain = "Rear",
+                            EngineCapacity = 6.7999999999999998,
                             Gearbox = "Automatic",
+                            HorsePower = 571,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Phantom",
+                            OneToHundred = 5.4000000000000004,
                             PricePerDay = 1000.0,
                             PricePerWeek = 7000.0,
+                            TopSpeed = 250.0,
                             Year = 2021
                         },
                         new
@@ -509,13 +640,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 2,
                             Color = "Black",
                             Description = "Grand luxury tourer",
-                            EngineCapacity = 4.0,
+                            DriveTrain = "Full Wheels",
+                            EngineCapacity = 6.0,
                             Gearbox = "Automatic",
+                            HorsePower = 659,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Continental GT-GTC",
+                            OneToHundred = 3.7000000000000002,
                             PricePerDay = 1300.0,
                             PricePerWeek = 7600.0,
+                            TopSpeed = 335.0,
                             Year = 2023
                         },
                         new
@@ -527,13 +662,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 3,
                             Color = "Blue",
                             Description = "Exquisite British engineering",
+                            DriveTrain = "Rear",
                             EngineCapacity = 4.0,
                             Gearbox = "Automatic",
+                            HorsePower = 720,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "720S",
+                            OneToHundred = 2.8999999999999999,
                             PricePerDay = 1700.0,
                             PricePerWeek = 8000.0,
+                            TopSpeed = 341.0,
                             Year = 2023
                         },
                         new
@@ -545,13 +684,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 6,
                             Color = "Black",
                             Description = "Luxury British SUV",
+                            DriveTrain = "Full Wheels",
                             EngineCapacity = 4.0,
                             Gearbox = "Automatic",
+                            HorsePower = 550,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "DBX",
+                            OneToHundred = 4.5,
                             PricePerDay = 600.0,
                             PricePerWeek = 3600.0,
+                            TopSpeed = 291.0,
                             Year = 2023
                         },
                         new
@@ -563,13 +706,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 6,
                             Color = "Silver",
                             Description = "Sophisticated luxury SUV",
-                            EngineCapacity = 3.3999999999999999,
+                            DriveTrain = "Full Wheels",
+                            EngineCapacity = 3.5,
                             Gearbox = "Automatic",
+                            HorsePower = 415,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "LX",
+                            OneToHundred = 6.7999999999999998,
                             PricePerDay = 500.0,
                             PricePerWeek = 3000.0,
+                            TopSpeed = 210.0,
                             Year = 2023
                         },
                         new
@@ -581,13 +728,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 3,
                             Color = "Orange",
                             Description = "German engineering excellence",
+                            DriveTrain = "Rear",
                             EngineCapacity = 4.0,
                             Gearbox = "Automatic",
+                            HorsePower = 730,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "AMG GT",
+                            OneToHundred = 3.2000000000000002,
                             PricePerDay = 2500.0,
                             PricePerWeek = 1100.0,
+                            TopSpeed = 322.0,
                             Year = 2022
                         },
                         new
@@ -599,13 +750,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 6,
                             Color = "Orange",
                             Description = "Luxury SUV",
-                            EngineCapacity = 4.0,
+                            DriveTrain = "Full Wheels",
+                            EngineCapacity = 3.0,
                             Gearbox = "Automatic",
+                            HorsePower = 340,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Q8",
+                            OneToHundred = 5.9000000000000004,
                             PricePerDay = 400.0,
                             PricePerWeek = 2300.0,
+                            TopSpeed = 250.0,
                             Year = 2021
                         },
                         new
@@ -617,13 +772,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 3,
                             Color = "Yellow",
                             Description = "Sporty and agile",
+                            DriveTrain = "Full Wheels",
                             EngineCapacity = 3.0,
                             Gearbox = "Automatic",
+                            HorsePower = 510,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "M4",
+                            OneToHundred = 3.7000000000000002,
                             PricePerDay = 700.0,
                             PricePerWeek = 4000.0,
+                            TopSpeed = 250.0,
                             Year = 2023
                         },
                         new
@@ -635,13 +794,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 9,
                             Color = "Red",
                             Description = "Dependable sedan",
+                            DriveTrain = "Rear",
                             EngineCapacity = 2.5,
                             Gearbox = "Automatic",
+                            HorsePower = 182,
                             MileageLimitForDay = 200.0,
                             MileageLimitForWeek = 1200.0,
                             Model = "Camry",
+                            OneToHundred = 9.9000000000000004,
                             PricePerDay = 130.0,
                             PricePerWeek = 670.0,
+                            TopSpeed = 210.0,
                             Year = 2021
                         },
                         new
@@ -653,13 +816,17 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 6,
                             Color = "Black",
                             Description = "Sophisticated luxury SUV",
+                            DriveTrain = "Full Wheels",
                             EngineCapacity = 0.0,
                             Gearbox = "Automatic",
+                            HorsePower = 845,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Cybertruck",
+                            OneToHundred = 2.7000000000000002,
                             PricePerDay = 2000.0,
                             PricePerWeek = 12000.0,
+                            TopSpeed = 210.0,
                             Year = 2024
                         },
                         new
@@ -671,14 +838,40 @@ namespace RentACar.DataAccess.Migrations
                             CategoryId = 6,
                             Color = "Black",
                             Description = "Sophisticated luxury SUV",
-                            EngineCapacity = 4.4000000000000004,
+                            DriveTrain = "Full Wheels",
+                            EngineCapacity = 3.0,
                             Gearbox = "Automatic",
+                            HorsePower = 360,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Range Rover",
+                            OneToHundred = 6.9000000000000004,
                             PricePerDay = 1200.0,
                             PricePerWeek = 7000.0,
+                            TopSpeed = 209.0,
                             Year = 2023
+                        },
+                        new
+                        {
+                            Id = 22,
+                            AdditionalMileageCharge = 1.8,
+                            Available = true,
+                            Brand = "Toyota",
+                            CategoryId = 3,
+                            Color = "White",
+                            Description = "Sporty and agile",
+                            DriveTrain = "Rear",
+                            EngineCapacity = 3.0,
+                            Gearbox = "Automatic",
+                            HorsePower = 340,
+                            MileageLimitForDay = 300.0,
+                            MileageLimitForWeek = 2000.0,
+                            Model = "Supra",
+                            OneToHundred = 4.4000000000000004,
+                            PricePerDay = 220.0,
+                            PricePerWeek = 1100.0,
+                            TopSpeed = 262.0,
+                            Year = 2022
                         });
                 });
 
@@ -703,6 +896,2306 @@ namespace RentACar.DataAccess.Migrations
                     b.HasIndex("FeatureId");
 
                     b.ToTable("CarsFeatures");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarId = 1,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CarId = 1,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CarId = 1,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CarId = 1,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CarId = 1,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CarId = 1,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CarId = 2,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CarId = 2,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CarId = 2,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CarId = 2,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CarId = 2,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CarId = 2,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CarId = 2,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CarId = 2,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CarId = 2,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CarId = 2,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CarId = 2,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CarId = 2,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CarId = 2,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CarId = 2,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CarId = 2,
+                            FeatureId = 33
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CarId = 2,
+                            FeatureId = 38
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CarId = 3,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CarId = 3,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CarId = 3,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CarId = 3,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CarId = 3,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CarId = 3,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CarId = 3,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CarId = 3,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CarId = 3,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CarId = 3,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CarId = 3,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CarId = 3,
+                            FeatureId = 33
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CarId = 3,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CarId = 3,
+                            FeatureId = 42
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CarId = 3,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CarId = 3,
+                            FeatureId = 46
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CarId = 4,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CarId = 4,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CarId = 4,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CarId = 4,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 43,
+                            CarId = 4,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CarId = 4,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CarId = 4,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CarId = 4,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CarId = 4,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 48,
+                            CarId = 4,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 49,
+                            CarId = 4,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 50,
+                            CarId = 4,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 51,
+                            CarId = 4,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 52,
+                            CarId = 4,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 53,
+                            CarId = 4,
+                            FeatureId = 33
+                        },
+                        new
+                        {
+                            Id = 54,
+                            CarId = 4,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 55,
+                            CarId = 4,
+                            FeatureId = 36
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CarId = 4,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CarId = 4,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 58,
+                            CarId = 4,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 59,
+                            CarId = 4,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 60,
+                            CarId = 4,
+                            FeatureId = 33
+                        },
+                        new
+                        {
+                            Id = 61,
+                            CarId = 4,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 62,
+                            CarId = 5,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 63,
+                            CarId = 5,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 64,
+                            CarId = 5,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 65,
+                            CarId = 5,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 66,
+                            CarId = 5,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 67,
+                            CarId = 5,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 68,
+                            CarId = 5,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 69,
+                            CarId = 5,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 70,
+                            CarId = 5,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 71,
+                            CarId = 5,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 72,
+                            CarId = 5,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 73,
+                            CarId = 5,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 74,
+                            CarId = 5,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 75,
+                            CarId = 5,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 76,
+                            CarId = 5,
+                            FeatureId = 33
+                        },
+                        new
+                        {
+                            Id = 77,
+                            CarId = 5,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 78,
+                            CarId = 5,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 79,
+                            CarId = 5,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 80,
+                            CarId = 5,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 81,
+                            CarId = 5,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 82,
+                            CarId = 6,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 83,
+                            CarId = 6,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 84,
+                            CarId = 6,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 85,
+                            CarId = 6,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 86,
+                            CarId = 6,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 87,
+                            CarId = 6,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 88,
+                            CarId = 6,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 89,
+                            CarId = 6,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 90,
+                            CarId = 6,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 91,
+                            CarId = 6,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 92,
+                            CarId = 6,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 93,
+                            CarId = 6,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 94,
+                            CarId = 6,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 95,
+                            CarId = 6,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 96,
+                            CarId = 6,
+                            FeatureId = 33
+                        },
+                        new
+                        {
+                            Id = 97,
+                            CarId = 6,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 98,
+                            CarId = 6,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 99,
+                            CarId = 6,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 100,
+                            CarId = 6,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CarId = 6,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CarId = 7,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CarId = 7,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CarId = 7,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 105,
+                            CarId = 7,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 106,
+                            CarId = 7,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 107,
+                            CarId = 7,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 108,
+                            CarId = 7,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 109,
+                            CarId = 7,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 110,
+                            CarId = 7,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 111,
+                            CarId = 7,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 112,
+                            CarId = 7,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CarId = 7,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 114,
+                            CarId = 7,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 115,
+                            CarId = 7,
+                            FeatureId = 33
+                        },
+                        new
+                        {
+                            Id = 116,
+                            CarId = 7,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 117,
+                            CarId = 7,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 118,
+                            CarId = 7,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 119,
+                            CarId = 7,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 120,
+                            CarId = 8,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 121,
+                            CarId = 8,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 122,
+                            CarId = 8,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 123,
+                            CarId = 8,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 124,
+                            CarId = 8,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 125,
+                            CarId = 8,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 126,
+                            CarId = 8,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 127,
+                            CarId = 8,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 128,
+                            CarId = 8,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 129,
+                            CarId = 8,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 130,
+                            CarId = 8,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 131,
+                            CarId = 8,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 132,
+                            CarId = 8,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 133,
+                            CarId = 8,
+                            FeatureId = 36
+                        },
+                        new
+                        {
+                            Id = 134,
+                            CarId = 8,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 135,
+                            CarId = 9,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 136,
+                            CarId = 9,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 137,
+                            CarId = 9,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 138,
+                            CarId = 9,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 139,
+                            CarId = 9,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 140,
+                            CarId = 9,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 141,
+                            CarId = 9,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 142,
+                            CarId = 9,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 143,
+                            CarId = 9,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 144,
+                            CarId = 9,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 145,
+                            CarId = 9,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 146,
+                            CarId = 9,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 147,
+                            CarId = 9,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 148,
+                            CarId = 9,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 149,
+                            CarId = 9,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 150,
+                            CarId = 9,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 151,
+                            CarId = 9,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 152,
+                            CarId = 9,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 153,
+                            CarId = 9,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 154,
+                            CarId = 10,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 155,
+                            CarId = 10,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 156,
+                            CarId = 10,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 157,
+                            CarId = 10,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 158,
+                            CarId = 10,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 159,
+                            CarId = 10,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 160,
+                            CarId = 10,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 161,
+                            CarId = 10,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 162,
+                            CarId = 10,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 163,
+                            CarId = 10,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 164,
+                            CarId = 10,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 165,
+                            CarId = 10,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 166,
+                            CarId = 10,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 167,
+                            CarId = 10,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 168,
+                            CarId = 10,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 169,
+                            CarId = 10,
+                            FeatureId = 36
+                        },
+                        new
+                        {
+                            Id = 170,
+                            CarId = 10,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 171,
+                            CarId = 11,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 172,
+                            CarId = 11,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 173,
+                            CarId = 11,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 174,
+                            CarId = 11,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 175,
+                            CarId = 11,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 176,
+                            CarId = 11,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 177,
+                            CarId = 11,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 178,
+                            CarId = 11,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 179,
+                            CarId = 11,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 180,
+                            CarId = 11,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 181,
+                            CarId = 11,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 182,
+                            CarId = 11,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 183,
+                            CarId = 11,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 184,
+                            CarId = 11,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 185,
+                            CarId = 11,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 186,
+                            CarId = 11,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 187,
+                            CarId = 11,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 188,
+                            CarId = 11,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 189,
+                            CarId = 11,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 190,
+                            CarId = 11,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 191,
+                            CarId = 12,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 192,
+                            CarId = 12,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 193,
+                            CarId = 12,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 194,
+                            CarId = 12,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 195,
+                            CarId = 12,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 196,
+                            CarId = 12,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 197,
+                            CarId = 12,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 198,
+                            CarId = 12,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 199,
+                            CarId = 12,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 200,
+                            CarId = 12,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 201,
+                            CarId = 12,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 202,
+                            CarId = 12,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 203,
+                            CarId = 12,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 204,
+                            CarId = 12,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 205,
+                            CarId = 12,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 206,
+                            CarId = 12,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 207,
+                            CarId = 12,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 208,
+                            CarId = 12,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 209,
+                            CarId = 12,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 210,
+                            CarId = 12,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 211,
+                            CarId = 13,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 212,
+                            CarId = 13,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 213,
+                            CarId = 13,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 214,
+                            CarId = 13,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 215,
+                            CarId = 13,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 216,
+                            CarId = 13,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 217,
+                            CarId = 13,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 218,
+                            CarId = 13,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 219,
+                            CarId = 13,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 220,
+                            CarId = 13,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 221,
+                            CarId = 13,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 222,
+                            CarId = 13,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 223,
+                            CarId = 13,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 224,
+                            CarId = 13,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 225,
+                            CarId = 13,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 226,
+                            CarId = 13,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 227,
+                            CarId = 13,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 228,
+                            CarId = 13,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 229,
+                            CarId = 13,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 230,
+                            CarId = 13,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 231,
+                            CarId = 14,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 232,
+                            CarId = 14,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 233,
+                            CarId = 14,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 234,
+                            CarId = 14,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 235,
+                            CarId = 14,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 236,
+                            CarId = 14,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 237,
+                            CarId = 14,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 238,
+                            CarId = 14,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 239,
+                            CarId = 14,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 240,
+                            CarId = 14,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 241,
+                            CarId = 14,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 242,
+                            CarId = 14,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 243,
+                            CarId = 14,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 244,
+                            CarId = 14,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 245,
+                            CarId = 14,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 246,
+                            CarId = 14,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 247,
+                            CarId = 14,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 248,
+                            CarId = 14,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 249,
+                            CarId = 14,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 250,
+                            CarId = 14,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 251,
+                            CarId = 14,
+                            FeatureId = 36
+                        },
+                        new
+                        {
+                            Id = 252,
+                            CarId = 14,
+                            FeatureId = 46
+                        },
+                        new
+                        {
+                            Id = 253,
+                            CarId = 14,
+                            FeatureId = 42
+                        },
+                        new
+                        {
+                            Id = 254,
+                            CarId = 14,
+                            FeatureId = 43
+                        },
+                        new
+                        {
+                            Id = 255,
+                            CarId = 14,
+                            FeatureId = 44
+                        },
+                        new
+                        {
+                            Id = 256,
+                            CarId = 14,
+                            FeatureId = 49
+                        },
+                        new
+                        {
+                            Id = 257,
+                            CarId = 14,
+                            FeatureId = 50
+                        },
+                        new
+                        {
+                            Id = 258,
+                            CarId = 15,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 259,
+                            CarId = 15,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 260,
+                            CarId = 15,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 261,
+                            CarId = 15,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 262,
+                            CarId = 15,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 263,
+                            CarId = 15,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 264,
+                            CarId = 15,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 265,
+                            CarId = 15,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 266,
+                            CarId = 15,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 267,
+                            CarId = 15,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 268,
+                            CarId = 16,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 269,
+                            CarId = 16,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 270,
+                            CarId = 16,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 271,
+                            CarId = 16,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 272,
+                            CarId = 16,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 273,
+                            CarId = 16,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 274,
+                            CarId = 16,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 275,
+                            CarId = 16,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 276,
+                            CarId = 16,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 277,
+                            CarId = 16,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 278,
+                            CarId = 16,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 279,
+                            CarId = 16,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 280,
+                            CarId = 16,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 281,
+                            CarId = 16,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 282,
+                            CarId = 16,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 283,
+                            CarId = 16,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 284,
+                            CarId = 16,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 285,
+                            CarId = 16,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 286,
+                            CarId = 16,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 287,
+                            CarId = 16,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 288,
+                            CarId = 16,
+                            FeatureId = 36
+                        },
+                        new
+                        {
+                            Id = 289,
+                            CarId = 16,
+                            FeatureId = 46
+                        },
+                        new
+                        {
+                            Id = 290,
+                            CarId = 16,
+                            FeatureId = 42
+                        },
+                        new
+                        {
+                            Id = 291,
+                            CarId = 16,
+                            FeatureId = 43
+                        },
+                        new
+                        {
+                            Id = 292,
+                            CarId = 16,
+                            FeatureId = 44
+                        },
+                        new
+                        {
+                            Id = 293,
+                            CarId = 16,
+                            FeatureId = 49
+                        },
+                        new
+                        {
+                            Id = 294,
+                            CarId = 16,
+                            FeatureId = 50
+                        },
+                        new
+                        {
+                            Id = 295,
+                            CarId = 17,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 296,
+                            CarId = 17,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 297,
+                            CarId = 17,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 298,
+                            CarId = 17,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 299,
+                            CarId = 17,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 300,
+                            CarId = 17,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 301,
+                            CarId = 17,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 302,
+                            CarId = 17,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 303,
+                            CarId = 17,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 304,
+                            CarId = 17,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 305,
+                            CarId = 17,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 306,
+                            CarId = 17,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 307,
+                            CarId = 17,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 308,
+                            CarId = 17,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 309,
+                            CarId = 17,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 310,
+                            CarId = 17,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 311,
+                            CarId = 17,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 312,
+                            CarId = 18,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 313,
+                            CarId = 18,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 314,
+                            CarId = 18,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 315,
+                            CarId = 18,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 316,
+                            CarId = 18,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 317,
+                            CarId = 18,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 318,
+                            CarId = 18,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 319,
+                            CarId = 18,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 320,
+                            CarId = 18,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 321,
+                            CarId = 18,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 322,
+                            CarId = 18,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 323,
+                            CarId = 18,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 324,
+                            CarId = 18,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 325,
+                            CarId = 18,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 326,
+                            CarId = 18,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 327,
+                            CarId = 18,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 328,
+                            CarId = 18,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 329,
+                            CarId = 18,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 330,
+                            CarId = 18,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 331,
+                            CarId = 19,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 332,
+                            CarId = 19,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 333,
+                            CarId = 19,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 334,
+                            CarId = 19,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 335,
+                            CarId = 19,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 336,
+                            CarId = 19,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 337,
+                            CarId = 20,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 338,
+                            CarId = 20,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 339,
+                            CarId = 20,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 340,
+                            CarId = 20,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 341,
+                            CarId = 20,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 342,
+                            CarId = 20,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 343,
+                            CarId = 20,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 344,
+                            CarId = 20,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 345,
+                            CarId = 20,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 346,
+                            CarId = 21,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 347,
+                            CarId = 21,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 348,
+                            CarId = 21,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 349,
+                            CarId = 21,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 350,
+                            CarId = 21,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 351,
+                            CarId = 21,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 352,
+                            CarId = 21,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 353,
+                            CarId = 21,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 354,
+                            CarId = 21,
+                            FeatureId = 20
+                        },
+                        new
+                        {
+                            Id = 355,
+                            CarId = 21,
+                            FeatureId = 21
+                        },
+                        new
+                        {
+                            Id = 356,
+                            CarId = 21,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 357,
+                            CarId = 21,
+                            FeatureId = 28
+                        },
+                        new
+                        {
+                            Id = 358,
+                            CarId = 21,
+                            FeatureId = 30
+                        },
+                        new
+                        {
+                            Id = 359,
+                            CarId = 21,
+                            FeatureId = 31
+                        },
+                        new
+                        {
+                            Id = 360,
+                            CarId = 21,
+                            FeatureId = 34
+                        },
+                        new
+                        {
+                            Id = 361,
+                            CarId = 21,
+                            FeatureId = 40
+                        },
+                        new
+                        {
+                            Id = 362,
+                            CarId = 21,
+                            FeatureId = 41
+                        },
+                        new
+                        {
+                            Id = 363,
+                            CarId = 21,
+                            FeatureId = 45
+                        },
+                        new
+                        {
+                            Id = 364,
+                            CarId = 21,
+                            FeatureId = 47
+                        },
+                        new
+                        {
+                            Id = 365,
+                            CarId = 21,
+                            FeatureId = 48
+                        },
+                        new
+                        {
+                            Id = 366,
+                            CarId = 21,
+                            FeatureId = 36
+                        },
+                        new
+                        {
+                            Id = 367,
+                            CarId = 21,
+                            FeatureId = 46
+                        },
+                        new
+                        {
+                            Id = 368,
+                            CarId = 21,
+                            FeatureId = 42
+                        },
+                        new
+                        {
+                            Id = 369,
+                            CarId = 21,
+                            FeatureId = 43
+                        },
+                        new
+                        {
+                            Id = 370,
+                            CarId = 21,
+                            FeatureId = 44
+                        },
+                        new
+                        {
+                            Id = 371,
+                            CarId = 21,
+                            FeatureId = 49
+                        },
+                        new
+                        {
+                            Id = 372,
+                            CarId = 21,
+                            FeatureId = 50
+                        },
+                        new
+                        {
+                            Id = 373,
+                            CarId = 21,
+                            FeatureId = 25
+                        },
+                        new
+                        {
+                            Id = 374,
+                            CarId = 22,
+                            FeatureId = 1
+                        },
+                        new
+                        {
+                            Id = 375,
+                            CarId = 22,
+                            FeatureId = 3
+                        },
+                        new
+                        {
+                            Id = 376,
+                            CarId = 22,
+                            FeatureId = 5
+                        },
+                        new
+                        {
+                            Id = 377,
+                            CarId = 22,
+                            FeatureId = 6
+                        },
+                        new
+                        {
+                            Id = 378,
+                            CarId = 22,
+                            FeatureId = 7
+                        },
+                        new
+                        {
+                            Id = 379,
+                            CarId = 22,
+                            FeatureId = 9
+                        },
+                        new
+                        {
+                            Id = 380,
+                            CarId = 22,
+                            FeatureId = 17
+                        },
+                        new
+                        {
+                            Id = 381,
+                            CarId = 22,
+                            FeatureId = 19
+                        },
+                        new
+                        {
+                            Id = 382,
+                            CarId = 22,
+                            FeatureId = 23
+                        },
+                        new
+                        {
+                            Id = 383,
+                            CarId = 22,
+                            FeatureId = 28
+                        });
                 });
 
             modelBuilder.Entity("RentACar.Models.CarType", b =>
@@ -726,6 +3219,188 @@ namespace RentACar.DataAccess.Migrations
                     b.HasIndex("TypeId");
 
                     b.ToTable("CarsTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarId = 1,
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CarId = 2,
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CarId = 3,
+                            TypeId = 6
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CarId = 3,
+                            TypeId = 8
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CarId = 4,
+                            TypeId = 6
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CarId = 4,
+                            TypeId = 8
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CarId = 5,
+                            TypeId = 6
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CarId = 5,
+                            TypeId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CarId = 6,
+                            TypeId = 5
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CarId = 6,
+                            TypeId = 7
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CarId = 7,
+                            TypeId = 5
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CarId = 7,
+                            TypeId = 7
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CarId = 8,
+                            TypeId = 5
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CarId = 9,
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CarId = 10,
+                            TypeId = 5
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CarId = 10,
+                            TypeId = 7
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CarId = 11,
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CarId = 12,
+                            TypeId = 6
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CarId = 12,
+                            TypeId = 8
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CarId = 13,
+                            TypeId = 5
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CarId = 14,
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CarId = 15,
+                            TypeId = 3
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CarId = 16,
+                            TypeId = 5
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CarId = 17,
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CarId = 18,
+                            TypeId = 6
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CarId = 18,
+                            TypeId = 8
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CarId = 19,
+                            TypeId = 1
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CarId = 20,
+                            TypeId = 11
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CarId = 21,
+                            TypeId = 2
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CarId = 22,
+                            TypeId = 5
+                        });
                 });
 
             modelBuilder.Entity("RentACar.Models.Category", b =>
@@ -1246,49 +3921,49 @@ namespace RentACar.DataAccess.Migrations
                         {
                             Id = 22,
                             CarId = 3,
-                            Url = "/images/ford-mustang1.jpg"
+                            Url = "/images/ford-mustang-1.webp"
                         },
                         new
                         {
                             Id = 23,
                             CarId = 3,
-                            Url = "/images/ford-mustang2.jpg"
+                            Url = "/images/ford-mustang-2.webp"
                         },
                         new
                         {
                             Id = 24,
                             CarId = 3,
-                            Url = "/images/ford-mustang3.jpg"
+                            Url = "/images/ford-mustang-3.webp"
                         },
                         new
                         {
                             Id = 25,
                             CarId = 3,
-                            Url = "/images/ford-mustang4.jpg"
+                            Url = "/images/ford-mustang-4.webp"
                         },
                         new
                         {
                             Id = 26,
                             CarId = 3,
-                            Url = "/images/ford-mustang5.jpg"
+                            Url = "/images/ford-mustang-5.webp"
                         },
                         new
                         {
                             Id = 27,
                             CarId = 3,
-                            Url = "/images/ford-mustang6.jpg"
+                            Url = "/images/ford-mustang-6.webp"
                         },
                         new
                         {
                             Id = 28,
                             CarId = 3,
-                            Url = "/images/ford-mustang7.jpg"
+                            Url = "/images/ford-mustang-7.webp"
                         },
                         new
                         {
                             Id = 29,
                             CarId = 3,
-                            Url = "/images/ford-mustang8.jpg"
+                            Url = "/images/ford-mustang-8.webp"
                         },
                         new
                         {
@@ -2025,14 +4700,50 @@ namespace RentACar.DataAccess.Migrations
                         new
                         {
                             Id = 152,
-                            CarId = 12,
+                            CarId = 21,
                             Url = "/images/rover-8.webp"
                         },
                         new
                         {
                             Id = 153,
-                            CarId = 12,
+                            CarId = 21,
                             Url = "/images/rover-9.webp"
+                        },
+                        new
+                        {
+                            Id = 154,
+                            CarId = 22,
+                            Url = "/images/toyota-supra-1.webp"
+                        },
+                        new
+                        {
+                            Id = 155,
+                            CarId = 22,
+                            Url = "/images/toyota-supra-2.webp"
+                        },
+                        new
+                        {
+                            Id = 156,
+                            CarId = 22,
+                            Url = "/images/toyota-supra-3.webp"
+                        },
+                        new
+                        {
+                            Id = 157,
+                            CarId = 22,
+                            Url = "/images/toyota-supra-4.webp"
+                        },
+                        new
+                        {
+                            Id = 158,
+                            CarId = 22,
+                            Url = "/images/toyota-supra-5.webp"
+                        },
+                        new
+                        {
+                            Id = 159,
+                            CarId = 22,
+                            Url = "/images/toyota-supra-6.webp"
                         });
                 });
 

@@ -20,27 +20,27 @@ namespace RentACar.Core.Services
         }
         public void Add(Image entity)
         {
-            throw new NotImplementedException();
+            repository.Add(entity);
         }
 
         public IEnumerable<Image> AllWithInclude(params Expression<Func<Image, object>>[] filters)
         {
-            throw new NotImplementedException();
+            return repository.AllWithInclude(filters).ToList();
         }
 
         public void Delete(Image entity)
         {
-            throw new NotImplementedException();
+            repository.Delete(entity);
         }
 
         public IEnumerable<Image> FindAll(Expression<Func<Image, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return repository.FindAll(predicate).ToList();
         }
 
         public Image FindOne(Expression<Func<Image, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return repository.FindOne(predicate);
         }
 
         public IEnumerable<Image> GetAll()
@@ -55,7 +55,7 @@ namespace RentACar.Core.Services
 
         public void Update(Image entity)
         {
-            throw new NotImplementedException();
+           repository.Update(entity);
         }
     }
 }
