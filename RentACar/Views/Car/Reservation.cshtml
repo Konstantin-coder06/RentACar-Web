@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model CarWithImages
+<div class="container cars-list">
+    <div class="row" id="carList">
+       
+        
+            <div class="col-md-4 mb-4 car-item" data-title="@($"{Model.Car.Brand} {Model.Car.Model}")">
+                <div class="card">
+                    <img src="@Model.Images.First().Url" alt="@Model.Car.Brand" class="card-img-top" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.Car.Brand @Model.Car.Model @Model.Car.Year</h5>
+                        <p class="card-text">
+                            @Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
+                        </p>
+                        <div class="price-container">
+                            <div class="price-text">
+                                <h3 class="price-day">@Model.Car.PricePerDay BGN / на ден</h3>
+                                <p class="price-week">@Model.Car.PricePerWeek BGN / на седмица</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

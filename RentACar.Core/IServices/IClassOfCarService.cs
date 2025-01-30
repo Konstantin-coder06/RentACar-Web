@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RentACar.Core.IServices
 {
-    public interface ICategoryService:IRepository<Category>
+    public interface IClassOfCarService:IRepository<ClassOfCar>
     {
     }
 }

@@ -29,8 +29,8 @@ namespace RentACar.Models
         public int HorsePower {  get; set; }
         public double  OneToHundred { get; set; }
         public double TopSpeed { get; set; }
-       public int CategoryId {  get; set; }
-        public Category Category { get; set; }
+       public int ClassOfCarId {  get; set; }
+        public ClassOfCar ClassOfCar { get; set; }
        public ICollection<Image> Images { get; set; }
     }
 }

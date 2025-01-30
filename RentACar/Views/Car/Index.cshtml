@@ -54,6 +54,7 @@
     }
     .btn-filter{
         margin-left:30px;
+        stroke:none;
         
     }
         .btn-primary:hover {
@@ -129,7 +130,7 @@
             background-color: #e65a5a;
         }
 </style>
-<form asp-action="Index" method="post" class="search-container">
+<form asp-action="Search" method="post" class="search-container">
     <div class="input-group">
         <span class="search-icon">🔍</span>
         <input type="text" name="searchBar" id="searchInput" placeholder="Търси кола..." />
@@ -157,7 +158,9 @@
                                 <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / на ден</h3>
                                 <p class="price-week">@carWithImages.Car.PricePerWeek BGN / на седмица</p>
                             </div>
-                            <button class="btn btn-primary reserve-btn">Резервирай сега</button>
+                            <a asp-controller="Car" asp-action="Reservation" asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
+                                Резервирай сега
+                            </a>
                         </div>
                     </div>
                 </div>

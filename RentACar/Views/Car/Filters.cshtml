@@ -2,4 +2,141 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+
 }
+<style>/* Основен стил за формуляра */
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Контейнер за класа на колите */
+.class-of-car {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Стил за заглавието */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Стил за полетата за цена */
+input[type="number"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Заглавие за checkbox-ите */
+h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 15px;
+}
+
+/* Стил за чекбоксите */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Стил за чекбокс етикетите */
+.form-check-label {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Стил за чекбоксовете, когато се активират */
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Стил за бутона */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+    
+    @@media (max-width: 600px) {
+            form
+
+    {
+        width: 90%;
+    }
+
+    .class-of-car {
+        gap: 10px;
+    }
+
+    input[type="number"], button {
+        font-size: 14px;
+    }
+
+    }
+    }
+
+</style>
+<form method="post" asp-action="Filters" asp-controller="Car">
+    <div class="class-of-car">
+        <label>Цена на ден</label>
+        <input type="number" name="MinPrice" placeholder="От цена" />
+        <input type="number" name="MaxPrice" placeholder="До:" />
+        <div class="form-check">
+            <h3>Class</h3>
+            <input class="form-check-input" type="checkbox" name="SelectedClasses" value="Economy" id="flexCheckEconomy">
+            <label class="form-check-label" for="flexCheckEconomy">Economy</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="SelectedClasses" value="Luxury" id="flexCheckLuxury" >
+            <label class="form-check-label" for="flexCheckLuxury">Luxury</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="SelectedClasses" value="Sport" id="flexCheckSport" >
+            <label class="form-check-label" for="flexCheckSport">Sport</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="SelectedClasses" value="Business" id="flexCheckBusiness" >
+            <label class="form-check-label" for="flexCheckBusiness">Business</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="SelectedClasses" value="Electric" id="flexCheckElectric" >
+            <label class="form-check-label" for="flexCheckElectric">Electric</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="SelectedClasses" value="Standard" id="flexCheckStandard" >
+            <label class="form-check-label" for="flexCheckStandard">Standard</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="SelectedClasses" value="Retro" id="flexCheckRetro" >
+            <label class="form-check-label" for="flexCheckRetro">Retro</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Филтрирай</button>
+    </div>
+</form>

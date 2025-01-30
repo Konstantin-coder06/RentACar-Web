@@ -10,44 +10,44 @@ using System.Threading.Tasks;
 
 namespace RentACar.Core.Services
 {
-    public class CategoryService : ICategoryService
+    public class ClassOfCarService : IClassOfCarService
     {
-        IRepository<Category> repository;
-        public CategoryService(IRepository<Category> repository)
+        IRepository<ClassOfCar> repository;
+        public ClassOfCarService(IRepository<ClassOfCar> repository)
         {
             this.repository = repository;
         }
-        public void Add(Category entity)
+        public void Add(ClassOfCar entity)
         {
             repository.Add(entity);
         }
 
-        public IEnumerable<Category> AllWithInclude(params Expression<Func<Category, object>>[] filters)
+        public IEnumerable<ClassOfCar> AllWithInclude(params Expression<Func<ClassOfCar, object>>[] filters)
         {
             return repository.AllWithInclude(filters).ToList();
         }
 
-        public void Delete(Category entity)
+        public void Delete(ClassOfCar entity)
         {
             repository.Delete(entity);
         }
 
-        public IEnumerable<Category> FindAll(Expression<Func<Category, bool>> predicate)
+        public IEnumerable<ClassOfCar> FindAll(Expression<Func<ClassOfCar, bool>> predicate)
         {
             return repository.FindAll(predicate).ToList();
         }
 
-        public Category FindOne(Expression<Func<Category, bool>> predicate)
+        public ClassOfCar FindOne(Expression<Func<ClassOfCar, bool>> predicate)
         {
             return repository.FindOne(predicate);
         }
 
-        public IEnumerable<Category> GetAll()
+        public IEnumerable<ClassOfCar> GetAll()
         {
             return repository.GetAll().ToList();
         }
 
-        public void Update(Category entity)
+        public void Update(ClassOfCar entity)
         {
             repository.Update(entity);
         }

@@ -22,7 +22,12 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddScoped<ICarService, CarService>();
-builder.Services.AddScoped<IImageService, ImageService>(); 
+builder.Services.AddScoped<IImageService, ImageService>();
+builder.Services.AddScoped<IClassOfCarService, ClassOfCarService>();
+builder.Services.AddScoped<ICTypeService, CTypeService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IFeatureService, FeatureService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 

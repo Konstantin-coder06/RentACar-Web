@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RentACar.Core.IServices
 {
-    internal interface ICustomerService:IRepository<Customer>
+    public interface ICustomerService:IRepository<Customer>
     {
     }
 }

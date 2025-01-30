@@ -1,0 +1,103 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model AddingCarwithAllClassesViewModel
+<form asp-action="AddCar" asp-controller="Car" method="post">
+
+    <legend>Adding a Book</legend>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.Brand">Brand</label>
+        <input type="text" id="brand" class="form-control" name="name" asp-for="Car.Brand" placeholder="Brand">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.Model">Price</label>
+        <input type="number" id="model" class="form-control" name="model" asp-for="Car.Model" placeholder="Model">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.Gearbox">Gearbox</label>
+        <input type="text" id="gearbox" class="form-control" name="gearbox" asp-for="Car.Gearbox" placeholder="Gearbox">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.Year">Year</label>
+        <input type="number" id="year" class="form-control" name="year" asp-for="Car.Year" placeholder="Year">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.Gearbox">Gearbox</label>
+        <input type="text" id="gearbox" class="form-control" name="gearbox" asp-for="Car.Gearbox" placeholder="Gearbox">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.PricePerDay">Price per day</label>
+        <input type="text" id="pricePerDay" class="form-control" name="pricePerDay" asp-for="Car.PricePerDay" placeholder="Price per day">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.PricePerWeek">Price per week</label>
+        <input type="text" id="pricePerWeek" class="form-control" name="pricePerWeek" asp-for="Car.PricePerWeek" placeholder="Price per week">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.MileageLimitForDay">Mileage limit for day</label>
+        <input type="text" id="mileageLimitForDay" class="form-control" name="mileageLimitForDay" asp-for="Car.MileageLimitForDay" placeholder="Example 200">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.MileageLimitForWeek">Mileage limit for week</label>
+        <input type="text" id="mileageLimitForWeek" class="form-control" name="mileageLimitForWeek" asp-for="Car.MileageLimitForWeek" placeholder="Example 1000">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.AdditionalMileageCharge">Additional mileage charge</label>
+        <input type="text" id="additionalMileageCharge" class="form-control" name="additionalMileageCharge" asp-for="Car.AdditionalMileageCharge" placeholder="Example 2.1">
+
+    </div> 
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.EngineCapacity">Engine Capacity</label>
+        <input type="text" id="engineCapacity" class="form-control" name="engineCapacity" asp-for="Car.EngineCapacity" placeholder="Example 4.4">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.Color">Color</label>
+        <input type="text" id="color" class="form-control" name="color" asp-for="Car.Color" placeholder="Color">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.Description">Description</label>
+        <input type="text" id="desription" class="form-control" name="description" asp-for="Car.Description" placeholder="Description">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.DriveTrain">Drive train</label>
+        <input type="text" id="driveTrain" class="form-control" name="driveTrain" asp-for="Car.DriveTrain" placeholder="Drive train">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.HorsePower">Horse power</label>
+        <input type="text" id="horse power" class="form-control" name="horse power" asp-for="Car.HorsePower" placeholder="Example 604">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.OneToHundred">0-100km/h</label>
+        <input type="text" id="oneToHundred" class="form-control" name="oneToHundred" asp-for="Car.OneToHundred" placeholder="Example 6.5">
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Car.TopSpeed">Top speed</label>
+        <input type="number" id="topSpeed" class="form-control" name="topSpeed" asp-for="Car.TopSpeed" placeholder="Example 204">
+
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="ClassOfCarId" class="font-weight-bold">Classes:</label>
+        <select asp-for="ClassOfCarId" asp-items="Model.ClassesOfCars" class="form-control shadow-sm">
+            <option value="0" selected>Select a category</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

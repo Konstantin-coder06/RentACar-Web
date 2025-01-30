@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RentACar.Core.IServices
 {
-    internal interface IFeatureService:IRepository<Feature>
+    public interface IFeatureService:IRepository<Feature>
     {
     }
 }
