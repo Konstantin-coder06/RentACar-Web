@@ -367,9 +367,6 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("OneToHundred")
-                        .HasColumnType("float");
-
                     b.Property<double>("PricePerDay")
                         .HasColumnType("float");
 
@@ -381,6 +378,9 @@ namespace RentACar.DataAccess.Migrations
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
+
+                    b.Property<double>("ZeroToHundred")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -405,11 +405,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 150.0,
                             MileageLimitForWeek = 1000.0,
                             Model = "Corolla",
-                            OneToHundred = 10.800000000000001,
                             PricePerDay = 80.0,
                             PricePerWeek = 450.0,
                             TopSpeed = 185.0,
-                            Year = 2021
+                            Year = 2021,
+                            ZeroToHundred = 10.800000000000001
                         },
                         new
                         {
@@ -427,11 +427,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 200.0,
                             MileageLimitForWeek = 1200.0,
                             Model = "Civic",
-                            OneToHundred = 7.2999999999999998,
                             PricePerDay = 140.0,
                             PricePerWeek = 600.0,
                             TopSpeed = 170.0,
-                            Year = 2022
+                            Year = 2022,
+                            ZeroToHundred = 7.2999999999999998
                         },
                         new
                         {
@@ -449,11 +449,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 250.0,
                             MileageLimitForWeek = 1500.0,
                             Model = "Mustang",
-                            OneToHundred = 5.7999999999999998,
                             PricePerDay = 200.0,
                             PricePerWeek = 910.0,
                             TopSpeed = 250.0,
-                            Year = 2020
+                            Year = 2020,
+                            ZeroToHundred = 5.7999999999999998
                         },
                         new
                         {
@@ -471,11 +471,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "420",
-                            OneToHundred = 7.0999999999999996,
                             PricePerDay = 250.0,
                             PricePerWeek = 1000.0,
                             TopSpeed = 240.0,
-                            Year = 2022
+                            Year = 2022,
+                            ZeroToHundred = 7.0999999999999996
                         },
                         new
                         {
@@ -493,11 +493,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "C-Class",
-                            OneToHundred = 6.2000000000000002,
                             PricePerDay = 210.0,
                             PricePerWeek = 850.0,
                             TopSpeed = 250.0,
-                            Year = 2021
+                            Year = 2021,
+                            ZeroToHundred = 6.2000000000000002
                         },
                         new
                         {
@@ -515,11 +515,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "R8 Spyder",
-                            OneToHundred = 3.7999999999999998,
                             PricePerDay = 750.0,
                             PricePerWeek = 6400.0,
                             TopSpeed = 327.0,
-                            Year = 2021
+                            Year = 2021,
+                            ZeroToHundred = 3.7999999999999998
                         },
                         new
                         {
@@ -537,11 +537,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "Huracan",
-                            OneToHundred = 3.0,
                             PricePerDay = 1700.0,
                             PricePerWeek = 9000.0,
                             TopSpeed = 310.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 3.0
                         },
                         new
                         {
@@ -559,11 +559,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "911 GT3",
-                            OneToHundred = 3.7999999999999998,
                             PricePerDay = 1400.0,
                             PricePerWeek = 8400.0,
                             TopSpeed = 304.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 3.7999999999999998
                         },
                         new
                         {
@@ -581,11 +581,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "Model S Plaid",
-                            OneToHundred = 2.1000000000000001,
                             PricePerDay = 350.0,
                             PricePerWeek = 2100.0,
                             TopSpeed = 322.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 2.1000000000000001
                         },
                         new
                         {
@@ -603,11 +603,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "F8 Spider",
-                            OneToHundred = 2.8999999999999999,
                             PricePerDay = 2300.0,
                             PricePerWeek = 10000.0,
                             TopSpeed = 340.0,
-                            Year = 2022
+                            Year = 2022,
+                            ZeroToHundred = 2.8999999999999999
                         },
                         new
                         {
@@ -625,11 +625,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Phantom",
-                            OneToHundred = 5.4000000000000004,
                             PricePerDay = 1000.0,
                             PricePerWeek = 7000.0,
                             TopSpeed = 250.0,
-                            Year = 2021
+                            Year = 2021,
+                            ZeroToHundred = 5.4000000000000004
                         },
                         new
                         {
@@ -647,11 +647,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Continental GT-GTC",
-                            OneToHundred = 3.7000000000000002,
                             PricePerDay = 1300.0,
                             PricePerWeek = 7600.0,
                             TopSpeed = 335.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 3.7000000000000002
                         },
                         new
                         {
@@ -669,11 +669,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "720S",
-                            OneToHundred = 2.8999999999999999,
                             PricePerDay = 1700.0,
                             PricePerWeek = 8000.0,
                             TopSpeed = 341.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 2.8999999999999999
                         },
                         new
                         {
@@ -691,11 +691,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "DBX",
-                            OneToHundred = 4.5,
                             PricePerDay = 600.0,
                             PricePerWeek = 3600.0,
                             TopSpeed = 291.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 4.5
                         },
                         new
                         {
@@ -713,11 +713,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "LX",
-                            OneToHundred = 6.7999999999999998,
                             PricePerDay = 500.0,
                             PricePerWeek = 3000.0,
                             TopSpeed = 210.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 6.7999999999999998
                         },
                         new
                         {
@@ -735,11 +735,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "AMG GT",
-                            OneToHundred = 3.2000000000000002,
                             PricePerDay = 2500.0,
                             PricePerWeek = 1100.0,
                             TopSpeed = 322.0,
-                            Year = 2022
+                            Year = 2022,
+                            ZeroToHundred = 3.2000000000000002
                         },
                         new
                         {
@@ -757,11 +757,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Q8",
-                            OneToHundred = 5.9000000000000004,
                             PricePerDay = 400.0,
                             PricePerWeek = 2300.0,
                             TopSpeed = 250.0,
-                            Year = 2021
+                            Year = 2021,
+                            ZeroToHundred = 5.9000000000000004
                         },
                         new
                         {
@@ -779,11 +779,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "M4",
-                            OneToHundred = 3.7000000000000002,
                             PricePerDay = 700.0,
                             PricePerWeek = 4000.0,
                             TopSpeed = 250.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 3.7000000000000002
                         },
                         new
                         {
@@ -801,11 +801,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 200.0,
                             MileageLimitForWeek = 1200.0,
                             Model = "Camry",
-                            OneToHundred = 9.9000000000000004,
                             PricePerDay = 130.0,
                             PricePerWeek = 670.0,
                             TopSpeed = 210.0,
-                            Year = 2021
+                            Year = 2021,
+                            ZeroToHundred = 9.9000000000000004
                         },
                         new
                         {
@@ -823,11 +823,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Cybertruck",
-                            OneToHundred = 2.7000000000000002,
                             PricePerDay = 2000.0,
                             PricePerWeek = 12000.0,
                             TopSpeed = 210.0,
-                            Year = 2024
+                            Year = 2024,
+                            ZeroToHundred = 2.7000000000000002
                         },
                         new
                         {
@@ -845,11 +845,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Range Rover",
-                            OneToHundred = 6.9000000000000004,
                             PricePerDay = 1200.0,
                             PricePerWeek = 7000.0,
                             TopSpeed = 209.0,
-                            Year = 2023
+                            Year = 2023,
+                            ZeroToHundred = 6.9000000000000004
                         },
                         new
                         {
@@ -867,11 +867,11 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Supra",
-                            OneToHundred = 4.4000000000000004,
                             PricePerDay = 220.0,
                             PricePerWeek = 1100.0,
                             TopSpeed = 262.0,
-                            Year = 2022
+                            Year = 2022,
+                            ZeroToHundred = 4.4000000000000004
                         });
                 });
 

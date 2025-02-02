@@ -21,7 +21,7 @@ namespace RentACar.DataAccess.IRepository.Repository
         public void Add(T entity)
         {
             dbSet.Add(entity);
-            dbContext.SaveChanges();
+           
         }
 
         public IEnumerable<T> AllWithInclude(params Expression<Func<T, object>>[] filters)
@@ -37,7 +37,7 @@ namespace RentACar.DataAccess.IRepository.Repository
         public void Delete(T entity)
         {
             dbContext.Remove(entity);
-            dbContext.SaveChanges();
+          
         }
 
         public IEnumerable<T> FindAll(Expression<Func<T, bool>> predicate)
@@ -55,10 +55,14 @@ namespace RentACar.DataAccess.IRepository.Repository
             return dbSet.ToList();
         }
 
+        public void Save()
+        {
+           dbContext.SaveChanges();
+        }
+
         public void Update(T entity)
         {
-            dbContext.Update(entity);
-            dbContext.SaveChanges();
+            dbContext.Update(entity); 
 
         }
     }

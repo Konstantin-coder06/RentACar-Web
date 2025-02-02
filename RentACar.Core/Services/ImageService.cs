@@ -53,6 +53,11 @@ namespace RentACar.Core.Services
             return repository.FindAll(x => x.CarId == carId).ToList();
         }
 
+        public void Save()
+        {
+          repository.Save();
+        }
+
         public void Update(Image entity)
         {
            repository.Update(entity);

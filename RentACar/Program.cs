@@ -29,7 +29,8 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
-
+builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

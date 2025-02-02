@@ -16,6 +16,7 @@ namespace RentACar.DataAccess.IRepository
         IEnumerable<T> FindAll(Expression<Func<T,bool>> predicate);
         T FindOne(Expression<Func<T,bool>> predicate);
         IEnumerable<T> AllWithInclude(params Expression<Func<T, object>>[] filters);
+        void Save();
         
     }
 }

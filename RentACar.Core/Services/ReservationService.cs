@@ -47,6 +47,11 @@ namespace RentACar.Core.Services
             return reservationsRepository.GetAll().ToList();
         }
 
+        public void Save()
+        {
+           reservationsRepository.Save();
+        }
+
         public void Update(Reservation entity)
         {
             reservationsRepository.Update(entity);

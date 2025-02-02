@@ -6,9 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace RentACar.Core.IServices
 {
     public interface IClassOfCarService:IRepository<ClassOfCar>
     {
+        public List<ClassOfCar> GetClassOptionsAsync();
     }
 }

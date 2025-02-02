@@ -47,6 +47,11 @@ namespace RentACar.Core.Services
            return repository.GetAll().ToList();
         }
 
+        public void Save()
+        {
+            repository.Save();  
+        }
+
         public void Update(CType entity)
         {
             repository.Update(entity);

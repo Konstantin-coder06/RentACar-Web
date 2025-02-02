@@ -1,103 +1,176 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model AddingCarWithImagesViewModel
+
 @{
+    ViewData["Title"] = "Add New Car";
 }
-@model AddingCarwithAllClassesViewModel
-<form asp-action="AddCar" asp-controller="Car" method="post">
-
-    <legend>Adding a Book</legend>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.Brand">Brand</label>
-        <input type="text" id="brand" class="form-control" name="name" asp-for="Car.Brand" placeholder="Brand">
-
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
     </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.Model">Price</label>
-        <input type="number" id="model" class="form-control" name="model" asp-for="Car.Model" placeholder="Model">
+}
+<div class="container mt-5">
+    <h2>Add New Car</h2>
+    <hr />
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.Gearbox">Gearbox</label>
-        <input type="text" id="gearbox" class="form-control" name="gearbox" asp-for="Car.Gearbox" placeholder="Gearbox">
+    <form asp-action="AddCar" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="row">
+            <!-- Basic Information -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Brand" class="control-label"></label>
+                    <input asp-for="Brand" class="form-control" />
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.Year">Year</label>
-        <input type="number" id="year" class="form-control" name="year" asp-for="Car.Year" placeholder="Year">
+                <div class="form-group">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.Gearbox">Gearbox</label>
-        <input type="text" id="gearbox" class="form-control" name="gearbox" asp-for="Car.Gearbox" placeholder="Gearbox">
+                <div class="form-group">
+                    <label asp-for="ClassOptions" class="control-label">Vehicle Class</label>
+                    <select asp-for="ClassOfCarId" asp-items="Model.ClassOptions" class="form-control">
+                        <option value="">-- Select Class --</option>
+                    </select>
+                    <span asp-validation-for="ClassOfCarId" class="text-danger"></span>
+                </div>
+            </div>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.PricePerDay">Price per day</label>
-        <input type="text" id="pricePerDay" class="form-control" name="pricePerDay" asp-for="Car.PricePerDay" placeholder="Price per day">
+            <!-- Technical Specifications -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="EngineCapacity" class="control-label"></label>
+                    <input asp-for="EngineCapacity" class="form-control" step="0.1" />
+                    <span asp-validation-for="EngineCapacity" class="text-danger"></span>
+                </div>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.PricePerWeek">Price per week</label>
-        <input type="text" id="pricePerWeek" class="form-control" name="pricePerWeek" asp-for="Car.PricePerWeek" placeholder="Price per week">
+                <div class="form-group">
+                    <label asp-for="HorsePower" class="control-label"></label>
+                    <input asp-for="HorsePower" class="form-control" />
+                    <span asp-validation-for="HorsePower" class="text-danger"></span>
+                </div>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.MileageLimitForDay">Mileage limit for day</label>
-        <input type="text" id="mileageLimitForDay" class="form-control" name="mileageLimitForDay" asp-for="Car.MileageLimitForDay" placeholder="Example 200">
+                <div class="form-group">
+                    <label asp-for="TopSpeed" class="control-label"></label>
+                    <input asp-for="TopSpeed" class="form-control" />
+                    <span asp-validation-for="TopSpeed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ZeroToHundred" class="control-label"></label>
+                    <input asp-for="ZeroToHundred" class="form-control" />
+                    <span asp-validation-for="ZeroToHundred" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Color" class="control-label"></label>
+                    <input asp-for="Color" class="form-control" />
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DriveTrain" class="control-label"></label>
+                    <input asp-for="DriveTrain" class="form-control" />
+                    <span asp-validation-for="DriveTrain" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.MileageLimitForWeek">Mileage limit for week</label>
-        <input type="text" id="mileageLimitForWeek" class="form-control" name="mileageLimitForWeek" asp-for="Car.MileageLimitForWeek" placeholder="Example 1000">
+        <!-- Pricing Section -->
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PricePerDay" class="control-label"></label>
+                    <input asp-for="PricePerDay" class="form-control" />
+                    <span asp-validation-for="PricePerDay" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PricePerWeek" class="control-label"></label>
+                    <input asp-for="PricePerWeek" class="form-control" />
+                    <span asp-validation-for="PricePerWeek" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="MileageLimitForDay" class="control-label"></label>
+                    <input asp-for="MileageLimitForDay" class="form-control" />
+                    <span asp-validation-for="MileageLimitForDay" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="MileageLimitForWeek" class="control-label"></label>
+                    <input asp-for="MileageLimitForWeek" class="form-control" />
+                    <span asp-validation-for="MileageLimitForWeek" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AdditionalMileageCharge" class="control-label"></label>
+                    <input asp-for="AdditionalMileageCharge" class="form-control" />
+                    <span asp-validation-for="AdditionalMileageCharge" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Gearbox" class="control-label"></label>
+                    <input asp-for="Gearbox" class="form-control" />
+                    <span asp-validation-for="Gearbox" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <!-- Image Upload -->
+        <div class="form-group mt-4">
+            <label asp-for="Images" class="control-label">Upload Images</label>
+            <div class="custom-file">
+                <input asp-for="Images" class="custom-file-input" multiple>
+                <label class="custom-file-label">Choose files...</label>
+            </div>
+            <span asp-validation-for="Images" class="text-danger"></span>
+        </div>
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.AdditionalMileageCharge">Additional mileage charge</label>
-        <input type="text" id="additionalMileageCharge" class="form-control" name="additionalMileageCharge" asp-for="Car.AdditionalMileageCharge" placeholder="Example 2.1">
+        <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary">Add Car</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
 
-    </div> 
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.EngineCapacity">Engine Capacity</label>
-        <input type="text" id="engineCapacity" class="form-control" name="engineCapacity" asp-for="Car.EngineCapacity" placeholder="Example 4.4">
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.Color">Color</label>
-        <input type="text" id="color" class="form-control" name="color" asp-for="Car.Color" placeholder="Color">
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.Description">Description</label>
-        <input type="text" id="desription" class="form-control" name="description" asp-for="Car.Description" placeholder="Description">
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.DriveTrain">Drive train</label>
-        <input type="text" id="driveTrain" class="form-control" name="driveTrain" asp-for="Car.DriveTrain" placeholder="Drive train">
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.HorsePower">Horse power</label>
-        <input type="text" id="horse power" class="form-control" name="horse power" asp-for="Car.HorsePower" placeholder="Example 604">
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.OneToHundred">0-100km/h</label>
-        <input type="text" id="oneToHundred" class="form-control" name="oneToHundred" asp-for="Car.OneToHundred" placeholder="Example 6.5">
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label" asp-for="Car.TopSpeed">Top speed</label>
-        <input type="number" id="topSpeed" class="form-control" name="topSpeed" asp-for="Car.TopSpeed" placeholder="Example 204">
-
-    </div>
-    <div class="form-group mb-3">
-        <label asp-for="ClassOfCarId" class="font-weight-bold">Classes:</label>
-        <select asp-for="ClassOfCarId" asp-items="Model.ClassesOfCars" class="form-control shadow-sm">
-            <option value="0" selected>Select a category</option>
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-</form>
+    <script>
+        // Update file input label
+        $('.custom-file-input').on('change', function() {
+            var files = $(this)[0].files;
+            var label = files.length > 1 ?
+                files.length + ' files selected' :
+                files[0].name;
+            $(this).next('.custom-file-label').html(label);
+        });
+    </script>
+}

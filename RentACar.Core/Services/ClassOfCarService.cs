@@ -47,6 +47,15 @@ namespace RentACar.Core.Services
             return repository.GetAll().ToList();
         }
 
+        public void Save()
+        {
+           repository.Save();
+        }
+        public List<ClassOfCar> GetClassOptionsAsync()
+        {
+            return  repository.GetAll().ToList();
+        }
+
         public void Update(ClassOfCar entity)
         {
             repository.Update(entity);

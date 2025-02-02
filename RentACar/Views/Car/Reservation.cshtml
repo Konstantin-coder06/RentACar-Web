@@ -1,31 +1,184 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model CarWithImages
-<div class="container cars-list">
-    <div class="row" id="carList">
-       
-        
-            <div class="col-md-4 mb-4 car-item" data-title="@($"{Model.Car.Brand} {Model.Car.Model}")">
-                <div class="card">
-                    <img src="@Model.Images.First().Url" alt="@Model.Car.Brand" class="card-img-top" />
+﻿<style>
+    /* Main container */
+    .booking-layout {
+        display: flex;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1rem;
+    }
 
-                    <div class="card-body">
-                        <h5 class="card-title">@Model.Car.Brand @Model.Car.Model @Model.Car.Year</h5>
-                        <p class="card-text">
-                            @Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
-                        </p>
-                        <div class="price-container">
-                            <div class="price-text">
-                                <h3 class="price-day">@Model.Car.PricePerDay BGN / на ден</h3>
-                                <p class="price-week">@Model.Car.PricePerWeek BGN / на седмица</p>
-                            </div>
-                           
-                        </div>
+    /* Carousel Section */
+    .carousel-section {
+        flex: 1;
+        min-width: 400px;
+        position: relative;
+    }
+
+    .carousel {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .carousel-inner {
+        aspect-ratio: 16/9;
+    }
+    
+   .carousel-item img {
+        height: 100%;
+        width: 100%;
+       
+        justify-content:contain;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0,0,0,0.3);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-350%);
+        margin: 0 1rem;
+    }
+
+    /* Details Section */
+    .details-section {
+        flex: 1;
+        padding: 0 1rem;
+    }
+
+    .card-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #1a1a1a;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+        margin-left:5%;
+    }
+
+    /* Price Section */
+    .price-container {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .price-day {
+        font-size: 1.5rem;
+        color: #f76c6c;
+        margin-bottom: 0.5rem;
+    }
+
+    .price-week {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    /* Features List */
+    .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0;
+    }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: #444;
+        }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .booking-layout
+
+    {
+        flex-direction: column;
+    }
+
+    .carousel-section {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .carousel-inner {
+        aspect-ratio: 16/9;
+    }
+
+    }
+    .carousel-section h5 {
+        margin-top:5%;
+        margin-left:5%;
+    }
+    
+</style>
+
+<div class="booking-layout">
+    <!-- Left Carousel Section -->
+    <div class="carousel-section">
+        <div id="carCarousel-@Model.Car.Id" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @for (int i = 0; i < Model.Images.Count; i++)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img src="@Model.Images[i].Url" class="d-block w-100" alt="@Model.Car.Brand">
                     </div>
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel-@Model.Car.Id" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carCarousel-@Model.Car.Id" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <h5 class="card-title">@Model.Car.Brand @Model.Car.Model @Model.Car.Year</h5>
+            <p class="card-text">
+                @Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
+            </p>
+
+            <div class="price-container">
+                <div class="price-text">
+                    <h3 class="price-day">@Model.Car.PricePerDay BGN / на ден</h3>
+                    <p class="price-week">@Model.Car.PricePerWeek BGN / на седмица</p>
                 </div>
             </div>
+
+          
+        </div>
+    </div>
+
+    <!-- Right Details Section -->
+    <div class="details-section">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Car.Brand @Model.Car.Model @Model.Car.Year</h5>
+            <p class="card-text">
+                @Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
+            </p>
+
+            <div class="price-container">
+                <div class="price-text">
+                    <h3 class="price-day">@Model.Car.PricePerDay BGN / на ден</h3>
+                    <p class="price-week">@Model.Car.PricePerWeek BGN / на седмица</p>
+                </div>
+            </div>
+
+            <ul class="features-list">
+                <li><i class="fas fa-check-circle text-success"></i> Instant confirmation</li>
+                <li><i class="fas fa-check-circle text-success"></i> Free cancellation</li>
+                <li><i class="fas fa-check-circle text-success"></i> Verified vehicle</li>
+            </ul>
+        </div>
     </div>
 </div>
+

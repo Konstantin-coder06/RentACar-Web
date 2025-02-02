@@ -47,6 +47,11 @@ namespace RentACar.Core.Services
            return carRepository.GetAll().ToList();
         }
 
+        public void Save()
+        {
+           carRepository.Save();
+        }
+
         public void Update(Car entity)
         {
             carRepository.Update(entity);
