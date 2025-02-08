@@ -5,8 +5,8 @@
       
             public int MinPrice { get; set; } = 0;
             public int MaxPrice { get; set; } = 0;
-            public List<string> SelectedClasses { get; set; } = new List<string>();
-            public List<Car> Cars { get; set; } = new List<Car>();
+            public List<ClassOfCar> Classes { get; set; } = new List<ClassOfCar>();
+            public List<int> SelectedClassIds { get; set; } = new List<int>();
         
     }
 }

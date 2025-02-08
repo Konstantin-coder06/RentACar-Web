@@ -1,4 +1,6 @@
-﻿using RentACar.Core.IServices;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using RentACar.Core.IServices;
 using RentACar.DataAccess.IRepository;
 using RentACar.DataAccess.IRepository.Repository;
 using RentACar.Models;
@@ -14,9 +16,12 @@ namespace RentACar.Core.Services
     public class ImageService:IImageService
     {
         IRepository<Image> repository;
-        public ImageService(IRepository<Image> _repository)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public ImageService(IRepository<Image> _repository, IWebHostEnvironment webHostEnvironment)
         {
             this.repository = _repository;
+            _webHostEnvironment = webHostEnvironment;
         }
         public void Add(Image entity)
         {
@@ -51,6 +56,40 @@ namespace RentACar.Core.Services
         public IEnumerable<Image> GetImagesByCarId(int carId)
         {
             return repository.FindAll(x => x.CarId == carId).ToList();
+        }
+
+        public async Task ProcessImages(List<IFormFile> images, int carId)
+        {
+            // Use IWebHostEnvironment to get the web root path dynamically
+            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            foreach (var image in images)
+            {
+                if (image.Length > 0)
+                {
+                    var uniqueFileName = $"{Guid.NewGuid()}_{image.FileName}";
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    // Add image entry to the database
+                    repository.Add(new Image
+                    {
+                        Url = $"/uploads/{uniqueFileName}",
+                        CarId = carId
+                    });
+                }
+            }
+
+            repository.Save(); // Assuming SaveAsync is implemented
         }
 
         public void Save()

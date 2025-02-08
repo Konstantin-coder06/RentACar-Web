@@ -86,6 +86,11 @@ namespace RentACar.DataAccess.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -137,6 +142,10 @@ namespace RentACar.DataAccess.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator().HasValue("IdentityUser");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -332,6 +341,9 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CarCompanyId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClassOfCarId")
                         .HasColumnType("int");
 
@@ -384,6 +396,8 @@ namespace RentACar.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CarCompanyId");
+
                     b.HasIndex("ClassOfCarId");
 
                     b.ToTable("Cars");
@@ -395,6 +409,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.20000000000000001,
                             Available = true,
                             Brand = "Toyota",
+                            CarCompanyId = 5,
                             ClassOfCarId = 1,
                             Color = "White",
                             Description = "Compact and fuel-efficient",
@@ -417,6 +432,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.25,
                             Available = true,
                             Brand = "Honda",
+                            CarCompanyId = 5,
                             ClassOfCarId = 6,
                             Color = "Black",
                             Description = "Sporty and reliable",
@@ -439,6 +455,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.22,
                             Available = true,
                             Brand = "Ford",
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Dark Gray",
                             Description = "Comfortable and stylish",
@@ -461,6 +478,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.5,
                             Available = true,
                             Brand = "BMW",
+                            CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Gray",
                             Description = "Luxury and performance",
@@ -483,6 +501,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.55000000000000004,
                             Available = true,
                             Brand = "Mercedes-Benz",
+                            CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Red",
                             Description = "Premium luxury",
@@ -505,6 +524,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Audi",
+                            CarCompanyId = 2,
                             ClassOfCarId = 3,
                             Color = "Green",
                             Description = "High-performance sports car",
@@ -527,6 +547,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.5,
                             Available = true,
                             Brand = "Lamborghini",
+                            CarCompanyId = 2,
                             ClassOfCarId = 3,
                             Color = "Black",
                             Description = "Exotic sports car",
@@ -549,6 +570,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.3,
                             Available = true,
                             Brand = "Porsche",
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Silver",
                             Description = "Luxury sports car",
@@ -571,6 +593,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Tesla",
+                            CarCompanyId = 3,
                             ClassOfCarId = 5,
                             Color = "White",
                             Description = "Electric luxury sedan",
@@ -593,6 +616,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Ferrari",
+                            CarCompanyId = 3,
                             ClassOfCarId = 3,
                             Color = "Red",
                             Description = "Iconic Italian sports car",
@@ -615,6 +639,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Rolls-Royce",
+                            CarCompanyId = 3,
                             ClassOfCarId = 4,
                             Color = "Black",
                             Description = "Ultimate luxury car",
@@ -637,6 +662,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.5,
                             Available = true,
                             Brand = "Bentley",
+                            CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
                             Description = "Grand luxury tourer",
@@ -659,6 +685,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "McLaren",
+                            CarCompanyId = 2,
                             ClassOfCarId = 3,
                             Color = "Blue",
                             Description = "Exquisite British engineering",
@@ -681,6 +708,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Aston Martin",
+                            CarCompanyId = 2,
                             ClassOfCarId = 4,
                             Color = "Black",
                             Description = "Luxury British SUV",
@@ -703,6 +731,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Lexus",
+                            CarCompanyId = 4,
                             ClassOfCarId = 2,
                             Color = "Silver",
                             Description = "Sophisticated luxury SUV",
@@ -725,6 +754,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.2000000000000002,
                             Available = true,
                             Brand = "Mercedes-Benz",
+                            CarCompanyId = 2,
                             ClassOfCarId = 3,
                             Color = "Orange",
                             Description = "German engineering excellence",
@@ -747,6 +777,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Audi",
+                            CarCompanyId = 5,
                             ClassOfCarId = 4,
                             Color = "Orange",
                             Description = "Luxury SUV",
@@ -769,6 +800,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.5,
                             Available = true,
                             Brand = "BMW",
+                            CarCompanyId = 2,
                             ClassOfCarId = 3,
                             Color = "Yellow",
                             Description = "Sporty and agile",
@@ -791,6 +823,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.25,
                             Available = true,
                             Brand = "Toyota",
+                            CarCompanyId = 2,
                             ClassOfCarId = 6,
                             Color = "Red",
                             Description = "Dependable sedan",
@@ -813,6 +846,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Tesla",
+                            CarCompanyId = 3,
                             ClassOfCarId = 5,
                             Color = "Black",
                             Description = "Sophisticated luxury SUV",
@@ -835,6 +869,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Land Rover",
+                            CarCompanyId = 2,
                             ClassOfCarId = 4,
                             Color = "Black",
                             Description = "Sophisticated luxury SUV",
@@ -857,6 +892,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Toyota",
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "White",
                             Description = "Sporty and agile",
@@ -872,6 +908,88 @@ namespace RentACar.DataAccess.Migrations
                             TopSpeed = 262.0,
                             Year = 2022,
                             ZeroToHundred = 4.4000000000000004
+                        });
+                });
+
+            modelBuilder.Entity("RentACar.Models.CarCompany", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
+
+                    b.ToTable("CarCompanies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Sheikh Zayed Road, Dubai",
+                            City = "Dubai",
+                            Country = "UAE",
+                            Description = "Luxury and sports car rentals in Dubai.",
+                            Name = "Dubai Luxury Cars"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "Al Barsha, Dubai",
+                            City = "Dubai",
+                            Country = "UAE",
+                            Description = "Affordable and premium car rental services.",
+                            Name = "Speedy Drive Car Rental"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "Business Bay, Dubai",
+                            City = "Dubai",
+                            Country = "UAE",
+                            Description = "Exclusive supercar rentals for special occasions.",
+                            Name = "Prestige Exotic Car Rental"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "Deira, Dubai",
+                            City = "Dubai",
+                            Country = "UAE",
+                            Description = "Budget-friendly car rental options.",
+                            Name = "Quick Lease Car Rental"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "Downtown Dubai",
+                            City = "Dubai",
+                            Country = "UAE",
+                            Description = "Wide selection of vehicles from economy to luxury.",
+                            Name = "OneClickDrive"
                         });
                 });
 
@@ -3468,19 +3586,18 @@ namespace RentACar.DataAccess.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Customers");
                 });
@@ -4771,6 +4888,13 @@ namespace RentACar.DataAccess.Migrations
                     b.ToTable("Reservations");
                 });
 
+            modelBuilder.Entity("RentACar.Models.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -4824,13 +4948,31 @@ namespace RentACar.DataAccess.Migrations
 
             modelBuilder.Entity("RentACar.Models.Car", b =>
                 {
+                    b.HasOne("RentACar.Models.CarCompany", "CarCompany")
+                        .WithMany("Cars")
+                        .HasForeignKey("CarCompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RentACar.Models.ClassOfCar", "ClassOfCar")
                         .WithMany("Cars")
                         .HasForeignKey("ClassOfCarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("CarCompany");
+
                     b.Navigation("ClassOfCar");
+                });
+
+            modelBuilder.Entity("RentACar.Models.CarCompany", b =>
+                {
+                    b.HasOne("RentACar.Models.ApplicationUser", "User")
+                        .WithOne("CarCompany")
+                        .HasForeignKey("RentACar.Models.CarCompany", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RentACar.Models.CarFeature", b =>
@@ -4871,6 +5013,17 @@ namespace RentACar.DataAccess.Migrations
                     b.Navigation("Type");
                 });
 
+            modelBuilder.Entity("RentACar.Models.Customer", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithOne()
+                        .HasForeignKey("RentACar.Models.Customer", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("RentACar.Models.Image", b =>
                 {
                     b.HasOne("RentACar.Models.Car", "Car")
@@ -4893,7 +5046,7 @@ namespace RentACar.DataAccess.Migrations
                     b.HasOne("RentACar.Models.Customer", "Customer")
                         .WithMany("Reservations")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Car");
@@ -4906,6 +5059,11 @@ namespace RentACar.DataAccess.Migrations
                     b.Navigation("Images");
                 });
 
+            modelBuilder.Entity("RentACar.Models.CarCompany", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
             modelBuilder.Entity("RentACar.Models.ClassOfCar", b =>
                 {
                     b.Navigation("Cars");
@@ -4914,6 +5072,12 @@ namespace RentACar.DataAccess.Migrations
             modelBuilder.Entity("RentACar.Models.Customer", b =>
                 {
                     b.Navigation("Reservations");
+                });
+
+            modelBuilder.Entity("RentACar.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("CarCompany")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -25,7 +25,7 @@ namespace RentACar.Models
         [Required]
         public int CarId {  get; set; }
         public Car Car { get; set; }
-        [Required]
+        
         public int CustomerId {  get; set; }
         public Customer Customer { get; set; }
 

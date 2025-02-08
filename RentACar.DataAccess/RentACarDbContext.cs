@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using RentACar.Models;
 using System;
@@ -22,8 +23,28 @@ namespace RentACar.DataAccess
         public DbSet<ClassOfCar> ClassOfCars { get; set; }
         public DbSet<Customer>Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<CarCompany>CarCompanies { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+
+            modelBuilder.Entity<Reservation>()
+    .HasOne(r => r.Customer)
+    .WithMany(c => c.Reservations)
+    .HasForeignKey(r => r.CustomerId)
+    .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Customer>().HasOne(c => c.User)
+                .WithOne()
+                .HasForeignKey<Customer>(c => c.UserId).OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<CarCompany>()
+    .HasOne(c => c.User)
+    .WithOne(u => u.CarCompany)
+    .HasForeignKey<CarCompany>(c => c.UserId)
+    .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<ClassOfCar>().HasData(
 new ClassOfCar { Id = 1, Name = "Economy" },
 new ClassOfCar { Id = 2, Name = "Luxury" },
@@ -34,30 +55,37 @@ new ClassOfCar { Id = 6, Name = "Standard" },
 new ClassOfCar { Id = 7, Name = "Retro" }
 
 );
+            modelBuilder.Entity<CarCompany>().HasData(
+new CarCompany { Id = 1, Name = "Dubai Luxury Cars", Description = "Luxury and sports car rentals in Dubai.", City = "Dubai", Country = "UAE", Address = "Sheikh Zayed Road, Dubai" },
+new CarCompany { Id = 2, Name = "Speedy Drive Car Rental", Description = "Affordable and premium car rental services.", City = "Dubai", Country = "UAE", Address = "Al Barsha, Dubai" },
+new CarCompany { Id = 3, Name = "Prestige Exotic Car Rental", Description = "Exclusive supercar rentals for special occasions.", City = "Dubai", Country = "UAE", Address = "Business Bay, Dubai" },
+new CarCompany { Id = 4, Name = "Quick Lease Car Rental", Description = "Budget-friendly car rental options.", City = "Dubai", Country = "UAE", Address = "Deira, Dubai" },
+new CarCompany { Id = 5, Name = "OneClickDrive", Description = "Wide selection of vehicles from economy to luxury.", City = "Dubai", Country = "UAE", Address = "Downtown Dubai", }
+);
             modelBuilder.Entity<Car>().HasData(
-          new Car { Id = 1, Brand = "Toyota", Model = "Corolla", Gearbox = "Automatic", Year = 2021, PricePerDay = 80, PricePerWeek = 450, MileageLimitForDay = 150, MileageLimitForWeek = 1000, AdditionalMileageCharge = 0.2, EngineCapacity = 1.6, Color = "White", Available = true, Description = "Compact and fuel-efficient",ClassOfCarId = 1,DriveTrain="Front",HorsePower=122,ZeroToHundred=10.8,TopSpeed= 185},
-          new Car { Id = 2, Brand = "Honda", Model = "Civic", Gearbox = "Manual", Year = 2022, PricePerDay = 140, PricePerWeek = 600, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 1.5, Color = "Black", Available = true, Description = "Sporty and reliable",ClassOfCarId = 6,DriveTrain="Front", HorsePower = 205,ZeroToHundred = 7.3, TopSpeed = 170 },
-          new Car { Id = 3, Brand = "Ford", Model = "Mustang", Gearbox = "Automatic", Year = 2020, PricePerDay = 200, PricePerWeek = 910, MileageLimitForDay = 250, MileageLimitForWeek = 1500, AdditionalMileageCharge = 0.22, EngineCapacity = 2.3, Color = "Dark Gray", Available = true, Description = "Comfortable and stylish",ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 317,ZeroToHundred = 5.8, TopSpeed = 250 },
-          new Car { Id = 4, Brand = "BMW", Model = "420", Gearbox = "Automatic", Year = 2022, PricePerDay = 250, PricePerWeek = 1000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 0.5, EngineCapacity = 2.0, Color = "Gray", Available = true, Description = "Luxury and performance",ClassOfCarId = 2, DriveTrain = "Rear", HorsePower = 190,ZeroToHundred = 7.1, TopSpeed = 240 },
-          new Car { Id = 5, Brand = "Mercedes-Benz", Model = "C-Class", Gearbox = "Automatic", Year = 2021, PricePerDay = 210, PricePerWeek = 850, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 0.55, EngineCapacity = 3.0, Color = "Red", Available = true, Description = "Premium luxury",ClassOfCarId = 2, DriveTrain = "Rear", HorsePower = 258,ZeroToHundred = 6.2, TopSpeed = 250 },
-          new Car { Id = 6, Brand = "Audi", Model = "R8 Spyder", Gearbox = "Automatic", Year = 2021, PricePerDay = 750, PricePerWeek = 6400, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 1.0, EngineCapacity = 5.2, Color = "Green", Available = true, Description = "High-performance sports car",ClassOfCarId = 3,DriveTrain = "Rear", HorsePower = 570,ZeroToHundred = 3.8, TopSpeed = 327 },
-          new Car { Id = 7, Brand = "Lamborghini", Model = "Huracan", Gearbox = "Automatic", Year = 2023, PricePerDay = 1700, PricePerWeek = 9000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 1.5, EngineCapacity = 5.2, Color = "Black", Available = true, Description = "Exotic sports car",ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 640,ZeroToHundred = 3.0, TopSpeed = 310 },
-          new Car { Id = 8, Brand = "Porsche", Model = "911 GT3", Gearbox = "Automatic", Year = 2023, PricePerDay = 1400, PricePerWeek = 8400, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 1.3, EngineCapacity = 3.0, Color = "Silver", Available = true, Description = "Luxury sports car",ClassOfCarId = 3, DriveTrain = "Full Wheels", HorsePower = 450,ZeroToHundred = 3.8, TopSpeed = 304 },
-          new Car { Id = 9, Brand = "Tesla", Model = "Model S Plaid", Gearbox = "Automatic", Year = 2023, PricePerDay = 350, PricePerWeek = 2100, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 1.0, EngineCapacity = 0.0, Color = "White", Available = true, Description = "Electric luxury sedan",ClassOfCarId = 5, DriveTrain = "Rear", HorsePower = 1020,ZeroToHundred = 2.1, TopSpeed = 322 },
-          new Car { Id = 10, Brand = "Ferrari", Model = "F8 Spider", Gearbox = "Automatic", Year = 2022, PricePerDay = 2300, PricePerWeek = 10000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 2.0, EngineCapacity = 3.9, Color = "Red", Available = true, Description = "Iconic Italian sports car",ClassOfCarId = 3 , DriveTrain = "Rear", HorsePower = 720,ZeroToHundred = 2.9, TopSpeed = 340 },
-          new Car { Id = 11, Brand = "Rolls-Royce", Model = "Phantom", Gearbox = "Automatic", Year = 2021, PricePerDay = 1000, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.0, EngineCapacity = 6.8, Color = "Black", Available = true, Description = "Ultimate luxury car",ClassOfCarId = 4, DriveTrain = "Rear", HorsePower = 571,ZeroToHundred = 5.4, TopSpeed = 250 },
-          new Car { Id = 12, Brand = "Bentley", Model = "Continental GT-GTC", Gearbox = "Automatic", Year = 2023, PricePerDay = 1300, PricePerWeek = 7600, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.5, EngineCapacity = 6.0, Color = "Black", Available = true, Description = "Grand luxury tourer",ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 659,ZeroToHundred = 3.7, TopSpeed = 335 },
-          new Car { Id = 13, Brand = "McLaren", Model = "720S", Gearbox = "Automatic", Year = 2023, PricePerDay = 1700, PricePerWeek = 8000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 2.0, EngineCapacity = 4.0, Color = "Blue", Available = true, Description = "Exquisite British engineering",ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 720,ZeroToHundred = 2.9, TopSpeed = 341 },
-          new Car { Id = 14, Brand = "Aston Martin", Model = "DBX", Gearbox = "Automatic", Year = 2023, PricePerDay = 600, PricePerWeek = 3600, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.0, EngineCapacity = 4.0, Color = "Black", Available = true, Description = "Luxury British SUV",ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 550,ZeroToHundred = 4.5, TopSpeed = 291 },
-          new Car { Id = 15, Brand = "Lexus", Model = "LX", Gearbox = "Automatic", Year = 2023, PricePerDay = 500, PricePerWeek = 3000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.5, Color = "Silver", Available = true, Description = "Sophisticated luxury SUV",ClassOfCarId = 2, DriveTrain = "Full Wheels", HorsePower = 415,ZeroToHundred = 6.8, TopSpeed = 210 },
-          new Car { Id = 16, Brand = "Mercedes-Benz", Model = "AMG GT", Gearbox = "Automatic", Year = 2022, PricePerDay = 2500, PricePerWeek = 1100, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 2.2, EngineCapacity = 4.0, Color = "Orange", Available = true, Description = "German engineering excellence",ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 730,ZeroToHundred = 3.2, TopSpeed = 322 },
-          new Car { Id = 17, Brand = "Audi", Model = "Q8", Gearbox = "Automatic", Year = 2021, PricePerDay = 400, PricePerWeek = 2300, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.0, EngineCapacity = 3.0, Color = "Orange", Available = true, Description = "Luxury SUV",ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 340,ZeroToHundred = 5.9, TopSpeed = 250 },
-          new Car { Id = 18, Brand = "BMW", Model = "M4", Gearbox = "Automatic", Year = 2023, PricePerDay = 700, PricePerWeek = 4000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.5, EngineCapacity = 3.0, Color = "Yellow", Available = true, Description = "Sporty and agile",ClassOfCarId = 3, DriveTrain = "Full Wheels", HorsePower = 510,ZeroToHundred = 3.7, TopSpeed = 250 },
-          new Car { Id = 19, Brand = "Toyota", Model = "Camry", Gearbox = "Automatic", Year = 2021, PricePerDay = 130, PricePerWeek = 670, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 2.5, Color = "Red", Available = true, Description = "Dependable sedan",ClassOfCarId = 6, DriveTrain = "Rear", HorsePower = 182,ZeroToHundred = 9.9, TopSpeed = 210 },
-          new Car { Id = 20, Brand = "Tesla", Model = "Cybertruck", Gearbox = "Automatic", Year = 2024, PricePerDay = 2000, PricePerWeek = 12000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 0.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV",ClassOfCarId = 5, DriveTrain = "Full Wheels", HorsePower = 845,ZeroToHundred = 2.7, TopSpeed = 210 },
-          new Car { Id = 21, Brand = "Land Rover", Model = "Range Rover", Gearbox = "Automatic", Year = 2023, PricePerDay = 1200, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV",ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 360,ZeroToHundred = 6.9, TopSpeed = 209 },
-          new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Year = 2022, PricePerDay = 220, PricePerWeek = 1100, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "White", Available = true, Description = "Sporty and agile",ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 340,ZeroToHundred = 4.4, TopSpeed = 262 }
-          );
+  new Car { Id = 1, Brand = "Toyota", Model = "Corolla", Gearbox = "Automatic", Year = 2021, PricePerDay = 80, PricePerWeek = 450, MileageLimitForDay = 150, MileageLimitForWeek = 1000, AdditionalMileageCharge = 0.2, EngineCapacity = 1.6, Color = "White", Available = true, Description = "Compact and fuel-efficient", ClassOfCarId = 1, DriveTrain = "Front", HorsePower = 122, ZeroToHundred = 10.8, TopSpeed = 185, CarCompanyId = 5 },
+ new Car { Id = 2, Brand = "Honda", Model = "Civic", Gearbox = "Manual", Year = 2022, PricePerDay = 140, PricePerWeek = 600, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 1.5, Color = "Black", Available = true, Description = "Sporty and reliable", ClassOfCarId = 6, DriveTrain = "Front", HorsePower = 205, ZeroToHundred = 7.3, TopSpeed = 170, CarCompanyId = 5 },
+ new Car { Id = 3, Brand = "Ford", Model = "Mustang", Gearbox = "Automatic", Year = 2020, PricePerDay = 200, PricePerWeek = 910, MileageLimitForDay = 250, MileageLimitForWeek = 1500, AdditionalMileageCharge = 0.22, EngineCapacity = 2.3, Color = "Dark Gray", Available = true, Description = "Comfortable and stylish", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 317, ZeroToHundred = 5.8, TopSpeed = 250, CarCompanyId = 1 },
+ new Car { Id = 4, Brand = "BMW", Model = "420", Gearbox = "Automatic", Year = 2022, PricePerDay = 250, PricePerWeek = 1000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 0.5, EngineCapacity = 2.0, Color = "Gray", Available = true, Description = "Luxury and performance", ClassOfCarId = 2, DriveTrain = "Rear", HorsePower = 190, ZeroToHundred = 7.1, TopSpeed = 240, CarCompanyId = 1 },
+ new Car { Id = 5, Brand = "Mercedes-Benz", Model = "C-Class", Gearbox = "Automatic", Year = 2021, PricePerDay = 210, PricePerWeek = 850, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 0.55, EngineCapacity = 3.0, Color = "Red", Available = true, Description = "Premium luxury", ClassOfCarId = 2, DriveTrain = "Rear", HorsePower = 258, ZeroToHundred = 6.2, TopSpeed = 250, CarCompanyId = 1 },
+ new Car { Id = 6, Brand = "Audi", Model = "R8 Spyder", Gearbox = "Automatic", Year = 2021, PricePerDay = 750, PricePerWeek = 6400, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 1.0, EngineCapacity = 5.2, Color = "Green", Available = true, Description = "High-performance sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 570, ZeroToHundred = 3.8, TopSpeed = 327, CarCompanyId = 2 },
+ new Car { Id = 7, Brand = "Lamborghini", Model = "Huracan", Gearbox = "Automatic", Year = 2023, PricePerDay = 1700, PricePerWeek = 9000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 1.5, EngineCapacity = 5.2, Color = "Black", Available = true, Description = "Exotic sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 640, ZeroToHundred = 3.0, TopSpeed = 310, CarCompanyId = 2 },
+ new Car { Id = 8, Brand = "Porsche", Model = "911 GT3", Gearbox = "Automatic", Year = 2023, PricePerDay = 1400, PricePerWeek = 8400, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 1.3, EngineCapacity = 3.0, Color = "Silver", Available = true, Description = "Luxury sports car", ClassOfCarId = 3, DriveTrain = "Full Wheels", HorsePower = 450, ZeroToHundred = 3.8, TopSpeed = 304, CarCompanyId = 1 },
+ new Car { Id = 9, Brand = "Tesla", Model = "Model S Plaid", Gearbox = "Automatic", Year = 2023, PricePerDay = 350, PricePerWeek = 2100, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 1.0, EngineCapacity = 0.0, Color = "White", Available = true, Description = "Electric luxury sedan", ClassOfCarId = 5, DriveTrain = "Rear", HorsePower = 1020, ZeroToHundred = 2.1, TopSpeed = 322, CarCompanyId = 3 },
+ new Car { Id = 10, Brand = "Ferrari", Model = "F8 Spider", Gearbox = "Automatic", Year = 2022, PricePerDay = 2300, PricePerWeek = 10000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 2.0, EngineCapacity = 3.9, Color = "Red", Available = true, Description = "Iconic Italian sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 720, ZeroToHundred = 2.9, TopSpeed = 340, CarCompanyId = 3 },
+ new Car { Id = 11, Brand = "Rolls-Royce", Model = "Phantom", Gearbox = "Automatic", Year = 2021, PricePerDay = 1000, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.0, EngineCapacity = 6.8, Color = "Black", Available = true, Description = "Ultimate luxury car", ClassOfCarId = 4, DriveTrain = "Rear", HorsePower = 571, ZeroToHundred = 5.4, TopSpeed = 250, CarCompanyId = 3 },
+ new Car { Id = 12, Brand = "Bentley", Model = "Continental GT-GTC", Gearbox = "Automatic", Year = 2023, PricePerDay = 1300, PricePerWeek = 7600, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.5, EngineCapacity = 6.0, Color = "Black", Available = true, Description = "Grand luxury tourer", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 659, ZeroToHundred = 3.7, TopSpeed = 335, CarCompanyId = 1 },
+ new Car { Id = 13, Brand = "McLaren", Model = "720S", Gearbox = "Automatic", Year = 2023, PricePerDay = 1700, PricePerWeek = 8000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 2.0, EngineCapacity = 4.0, Color = "Blue", Available = true, Description = "Exquisite British engineering", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 720, ZeroToHundred = 2.9, TopSpeed = 341, CarCompanyId = 2 },
+ new Car { Id = 14, Brand = "Aston Martin", Model = "DBX", Gearbox = "Automatic", Year = 2023, PricePerDay = 600, PricePerWeek = 3600, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.0, EngineCapacity = 4.0, Color = "Black", Available = true, Description = "Luxury British SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 550, ZeroToHundred = 4.5, TopSpeed = 291, CarCompanyId = 2 },
+ new Car { Id = 15, Brand = "Lexus", Model = "LX", Gearbox = "Automatic", Year = 2023, PricePerDay = 500, PricePerWeek = 3000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.5, Color = "Silver", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 2, DriveTrain = "Full Wheels", HorsePower = 415, ZeroToHundred = 6.8, TopSpeed = 210, CarCompanyId = 4 },
+ new Car { Id = 16, Brand = "Mercedes-Benz", Model = "AMG GT", Gearbox = "Automatic", Year = 2022, PricePerDay = 2500, PricePerWeek = 1100, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 2.2, EngineCapacity = 4.0, Color = "Orange", Available = true, Description = "German engineering excellence", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 730, ZeroToHundred = 3.2, TopSpeed = 322, CarCompanyId = 2 },
+ new Car { Id = 17, Brand = "Audi", Model = "Q8", Gearbox = "Automatic", Year = 2021, PricePerDay = 400, PricePerWeek = 2300, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.0, EngineCapacity = 3.0, Color = "Orange", Available = true, Description = "Luxury SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 340, ZeroToHundred = 5.9, TopSpeed = 250, CarCompanyId = 5 },
+ new Car { Id = 18, Brand = "BMW", Model = "M4", Gearbox = "Automatic", Year = 2023, PricePerDay = 700, PricePerWeek = 4000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.5, EngineCapacity = 3.0, Color = "Yellow", Available = true, Description = "Sporty and agile", ClassOfCarId = 3, DriveTrain = "Full Wheels", HorsePower = 510, ZeroToHundred = 3.7, TopSpeed = 250, CarCompanyId = 2 },
+ new Car { Id = 19, Brand = "Toyota", Model = "Camry", Gearbox = "Automatic", Year = 2021, PricePerDay = 130, PricePerWeek = 670, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 2.5, Color = "Red", Available = true, Description = "Dependable sedan", ClassOfCarId = 6, DriveTrain = "Rear", HorsePower = 182, ZeroToHundred = 9.9, TopSpeed = 210, CarCompanyId = 2 },
+ new Car { Id = 20, Brand = "Tesla", Model = "Cybertruck", Gearbox = "Automatic", Year = 2024, PricePerDay = 2000, PricePerWeek = 12000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 0.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 5, DriveTrain = "Full Wheels", HorsePower = 845, ZeroToHundred = 2.7, TopSpeed = 210, CarCompanyId = 3 },
+ new Car { Id = 21, Brand = "Land Rover", Model = "Range Rover", Gearbox = "Automatic", Year = 2023, PricePerDay = 1200, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 360, ZeroToHundred = 6.9, TopSpeed = 209, CarCompanyId = 2 },
+ new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Year = 2022, PricePerDay = 220, PricePerWeek = 1100, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "White", Available = true, Description = "Sporty and agile", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 340, ZeroToHundred = 4.4, TopSpeed = 262, CarCompanyId = 1 }
+ );
             modelBuilder.Entity<Feature>().HasData(
       new Feature { Id = 1, NameOfFeatures = "Air Conditioning" },
       new Feature { Id = 2, NameOfFeatures = "Heated Seats" },
@@ -112,7 +140,7 @@ new ClassOfCar { Id = 7, Name = "Retro" }
   );
 
             modelBuilder.Entity<Image>().HasData(
-                new Image { Id = 1,Url="/images/toyota-corolla1.jpg", CarId=1 },
+                new Image { Id = 1, Url = "/images/toyota-corolla1.jpg", CarId = 1 },
                 new Image { Id = 2, Url = "/images/toyota-corolla2.jpg", CarId = 1 },
                 new Image { Id = 3, Url = "/images/toyota-corolla3.jpg", CarId = 1 },
                 new Image { Id = 4, Url = "/images/toyota-corolla4.jpg", CarId = 1 },
@@ -338,25 +366,25 @@ new ClassOfCar { Id = 7, Name = "Retro" }
             new CarFeature { Id = 60, CarId = 4, FeatureId = 33 },
             new CarFeature { Id = 61, CarId = 4, FeatureId = 34 },
 
-            new CarFeature { Id = 62, CarId = 5, FeatureId = 1 },  
-            new CarFeature { Id = 63, CarId = 5, FeatureId = 3 },  
-            new CarFeature { Id = 64, CarId = 5, FeatureId = 5 }, 
-            new CarFeature { Id = 65, CarId = 5, FeatureId = 6 },  
-            new CarFeature { Id = 66, CarId = 5, FeatureId = 7 }, 
-            new CarFeature { Id = 67, CarId = 5, FeatureId = 9 }, 
-            new CarFeature { Id = 68, CarId = 5, FeatureId = 17 }, 
-            new CarFeature { Id = 69, CarId = 5, FeatureId = 19 }, 
-            new CarFeature { Id = 70, CarId = 5, FeatureId = 20 }, 
-            new CarFeature { Id = 71, CarId = 5, FeatureId = 21 }, 
+            new CarFeature { Id = 62, CarId = 5, FeatureId = 1 },
+            new CarFeature { Id = 63, CarId = 5, FeatureId = 3 },
+            new CarFeature { Id = 64, CarId = 5, FeatureId = 5 },
+            new CarFeature { Id = 65, CarId = 5, FeatureId = 6 },
+            new CarFeature { Id = 66, CarId = 5, FeatureId = 7 },
+            new CarFeature { Id = 67, CarId = 5, FeatureId = 9 },
+            new CarFeature { Id = 68, CarId = 5, FeatureId = 17 },
+            new CarFeature { Id = 69, CarId = 5, FeatureId = 19 },
+            new CarFeature { Id = 70, CarId = 5, FeatureId = 20 },
+            new CarFeature { Id = 71, CarId = 5, FeatureId = 21 },
             new CarFeature { Id = 72, CarId = 5, FeatureId = 23 },
-            new CarFeature { Id = 73, CarId = 5, FeatureId = 28 }, 
-            new CarFeature { Id = 74, CarId = 5, FeatureId = 30 }, 
-            new CarFeature { Id = 75, CarId = 5, FeatureId = 31 }, 
-            new CarFeature { Id = 76, CarId = 5, FeatureId = 33 }, 
+            new CarFeature { Id = 73, CarId = 5, FeatureId = 28 },
+            new CarFeature { Id = 74, CarId = 5, FeatureId = 30 },
+            new CarFeature { Id = 75, CarId = 5, FeatureId = 31 },
+            new CarFeature { Id = 76, CarId = 5, FeatureId = 33 },
             new CarFeature { Id = 77, CarId = 5, FeatureId = 34 },
-            new CarFeature { Id = 78, CarId = 5, FeatureId = 40 }, 
-            new CarFeature { Id = 79, CarId = 5, FeatureId = 41 }, 
-            new CarFeature { Id = 80, CarId = 5, FeatureId = 45 }, 
+            new CarFeature { Id = 78, CarId = 5, FeatureId = 40 },
+            new CarFeature { Id = 79, CarId = 5, FeatureId = 41 },
+            new CarFeature { Id = 80, CarId = 5, FeatureId = 45 },
             new CarFeature { Id = 81, CarId = 5, FeatureId = 47 },
 
 
@@ -400,58 +428,58 @@ new ClassOfCar { Id = 7, Name = "Retro" }
             new CarFeature { Id = 118, CarId = 7, FeatureId = 45 },
             new CarFeature { Id = 119, CarId = 7, FeatureId = 47 },
 
-            new CarFeature { Id = 120, CarId = 8, FeatureId = 1 },  
-            new CarFeature { Id = 121, CarId = 8, FeatureId = 3 },   
-            new CarFeature { Id = 122, CarId = 8, FeatureId = 5 }, 
-            new CarFeature { Id = 123, CarId = 8, FeatureId = 6 },   
-            new CarFeature { Id = 124, CarId = 8, FeatureId = 7 },   
-            new CarFeature { Id = 125, CarId = 8, FeatureId = 17 },  
-            new CarFeature { Id = 126, CarId = 8, FeatureId = 20 },  
-            new CarFeature { Id = 127, CarId = 8, FeatureId = 21 },  
-            new CarFeature { Id = 128, CarId = 8, FeatureId = 23 },  
-            new CarFeature { Id = 129, CarId = 8, FeatureId = 28 }, 
-            new CarFeature { Id = 130, CarId = 8, FeatureId = 40 }, 
-            new CarFeature { Id = 131, CarId = 8, FeatureId = 41 }, 
-            new CarFeature { Id = 132, CarId = 8, FeatureId = 45 }, 
-            new CarFeature { Id = 133, CarId = 8, FeatureId = 36 }, 
+            new CarFeature { Id = 120, CarId = 8, FeatureId = 1 },
+            new CarFeature { Id = 121, CarId = 8, FeatureId = 3 },
+            new CarFeature { Id = 122, CarId = 8, FeatureId = 5 },
+            new CarFeature { Id = 123, CarId = 8, FeatureId = 6 },
+            new CarFeature { Id = 124, CarId = 8, FeatureId = 7 },
+            new CarFeature { Id = 125, CarId = 8, FeatureId = 17 },
+            new CarFeature { Id = 126, CarId = 8, FeatureId = 20 },
+            new CarFeature { Id = 127, CarId = 8, FeatureId = 21 },
+            new CarFeature { Id = 128, CarId = 8, FeatureId = 23 },
+            new CarFeature { Id = 129, CarId = 8, FeatureId = 28 },
+            new CarFeature { Id = 130, CarId = 8, FeatureId = 40 },
+            new CarFeature { Id = 131, CarId = 8, FeatureId = 41 },
+            new CarFeature { Id = 132, CarId = 8, FeatureId = 45 },
+            new CarFeature { Id = 133, CarId = 8, FeatureId = 36 },
             new CarFeature { Id = 134, CarId = 8, FeatureId = 48 },
 
-            new CarFeature { Id = 135, CarId = 9, FeatureId = 1 },   
-            new CarFeature { Id = 136, CarId = 9, FeatureId = 3 },   
-            new CarFeature { Id = 137, CarId = 9, FeatureId = 5 },   
-            new CarFeature { Id = 138, CarId = 9, FeatureId = 6 },   
-            new CarFeature { Id = 139, CarId = 9, FeatureId = 7 },  
-            new CarFeature { Id = 140, CarId = 9, FeatureId = 9 },   
-            new CarFeature { Id = 141, CarId = 9, FeatureId = 17 },  
-            new CarFeature { Id = 142, CarId = 9, FeatureId = 19 },  
-            new CarFeature { Id = 143, CarId = 9, FeatureId = 20 },  
+            new CarFeature { Id = 135, CarId = 9, FeatureId = 1 },
+            new CarFeature { Id = 136, CarId = 9, FeatureId = 3 },
+            new CarFeature { Id = 137, CarId = 9, FeatureId = 5 },
+            new CarFeature { Id = 138, CarId = 9, FeatureId = 6 },
+            new CarFeature { Id = 139, CarId = 9, FeatureId = 7 },
+            new CarFeature { Id = 140, CarId = 9, FeatureId = 9 },
+            new CarFeature { Id = 141, CarId = 9, FeatureId = 17 },
+            new CarFeature { Id = 142, CarId = 9, FeatureId = 19 },
+            new CarFeature { Id = 143, CarId = 9, FeatureId = 20 },
             new CarFeature { Id = 144, CarId = 9, FeatureId = 21 },
             new CarFeature { Id = 145, CarId = 9, FeatureId = 23 },
-            new CarFeature { Id = 146, CarId = 9, FeatureId = 28 }, 
-            new CarFeature { Id = 147, CarId = 9, FeatureId = 30 }, 
-            new CarFeature { Id = 148, CarId = 9, FeatureId = 31 }, 
-            new CarFeature { Id = 149, CarId = 9, FeatureId = 34 }, 
-            new CarFeature { Id = 150, CarId = 9, FeatureId = 40 }, 
+            new CarFeature { Id = 146, CarId = 9, FeatureId = 28 },
+            new CarFeature { Id = 147, CarId = 9, FeatureId = 30 },
+            new CarFeature { Id = 148, CarId = 9, FeatureId = 31 },
+            new CarFeature { Id = 149, CarId = 9, FeatureId = 34 },
+            new CarFeature { Id = 150, CarId = 9, FeatureId = 40 },
             new CarFeature { Id = 151, CarId = 9, FeatureId = 41 },
-            new CarFeature { Id = 152, CarId = 9, FeatureId = 47 }, 
+            new CarFeature { Id = 152, CarId = 9, FeatureId = 47 },
             new CarFeature { Id = 153, CarId = 9, FeatureId = 48 },
 
-            new CarFeature { Id = 154, CarId = 10, FeatureId = 1 },   
-            new CarFeature { Id = 155, CarId = 10, FeatureId = 3 },   
-            new CarFeature { Id = 156, CarId = 10, FeatureId = 5 },   
-            new CarFeature { Id = 157, CarId = 10, FeatureId = 6 },   
-            new CarFeature { Id = 158, CarId = 10, FeatureId = 7 },  
-            new CarFeature { Id = 159, CarId = 10, FeatureId = 9 },  
-            new CarFeature { Id = 160, CarId = 10, FeatureId = 17 },  
-            new CarFeature { Id = 161, CarId = 10, FeatureId = 19 },  
-            new CarFeature { Id = 162, CarId = 10, FeatureId = 20 },  
-            new CarFeature { Id = 163, CarId = 10, FeatureId = 23 }, 
-            new CarFeature { Id = 164, CarId = 10, FeatureId = 28 }, 
-            new CarFeature { Id = 165, CarId = 10, FeatureId = 30 }, 
-            new CarFeature { Id = 166, CarId = 10, FeatureId = 40 }, 
-            new CarFeature { Id = 167, CarId = 10, FeatureId = 41 }, 
-            new CarFeature { Id = 168, CarId = 10, FeatureId = 45 }, 
-            new CarFeature { Id = 169, CarId = 10, FeatureId = 36 }, 
+            new CarFeature { Id = 154, CarId = 10, FeatureId = 1 },
+            new CarFeature { Id = 155, CarId = 10, FeatureId = 3 },
+            new CarFeature { Id = 156, CarId = 10, FeatureId = 5 },
+            new CarFeature { Id = 157, CarId = 10, FeatureId = 6 },
+            new CarFeature { Id = 158, CarId = 10, FeatureId = 7 },
+            new CarFeature { Id = 159, CarId = 10, FeatureId = 9 },
+            new CarFeature { Id = 160, CarId = 10, FeatureId = 17 },
+            new CarFeature { Id = 161, CarId = 10, FeatureId = 19 },
+            new CarFeature { Id = 162, CarId = 10, FeatureId = 20 },
+            new CarFeature { Id = 163, CarId = 10, FeatureId = 23 },
+            new CarFeature { Id = 164, CarId = 10, FeatureId = 28 },
+            new CarFeature { Id = 165, CarId = 10, FeatureId = 30 },
+            new CarFeature { Id = 166, CarId = 10, FeatureId = 40 },
+            new CarFeature { Id = 167, CarId = 10, FeatureId = 41 },
+            new CarFeature { Id = 168, CarId = 10, FeatureId = 45 },
+            new CarFeature { Id = 169, CarId = 10, FeatureId = 36 },
             new CarFeature { Id = 170, CarId = 10, FeatureId = 48 },
 
             new CarFeature { Id = 171, CarId = 11, FeatureId = 1 },
@@ -537,12 +565,12 @@ new ClassOfCar { Id = 7, Name = "Retro" }
             new CarFeature { Id = 248, CarId = 14, FeatureId = 45 },
             new CarFeature { Id = 249, CarId = 14, FeatureId = 47 },
             new CarFeature { Id = 250, CarId = 14, FeatureId = 48 },
-            new CarFeature { Id = 251, CarId = 14, FeatureId = 36 }, 
-            new CarFeature { Id = 252, CarId = 14, FeatureId = 46 }, 
+            new CarFeature { Id = 251, CarId = 14, FeatureId = 36 },
+            new CarFeature { Id = 252, CarId = 14, FeatureId = 46 },
             new CarFeature { Id = 253, CarId = 14, FeatureId = 42 },
             new CarFeature { Id = 254, CarId = 14, FeatureId = 43 },
-            new CarFeature { Id = 255, CarId = 14, FeatureId = 44 }, 
-            new CarFeature { Id = 256, CarId = 14, FeatureId = 49 }, 
+            new CarFeature { Id = 255, CarId = 14, FeatureId = 44 },
+            new CarFeature { Id = 256, CarId = 14, FeatureId = 49 },
             new CarFeature { Id = 257, CarId = 14, FeatureId = 50 },
 
             new CarFeature { Id = 258, CarId = 15, FeatureId = 1 },
@@ -576,12 +604,12 @@ new ClassOfCar { Id = 7, Name = "Retro" }
             new CarFeature { Id = 285, CarId = 16, FeatureId = 45 },
             new CarFeature { Id = 286, CarId = 16, FeatureId = 47 },
             new CarFeature { Id = 287, CarId = 16, FeatureId = 48 },
-            new CarFeature { Id = 288, CarId = 16, FeatureId = 36 }, 
-            new CarFeature { Id = 289, CarId = 16, FeatureId = 46 }, 
-            new CarFeature { Id = 290, CarId = 16, FeatureId = 42 }, 
-            new CarFeature { Id = 291, CarId = 16, FeatureId = 43 }, 
-            new CarFeature { Id = 292, CarId = 16, FeatureId = 44 }, 
-            new CarFeature { Id = 293, CarId = 16, FeatureId = 49 }, 
+            new CarFeature { Id = 288, CarId = 16, FeatureId = 36 },
+            new CarFeature { Id = 289, CarId = 16, FeatureId = 46 },
+            new CarFeature { Id = 290, CarId = 16, FeatureId = 42 },
+            new CarFeature { Id = 291, CarId = 16, FeatureId = 43 },
+            new CarFeature { Id = 292, CarId = 16, FeatureId = 44 },
+            new CarFeature { Id = 293, CarId = 16, FeatureId = 49 },
             new CarFeature { Id = 294, CarId = 16, FeatureId = 50 },
 
             new CarFeature { Id = 295, CarId = 17, FeatureId = 1 },
@@ -659,13 +687,13 @@ new ClassOfCar { Id = 7, Name = "Retro" }
             new CarFeature { Id = 363, CarId = 21, FeatureId = 45 },
             new CarFeature { Id = 364, CarId = 21, FeatureId = 47 },
             new CarFeature { Id = 365, CarId = 21, FeatureId = 48 },
-            new CarFeature { Id = 366, CarId = 21, FeatureId = 36 }, 
-            new CarFeature { Id = 367, CarId = 21, FeatureId = 46 }, 
+            new CarFeature { Id = 366, CarId = 21, FeatureId = 36 },
+            new CarFeature { Id = 367, CarId = 21, FeatureId = 46 },
             new CarFeature { Id = 368, CarId = 21, FeatureId = 42 },
-            new CarFeature { Id = 369, CarId = 21, FeatureId = 43 }, 
-            new CarFeature { Id = 370, CarId = 21, FeatureId = 44 }, 
-            new CarFeature { Id = 371, CarId = 21, FeatureId = 49 }, 
-            new CarFeature { Id = 372, CarId = 21, FeatureId = 50 }, 
+            new CarFeature { Id = 369, CarId = 21, FeatureId = 43 },
+            new CarFeature { Id = 370, CarId = 21, FeatureId = 44 },
+            new CarFeature { Id = 371, CarId = 21, FeatureId = 49 },
+            new CarFeature { Id = 372, CarId = 21, FeatureId = 50 },
             new CarFeature { Id = 373, CarId = 21, FeatureId = 25 },
 
 
@@ -693,7 +721,7 @@ new ClassOfCar { Id = 7, Name = "Retro" }
      new CType { Id = 10, Name = "Pickup", SeatCapacity = 2 },
      new CType { Id = 11, Name = "Pickup", SeatCapacity = 4 },
      new CType { Id = 12, Name = "Wagon", SeatCapacity = 5 }
-   
+
  );
             modelBuilder.Entity<CarType>().HasData(
                 new CarType { Id = 1, CarId = 1, TypeId = 1 },
@@ -727,6 +755,12 @@ new ClassOfCar { Id = 7, Name = "Retro" }
                 new CarType { Id = 29, CarId = 21, TypeId = 2 },
                 new CarType { Id = 30, CarId = 22, TypeId = 5 }
                 );
+            /* modelBuilder.Entity<Reservation>().HasData(
+                 new Reservation { Id=1,StartDate="",EndDate="",}
+             );*/
+
+
+
 
             base.OnModelCreating(modelBuilder);
         }

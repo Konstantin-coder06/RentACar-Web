@@ -1,8 +1,138 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rentals</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        
+
+        .logo {
+            font-weight: bold;
+        }
+
+
+        .hero {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6)), url('/images/background-index2.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .hero-content {
+            background:  rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            width: 80%; /* По-широко */
+            max-width: 1100px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+            .search-box input {
+                flex-grow: 1; /* Всички input полета да се разширяват */
+                padding: 12px;
+                border: none;
+                border-radius: 5px;
+                font-size: 1rem;
+            }
+
+            .search-box .btn-primary {
+                background-color: #ff5733;
+                border: none;
+                border-radius: 20px;
+                padding: 12px 20px;
+                font-size: 1rem;
+                transition: background-color 0.2s ease;
+                white-space: nowrap; /* За да не се разтяга */
+            }
+        
+            
+
+        .monthly-rentals {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6)), url('/images/back.webp') no-repeat center center/cover;
+            padding: 50px;
+            text-align: left;
+            color: white;
+            margin-top: 50px;
+            border-radius:20px;
+            margin-bottom:20px;
+        }
+        .monthly-rentals h2 {
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .monthly-rentals button {
+            background: #ff5733;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            }
+
+        footer {
+            background: #800000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+           
+        }
+
+    </style>
+</head>
+<body>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Car rentals in Dubai</h1>
+            <p>Wide selection of daily and monthly rentals<br>No deposit for most bookings.<br>24/7 customer support.</p>
+            <div class="search-box">
+
+                <label for="location">Location</label>
+                 <input type="text" id="location" placeholder=" " value="Dubai">  
+                <label for="startDate">From:</label>
+                <input type="date" id="startDate" value="@DateTime.Now.ToString("yyyy-MM-dd")">       
+                <label for="endDate">To:</label>
+                <input type="date" id="endDate" value="@DateTime.Now.AddDays(3).ToString("yyyy-MM-dd")">
+               
+                <a asp-action="Index" asp-controller="Car" class="btn btn-primary">Search</a>
+            </div>
+        </div>
+    </section>
+    <section class="monthly-rentals">
+        <h2>
+            <span>Monthly rentals</span>
+            <span>in Dubai from Fast Drive</span>
+        </h2>
+        <button class="btn-primary">Explore monthly offers</button>
+    </section>
+    <footer>
+        <p>&copy; 2025 FAST DRIVE. All rights reserved.</p>
+    </footer>
+    </body>
+    </html>
