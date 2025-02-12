@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RentACar.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddingRoleCompany : Migration
+    public partial class Some : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -393,14 +393,7 @@ namespace RentACar.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "CarCompanies",
                 columns: new[] { "Id", "Address", "City", "Country", "Description", "Name", "UserId" },
-                values: new object[,]
-                {
-                    { 1, "Sheikh Zayed Road, Dubai", "Dubai", "UAE", "Luxury and sports car rentals in Dubai.", "Dubai Luxury Cars", null },
-                    { 2, "Al Barsha, Dubai", "Dubai", "UAE", "Affordable and premium car rental services.", "Speedy Drive Car Rental", null },
-                    { 3, "Business Bay, Dubai", "Dubai", "UAE", "Exclusive supercar rentals for special occasions.", "Prestige Exotic Car Rental", null },
-                    { 4, "Deira, Dubai", "Dubai", "UAE", "Budget-friendly car rental options.", "Quick Lease Car Rental", null },
-                    { 5, "Downtown Dubai", "Dubai", "UAE", "Wide selection of vehicles from economy to luxury.", "OneClickDrive", null }
-                });
+                values: new object[] { 1, "Sheikh Zayed Road, Dubai", "Dubai", "UAE", "Luxury and sports car rentals in Dubai.", "Dubai Luxury Cars", null });
 
             migrationBuilder.InsertData(
                 table: "ClassOfCars",
@@ -497,27 +490,27 @@ namespace RentACar.DataAccess.Migrations
                 columns: new[] { "Id", "AdditionalMileageCharge", "Available", "Brand", "CarCompanyId", "ClassOfCarId", "Color", "Description", "DriveTrain", "EngineCapacity", "Gearbox", "HorsePower", "MileageLimitForDay", "MileageLimitForWeek", "Model", "PricePerDay", "PricePerWeek", "TopSpeed", "Year", "ZeroToHundred" },
                 values: new object[,]
                 {
-                    { 1, 0.20000000000000001, true, "Toyota", 5, 1, "White", "Compact and fuel-efficient", "Front", 1.6000000000000001, "Automatic", 122, 150.0, 1000.0, "Corolla", 80.0, 450.0, 185.0, 2021, 10.800000000000001 },
-                    { 2, 0.25, true, "Honda", 5, 6, "Black", "Sporty and reliable", "Front", 1.5, "Manual", 205, 200.0, 1200.0, "Civic", 140.0, 600.0, 170.0, 2022, 7.2999999999999998 },
+                    { 1, 0.20000000000000001, true, "Toyota", 1, 1, "White", "Compact and fuel-efficient", "Front", 1.6000000000000001, "Automatic", 122, 150.0, 1000.0, "Corolla", 80.0, 450.0, 185.0, 2021, 10.800000000000001 },
+                    { 2, 0.25, true, "Honda", 1, 6, "Black", "Sporty and reliable", "Front", 1.5, "Manual", 205, 200.0, 1200.0, "Civic", 140.0, 600.0, 170.0, 2022, 7.2999999999999998 },
                     { 3, 0.22, true, "Ford", 1, 3, "Dark Gray", "Comfortable and stylish", "Rear", 2.2999999999999998, "Automatic", 317, 250.0, 1500.0, "Mustang", 200.0, 910.0, 250.0, 2020, 5.7999999999999998 },
                     { 4, 0.5, true, "BMW", 1, 2, "Gray", "Luxury and performance", "Rear", 2.0, "Automatic", 190, 300.0, 2000.0, "420", 250.0, 1000.0, 240.0, 2022, 7.0999999999999996 },
                     { 5, 0.55000000000000004, true, "Mercedes-Benz", 1, 2, "Red", "Premium luxury", "Rear", 3.0, "Automatic", 258, 300.0, 2000.0, "C-Class", 210.0, 850.0, 250.0, 2021, 6.2000000000000002 },
-                    { 6, 1.0, true, "Audi", 2, 3, "Green", "High-performance sports car", "Rear", 5.2000000000000002, "Automatic", 570, 400.0, 2500.0, "R8 Spyder", 750.0, 6400.0, 327.0, 2021, 3.7999999999999998 },
-                    { 7, 1.5, true, "Lamborghini", 2, 3, "Black", "Exotic sports car", "Rear", 5.2000000000000002, "Automatic", 640, 400.0, 3000.0, "Huracan", 1700.0, 9000.0, 310.0, 2023, 3.0 },
+                    { 6, 1.0, true, "Audi", 1, 3, "Green", "High-performance sports car", "Rear", 5.2000000000000002, "Automatic", 570, 400.0, 2500.0, "R8 Spyder", 750.0, 6400.0, 327.0, 2021, 3.7999999999999998 },
+                    { 7, 1.5, true, "Lamborghini", 1, 3, "Black", "Exotic sports car", "Rear", 5.2000000000000002, "Automatic", 640, 400.0, 3000.0, "Huracan", 1700.0, 9000.0, 310.0, 2023, 3.0 },
                     { 8, 1.3, true, "Porsche", 1, 3, "Silver", "Luxury sports car", "Full Wheels", 3.0, "Automatic", 450, 400.0, 3000.0, "911 GT3", 1400.0, 8400.0, 304.0, 2023, 3.7999999999999998 },
-                    { 9, 1.0, true, "Tesla", 3, 5, "White", "Electric luxury sedan", "Rear", 0.0, "Automatic", 1020, 400.0, 2500.0, "Model S Plaid", 350.0, 2100.0, 322.0, 2023, 2.1000000000000001 },
-                    { 10, 2.0, true, "Ferrari", 3, 3, "Red", "Iconic Italian sports car", "Rear", 3.8999999999999999, "Automatic", 720, 400.0, 3000.0, "F8 Spider", 2300.0, 10000.0, 340.0, 2022, 2.8999999999999999 },
-                    { 11, 2.0, true, "Rolls-Royce", 3, 4, "Black", "Ultimate luxury car", "Rear", 6.7999999999999998, "Automatic", 571, 300.0, 2000.0, "Phantom", 1000.0, 7000.0, 250.0, 2021, 5.4000000000000004 },
+                    { 9, 1.0, true, "Tesla", 1, 5, "White", "Electric luxury sedan", "Rear", 0.0, "Automatic", 1020, 400.0, 2500.0, "Model S Plaid", 350.0, 2100.0, 322.0, 2023, 2.1000000000000001 },
+                    { 10, 2.0, true, "Ferrari", 1, 3, "Red", "Iconic Italian sports car", "Rear", 3.8999999999999999, "Automatic", 720, 400.0, 3000.0, "F8 Spider", 2300.0, 10000.0, 340.0, 2022, 2.8999999999999999 },
+                    { 11, 2.0, true, "Rolls-Royce", 1, 4, "Black", "Ultimate luxury car", "Rear", 6.7999999999999998, "Automatic", 571, 300.0, 2000.0, "Phantom", 1000.0, 7000.0, 250.0, 2021, 5.4000000000000004 },
                     { 12, 2.5, true, "Bentley", 1, 4, "Black", "Grand luxury tourer", "Full Wheels", 6.0, "Automatic", 659, 300.0, 2000.0, "Continental GT-GTC", 1300.0, 7600.0, 335.0, 2023, 3.7000000000000002 },
-                    { 13, 2.0, true, "McLaren", 2, 3, "Blue", "Exquisite British engineering", "Rear", 4.0, "Automatic", 720, 400.0, 3000.0, "720S", 1700.0, 8000.0, 341.0, 2023, 2.8999999999999999 },
-                    { 14, 2.0, true, "Aston Martin", 2, 4, "Black", "Luxury British SUV", "Full Wheels", 4.0, "Automatic", 550, 300.0, 2000.0, "DBX", 600.0, 3600.0, 291.0, 2023, 4.5 },
-                    { 15, 1.8, true, "Lexus", 4, 2, "Silver", "Sophisticated luxury SUV", "Full Wheels", 3.5, "Automatic", 415, 300.0, 2000.0, "LX", 500.0, 3000.0, 210.0, 2023, 6.7999999999999998 },
-                    { 16, 2.2000000000000002, true, "Mercedes-Benz", 2, 3, "Orange", "German engineering excellence", "Rear", 4.0, "Automatic", 730, 400.0, 2500.0, "AMG GT", 2500.0, 1100.0, 322.0, 2022, 3.2000000000000002 },
-                    { 17, 1.0, true, "Audi", 5, 4, "Orange", "Luxury SUV", "Full Wheels", 3.0, "Automatic", 340, 300.0, 2000.0, "Q8", 400.0, 2300.0, 250.0, 2021, 5.9000000000000004 },
-                    { 18, 1.5, true, "BMW", 2, 3, "Yellow", "Sporty and agile", "Full Wheels", 3.0, "Automatic", 510, 300.0, 2000.0, "M4", 700.0, 4000.0, 250.0, 2023, 3.7000000000000002 },
-                    { 19, 0.25, true, "Toyota", 2, 6, "Red", "Dependable sedan", "Rear", 2.5, "Automatic", 182, 200.0, 1200.0, "Camry", 130.0, 670.0, 210.0, 2021, 9.9000000000000004 },
-                    { 20, 1.8, true, "Tesla", 3, 5, "Black", "Sophisticated luxury SUV", "Full Wheels", 0.0, "Automatic", 845, 300.0, 2000.0, "Cybertruck", 2000.0, 12000.0, 210.0, 2024, 2.7000000000000002 },
-                    { 21, 1.8, true, "Land Rover", 2, 4, "Black", "Sophisticated luxury SUV", "Full Wheels", 3.0, "Automatic", 360, 300.0, 2000.0, "Range Rover", 1200.0, 7000.0, 209.0, 2023, 6.9000000000000004 },
+                    { 13, 2.0, true, "McLaren", 1, 3, "Blue", "Exquisite British engineering", "Rear", 4.0, "Automatic", 720, 400.0, 3000.0, "720S", 1700.0, 8000.0, 341.0, 2023, 2.8999999999999999 },
+                    { 14, 2.0, true, "Aston Martin", 1, 4, "Black", "Luxury British SUV", "Full Wheels", 4.0, "Automatic", 550, 300.0, 2000.0, "DBX", 600.0, 3600.0, 291.0, 2023, 4.5 },
+                    { 15, 1.8, true, "Lexus", 1, 2, "Silver", "Sophisticated luxury SUV", "Full Wheels", 3.5, "Automatic", 415, 300.0, 2000.0, "LX", 500.0, 3000.0, 210.0, 2023, 6.7999999999999998 },
+                    { 16, 2.2000000000000002, true, "Mercedes-Benz", 1, 3, "Orange", "German engineering excellence", "Rear", 4.0, "Automatic", 730, 400.0, 2500.0, "AMG GT", 2500.0, 1100.0, 322.0, 2022, 3.2000000000000002 },
+                    { 17, 1.0, true, "Audi", 1, 4, "Orange", "Luxury SUV", "Full Wheels", 3.0, "Automatic", 340, 300.0, 2000.0, "Q8", 400.0, 2300.0, 250.0, 2021, 5.9000000000000004 },
+                    { 18, 1.5, true, "BMW", 1, 3, "Yellow", "Sporty and agile", "Full Wheels", 3.0, "Automatic", 510, 300.0, 2000.0, "M4", 700.0, 4000.0, 250.0, 2023, 3.7000000000000002 },
+                    { 19, 0.25, true, "Toyota", 1, 6, "Red", "Dependable sedan", "Rear", 2.5, "Automatic", 182, 200.0, 1200.0, "Camry", 130.0, 670.0, 210.0, 2021, 9.9000000000000004 },
+                    { 20, 1.8, true, "Tesla", 1, 5, "Black", "Sophisticated luxury SUV", "Full Wheels", 0.0, "Automatic", 845, 300.0, 2000.0, "Cybertruck", 2000.0, 12000.0, 210.0, 2024, 2.7000000000000002 },
+                    { 21, 1.8, true, "Land Rover", 1, 4, "Black", "Sophisticated luxury SUV", "Full Wheels", 3.0, "Automatic", 360, 300.0, 2000.0, "Range Rover", 1200.0, 7000.0, 209.0, 2023, 6.9000000000000004 },
                     { 22, 1.8, true, "Toyota", 1, 3, "White", "Sporty and agile", "Rear", 3.0, "Automatic", 340, 300.0, 2000.0, "Supra", 220.0, 1100.0, 262.0, 2022, 4.4000000000000004 }
                 });
 

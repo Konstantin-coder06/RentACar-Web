@@ -12,8 +12,8 @@ using RentACar.DataAccess;
 namespace RentACar.DataAccess.Migrations
 {
     [DbContext(typeof(RentACarDbContext))]
-    [Migration("20250208081930_AddingRoleCompany")]
-    partial class AddingRoleCompany
+    [Migration("20250212105706_AddingCreateTime")]
+    partial class AddingCreateTime
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -412,7 +412,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.20000000000000001,
                             Available = true,
                             Brand = "Toyota",
-                            CarCompanyId = 5,
+                            CarCompanyId = 1,
                             ClassOfCarId = 1,
                             Color = "White",
                             Description = "Compact and fuel-efficient",
@@ -435,7 +435,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.25,
                             Available = true,
                             Brand = "Honda",
-                            CarCompanyId = 5,
+                            CarCompanyId = 1,
                             ClassOfCarId = 6,
                             Color = "Black",
                             Description = "Sporty and reliable",
@@ -527,7 +527,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Audi",
-                            CarCompanyId = 2,
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Green",
                             Description = "High-performance sports car",
@@ -550,7 +550,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.5,
                             Available = true,
                             Brand = "Lamborghini",
-                            CarCompanyId = 2,
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Black",
                             Description = "Exotic sports car",
@@ -596,7 +596,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Tesla",
-                            CarCompanyId = 3,
+                            CarCompanyId = 1,
                             ClassOfCarId = 5,
                             Color = "White",
                             Description = "Electric luxury sedan",
@@ -619,7 +619,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Ferrari",
-                            CarCompanyId = 3,
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Red",
                             Description = "Iconic Italian sports car",
@@ -642,7 +642,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Rolls-Royce",
-                            CarCompanyId = 3,
+                            CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
                             Description = "Ultimate luxury car",
@@ -688,7 +688,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "McLaren",
-                            CarCompanyId = 2,
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Blue",
                             Description = "Exquisite British engineering",
@@ -711,7 +711,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Aston Martin",
-                            CarCompanyId = 2,
+                            CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
                             Description = "Luxury British SUV",
@@ -734,7 +734,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Lexus",
-                            CarCompanyId = 4,
+                            CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Silver",
                             Description = "Sophisticated luxury SUV",
@@ -757,7 +757,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.2000000000000002,
                             Available = true,
                             Brand = "Mercedes-Benz",
-                            CarCompanyId = 2,
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Orange",
                             Description = "German engineering excellence",
@@ -780,7 +780,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Audi",
-                            CarCompanyId = 5,
+                            CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Orange",
                             Description = "Luxury SUV",
@@ -803,7 +803,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.5,
                             Available = true,
                             Brand = "BMW",
-                            CarCompanyId = 2,
+                            CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Yellow",
                             Description = "Sporty and agile",
@@ -826,7 +826,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.25,
                             Available = true,
                             Brand = "Toyota",
-                            CarCompanyId = 2,
+                            CarCompanyId = 1,
                             ClassOfCarId = 6,
                             Color = "Red",
                             Description = "Dependable sedan",
@@ -849,7 +849,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Tesla",
-                            CarCompanyId = 3,
+                            CarCompanyId = 1,
                             ClassOfCarId = 5,
                             Color = "Black",
                             Description = "Sophisticated luxury SUV",
@@ -872,7 +872,7 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Land Rover",
-                            CarCompanyId = 2,
+                            CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
                             Description = "Sophisticated luxury SUV",
@@ -957,42 +957,6 @@ namespace RentACar.DataAccess.Migrations
                             Country = "UAE",
                             Description = "Luxury and sports car rentals in Dubai.",
                             Name = "Dubai Luxury Cars"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Address = "Al Barsha, Dubai",
-                            City = "Dubai",
-                            Country = "UAE",
-                            Description = "Affordable and premium car rental services.",
-                            Name = "Speedy Drive Car Rental"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "Business Bay, Dubai",
-                            City = "Dubai",
-                            Country = "UAE",
-                            Description = "Exclusive supercar rentals for special occasions.",
-                            Name = "Prestige Exotic Car Rental"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Address = "Deira, Dubai",
-                            City = "Dubai",
-                            Country = "UAE",
-                            Description = "Budget-friendly car rental options.",
-                            Name = "Quick Lease Car Rental"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Address = "Downtown Dubai",
-                            City = "Dubai",
-                            Country = "UAE",
-                            Description = "Wide selection of vehicles from economy to luxury.",
-                            Name = "OneClickDrive"
                         });
                 });
 
@@ -4863,6 +4827,9 @@ namespace RentACar.DataAccess.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
@@ -4876,11 +4843,13 @@ namespace RentACar.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("PaidDeliveryPlace")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("TotalPrice")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

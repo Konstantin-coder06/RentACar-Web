@@ -4032,6 +4032,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\RentACar.ad7aimlmm7.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>rf7d3np95x</Fingerprint>
+      <Integrity>GSrj1TA8L7iFAg50p8YpBJ6eEhLV5godQroTgioBPCw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>q232cj5u9l</Fingerprint>
+      <Integrity>EgQTC/x8kP10Amfop5sNOxXqFPDjlQPeTFL3vGQPRRM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\071e50e8-fc7a-43ce-9684-4ac587016e45_mini1.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4067,6 +4103,42 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\0aab9074-22ef-41f9-b05b-675aa6c24cef_aston-vantage-8.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>p48robhh4n</Fingerprint>
+      <Integrity>FyquR8lpremUdtxUb3U5zANv6jIEPrPQBSIUcV16oAU=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>zggxl8cn7x</Fingerprint>
+      <Integrity>XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\138914e6-bd9d-4cf5-abac-aac7d4f2fd38_aston-vantage-4.webp'))">
       <SourceType>Package</SourceType>
@@ -4121,6 +4193,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\15f2dbd1-7d5d-49c7-a799-961f206cad44_aston-vantage-5.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>y7gis2qu7z</Fingerprint>
+      <Integrity>niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\1a3dc7d5-4d2d-4be1-a6c2-534062c28e84_s500-4.webp'))">
       <SourceType>Package</SourceType>
@@ -4194,6 +4284,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\1eb43432-afe9-4b31-85ac-7527698cf8a1_s500-11.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>u4r1m6ehfi</Fingerprint>
+      <Integrity>YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>2nq6jrm6hd</Fingerprint>
+      <Integrity>XuvAsRraruNaTDMsMFn4dhUx1IddLOVSfD+a4xPYwnI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\24963829-7be3-464d-81c1-507818cedba7_s500-3.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4229,6 +4355,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\24f230ca-a582-4b11-bd57-d02a5effcbf4_m8-4.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>fvyrmy461o</Fingerprint>
+      <Integrity>tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2a0f0539-6a7a-46e4-ba33-8abffff08512_aston-vantage-2.webp'))">
       <SourceType>Package</SourceType>
@@ -4284,6 +4428,78 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\2df7b5c9-04be-4988-93f3-00907324292d_aston-vantage-3.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>azeyijshef</Fingerprint>
+      <Integrity>qgGeqTXIW6fIfmdElDkUQ6/5/MBRUCMelmEJiYepKGY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>fvyrmy461o</Fingerprint>
+      <Integrity>tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>5a2ioom26j</Fingerprint>
+      <Integrity>DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>oc79atffjq</Fingerprint>
+      <Integrity>eBve6jl+htVbYVx7hhd3icdHPtq9UIQEef99H0VQZsk=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\4a14b909-c682-493d-9319-a072c5bb46e9_aston-vantage-1.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4301,6 +4517,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\4a14b909-c682-493d-9319-a072c5bb46e9_aston-vantage-1.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>0phiogf5k4</Fingerprint>
+      <Integrity>7E3E0VJcA7++TjCp2+7U+gPLxCnd32nEkZ+FEI6O+oM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\51a4844b-9927-42e8-af61-cf6b3bfe2915_maybach7.webp'))">
       <SourceType>Package</SourceType>
@@ -4356,6 +4590,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\5d4b72f6-79ea-43d9-9851-66934d0e598a_maybach8.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>jxfa1y1eb6</Fingerprint>
+      <Integrity>J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\62bdec00-3c83-41fd-93c6-78e9fd0e8c38_aston-vantage-7.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4410,6 +4662,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\6d1a7ee3-1d94-4ddd-ab6c-73ac0399433e_mini8.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>5a2ioom26j</Fingerprint>
+      <Integrity>DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\6f049137-48a2-40ed-89d7-39bd0e5a2a45_s500-12.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4445,6 +4715,42 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\708ae32c-db02-4e02-9fdc-6bcb70aafdd7_m8-8.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>e6bg5iqf52</Fingerprint>
+      <Integrity>lql1njicDWNuQ+0pH9YfTDSnfUfS4libDUHOOUKBv2U=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>9or9pa5n5b</Fingerprint>
+      <Integrity>WSV2lyLBI2sZiPuSEl919NQKJjTRxvHSNWh2hi8hr5c=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\7e04c1d8-3e34-4260-bc68-79abdcbbd546_mini2.webp'))">
       <SourceType>Package</SourceType>
@@ -4500,6 +4806,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\87bb36a1-db7e-4256-a950-9ef07e2ffacf_maybach1.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>3pn0y08pwk</Fingerprint>
+      <Integrity>CWbLJIQBSePKQjtWXXflokyYyjhfWVXM8a3y2BOaqmk=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>zaujkbvprd</Fingerprint>
+      <Integrity>K/AJG8TMgc9C4rx50bC7sgLgsTXKPt6ZJ2QxuTbAakI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\8f9b7f64-453a-4135-bf73-1bf2144fd989_m8-7.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4517,6 +4859,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\8f9b7f64-453a-4135-bf73-1bf2144fd989_m8-7.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>v3j0xk3s35</Fingerprint>
+      <Integrity>uyFmiAER00FK2hEI5Pf3KxOUg5eH1g1Dgk0EjXgPZ7g=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\97f0ed1c-5c75-4393-b796-98f585e74144_maybach6.webp'))">
       <SourceType>Package</SourceType>
@@ -4590,6 +4950,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\9c2e3284-083f-45f9-a102-ac98db8b7c22_mini7.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>7n7fbe79z7</Fingerprint>
+      <Integrity>jZi9w52S2ISODfoJokhKI5w+FsPhVGeVQC7ms78GXI4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a785493d-234e-442a-b22b-9c4fdde7c229_s500-2.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4608,6 +4986,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a785493d-234e-442a-b22b-9c4fdde7c229_s500-2.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>dz33eqp4p5</Fingerprint>
+      <Integrity>6Ty87qWOdAkm3yOpm4zghh39t9Jo5C4khwKypDIdmV0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a9f1bb0d-b400-415e-84ad-2cb64f198f9d_s500-1.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4625,6 +5021,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\a9f1bb0d-b400-415e-84ad-2cb64f198f9d_s500-1.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>hlpuxsbvop</Fingerprint>
+      <Integrity>Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\b0435bac-0b7d-4838-ba14-4b390cb677d4_s500-9.webp'))">
       <SourceType>Package</SourceType>
@@ -4698,6 +5112,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\be516543-e113-4db8-b81a-dee01c421963_m8-6.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>qnq6cppebz</Fingerprint>
+      <Integrity>ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cd0122cd-4dfe-4c50-addd-2ba4b49ce6d6_maybach9.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4715,6 +5147,96 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cd0122cd-4dfe-4c50-addd-2ba4b49ce6d6_maybach9.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>h8y0w7t6u6</Fingerprint>
+      <Integrity>r2Yg9WbQTGW5z41pLxcyxmneQR7l7Zi9nkqot8wcWzg=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>zggxl8cn7x</Fingerprint>
+      <Integrity>XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>jxfa1y1eb6</Fingerprint>
+      <Integrity>J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>qnq6cppebz</Fingerprint>
+      <Integrity>ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>2xlsrkbn75</Fingerprint>
+      <Integrity>CmeqZoo3QiuDmZS8Dau7yqTnzTHaCZLT2iJzv3uEMuk=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\db3c5d8e-8e0a-4069-9a8d-5b041f250f9d_aston-vantage-9.webp'))">
       <SourceType>Package</SourceType>
@@ -4752,6 +5274,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\e1c1c56f-db8f-408f-9df5-cf468cb171e4_mini3.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>hlpuxsbvop</Fingerprint>
+      <Integrity>Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\e30867c2-86c2-4385-aeb3-88d54770f159_m8-2.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4788,6 +5328,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\eb289f1a-f2d6-4a85-b8a9-650b4a1feb7d_s500-5.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>u4r1m6ehfi</Fingerprint>
+      <Integrity>YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>2hvh1wtnwq</Fingerprint>
+      <Integrity>lmqvjwgHy/Ubkdz009ze966E3Gtv+rc/+x7JuzzrwSI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f2a7689f-5fc3-4177-99b6-7e6564f16dd5_s500-7.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4806,6 +5382,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f2a7689f-5fc3-4177-99b6-7e6564f16dd5_s500-7.webp'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>mc0z8t4dz5</Fingerprint>
+      <Integrity>hgi3I1G3L+t20Xu35MO5LZjt7hSrtwj3EwgeubFzqzA=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>yiykkahcu8</Fingerprint>
+      <Integrity>yvdCfcRdS4gfYsGBLuQPyH5Q4rLS05VwSGzk58tuAKo=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f5ce3c2b-06e2-4f22-82cd-4196398a0e28_mini6.webp'))">
       <SourceType>Package</SourceType>
       <SourceId>RentACar</SourceId>
@@ -4823,6 +5435,42 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f5ce3c2b-06e2-4f22-82cd-4196398a0e28_mini6.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>fgwdip8wuw</Fingerprint>
+      <Integrity>cUQws3itAHjFRKZTrTI7amXGjc7ooCAk6/JOtmrx1+o=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>uploads/fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>y7gis2qu7z</Fingerprint>
+      <Integrity>niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\fbcc314d-23dd-4e5c-bffd-562b3a786309_m8-1.webp'))">
       <SourceType>Package</SourceType>

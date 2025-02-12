@@ -121,7 +121,44 @@
     }
     
 </style>
+<style>
+    .details-section {
+        background: #ffffff;
+        border-radius: 8px;
+        padding: 0 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        flex:1;
+    }
 
+        .details-section h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+    .form-check {
+        margin-bottom: 0.8rem;
+    }
+
+    .form-check-label {
+        font-size: 1rem;
+        color: #444;
+    }
+
+    #addressInput {
+        display: none;
+        margin-top: 1rem;
+    }
+
+    #streetAddress {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+</style>
+@model CarWithImages
 <div class="booking-layout">
     <!-- Left Carousel Section -->
     <div class="carousel-section">
@@ -160,25 +197,86 @@
 
     <!-- Right Details Section -->
     <div class="details-section">
-        <div class="card-body">
-            <h5 class="card-title">@Model.Car.Brand @Model.Car.Model @Model.Car.Year</h5>
-            <p class="card-text">
-                @Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
-            </p>
+        <h4>Избор на получаване</h4>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="IsSelfPick" type="radio" name="pickUpOption" id="selfPick" value="self" checked>
+            <label class="form-check-label" asp-for="IsSelfPick" >
+                Self Pick (от нашия офис)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input"  type="radio" name="pickUpOption" id="customAddress" value="custom">
+            <label class="form-check-label"  >
+                Доставка до адрес
+            </label>
+        </div>
 
-            <div class="price-container">
-                <div class="price-text">
-                    <h3 class="price-day">@Model.Car.PricePerDay BGN / на ден</h3>
-                    <p class="price-week">@Model.Car.PricePerWeek BGN / на седмица</p>
-                </div>
-            </div>
+        <div id="addressInput">
+            <label asp-for="CustomAddress">Адрес:</label>
+            <input type="text" asp-for="CustomAddress" id="streetAddress" placeholder="Въведете адрес">
+        </div>
 
-            <ul class="features-list">
-                <li><i class="fas fa-check-circle text-success"></i> Instant confirmation</li>
-                <li><i class="fas fa-check-circle text-success"></i> Free cancellation</li>
-                <li><i class="fas fa-check-circle text-success"></i> Verified vehicle</li>
-            </ul>
+        <h4 style="margin-top: 2rem;">Място за връщане</h4>
+        <div class="form-check">
+            <input class="form-check-input" asp-for="IsReturningBackAtSamePlace" type="radio" name="returnOption" id="returnSameLocation" value="same" >
+            <label class="form-check-label" asp-for="IsReturningBackAtSamePlace">
+                Връщане на същото място
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="returnOption" id="returnOffice" value="office" checked>
+            <label class="form-check-label" for="returnOffice">
+                Връщане в офис
+            </label>
+        </div>
+        <div class="butoon">
+            <button type="submit" class="btn btn-primary">Book now </button>
         </div>
     </div>
-</div>
+    
+    <script>
+        function initAutocomplete() {
+            const streetAddress = document.getElementById("streetAddress");
+            const autocomplete = new google.maps.places.Autocomplete(streetAddress, {
+                types: ["geocode"],
+                componentRestrictions: { country: "BG" }
+            });
+        }
 
+        document.addEventListener("DOMContentLoaded", function () {
+            const pickUpOptions = document.getElementsByName("pickUpOption");
+            const addressInput = document.getElementById("addressInput");
+
+            pickUpOptions.forEach(option => {
+                option.addEventListener("change", function () {
+                    if (this.value === "custom") {
+                        addressInput.style.display = "block";
+                    } else {
+                        addressInput.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
+</div>
+<!--  <div class="card-body">
+    <h5 class="card-title">@Model.Car.Brand @Model.Car.Model @Model.Car.Year</h5>
+    <p class="card-text">
+@Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
+    </p>
+
+    <div class="price-container">
+        <div class="price-text">
+            <h3 class="price-day">@Model.Car.PricePerDay BGN / на ден</h3>
+            <p class="price-week">@Model.Car.PricePerWeek BGN / на седмица</p>
+        </div>
+    </div>
+
+    <ul class="features-list">
+        <li><i class="fas fa-check-circle text-success"></i> Instant confirmation</li>
+        <li><i class="fas fa-check-circle text-success"></i> Free cancellation</li>
+        <li><i class="fas fa-check-circle text-success"></i> Verified vehicle</li>
+    </ul>
+</div>-->

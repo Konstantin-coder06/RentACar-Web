@@ -47,6 +47,11 @@ namespace RentACar.Core.Services
             throw new NotImplementedException();
         }
 
+        public CarCompany GetByUserId(string id)
+        {
+           return carCompanyRepository.FindOne(x=>x.UserId== id);
+        }
+
         public void Save()
         {
             carCompanyRepository.Save();

@@ -13,21 +13,75 @@ namespace RentACar.Controllers
         ICarService carService;
         IImageService imageService;
         IClassOfCarService classOfCarService;
+        IReservationService reservationService;
+        ICustomerService customerService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AdminController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService, IWebHostEnvironment webHostEnvironment)
+        public AdminController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, ICustomerService customerService, IWebHostEnvironment webHostEnvironment)
         {
             this.carService = _carService;
             this.imageService = _imageService;
             this.classOfCarService = _classOfCarService;
+            this.reservationService = reservationService;
+            this.customerService = customerService;
             _webHostEnvironment = webHostEnvironment;
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            return View();
+            var reservationedCars=reservationService.GetAll().ToList();
+            var cars=new List<Car>();
+            var customers=new List<Customer>();
+            var last24Hours = DateTime.Now.AddDays(-1);
+            var lastMounth=DateTime.Now.AddDays(-30);
+            var resCarsForLast24Hours = reservationService
+        .GetAll()
+        .Where(x => x.CreateTime >= last24Hours)
+        .ToList();
+            var resCarsForLastMounth=reservationService.GetAll().Where(x=>x.CreateTime >= lastMounth).ToList();
+            int total24Hours = 0;
+            int totalMounth = 0;
+            int count = 0;
+            foreach (var carx in reservationedCars)
+            {
+                var car = carService.FindOne(x => x.Id == carx.CarId);
+                cars.Add(car);
+                var customer=customerService.FindOne(x=>x.Id == carx.CustomerId);
+                customers.Add(customer);
+                
+               
+            }
+            foreach(var x in resCarsForLast24Hours)
+            {
+                total24Hours += x.TotalPrice;
+            }
+            foreach(var x in resCarsForLastMounth)
+            {
+                totalMounth += x.TotalPrice;
+                count++;
+            }
+            RecentReservation recentReservationViewModel = new RecentReservation()
+            {
+                Cars = cars,
+                Customers = customers,
+                TotalPriceForLast24Hours = total24Hours,
+                TotalPriceForLastMounth = totalMounth,
+                Count=count,
+            };
+            
+            return View(recentReservationViewModel);
         }
-        [Authorize(Roles = "Admin")]
+
+
+        [Authorize(Roles = "Company")]
         public IActionResult AddCar()
         {
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+
+            if (!companyId.HasValue)
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+
             var viewModel = new AddingCarWithImagesViewModel
             {
                 ClassOptions = new SelectList(classOfCarService.GetAll().ToList(), "Id", "Name")
@@ -38,21 +92,26 @@ namespace RentACar.Controllers
         // POST: Car/AddCar
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Company")]
         public async Task<IActionResult> AddCar(AddingCarWithImagesViewModel viewModel)
         {
-            // Re-fetch class options for the dropdown in case the model is invalid
             viewModel.ClassOptions = new SelectList(classOfCarService.GetAll().ToList(), "Id", "Name");
-            // Validate view model
+
             if (!ModelState.IsValid)
             {
-
                 return View(viewModel);
+            }
+
+            // Вземаме CompanyId от сесията
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+
+            if (!companyId.HasValue)
+            {
+                return RedirectToAction("AccessDenied", "Account");
             }
 
             try
             {
-                // Map the viewModel directly to a Car object
                 var car = new Car
                 {
                     Brand = viewModel.Brand,
@@ -73,30 +132,26 @@ namespace RentACar.Controllers
                     ZeroToHundred = viewModel.ZeroToHundred,
                     TopSpeed = viewModel.TopSpeed,
                     ClassOfCarId = viewModel.ClassOfCarId,
-                    CarCompanyId = 1
+                    CarCompanyId = companyId.Value // Взето от сесията
                 };
 
-                // Save the car object
                 carService.Add(car);
                 carService.Save();
 
-                // Process images if provided
                 if (viewModel.Images?.Count > 0)
                 {
                     await imageService.ProcessImages(viewModel.Images, car.Id);
                 }
 
-                return RedirectToAction("Index","Car");
+                return RedirectToAction("Index", "Car");
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Error saving car. Please try again." + ex.Message);
+                ModelState.AddModelError("", "Error saving car. Please try again. " + ex.Message);
                 return View(viewModel);
             }
+
+
         }
-
-       
-
-         
     }
 }

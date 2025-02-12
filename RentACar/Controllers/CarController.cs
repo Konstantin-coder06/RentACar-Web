@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.Models;
@@ -15,19 +16,27 @@ namespace RentACar.Controllers
         ICarService carService;
         IImageService imageService;
         IClassOfCarService classOfCarService;
+        IReservationService reservationService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService, IWebHostEnvironment webHostEnvironment)
+        public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IWebHostEnvironment webHostEnvironment)
         {
             this.carService = _carService;
             this.imageService = _imageService;
             this.classOfCarService = _classOfCarService;
+            this.reservationService = reservationService;
             _webHostEnvironment = webHostEnvironment;
         }
+     
         public IActionResult Index()
-        {
-            var cars = carService.GetAll().ToList();
+        { 
 
-
+ 
+            var startDay = TempData["StartDay"] as DateTime?;
+            var endDay = TempData["EndDay"] as DateTime?;
+            List<Reservation> reservations = reservationService.FindAll(x => x.StartDate >= startDay && x.StartDate <=endDay).ToList();
+            var cars = carService.GetAll()
+                                 .Where(car => reservations.All(r => r.CarId != car.Id))
+                                 .ToList();
             var carsWithImages = cars.Select(car => new CarWithImages
             {
                 Car = car,
@@ -124,6 +133,13 @@ namespace RentACar.Controllers
         }
         public IActionResult Reservation(int id)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+
+            if (!userId.HasValue)
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+
             var car = carService.FindOne(x => x.Id == id);
             var carWithImages = new CarWithImages
             {
@@ -134,8 +150,37 @@ namespace RentACar.Controllers
 
             return View(carWithImages);
         }
-       
-      
+        [HttpPost]
+        public IActionResult Reservation(CarWithImages carWithImages)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = HttpContext.Session.GetInt32("UserId");
 
+                if (!userId.HasValue)
+                {
+                    return RedirectToAction("AccessDenied", "Account");
+                }
+                if (carWithImages.IsSelfPick == true)
+                {
+
+
+                    Reservation reservation = new Reservation()
+                    {
+                        StartDate = DateTime.Now,
+                        EndDate = DateTime.Now.AddDays(3),
+                        IsSelfPick = carWithImages.IsSelfPick,
+                        PaidDeliveryPlace = carWithImages.CustomAddress,
+                        IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
+                        CarId = carWithImages.Car.Id,
+                        CustomerId = userId.Value
+                    };
+                    reservationService.Add(reservation);
+                    reservationService.Save();
+                    return RedirectToAction("Index", "Car");
+                }
+            }
+            return View(carWithImages);
+        }
     }
 }

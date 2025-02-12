@@ -20,7 +20,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RentACarDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("RentACar.DataAccess")));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<RentACarDbContext>().AddDefaultTokenProviders();
 builder.Services.AddRazorPages();
-
+builder.Services.AddSession();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddScoped<ICarCompanyService, CarCompanyService>();
 builder.Services.AddScoped<ICarService, CarService>();
@@ -68,7 +68,7 @@ using (var scope = app.Services.CreateScope())
     await CreateAdmin(services);
 }
 
-
+app.UseSession();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();

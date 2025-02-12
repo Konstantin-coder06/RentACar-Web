@@ -16,6 +16,9 @@ namespace RentACar.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         ICarCompanyService carCompanyService;
         ICustomerService customerService;
+        public bool IsRegisterCompany {  get; set; }
+        public bool IsLoginCompany { get; set; }
+        public int CompanyId {  get; set; }
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, ICarCompanyService carCompanyService,ICustomerService customerService)
         {
             this.customerService = customerService;
@@ -37,9 +40,32 @@ namespace RentACar.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    if (user != null && await _userManager.IsInRoleAsync(user, "Company"))
+                    {
+                        
+                        var company = carCompanyService.GetByUserId(user.Id);
+                        if (company != null)
+                        {
+                            HttpContext.Session.SetInt32("CompanyId", company.Id);
+                        }
+                    }
+                    if(user!=null && await _userManager.IsInRoleAsync(user, "User"))
+                    {
+                        var userCustomer = carCompanyService.GetByUserId(user.Id);
+                        if (userCustomer != null)
+                        {
+                            HttpContext.Session.SetInt32("UserId", userCustomer.Id);
+                        }
+                    }
+                    if (model.Email== "admin@admin.com"&& model.Password== "AdminPassword123!")
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Invalid login attempt.");
@@ -65,10 +91,19 @@ namespace RentACar.Controllers
                     var company = new CarCompany
                     {
                         Name = model.CompanyName,
+                        Description = model.Description,
+                        City = model.City,
+                        Country = model.Country,
+                        Address = model.Address,
                         UserId = user.Id,
                     };
                     carCompanyService.Add(company);
                     carCompanyService.Save();
+                    IsRegisterCompany = true;
+                    CompanyId = company.Id;
+                   
+                        HttpContext.Session.SetInt32("CompanyId", company.Id);
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 // При грешка при създаването на потребител
@@ -99,6 +134,7 @@ namespace RentACar.Controllers
                     };              
                     customerService.Add(customer);
                     customerService.Save();
+                    HttpContext.Session.SetInt32("UserId", customer.Id);
                     return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)

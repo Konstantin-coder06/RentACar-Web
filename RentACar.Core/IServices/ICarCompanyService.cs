@@ -10,5 +10,6 @@ namespace RentACar.Core.IServices
 {
     public interface ICarCompanyService:IRepository<CarCompany>
     {
+        CarCompany GetByUserId(string id);
     }
 }

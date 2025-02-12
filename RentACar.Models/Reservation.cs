@@ -17,19 +17,21 @@ namespace RentACar.Models
         [Required]
         public DateTime EndDate { get; set; }
         [Required]
-        public bool IsSelfPick {  get; set; }
+        public bool IsSelfPick { get; set; }
+
+        public string? PaidDeliveryPlace { get; set; }
         [Required]
-        public string PaidDeliveryPlace {  get; set; }
+        public bool IsReturnBackAtSamePlace { get; set; }
         [Required]
-        public bool IsReturnBackAtSamePlace {  get; set; }
-        [Required]
-        public int CarId {  get; set; }
+        public int CarId { get; set; }
         public Car Car { get; set; }
-        
-        public int CustomerId {  get; set; }
+        [Required]
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
-
-    
+        [Required]
+        public int TotalPrice { get; set; }
+        [Required]
+        public DateTime CreateTime { get; set; }
     }
 }

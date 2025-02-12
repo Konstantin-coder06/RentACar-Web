@@ -105,8 +105,10 @@
 
     </style>
 </head>
+@model StartEndDateViewModel
 <body>
-    
+    <form asp-action="Index" asp-controller="Home" method="post">
+       
     <section class="hero">
         <div class="hero-content">
             <h1>Car rentals in Dubai</h1>
@@ -115,15 +117,46 @@
 
                 <label for="location">Location</label>
                  <input type="text" id="location" placeholder=" " value="Dubai">  
-                <label for="startDate">From:</label>
-                <input type="date" id="startDate" value="@DateTime.Now.ToString("yyyy-MM-dd")">       
-                <label for="endDate">To:</label>
-                <input type="date" id="endDate" value="@DateTime.Now.AddDays(3).ToString("yyyy-MM-dd")">
+                <label asp-for="StartDay">From:</label>
+                <input asp-for="StartDay" type="date" id="startDate" value="@DateTime.Now.ToString("yyyy-MM-dd")">       
+                <label asp-for="EndDay">To:</label>
+                <input asp-for="EndDay" type="date" id="endDate" value="@DateTime.Now.AddDays(3).ToString("yyyy-MM-dd")">
                
-                <a asp-action="Index" asp-controller="Car" class="btn btn-primary">Search</a>
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </div>
     </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var startDateInput = document.getElementById("startDate");
+                var endDateInput = document.getElementById("endDate");
+                var searchButton = document.querySelector(".btn.btn-primary");
+                var errorMessage = document.createElement("p");
+
+                errorMessage.style.color = "red";
+                errorMessage.style.display = "none";
+                errorMessage.textContent = "The start date must be earlier than the end date.";
+                searchButton.parentNode.insertBefore(errorMessage, searchButton);
+
+                function validateDates() {
+                    var startDate = new Date(startDateInput.value);
+                    var endDate = new Date(endDateInput.value);
+
+                    if (startDate >= endDate) {
+                        errorMessage.style.display = "block";
+                        searchButton.disabled = true; // Деактивира бутона
+                    } else {
+                        errorMessage.style.display = "none";
+                        searchButton.disabled = false; // Активира бутона
+                    }
+                }
+
+                startDateInput.addEventListener("input", validateDates);
+                endDateInput.addEventListener("input", validateDates);
+            });
+        </script>
+
+    </form>
     <section class="monthly-rentals">
         <h2>
             <span>Monthly rentals</span>

@@ -134,6 +134,13 @@
             background-color: #e65a5a;
         }
 </style>
+
+<form>
+    <div>
+        <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        <input type="date" value="@DateTime.Now.AddDays(3).ToString("yyyy-MM-dd")" />
+    </div>
+</form>
 <form asp-action="Search" method="post" class="search-container">
     <div class="input-group">
         <span class="search-icon">🔍</span>

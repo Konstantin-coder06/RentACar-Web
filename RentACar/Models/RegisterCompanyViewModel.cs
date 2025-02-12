@@ -14,5 +14,13 @@ namespace RentACar.Models
 
         [Required]
         public string CompanyName { get; set; }
+        [Required]
+        public string Description {  get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string Country {  get; set; }
+        [Required]
+        public string Address {  get; set; }
     }
 }

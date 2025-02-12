@@ -47,7 +47,7 @@ namespace RentACar.DataAccess.IRepository.Repository
 
         public T FindOne(Expression<Func<T, bool>> predicate)
         {
-            return dbSet.Where(predicate).FirstOrDefault();
+            return dbSet.FirstOrDefault(predicate);
         }
 
         public IEnumerable<T> GetAll()

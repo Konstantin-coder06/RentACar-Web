@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dwLog53bkfmnk5SZ4AB8uZXUkV2CflOvZ3NookrJ/PM=",
+  "Hash": "TeZanIGqzAmZaS+ndBaSr8zLgk8+NvbotNRNY8YckSw=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -6002,6 +6002,48 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/036bc54d-80b7-4807-999f-0a0d00151f19_s500-6#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rf7d3np95x",
+      "Integrity": "GSrj1TA8L7iFAg50p8YpBJ6eEhLV5godQroTgioBPCw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/06765e41-ebb4-430d-a456-1948eddfabce_s500-9#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "q232cj5u9l",
+      "Integrity": "EgQTC/x8kP10Amfop5sNOxXqFPDjlQPeTFL3vGQPRRM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\071e50e8-fc7a-43ce-9684-4ac587016e45_mini1.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6042,6 +6084,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\0aab9074-22ef-41f9-b05b-675aa6c24cef_aston-vantage-8.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p48robhh4n",
+      "Integrity": "FyquR8lpremUdtxUb3U5zANv6jIEPrPQBSIUcV16oAU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "zggxl8cn7x",
+      "Integrity": "XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\138914e6-bd9d-4cf5-abac-aac7d4f2fd38_aston-vantage-4.webp",
@@ -6105,6 +6189,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\15f2dbd1-7d5d-49c7-a799-961f206cad44_aston-vantage-5.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y7gis2qu7z",
+      "Integrity": "niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\1a3dc7d5-4d2d-4be1-a6c2-534062c28e84_s500-4.webp",
@@ -6191,6 +6296,48 @@
       "OriginalItemSpec": "wwwroot\\uploads\\1eb43432-afe9-4b31-85ac-7527698cf8a1_s500-11.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u4r1m6ehfi",
+      "Integrity": "YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2nq6jrm6hd",
+      "Integrity": "XuvAsRraruNaTDMsMFn4dhUx1IddLOVSfD+a4xPYwnI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\24963829-7be3-464d-81c1-507818cedba7_s500-3.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6231,6 +6378,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\24f230ca-a582-4b11-bd57-d02a5effcbf4_m8-4.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fvyrmy461o",
+      "Integrity": "tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\2a0f0539-6a7a-46e4-ba33-8abffff08512_aston-vantage-2.webp",
@@ -6296,6 +6464,90 @@
       "OriginalItemSpec": "wwwroot\\uploads\\2df7b5c9-04be-4988-93f3-00907324292d_aston-vantage-3.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "azeyijshef",
+      "Integrity": "qgGeqTXIW6fIfmdElDkUQ6/5/MBRUCMelmEJiYepKGY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fvyrmy461o",
+      "Integrity": "tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/4054d45f-1867-49aa-af7c-80176895c201_m8-4#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5a2ioom26j",
+      "Integrity": "DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "oc79atffjq",
+      "Integrity": "eBve6jl+htVbYVx7hhd3icdHPtq9UIQEef99H0VQZsk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\4a14b909-c682-493d-9319-a072c5bb46e9_aston-vantage-1.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6315,6 +6567,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\4a14b909-c682-493d-9319-a072c5bb46e9_aston-vantage-1.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0phiogf5k4",
+      "Integrity": "7E3E0VJcA7++TjCp2+7U+gPLxCnd32nEkZ+FEI6O+oM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\51a4844b-9927-42e8-af61-cf6b3bfe2915_maybach7.webp",
@@ -6380,6 +6653,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\5d4b72f6-79ea-43d9-9851-66934d0e598a_maybach8.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jxfa1y1eb6",
+      "Integrity": "J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\62bdec00-3c83-41fd-93c6-78e9fd0e8c38_aston-vantage-7.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6443,6 +6737,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\6d1a7ee3-1d94-4ddd-ab6c-73ac0399433e_mini8.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5a2ioom26j",
+      "Integrity": "DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\6f049137-48a2-40ed-89d7-39bd0e5a2a45_s500-12.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6483,6 +6798,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\708ae32c-db02-4e02-9fdc-6bcb70aafdd7_m8-8.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e6bg5iqf52",
+      "Integrity": "lql1njicDWNuQ+0pH9YfTDSnfUfS4libDUHOOUKBv2U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "9or9pa5n5b",
+      "Integrity": "WSV2lyLBI2sZiPuSEl919NQKJjTRxvHSNWh2hi8hr5c=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\7e04c1d8-3e34-4260-bc68-79abdcbbd546_mini2.webp",
@@ -6548,6 +6905,48 @@
       "OriginalItemSpec": "wwwroot\\uploads\\87bb36a1-db7e-4256-a950-9ef07e2ffacf_maybach1.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3pn0y08pwk",
+      "Integrity": "CWbLJIQBSePKQjtWXXflokyYyjhfWVXM8a3y2BOaqmk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "zaujkbvprd",
+      "Integrity": "K/AJG8TMgc9C4rx50bC7sgLgsTXKPt6ZJ2QxuTbAakI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\8f9b7f64-453a-4135-bf73-1bf2144fd989_m8-7.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6567,6 +6966,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\8f9b7f64-453a-4135-bf73-1bf2144fd989_m8-7.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/956a0de4-fb58-423c-a686-4d03188dc37c_s500-10#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "v3j0xk3s35",
+      "Integrity": "uyFmiAER00FK2hEI5Pf3KxOUg5eH1g1Dgk0EjXgPZ7g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\97f0ed1c-5c75-4393-b796-98f585e74144_maybach6.webp",
@@ -6653,6 +7073,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\9c2e3284-083f-45f9-a102-ac98db8b7c22_mini7.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7n7fbe79z7",
+      "Integrity": "jZi9w52S2ISODfoJokhKI5w+FsPhVGeVQC7ms78GXI4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a785493d-234e-442a-b22b-9c4fdde7c229_s500-2.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6674,6 +7115,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\a785493d-234e-442a-b22b-9c4fdde7c229_s500-2.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dz33eqp4p5",
+      "Integrity": "6Ty87qWOdAkm3yOpm4zghh39t9Jo5C4khwKypDIdmV0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a9f1bb0d-b400-415e-84ad-2cb64f198f9d_s500-1.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6693,6 +7155,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\a9f1bb0d-b400-415e-84ad-2cb64f198f9d_s500-1.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hlpuxsbvop",
+      "Integrity": "Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\b0435bac-0b7d-4838-ba14-4b390cb677d4_s500-9.webp",
@@ -6779,6 +7262,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\be516543-e113-4db8-b81a-dee01c421963_m8-6.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qnq6cppebz",
+      "Integrity": "ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\cd0122cd-4dfe-4c50-addd-2ba4b49ce6d6_maybach9.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6798,6 +7302,111 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\cd0122cd-4dfe-4c50-addd-2ba4b49ce6d6_maybach9.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "h8y0w7t6u6",
+      "Integrity": "r2Yg9WbQTGW5z41pLxcyxmneQR7l7Zi9nkqot8wcWzg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "zggxl8cn7x",
+      "Integrity": "XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/d73aa1bf-49c1-4780-a766-757919b10159_m8-2#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jxfa1y1eb6",
+      "Integrity": "J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qnq6cppebz",
+      "Integrity": "ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2xlsrkbn75",
+      "Integrity": "CmeqZoo3QiuDmZS8Dau7yqTnzTHaCZLT2iJzv3uEMuk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\db3c5d8e-8e0a-4069-9a8d-5b041f250f9d_aston-vantage-9.webp",
@@ -6842,6 +7451,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\e1c1c56f-db8f-408f-9df5-cf468cb171e4_mini3.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hlpuxsbvop",
+      "Integrity": "Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\e30867c2-86c2-4385-aeb3-88d54770f159_m8-2.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6884,6 +7514,48 @@
       "OriginalItemSpec": "wwwroot\\uploads\\eb289f1a-f2d6-4a85-b8a9-650b4a1feb7d_s500-5.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u4r1m6ehfi",
+      "Integrity": "YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2hvh1wtnwq",
+      "Integrity": "lmqvjwgHy/Ubkdz009ze966E3Gtv+rc/+x7JuzzrwSI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f2a7689f-5fc3-4177-99b6-7e6564f16dd5_s500-7.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6905,6 +7577,48 @@
       "OriginalItemSpec": "wwwroot\\uploads\\f2a7689f-5fc3-4177-99b6-7e6564f16dd5_s500-7.webp"
     },
     {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mc0z8t4dz5",
+      "Integrity": "hgi3I1G3L+t20Xu35MO5LZjt7hSrtwj3EwgeubFzqzA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "yiykkahcu8",
+      "Integrity": "yvdCfcRdS4gfYsGBLuQPyH5Q4rLS05VwSGzk58tuAKo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp"
+    },
+    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f5ce3c2b-06e2-4f22-82cd-4196398a0e28_mini6.webp",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -6924,6 +7638,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\f5ce3c2b-06e2-4f22-82cd-4196398a0e28_mini6.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fgwdip8wuw",
+      "Integrity": "cUQws3itAHjFRKZTrTI7amXGjc7ooCAk6/JOtmrx1+o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "uploads/fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "y7gis2qu7z",
+      "Integrity": "niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\fbcc314d-23dd-4e5c-bffd-562b3a786309_m8-1.webp",
@@ -27640,6 +28396,170 @@
       ]
     },
     {
+      "Route": "uploads/036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.rf7d3np95x.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94586"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GSrj1TA8L7iFAg50p8YpBJ6eEhLV5godQroTgioBPCw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rf7d3np95x"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GSrj1TA8L7iFAg50p8YpBJ6eEhLV5godQroTgioBPCw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\036bc54d-80b7-4807-999f-0a0d00151f19_s500-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94586"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GSrj1TA8L7iFAg50p8YpBJ6eEhLV5godQroTgioBPCw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GSrj1TA8L7iFAg50p8YpBJ6eEhLV5godQroTgioBPCw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/06765e41-ebb4-430d-a456-1948eddfabce_s500-9.q232cj5u9l.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70548"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EgQTC/x8kP10Amfop5sNOxXqFPDjlQPeTFL3vGQPRRM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q232cj5u9l"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EgQTC/x8kP10Amfop5sNOxXqFPDjlQPeTFL3vGQPRRM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\06765e41-ebb4-430d-a456-1948eddfabce_s500-9.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70548"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EgQTC/x8kP10Amfop5sNOxXqFPDjlQPeTFL3vGQPRRM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EgQTC/x8kP10Amfop5sNOxXqFPDjlQPeTFL3vGQPRRM="
+        }
+      ]
+    },
+    {
       "Route": "uploads/071e50e8-fc7a-43ce-9684-4ac587016e45_mini1.nhujh5x9ax.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\071e50e8-fc7a-43ce-9684-4ac587016e45_mini1.webp",
       "Selectors": [],
@@ -27800,6 +28720,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-FyquR8lpremUdtxUb3U5zANv6jIEPrPQBSIUcV16oAU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.p48robhh4n.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34274"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FyquR8lpremUdtxUb3U5zANv6jIEPrPQBSIUcV16oAU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p48robhh4n"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FyquR8lpremUdtxUb3U5zANv6jIEPrPQBSIUcV16oAU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34274"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FyquR8lpremUdtxUb3U5zANv6jIEPrPQBSIUcV16oAU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FyquR8lpremUdtxUb3U5zANv6jIEPrPQBSIUcV16oAU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84508"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.zggxl8cn7x.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84508"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zggxl8cn7x"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/0edcfdbd-e0e8-4c72-9110-d5168bfefa5f_m8-1.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs="
         }
       ]
     },
@@ -28046,6 +29130,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-eBve6jl+htVbYVx7hhd3icdHPtq9UIQEef99H0VQZsk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "68128"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.y7gis2qu7z.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "68128"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y7gis2qu7z"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/17a8a54a-cbda-4329-be9d-ea28d64d071c_m8-5.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac="
         }
       ]
     },
@@ -28378,6 +29544,170 @@
       ]
     },
     {
+      "Route": "uploads/209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.u4r1m6ehfi.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "80812"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u4r1m6ehfi"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "80812"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.2nq6jrm6hd.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122392"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XuvAsRraruNaTDMsMFn4dhUx1IddLOVSfD+a4xPYwnI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2nq6jrm6hd"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XuvAsRraruNaTDMsMFn4dhUx1IddLOVSfD+a4xPYwnI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122392"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XuvAsRraruNaTDMsMFn4dhUx1IddLOVSfD+a4xPYwnI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XuvAsRraruNaTDMsMFn4dhUx1IddLOVSfD+a4xPYwnI="
+        }
+      ]
+    },
+    {
       "Route": "uploads/24963829-7be3-464d-81c1-507818cedba7_s500-3.2hvh1wtnwq.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\24963829-7be3-464d-81c1-507818cedba7_s500-3.webp",
       "Selectors": [],
@@ -28538,6 +29868,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.fvyrmy461o.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73996"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fvyrmy461o"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73996"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc="
         }
       ]
     },
@@ -28788,6 +30200,334 @@
       ]
     },
     {
+      "Route": "uploads/301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.azeyijshef.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "93246"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qgGeqTXIW6fIfmdElDkUQ6/5/MBRUCMelmEJiYepKGY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "azeyijshef"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qgGeqTXIW6fIfmdElDkUQ6/5/MBRUCMelmEJiYepKGY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "93246"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qgGeqTXIW6fIfmdElDkUQ6/5/MBRUCMelmEJiYepKGY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qgGeqTXIW6fIfmdElDkUQ6/5/MBRUCMelmEJiYepKGY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.fvyrmy461o.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73996"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fvyrmy461o"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\3c7b843e-da6c-4af1-8f12-accbc0627e9d_m8-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73996"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tbhbssaMCkHTwGo/RES4I/fOJVv/NJBZeGYBkKWIQAc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/4054d45f-1867-49aa-af7c-80176895c201_m8-4.5a2ioom26j.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "97958"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5a2ioom26j"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\4054d45f-1867-49aa-af7c-80176895c201_m8-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "97958"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.oc79atffjq.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "117614"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"eBve6jl+htVbYVx7hhd3icdHPtq9UIQEef99H0VQZsk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oc79atffjq"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-eBve6jl+htVbYVx7hhd3icdHPtq9UIQEef99H0VQZsk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "117614"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"eBve6jl+htVbYVx7hhd3icdHPtq9UIQEef99H0VQZsk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-eBve6jl+htVbYVx7hhd3icdHPtq9UIQEef99H0VQZsk="
+        }
+      ]
+    },
+    {
       "Route": "uploads/4a14b909-c682-493d-9319-a072c5bb46e9_aston-vantage-1.2nq6jrm6hd.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\4a14b909-c682-493d-9319-a072c5bb46e9_aston-vantage-1.webp",
       "Selectors": [],
@@ -28866,6 +30606,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-XuvAsRraruNaTDMsMFn4dhUx1IddLOVSfD+a4xPYwnI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.0phiogf5k4.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54954"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7E3E0VJcA7++TjCp2+7U+gPLxCnd32nEkZ+FEI6O+oM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0phiogf5k4"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7E3E0VJcA7++TjCp2+7U+gPLxCnd32nEkZ+FEI6O+oM="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54954"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7E3E0VJcA7++TjCp2+7U+gPLxCnd32nEkZ+FEI6O+oM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7E3E0VJcA7++TjCp2+7U+gPLxCnd32nEkZ+FEI6O+oM="
         }
       ]
     },
@@ -29116,6 +30938,88 @@
       ]
     },
     {
+      "Route": "uploads/62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.jxfa1y1eb6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "45492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jxfa1y1eb6"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "45492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0="
+        }
+      ]
+    },
+    {
       "Route": "uploads/62bdec00-3c83-41fd-93c6-78e9fd0e8c38_aston-vantage-7.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\62bdec00-3c83-41fd-93c6-78e9fd0e8c38_aston-vantage-7.webp",
       "Selectors": [],
@@ -29362,6 +31266,88 @@
       ]
     },
     {
+      "Route": "uploads/6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.5a2ioom26j.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "97958"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5a2ioom26j"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "97958"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-DTSdwhTbVUp/BfvmbOmFwobd9yeiP5DQB1DwXmrIBMQ="
+        }
+      ]
+    },
+    {
       "Route": "uploads/6f049137-48a2-40ed-89d7-39bd0e5a2a45_s500-12.iqupg77pcz.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\6f049137-48a2-40ed-89d7-39bd0e5a2a45_s500-12.webp",
       "Selectors": [],
@@ -29522,6 +31508,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.e6bg5iqf52.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "107134"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lql1njicDWNuQ+0pH9YfTDSnfUfS4libDUHOOUKBv2U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e6bg5iqf52"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lql1njicDWNuQ+0pH9YfTDSnfUfS4libDUHOOUKBv2U="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "107134"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lql1njicDWNuQ+0pH9YfTDSnfUfS4libDUHOOUKBv2U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lql1njicDWNuQ+0pH9YfTDSnfUfS4libDUHOOUKBv2U="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.9or9pa5n5b.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82024"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WSV2lyLBI2sZiPuSEl919NQKJjTRxvHSNWh2hi8hr5c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "9or9pa5n5b"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WSV2lyLBI2sZiPuSEl919NQKJjTRxvHSNWh2hi8hr5c="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82024"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WSV2lyLBI2sZiPuSEl919NQKJjTRxvHSNWh2hi8hr5c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WSV2lyLBI2sZiPuSEl919NQKJjTRxvHSNWh2hi8hr5c="
         }
       ]
     },
@@ -29772,6 +31922,170 @@
       ]
     },
     {
+      "Route": "uploads/8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.3pn0y08pwk.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "88340"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CWbLJIQBSePKQjtWXXflokyYyjhfWVXM8a3y2BOaqmk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3pn0y08pwk"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CWbLJIQBSePKQjtWXXflokyYyjhfWVXM8a3y2BOaqmk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "88340"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CWbLJIQBSePKQjtWXXflokyYyjhfWVXM8a3y2BOaqmk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CWbLJIQBSePKQjtWXXflokyYyjhfWVXM8a3y2BOaqmk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "53784"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K/AJG8TMgc9C4rx50bC7sgLgsTXKPt6ZJ2QxuTbAakI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-K/AJG8TMgc9C4rx50bC7sgLgsTXKPt6ZJ2QxuTbAakI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.zaujkbvprd.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "53784"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K/AJG8TMgc9C4rx50bC7sgLgsTXKPt6ZJ2QxuTbAakI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zaujkbvprd"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-K/AJG8TMgc9C4rx50bC7sgLgsTXKPt6ZJ2QxuTbAakI="
+        }
+      ]
+    },
+    {
       "Route": "uploads/8f9b7f64-453a-4135-bf73-1bf2144fd989_m8-7.hlpuxsbvop.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\8f9b7f64-453a-4135-bf73-1bf2144fd989_m8-7.webp",
       "Selectors": [],
@@ -29850,6 +32164,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.v3j0xk3s35.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "92692"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uyFmiAER00FK2hEI5Pf3KxOUg5eH1g1Dgk0EjXgPZ7g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "v3j0xk3s35"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uyFmiAER00FK2hEI5Pf3KxOUg5eH1g1Dgk0EjXgPZ7g="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\956a0de4-fb58-423c-a686-4d03188dc37c_s500-10.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "92692"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uyFmiAER00FK2hEI5Pf3KxOUg5eH1g1Dgk0EjXgPZ7g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uyFmiAER00FK2hEI5Pf3KxOUg5eH1g1Dgk0EjXgPZ7g="
         }
       ]
     },
@@ -30182,6 +32578,88 @@
       ]
     },
     {
+      "Route": "uploads/a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.7n7fbe79z7.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103486"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jZi9w52S2ISODfoJokhKI5w+FsPhVGeVQC7ms78GXI4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7n7fbe79z7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jZi9w52S2ISODfoJokhKI5w+FsPhVGeVQC7ms78GXI4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "103486"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jZi9w52S2ISODfoJokhKI5w+FsPhVGeVQC7ms78GXI4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jZi9w52S2ISODfoJokhKI5w+FsPhVGeVQC7ms78GXI4="
+        }
+      ]
+    },
+    {
       "Route": "uploads/a785493d-234e-442a-b22b-9c4fdde7c229_s500-2.e6bg5iqf52.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a785493d-234e-442a-b22b-9c4fdde7c229_s500-2.webp",
       "Selectors": [],
@@ -30264,6 +32742,88 @@
       ]
     },
     {
+      "Route": "uploads/a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.dz33eqp4p5.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "76266"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6Ty87qWOdAkm3yOpm4zghh39t9Jo5C4khwKypDIdmV0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dz33eqp4p5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6Ty87qWOdAkm3yOpm4zghh39t9Jo5C4khwKypDIdmV0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "76266"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6Ty87qWOdAkm3yOpm4zghh39t9Jo5C4khwKypDIdmV0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6Ty87qWOdAkm3yOpm4zghh39t9Jo5C4khwKypDIdmV0="
+        }
+      ]
+    },
+    {
       "Route": "uploads/a9f1bb0d-b400-415e-84ad-2cb64f198f9d_s500-1.mc0z8t4dz5.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\a9f1bb0d-b400-415e-84ad-2cb64f198f9d_s500-1.webp",
       "Selectors": [],
@@ -30342,6 +32902,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-hgi3I1G3L+t20Xu35MO5LZjt7hSrtwj3EwgeubFzqzA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.hlpuxsbvop.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "58544"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hlpuxsbvop"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "58544"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o="
         }
       ]
     },
@@ -30674,6 +33316,88 @@
       ]
     },
     {
+      "Route": "uploads/c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.qnq6cppebz.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "98992"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qnq6cppebz"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\c6a43755-bcf1-4b9d-ba76-a8408548fe3a_m8-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "98992"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0="
+        }
+      ]
+    },
+    {
       "Route": "uploads/cd0122cd-4dfe-4c50-addd-2ba4b49ce6d6_maybach9.p9gixl6snr.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\cd0122cd-4dfe-4c50-addd-2ba4b49ce6d6_maybach9.webp",
       "Selectors": [],
@@ -30752,6 +33476,416 @@
         {
           "Name": "integrity",
           "Value": "sha256-I0ip0v6Jj/argjX9WYgomG5gOBrNmfGFB2UnyCiMK58="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.h8y0w7t6u6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "60972"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"r2Yg9WbQTGW5z41pLxcyxmneQR7l7Zi9nkqot8wcWzg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h8y0w7t6u6"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-r2Yg9WbQTGW5z41pLxcyxmneQR7l7Zi9nkqot8wcWzg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "60972"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"r2Yg9WbQTGW5z41pLxcyxmneQR7l7Zi9nkqot8wcWzg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-r2Yg9WbQTGW5z41pLxcyxmneQR7l7Zi9nkqot8wcWzg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84508"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.zggxl8cn7x.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "84508"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zggxl8cn7x"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XVlRhBRvWrfBg5S4Qu/+hMTZGsGfMYZHUVAvMStwYZs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d73aa1bf-49c1-4780-a766-757919b10159_m8-2.jxfa1y1eb6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "45492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jxfa1y1eb6"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d73aa1bf-49c1-4780-a766-757919b10159_m8-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "45492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-J2jkg6PaNNM6FLa4rcQe/08AADKjAq6uTK7pUeV3LI0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.qnq6cppebz.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "98992"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qnq6cppebz"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "98992"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ipNG+tnzfJjjtjfRg/cvymEYjn/0uDJHNbIG7UH+XG0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.2xlsrkbn75.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "92736"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CmeqZoo3QiuDmZS8Dau7yqTnzTHaCZLT2iJzv3uEMuk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2xlsrkbn75"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CmeqZoo3QiuDmZS8Dau7yqTnzTHaCZLT2iJzv3uEMuk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "92736"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CmeqZoo3QiuDmZS8Dau7yqTnzTHaCZLT2iJzv3uEMuk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CmeqZoo3QiuDmZS8Dau7yqTnzTHaCZLT2iJzv3uEMuk="
         }
       ]
     },
@@ -30920,6 +34054,88 @@
       ]
     },
     {
+      "Route": "uploads/e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.hlpuxsbvop.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "58544"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hlpuxsbvop"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\e2145208-2a90-47c1-92a5-fbe3098e1b88_m8-7.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "58544"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ff6oazC1xZ56lSmNKxRz0SOe3EuFc4vfyh45GlKNU5o="
+        }
+      ]
+    },
+    {
       "Route": "uploads/e30867c2-86c2-4385-aeb3-88d54770f159_m8-2.jxfa1y1eb6.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\e30867c2-86c2-4385-aeb3-88d54770f159_m8-2.webp",
       "Selectors": [],
@@ -31084,6 +34300,170 @@
       ]
     },
     {
+      "Route": "uploads/eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.u4r1m6ehfi.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "80812"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u4r1m6ehfi"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\eb8cf0ab-a8d3-49aa-9889-db8000a17dbf_m8-8.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "80812"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:18:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YvLuqKVnPfCofclUM7jqwWcTxyQP5yiLhpGLyyqXRAY="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.2hvh1wtnwq.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95566"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lmqvjwgHy/Ubkdz009ze966E3Gtv+rc/+x7JuzzrwSI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2hvh1wtnwq"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lmqvjwgHy/Ubkdz009ze966E3Gtv+rc/+x7JuzzrwSI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95566"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lmqvjwgHy/Ubkdz009ze966E3Gtv+rc/+x7JuzzrwSI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lmqvjwgHy/Ubkdz009ze966E3Gtv+rc/+x7JuzzrwSI="
+        }
+      ]
+    },
+    {
       "Route": "uploads/f2a7689f-5fc3-4177-99b6-7e6564f16dd5_s500-7.azeyijshef.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f2a7689f-5fc3-4177-99b6-7e6564f16dd5_s500-7.webp",
       "Selectors": [],
@@ -31166,6 +34546,170 @@
       ]
     },
     {
+      "Route": "uploads/f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.mc0z8t4dz5.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "104536"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hgi3I1G3L+t20Xu35MO5LZjt7hSrtwj3EwgeubFzqzA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mc0z8t4dz5"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hgi3I1G3L+t20Xu35MO5LZjt7hSrtwj3EwgeubFzqzA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "104536"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hgi3I1G3L+t20Xu35MO5LZjt7hSrtwj3EwgeubFzqzA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:41:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hgi3I1G3L+t20Xu35MO5LZjt7hSrtwj3EwgeubFzqzA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "33454"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yvdCfcRdS4gfYsGBLuQPyH5Q4rLS05VwSGzk58tuAKo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yvdCfcRdS4gfYsGBLuQPyH5Q4rLS05VwSGzk58tuAKo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.yiykkahcu8.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "33454"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yvdCfcRdS4gfYsGBLuQPyH5Q4rLS05VwSGzk58tuAKo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yiykkahcu8"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yvdCfcRdS4gfYsGBLuQPyH5Q4rLS05VwSGzk58tuAKo="
+        }
+      ]
+    },
+    {
       "Route": "uploads/f5ce3c2b-06e2-4f22-82cd-4196398a0e28_mini6.webp",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f5ce3c2b-06e2-4f22-82cd-4196398a0e28_mini6.webp",
       "Selectors": [],
@@ -31244,6 +34788,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-8K8IGQw0MnO6jrkrilbMU2zkWjkcxxWKXHz6tppGvM8="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.fgwdip8wuw.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "106118"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cUQws3itAHjFRKZTrTI7amXGjc7ooCAk6/JOtmrx1+o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fgwdip8wuw"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cUQws3itAHjFRKZTrTI7amXGjc7ooCAk6/JOtmrx1+o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "106118"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cUQws3itAHjFRKZTrTI7amXGjc7ooCAk6/JOtmrx1+o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 08:11:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cUQws3itAHjFRKZTrTI7amXGjc7ooCAk6/JOtmrx1+o="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "68128"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.y7gis2qu7z.webp",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\uploads\\fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "68128"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 18:20:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y7gis2qu7z"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-niYmDvacMLRr27JlS4P1WoylJUmbJj2/Qv+ltsK+sac="
         }
       ]
     },

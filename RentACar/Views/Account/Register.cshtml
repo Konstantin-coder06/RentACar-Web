@@ -104,22 +104,27 @@
         <div>
             <label asp-for="Name">Name</label>
             <input asp-for="Name" required/>
+                <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Age">Age</label>
             <input asp-for="Age" type="number" required/>
+                <span asp-validation-for="Age" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Email">Email</label>
             <input asp-for="Email" type="email" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Password">Password</label>
             <input asp-for="Password" type="password" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="ConfirmPassword">Confirm Password</label>
             <input asp-for="ConfirmPassword" type="password" required />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
         <button type="submit">Register</button>
     </form>
