@@ -63,7 +63,7 @@ namespace RentACar.DataAccess.IRepository.Repository
         public void Update(T entity)
         {
             dbContext.Update(entity); 
-
+    
         }
     }
 }

@@ -33,13 +33,11 @@ namespace RentACar.Controllers
             var customers=new List<Customer>();
             var last24Hours = DateTime.Now.AddDays(-1);
             var lastMounth=DateTime.Now.AddDays(-30);
-            var resCarsForLast24Hours = reservationService
-        .GetAll()
-        .Where(x => x.CreateTime >= last24Hours)
-        .ToList();
+            var resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
+            var countPending=carService.FindAll(x=>x.Pending==true).Count();
             var resCarsForLastMounth=reservationService.GetAll().Where(x=>x.CreateTime >= lastMounth).ToList();
-            int total24Hours = 0;
-            int totalMounth = 0;
+            double total24Hours = 0;
+            double totalMounth = 0;
             int count = 0;
             foreach (var carx in reservationedCars)
             {
@@ -66,6 +64,7 @@ namespace RentACar.Controllers
                 TotalPriceForLast24Hours = total24Hours,
                 TotalPriceForLastMounth = totalMounth,
                 Count=count,
+                CountPending=countPending,
             };
             
             return View(recentReservationViewModel);

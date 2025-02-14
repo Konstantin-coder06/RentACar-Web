@@ -13,6 +13,7 @@ namespace RentACar.Models
         public int Id { get; set; }
        // [Required]
         public string Url {  get; set; }
+        public int Order { get; set; }
        // [Required]
         public int CarId {  get; set; }
         public Car Car { get; set; }    

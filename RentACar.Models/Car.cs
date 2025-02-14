@@ -35,7 +35,8 @@ namespace RentACar.Models
         // Ensure you're using CarCompanyId for the foreign key
         public int CarCompanyId { get; set; }
         public CarCompany CarCompany { get; set; }
-
+        public bool Pending {  get; set; }
+        public DateTime CreatedAt { get; set; }
         public ICollection<Image> Images { get; set; }
     }
 

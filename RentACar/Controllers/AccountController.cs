@@ -27,15 +27,8 @@ namespace RentACar.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
         }
-
-
-
         public IActionResult Login() => View();
-
-
-
         [HttpPost]
-
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
@@ -56,7 +49,7 @@ namespace RentACar.Controllers
                     }
                     if(user!=null && await _userManager.IsInRoleAsync(user, "User"))
                     {
-                        var userCustomer = carCompanyService.GetByUserId(user.Id);
+                        var userCustomer = customerService.GetByUserId(user.Id);
                         if (userCustomer != null)
                         {
                             HttpContext.Session.SetInt32("UserId", userCustomer.Id);
@@ -78,15 +71,12 @@ namespace RentACar.Controllers
         public async Task<IActionResult> RegisterCompany(RegisterCompanyViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                // Създаване на потребител
+            {            
                 var user = new IdentityUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                {             
-                    // Асигниране на роля към потребителя (компания)
+                {
                     await _userManager.AddToRoleAsync(user, "Company");
-                    // Логване на потребителя
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     var company = new CarCompany
                     {
@@ -101,12 +91,9 @@ namespace RentACar.Controllers
                     carCompanyService.Save();
                     IsRegisterCompany = true;
                     CompanyId = company.Id;
-                   
-                        HttpContext.Session.SetInt32("CompanyId", company.Id);
-                    
+                    HttpContext.Session.SetInt32("CompanyId", company.Id);
                     return RedirectToAction("Index", "Home");
                 }
-                // При грешка при създаването на потребител
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);

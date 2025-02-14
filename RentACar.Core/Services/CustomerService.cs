@@ -48,6 +48,11 @@ namespace RentACar.Core.Services
             return repository.GetAll().ToList();
         }
 
+        public Customer GetByUserId(string userId)
+        {
+            return repository.FindOne(x=>x.UserId==userId);
+        }
+
         public void Save()
         {
            repository.Save();

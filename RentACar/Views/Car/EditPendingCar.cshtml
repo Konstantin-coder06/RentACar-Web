@@ -1,0 +1,373 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model EditCarWithImagesPendingViewModel
+
+@{
+    ViewData["Title"] = "Add New Car";
+}
+<style>
+
+    /* Overall Page Styling */
+    .container {
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+
+    h2 {
+        color: #2c3e50;
+        font-weight: 600;
+        border-bottom: 3px solid #e65a5a;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    legend {
+        border-bottom: 3px solid #e65a5a;
+    }
+
+    /* Form Group Styling */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    label.control-label {
+        font-weight: 500;
+        color: #e65a5a;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 2px solid #ecf0f1;
+        transition: all 0.3s ease;
+    }
+
+        .form-control:focus {
+            border-color: #e65a5a;
+            box-shadow: 0 0 8px rgba(52,152,219,0.2);
+        }
+
+
+
+
+    /* Pricing Section Highlight */
+    .row.mt-3 {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-left: 4px solid#e65a5a;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        background-color: #e65a5a;
+        border: none;
+        padding: 0.75rem 2rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #e65a5a;
+            transform: translateY(-1px);
+        }
+
+    .btn-secondary {
+        background-color: #95a5a6;
+        border: none;
+    }
+
+    /* Validation Styling */
+    .text-danger {
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+    }
+
+    .alert-danger {
+        border-radius: 8px;
+        background-color: #ffe6e6;
+        border-color: #ffcccc;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .col-md-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            margin: 1rem;
+            padding: 1rem;
+        }
+    }
+
+    /* Form Section Headers */
+    .form-section-header {
+        color: #e65a5a;
+        font-weight: 600;
+        margin: 1.5rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #ecf0f1;
+    }
+
+    .image-preview {
+        cursor: grab;
+    }
+</style>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+<div class="container mt-5">
+    <h2>Add New Car</h2>
+    <hr />
+
+    <form asp-action="EditPendingCar" asp-controller="Car"  enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <!-- Basic Information -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Brand" class="control-label"></label>
+                    <input asp-for="Brand" class="form-control" />
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ClassOptions" class="control-label">Vehicle Class</label>
+                    <select asp-for="ClassOfCarId" asp-items="Model.ClassOptions" class="form-control">
+                        <option value="">-- Select Class --</option>
+                    </select>
+                    <span asp-validation-for="ClassOfCarId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Technical Specifications -->
+            <div class="row mt-3">
+                <legend>Technical Specifications</legend>
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label asp-for="EngineCapacity" class="control-label"></label>
+                        <input asp-for="EngineCapacity" class="form-control" step="0.1" />
+                        <span asp-validation-for="EngineCapacity" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label asp-for="HorsePower" class="control-label"></label>
+                        <input asp-for="HorsePower" class="form-control" />
+                        <span asp-validation-for="HorsePower" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TopSpeed" class="control-label"></label>
+                    <input asp-for="TopSpeed" class="form-control" />
+                    <span asp-validation-for="TopSpeed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ZeroToHundred" class="control-label"></label>
+                    <input asp-for="ZeroToHundred" class="form-control" />
+                    <span asp-validation-for="ZeroToHundred" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Color" class="control-label"></label>
+                    <input asp-for="Color" class="form-control" />
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DriveTrain" class="control-label"></label>
+                    <input asp-for="DriveTrain" class="form-control" />
+                    <span asp-validation-for="DriveTrain" class="text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Pricing Section -->
+        <div class="row mt-3">
+            <legend>Price</legend>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PricePerDay" class="control-label"></label>
+                    <input asp-for="PricePerDay" class="form-control" />
+                    <span asp-validation-for="PricePerDay" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PricePerWeek" class="control-label"></label>
+                    <input asp-for="PricePerWeek" class="form-control" />
+                    <span asp-validation-for="PricePerWeek" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <legend>Mileage</legend>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="MileageLimitForDay" class="control-label"></label>
+                    <input asp-for="MileageLimitForDay" class="form-control" />
+                    <span asp-validation-for="MileageLimitForDay" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="MileageLimitForWeek" class="control-label"></label>
+                    <input asp-for="MileageLimitForWeek" class="form-control" />
+                    <span asp-validation-for="MileageLimitForWeek" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="AdditionalMileageCharge" class="control-label"></label>
+                    <input asp-for="AdditionalMileageCharge" class="form-control" />
+                    <span asp-validation-for="AdditionalMileageCharge" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Gearbox" class="control-label"></label>
+                    <input asp-for="Gearbox" class="form-control" />
+                    <span asp-validation-for="Gearbox" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+
+        <!-- Image Upload -->
+        <div class="form-group mt-4">
+            <label asp-for="Images" class="control-label">Uploaded Images</label>
+
+            <!-- Контейнер за подреждане на снимките -->
+            <div id="imagePreviewContainer" class="d-flex flex-wrap mt-2 border p-2" style="min-height: 100px;">
+                @if (Model.Images != null && Model.Images.Any())
+                {
+                    foreach (var image in Model.Images.OrderBy(x=>x.Order))
+                    {
+                        <div class="image-preview-item position-relative m-2" data-id="@image.Id">
+                            <img src="@image.Url" alt="Car Image" class="existing-image" width="120" height="80" style="object-fit:cover; border-radius: 5px;">
+                        </div>
+                    }
+                }
+            </div>
+
+            <!-- Скрито поле за изпращане на новия ред на снимките -->
+            <input type="hidden" id="imageOrder" name="imageOrder">
+
+            <!-- Бутон за запазване -->
+            <button type="button" id="saveOrderButton" class="btn btn-primary mt-3">Save Order</button>
+        </div>
+
+
+
+        <div class="form-group mt-4">
+            <button type="submit" class="btn btn-primary">Edit Car</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const imagePreviewContainer = document.getElementById("imagePreviewContainer");
+        const imageOrderInput = document.getElementById("imageOrder");
+        const saveOrderButton = document.getElementById("saveOrderButton");
+
+        // Инициализиране на SortableJS
+        new Sortable(imagePreviewContainer, {
+            animation: 150,
+            ghostClass: "sortable-ghost",
+            onEnd: function () {
+                updateImageOrder();
+            }
+        });
+
+        // Функция за актуализация на реда
+        function updateImageOrder() {
+            const imageIds = [...imagePreviewContainer.children].map(item => item.getAttribute("data-id"));
+            imageOrderInput.value = imageIds.join(",");
+        }
+
+        // Изпращане на новия ред към сървъра при натискане на бутона
+        saveOrderButton.addEventListener("click", function () {
+            const newOrder = imageOrderInput.value;
+
+            fetch("/Car/UpdateImageOrder",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ orderedImageIds: newOrder.split(",") })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Image order updated successfully!");
+                } else {
+                    alert("Error updating image order.");
+                }
+            });
+        });
+    });
+</script>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Update file input label
+        $('.custom-file-input').on('change', function() {
+            var files = $(this)[0].files;
+            var label = files.length > 1 ?
+                files.length + ' files selected' :
+                files[0].name;
+            $(this).next('.custom-file-label').html(label);
+        });
+    </script>
+}

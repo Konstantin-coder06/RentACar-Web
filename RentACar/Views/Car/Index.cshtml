@@ -135,10 +135,11 @@
         }
 </style>
 
-<form>
+<form asp-controller="Car" asp-action="FilterDates" method="post">
     <div>
-        <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-        <input type="date" value="@DateTime.Now.AddDays(3).ToString("yyyy-MM-dd")" />
+        <input type="date" asp-for="StartDate" name="StartDate"  />
+        <input type="date" asp-for="EndDate" name="EndDate"  />
+        <button type="submit" class="btn btn-primary">Change the date</button>
     </div>
 </form>
 <form asp-action="Search" method="post" class="search-container">
@@ -150,14 +151,17 @@
     <button type="submit" class="search-btn">🔍</button>
     <a asp-action="Filters" asp-controller="Car" class="btn-primary btn-filter">Filters</a>
 </form>
-
+@{
+    int seed = DateTime.UtcNow.Date.GetHashCode();
+    Random random = new Random(seed);
+}
 <div class="container cars-list">
     <div class="row" id="carList">
-        @foreach (var carWithImages in Model.CarWithImages.OrderBy(x=>Guid.NewGuid()))
+        @foreach (var carWithImages in Model.CarWithImages.OrderBy(x=>random.Next()))
         {
             <div class="col-md-4 mb-4 car-item" data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")">
                 <div class="card">
-                    <img src="@carWithImages.Images.First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
+                    <img src="@carWithImages.Images.OrderBy(x=>x.Order).First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
 
                     <div class="card-body">
                         <h5 class="card-title">@carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year</h5>

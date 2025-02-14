@@ -101,5 +101,10 @@ namespace RentACar.Core.Services
         {
            repository.Update(entity);
         }
+
+        public Image FindByid(int id)
+        {
+            return repository.FindOne(x => x.Id == id);
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace RentACar.Models
         public Customer Customer { get; set; }
 
         [Required]
-        public int TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
         [Required]
         public DateTime CreateTime { get; set; }
     }

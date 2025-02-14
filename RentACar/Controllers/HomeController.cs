@@ -26,9 +26,8 @@ namespace RentACar.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Запазване на данни в TempData
-                TempData["StartDay"] = model.StartDay;
-                TempData["EndDay"] = model.EndDay;
+                HttpContext.Session.SetString("StartDate", model.StartDay?.ToString("yyyy-MM-dd"));
+                HttpContext.Session.SetString("EndDate", model.EndDay?.ToString("yyyy-MM-dd"));
 
                 return Redirect("/Car/Index");
             }

@@ -7,5 +7,7 @@
         public bool IsSelfPick {  get; set; }
         public string CustomAddress {  get; set; }
         public bool IsReturningBackAtSamePlace {  get; set; }   
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }

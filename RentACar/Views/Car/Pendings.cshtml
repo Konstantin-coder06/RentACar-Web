@@ -1,0 +1,129 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<style>
+    .cars-list {
+    margin-top: 20px;
+    }
+
+    .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    }
+
+    .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+    height: 200px;
+    object-fit: cover;
+    width: 95%;
+    margin: 2%;
+    border-radius: 10px;
+    }
+
+
+
+    .card-body {
+    padding: 15px;
+    }
+
+    .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid gray;
+    }
+
+    .card-text {
+    font-size: 0.9rem;
+    color: #555;
+    border-bottom: 1px solid gray;
+    padding-bottom: 5px;
+    }
+
+    .btn-primary {
+    background-color: #f76c6c;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+    }
+
+    .btn-filter {
+    margin-left: 30px;
+    stroke: none;
+    }
+
+    .btn-primary:hover {
+    background-color: #e65a5a;
+    }
+
+    .price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    }
+
+    .price-text {
+    display: flex;
+    flex-direction: column;
+    }
+
+    .price-day {
+    color: #f76c6c;
+    font-weight: bold;
+    font-size: 1.2rem;
+    }
+
+    .price-week {
+    color: #333;
+    font-size: 1rem;
+    }
+
+    .reserve-btn {
+    margin-left: auto; /* Избутва бутона вдясно */
+    }
+
+    .search-btn:hover {
+    background-color: #e65a5a;
+    }
+</style>
+@model CarImagesViewModel
+<div class="container cars-list">
+    <div class="row" id="carList">
+        @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => x.Car.CreatedAt))
+        {
+    <div class="col-md-4 mb-4 car-item" data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")">
+        <div class="card">
+            <img src="@carWithImages.Images.OrderBy(x=>x.Order).First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
+
+            <div class="card-body">
+                <h5 class="card-title">@carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year</h5>
+                <p class="card-text">
+                    @carWithImages.Car.Gearbox • @carWithImages.Car.MileageLimitForDay km/rental
+                </p>
+                <div class="price-container">
+                    <div class="price-text">
+                        <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / на ден</h3>
+                        <p class="price-week">@carWithImages.Car.PricePerWeek BGN / на седмица</p>
+                    </div>
+                    <a asp-controller="Car" asp-action="EditPendingCar" asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
+                        Прегледай
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+</div>

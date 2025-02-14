@@ -249,7 +249,9 @@
             grid-template-columns: repeat(3,1fr);
             gap: 1.6rem;
         }
-
+        main .insights small{
+            color:var(--clr-dark);
+        }
             main .insights > div {
                 background-color: var(--clr-white);
                 padding: var(--card-padding);
@@ -753,10 +755,10 @@
                     <span class="material-symbols-sharp">insights </span>
                     <h3>Analytics</h3>
                 </a>
-                <a href="#">
+                <a asp-action="Pendings" asp-controller="Car">
                     <span class="material-symbols-sharp">mail_outline </span>
-                    <h3>Messages</h3>
-                    <span class="msg_count">14</span>
+                    <h3>Pending Cars</h3>
+                    <span class="msg_count">@Model.CountPending</span>
                 </a>
                 <a asp-action="Index" asp-controller="Car">
                     <span class="material-symbols-sharp">receipt_long </span>

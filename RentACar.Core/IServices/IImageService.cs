@@ -15,5 +15,6 @@ namespace RentACar.Core.IServices
     {
         Task ProcessImages(List<IFormFile> images, int carId);
         IEnumerable<Image> GetImagesByCarId(int carid);
+        Image FindByid(int id);
     }
 }

@@ -351,6 +351,9 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -378,6 +381,9 @@ namespace RentACar.DataAccess.Migrations
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Pending")
+                        .HasColumnType("bit");
 
                     b.Property<double>("PricePerDay")
                         .HasColumnType("float");
@@ -412,6 +418,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 1,
                             Color = "White",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Compact and fuel-efficient",
                             DriveTrain = "Front",
                             EngineCapacity = 1.6000000000000001,
@@ -420,6 +427,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 150.0,
                             MileageLimitForWeek = 1000.0,
                             Model = "Corolla",
+                            Pending = false,
                             PricePerDay = 80.0,
                             PricePerWeek = 450.0,
                             TopSpeed = 185.0,
@@ -435,6 +443,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 6,
                             Color = "Black",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Sporty and reliable",
                             DriveTrain = "Front",
                             EngineCapacity = 1.5,
@@ -443,6 +452,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 200.0,
                             MileageLimitForWeek = 1200.0,
                             Model = "Civic",
+                            Pending = false,
                             PricePerDay = 140.0,
                             PricePerWeek = 600.0,
                             TopSpeed = 170.0,
@@ -458,6 +468,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Dark Gray",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Comfortable and stylish",
                             DriveTrain = "Rear",
                             EngineCapacity = 2.2999999999999998,
@@ -466,6 +477,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 250.0,
                             MileageLimitForWeek = 1500.0,
                             Model = "Mustang",
+                            Pending = false,
                             PricePerDay = 200.0,
                             PricePerWeek = 910.0,
                             TopSpeed = 250.0,
@@ -481,6 +493,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Gray",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Luxury and performance",
                             DriveTrain = "Rear",
                             EngineCapacity = 2.0,
@@ -489,6 +502,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "420",
+                            Pending = false,
                             PricePerDay = 250.0,
                             PricePerWeek = 1000.0,
                             TopSpeed = 240.0,
@@ -504,6 +518,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Red",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Premium luxury",
                             DriveTrain = "Rear",
                             EngineCapacity = 3.0,
@@ -512,6 +527,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "C-Class",
+                            Pending = false,
                             PricePerDay = 210.0,
                             PricePerWeek = 850.0,
                             TopSpeed = 250.0,
@@ -527,6 +543,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Green",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "High-performance sports car",
                             DriveTrain = "Rear",
                             EngineCapacity = 5.2000000000000002,
@@ -535,6 +552,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "R8 Spyder",
+                            Pending = false,
                             PricePerDay = 750.0,
                             PricePerWeek = 6400.0,
                             TopSpeed = 327.0,
@@ -550,6 +568,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Black",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Exotic sports car",
                             DriveTrain = "Rear",
                             EngineCapacity = 5.2000000000000002,
@@ -558,6 +577,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "Huracan",
+                            Pending = false,
                             PricePerDay = 1700.0,
                             PricePerWeek = 9000.0,
                             TopSpeed = 310.0,
@@ -573,6 +593,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Silver",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Luxury sports car",
                             DriveTrain = "Full Wheels",
                             EngineCapacity = 3.0,
@@ -581,6 +602,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "911 GT3",
+                            Pending = false,
                             PricePerDay = 1400.0,
                             PricePerWeek = 8400.0,
                             TopSpeed = 304.0,
@@ -596,6 +618,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 5,
                             Color = "White",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Electric luxury sedan",
                             DriveTrain = "Rear",
                             EngineCapacity = 0.0,
@@ -604,6 +627,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "Model S Plaid",
+                            Pending = false,
                             PricePerDay = 350.0,
                             PricePerWeek = 2100.0,
                             TopSpeed = 322.0,
@@ -619,6 +643,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Red",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Iconic Italian sports car",
                             DriveTrain = "Rear",
                             EngineCapacity = 3.8999999999999999,
@@ -627,6 +652,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "F8 Spider",
+                            Pending = false,
                             PricePerDay = 2300.0,
                             PricePerWeek = 10000.0,
                             TopSpeed = 340.0,
@@ -642,6 +668,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Ultimate luxury car",
                             DriveTrain = "Rear",
                             EngineCapacity = 6.7999999999999998,
@@ -650,6 +677,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Phantom",
+                            Pending = false,
                             PricePerDay = 1000.0,
                             PricePerWeek = 7000.0,
                             TopSpeed = 250.0,
@@ -665,6 +693,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Grand luxury tourer",
                             DriveTrain = "Full Wheels",
                             EngineCapacity = 6.0,
@@ -673,6 +702,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Continental GT-GTC",
+                            Pending = false,
                             PricePerDay = 1300.0,
                             PricePerWeek = 7600.0,
                             TopSpeed = 335.0,
@@ -688,6 +718,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Blue",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Exquisite British engineering",
                             DriveTrain = "Rear",
                             EngineCapacity = 4.0,
@@ -696,6 +727,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "720S",
+                            Pending = false,
                             PricePerDay = 1700.0,
                             PricePerWeek = 8000.0,
                             TopSpeed = 341.0,
@@ -711,6 +743,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Luxury British SUV",
                             DriveTrain = "Full Wheels",
                             EngineCapacity = 4.0,
@@ -719,6 +752,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "DBX",
+                            Pending = false,
                             PricePerDay = 600.0,
                             PricePerWeek = 3600.0,
                             TopSpeed = 291.0,
@@ -734,6 +768,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Silver",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Sophisticated luxury SUV",
                             DriveTrain = "Full Wheels",
                             EngineCapacity = 3.5,
@@ -742,6 +777,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "LX",
+                            Pending = false,
                             PricePerDay = 500.0,
                             PricePerWeek = 3000.0,
                             TopSpeed = 210.0,
@@ -757,6 +793,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Orange",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "German engineering excellence",
                             DriveTrain = "Rear",
                             EngineCapacity = 4.0,
@@ -765,6 +802,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "AMG GT",
+                            Pending = false,
                             PricePerDay = 2500.0,
                             PricePerWeek = 1100.0,
                             TopSpeed = 322.0,
@@ -780,6 +818,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Orange",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Luxury SUV",
                             DriveTrain = "Full Wheels",
                             EngineCapacity = 3.0,
@@ -788,6 +827,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Q8",
+                            Pending = false,
                             PricePerDay = 400.0,
                             PricePerWeek = 2300.0,
                             TopSpeed = 250.0,
@@ -803,6 +843,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Yellow",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Sporty and agile",
                             DriveTrain = "Full Wheels",
                             EngineCapacity = 3.0,
@@ -811,6 +852,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "M4",
+                            Pending = false,
                             PricePerDay = 700.0,
                             PricePerWeek = 4000.0,
                             TopSpeed = 250.0,
@@ -826,6 +868,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 6,
                             Color = "Red",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Dependable sedan",
                             DriveTrain = "Rear",
                             EngineCapacity = 2.5,
@@ -834,6 +877,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 200.0,
                             MileageLimitForWeek = 1200.0,
                             Model = "Camry",
+                            Pending = false,
                             PricePerDay = 130.0,
                             PricePerWeek = 670.0,
                             TopSpeed = 210.0,
@@ -849,6 +893,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 5,
                             Color = "Black",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Sophisticated luxury SUV",
                             DriveTrain = "Full Wheels",
                             EngineCapacity = 0.0,
@@ -857,6 +902,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Cybertruck",
+                            Pending = false,
                             PricePerDay = 2000.0,
                             PricePerWeek = 12000.0,
                             TopSpeed = 210.0,
@@ -872,6 +918,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Sophisticated luxury SUV",
                             DriveTrain = "Full Wheels",
                             EngineCapacity = 3.0,
@@ -880,6 +927,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Range Rover",
+                            Pending = false,
                             PricePerDay = 1200.0,
                             PricePerWeek = 7000.0,
                             TopSpeed = 209.0,
@@ -895,6 +943,7 @@ namespace RentACar.DataAccess.Migrations
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "White",
+                            CreatedAt = new DateTime(2025, 1, 14, 14, 30, 45, 0, DateTimeKind.Unspecified),
                             Description = "Sporty and agile",
                             DriveTrain = "Rear",
                             EngineCapacity = 3.0,
@@ -903,6 +952,7 @@ namespace RentACar.DataAccess.Migrations
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Supra",
+                            Pending = false,
                             PricePerDay = 220.0,
                             PricePerWeek = 1100.0,
                             TopSpeed = 262.0,
@@ -3846,6 +3896,9 @@ namespace RentACar.DataAccess.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -3861,954 +3914,1113 @@ namespace RentACar.DataAccess.Migrations
                         {
                             Id = 1,
                             CarId = 1,
+                            Order = 1,
                             Url = "/images/toyota-corolla1.jpg"
                         },
                         new
                         {
                             Id = 2,
                             CarId = 1,
+                            Order = 2,
                             Url = "/images/toyota-corolla2.jpg"
                         },
                         new
                         {
                             Id = 3,
                             CarId = 1,
+                            Order = 3,
                             Url = "/images/toyota-corolla3.jpg"
                         },
                         new
                         {
                             Id = 4,
                             CarId = 1,
+                            Order = 4,
                             Url = "/images/toyota-corolla4.jpg"
                         },
                         new
                         {
                             Id = 5,
                             CarId = 2,
+                            Order = 1,
                             Url = "/images/honda-civic1.png"
                         },
                         new
                         {
                             Id = 6,
                             CarId = 2,
+                            Order = 2,
                             Url = "/images/honda-civic2.png"
                         },
                         new
                         {
                             Id = 7,
                             CarId = 2,
+                            Order = 3,
                             Url = "/images/honda-civic3.png"
                         },
                         new
                         {
                             Id = 8,
                             CarId = 2,
+                            Order = 4,
                             Url = "/images/honda-civic4.png"
                         },
                         new
                         {
                             Id = 9,
                             CarId = 4,
+                            Order = 1,
                             Url = "/images/bmw-420i1.png"
                         },
                         new
                         {
                             Id = 10,
                             CarId = 4,
+                            Order = 2,
                             Url = "/images/bmw-420i2.png"
                         },
                         new
                         {
                             Id = 11,
                             CarId = 4,
+                            Order = 3,
                             Url = "/images/bmw-420i7.png"
                         },
                         new
                         {
                             Id = 12,
                             CarId = 4,
+                            Order = 4,
                             Url = "/images/bmw-420i3.png"
                         },
                         new
                         {
                             Id = 13,
                             CarId = 4,
+                            Order = 5,
                             Url = "/images/bmw-420i4.png"
                         },
                         new
                         {
                             Id = 14,
                             CarId = 4,
+                            Order = 6,
                             Url = "/images/bmw-420i5.png"
                         },
                         new
                         {
                             Id = 15,
                             CarId = 4,
+                            Order = 7,
                             Url = "/images/bmw-420i6.png"
                         },
                         new
                         {
                             Id = 16,
                             CarId = 5,
+                            Order = 1,
                             Url = "/images/c300-1.webp"
                         },
                         new
                         {
                             Id = 17,
                             CarId = 5,
+                            Order = 2,
                             Url = "/images/c300-2.webp"
                         },
                         new
                         {
                             Id = 18,
                             CarId = 5,
+                            Order = 3,
                             Url = "/images/c300-3.webp"
                         },
                         new
                         {
                             Id = 19,
                             CarId = 5,
+                            Order = 4,
                             Url = "/images/c300-4.webp"
                         },
                         new
                         {
                             Id = 20,
                             CarId = 5,
+                            Order = 5,
                             Url = "/images/c300-5.webp"
                         },
                         new
                         {
                             Id = 21,
                             CarId = 5,
+                            Order = 6,
                             Url = "/images/c300-6.webp"
                         },
                         new
                         {
                             Id = 22,
                             CarId = 3,
+                            Order = 1,
                             Url = "/images/ford-mustang-1.webp"
                         },
                         new
                         {
                             Id = 23,
                             CarId = 3,
+                            Order = 2,
                             Url = "/images/ford-mustang-2.webp"
                         },
                         new
                         {
                             Id = 24,
                             CarId = 3,
+                            Order = 3,
                             Url = "/images/ford-mustang-3.webp"
                         },
                         new
                         {
                             Id = 25,
                             CarId = 3,
+                            Order = 4,
                             Url = "/images/ford-mustang-4.webp"
                         },
                         new
                         {
                             Id = 26,
                             CarId = 3,
+                            Order = 5,
                             Url = "/images/ford-mustang-5.webp"
                         },
                         new
                         {
                             Id = 27,
                             CarId = 3,
+                            Order = 6,
                             Url = "/images/ford-mustang-6.webp"
                         },
                         new
                         {
                             Id = 28,
                             CarId = 3,
+                            Order = 7,
                             Url = "/images/ford-mustang-7.webp"
                         },
                         new
                         {
                             Id = 29,
                             CarId = 3,
+                            Order = 8,
                             Url = "/images/ford-mustang-8.webp"
                         },
                         new
                         {
                             Id = 30,
                             CarId = 6,
+                            Order = 1,
                             Url = "/images/audi-r8-1.jpg"
                         },
                         new
                         {
                             Id = 31,
                             CarId = 6,
+                            Order = 2,
                             Url = "/images/audi-r8-2.jpg"
                         },
                         new
                         {
                             Id = 32,
                             CarId = 6,
+                            Order = 3,
                             Url = "/images/audi-r8-3.jpg"
                         },
                         new
                         {
                             Id = 33,
                             CarId = 6,
+                            Order = 4,
                             Url = "/images/audi-r8-4.jpg"
                         },
                         new
                         {
                             Id = 34,
                             CarId = 6,
+                            Order = 5,
                             Url = "/images/audi-r8-5.jpg"
                         },
                         new
                         {
                             Id = 35,
                             CarId = 6,
+                            Order = 6,
                             Url = "/images/audi-r8-6.jpg"
                         },
                         new
                         {
                             Id = 36,
                             CarId = 6,
+                            Order = 7,
                             Url = "/images/audi-r8-7.jpg"
                         },
                         new
                         {
                             Id = 37,
                             CarId = 6,
+                            Order = 8,
                             Url = "/images/audi-r8-8.jpg"
                         },
                         new
                         {
                             Id = 38,
                             CarId = 7,
+                            Order = 1,
                             Url = "/images/lambo-hur-1.jpg"
                         },
                         new
                         {
                             Id = 39,
                             CarId = 7,
+                            Order = 2,
                             Url = "/images/lambo-hur-2.jpg"
                         },
                         new
                         {
                             Id = 40,
                             CarId = 7,
+                            Order = 3,
                             Url = "/images/lambo-hur-3.jpg"
                         },
                         new
                         {
                             Id = 41,
                             CarId = 7,
+                            Order = 4,
                             Url = "/images/lambo-hur-4.jpg"
                         },
                         new
                         {
                             Id = 42,
                             CarId = 7,
+                            Order = 5,
                             Url = "/images/lambo-hur-5.jpg"
                         },
                         new
                         {
                             Id = 43,
                             CarId = 8,
+                            Order = 1,
                             Url = "/images/porsche-gt3-1.webp"
                         },
                         new
                         {
                             Id = 44,
                             CarId = 8,
+                            Order = 2,
                             Url = "/images/porsche-gt3-2.webp"
                         },
                         new
                         {
                             Id = 45,
                             CarId = 8,
+                            Order = 3,
                             Url = "/images/porsche-gt3-3.webp"
                         },
                         new
                         {
                             Id = 46,
                             CarId = 8,
+                            Order = 4,
                             Url = "/images/porsche-gt3-4.webp"
                         },
                         new
                         {
                             Id = 47,
                             CarId = 8,
+                            Order = 5,
                             Url = "/images/porsche-gt3-5.webp"
                         },
                         new
                         {
                             Id = 48,
                             CarId = 8,
+                            Order = 6,
                             Url = "/images/porsche-gt3-6.webp"
                         },
                         new
                         {
                             Id = 49,
                             CarId = 8,
+                            Order = 7,
                             Url = "/images/porsche-gt3-7.webp"
                         },
                         new
                         {
                             Id = 50,
                             CarId = 8,
+                            Order = 8,
                             Url = "/images/porsche-gt3-8.webp"
                         },
                         new
                         {
                             Id = 51,
                             CarId = 9,
+                            Order = 1,
                             Url = "/images/tesla-s-1.webp"
                         },
                         new
                         {
                             Id = 52,
                             CarId = 9,
+                            Order = 2,
                             Url = "/images/tesla-s-2.webp"
                         },
                         new
                         {
                             Id = 53,
                             CarId = 9,
+                            Order = 3,
                             Url = "/images/tesla-s-3.webp"
                         },
                         new
                         {
                             Id = 54,
                             CarId = 9,
+                            Order = 4,
                             Url = "/images/tesla-s-4.webp"
                         },
                         new
                         {
                             Id = 55,
                             CarId = 9,
+                            Order = 5,
                             Url = "/images/tesla-s-5.webp"
                         },
                         new
                         {
                             Id = 56,
                             CarId = 9,
+                            Order = 6,
                             Url = "/images/tesla-s-6.webp"
                         },
                         new
                         {
                             Id = 57,
                             CarId = 10,
+                            Order = 1,
                             Url = "/images/ferrari-f-1.webp"
                         },
                         new
                         {
                             Id = 58,
                             CarId = 10,
+                            Order = 2,
                             Url = "/images/ferrari-f-2.webp"
                         },
                         new
                         {
                             Id = 59,
                             CarId = 10,
+                            Order = 3,
                             Url = "/images/ferrari-f-3.webp"
                         },
                         new
                         {
                             Id = 60,
                             CarId = 10,
+                            Order = 4,
                             Url = "/images/ferrari-f-4.webp"
                         },
                         new
                         {
                             Id = 61,
                             CarId = 10,
+                            Order = 5,
                             Url = "/images/ferrari-f-5.webp"
                         },
                         new
                         {
                             Id = 62,
                             CarId = 10,
+                            Order = 6,
                             Url = "/images/ferrari-f-6.webp"
                         },
                         new
                         {
                             Id = 63,
                             CarId = 10,
+                            Order = 7,
                             Url = "/images/ferrari-f-7.webp"
                         },
                         new
                         {
                             Id = 64,
                             CarId = 10,
+                            Order = 8,
                             Url = "/images/ferrari-f-8.webp"
                         },
                         new
                         {
                             Id = 65,
                             CarId = 11,
+                            Order = 1,
                             Url = "/images/phanthom-1.webp"
                         },
                         new
                         {
                             Id = 66,
                             CarId = 11,
+                            Order = 2,
                             Url = "/images/phanthom-2.webp"
                         },
                         new
                         {
                             Id = 67,
                             CarId = 11,
+                            Order = 3,
                             Url = "/images/phanthom-3.webp"
                         },
                         new
                         {
                             Id = 68,
                             CarId = 11,
+                            Order = 4,
                             Url = "/images/phanthom-4.webp"
                         },
                         new
                         {
                             Id = 69,
                             CarId = 11,
+                            Order = 5,
                             Url = "/images/phanthom-5.webp"
                         },
                         new
                         {
                             Id = 70,
                             CarId = 11,
+                            Order = 6,
                             Url = "/images/phanthom-6.webp"
                         },
                         new
                         {
                             Id = 71,
                             CarId = 11,
+                            Order = 7,
                             Url = "/images/phanthom-7.webp"
                         },
                         new
                         {
                             Id = 72,
                             CarId = 11,
+                            Order = 8,
                             Url = "/images/phanthom-8.webp"
                         },
                         new
                         {
                             Id = 73,
                             CarId = 11,
+                            Order = 9,
                             Url = "/images/phanthom-9.webp"
                         },
                         new
                         {
                             Id = 74,
                             CarId = 11,
+                            Order = 10,
                             Url = "/images/phanthom-10.webp"
                         },
                         new
                         {
                             Id = 75,
                             CarId = 11,
+                            Order = 11,
                             Url = "/images/phanthom-11.webp"
                         },
                         new
                         {
                             Id = 76,
                             CarId = 12,
+                            Order = 1,
                             Url = "/images/bentley-continental-gt-1.webp"
                         },
                         new
                         {
                             Id = 77,
                             CarId = 12,
+                            Order = 2,
                             Url = "/images/bentley-continental-gt-2.webp"
                         },
                         new
                         {
                             Id = 78,
                             CarId = 12,
+                            Order = 3,
                             Url = "/images/bentley-continental-gt-3.webp"
                         },
                         new
                         {
                             Id = 79,
                             CarId = 12,
+                            Order = 4,
                             Url = "/images/bentley-continental-gt-4.webp"
                         },
                         new
                         {
                             Id = 80,
                             CarId = 12,
+                            Order = 5,
                             Url = "/images/bentley-continental-gt-5.webp"
                         },
                         new
                         {
                             Id = 81,
                             CarId = 12,
+                            Order = 6,
                             Url = "/images/bentley-continental-gt-6.webp"
                         },
                         new
                         {
                             Id = 82,
                             CarId = 12,
+                            Order = 7,
                             Url = "/images/bentley-continental-gt-7.webp"
                         },
                         new
                         {
                             Id = 83,
                             CarId = 12,
+                            Order = 8,
                             Url = "/images/bentley-continental-gt-8.webp"
                         },
                         new
                         {
                             Id = 84,
                             CarId = 12,
+                            Order = 9,
                             Url = "/images/bentley-continental-gt-9.webp"
                         },
                         new
                         {
                             Id = 85,
                             CarId = 12,
+                            Order = 10,
                             Url = "/images/bentley-continental-gt-10.webp"
                         },
                         new
                         {
                             Id = 86,
                             CarId = 12,
+                            Order = 11,
                             Url = "/images/bentley-continental-gt-11.webp"
                         },
                         new
                         {
                             Id = 87,
                             CarId = 12,
+                            Order = 12,
                             Url = "/images/bentley-continental-gt-12.webp"
                         },
                         new
                         {
                             Id = 88,
                             CarId = 13,
+                            Order = 1,
                             Url = "/images/mc-720s-1.webp"
                         },
                         new
                         {
                             Id = 89,
                             CarId = 13,
+                            Order = 2,
                             Url = "/images/mc-720s-2.webp"
                         },
                         new
                         {
                             Id = 90,
                             CarId = 13,
+                            Order = 3,
                             Url = "/images/mc-720s-3.webp"
                         },
                         new
                         {
                             Id = 91,
                             CarId = 13,
+                            Order = 4,
                             Url = "/images/mc-720s-4.webp"
                         },
                         new
                         {
                             Id = 92,
                             CarId = 13,
+                            Order = 5,
                             Url = "/images/mc-720s-5.webp"
                         },
                         new
                         {
                             Id = 93,
                             CarId = 13,
+                            Order = 6,
                             Url = "/images/mc-720s-6.webp"
                         },
                         new
                         {
                             Id = 94,
                             CarId = 13,
+                            Order = 7,
                             Url = "/images/mc-720s-7.webp"
                         },
                         new
                         {
                             Id = 95,
                             CarId = 14,
+                            Order = 1,
                             Url = "/images/aston-dbx-1.webp"
                         },
                         new
                         {
                             Id = 96,
                             CarId = 14,
+                            Order = 2,
                             Url = "/images/aston-dbx-2.webp"
                         },
                         new
                         {
                             Id = 97,
                             CarId = 14,
+                            Order = 3,
                             Url = "/images/aston-dbx-3.webp"
                         },
                         new
                         {
                             Id = 98,
                             CarId = 14,
+                            Order = 4,
                             Url = "/images/aston-dbx-4.webp"
                         },
                         new
                         {
                             Id = 99,
                             CarId = 14,
+                            Order = 5,
                             Url = "/images/aston-dbx-5.webp"
                         },
                         new
                         {
                             Id = 100,
                             CarId = 14,
+                            Order = 6,
                             Url = "/images/aston-dbx-6.webp"
                         },
                         new
                         {
                             Id = 101,
                             CarId = 14,
+                            Order = 7,
                             Url = "/images/aston-dbx-7.webp"
                         },
                         new
                         {
                             Id = 102,
                             CarId = 14,
+                            Order = 8,
                             Url = "/images/aston-dbx-8.webp"
                         },
                         new
                         {
                             Id = 103,
                             CarId = 15,
+                            Order = 1,
                             Url = "/images/lexus-lx-1.webp"
                         },
                         new
                         {
                             Id = 104,
                             CarId = 15,
+                            Order = 2,
                             Url = "/images/lexus-lx-2.webp"
                         },
                         new
                         {
                             Id = 105,
                             CarId = 15,
+                            Order = 3,
                             Url = "/images/lexus-lx-3.webp"
                         },
                         new
                         {
                             Id = 106,
                             CarId = 15,
+                            Order = 4,
                             Url = "/images/lexus-lx-4.webp"
                         },
                         new
                         {
                             Id = 107,
                             CarId = 15,
+                            Order = 5,
                             Url = "/images/lexus-lx-5.webp"
                         },
                         new
                         {
                             Id = 108,
                             CarId = 15,
+                            Order = 6,
                             Url = "/images/lexus-lx-6.webp"
                         },
                         new
                         {
                             Id = 109,
                             CarId = 15,
+                            Order = 7,
                             Url = "/images/lexus-lx-7.webp"
                         },
                         new
                         {
                             Id = 110,
                             CarId = 16,
+                            Order = 1,
                             Url = "/images/amg-gt-1.webp"
                         },
                         new
                         {
                             Id = 111,
                             CarId = 16,
+                            Order = 2,
                             Url = "/images/amg-gt-2.webp"
                         },
                         new
                         {
                             Id = 112,
                             CarId = 16,
+                            Order = 3,
                             Url = "/images/amg-gt-3.webp"
                         },
                         new
                         {
                             Id = 113,
                             CarId = 16,
+                            Order = 4,
                             Url = "/images/amg-gt-4.webp"
                         },
                         new
                         {
                             Id = 114,
                             CarId = 16,
+                            Order = 5,
                             Url = "/images/amg-gt-5.webp"
                         },
                         new
                         {
                             Id = 115,
                             CarId = 16,
+                            Order = 6,
                             Url = "/images/amg-gt-6.webp"
                         },
                         new
                         {
                             Id = 116,
                             CarId = 16,
+                            Order = 7,
                             Url = "/images/amg-gt-7.webp"
                         },
                         new
                         {
                             Id = 117,
                             CarId = 16,
+                            Order = 8,
                             Url = "/images/amg-gt-8.webp"
                         },
                         new
                         {
                             Id = 118,
                             CarId = 17,
+                            Order = 1,
                             Url = "/images/audi-q8-1.webp"
                         },
                         new
                         {
                             Id = 119,
                             CarId = 17,
+                            Order = 2,
                             Url = "/images/audi-q8-2.webp"
                         },
                         new
                         {
                             Id = 120,
                             CarId = 17,
+                            Order = 3,
                             Url = "/images/audi-q8-3.webp"
                         },
                         new
                         {
                             Id = 121,
                             CarId = 17,
+                            Order = 4,
                             Url = "/images/audi-q8-4.webp"
                         },
                         new
                         {
                             Id = 122,
                             CarId = 17,
+                            Order = 5,
                             Url = "/images/audi-q8-5.webp"
                         },
                         new
                         {
                             Id = 123,
                             CarId = 17,
+                            Order = 6,
                             Url = "/images/audi-q8-6.webp"
                         },
                         new
                         {
                             Id = 124,
                             CarId = 17,
+                            Order = 7,
                             Url = "/images/audi-q8-7.webp"
                         },
                         new
                         {
                             Id = 125,
                             CarId = 17,
+                            Order = 8,
                             Url = "/images/audi-q8-8.webp"
                         },
                         new
                         {
                             Id = 126,
                             CarId = 17,
+                            Order = 9,
                             Url = "/images/audi-q8-9.webp"
                         },
                         new
                         {
                             Id = 127,
                             CarId = 18,
+                            Order = 1,
                             Url = "/images/bmw-m4-1.webp"
                         },
                         new
                         {
                             Id = 128,
                             CarId = 18,
+                            Order = 2,
                             Url = "/images/bmw-m4-2.webp"
                         },
                         new
                         {
                             Id = 129,
                             CarId = 18,
+                            Order = 3,
                             Url = "/images/bmw-m4-3.webp"
                         },
                         new
                         {
                             Id = 130,
                             CarId = 18,
+                            Order = 4,
                             Url = "/images/bmw-m4-4.webp"
                         },
                         new
                         {
                             Id = 131,
                             CarId = 18,
+                            Order = 5,
                             Url = "/images/bmw-m4-5.webp"
                         },
                         new
                         {
                             Id = 132,
                             CarId = 18,
+                            Order = 6,
                             Url = "/images/bmw-m4-6.webp"
                         },
                         new
                         {
                             Id = 133,
                             CarId = 19,
+                            Order = 1,
                             Url = "/images/camry-1.webp"
                         },
                         new
                         {
                             Id = 134,
                             CarId = 19,
+                            Order = 2,
                             Url = "/images/camry-2.webp"
                         },
                         new
                         {
                             Id = 135,
                             CarId = 19,
+                            Order = 3,
                             Url = "/images/camry-3.webp"
                         },
                         new
                         {
                             Id = 136,
                             CarId = 19,
+                            Order = 4,
                             Url = "/images/camry-4.webp"
                         },
                         new
                         {
                             Id = 137,
                             CarId = 19,
+                            Order = 5,
                             Url = "/images/camry-5.webp"
                         },
                         new
                         {
                             Id = 138,
                             CarId = 19,
+                            Order = 6,
                             Url = "/images/camry-6.webp"
                         },
                         new
                         {
                             Id = 139,
                             CarId = 19,
+                            Order = 7,
                             Url = "/images/camry-7.webp"
                         },
                         new
                         {
                             Id = 140,
                             CarId = 20,
+                            Order = 1,
                             Url = "/images/cybertruck-1.webp"
                         },
                         new
                         {
                             Id = 141,
                             CarId = 20,
+                            Order = 2,
                             Url = "/images/cybertruck-2.webp"
                         },
                         new
                         {
                             Id = 142,
                             CarId = 20,
+                            Order = 3,
                             Url = "/images/cybertruck-3.webp"
                         },
                         new
                         {
                             Id = 143,
                             CarId = 20,
+                            Order = 4,
                             Url = "/images/cybertruck-4.webp"
                         },
                         new
                         {
                             Id = 144,
                             CarId = 20,
+                            Order = 5,
                             Url = "/images/cybertruck-5.webp"
                         },
                         new
                         {
                             Id = 145,
                             CarId = 21,
+                            Order = 1,
                             Url = "/images/rover-1.webp"
                         },
                         new
                         {
                             Id = 146,
                             CarId = 21,
+                            Order = 2,
                             Url = "/images/rover-2.webp"
                         },
                         new
                         {
                             Id = 147,
                             CarId = 21,
+                            Order = 3,
                             Url = "/images/rover-3.webp"
                         },
                         new
                         {
                             Id = 148,
                             CarId = 21,
+                            Order = 4,
                             Url = "/images/rover-4.webp"
                         },
                         new
                         {
                             Id = 149,
                             CarId = 21,
+                            Order = 5,
                             Url = "/images/rover-5.webp"
                         },
                         new
                         {
                             Id = 150,
                             CarId = 21,
+                            Order = 6,
                             Url = "/images/rover-6.webp"
                         },
                         new
                         {
                             Id = 151,
                             CarId = 21,
+                            Order = 7,
                             Url = "/images/rover-7.webp"
                         },
                         new
                         {
                             Id = 152,
                             CarId = 21,
+                            Order = 8,
                             Url = "/images/rover-8.webp"
                         },
                         new
                         {
                             Id = 153,
                             CarId = 21,
+                            Order = 9,
                             Url = "/images/rover-9.webp"
                         },
                         new
                         {
                             Id = 154,
                             CarId = 22,
+                            Order = 1,
                             Url = "/images/toyota-supra-1.webp"
                         },
                         new
                         {
                             Id = 155,
                             CarId = 22,
+                            Order = 2,
                             Url = "/images/toyota-supra-2.webp"
                         },
                         new
                         {
                             Id = 156,
                             CarId = 22,
+                            Order = 3,
                             Url = "/images/toyota-supra-3.webp"
                         },
                         new
                         {
                             Id = 157,
                             CarId = 22,
+                            Order = 4,
                             Url = "/images/toyota-supra-4.webp"
                         },
                         new
                         {
                             Id = 158,
                             CarId = 22,
+                            Order = 5,
                             Url = "/images/toyota-supra-5.webp"
                         },
                         new
                         {
                             Id = 159,
                             CarId = 22,
+                            Order = 6,
                             Url = "/images/toyota-supra-6.webp"
                         });
                 });
@@ -4845,8 +5057,8 @@ namespace RentACar.DataAccess.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 

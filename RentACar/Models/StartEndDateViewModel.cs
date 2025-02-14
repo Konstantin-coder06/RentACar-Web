@@ -7,10 +7,10 @@ namespace RentACar.Models
         [Required]
        
         
-        public DateTime StartDay { get; set; }
+        public DateTime? StartDay { get; set; }
         [Required]
         [DataType(DataType.Date)]
         
-        public DateTime EndDay { get; set; }
+        public DateTime? EndDay { get; set; }
     }
 }
