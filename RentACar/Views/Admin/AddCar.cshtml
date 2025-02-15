@@ -10,7 +10,7 @@
 }
 <style>
 
-    /* Overall Page Styling */
+  
     .container {
         background: #ffffff;
         border-radius: 10px;
@@ -31,7 +31,7 @@
         border-bottom: 3px solid #e65a5a;
     }
 
-    /* Form Group Styling */
+  
     .form-group {
         margin-bottom: 1.5rem;
     }
@@ -56,7 +56,7 @@
 
 
 
-    /* Pricing Section Highlight */
+
     .row.mt-3 {
         background: #f8f9fa;
         border-radius: 8px;
@@ -65,7 +65,7 @@
         border-left: 4px solid#e65a5a;
     }
 
-    /* Button Styling */
+ 
     .btn-primary {
         background-color: #e65a5a;
         border: none;
@@ -84,7 +84,7 @@
         border: none;
     }
 
-    /* Validation Styling */
+ 
     .text-danger {
         font-size: 0.9rem;
         margin-top: 0.3rem;
@@ -96,7 +96,7 @@
         border-color: #ffcccc;
     }
 
-    /* Responsive Design */
+  
     @@media (max-width: 768px) {
         .col-md-6 {
             margin-bottom: 1.5rem;
@@ -108,7 +108,7 @@
         }
     }
 
-    /* Form Section Headers */
+
     .form-section-header {
         color: #e65a5a;
         font-weight: 600;
@@ -141,7 +141,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="row">
-            <!-- Basic Information -->
+          
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Brand" class="control-label"></label>
@@ -164,7 +164,7 @@
                 </div>
             </div>
 
-            <!-- Technical Specifications -->
+         
             <div class="row mt-3">
                 <legend>Technical Specifications</legend>
                 <div class="col-md-4">
@@ -212,7 +212,7 @@
             </div>
         </div>
 
-        <!-- Pricing Section -->
+       
         <div class="row mt-3">
             <legend>Price</legend>
             <div class="col-md-4">
@@ -273,7 +273,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
-        <!-- Image Upload -->
+       
         <div class="form-group mt-4">
             <label asp-for="Images" class="control-label">Upload Images</label>
             <input asp-for="Images" id="imageUpload" type="file" multiple class="form-control">
@@ -294,7 +294,7 @@
 
 <script>
     $(document).ready(function () {
-        let imageFiles = []; // Масив за файловете
+        let imageFiles = []; 
         let imagePreviewContainer = document.getElementById("imagePreviewContainer");
         let fileInput = document.getElementById("imageUpload");
 
@@ -361,7 +361,7 @@
                 dataTransfer.items.add(file);
             });
 
-            fileInput.files = dataTransfer.files; // Обновява input файловете преди submit
+            fileInput.files = dataTransfer.files; 
         });
     });
 </script>
@@ -373,7 +373,7 @@
     }
 
     <script>
-        // Update file input label
+        
         $('.custom-file-input').on('change', function() {
             var files = $(this)[0].files;
             var label = files.length > 1 ?

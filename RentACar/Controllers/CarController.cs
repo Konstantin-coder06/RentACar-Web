@@ -46,7 +46,7 @@ namespace RentACar.Controllers
                 Images = imageService.GetImagesByCarId(car.Id).ToList()
             }).ToList();
 
-            var viewModel = new CarImagesViewModel
+            var viewModel = new CarImagesWithDatesViewModel
             {
                 CarWithImages = carsWithImages,
                 StartDate=startDay,
@@ -84,17 +84,23 @@ namespace RentACar.Controllers
                 Car = car,
                 Images = imageService.GetImagesByCarId(car.Id).ToList()
             }).ToList();
+            var startDayStr = HttpContext.Session.GetString("StartDate");
+            var endDayStr = HttpContext.Session.GetString("EndDate");
+            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
+            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
 
-            var viewModel = new CarImagesViewModel
+            var viewModel = new CarImagesWithDatesViewModel
             {
-                CarWithImages = carsWithImages
+                CarWithImages = carsWithImages,
+                StartDate = startDay,
+                EndDate = endDay,
             };
 
             return View("Index", viewModel);
 
         }
         [HttpPost]
-        public IActionResult FilterDates(CarImagesViewModel carImagesView)
+        public IActionResult FilterDates(CarImagesWithDatesViewModel carImagesView)
         {
             List<Reservation> reservations = reservationService.FindAll(x => x.StartDate >= carImagesView.StartDate && x.StartDate <= carImagesView.EndDate).ToList();
             var cars = carService.GetAll()
