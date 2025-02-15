@@ -88,7 +88,7 @@ namespace RentACar.Controllers
             return View(viewModel);
         }
 
-        // POST: Car/AddCar
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Company")]
@@ -101,7 +101,7 @@ namespace RentACar.Controllers
                 return View(viewModel);
             }
 
-            // Вземаме CompanyId от сесията
+           
             var companyId = HttpContext.Session.GetInt32("CompanyId");
 
             if (!companyId.HasValue)
@@ -131,7 +131,7 @@ namespace RentACar.Controllers
                     ZeroToHundred = viewModel.ZeroToHundred,
                     TopSpeed = viewModel.TopSpeed,
                     ClassOfCarId = viewModel.ClassOfCarId,
-                    CarCompanyId = companyId.Value // Взето от сесията
+                    CarCompanyId = companyId.Value 
                 };
 
                 carService.Add(car);

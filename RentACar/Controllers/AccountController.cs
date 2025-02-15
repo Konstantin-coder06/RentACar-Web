@@ -111,7 +111,7 @@ namespace RentACar.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, "User"); // По подразбиране новите потребители са "User" 
+                    await _userManager.AddToRoleAsync(user, "User"); 
                                   await _signInManager.SignInAsync(user, isPersistent: false);
                     Customer customer = new Customer()
                     {

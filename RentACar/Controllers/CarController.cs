@@ -203,7 +203,7 @@ namespace RentACar.Controllers
                 return RedirectToAction("AccessDenied", "Account");
             }
 
-            // Валидиране на Car
+         
             if (carWithImages.Car == null || carWithImages.Car.Id == 0)
             {
                 carWithImages.Car = carService.FindOne(x => x.Id == carWithImages.Car.Id);
@@ -214,7 +214,7 @@ namespace RentACar.Controllers
                 return View(carWithImages);
             }
 
-            // Зареждане на снимки
+         
             carWithImages.Images = imageService.GetImagesByCarId(carWithImages.Car.Id).OrderBy(x => x.Order).ToList();
 
             if (carWithImages.IsSelfPick)
@@ -227,8 +227,8 @@ namespace RentACar.Controllers
 
                 DateTime startDay = carWithImages.StartDate.Value;
                 DateTime endDay = carWithImages.EndDate.Value;
-                int totalDays =(endDay.Day - startDay.Day);
-
+                int totalDays = (int)(endDay - startDay).TotalDays;
+                var car = carService.FindOne(x => x.Id == carWithImages.Car.Id);
                 if (totalDays <= 0)
                 {
                     ModelState.AddModelError("", "End date must be after start date.");
@@ -242,21 +242,22 @@ namespace RentACar.Controllers
                     IsSelfPick = carWithImages.IsSelfPick,
                     PaidDeliveryPlace = carWithImages.CustomAddress,
                     IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
-                    CarId = carWithImages.Car.Id,
+                    CarId = car.Id,
                     CustomerId = userId.Value,
                     CreateTime = DateTime.Now,
                     
                 };
                 if (totalDays == 7) 
                 {
-                    reservation.TotalPrice = carWithImages.Car.PricePerWeek;
+                    reservation.TotalPrice = car.PricePerWeek;
                 }
-                if (totalDays > 0 && totalDays != 7) 
+                else if (totalDays > 0) 
                 {
-                    reservation.TotalPrice = (totalDays * carWithImages.Car.PricePerDay) * 0.9;
+                    reservation.TotalPrice = (totalDays * car.PricePerDay) * 0.9;
                 }
                 reservationService.Add(reservation);
                 reservationService.Save();
+                TempData["success"] = $" Days {totalDays} Total price: {car.PricePerDay}";
                 return RedirectToAction("Index", "Home");
             }
             if (!ModelState.IsValid)
@@ -266,48 +267,7 @@ namespace RentACar.Controllers
             }
             return View(carWithImages);
         
-            /* if (ModelState.IsValid)
-             {
-                 var userId = HttpContext.Session.GetInt32("UserId");
-
-                 if (!userId.HasValue)
-                 {
-                     return RedirectToAction("AccessDenied", "Account");
-                 }
-                 if (carWithImages.IsSelfPick == true)
-                 {
-                    var startDayStr = HttpContext.Session.GetString("StartDate");
-                    var endDayStr = HttpContext.Session.GetString("EndDate");
-
-                    DateTime startDay =  DateTime.Parse(startDayStr);
-                    DateTime endDay =  DateTime.Parse(endDayStr);
-                     Reservation reservation = new Reservation()
-                     {
-                         StartDate = DateTime.Now,
-                         EndDate = DateTime.Now.AddDays(3),
-                         IsSelfPick = carWithImages.IsSelfPick,
-                         PaidDeliveryPlace = carWithImages.CustomAddress,
-                         IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
-                         CarId = carWithImages.Car.Id,
-                         CustomerId = userId.Value,
-                         CreateTime = DateTime.Now,
-                     };
-                     if (endDay.Day - startDay.Day != 7 && endDay.Day-startDay.Day>0)
-                    {
-                         reservation.TotalPrice = ((endDay.Day - startDay.Day) * carWithImages.Car.PricePerDay) - carWithImages.Car.PricePerDay * 0.1;                         
-                    };                  
-                     if (endDay.Day - startDay.Day == 7)
-                     {
-                         reservation.TotalPrice = carWithImages.Car.PricePerWeek;                      
-
-
-                     }
-                    reservationService.Add(reservation);
-                    reservationService.Save();
-                     return RedirectToAction("Index", "Car");
-                 }
-             }
-             return View(carWithImages);*/
+         
         }
         public IActionResult Pendings()
         {
@@ -367,14 +327,14 @@ namespace RentACar.Controllers
                 return View(viewModel);
             }
 
-            // Retrieve the existing car using the ID from the view model.
+          
             var car = carService.FindOne(x=>x.Id==id);
             if (car == null)
             {
                 return NotFound();
             }
 
-            // Update the properties
+         
             car.Brand = viewModel.Brand;
             car.Model = viewModel.Model;
             car.Gearbox = viewModel.Gearbox;
@@ -392,10 +352,10 @@ namespace RentACar.Controllers
             car.ZeroToHundred = viewModel.ZeroToHundred;
             car.TopSpeed = viewModel.TopSpeed;
 
-            // Update the pending status
+          
             car.Pending = false;
 
-            // Save the changes
+          
             carService.Update(car);
             carService.Save();
 
@@ -409,7 +369,7 @@ namespace RentACar.Controllers
                 return Json(new { success = false, message = "Invalid request" });
             }
 
-            // Логика за актуализиране на реда в базата
+         
             int order = 1;
             foreach (var imageId in request.OrderedImageIds)
             {
@@ -426,7 +386,7 @@ namespace RentACar.Controllers
             return Json(new { success = true });
         }
 
-        // Клас за получаване на новия ред
+       
         public class ImageOrderUpdateRequest
         {
             public List<string> OrderedImageIds { get; set; }
