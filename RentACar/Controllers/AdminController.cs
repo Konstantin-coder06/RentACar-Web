@@ -25,7 +25,7 @@ namespace RentACar.Controllers
             this.customerService = customerService;
             _webHostEnvironment = webHostEnvironment;
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin" )]
         public IActionResult Index()
         {
             var reservationedCars=reservationService.GetAll().ToList();
@@ -71,12 +71,12 @@ namespace RentACar.Controllers
         }
 
 
-        [Authorize(Roles = "Company")]
+        [Authorize(Roles = "Company,Admin")]
         public IActionResult AddCar()
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
-
-            if (!companyId.HasValue)
+            var admin = User.IsInRole("Admin");
+            if (!companyId.HasValue && !admin)
             {
                 return RedirectToAction("AccessDenied", "Account");
             }
@@ -91,7 +91,7 @@ namespace RentACar.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Company")]
+        [Authorize(Roles = "Company,Admin")]
         public async Task<IActionResult> AddCar(AddingCarWithImagesViewModel viewModel)
         {
             viewModel.ClassOptions = new SelectList(classOfCarService.GetAll().ToList(), "Id", "Name");
@@ -103,8 +103,8 @@ namespace RentACar.Controllers
 
            
             var companyId = HttpContext.Session.GetInt32("CompanyId");
-
-            if (!companyId.HasValue)
+            var admin = User.IsInRole("Admin");
+            if (!companyId.HasValue && !admin)
             {
                 return RedirectToAction("AccessDenied", "Account");
             }
