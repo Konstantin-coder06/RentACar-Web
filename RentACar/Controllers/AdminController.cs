@@ -15,8 +15,9 @@ namespace RentACar.Controllers
         IClassOfCarService classOfCarService;
         IReservationService reservationService;
         ICustomerService customerService;
+        CloudinaryService cloudinaryService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AdminController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, ICustomerService customerService, IWebHostEnvironment webHostEnvironment)
+        public AdminController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, ICustomerService customerService,CloudinaryService cloudinaryService, IWebHostEnvironment webHostEnvironment)
         {
             this.carService = _carService;
             this.imageService = _imageService;
@@ -131,7 +132,8 @@ namespace RentACar.Controllers
                     ZeroToHundred = viewModel.ZeroToHundred,
                     TopSpeed = viewModel.TopSpeed,
                     ClassOfCarId = viewModel.ClassOfCarId,
-                    CarCompanyId = companyId.Value 
+                    Pending = true,
+                    CarCompanyId = companyId.Value
                 };
 
                 carService.Add(car);
@@ -140,6 +142,7 @@ namespace RentACar.Controllers
                 if (viewModel.Images?.Count > 0)
                 {
                     await imageService.ProcessImages(viewModel.Images, car.Id);
+                    
                 }
 
                 return RedirectToAction("Index", "Car");

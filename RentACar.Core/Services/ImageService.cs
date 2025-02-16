@@ -17,11 +17,12 @@ namespace RentACar.Core.Services
     {
         IRepository<Image> repository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-
-        public ImageService(IRepository<Image> _repository, IWebHostEnvironment webHostEnvironment)
+        CloudinaryService cloudinaryService;
+        public ImageService(IRepository<Image> _repository,CloudinaryService cloudinaryService,  IWebHostEnvironment webHostEnvironment)
         {
             this.repository = _repository;
             _webHostEnvironment = webHostEnvironment;
+            this.cloudinaryService = cloudinaryService;
         }
         public void Add(Image entity)
         {
@@ -61,31 +62,30 @@ namespace RentACar.Core.Services
         public async Task ProcessImages(List<IFormFile> images, int carId)
         {
             // Use IWebHostEnvironment to get the web root path dynamically
-            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+            /*string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
 
             if (!Directory.Exists(uploadsFolder))
             {
                 Directory.CreateDirectory(uploadsFolder);
-            }
+            }*/
 
             foreach (var image in images)
             {
                 if (image.Length > 0)
                 {
-                    var uniqueFileName = $"{Guid.NewGuid()}_{image.FileName}";
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    if (image.Length > 0)
                     {
-                        await image.CopyToAsync(stream);
+                        var imageUrl = await cloudinaryService.UploadImageAsync(image);
+
+                        if (!string.IsNullOrEmpty(imageUrl))
+                        {
+                            repository.Add(new Image
+                            {
+                                Url = imageUrl,  // Save Cloudinary URL
+                                CarId = carId
+                            });
+                        }
                     }
-
-                    // Add image entry to the database
-                    repository.Add(new Image
-                    {
-                        Url = $"/uploads/{uniqueFileName}",
-                        CarId = carId
-                    });
                 }
             }
 

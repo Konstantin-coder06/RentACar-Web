@@ -39,7 +39,7 @@ namespace RentACar.Controllers
 
             List<Reservation> reservations = reservationService.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
                  (!endDay.HasValue || x.StartDate <= endDay)).ToList();
-            var cars = carService.GetAll().Where(car => reservations.All(r => r.CarId != car.Id)).ToList();
+            var cars = carService.GetAll().Where(car => reservations.All(r => r.CarId != car.Id &&car.Pending==false)).ToList();
             var carsWithImages = cars.Select(car => new CarWithImages
             {
                 Car = car,

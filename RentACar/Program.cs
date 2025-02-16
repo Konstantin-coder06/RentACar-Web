@@ -12,6 +12,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RentACar.DataAccess.IRepository;
 using RentACar.DataAccess.IRepository.Repository;
 using RentACar.Models;
+using CloudinaryDotNet;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<RentACarDbContext>(options => options.UseSqlServer
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<RentACarDbContext>().AddDefaultTokenProviders();
 builder.Services.AddRazorPages();
 builder.Services.AddSession();
+builder.Services.AddScoped<CloudinaryService>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddScoped<ICarCompanyService, CarCompanyService>();
 builder.Services.AddScoped<ICarService, CarService>();
@@ -44,6 +46,23 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
     options.AddPolicy("CompanyPolicy", policy => policy.RequireRole("Company"));
 });
+var cloudinarySettings = builder.Configuration
+
+                         .GetSection("Cloudinary")
+
+                         .Get<CloudinarySettings>();
+
+
+
+var account = new Account(cloudinarySettings.CloudName,
+
+cloudinarySettings.ApiKey, cloudinarySettings.ApiSecret);
+
+
+
+var cloudinary = new Cloudinary(account);
+
+builder.Services.AddSingleton(cloudinary);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

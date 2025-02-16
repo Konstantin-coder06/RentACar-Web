@@ -480,3 +480,4 @@ C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\RentACar.Utility.dll
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\RentACar.Core.pdb
 C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\RentACar.Utility.pdb
+C:\Users\User\Documents\Software engineering\RentACar\RentACar-Web\RentACar\bin\Debug\net8.0\CloudinaryDotNet.dll
