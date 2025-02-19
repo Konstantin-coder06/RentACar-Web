@@ -16,20 +16,23 @@ namespace RentACar.Controllers
         IReservationService reservationService;
         ICustomerService customerService;
         CloudinaryService cloudinaryService;
+        IReportService reportService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AdminController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, ICustomerService customerService,CloudinaryService cloudinaryService, IWebHostEnvironment webHostEnvironment)
+        public AdminController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportService, IWebHostEnvironment webHostEnvironment)
         {
             this.carService = _carService;
             this.imageService = _imageService;
             this.classOfCarService = _classOfCarService;
             this.reservationService = reservationService;
             this.customerService = customerService;
+            this.cloudinaryService = cloudinaryService;
+            this.reportService = reportService;
             _webHostEnvironment = webHostEnvironment;
         }
         [Authorize(Roles = "Admin" )]
         public IActionResult Index()
         {
-            var reservationedCars=reservationService.GetAll().ToList();
+            var reservationedCars=reservationService.GetAll().OrderByDescending(x=>x.CreateTime).ToList();
             var cars=new List<Car>();
             var customers=new List<Customer>();
             var last24Hours = DateTime.Now.AddDays(-1);
@@ -37,6 +40,8 @@ namespace RentACar.Controllers
             var resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
             var countPending=carService.FindAll(x=>x.Pending==true).Count();
             var resCarsForLastMounth=reservationService.GetAll().Where(x=>x.CreateTime >= lastMounth).ToList();
+            var pending = carService.FindAll(x => x.Pending == true).ToList();
+            var reportCount=reportService.GetAll().Count();
             double total24Hours = 0;
             double totalMounth = 0;
             int count = 0;
@@ -49,6 +54,7 @@ namespace RentACar.Controllers
                 
                
             }
+        
             foreach(var x in resCarsForLast24Hours)
             {
                 total24Hours += x.TotalPrice;
@@ -66,12 +72,26 @@ namespace RentACar.Controllers
                 TotalPriceForLastMounth = totalMounth,
                 Count=count,
                 CountPending=countPending,
+                Pending=pending,
+                ReportCount=reportCount
             };
             
             return View(recentReservationViewModel);
         }
 
+        public IActionResult AllReports()
+        {
 
+            var report = reportService.FindOne(x=>x.Id==1);
+            ReportViewModel reportViewModel = new ReportViewModel()
+            {
+                Title = report.Title,
+                Description = report.Description,
+                Customer = customerService.GetByReport(report.Id),
+            };
+
+            return View(reportViewModel);
+        }
         [Authorize(Roles = "Company,Admin")]
         public IActionResult AddCar()
         {

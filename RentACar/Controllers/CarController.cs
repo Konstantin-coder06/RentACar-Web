@@ -29,14 +29,10 @@ namespace RentACar.Controllers
       
         public IActionResult Index()
         {
-
-
-
             var startDayStr = HttpContext.Session.GetString("StartDate");
             var endDayStr = HttpContext.Session.GetString("EndDate");
             DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
             DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
-
             List<Reservation> reservations = reservationService.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
                  (!endDay.HasValue || x.StartDate <= endDay)).ToList();
             var cars = carService.GetAll().Where(car => reservations.All(r => r.CarId != car.Id &&car.Pending==false)).ToList();
@@ -56,10 +52,6 @@ namespace RentACar.Controllers
           
             return View(viewModel);
         }
-   
-
-       
-
         [HttpPost]
         [Route("Car/Search")]
         public IActionResult Search(string searchBar)
@@ -77,18 +69,20 @@ namespace RentACar.Controllers
                     queries = queries.Where(x => searchBar.Contains(x.Model));
                 }
             }
+            var startDayStr = HttpContext.Session.GetString("StartDate");
+            var endDayStr = HttpContext.Session.GetString("EndDate");
 
-            var cars = queries.AsEnumerable().ToList();
+            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
+            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
+            List<Reservation> reservations = reservationService.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
+          (!endDay.HasValue || x.StartDate <= endDay)).ToList();
+            var cars = queries.AsEnumerable().Where(x=>reservations.All(r=>r.CarId==x.Id) &&x.Pending==false).ToList();
             var carsWithImages = cars.Select(car => new CarWithImages
             {
                 Car = car,
                 Images = imageService.GetImagesByCarId(car.Id).ToList()
             }).ToList();
-            var startDayStr = HttpContext.Session.GetString("StartDate");
-            var endDayStr = HttpContext.Session.GetString("EndDate");
-            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
-            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
-
+          
             var viewModel = new CarImagesWithDatesViewModel
             {
                 CarWithImages = carsWithImages,
@@ -112,9 +106,13 @@ namespace RentACar.Controllers
                 Images = imageService.GetImagesByCarId(car.Id).ToList()
             }).ToList();
             //datata
-            var viewModel = new CarImagesViewModel
+            HttpContext.Session.SetString("StartDate", carImagesView.StartDate?.ToString("yyyy-MM-dd"));
+            HttpContext.Session.SetString("EndDate", carImagesView.EndDate?.ToString("yyyy-MM-dd"));
+            var viewModel = new CarImagesWithDatesViewModel
             {
-                CarWithImages = carsWithImages
+                CarWithImages = carsWithImages,
+                StartDate=carImagesView.StartDate,
+                EndDate=carImagesView.EndDate,
             };
 
 
@@ -156,10 +154,15 @@ namespace RentACar.Controllers
                 Car = car,
                 Images = imageService.GetImagesByCarId(car.Id).ToList()
             }).ToList();
-
-            var viewModel = new CarImagesViewModel
+            var startDayStr = HttpContext.Session.GetString("StartDate");
+            var endDayStr = HttpContext.Session.GetString("EndDate");
+            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
+            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
+            var viewModel = new CarImagesWithDatesViewModel
             {
-                CarWithImages = carsWithImages
+                CarWithImages = carsWithImages,
+                StartDate = startDay,
+                EndDate = endDay,
             };
 
             return View("Index", viewModel);

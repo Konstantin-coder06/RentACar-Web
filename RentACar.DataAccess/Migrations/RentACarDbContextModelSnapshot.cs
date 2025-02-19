@@ -5025,6 +5025,32 @@ namespace RentACar.DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RentACar.Models.Report", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Report");
+                });
+
             modelBuilder.Entity("RentACar.Models.Reservation", b =>
                 {
                     b.Property<int>("Id")
@@ -5216,6 +5242,17 @@ namespace RentACar.DataAccess.Migrations
                     b.Navigation("Car");
                 });
 
+            modelBuilder.Entity("RentACar.Models.Report", b =>
+                {
+                    b.HasOne("RentACar.Models.Customer", "Customer")
+                        .WithMany("Reports")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("RentACar.Models.Reservation", b =>
                 {
                     b.HasOne("RentACar.Models.Car", "Car")
@@ -5252,6 +5289,8 @@ namespace RentACar.DataAccess.Migrations
 
             modelBuilder.Entity("RentACar.Models.Customer", b =>
                 {
+                    b.Navigation("Reports");
+
                     b.Navigation("Reservations");
                 });
 

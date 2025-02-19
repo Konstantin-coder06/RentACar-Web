@@ -8,5 +8,7 @@
         public double TotalPriceForLastMounth {  get; set; }
         public int Count {  get; set; }
         public int CountPending {  get; set; }
+        public List<Car>Pending { get; set; }
+        public int ReportCount {  get; set; }
     }
 }

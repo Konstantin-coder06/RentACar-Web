@@ -46,6 +46,18 @@
                                 </div>
                             </li>
                          } 
+                         @if(User.IsInRole(SD.User)){
+                               <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Content Management
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("Report", "Customer")">Добави report</a>
+                                   
+
+                                </div>
+                            </li>
+                         }
                     </ul>
                     <partial name="_LoginPartial"/>​
                 </div>

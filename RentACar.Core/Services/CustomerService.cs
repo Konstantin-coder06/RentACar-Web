@@ -48,6 +48,11 @@ namespace RentACar.Core.Services
             return repository.GetAll().ToList();
         }
 
+        public Customer GetByReport(int id)
+        {
+            return repository.FindOne(x=>x.Id == id);
+        }
+
         public Customer GetByUserId(string userId)
         {
             return repository.FindOne(x=>x.UserId==userId);

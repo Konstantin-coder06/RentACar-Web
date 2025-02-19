@@ -18,9 +18,10 @@ namespace RentACar.Models
         [Required(ErrorMessage ="Age is required")]
         public int Age {  get; set; }
 
-        public string UserId { get; set; }  // Връзка към IdentityUser​
+        public string UserId { get; set; }  
 
         public IdentityUser User { get; set; }
         public ICollection<Reservation> Reservations { get; set; }
+        public ICollection<Report> Reports { get; set; }
     }
 }
