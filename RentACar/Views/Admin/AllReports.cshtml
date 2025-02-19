@@ -3,7 +3,64 @@
 *@
 @{
 }
-@model ReportViewModel
+
+
+<style>
+    body{
+        background-color: #f6f6f9;
+    }
+    table {
+    background: #fff;
+    width: 100%;
+    border-radius: 2rem;
+    padding: 1.8rem;
+    text-align: center;
+    box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
+    transition: all .3s ease;
+        color: #363949;
+    }
+
+    table:hover {
+    box-shadow: none;
+    }
+
+     table tbody td {
+    height: 3.8rem;
+   border-bottom: 1px solid #fff;
+   color: #677483
+    }
+
+    table tbody tr:last-child td {
+    border: none;
+    }
+</style>
+@model ListOfReportsViewModel
 <div>
-    @Model.Title @Model.Description @Model.Customer
+    <table>
+        <thead>
+            <tr>
+                <th>Car Brand</th>
+                <th>Model</th>
+                <th>Created At</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+        @foreach(var x in Model.ReportViewModels)
+        {
+
+            <tbody>
+                <tr>
+                    <td>@x.Title</td>
+                    <td>@x.Description</td>
+                    <td>@x.Customer.Name</td>
+                    <td class="warning">@x.CreatedAt</td>
+                  
+                </tr>
+
+            </tbody>
+
+        }
+    </table>
+    
 </div>

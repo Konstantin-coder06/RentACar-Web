@@ -82,15 +82,20 @@ namespace RentACar.Controllers
         public IActionResult AllReports()
         {
 
-            var report = reportService.FindOne(x=>x.Id==1);
-            ReportViewModel reportViewModel = new ReportViewModel()
+            var reports = reportService.GetAll().ToList();
+            var view = reports.Select(report => new ReportViewModel
             {
                 Title = report.Title,
                 Description = report.Description,
-                Customer = customerService.GetByReport(report.Id),
-            };
+                Customer = customerService.FindOne(x => x.Id == report.CustomerId),
+                CreatedAt=report.CreateAt
+            }).ToList();
 
-            return View(reportViewModel);
+            var reportsViewModel = new ListOfReportsViewModel()
+            {
+                ReportViewModels =view,
+            };
+            return View(reportsViewModel);
         }
         [Authorize(Roles = "Company,Admin")]
         public IActionResult AddCar()
