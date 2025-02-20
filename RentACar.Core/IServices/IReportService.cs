@@ -10,6 +10,7 @@ namespace RentACar.Core.IServices
 {
     public interface IReportService:IRepository<Report>
     {
-       
+        IEnumerable<Report> GetReportFromUser(int customerId);
+        
     }
 }

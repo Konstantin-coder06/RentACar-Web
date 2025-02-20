@@ -1,0 +1,346 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+@model AnalyticsViewModel
+<style>
+    :root {
+        --clr-primary: #7380ec;
+        --clr-danger: #ff7782;
+        --clr-success: #41f1b6;
+        --clr-white: #fff;
+        --clr-info-dark: #7d8da1;
+        --clr-info-light: #dce1eb;
+        --clr-dark: #363949;
+        --clr-warnig: #ff4edc;
+        --clr-light: rgba(132, 139, 200, 0.18);
+        --clr-primary-variant: #111e88;
+        --clr-dark-variant: #677483;
+        --clr-color-background: #f6f6f9;
+        --card-border-radius: 2rem;
+        --border-radius-1: 0.4rem;
+        --border-radius-2: 0.8rem;
+        --border-radius-3: 1.2rem;
+        --card-padding: 1.8rem;
+        --padding-1: 1.2rem;
+        --box-shadow: 0 2rem 3rem var(--clr-light);
+    }
+    body{
+        background-color:var(--clr-color-background)
+    }
+ main {
+    margin-top: 1.4rem;
+    width: auto;
+    }
+
+    main input {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--clr-dark);
+    }
+
+    main .date {
+    display: inline-block;
+    background: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    margin-top: 1rem;
+    padding: 0.5rem 1.6rem;
+    }
+
+    main .insights {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.6rem;
+    }
+    main .insights small{
+    color:var(--clr-dark);
+    }
+    main .insights > div {
+    background-color: var(--clr-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all .3s ease;
+    }
+
+    main .insights > div:hover {
+    box-shadow: none;
+    }
+
+    main .insights > div span {
+    background: coral;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--clr-white);
+    font-size: 2rem;
+    }
+
+    main .insights > div.expenses span {
+    background: var(--clr-danger);
+    }
+
+    main .insights > div.income span {
+    background: var(--clr-success);
+    }
+
+    main .insights > div .middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+
+    main .insights > div .middle h1 {
+    font-size: 1.6rem;
+    }
+
+    main h1 {
+    color: var(--clr-dark);
+    }
+
+    main .insights h1 {
+    color: var(--clr-dark);
+    }
+
+    main .insights h3 {
+    color: var(--clr-dark);
+    }
+
+    main .insights p {
+    color: var(--clr-dark);
+    }
+
+    main .insights h3 {
+    color: var(--clr-dark);
+    }
+
+    main .insights .progress {
+    position: relative;
+    height: 68px;
+    width: 68px;
+    border-radius: 50px;
+    }
+
+    main .insights svg {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 0;
+    }
+
+    main .insights svg circle {
+    fill: none;
+    stroke: var(--clr-primary);
+    transform: rotate(270,80,80);
+    stroke-width: 5;
+    }
+
+    main .insights .sales svg circle {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 150;
+    }
+
+    main .insights .expenses svg circle {
+    stroke-dashoffset: 10;
+    stroke-dasharray: 150;
+    }
+
+    main .insights .sales svg circle {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 150;
+    }
+
+    main .insights .income svg circle {
+    stroke: var(--clr-success);
+    }
+
+    main .insights .progress .number {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+        main  table {
+            padding-top:3.8rem;
+            margin:3rem;
+            background: var(--clr-white);
+            width: 100%;
+            border-radius: var(--card-border-radius);
+            padding: var(--card-padding);
+            text-align: center;
+            justify-content:center;
+            box-shadow: var(--box-shadow);
+            transition: all .3s ease;
+            color: var(--clr-dark);
+        }
+
+            main  table:hover {
+                box-shadow: none;
+            }
+
+        main table tbody td {
+            height: 3.8rem;
+            border-bottom: 1px solid var(--clr-white);
+            color: var(--clr-dark-variant)
+        }
+
+        main table tbody tr:last-child td {
+            border: none;
+        }
+
+</style>
+<main>
+    <h1>Analytics</h1>
+
+    <div class="date">
+        <input type="date">
+    </div>
+
+    <div class="insights">
+
+        <!-- start seling -->
+        <div class="sales">
+            <span class="material-symbols-sharp">trending_up</span>
+            <div class="middle">
+
+                <div class="left">
+                    <h3>Total Sales</h3>
+                    <h1>BGN @Model.TotalLast24Hours</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number"><p>80%</p></div>
+                </div>
+
+            </div>
+            <small>Last 24 Hours</small>
+        </div>
+        <!-- end seling -->
+        <!-- start expenses -->
+        <div class="expenses">
+            <span class="material-symbols-sharp">local_mall</span>
+            <div class="middle">
+
+                <div class="left">
+                    <h3>Total Sales</h3>
+                    <h1>BGN @Model.TotalLastWeek</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number"><p>80%</p></div>
+                </div>
+
+            </div>
+            <small>Last Month</small>
+        </div>
+        <!-- end seling -->
+        <div class="sales">
+            <span class="material-symbols-sharp">trending_up</span>
+            <div class="middle">
+
+                <div class="left">
+                    <h3>Total Sales</h3>
+                    <h1>BGN @Model.TotalLastMonth</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number"><p>80%</p></div>
+                </div>
+
+            </div>
+        </div>
+        <!-- start seling -->
+         <div class="income">
+            <span class="material-symbols-sharp">stacked_line_chart</span>
+            <div class="middle">
+
+                <div class="left">
+                    <h3>Total Reservation</h3>
+                    <h1>@Model.Count24Hours</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number"><p>80%</p></div>
+                </div>
+
+            </div>
+            <small>Last Day</small>
+        </div>
+            <div class="income">
+                <span class="material-symbols-sharp">stacked_line_chart</span>
+                <div class="middle">
+
+                    <div class="left">
+                        <h3>Total Reservation</h3>
+                        <h1>@Model.CountWeek</h1>
+                    </div>
+                    <div class="progress">
+                        <svg>
+                            <circle r="30" cy="40" cx="40"></circle>
+                        </svg>
+                        <div class="number"><p>80%</p></div>
+                    </div>
+
+                </div>
+                <small>Last Week</small>
+            </div>
+        <div class="income">
+            <span class="material-symbols-sharp">stacked_line_chart</span>
+            <div class="middle">
+
+                <div class="left">
+                    <h3>Total Reservation</h3>
+                    <h1>@Model.CountMonth</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number"><p>80%</p></div>
+                </div>
+
+            </div>
+            <small>Last Mounth</small>
+        </div>
+        <!-- end seling -->
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Brand</td>
+                <td>Model</td>
+                <td>Count</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var x in Model.Top10Cars){
+                <tr>
+                    <td>@x.Brand</td>
+                    <td>@x.Model</td>
+                    <td>@x.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

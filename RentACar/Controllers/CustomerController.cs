@@ -35,6 +35,7 @@ namespace RentACar.Controllers
                     Title = reportViewModel.Title,
                     Description = reportViewModel.Description,
                     CustomerId=userId.Value,
+                    CreateAt = DateTime.Now,
                 };
                 reportService.Add(report);
                 reportService.Save();

@@ -47,7 +47,10 @@ namespace RentACar.Core.Services
             return reports.GetAll().ToList();
         }
 
-       
+        public IEnumerable<Report> GetReportFromUser(int customerId)
+        {
+           return reports.FindAll(x=>x.CustomerId == customerId).ToList();
+        }
 
         public void Save()
         {
