@@ -55,8 +55,7 @@
     body {
     width: 100vw;
     height: 100vh;
-    font-size: .7rem;
-    user-select: none;
+    font-size: .7rem; 
     overflow-x: hidden;
     background: var(--clr-color-background);
     font-family: 'Poppins', sans-serif;
@@ -325,12 +324,16 @@
     top: 0;
     }
 
+  
+
     main .insights svg circle {
-    fill: none;
-    stroke: var(--clr-primary);
-    transform: rotate(270,80,80);
-    stroke-width: 5;
+        fill: none;
+        stroke: var(--clr-primary);
+        transform: rotate(270,80,80);
+        stroke-width: 5;
     }
+
+   
 
     main .insights .sales svg circle {
     stroke-dashoffset: 0;
@@ -732,22 +735,18 @@
 
             <div class="top">
                 <div class="logo">
-                    <h2>C <span class="danger">RentACar</span> </h2>
+                    <h2><span class="danger">RentACar</span> </h2>
                 </div>
-                <div class="close" id="close_btn">
-                    <span class="material-symbols-sharp">
-                        close
-                    </span>
-                </div>
+               
             </div>
             <!-- end top -->
             <div class="sidebar">
 
-                <a href="#">
+                <a href="#" class="active">
                     <span class="material-symbols-sharp">grid_view </span>
                     <h3>Dashbord</h3>
                 </a>
-                <a href="#" class="active">
+                <a href="#">
                     <span class="material-symbols-sharp">person_outline </span>
                     <h3>custumers</h3>
                 </a>
@@ -788,7 +787,7 @@
 
         </aside>
         <!-- --------------
-        end asid
+        end aside
         -------------------- -->
         <!-- --------------
         start main part
@@ -814,9 +813,9 @@
                         </div>
                         <div class="progress">
                             <svg>
-                                <circle r="30" cy="40" cx="40"></circle>
+                                <circle r="30" cy="40" cx="40" style="stroke: @(Model.ProcentPerDay < 0 ? "var(--clr-danger)" : "var(--clr-primary)")">></circle>
                             </svg>
-                            <div class="number"><p>80%</p></div>
+                            <div class="number"><p>@Model.ProcentPerDay%</p></div>
                         </div>
 
                     </div>
@@ -834,9 +833,9 @@
                         </div>
                         <div class="progress">
                             <svg>
-                                <circle r="30" cy="40" cx="40"></circle>
+                                <circle r="30" cy="40" cx="40" style="stroke: @(Model.ProcentPerMonth < 0 ? "var(--clr-danger)" : "var(--clr-primary)")">></circle>
                             </svg>
-                            <div class="number"><p>80%</p></div>
+                            <div class="number"><p>@Model.ProcentPerMonth%</p></div>
                         </div>
 
                     </div>
@@ -897,7 +896,7 @@
                   
                 }</table>
                
-                <a href="#">Show All</a>
+                <a asp-action="Pendings" asp-controller="Car">Show All</a>
             </div>
 
         </main>
@@ -957,11 +956,17 @@
                     </div>
                     <div class="right_text">
                         <div class="info">
-                            <h3>Onlion Orders</h3>
-                            <small class="text-muted">Last seen 2 Hours</small>
+                            <h3>Last day:</h3>
+                            <small class="text-muted">@Model.TotalPriceForLast24Hours,</small>
                         </div>
-                        <h5 class="danger">-17%</h5>
-                        <h3>3849</h3>
+                        @if(Model.ProcentPerDay <= 0){
+                            <h5 class="danger">@Model.ProcentPerDay% less</h5>
+                        }
+                        else{
+                            <h5 class="success">@Model.ProcentPerDay% more</h5>
+                        }
+                        <h3>Before last day:</h3>
+                        <small class="text-muted">@Model.TotalPriceForLast24HoursBefore24Hours</small>
                     </div>
                 </div>
                 <div class="item onlion">
@@ -970,11 +975,20 @@
                     </div>
                     <div class="right_text">
                         <div class="info">
-                            <h3>Onlion Orders</h3>
-                            <small class="text-muted">Last seen 2 Hours</small>
+                            <h3>Last week</h3>
+                            <small class="text-muted">@Model.TotalPriceForLastWeek</small>
                         </div>
-                        <h5 class="success">-17%</h5>
-                        <h3>3849</h3>
+                        @if (Model.ProcentPerWeek <= 0)
+                        {
+                            <h5 class="danger">@Model.ProcentPerWeek% less</h5>
+                        }
+                        else
+                        {
+                            <h5 class="success">@Model.ProcentPerWeek% more</h5>
+                        }
+                        
+                        <h3>Before Last Week:</h3>
+                        <small class="text-muted">@Model.TotalPriceForLastWeekBeforeWeek</small>
                     </div>
                 </div>
                 <div class="item onlion">
@@ -983,23 +997,29 @@
                     </div>
                     <div class="right_text">
                         <div class="info">
-                            <h3>Onlion Orders</h3>
-                            <small class="text-muted">Last seen 2 Hours</small>
+                            <h3>Last month</h3>
+                            <small class="text-muted">@Model.TotalPriceForLastMounth</small>
                         </div>
-                        <h5 class="danger">-17%</h5>
-                        <h3>3849</h3>
+                        @if (Model.ProcentPerMonth <= 0)
+                        {
+                            <h5 class="danger">@Model.ProcentPerMonth% less</h5>
+                        }
+                        else
+                        {
+                            <h5 class="success">@Model.ProcentPerMonth% more</h5>
+                        }
+
+                        <h3>Before Last Month:</h3>
+                        <small class="text-muted">@Model.TotalPriceForLastMounthBeforeMonth</small>
                     </div>
                 </div>
+               
 
 
 
             </div>
 
-            <div class="item add_product">
-                <div>
-                    <span class="material-symbols-sharp">add</span>
-                </div>
-            </div>
+          
         </div>
 
 

@@ -120,6 +120,8 @@
     .image-preview {
         cursor: grab;
     }
+
+    
 </style>
 
 @if (!ViewData.ModelState.IsValid)
@@ -133,6 +135,9 @@
         </ul>
     </div>
 }
+<body>
+
+
 <div class="container mt-5">
     <h2>Add New Car</h2>
     <hr />
@@ -280,8 +285,15 @@
             <div id="imagePreviewContainer" class="d-flex flex-wrap mt-2 border p-2" style="min-height: 100px;"></div>
             <input type="hidden" id="imageOrder" name="imageOrder">
         </div>
-
-
+        @using RentACar.Utility
+        @if(User.IsInRole(SD.Admin)){
+            <div class="form-group mb-3">
+                <label asp-for="CompanyId" class="font-weight-bold">Companies:</label>
+                <select asp-for="CompanyId" asp-items="Model.Companies" class="form-control shadow-sm">
+                    <option value="0" selected>Select a company</option>
+                </select>
+            </div>
+        }
 
         <div class="form-group mt-4">
             <button type="submit" class="btn btn-primary">Add Car</button>
@@ -289,8 +301,7 @@
         </div>
     </form>
 </div>
-
-
+</body>
 
 <script>
     $(document).ready(function () {

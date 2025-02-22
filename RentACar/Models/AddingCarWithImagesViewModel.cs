@@ -62,5 +62,7 @@ namespace RentACar.Models
 
         [Required(ErrorMessage = "At least one image is required")]
             public List<IFormFile> Images { get; set; }
+         public int CompanyId {  get; set; }
+        public SelectList? Companies { get; set; }
         }
 }

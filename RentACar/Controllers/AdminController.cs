@@ -18,8 +18,12 @@ namespace RentACar.Controllers
         ICustomerService customerService;
         CloudinaryService cloudinaryService;
         IReportService reportService;
+        ICarCompanyService carCompanyService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AdminController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportService, IWebHostEnvironment webHostEnvironment)
+        public AdminController(ICarService _carService, IImageService _imageService, 
+            IClassOfCarService _classOfCarService,IReservationService reservationService, 
+            ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportService,
+            IWebHostEnvironment webHostEnvironment, ICarCompanyService carCompanyService)
         {
             this.carService = _carService;
             this.imageService = _imageService;
@@ -28,6 +32,7 @@ namespace RentACar.Controllers
             this.customerService = customerService;
             this.cloudinaryService = cloudinaryService;
             this.reportService = reportService;
+            this.carCompanyService = carCompanyService;
             _webHostEnvironment = webHostEnvironment;
         }
         [Authorize(Roles = "Admin" )]
@@ -37,14 +42,31 @@ namespace RentACar.Controllers
             var cars=new List<Car>();
             var customers=new List<Customer>();
             var last24Hours = DateTime.Now.AddDays(-1);
-            var lastMounth=DateTime.Now.AddDays(-30);
+            var last24After24Hours=DateTime.Now.AddDays(-2);
+            var lastMonth=DateTime.Now.AddDays(-30);
+            var lastMonthAfterMonth = DateTime.Now.AddDays(-60);
+            var lastWeek = DateTime.Now.AddDays(-7);
+            var lastWeekBeforeWeek = DateTime.Now.AddDays(-14);
+
             var resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
+            var resCarsForLast24After24Hours = reservationService.FindAll(x => x.CreateTime >= last24After24Hours && x.CreateTime <= last24Hours).ToList();
+            
             var countPending=carService.FindAll(x=>x.Pending==true).Count();
-            var resCarsForLastMounth=reservationService.GetAll().Where(x=>x.CreateTime >= lastMounth).ToList();
+            
+            var resCarsForLastMounth=reservationService.GetAll().Where(x=>x.CreateTime >= lastMonth).ToList();
+            var resCarsForLastMonthBeforeMonth = reservationService.FindAll(x => x.CreateTime >= lastMonthAfterMonth && x.CreateTime <= lastMonth).ToList();
+            
+            var resCarsForLastWeek = reservationService.GetAll().Where(x => x.CreateTime >= lastWeek).ToList();
+            var resCarsForLastWeekBeforeWeek = reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek).ToList();
+            
             var pending = carService.FindAll(x => x.Pending == true).ToList();
             var reportCount=reportService.GetAll().Count();
             double total24Hours = 0;
             double totalMounth = 0;
+            double total24before24hours = 0;
+            double totalMonthBeforeMonth = 0;
+            double totalWeek = 0;
+            double totalWeekBeforeWeek = 0;
             int count = 0;
             foreach (var carx in reservationedCars)
             {
@@ -55,7 +77,14 @@ namespace RentACar.Controllers
                 
                
             }
-        
+            foreach(var x in resCarsForLastMonthBeforeMonth)
+            {
+                totalMonthBeforeMonth += x.TotalPrice;
+            }
+            foreach(var x in resCarsForLast24After24Hours)
+            {
+                total24before24hours += x.TotalPrice;
+            }
             foreach(var x in resCarsForLast24Hours)
             {
                 total24Hours += x.TotalPrice;
@@ -65,21 +94,89 @@ namespace RentACar.Controllers
                 totalMounth += x.TotalPrice;
                 count++;
             }
+            foreach (var x in resCarsForLastWeek)
+            {
+                totalWeek += x.TotalPrice;
+            }
+            foreach (var x in resCarsForLastWeekBeforeWeek)
+            {
+                totalWeekBeforeWeek += x.TotalPrice;
+            }
+            double difference24 =total24Hours - total24before24hours;
+           
+            int percent24 = 0;
+
+            if (total24before24hours != 0)
+            {
+                percent24 = (int)((difference24 / total24before24hours) * 100);
+            }
+            else
+            {
+                if (total24Hours > 0)
+                {
+                    percent24 = 100;
+                }
+                else
+                {
+                    percent24 = 0;
+                }
+            }
+            double differenceWeek = totalWeek - totalWeekBeforeWeek;
+            int percentWeek = 0;
+            if (totalWeekBeforeWeek != 0)
+            {
+                percentWeek = (int)((differenceWeek /totalWeekBeforeWeek) * 100);
+            }
+            else
+            {
+                if (totalWeek > 0)
+                {
+                    percentWeek = 100;
+                }
+                else
+                {
+                    percentWeek = 0;
+                }
+            }
+            double differenceMonth = totalMounth -totalMonthBeforeMonth;
+            int percentMonth = 0;
+            if (totalMonthBeforeMonth != 0)
+            {
+                percentMonth = (int)((differenceMonth / totalMonthBeforeMonth) * 100);
+            }
+            else
+            {
+                if (totalMounth > 0)
+                {
+                    percentMonth = 100;
+                }
+                else
+                {
+                    percentMonth = 0;
+                }
+            }
             RecentReservation recentReservationViewModel = new RecentReservation()
             {
                 Cars = cars,
                 Customers = customers,
                 TotalPriceForLast24Hours = total24Hours,
                 TotalPriceForLastMounth = totalMounth,
-                Count=count,
-                CountPending=countPending,
-                Pending=pending,
-                ReportCount=reportCount
+                TotalPriceForLastWeek = totalWeek,
+                TotalPriceForLast24HoursBefore24Hours = total24before24hours,
+                TotalPriceForLastWeekBeforeWeek = totalWeekBeforeWeek,
+                TotalPriceForLastMounthBeforeMonth = totalMonthBeforeMonth,
+                Count = count,
+                CountPending = countPending,
+                Pending = pending,
+                ReportCount = reportCount,
+                ProcentPerDay = percent24,
+                ProcentPerWeek = percentWeek,
+                ProcentPerMonth = percentMonth,
             };
             
             return View(recentReservationViewModel);
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult AllReports()
         {
 
@@ -104,6 +201,7 @@ namespace RentACar.Controllers
             return View(reportsViewModel);
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Search(string searchbar)
         {
             var customers = customerService.FindAll(x => x.Name.ToUpper().Contains(searchbar.ToUpper()));
@@ -127,6 +225,7 @@ namespace RentACar.Controllers
             return View("AllReports", reportsViewModel);
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Filters(ListOfReportsViewModel listOfReportsViewModel)
         {
             List<Report>reports;
@@ -169,21 +268,33 @@ namespace RentACar.Controllers
                 return View("AllReports", reportsViewModel);
             }
         }
+        [Authorize(Roles ="Admin")]
         public IActionResult Analytics()
         {//total revenue +, reservations per day/week/month +, average rental duration +,
          //popular cars +, peak rental reservation +, cancelation of reservations !!!-
             var last24Hours = DateTime.Now.AddDays(-1);
             var lastMonth = DateTime.Now.AddDays(-30);
             var lastWeek = DateTime.Now.AddDays(-7);
+            var last24HoursBefore24Hours = DateTime.Now.AddDays(-2);
+            var lastMonthBeforeMonth = DateTime.Now.AddDays(-60);
+            var lastWeekBeforeWeek = DateTime.Now.AddDays(-14);
             var resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
+            var resCarsForLast24After24Hours = reservationService.FindAll(x => x.CreateTime >= last24HoursBefore24Hours && x.CreateTime <= last24Hours).ToList();
             var countLast24Hours = 0;
             var resCarsForLastMonth = reservationService.GetAll().Where(x => x.CreateTime >= lastMonth).ToList();
+            var resCarsForLastMonthBeforeMonth = reservationService.FindAll(x => x.CreateTime >= lastMonthBeforeMonth && x.CreateTime <= lastMonth).ToList();
+
             var countLastMonth = 0;
             var resCarsForLastWeek= reservationService.FindAll(x => x.CreateTime >= lastWeek).ToList();
+            var resCarsForLastWeekBeforeWeek = reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek).ToList();
+
             var countLastWeek = 0;
             double totalFor24Hours = 0;
             double totalMonth = 0;
             double totalWeek = 0;
+            double total24before24hours = 0;
+            double totalMonthBeforeMonth = 0;
+            double totalWeekBeforeWeek = 0;
             var reservations = reservationService.GetAll().ToList();
             var avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
 
@@ -192,7 +303,19 @@ namespace RentACar.Controllers
             {
                 avg = avgDuration.Average();
             }
-            foreach(var x in resCarsForLast24Hours)
+            foreach (var x in resCarsForLastMonthBeforeMonth)
+            {
+                totalMonthBeforeMonth += x.TotalPrice;
+            }
+            foreach (var x in resCarsForLast24After24Hours)
+            {
+                total24before24hours += x.TotalPrice;
+            }
+            foreach(var x in resCarsForLastWeekBeforeWeek)
+            {
+                totalWeekBeforeWeek += x.TotalPrice;
+            }
+            foreach (var x in resCarsForLast24Hours)
             {
                 totalFor24Hours += x.TotalPrice;
                 countLast24Hours++;
@@ -240,6 +363,9 @@ namespace RentACar.Controllers
                 TotalLastMonth = totalMonth,
                 CountMonth = countLastMonth,
                 TotalLastWeek = totalWeek,
+                TotalPriceForLast24HoursBefore24Hours = total24before24hours,
+                TotalPriceForLastWeekBeforeWeek = totalWeekBeforeWeek,
+                TotalPriceForLastMounthBeforeMonth = totalMonthBeforeMonth,
                 CountWeek = countLastWeek,
                 AvgReservationDuration = avg,
                 CountAllReservations = reservations.Count(),
@@ -259,7 +385,8 @@ namespace RentACar.Controllers
 
             var viewModel = new AddingCarWithImagesViewModel
             {
-                ClassOptions = new SelectList(classOfCarService.GetAll().ToList(), "Id", "Name")
+                ClassOptions = new SelectList(classOfCarService.GetAll().ToList(), "Id", "Name"),
+                Companies=new SelectList(carCompanyService.GetAll().ToList(),"Id","Name")
             };
             return View(viewModel);
         }
@@ -284,7 +411,6 @@ namespace RentACar.Controllers
             {
                 return RedirectToAction("AccessDenied", "Account");
             }
-
             try
             {
                 var car = new Car
@@ -308,16 +434,23 @@ namespace RentACar.Controllers
                     TopSpeed = viewModel.TopSpeed,
                     ClassOfCarId = viewModel.ClassOfCarId,
                     Pending = true,
-                    CarCompanyId = companyId.Value
+                    
                 };
-
+                if (admin)
+                {
+                    car.CarCompanyId = viewModel.CompanyId;
+                }
+                else
+                {
+                    car.CarCompanyId = companyId.Value;
+                }
                 carService.Add(car);
                 carService.Save();
 
                 if (viewModel.Images?.Count > 0)
                 {
                     await imageService.ProcessImages(viewModel.Images, car.Id);
-                    
+
                 }
 
                 return RedirectToAction("Index", "Car");
@@ -327,7 +460,7 @@ namespace RentACar.Controllers
                 ModelState.AddModelError("", "Error saving car. Please try again. " + ex.Message);
                 return View(viewModel);
             }
-
+          
 
         }
     }

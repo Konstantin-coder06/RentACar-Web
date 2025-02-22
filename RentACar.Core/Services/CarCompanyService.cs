@@ -44,7 +44,7 @@ namespace RentACar.Core.Services
 
         public IEnumerable<CarCompany> GetAll()
         {
-            throw new NotImplementedException();
+            return carCompanyRepository.GetAll().ToList();
         }
 
         public CarCompany GetByUserId(string id)

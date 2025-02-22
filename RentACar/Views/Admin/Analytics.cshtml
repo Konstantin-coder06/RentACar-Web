@@ -10,6 +10,7 @@
 
 @model AnalyticsViewModel
 <style>
+    @@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap');
     :root {
         --clr-primary: #7380ec;
         --clr-danger: #ff7782;
@@ -32,11 +33,47 @@
         --box-shadow: 0 2rem 3rem var(--clr-light);
     }
     body{
-        background-color:var(--clr-color-background)
+        background-color:var(--clr-color-background);
+        font-family: 'Poppins', sans-serif;
     }
- main {
-    margin-top: 1.4rem;
-    width: auto;
+
+    main {
+        margin-top: 1.4rem;
+        width: auto;
+     
+        justify-content: center;
+        align-items: center; 
+        height: 100vh;
+    }
+
+        main table {
+            
+            margin-top:2rem;
+            background: var(--clr-white);
+            width: 100%;
+            border-radius: var(--card-border-radius);
+            padding: var(--card-padding);
+            text-align: center;
+            justify-content: center; /* Centers horizontally */
+            align-items: center; /* Centers vertically */
+            box-shadow: var(--box-shadow);
+            transition: all .3s ease;
+            color: var(--clr-dark);
+        }
+
+            main table:hover {
+                box-shadow: none;
+            }
+
+            main table tbody td {
+                height: 3.8rem;
+                border-bottom: 1px solid var(--clr-white);
+                color: var(--clr-dark-variant);
+            }
+
+            main table tbody tr:last-child td {
+                border: none;
+            }
     }
 
     main input {
@@ -172,46 +209,22 @@
     align-items: center;
     }
 
-        main  table {
-            padding-top:3.8rem;
-            margin:3rem;
-            background: var(--clr-white);
-            width: 100%;
-            border-radius: var(--card-border-radius);
-            padding: var(--card-padding);
-            text-align: center;
-            justify-content:center;
-            box-shadow: var(--box-shadow);
-            transition: all .3s ease;
-            color: var(--clr-dark);
-        }
-
-            main  table:hover {
-                box-shadow: none;
-            }
-
-        main table tbody td {
-            height: 3.8rem;
-            border-bottom: 1px solid var(--clr-white);
-            color: var(--clr-dark-variant)
-        }
-
-        main table tbody tr:last-child td {
-            border: none;
-        }
-
+       
 </style>
 <main>
-    <h1>Analytics</h1>
+    <h1>📊 Analytics</h1>
 
     <div class="date">
         <input type="date">
     </div>
 
     <div class="insights">
-
+       
+        
+       
         <!-- start seling -->
         <div class="sales">
+          
             <span class="material-symbols-sharp">trending_up</span>
             <div class="middle">
 
@@ -231,7 +244,9 @@
         </div>
         <!-- end seling -->
         <!-- start expenses -->
+       
         <div class="expenses">
+            
             <span class="material-symbols-sharp">local_mall</span>
             <div class="middle">
 
@@ -247,10 +262,13 @@
                 </div>
 
             </div>
-            <small>Last Month</small>
+            <small>Last Week</small>
+        
         </div>
         <!-- end seling -->
+       
         <div class="sales">
+            
             <span class="material-symbols-sharp">trending_up</span>
             <div class="middle">
 
@@ -266,9 +284,72 @@
                 </div>
 
             </div>
+            <small>Last Month</small>
+        </div>
+        
+        <div class="sales">
+           
+            <span class="material-symbols-sharp">trending_up</span>
+            <div class="middle">
+
+                <div class="left">
+                    <h3>Total Sales Before Last Day</h3>
+                    <h1>BGN @Model.TotalPriceForLast24HoursBefore24Hours</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number"><p>80%</p></div>
+                </div>
+              
+            </div>
+            <small>Last 24 Hours</small>
+        </div>
+        <!-- end seling -->
+        <!-- start expenses -->
+        <div class="expenses">
+          
+            <span class="material-symbols-sharp">local_mall</span>
+            <div class="middle">
+
+                <div class="left">
+                    <h3>Total Sales Before Last Week</h3>
+                    <h1>BGN @Model.TotalPriceForLastWeekBeforeWeek</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number"><p>80%</p></div>
+                </div>
+
+            </div>
+            <small>Last Week</small>
+        </div>
+        <!-- end seling -->
+        <div class="sales">
+            
+            <span class="material-symbols-sharp">trending_up</span>
+            <div class="middle">
+
+                <div class="left">
+                    <h3>Total Sales Before Last Month</h3>
+                    <h1>BGN @Model.TotalPriceForLastMounthBeforeMonth</h1>
+                </div>
+                <div class="progress">
+                    <svg>
+                        <circle r="30" cy="40" cx="40"></circle>
+                    </svg>
+                    <div class="number"><p>80%</p></div>
+                </div>
+
+            </div>
+            <small>Last Month</small>
         </div>
         <!-- start seling -->
          <div class="income">
+            
             <span class="material-symbols-sharp">stacked_line_chart</span>
             <div class="middle">
 
@@ -287,6 +368,7 @@
             <small>Last Day</small>
         </div>
             <div class="income">
+            
                 <span class="material-symbols-sharp">stacked_line_chart</span>
                 <div class="middle">
 
@@ -305,6 +387,7 @@
                 <small>Last Week</small>
             </div>
         <div class="income">
+         
             <span class="material-symbols-sharp">stacked_line_chart</span>
             <div class="middle">
 
@@ -325,6 +408,7 @@
         <!-- end seling -->
 
     </div>
+    <h2>🚗 Топ 10 най-продавани автомобили</h2>
     <table>
         <thead>
             <tr>
