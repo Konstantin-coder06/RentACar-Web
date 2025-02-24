@@ -47,7 +47,7 @@ namespace RentACar.Controllers
             var lastMonthAfterMonth = DateTime.Now.AddDays(-60);
             var lastWeek = DateTime.Now.AddDays(-7);
             var lastWeekBeforeWeek = DateTime.Now.AddDays(-14);
-
+            var customers1 = customerService.GetAll().ToList();
             var resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
             var resCarsForLast24After24Hours = reservationService.FindAll(x => x.CreateTime >= last24After24Hours && x.CreateTime <= last24Hours).ToList();
             
@@ -158,7 +158,7 @@ namespace RentACar.Controllers
             RecentReservation recentReservationViewModel = new RecentReservation()
             {
                 Cars = cars,
-                Customers = customers,
+                Customers = customers1,
                 TotalPriceForLast24Hours = total24Hours,
                 TotalPriceForLastMounth = totalMounth,
                 TotalPriceForLastWeek = totalWeek,

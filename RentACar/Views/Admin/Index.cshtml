@@ -742,13 +742,13 @@
             <!-- end top -->
             <div class="sidebar">
 
-                <a href="#" class="active">
-                    <span class="material-symbols-sharp">grid_view </span>
-                    <h3>Dashbord</h3>
+                <a href="#" id="dashboard_btn" class="active">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
                 </a>
-                <a href="#">
+                <a href="#" id="cutomer_btn">
                     <span class="material-symbols-sharp">person_outline </span>
-                    <h3>custumers</h3>
+                    <h3>Custumers</h3>
                 </a>
                 <a asp-controller="Admin" asp-action="Analytics">
                     <span class="material-symbols-sharp">insights </span>
@@ -761,7 +761,7 @@
                 </a>
                 <a asp-action="Index" asp-controller="Car">
                     <span class="material-symbols-sharp">receipt_long </span>
-                    <h3>Products</h3>
+                    <h3>All Cars</h3>
                 </a>
                 <a asp-action="AllReports" asp-controller="Admin">
                     <span class="material-symbols-sharp">report_gmailerrorred </span>
@@ -865,38 +865,35 @@
 
             </div>
             <!-- end insights -->
-            <div class="recent_order">
-                <h2>Pending Cars</h2>
-                <table>
+            <div class="recent_order" id="table_container">
+                <h2 id="table_title">Pending Cars</h2>
+                <table id="data_table">
                     <thead>
-                        <tr>
+                        <tr id="table_headers">
                             <th>Car Brand</th>
                             <th>Model</th>
                             <th>Created At</th>
                             <th>Status</th>
-                           
                         </tr>
                     </thead>
-                    @for (int i = 0; i < Model.Pending.Count; i++) {
-
-                        <tbody>
+                    <tbody id="table_body">
+                        @for (int i = 0; i < Model.Pending.Count; i++)
+                        {
                             <tr>
                                 <td>@Model.Pending[i].Brand</td>
                                 <td>@Model.Pending[i].Model</td>
                                 <td>@Model.Pending[i].CreatedAt</td>
                                 <td class="warning">Pending</td>
-                                <td >
+                                <td>
                                     <div class="button">
-                                         <a asp-action="EditPendingCar" asp-controller="Car" asp-route-id="@Model.Pending[i].Id" class="primary">Details</a>
+                                        <a asp-action="EditPendingCar" asp-controller="Car" asp-route-id="@Model.Pending[i].Id" class="primary">Details</a>
                                     </div>
-                                    </td>
-							</tr>
-							
-                        </tbody>
-                  
-                }</table>
-               
-                <a asp-action="Pendings" asp-controller="Car">Show All</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a asp-action="Pendings" asp-controller="Car" class="btn btn-primary">Show All</a>
             </div>
 
         </main>
@@ -1026,12 +1023,80 @@
     </div>
 
 
+    <script>
+        const dashboardBtn = document.querySelector("#dashboard_btn");
+        const customerBtn = document.querySelector("#cutomer_btn");
+        const tableTitle = document.querySelector("#table_title");
+        const tableHeaders = document.querySelector("#table_headers");
+        const tableBody = document.querySelector("#table_body");
 
+        customerBtn.addEventListener("click", () => {
+            dashboardBtn.classList.remove("active");
+            customerBtn.classList.add("active");
+
+            // Промяна на заглавието
+            tableTitle.textContent = "Customers List";
+
+            // Смяна на хедърите
+            tableHeaders.innerHTML = `
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+            `;
+
+            // Смяна на съдържанието
+            tableBody.innerHTML = `
+        @for (int i = 0; i < Model.Customers.Count; i++)
+        {
+                        <tr>
+                            <td>@Model.Customers[i].Name</td>
+                           
+                            <td class="active">Active</td>
+                        </tr>
+        }
+            `;
+        });
+
+        dashboardBtn.addEventListener("click", () => {
+            customerBtn.classList.remove("active");
+            dashboardBtn.classList.add("active");
+
+            // Възстановяване на заглавието
+            tableTitle.textContent = "Pending Cars";
+
+            // Възстановяване на хедърите
+            tableHeaders.innerHTML = `
+                <th>Car Brand</th>
+                <th>Model</th>
+                <th>Created At</th>
+                <th>Status</th>
+            `;
+
+            // Възстановяване на съдържанието
+            tableBody.innerHTML = `
+        @for (int i = 0; i < Model.Pending.Count; i++)
+        {
+                        <tr>
+                            <td>@Model.Pending[i].Brand</td>
+                            <td>@Model.Pending[i].Model</td>
+                            <td>@Model.Pending[i].CreatedAt</td>
+                            <td class="warning">Pending</td>
+                            <td>
+                                <div class="button">
+                                    <a asp-action="EditPendingCar" asp-controller="Car" asp-route-id="@Model.Pending[i].Id" class="primary">Details</a>
+                                </div>
+                            </td>
+                        </tr>
+        }
+            `;
+        });
+    </script>
     <script>
         const sideMenu = document.querySelector('aside');
         const menuBtn = document.querySelector('#menu_bar');
         const closeBtn = document.querySelector('#close_btn');
-
+        const cutomerBtn=document.querySelector("#cutomer_btn")
 
         const themeToggler = document.querySelector('.theme-toggler');
 

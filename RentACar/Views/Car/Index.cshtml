@@ -134,14 +134,23 @@
             background-color: #e65a5a;
         }
 </style>
+@{
+    int seed = DateTime.UtcNow.Date.GetHashCode();
+    Random random = new Random(seed);
 
-<form asp-controller="Car" asp-action="FilterDates" method="post">
-    <div>
-        <input type="date" asp-for="StartDate" name="StartDate"  />
-        <input type="date" asp-for="EndDate" name="EndDate"  />
-        <button type="submit" class="btn btn-primary">Change the date</button>
-    </div>
-</form>
+    var isAdmin = User.IsInRole("Admin");
+
+}
+@if (!isAdmin)
+{
+    <form asp-controller="Car" asp-action="FilterDates" method="post">
+        <div>
+            <input type="date" asp-for="StartDate" name="StartDate" />
+            <input type="date" asp-for="EndDate" name="EndDate" />
+            <button type="submit" class="btn btn-primary">Change the date</button>
+        </div>
+    </form>
+}
 <form asp-action="Search" method="post" class="search-container">
     <div class="input-group">
         <span class="search-icon">🔍</span>
@@ -151,10 +160,7 @@
     <button type="submit" class="search-btn">🔍</button>
     <a asp-action="Filters" asp-controller="Car" class="btn-primary btn-filter">Filters</a>
 </form>
-@{
-    int seed = DateTime.UtcNow.Date.GetHashCode();
-    Random random = new Random(seed);
-}
+
 <div class="container cars-list">
     <div class="row" id="carList">
         @foreach (var carWithImages in Model.CarWithImages.OrderBy(x=>random.Next()))
@@ -173,8 +179,8 @@
                                 <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / на ден</h3>
                                 <p class="price-week">@carWithImages.Car.PricePerWeek BGN / на седмица</p>
                             </div>
-                            <a asp-controller="Car" asp-action="Reservation" asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
-                                Резервирай сега
+                            <a asp-controller="Car" asp-action="@(isAdmin ? "EditPendingCar" : "Reservation")" asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
+                                @(isAdmin ? "Прегледай" : "Резервирай сега")
                             </a>
                         </div>
                     </div>
