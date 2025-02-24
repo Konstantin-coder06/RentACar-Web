@@ -1,0 +1,95 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+
+.logo {
+    font-weight: bold;
+}
+
+
+.hero {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dhibmotzx/image/upload/v1739624109/background-index2_c8yub3.jpg') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%; /* По-широко */
+    max-width: 1100px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+    .search-box input {
+        flex-grow: 1; /* Всички input полета да се разширяват */
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .search-box .btn-primary {
+        background-color: #ff5733;
+        border: none;
+        border-radius: 20px;
+        padding: 12px 20px;
+        font-size: 1rem;
+        transition: background-color 0.2s ease;
+        white-space: nowrap; /* За да не се разтяга */
+    }
+
+
+
+.monthly-rentals {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dhibmotzx/image/upload/v1739624107/back_susf2a.webp') no-repeat center center/cover;
+    padding: 50px;
+    text-align: left;
+    color: white;
+    margin-top: 50px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+    .monthly-rentals h2 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .monthly-rentals button {
+        background: #ff5733;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+footer {
+    background: #800000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}

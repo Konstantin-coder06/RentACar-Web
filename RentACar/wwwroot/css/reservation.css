@@ -1,0 +1,154 @@
+﻿/* Main container */
+.booking-layout {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+/* Carousel Section */
+.carousel-section {
+    flex: 1;
+    min-width: 400px;
+    position: relative;
+}
+
+.carousel {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.carousel-inner {
+    aspect-ratio: 16/9;
+}
+
+.carousel-item img {
+    height: 100%;
+    width: 100%;
+    justify-content: contain;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-350%);
+    margin: 0 1rem;
+}
+
+/* Details Section */
+.details-section {
+    flex: 1;
+    padding: 0 1rem;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    margin-left: 5%;
+}
+
+/* Price Section */
+.price-container {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.price-day {
+    font-size: 1.5rem;
+    color: #f76c6c;
+    margin-bottom: 0.5rem;
+}
+
+.price-week {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Features List */
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+    .features-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.8rem;
+        color: #444;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .booking-layout {
+        flex-direction: column;
+    }
+
+    .carousel-section {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .carousel-inner {
+        aspect-ratio: 16/9;
+    }
+}
+
+.carousel-section h5 {
+    margin-top: 5%;
+    margin-left: 5%;
+}
+
+
+.details-section {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 0 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.details-section h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
+
+.form-check {
+    margin-bottom: 0.8rem;
+}
+
+.form-check-label {
+    font-size: 1rem;
+    color: #444;
+}
+
+#addressInput {
+    display: none;
+    margin-top: 1rem;
+}
+
+#streetAddress {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

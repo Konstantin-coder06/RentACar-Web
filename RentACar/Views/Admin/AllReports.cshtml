@@ -1,101 +1,25 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    // Your existing Razor comments remain unchanged
 }
+<link rel="stylesheet" href="~/css/allReports.css" asp-append-version="true" />
 
 
-<style>
-    body{
-        background-color: #f6f6f9;
-    }
-
-    table {
-        background: #fff;
-        width: 100%;
-       
-        border-top-left-radius:2rem;
-        border-top-right-radius:2rem;
-        padding: 1.8rem;
-        text-align: center;
-        box-shadow: 0 2rem 3rem rgba(132, 139, 200, 0.18);
-        transition: all 0.3s ease;
-        color: #363949;
-        border-collapse: collapse; 
-    }
-
-        table:hover {
-            box-shadow: none;
-        }
-
-      
-        table tbody td {
-            height: 3.8rem;
-            color: #677483;
-            border-bottom: 1px solid #dee2e6; 
-        }
-
-      
-    .search-container {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    #searchInput {
-        width: 100%;
-        padding: 10px 40px 10px 35px;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        outline: none;
-        font-size: 16px;
-    }
-
-    }
-
-    .input-group {
-        position: relative;
-        width: 300px;
-    }
-
-    .search-icon {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: gray;
-        font-size: 18px;
-    }
-
-    .search-btn {
-        margin-left: 10px;
-        background-color: #f76c6c;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 18px;
-        color: white;
-    }
-
-</style>
 <form asp-action="Search" method="post" class="search-container">
     <div class="input-group">
         <span class="search-icon">🔍</span>
-        <input type="text" name="searchBar" id="searchInput" placeholder="Търси ПОТРЕБИТЕЛ.. " />
-        
+        <input type="text" name="searchBar" id="searchInput" placeholder="Търси ПОТРЕБИТЕЛ..." />
     </div>
     <button type="submit" class="search-btn">🔍</button>
 </form>
+
 <form asp-action="Filters" method="post">
     <div>
         <input type="date" asp-for="StartTime" />
-        <input type= "date" asp-for="EndTime" />
+        <input type="date" asp-for="EndTime" />
         <button type="submit" class="search-btn">Filter</button>
     </div>
-  
 </form>
+
 @model ListOfReportsViewModel
 <div>
     <table>
@@ -105,24 +29,18 @@
                 <th>Description</th>
                 <th>User Name</th>
                 <th>Create At</th>
-
             </tr>
         </thead>
-        @foreach(var x in Model.ReportViewModels)
+        @foreach (var x in Model.ReportViewModels)
         {
-
             <tbody>
                 <tr>
                     <td>@x.Title</td>
                     <td>@x.Description</td>
                     <td>@x.Customer.Name</td>
                     <td class="warning">@x.CreatedAt</td>
-                  
                 </tr>
-
             </tbody>
-
         }
     </table>
-    
 </div>

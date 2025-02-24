@@ -1,4 +1,5 @@
 ﻿@model CarWithFilters
+<link rel="stylesheet" href="~/css/filter.css" asp-append-version="true" />
 <form method="post" asp-action="Filters" asp-controller="Car" class="luxury-filter">
     <div class="filter-container">
         <h2 class="filter-title">Филтрирай Луксозните Автомобили</h2>
@@ -25,96 +26,4 @@
     </div>
 </form>
 
-<style>
-    .luxury-filter {
-        max-width: 500px;
-        margin: auto;
-        padding: 30px;
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(230, 90, 90, 0.6);
-        color: #e65a5a;
-        font-family: 'Poppins', sans-serif;
-    }
 
-    .filter-title {
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        color: #e65a5a;
-        margin-bottom: 20px;
-    }
-
-    .filter-label, .filter-subtitle {
-        font-size: 18px;
-        font-weight: bold;
-        color: #e65a5a;
-    }
-
-    .price-inputs {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .filter-input {
-        width: 100%;
-        padding: 10px;
-        border: 2px solid #e65a5a;
-        background: #fff;
-        color: #e65a5a;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-    .checkbox-group {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .luxury-checkbox {
-        font-size: 16px;
-        padding: 10px;
-        background: #fff;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        border: 1px solid #e65a5a;
-    }
-
-        .luxury-checkbox input {
-            transform: scale(1.2);
-            accent-color: #e65a5a;
-        }
-
-    .button-group {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-    }
-
-    .luxury-button {
-        padding: 12px 20px;
-        font-size: 18px;
-        font-weight: bold;
-        background: #e65a5a;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: 0.3s;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-        .luxury-button:hover {
-            background: #fff;
-            color: #e65a5a;
-            box-shadow: 0 0 10px #e65a5a;
-        }
-</style>
