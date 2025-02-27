@@ -2,9 +2,12 @@
     Layout = null;
 }
 <link rel="stylesheet" href="~/css/adminIndex.css" asp-append-version="true" />
+
+
 @model RecentReservation
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
 <body>
+    <script src="~/js/theme-toggler.js" asp-append-version="true"></script>
     <div class="container">
         <aside>
 
@@ -297,7 +300,6 @@
 
     </div>
 
-
     <script>
         const dashboardBtn = document.querySelector("#dashboard_btn");
         const customerBtn = document.querySelector("#cutomer_btn");
@@ -314,23 +316,23 @@
 
             // Смяна на хедърите
             tableHeaders.innerHTML = `
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Status</th>
-            `;
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    `;
 
             // Смяна на съдържанието
             tableBody.innerHTML = `
         @for (int i = 0; i < Model.Customers.Count; i++)
         {
-                        <tr>
-                            <td>@Model.Customers[i].Name</td>
-                           
-                            <td class="active">Active</td>
-                        </tr>
+                                        <tr>
+                                            <td>@Model.Customers[i].Name</td>
+
+                                            <td class="active">Active</td>
+                                        </tr>
         }
-            `;
+                    `;
         });
 
         dashboardBtn.addEventListener("click", () => {
@@ -342,53 +344,30 @@
 
             // Възстановяване на хедърите
             tableHeaders.innerHTML = `
-                <th>Car Brand</th>
-                <th>Model</th>
-                <th>Created At</th>
-                <th>Status</th>
-            `;
+                        <th>Car Brand</th>
+                        <th>Model</th>
+                        <th>Created At</th>
+                        <th>Status</th>
+                    `;
 
             // Възстановяване на съдържанието
             tableBody.innerHTML = `
         @for (int i = 0; i < Model.Pending.Count; i++)
         {
-                        <tr>
-                            <td>@Model.Pending[i].Brand</td>
-                            <td>@Model.Pending[i].Model</td>
-                            <td>@Model.Pending[i].CreatedAt</td>
-                            <td class="warning">Pending</td>
-                            <td>
-                                <div class="button">
-                                    <a asp-action="EditPendingCar" asp-controller="Car" asp-route-id="@Model.Pending[i].Id" class="primary">Details</a>
-                                </div>
-                            </td>
-                        </tr>
+                                        <tr>
+                                            <td>@Model.Pending[i].Brand</td>
+                                            <td>@Model.Pending[i].Model</td>
+                                            <td>@Model.Pending[i].CreatedAt</td>
+                                            <td class="warning">Pending</td>
+                                            <td>
+                                                <div class="button">
+                                                    <a asp-action="EditPendingCar" asp-controller="Car" asp-route-id="@Model.Pending[i].Id" class="primary">Details</a>
+                                                </div>
+                                            </td>
+                                        </tr>
         }
-            `;
-        });
-    </script>
-    <script>
-        const sideMenu = document.querySelector('aside');
-        const menuBtn = document.querySelector('#menu_bar');
-        const closeBtn = document.querySelector('#close_btn');
-        const cutomerBtn=document.querySelector("#cutomer_btn")
+                    `;
+        });</script>
 
-        const themeToggler = document.querySelector('.theme-toggler');
-
-
-
-        menuBtn.addEventListener('click', () => {
-            sideMenu.style.display = "block"
-        })
-        closeBtn.addEventListener('click', () => {
-            sideMenu.style.display = "none"
-        })
-
-        themeToggler.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme-variables')
-        themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
-        themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
-
-        })</script>
-
+   
 </body>

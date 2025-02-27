@@ -33,21 +33,61 @@ namespace RentACar.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+                }
+
+                // Ако потребителят е въвел нова парола (иска да я смени)
+                if (!string.IsNullOrEmpty(model.NewPassword))
+                {
+                    var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var resetResult = await _userManager.ResetPasswordAsync(user, resetToken, model.NewPassword);
+                    if (!resetResult.Succeeded)
+                    {
+                        ModelState.AddModelError("", "Failed to reset password.");
+                        return View(model);
+                    }
+
+                    // Автоматично логваме потребителя с новата парола
+                    if (await _userManager.IsInRoleAsync(user, "Company"))
+                    {
+                        var company = carCompanyService.GetByUserId(user.Id);
+                        if (company != null)
+                            HttpContext.Session.SetInt32("CompanyId", company.Id);
+                        await _signInManager.SignInAsync(user, isPersistent: model.RememberMe);
+                        return RedirectToAction("Index", "Company");
+                    }
+                    else if (await _userManager.IsInRoleAsync(user,"User"))
+                    {
+                        var userCustomer = customerService.GetByUserId(user.Id);
+                        if (userCustomer != null)
+                        {
+                            HttpContext.Session.SetInt32("UserId", userCustomer.Id);
+                        }
+                        await _signInManager.SignInAsync(user, isPersistent: model.RememberMe);
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                  
+                }
+
+                // Ако няма смяна на паролата - стандартен логин
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    var user = await _userManager.FindByEmailAsync(model.Email);
-                    if (user != null && await _userManager.IsInRoleAsync(user, "Company"))
+                    if (await _userManager.IsInRoleAsync(user, "Company"))
                     {
-                        
                         var company = carCompanyService.GetByUserId(user.Id);
                         if (company != null)
                         {
                             HttpContext.Session.SetInt32("CompanyId", company.Id);
+                            return RedirectToAction("Index", "Company");
                         }
                     }
-                    if(user!=null && await _userManager.IsInRoleAsync(user, "User"))
+                    if (await _userManager.IsInRoleAsync(user, "User"))
                     {
                         var userCustomer = customerService.GetByUserId(user.Id);
                         if (userCustomer != null)
@@ -55,15 +95,17 @@ namespace RentACar.Controllers
                             HttpContext.Session.SetInt32("UserId", userCustomer.Id);
                         }
                     }
-                    if (model.Email== "admin@admin.com"&& model.Password== "AdminPassword123!")
+                    if (model.Email == "admin@admin.com" && model.Password == "AdminPassword123!")
                     {
                         return RedirectToAction("Index", "Admin");
                     }
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Invalid login attempt.");
+
+                ModelState.AddModelError("", "Invalid login attempt.");
             }
             return View(model);
+        
         }
         public IActionResult Register() => View();
         public IActionResult RegisterCompany() => View();

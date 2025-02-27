@@ -12,16 +12,19 @@ namespace RentACar.Models
 
 
 
-        [Required]
+        
 
         [DataType(DataType.Password)]
 
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
 
 
         [Display(Name = "Remember me?")]
 
         public bool RememberMe { get; set; }
+        [DataType(DataType.Password)]
+
+        public string? NewPassword {  get; set; }
     }
 }

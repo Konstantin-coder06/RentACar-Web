@@ -29,8 +29,26 @@
             <input asp-for="RememberMe" />
             <label asp-for="RememberMe">Remember me</label>
         </div>
+            <div class="forgot-password">
+                <input type="checkbox" id="forgotPasswordCheck" />
+                <label for="forgotPasswordCheck">Forgot Password?</label>
+            </div>
 
-        <button type="submit">Continue to Dashboard</button>
-    </form>
+            <div id="resetPasswordField" style="display: none;">
+                <div class="form-group">
+                    <label asp-for="NewPassword">New Password</label>
+                    <input asp-for="NewPassword" type="password" id="newPassword" name="newPassword" placeholder="Enter new password" />
+                </div>
+            </div>
+
+            <button type="submit">Continue to Dashboard</button>
+        </form>
+    </div>
 </div>
-</div>
+
+<script>
+    document.getElementById("forgotPasswordCheck").addEventListener("change", function () {
+        var resetField = document.getElementById("resetPasswordField");
+        resetField.style.display = this.checked ? "block" : "none";
+    });
+</script>

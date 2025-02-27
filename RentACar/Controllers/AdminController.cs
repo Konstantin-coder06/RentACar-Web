@@ -19,7 +19,7 @@ namespace RentACar.Controllers
         CloudinaryService cloudinaryService;
         IReportService reportService;
         ICarCompanyService carCompanyService;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        
         public AdminController(ICarService _carService, IImageService _imageService, 
             IClassOfCarService _classOfCarService,IReservationService reservationService, 
             ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportService,
@@ -33,7 +33,7 @@ namespace RentACar.Controllers
             this.cloudinaryService = cloudinaryService;
             this.reportService = reportService;
             this.carCompanyService = carCompanyService;
-            _webHostEnvironment = webHostEnvironment;
+            
         }
         [Authorize(Roles = "Admin" )]
         public IActionResult Index()
@@ -268,7 +268,7 @@ namespace RentACar.Controllers
                 return View("AllReports", reportsViewModel);
             }
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles ="Admin,Company")]
         public IActionResult Analytics()
         {//total revenue +, reservations per day/week/month +, average rental duration +,
          //popular cars +, peak rental reservation +, cancelation of reservations !!!-

@@ -1,9 +1,6 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap');
-
-
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap');
 /* variables */
-
-
 :root {
     --clr-primary: #7380ec;
     --clr-danger: #ff7782;
@@ -52,6 +49,7 @@ body {
     width: 100vw;
     height: 100vh;
     font-size: .7rem;
+    
     overflow-x: hidden;
     background: var(--clr-color-background);
     font-family: 'Poppins', sans-serif;
@@ -92,6 +90,7 @@ h5 {
 
 small {
     font-size: 0.75rem;
+    color:var(--clr-dark)
 }
 
 .profile-photo img {
@@ -158,8 +157,8 @@ aside {
     }
 
     /* ===================
-    Sidebar
-    ================== */
+ Sidebar
+ ================== */
 
     aside .sidebar {
         background: var(--clr-white);
@@ -216,8 +215,8 @@ aside {
         }
 
 /* ----------------------------
-    --------- Main--------------
-    ------------------------------ */
+ --------- Main--------------
+ ------------------------------ */
 
 main {
     margin-top: 1.4rem;
@@ -244,10 +243,6 @@ main {
         grid-template-columns: repeat(3,1fr);
         gap: 1.6rem;
     }
-
-        main .insights small {
-            color: var(--clr-dark);
-        }
 
         main .insights > div {
             background-color: var(--clr-white);
@@ -322,16 +317,12 @@ main {
         top: 0;
     }
 
-
-
         main .insights svg circle {
             fill: none;
             stroke: var(--clr-primary);
             transform: rotate(270,80,80);
             stroke-width: 5;
         }
-
-
 
     main .insights .sales svg circle {
         stroke-dashoffset: 0;
@@ -411,8 +402,8 @@ main {
 
 
 /*********************
-    Right Side
-    **********************/
+Right Side
+**********************/
 
 .right {
     margin-top: 1.4rem;
@@ -554,6 +545,9 @@ main {
                 justify-content: space-around;
             }
 
+                .right .sales-analytics .item .right h3 {
+                    color: var(--clr-dark);
+                }
 
 
 .add_product div {
@@ -572,8 +566,8 @@ main {
 
 
 /* **********8
-    MEDIA QUERY
-    ****************/
+MEDIA QUERY
+****************/
 
 @media screen and (max-width:1200px) {
     .container {
@@ -601,8 +595,8 @@ main {
 }
 
 /* ****************
-    MEDIA QUERY PHONE
-    ************************/
+MEDIA QUERY PHONE
+************************/
 
 @media screen and (max-width:768px) {
     .container {

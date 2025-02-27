@@ -39,7 +39,7 @@ namespace RentACar.Core.Services
 
         public CarCompany FindOne(Expression<Func<CarCompany, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return carCompanyRepository.FindOne(predicate);
         }
 
         public IEnumerable<CarCompany> GetAll()
