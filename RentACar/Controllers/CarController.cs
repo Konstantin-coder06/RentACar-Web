@@ -307,7 +307,7 @@ namespace RentACar.Controllers
         public int CarId { get; set; } = 0;
         public IActionResult EditPendingCar(int id)
         {
-            if (id == 0 || id == null) 
+            if (id == 0 ||id == null) 
             { 
                 return NotFound();
             }

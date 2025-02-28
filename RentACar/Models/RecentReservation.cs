@@ -1,9 +1,12 @@
-﻿namespace RentACar.Models
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace RentACar.Models
 {
     public class RecentReservation
     {
         public List<Car> Cars { get; set; }
-        public List<Customer> Customers { get; set; }
+        public List<CustomerReservationedCarViewModel> Customers { get; set; }
+        public List<CustomerEmailPhoneViewModel> AllCustomers { get; set; }
         public double TotalPriceForLast24Hours {  get; set; }
         public double TotalPriceForLastWeek {  get; set; }
         public double TotalPriceForLastMounth {  get; set; }

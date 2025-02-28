@@ -159,86 +159,86 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-
-        <!-- Image Upload -->
-        <div class="form-group mt-4">
-            <label asp-for="Images" class="control-label">Uploaded Images</label>
-
-            <!-- Контейнер за подреждане на снимките -->
-            <div id="imagePreviewContainer" class="d-flex flex-wrap mt-2 border p-2" style="min-height: 100px;">
-                @if (Model.Images != null && Model.Images.Any())
-                {
-                    foreach (var image in Model.Images.OrderBy(x=>x.Order))
-                    {
-                        <div class="image-preview-item position-relative m-2" data-id="@image.Id">
-                            <img src="@image.Url" alt="Car Image" class="existing-image" width="120" height="80" style="object-fit:cover; border-radius: 5px;">
-                        </div>
-                    }
-                }
-            </div>
-
-            <!-- Скрито поле за изпращане на новия ред на снимките -->
-            <input type="hidden" id="imageOrder" name="imageOrder">
-
-            <!-- Бутон за запазване -->
-            <button type="button" id="saveOrderButton" class="btn btn-primary mt-3">Save Order</button>
-        </div>
 
 
+		<div class="form-group mt-4">
+			<label asp-for="Images" class="control-label">Uploaded Images</label>
 
-        <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary">Edit Car</button>
-            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-        </div>
-    </form>
+			<!-- Контейнер за подреждане на снимките -->
+			<div id="imagePreviewContainer" class="d-flex flex-wrap mt-2 border p-2" style="min-height: 100px;">
+				@if (Model.Images != null && Model.Images.Any())
+				{
+					foreach (var image in Model.Images.OrderBy(x => x.Order))
+					{
+						<div class="image-preview-item position-relative m-2" data-id="@image.Id">
+							<img src="@image.Url" alt="Car Image" class="existing-image" width="120" height="80" style="object-fit:cover; border-radius: 5px;">
+						</div>
+					}
+				}
+			</div>
+
+			<!-- Скрито поле за изпращане на новия ред на снимките -->
+			<input type="hidden" id="imageOrder" name="imageOrder">
+
+			<!-- Бутон за запазване -->
+			<button type="button" id="saveOrderButton" class="btn btn-primary mt-3">Save Order</button>
+		</div>
+
+
+
+		<div class="form-group mt-4">
+			<button type="submit" class="btn btn-primary">Edit Car</button>
+			<a asp-action="Index" class="btn btn-secondary">Cancel</a>
+		</div>
+	</form>
 </div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const imagePreviewContainer = document.getElementById("imagePreviewContainer");
-        const imageOrderInput = document.getElementById("imageOrder");
-        const saveOrderButton = document.getElementById("saveOrderButton");
+	document.addEventListener("DOMContentLoaded", function () {
+		const imagePreviewContainer = document.getElementById("imagePreviewContainer");
+		const imageOrderInput = document.getElementById("imageOrder");
+		const saveOrderButton = document.getElementById("saveOrderButton");
 
-        // Инициализиране на SortableJS
-        new Sortable(imagePreviewContainer, {
-            animation: 150,
-            ghostClass: "sortable-ghost",
-            onEnd: function () {
-                updateImageOrder();
-            }
-        });
+		// Инициализиране на SortableJS
+		new Sortable(imagePreviewContainer, {
+			animation: 150,
+			ghostClass: "sortable-ghost",
+			onEnd: function () {
+				updateImageOrder();
+			}
+		});
 
-        // Функция за актуализация на реда
-        function updateImageOrder() {
-            const imageIds = [...imagePreviewContainer.children].map(item => item.getAttribute("data-id"));
-            imageOrderInput.value = imageIds.join(",");
-        }
+		// Функция за актуализация на реда
+		function updateImageOrder() {
+			const imageIds = [...imagePreviewContainer.children].map(item => item.getAttribute("data-id"));
+			imageOrderInput.value = imageIds.join(",");
+		}
 
-        // Изпращане на новия ред към сървъра при натискане на бутона
-        saveOrderButton.addEventListener("click", function () {
-            const newOrder = imageOrderInput.value;
+		// Изпращане на новия ред към сървъра при натискане на бутона
+		saveOrderButton.addEventListener("click", function () {
+			const newOrder = imageOrderInput.value;
 
-            fetch("/Car/UpdateImageOrder",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ orderedImageIds: newOrder.split(",") })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Image order updated successfully!");
-                } else {
-                    alert("Error updating image order.");
-                }
-            });
-        });
-    });
-</script>
+			fetch("/Car/UpdateImageOrder",{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({ orderedImageIds: newOrder.split(",") })
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					alert("Image order updated successfully!");
+				} else {
+					alert("Error updating image order.");
+				}
+			});
+		});
+	});
+</script>       <!-- Image Upload -->
+      
 
 
 

@@ -164,13 +164,14 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
-       
-        <div class="form-group mt-4">
-            <label asp-for="Images" class="control-label">Upload Images</label>
-            <input asp-for="Images" id="imageUpload" type="file" multiple class="form-control">
-            <div id="imagePreviewContainer" class="d-flex flex-wrap mt-2 border p-2" style="min-height: 100px;"></div>
-            <input type="hidden" id="imageOrder" name="imageOrder">
-        </div>
+
+            <div class="form-group mt-4">
+                <label asp-for="Images" class="control-label">Upload Images</label>
+                <input asp-for="Images" id="imageUpload" type="file" multiple class="form-control">
+                <div id="imagePreviewContainer" class="d-flex flex-wrap mt-2 border p-2" style="min-height: 100px;"></div>
+                <input type="hidden" id="imageOrder" name="imageOrder">
+            </div>
+           
         @using RentACar.Utility
         @if(User.IsInRole(SD.Admin)){
             <div class="form-group mb-3">
@@ -181,17 +182,17 @@
             </div>
         }
 
-        <div class="form-group mt-4">
-            <button type="submit" class="btn btn-primary">Add Car</button>
-            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-        </div>
-    </form>
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">Add Car</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
 </div>
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 <script>
     $(document).ready(function () {
-        let imageFiles = []; 
+        let imageFiles = [];
         let imagePreviewContainer = document.getElementById("imagePreviewContainer");
         let fileInput = document.getElementById("imageUpload");
 
@@ -217,7 +218,7 @@
                     imgDiv.appendChild(img);
 
                     let removeBtn = document.createElement("button");
-                    removeBtn.innerHTML = "&times;";
+                    removeBtn.innerHTML = "×";
                     removeBtn.className = "btn btn-danger btn-sm position-absolute";
                     removeBtn.style = "top: 2px; right: 2px;";
                     removeBtn.onclick = function () { removeImage(index); };
@@ -239,30 +240,25 @@
             animation: 150,
             onEnd: function () {
                 let newOrder = [];
-                document.querySelectorAll(".image-preview-item").forEach((item) => {
-                    newOrder.push(imageFiles[item.getAttribute("data-index")]);
-                });
-                imageFiles = newOrder;
+                let indices = Array.from(imagePreviewContainer.children).map(item => parseInt(item.getAttribute("data-index")));
+                indices.forEach(idx => newOrder.push(imageFiles[idx]));
+                imageFiles = newOrder; // Reorder imageFiles to match preview
                 updateImageOrder();
             }
         });
 
         function updateImageOrder() {
-            document.getElementById("imageOrder").value = imageFiles.map(file => file.name).join(",");
+            let orderedIndices = Array.from(imagePreviewContainer.children).map(item => parseInt(item.getAttribute("data-index")));
+            document.getElementById("imageOrder").value = orderedIndices.join(",");
         }
 
-        $("form").on("submit", function (event) {
-            let dataTransfer = new DataTransfer();
-
-            imageFiles.forEach(file => {
-                dataTransfer.items.add(file);
-            });
-
-            fileInput.files = dataTransfer.files; 
-        });
+          $("form").on("submit", function (event) {
+        let dataTransfer = new DataTransfer();
+        imageFiles.forEach(file => dataTransfer.items.add(file));
+        fileInput.files = dataTransfer.files; // Update file input with reordered files
+    });
     });
 </script>
-
 
 @section Scripts {
     @{

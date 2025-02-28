@@ -210,10 +210,10 @@
                     <div class="update">
                         @for(int i=0;i<=3;i++){
                             <div class="profile-photo">
-                                <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1739624198/porsche-gt3-1_aw1eyn.webp" alt="" />
+                                <img src="@Model.Customers[i].Image.Url" alt="" />
                             </div>
                             <div class="message">
-                                <p><b>@Model.Customers[i].Name</b> made a reservation for @Model.Cars[i].Brand  @Model.Cars[i].Model</p>
+                                <p><b>@Model.Customers[i].Customer.Name</b> made a reservation for @Model.Customers[i].Brand  @Model.Customers[i].Model</p>
                             </div>
                         }                 
                     </div>
@@ -319,17 +319,17 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Status</th>
+                       
                     `;
 
             // Смяна на съдържанието
             tableBody.innerHTML = `
-        @for (int i = 0; i < Model.Customers.Count; i++)
+        @for (int i = 0; i < Model.AllCustomers.Count; i++)
         {
                                         <tr>
-                                            <td>@Model.Customers[i].Name</td>
-
-                                            <td class="active">Active</td>
+                                            <td>@Model.AllCustomers[i].Customer.Name</td>
+                                            <td>@Model.AllCustomers[i].Email</td>
+                                            <td>@Model.AllCustomers[i].PhoneNumber</td>
                                         </tr>
         }
                     `;

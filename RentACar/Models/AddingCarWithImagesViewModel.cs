@@ -64,5 +64,7 @@ namespace RentACar.Models
             public List<IFormFile> Images { get; set; }
          public int CompanyId {  get; set; }
         public SelectList? Companies { get; set; }
-        }
+        
+        public string ImageOrder { get; set; }
+    }
 }

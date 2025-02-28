@@ -13,12 +13,14 @@ namespace RentACar.Controllers
         IReservationService reservationService;
         ICustomerService customerService;
         ICarCompanyService carCompanyService;
-        public CompanyController(ICarService carService,IReservationService reservationService, ICustomerService customerService,ICarCompanyService carCompanyService) 
+        IImageService imageService;
+        public CompanyController(ICarService carService,IReservationService reservationService, ICustomerService customerService,ICarCompanyService carCompanyService, IImageService  imageService) 
         {
           this.carService = carService;
             this.reservationService = reservationService;
             this.customerService = customerService;
             this.carCompanyService = carCompanyService;
+            this.imageService = imageService;
         }
         [Authorize(Roles ="Company")]
         public IActionResult Index()
@@ -69,7 +71,7 @@ namespace RentACar.Controllers
 
 
                     var customer = customerService.FindOne(x => x.Id == reservation.CustomerId);
-
+                    var image=imageService.ImageByCarId(c.Id);
                     if (customer != null)
                     {
                         customers.Add(new CustomerReservationedCarViewModel
@@ -77,6 +79,7 @@ namespace RentACar.Controllers
                             Customer = customer,
                             Brand = c.Brand,
                             Model = c.Model,
+                            Image = image,
                         });
                     }
                 }

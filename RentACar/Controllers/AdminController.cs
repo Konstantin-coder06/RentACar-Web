@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp;
@@ -19,11 +20,12 @@ namespace RentACar.Controllers
         CloudinaryService cloudinaryService;
         IReportService reportService;
         ICarCompanyService carCompanyService;
-        
+        private readonly UserManager<IdentityUser> _userManager;
+
         public AdminController(ICarService _carService, IImageService _imageService, 
             IClassOfCarService _classOfCarService,IReservationService reservationService, 
             ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportService,
-            IWebHostEnvironment webHostEnvironment, ICarCompanyService carCompanyService)
+            IWebHostEnvironment webHostEnvironment, ICarCompanyService carCompanyService, UserManager<IdentityUser> userManager)
         {
             this.carService = _carService;
             this.imageService = _imageService;
@@ -33,14 +35,15 @@ namespace RentACar.Controllers
             this.cloudinaryService = cloudinaryService;
             this.reportService = reportService;
             this.carCompanyService = carCompanyService;
+            _userManager = userManager;
             
         }
         [Authorize(Roles = "Admin" )]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var reservationedCars=reservationService.GetAll().OrderByDescending(x=>x.CreateTime).ToList();
             var cars=new List<Car>();
-            var customers=new List<Customer>();
+            var customers=new List<CustomerReservationedCarViewModel>();
             var last24Hours = DateTime.Now.AddDays(-1);
             var last24After24Hours=DateTime.Now.AddDays(-2);
             var lastMonth=DateTime.Now.AddDays(-30);
@@ -70,12 +73,25 @@ namespace RentACar.Controllers
             int count = 0;
             foreach (var carx in reservationedCars)
             {
-                var car = carService.FindOne(x => x.Id == carx.CarId);
-                cars.Add(car);
-                var customer=customerService.FindOne(x=>x.Id == carx.CustomerId);
-                customers.Add(customer);
-                
                
+
+
+                    var customer = customerService.FindOne(x => x.Id == carx.CustomerId);
+                var car = carService.FindOne(x => x.Id == carx.CarId);
+                    var image = imageService.ImageByCarId(car.Id);
+                    if (customer != null)
+                    {
+                        customers.Add(new CustomerReservationedCarViewModel
+                        {
+                            Customer = customer,
+                            Brand = car.Brand,
+                            Model = car.Model,
+                            Image = image,
+                        });
+                    }
+                
+
+
             }
             foreach(var x in resCarsForLastMonthBeforeMonth)
             {
@@ -155,10 +171,29 @@ namespace RentACar.Controllers
                     percentMonth = 0;
                 }
             }
+
+            List<CustomerEmailPhoneViewModel> allCustomersEmails = new List<CustomerEmailPhoneViewModel>();
+            foreach (var x in customers1)
+            {
+                var identityUser = await _userManager.FindByIdAsync(x.UserId);
+
+                CustomerEmailPhoneViewModel customerEmailPhoneViewModel = new CustomerEmailPhoneViewModel()
+                {
+                    Customer = x,
+                    Email = identityUser?.Email,
+                    PhoneNumber = identityUser?.PhoneNumber
+                };
+                if (string.IsNullOrEmpty(customerEmailPhoneViewModel.PhoneNumber))
+                {
+                    customerEmailPhoneViewModel.PhoneNumber = "-";
+                }
+                allCustomersEmails.Add(customerEmailPhoneViewModel);
+            }
             RecentReservation recentReservationViewModel = new RecentReservation()
             {
                 Cars = cars,
-                Customers = customers1,
+                Customers = customers,
+                AllCustomers=allCustomersEmails,
                 TotalPriceForLast24Hours = total24Hours,
                 TotalPriceForLastMounth = totalMounth,
                 TotalPriceForLastWeek = totalWeek,
@@ -446,10 +481,10 @@ namespace RentACar.Controllers
                 }
                 carService.Add(car);
                 carService.Save();
-
+               
                 if (viewModel.Images?.Count > 0)
                 {
-                    await imageService.ProcessImages(viewModel.Images, car.Id);
+                    await imageService.ProcessImages(viewModel.Images, car.Id, viewModel.ImageOrder);
 
                 }
 

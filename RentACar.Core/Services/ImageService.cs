@@ -56,42 +56,48 @@ namespace RentACar.Core.Services
 
         public IEnumerable<Image> GetImagesByCarId(int carId)
         {
-            return repository.FindAll(x => x.CarId == carId).ToList();
+            return repository.FindAll(x => x.CarId == carId).OrderBy(x=>x.Order).ToList();
         }
 
-        public async Task ProcessImages(List<IFormFile> images, int carId)
+        public async Task ProcessImages(List<IFormFile> images, int carId,string imageOrder)
         {
-            // Use IWebHostEnvironment to get the web root path dynamically
-            /*string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+            if (images == null || !images.Any())
+                return;
 
-            if (!Directory.Exists(uploadsFolder))
+            List<int> orderIndices = new List<int>();
+            if (!string.IsNullOrEmpty(imageOrder))
             {
-                Directory.CreateDirectory(uploadsFolder);
-            }*/
+                orderIndices = imageOrder.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                                         .Select(int.Parse).ToList();
+            }
 
-            foreach (var image in images)
+            // Validate orderIndices matches the number of images
+            if (orderIndices.Count != images.Count || orderIndices.Any(i => i < 0 || i >= images.Count))
             {
-                if (image.Length > 0)
+                orderIndices = Enumerable.Range(0, images.Count).ToList();
+            }
+
+            int order = 1;
+            foreach (var index in orderIndices)
+            {
+                var file = images[index];
+                if (file.Length > 0)
                 {
-                    if (image.Length > 0)
+                    var imageUrl = await cloudinaryService.UploadImageAsync(file);
+                    if (!string.IsNullOrEmpty(imageUrl))
                     {
-                        var imageUrl = await cloudinaryService.UploadImageAsync(image);
-
-                        if (!string.IsNullOrEmpty(imageUrl))
+                        repository.Add(new Image
                         {
-                            repository.Add(new Image
-                            {
-                                Url = imageUrl,  // Save Cloudinary URL
-                                CarId = carId
-                            });
-                        }
+                            Url = imageUrl,
+                            CarId = carId,
+                            Order = order
+                        });
+                        order++;
                     }
                 }
             }
-
-            repository.Save(); // Assuming SaveAsync is implemented
+            repository.Save();
         }
-
         public void Save()
         {
           repository.Save();
@@ -105,6 +111,11 @@ namespace RentACar.Core.Services
         public Image FindByid(int id)
         {
             return repository.FindOne(x => x.Id == id);
+        }
+
+        public Image ImageByCarId(int carid)
+        {
+            return repository.FindOne(x=>x.CarId == carid && x.Order==1);
         }
     }
 }

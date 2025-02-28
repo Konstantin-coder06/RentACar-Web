@@ -370,7 +370,7 @@ main {
 
         main .recent_order table {
             background: var(--clr-white);
-            width: 100%;
+            width: 100% ;
             border-radius: var(--card-border-radius);
             padding: var(--card-padding);
             text-align: center;
