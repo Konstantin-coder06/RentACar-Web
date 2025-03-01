@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace RentACar.Controllers
         IReportService reportService;
         ICarCompanyService carCompanyService;
         private readonly UserManager<IdentityUser> _userManager;
-
+       
         public AdminController(ICarService _carService, IImageService _imageService, 
             IClassOfCarService _classOfCarService,IReservationService reservationService, 
             ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportService,
@@ -438,13 +439,72 @@ namespace RentACar.Controllers
             {
                 return View(viewModel);
             }
-
-           
+            if (string.IsNullOrWhiteSpace(viewModel.OrderOfImages))
+            {
+                ModelState.AddModelError("", "Image order information is missing.");
+                return View(viewModel);
+            }
             var companyId = HttpContext.Session.GetInt32("CompanyId");
             var admin = User.IsInRole("Admin");
             if (!companyId.HasValue && !admin)
             {
-                return RedirectToAction("AccessDenied", "Account");
+                return BadRequest("Maika ti user");
+            }
+                // Split the order string into an array.
+                var orderIndexesStrings = viewModel.OrderOfImages.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var orderIndexes = new List<int>();
+
+            // Parse each value and check that it is a valid integer.
+            foreach (var indexStr in orderIndexesStrings)
+            {
+                if (!int.TryParse(indexStr, out int index))
+                {
+                    ModelState.AddModelError("", "Invalid image order data provided.");
+                    return View(viewModel);
+                }
+                orderIndexes.Add(index);
+            }
+
+            // Ensure the count of indexes matches the number of uploaded images.
+            if (orderIndexes.Count != viewModel.Images.Count)
+            {
+                ModelState.AddModelError("", "The number of images does not match the provided order.");
+                return View(viewModel);
+            }
+
+            // Reorder the images based on the provided indexes.
+            var orderedImages = new List<IFormFile>();
+            foreach (var idx in orderIndexes)
+            {
+                if (idx < 0 || idx >= viewModel.Images.Count)
+                {
+                    ModelState.AddModelError("", "Invalid image index in order data.");
+                    return View(viewModel);
+                }
+                orderedImages.Add(viewModel.Images[idx]);
+            }
+
+            // Process each ordered image using the file service.
+            var savedImagePaths = new List<string>();
+            foreach (var file in orderedImages)
+            {
+                if (file == null || file.Length == 0)
+                {
+                    ModelState.AddModelError("", "One of the uploaded files is empty or invalid.");
+                    return View(viewModel);
+                }
+
+                // Example: Validate file extension/size if needed.
+                // if(!IsValidFile(file)) { ... }
+
+                // Use the file service to save the file.
+                var filePath = await cloudinaryService.UploadImageAsync(file);
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    ModelState.AddModelError("", "Failed to save one of the images.");
+                    return View(viewModel);
+                }
+                savedImagePaths.Add(filePath);
             }
             try
             {
@@ -481,12 +541,20 @@ namespace RentACar.Controllers
                 }
                 carService.Add(car);
                 carService.Save();
-               
-                if (viewModel.Images?.Count > 0)
-                {
-                    await imageService.ProcessImages(viewModel.Images, car.Id, viewModel.ImageOrder);
 
+                for (int i = 0; i < savedImagePaths.Count; i++)
+                {
+                    var carImage = new Image
+                    {
+                        CarId = car.Id,
+                        Url = savedImagePaths[i],
+                        Order = i // The order corresponds to the client-specified order.
+                    };
+
+                     imageService.Add(carImage);
+                   imageService.Save();
                 }
+
 
                 return RedirectToAction("Index", "Car");
             }
