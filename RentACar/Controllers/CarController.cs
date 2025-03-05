@@ -40,7 +40,12 @@ namespace RentACar.Controllers
             {
                 cars = carService.GetAll().ToList();
             }
-            else
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            if (companyId.HasValue)
+            {
+                cars=carService.FindAll(x=>x.CarCompanyId == companyId).ToList();
+            }
+            if(!User.IsInRole("Admin")&& !companyId.HasValue)
             {
 
 
@@ -106,6 +111,23 @@ namespace RentACar.Controllers
         [HttpPost]
         public IActionResult FilterDates(CarImagesWithDatesViewModel carImagesView)
         {
+            if (carImagesView.StartDate.HasValue)
+            {
+                HttpContext.Session.SetString("StartDate", carImagesView.StartDate.Value.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                HttpContext.Session.Remove("StartDate"); // Ако няма стойност, махаме я от сесията
+            }
+
+            if (carImagesView.EndDate.HasValue)
+            {
+                HttpContext.Session.SetString("EndDate", carImagesView.EndDate.Value.ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                HttpContext.Session.Remove("EndDate"); // Ако няма стойност, махаме я от сесията
+            }
             List<Reservation> reservations = reservationService.FindAll(x => x.StartDate >= carImagesView.StartDate && x.StartDate <= carImagesView.EndDate).ToList();
             var cars = carService.GetAll()
                                  .Where(car => reservations.All(r => r.CarId != car.Id))
@@ -209,8 +231,8 @@ namespace RentACar.Controllers
         {
             if (submitButton == "ChangeDate")
             {
-                HttpContext.Session.SetString("StartDate", carWithImages.StartDate?.ToString("o"));
-                HttpContext.Session.SetString("EndDate", carWithImages.EndDate?.ToString("o"));
+                HttpContext.Session.SetString("StartDate", carWithImages.StartDate?.ToString("yyyy-MM-dd"));
+                HttpContext.Session.SetString("EndDate", carWithImages.EndDate?.ToString("yyyy-MM-dd"));
                 return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
             }
 
@@ -290,8 +312,18 @@ namespace RentACar.Controllers
         }
         public IActionResult Pendings()
         {
-            var cars = carService.FindAll(x => x.Pending == true).OrderBy(x=>x.CreatedAt);
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            var cars=new List<Car>();
+            if (companyId.HasValue)
+            {
+                cars = carService.FindAll(x => x.Pending == true && x.CarCompanyId == companyId).OrderBy(x => x.CreatedAt).ToList();
+            }
+            else
+            {
 
+
+                cars = carService.FindAll(x => x.Pending == true).OrderBy(x => x.CreatedAt).ToList();
+            }
             var carImages = cars.Select(car => new CarWithImages
             {
                 Car = car,
@@ -339,21 +371,21 @@ namespace RentACar.Controllers
             
         }
         [HttpPost("Car/EditPendingCar/{id?}")]
-        public IActionResult EditPendingCar(int? id,EditCarWithImagesPendingViewModel viewModel)
+        public IActionResult EditPendingCar(int? id, EditCarWithImagesPendingViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
 
-          
-            var car = carService.FindOne(x=>x.Id==id);
+
+            var car = carService.FindOne(x => x.Id == id);
             if (car == null)
             {
                 return NotFound();
             }
 
-         
+
             car.Brand = viewModel.Brand;
             car.Model = viewModel.Model;
             car.Gearbox = viewModel.Gearbox;
@@ -371,14 +403,23 @@ namespace RentACar.Controllers
             car.ZeroToHundred = viewModel.ZeroToHundred;
             car.TopSpeed = viewModel.TopSpeed;
 
-          
-            car.Pending = false;
+            if (User.IsInRole("Company"))
+            {
+                car.Pending = true;
+            }
+            else
+            {
 
-          
+
+                car.Pending = false;
+            }
+
             carService.Update(car);
             carService.Save();
-
-            return RedirectToAction("Index", "Admin");
+           
+            return RedirectToAction("Index", "Car");
+            
+          
         }
         [HttpPost]
         public IActionResult UpdateImageOrder([FromBody] ImageOrderUpdateRequest request)

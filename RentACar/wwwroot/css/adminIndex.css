@@ -453,8 +453,10 @@ Right Side
         gap: 2rem;
         text-align: right;
     }
-
-    .right .info h3 {
+    .right .top .profile {
+        background-color:var(--clr-color-background);
+    }
+        .right .info h3 {
         color: var(--clr-dark);
     }
 

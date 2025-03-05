@@ -314,16 +314,14 @@ namespace RentACar.Controllers
             var last24HoursBefore24Hours = DateTime.Now.AddDays(-2);
             var lastMonthBeforeMonth = DateTime.Now.AddDays(-60);
             var lastWeekBeforeWeek = DateTime.Now.AddDays(-14);
-            var resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
-            var resCarsForLast24After24Hours = reservationService.FindAll(x => x.CreateTime >= last24HoursBefore24Hours && x.CreateTime <= last24Hours).ToList();
+            var resCarsForLast24Hours = new List<Reservation>();
+            var resCarsForLast24After24Hours = new List<Reservation>();
             var countLast24Hours = 0;
-            var resCarsForLastMonth = reservationService.GetAll().Where(x => x.CreateTime >= lastMonth).ToList();
-            var resCarsForLastMonthBeforeMonth = reservationService.FindAll(x => x.CreateTime >= lastMonthBeforeMonth && x.CreateTime <= lastMonth).ToList();
-
+            var resCarsForLastMonth = new List<Reservation>();
+            var resCarsForLastMonthBeforeMonth = new List<Reservation>();
             var countLastMonth = 0;
-            var resCarsForLastWeek= reservationService.FindAll(x => x.CreateTime >= lastWeek).ToList();
-            var resCarsForLastWeekBeforeWeek = reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek).ToList();
-
+            var resCarsForLastWeek =new List<Reservation>();
+            var resCarsForLastWeekBeforeWeek = new List<Reservation>();
             var countLastWeek = 0;
             double totalFor24Hours = 0;
             double totalMonth = 0;
@@ -331,67 +329,176 @@ namespace RentACar.Controllers
             double total24before24hours = 0;
             double totalMonthBeforeMonth = 0;
             double totalWeekBeforeWeek = 0;
-            var reservations = reservationService.GetAll().ToList();
-            var avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
-
+            var top10 = new List<TopCarsViewModel>();
+            var reservations = new List<Reservation>();
             double avg = 0;
-            if (avgDuration.Any())
+            if (User.IsInRole("Admin"))
             {
-                avg = avgDuration.Average();
-            }
-            foreach (var x in resCarsForLastMonthBeforeMonth)
-            {
-                totalMonthBeforeMonth += x.TotalPrice;
-            }
-            foreach (var x in resCarsForLast24After24Hours)
-            {
-                total24before24hours += x.TotalPrice;
-            }
-            foreach(var x in resCarsForLastWeekBeforeWeek)
-            {
-                totalWeekBeforeWeek += x.TotalPrice;
-            }
-            foreach (var x in resCarsForLast24Hours)
-            {
-                totalFor24Hours += x.TotalPrice;
-                countLast24Hours++;
-            }
-            foreach(var x in resCarsForLastWeek)
-            {
-                totalWeek += x.TotalPrice;
-                countLastWeek++;
-            }
-            foreach(var x in resCarsForLastMonth)
-            {
-                totalMonth += x.TotalPrice;
-                countLastMonth++;
-            }
-            int days = 30;
-            var top10Cars = reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).Take(10).ToList();
-            var startDate = DateTime.Now.AddDays(-days);
-            var reservationsApi = reservationService.GetAll()
-                .Where(x => x.CreateTime >= startDate)
-                .ToList();
-            var top10 = top10Cars
-                .Select(x =>
-                {
-                    var car = carService.FindOne(cr => cr.Id == x.CarId);
-                    return new TopCarsViewModel
-                    {
-                        Brand = car.Brand,
-                        Model = car.Model,
-                        Count = x.Count
-                    };
-                })
-                .ToList();
-            var peakReservations = reservationsApi
-                .GroupBy(x => x.CreateTime.Date) 
-                .Select(g => new { Date = g.Key, Count = g.Count() })
-                .OrderByDescending(x => x.Count) 
-                .FirstOrDefault(); 
 
-            ViewBag.PeakReservations = peakReservations;
-            ViewBag.SelectedDays = days;
+
+                resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
+                resCarsForLast24After24Hours = reservationService.FindAll(x => x.CreateTime >= last24HoursBefore24Hours && x.CreateTime <= last24Hours).ToList();
+
+                resCarsForLastMonth = reservationService.GetAll().Where(x => x.CreateTime >= lastMonth).ToList();
+                resCarsForLastMonthBeforeMonth = reservationService.FindAll(x => x.CreateTime >= lastMonthBeforeMonth && x.CreateTime <= lastMonth).ToList();
+
+
+                resCarsForLastWeek = reservationService.FindAll(x => x.CreateTime >= lastWeek).ToList();
+                resCarsForLastWeekBeforeWeek = reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek).ToList();
+                reservations = reservationService.GetAll().ToList();
+                var avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
+
+                if (avgDuration.Any())
+                {
+                    avg = avgDuration.Average();
+                }
+                foreach (var x in resCarsForLastMonthBeforeMonth)
+                {
+                    totalMonthBeforeMonth += x.TotalPrice;
+                }
+                foreach (var x in resCarsForLast24After24Hours)
+                {
+                    total24before24hours += x.TotalPrice;
+                }
+                foreach (var x in resCarsForLastWeekBeforeWeek)
+                {
+                    totalWeekBeforeWeek += x.TotalPrice;
+                }
+                foreach (var x in resCarsForLast24Hours)
+                {
+                    totalFor24Hours += x.TotalPrice;
+                    countLast24Hours++;
+                }
+                foreach (var x in resCarsForLastWeek)
+                {
+                    totalWeek += x.TotalPrice;
+                    countLastWeek++;
+                }
+                foreach (var x in resCarsForLastMonth)
+                {
+                    totalMonth += x.TotalPrice;
+                    countLastMonth++;
+                }
+                int days = 30;
+                var top10Cars = reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).Take(10).ToList();
+                var startDate = DateTime.Now.AddDays(-days);
+                var reservationsApi = reservationService.GetAll()
+                    .Where(x => x.CreateTime >= startDate)
+                    .ToList();
+                top10 = top10Cars
+                   .Select(x =>
+                   {
+                       var car = carService.FindOne(cr => cr.Id == x.CarId);
+                       return new TopCarsViewModel
+                       {
+                           Brand = car.Brand,
+                           Model = car.Model,
+                           Count = x.Count
+                       };
+                   })
+                   .ToList();
+                var peakReservations = reservationsApi
+                    .GroupBy(x => x.CreateTime.Date)
+                    .Select(g => new { Date = g.Key, Count = g.Count() })
+                    .OrderByDescending(x => x.Count)
+                    .FirstOrDefault();
+            }
+            else if (User.IsInRole("Company"))
+            {
+                var companyId = HttpContext.Session.GetInt32("CompanyId");
+                if (companyId.HasValue)
+                {
+
+                    var cars=carService.FindAll(x=>x.CarCompanyId == companyId);
+                    foreach (var c in cars)
+                    {
+
+                        var last24= reservationService.GetAll().Where(x => x.CreateTime >= last24Hours &&x.CarId==c.Id).ToList();
+                        resCarsForLast24Hours.AddRange(last24);
+                        var lastLast24= reservationService.FindAll(x => x.CreateTime >= last24HoursBefore24Hours && x.CreateTime <= last24Hours && x.CarId == c.Id).ToList();
+                        resCarsForLast24After24Hours.AddRange(lastLast24);
+
+                        var lastMonthCompany= reservationService.GetAll().Where(x => x.CreateTime >= lastMonth && x.CarId == c.Id).ToList();
+                        resCarsForLastMonth.AddRange(lastMonthCompany);
+                        var lastLastMonthCompany= reservationService.FindAll(x => x.CreateTime >= lastMonthBeforeMonth && x.CreateTime <= lastMonth && x.CarId == c.Id).ToList();
+                        resCarsForLastMonthBeforeMonth.AddRange(lastLastMonthCompany);
+
+                        var lastWeekCompany= reservationService.FindAll(x => x.CreateTime >= lastWeek && x.CarId == c.Id).ToList();
+                        resCarsForLastWeek.AddRange(lastWeekCompany);
+                        var lastLastWeekCompany= reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek && x.CarId == c.Id).ToList();
+                        resCarsForLastWeekBeforeWeek.AddRange(lastLastWeekCompany);
+
+                       var reservationsCar = reservationService.FindAll(x=>x.CarId==c.Id).ToList();
+                        reservations.AddRange(reservationsCar);
+                    }
+                    
+                    var avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
+                    
+                    if (avgDuration.Any())
+                    {
+                        avg = avgDuration.Average();
+                    }
+                    foreach (var x in resCarsForLastMonthBeforeMonth)
+                    {
+                        totalMonthBeforeMonth += x.TotalPrice;
+                    }
+                    foreach (var x in resCarsForLast24After24Hours)
+                    {
+                        total24before24hours += x.TotalPrice;
+                    }
+                    foreach (var x in resCarsForLastWeekBeforeWeek)
+                    {
+                        totalWeekBeforeWeek += x.TotalPrice;
+                    }
+                    foreach (var x in resCarsForLast24Hours)
+                    {
+                        totalFor24Hours += x.TotalPrice;
+                        countLast24Hours++;
+                    }
+                    foreach (var x in resCarsForLastWeek)
+                    {
+                        totalWeek += x.TotalPrice;
+                        countLastWeek++;
+                    }
+                    foreach (var x in resCarsForLastMonth)
+                    {
+                        totalMonth += x.TotalPrice;
+                        countLastMonth++;
+                    }
+                    int days = 30;
+                    var top10Cars = reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).Take(10).ToList();
+                    var startDate = DateTime.Now.AddDays(-days);
+                    var reservationsApi = reservationService.GetAll()
+                        .Where(x => x.CreateTime >= startDate)
+                        .ToList();
+                    top10 = top10Cars
+                       .Select(x =>
+                       {
+                           var car = carService.FindOne(cr => cr.Id == x.CarId);
+                           return new TopCarsViewModel
+                           {
+                               Brand = car.Brand,
+                               Model = car.Model,
+                               Count = x.Count
+                           };
+                       })
+                       .ToList();
+                    var peakReservations = reservationsApi
+                        .GroupBy(x => x.CreateTime.Date)
+                        .Select(g => new { Date = g.Key, Count = g.Count() })
+                        .OrderByDescending(x => x.Count)
+                        .FirstOrDefault();
+                }
+                else
+                {
+                    return BadRequest("Ei spongeBOb ne si kompaniq");
+                }
+            }
+           
+
+      
+
+           
             AnalyticsViewModel analyticsViewModel = new AnalyticsViewModel()
             {
                 TotalLast24Hours = totalFor24Hours,
@@ -494,10 +601,7 @@ namespace RentACar.Controllers
                     return View(viewModel);
                 }
 
-                // Example: Validate file extension/size if needed.
-                // if(!IsValidFile(file)) { ... }
-
-                // Use the file service to save the file.
+               
                 var filePath = await cloudinaryService.UploadImageAsync(file);
                 if (string.IsNullOrEmpty(filePath))
                 {
@@ -529,7 +633,7 @@ namespace RentACar.Controllers
                     TopSpeed = viewModel.TopSpeed,
                     ClassOfCarId = viewModel.ClassOfCarId,
                     Pending = true,
-                    
+                    CreatedAt = DateTime.Now
                 };
                 if (admin)
                 {
@@ -548,7 +652,7 @@ namespace RentACar.Controllers
                     {
                         CarId = car.Id,
                         Url = savedImagePaths[i],
-                        Order = i // The order corresponds to the client-specified order.
+                        Order = i 
                     };
 
                      imageService.Add(carImage);
@@ -565,6 +669,10 @@ namespace RentACar.Controllers
             }
           
 
+        }
+        public IActionResult Settings()
+        {
+            return View();
         }
     }
 }

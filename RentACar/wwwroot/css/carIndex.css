@@ -80,6 +80,7 @@
 .input-group {
     position: relative;
     width: 300px;
+    margin-top:3rem;
 }
 
 .search-icon {
@@ -89,6 +90,7 @@
     transform: translateY(-50%);
     color: gray;
     font-size: 18px;
+    
 }
 
 .search-btn {
@@ -100,6 +102,7 @@
     cursor: pointer;
     font-size: 18px;
     color: white;
+    margin-top:3rem;
 }
 
 .price-container {
@@ -131,4 +134,146 @@
 
 .search-btn:hover {
     background-color: #e65a5a;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: ghostwhite;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 80vh; /* Limit height to 80% of viewport */
+    overflow-y: auto; /* Add vertical scrollbar if needed */
+}
+
+.flatpickr-calendar {
+   
+    width: 100%;
+    max-width: 900px;
+}
+
+.close {
+    position: absolute;
+    top: 5px; /* Adjusted for closer alignment */
+    right: 10px; /* Adjusted for closer alignment */
+    font-size: 30px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+    .close:hover {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+#datePicker {
+    background-color: #222;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+    display: none; /* Added to hide the black bar */
+}
+
+#confirmDates {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Other styles remain unchanged */
+.date-container {
+    background-color: #222;
+    color: white;
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#openCalendar {
+    background: red;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.flatpickr-month {
+    font-size: 18px; /* Larger text */
+    font-weight: bold; /* Bold for emphasis */
+    background-color: #f0f0f0; /* Light background to contrast with dates */
+    padding: 10px; /* Spacing for visibility */
+    text-align: center; /* Center the month name */
+}
+
+.flatpickr-calendar {
+    width: 100%;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background-color: #FF7F50 !important; /* Coral */
+    border-color: #FF7F50 !important;
+    color: white;
+}
+
+.date-input {
+    background-color: #222;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    width: 200px;
+}
+
+    .date-input::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+
+.date-button {
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
