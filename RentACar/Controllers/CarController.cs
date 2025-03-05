@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.Models;
+using System.Globalization;
 
 namespace RentACar.Controllers
 {
@@ -17,22 +18,32 @@ namespace RentACar.Controllers
         IImageService imageService;
         IClassOfCarService classOfCarService;
         IReservationService reservationService;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+       
         public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IWebHostEnvironment webHostEnvironment)
         {
             this.carService = _carService;
             this.imageService = _imageService;
             this.classOfCarService = _classOfCarService;
             this.reservationService = reservationService;
-            _webHostEnvironment = webHostEnvironment;
+          
         }
       
         public IActionResult Index()
         {
+            DateTime? startDay = null;
+            DateTime? endDay = null;
+
             var startDayStr = HttpContext.Session.GetString("StartDate");
+            if (!string.IsNullOrEmpty(startDayStr))
+            {
+                startDay = DateTime.ParseExact(startDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            }
+
             var endDayStr = HttpContext.Session.GetString("EndDate");
-            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
-            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
+            if (!string.IsNullOrEmpty(endDayStr))
+            {
+                endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            }
             List<Reservation> reservations = reservationService.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
                  (!endDay.HasValue || x.StartDate <= endDay)).ToList();
             var cars=new List<Car>();
@@ -46,9 +57,7 @@ namespace RentACar.Controllers
                 cars=carService.FindAll(x=>x.CarCompanyId == companyId).ToList();
             }
             if(!User.IsInRole("Admin")&& !companyId.HasValue)
-            {
-
-
+            { 
                 cars = carService.GetAll().Where(car => reservations.All(r => r.CarId != car.Id && car.Pending == false)).ToList();
             }
             var carsWithImages = cars.Select(car => new CarWithImages
@@ -75,29 +84,36 @@ namespace RentACar.Controllers
 
             if (!string.IsNullOrEmpty(searchBar))
             {
-                if (queries.Any(x => searchBar.Contains(x.Brand)))
-                {
-                    queries = queries.Where(x => searchBar.Contains(x.Brand));
-                }
-                else
-                {
-                    queries = queries.Where(x => searchBar.Contains(x.Model));
-                }
+                queries = queries.Where(x => x.Brand.Contains(searchBar, StringComparison.OrdinalIgnoreCase) ||
+                                             x.Model.Contains(searchBar, StringComparison.OrdinalIgnoreCase));
             }
+
+          
             var startDayStr = HttpContext.Session.GetString("StartDate");
             var endDayStr = HttpContext.Session.GetString("EndDate");
 
             DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
             DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
-            List<Reservation> reservations = reservationService.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
-          (!endDay.HasValue || x.StartDate <= endDay)).ToList();
-            var cars = queries.AsEnumerable().Where(x=>reservations.All(r=>r.CarId==x.Id) &&x.Pending==false).ToList();
+
+         
+            List<Reservation> overlappingReservations = new List<Reservation>();
+            if (startDay.HasValue && endDay.HasValue)
+            {
+                overlappingReservations = reservationService.FindAll(x => x.EndDate >= startDay &&
+                                                                          x.StartDate <= endDay).ToList();
+            }
+
+           
+            var cars = queries.AsEnumerable().Where(x => (overlappingReservations.Count == 0 ||
+                                                          !overlappingReservations.Any(r => r.CarId == x.Id)) &&
+                                                          x.Pending == false).ToList();
+
             var carsWithImages = cars.Select(car => new CarWithImages
             {
                 Car = car,
                 Images = imageService.GetImagesByCarId(car.Id).ToList()
             }).ToList();
-          
+
             var viewModel = new CarImagesWithDatesViewModel
             {
                 CarWithImages = carsWithImages,
@@ -106,7 +122,7 @@ namespace RentACar.Controllers
             };
 
             return View("Index", viewModel);
-
+        
         }
         [HttpPost]
         public IActionResult FilterDates(CarImagesWithDatesViewModel carImagesView)
@@ -117,7 +133,7 @@ namespace RentACar.Controllers
             }
             else
             {
-                HttpContext.Session.Remove("StartDate"); // Ако няма стойност, махаме я от сесията
+                HttpContext.Session.Remove("StartDate");
             }
 
             if (carImagesView.EndDate.HasValue)
@@ -126,8 +142,9 @@ namespace RentACar.Controllers
             }
             else
             {
-                HttpContext.Session.Remove("EndDate"); // Ако няма стойност, махаме я от сесията
+                HttpContext.Session.Remove("EndDate");
             }
+
             List<Reservation> reservations = reservationService.FindAll(x => x.StartDate >= carImagesView.StartDate && x.StartDate <= carImagesView.EndDate).ToList();
             var cars = carService.GetAll()
                                  .Where(car => reservations.All(r => r.CarId != car.Id))
@@ -201,11 +218,25 @@ namespace RentACar.Controllers
         }
         public IActionResult Reservation(int id)
         {
-            var startDayStr = HttpContext.Session.GetString("StartDate");
-            var endDayStr = HttpContext.Session.GetString("EndDate");
+            DateTime? startDay = null;
+            DateTime? endDay = null;
 
-            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
-            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
+            var startDayStr = HttpContext.Session.GetString("StartDate");
+            if (!string.IsNullOrEmpty(startDayStr))
+            {
+                startDay = DateTime.ParseExact(
+                    startDayStr,
+                    "yyyy-MM-dd",
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None // 🚨 Remove AssumeUniversal
+                ).AddDays(1);
+            }
+
+            var endDayStr = HttpContext.Session.GetString("EndDate");
+            if (!string.IsNullOrEmpty(endDayStr))
+            {
+                endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            }
             var userId = HttpContext.Session.GetInt32("UserId");
 
             if (!userId.HasValue)

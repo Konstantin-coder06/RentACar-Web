@@ -55,6 +55,7 @@
 .btn-filter {
     margin-left: 30px;
     stroke: none;
+    margin-top:3rem;
 }
 
 .btn-primary:hover {

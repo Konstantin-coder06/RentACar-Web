@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>c23c570k9v</Fingerprint>
-      <Integrity>hDsVzyVXUmxNTY7Zkq11eApK2fUbI/2/lGsPZFKI7Ac=</Integrity>
+      <Fingerprint>njamz0ezzr</Fingerprint>
+      <Integrity>HX4aRdRMeWCZpcS0lTZJSc8mAxOexLmPNZlW/PQjcsQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\carIndex.css'))</OriginalItemSpec>
