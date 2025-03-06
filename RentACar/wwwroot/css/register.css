@@ -1,4 +1,184 @@
-﻿body {
+﻿
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+    --text-dark: #f54242;
+    --text-light: #f76c6c;
+    --white: #ffffff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6)), url("https://res.cloudinary.com/dhibmotzx/image/upload/v1741245256/6TCvbRoi_vcjsr9.jpg") center/cover no-repeat;
+}
+
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 420px;
+    padding: 4rem 3rem;
+    margin: 1rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid var(--white);
+    border-radius: 1.5rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeIn 0.5s linear forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-form h1 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #f54242;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    padding-block: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--white);
+}
+
+.input-wrapper {
+    flex: 1;
+    position: relative;
+    isolation: isolate;
+}
+
+.form-group span {
+    font-size: 1.25rem;
+    color: #f54242;
+}
+
+.input-wrapper label {
+    position: absolute;
+    font-size: 1rem;
+    color: var(--white);
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.input-wrapper input:not(:placeholder-shown) ~ label,
+.input-wrapper input:focus ~ label {
+    font-size: 0.7rem;
+    top: -1.25rem;
+}
+
+.input-wrapper input {
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #f54242;
+    background-color: transparent;
+}
+
+#toggle-password {
+    cursor: pointer;
+}
+
+.form-actions {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .remember-me label {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+input[type="checkbox"] {
+    accent-color: var(--white);
+    color: var(--text-dark);
+}
+
+.remember-me label:hover {
+    color: var(--white);
+}
+
+.forgot-password {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    transition: 0.3s;
+}
+
+    .forgot-password:hover {
+        color: var(--white);
+    }
+
+.submit-btn {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    background-color: var(--white);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .submit-btn:hover {
+        background-color: #202528;
+    }
+
+.register {
+    color: var(--text-light);
+    text-align: center;
+}
+
+    .register a {
+        text-decoration: none;
+        font-weight: 500;
+        color: var(--white);
+        transition: color 0.3s ease-in-out;
+    }
+
+div.register a:hover {
+    color: #cb0000 !important;
+}
+    /*body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f5f5;
     margin: 0;
@@ -11,9 +191,6 @@
     min-height: 100vh;
     padding-top: 60px;
 }
-
-
-
 
 .register-container {
     background: white;
@@ -85,4 +262,4 @@ button {
 .car-icon {
     width: 30px;
     height: 30px;
-}
+}*/

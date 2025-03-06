@@ -2,42 +2,65 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = null;
 }
 @model RegisterViewModel
 <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
-<div class="page-container">
-<div class="register-container">
-    <h2>
-    <svg class="car-icon" viewBox="0 0 24 24" fill="#e65a5a">
-        <path d="M18.9 5.5C18.8 5.2 18.5 5 18.1 5H5.9c-.4 0-.7.2-.8.5L3 11v8c0 .5.5 1 1 1h1c.5 0 1-.5 1-1v-1h12v1c0 .5.5 1 1 1h1c.5 0 1-.5 1-1v-8l-2.1-5.5zM6.5 12c-.8 0-1.5-.7-1.5-1.5S5.7 9 6.5 9s1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm11 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zM5 10l1.5-4h11L19 10H5z" />
-    </svg> Register</h2>
-    <form asp-action="Register" method="post">
-        <div>
-            <label asp-for="Name">Name</label>
-            <input asp-for="Name" required/>
-                <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="Age">Age</label>
-            <input asp-for="Age" type="number" required/>
-                <span asp-validation-for="Age" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="Email">Email</label>
-            <input asp-for="Email" type="email" required />
-                <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="Password">Password</label>
-            <input asp-for="Password" type="password" required />
-                <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-        <div>
-            <label asp-for="ConfirmPassword">Confirm Password</label>
-            <input asp-for="ConfirmPassword" type="password" required />
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-        <button type="submit">Register</button>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
+<script src="~/js/main.js"></script>
+<body>
+<div class="login-container">
+    
+    <form asp-action="Register" method="post" class="login-form">
+            <h1>Register As User</h1>
+            <div class="form-group">
+              
+                <span><i class="ri-user-3-line"></i></span>
+                <div class="input-wrapper">
+                    <input type="text" asp-for="Name" placeholder=" " id="name" />
+                    <label asp-for="Name">Name</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <span><i class="ri-calendar-line"></i></span>
+                <div class="input-wrapper">
+                    <input type="number" asp-for="Age" placeholder=" " id="name" />
+                    <label asp-for="Age">Age</label>
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <span><i class="ri-user-3-line"></i></span>
+                <div class="input-wrapper">
+                    <input type="text" asp-for="Email" placeholder=" " id="name" />
+                    <label asp-for="Email">Email</label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <span><i class="ri-lock-2-line"></i></span>
+                <div class="input-wrapper">
+                    <input id="password" type="password" asp-for="Password" placeholder=" " />
+                    <label asp-for="Password">Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <span id="toggle-password"><i class="ri-eye-off-line"></i></span>
+            </div>
+            <div class="form-group">
+                <span><i class="ri-lock-2-line"></i></span>
+                <div class="input-wrapper">
+                    <input id="password" type="password" asp-for="ConfirmPassword" placeholder=" " />
+                    <label asp-for="ConfirmPassword">Confirm Password</label>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <span id="toggle-password"><i class="ri-eye-off-line"></i></span>
+            </div>
+            <button class="submit-btn">Register</button>
+            <div class="register">
+                Already have an account? <a asp-action="Login" asp-controller="Account">Log in</a>
+            </div>
     </form>
 </div>
-</div>
+
+</body>

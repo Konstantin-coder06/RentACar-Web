@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 <body>
     <div class="login-container">
-        <form action="/" class="login-form">
+        <form asp-action="Login" method="post" class="login-form">
             <h1>Log in</h1>
             <div class="form-group">
                 <span><i class="ri-user-3-line"></i></span>
@@ -35,7 +35,7 @@
             </div>
             <button class="submit-btn">Login</button>
             <div class="register">
-                Don't have an account? <a asp-action="Register" asp-controller="Account">Register</a>
+                Don't have an account? <a asp-action="Register" asp-controller="Account">Register as user</a> or as <a asp-action="RegisterCompany">Company</a>
             </div>
         </form>
     </div>

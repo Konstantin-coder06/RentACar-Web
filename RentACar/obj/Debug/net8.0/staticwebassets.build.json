@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mrxuv7ld/puiu00RfNJBZOvymjw3IqR+AnjBezCRTkI=",
+  "Hash": "AKcXS4DdXDSnm6/ZVLfFga63gu/FmGjBeDrQqSJbWoA=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -1522,8 +1522,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "pzq6b6lfol",
-      "Integrity": "JaFc6+F33MNbEVwxytuj/33rHhty9m6MAQVd23aOnXM=",
+      "Fingerprint": "0mn5jfcmd2",
+      "Integrity": "yNV9OLXhp1kfTzMOZZKrUR8ASECqi+0MZqjp9f10Sco=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\register.css"
@@ -3592,6 +3592,51 @@
       ]
     },
     {
+      "Route": "css/register.0mn5jfcmd2.css",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\register.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5029"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yNV9OLXhp1kfTzMOZZKrUR8ASECqi+0MZqjp9f10Sco=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Mar 2025 09:17:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0mn5jfcmd2"
+        },
+        {
+          "Name": "label",
+          "Value": "css/register.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yNV9OLXhp1kfTzMOZZKrUR8ASECqi+0MZqjp9f10Sco="
+        }
+      ]
+    },
+    {
       "Route": "css/register.css",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\register.css",
       "Selectors": [],
@@ -3602,7 +3647,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1542"
+          "Value": "5029"
         },
         {
           "Name": "Content-Type",
@@ -3610,11 +3655,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"JaFc6+F33MNbEVwxytuj/33rHhty9m6MAQVd23aOnXM=\""
+          "Value": "\"yNV9OLXhp1kfTzMOZZKrUR8ASECqi+0MZqjp9f10Sco=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 13:14:11 GMT"
+          "Value": "Thu, 06 Mar 2025 09:17:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3624,52 +3669,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-JaFc6+F33MNbEVwxytuj/33rHhty9m6MAQVd23aOnXM="
-        }
-      ]
-    },
-    {
-      "Route": "css/register.pzq6b6lfol.css",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\register.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1542"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"JaFc6+F33MNbEVwxytuj/33rHhty9m6MAQVd23aOnXM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 13:14:11 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "pzq6b6lfol"
-        },
-        {
-          "Name": "label",
-          "Value": "css/register.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-JaFc6+F33MNbEVwxytuj/33rHhty9m6MAQVd23aOnXM="
+          "Value": "sha256-yNV9OLXhp1kfTzMOZZKrUR8ASECqi+0MZqjp9f10Sco="
         }
       ]
     },
