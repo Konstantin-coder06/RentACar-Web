@@ -73,22 +73,23 @@
              }
          });
 
-        
-         confirmBtn.addEventListener("click", function () {
-             let selectedDates = datePicker.selectedDates;
-             if (selectedDates.length === 2) {
-                 let start = selectedDates[0].toISOString().split("T")[0];
-                 let end = selectedDates[1].toISOString().split("T")[0];
 
-                 startDateInput.value = start;
-                 endDateInput.value = end;
+             confirmBtn.addEventListener("click", function () {
+         let selectedDates = datePicker.selectedDates;
+         if (selectedDates.length === 2) {
+             // Use 'en-CA' locale to get YYYY-MM-DD format in local time
+             let start = selectedDates[0].toLocaleDateString('en-CA');
+             let end = selectedDates[1].toLocaleDateString('en-CA');
 
-                 modal.style.display = "none";
-                 form.submit();
-             } else {
-                 alert("Please select both start and end dates.");
-             }
-         });
+             startDateInput.value = start;
+             endDateInput.value = end;
+
+             modal.style.display = "none";
+             form.submit();
+         } else {
+             alert("Please select both start and end dates.");
+         }
+     });
      });
 </script>
 <form asp-action="Search" method="post" class="search-container">

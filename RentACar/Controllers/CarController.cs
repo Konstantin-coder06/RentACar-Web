@@ -145,10 +145,22 @@ namespace RentACar.Controllers
                 HttpContext.Session.Remove("EndDate");
             }
 
-            List<Reservation> reservations = reservationService.FindAll(x => x.StartDate >= carImagesView.StartDate && x.StartDate <= carImagesView.EndDate).ToList();
-            var cars = carService.GetAll()
-                                 .Where(car => reservations.All(r => r.CarId != car.Id))
-                                 .ToList();
+            List<Reservation> reservations = reservationService.GetAll().Where(x => x.StartDate >= carImagesView.StartDate && x.StartDate <= carImagesView.EndDate).ToList();
+            List<Car> cars = new List<Car>();
+            if (User.IsInRole("Admin"))
+            {
+                cars = carService.GetAll().ToList();
+            }
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            if (companyId.HasValue)
+            {
+                cars = carService.FindAll(x => x.CarCompanyId == companyId).ToList();
+            }
+            if (!User.IsInRole("Admin") && !companyId.HasValue)
+            {
+                cars = carService.FindAll(car => reservations.All(r => r.CarId != car.Id && car.Pending == false)).ToList();
+            }
+           
             var carsWithImages = cars.Select(car => new CarWithImages
             {
                 Car = car,
@@ -165,7 +177,7 @@ namespace RentACar.Controllers
             };
 
 
-            return View("Index",viewModel);
+            return RedirectToAction("Index",viewModel);
         }
         public IActionResult Filters()
         {
@@ -229,7 +241,7 @@ namespace RentACar.Controllers
                     "yyyy-MM-dd",
                     CultureInfo.InvariantCulture,
                     DateTimeStyles.None // 🚨 Remove AssumeUniversal
-                ).AddDays(1);
+                );
             }
 
             var endDayStr = HttpContext.Session.GetString("EndDate");
