@@ -12,6 +12,7 @@ wwwroot\css\reservation.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\customerRotation.js
+wwwroot\js\main.js
 wwwroot\js\theme-toggler.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\js\\customerRotation.js"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\theme-toggler.js",
       "PackagePath": "staticwebassets\\js\\theme-toggler.js"
     },

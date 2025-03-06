@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ixF3+bO/Az/SndSX00UcUJhTtKVMHvVOrAtOKX5akhs=",
+  "Hash": "mrxuv7ld/puiu00RfNJBZOvymjw3IqR+AnjBezCRTkI=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -1480,8 +1480,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "dpiv5aeqhq",
-      "Integrity": "cV1PSrQaLlEUEcs/JeAyRqvR99RGTOpqg1/5SipKJxA=",
+      "Fingerprint": "y2kree2y85",
+      "Integrity": "lvvRAdLyzbXek8azstWAqDTGk6NictPKvNE6cHPBHkE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\login.css"
@@ -1611,6 +1611,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\customerRotation.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\main.js",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "js/main#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tylylelps8",
+      "Integrity": "S5+bE6h9s8GNN0RnDUozufyaQ8XRbxMwAWz1omJh5rY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\main.js"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\theme-toggler.js",
@@ -3417,7 +3438,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1623"
+          "Value": "5112"
         },
         {
           "Name": "Content-Type",
@@ -3425,11 +3446,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"cV1PSrQaLlEUEcs/JeAyRqvR99RGTOpqg1/5SipKJxA=\""
+          "Value": "\"lvvRAdLyzbXek8azstWAqDTGk6NictPKvNE6cHPBHkE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 13:21:56 GMT"
+          "Value": "Thu, 06 Mar 2025 08:49:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3439,12 +3460,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-cV1PSrQaLlEUEcs/JeAyRqvR99RGTOpqg1/5SipKJxA="
+          "Value": "sha256-lvvRAdLyzbXek8azstWAqDTGk6NictPKvNE6cHPBHkE="
         }
       ]
     },
     {
-      "Route": "css/login.dpiv5aeqhq.css",
+      "Route": "css/login.y2kree2y85.css",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\login.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3454,7 +3475,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1623"
+          "Value": "5112"
         },
         {
           "Name": "Content-Type",
@@ -3462,11 +3483,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"cV1PSrQaLlEUEcs/JeAyRqvR99RGTOpqg1/5SipKJxA=\""
+          "Value": "\"lvvRAdLyzbXek8azstWAqDTGk6NictPKvNE6cHPBHkE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 24 Feb 2025 13:21:56 GMT"
+          "Value": "Thu, 06 Mar 2025 08:49:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3476,7 +3497,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "dpiv5aeqhq"
+          "Value": "y2kree2y85"
         },
         {
           "Name": "label",
@@ -3484,7 +3505,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-cV1PSrQaLlEUEcs/JeAyRqvR99RGTOpqg1/5SipKJxA="
+          "Value": "sha256-lvvRAdLyzbXek8azstWAqDTGk6NictPKvNE6cHPBHkE="
         }
       ]
     },
@@ -6197,6 +6218,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-bBZnSCsgn0Mkzmk1VbNMVOYwtWe7m+oe2dQ6JhjGukM="
+        }
+      ]
+    },
+    {
+      "Route": "js/main.js",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\main.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "436"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"S5+bE6h9s8GNN0RnDUozufyaQ8XRbxMwAWz1omJh5rY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Mar 2025 08:16:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-S5+bE6h9s8GNN0RnDUozufyaQ8XRbxMwAWz1omJh5rY="
+        }
+      ]
+    },
+    {
+      "Route": "js/main.tylylelps8.js",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\main.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "436"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"S5+bE6h9s8GNN0RnDUozufyaQ8XRbxMwAWz1omJh5rY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 06 Mar 2025 08:16:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tylylelps8"
+        },
+        {
+          "Name": "label",
+          "Value": "js/main.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-S5+bE6h9s8GNN0RnDUozufyaQ8XRbxMwAWz1omJh5rY="
         }
       ]
     },

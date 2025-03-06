@@ -111,7 +111,7 @@
                     <img src="@carWithImages.Images.OrderBy(x=>x.Order).First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
 
                     <div class="card-body">
-                        @if(isCompany){
+                        @if(isCompany || isAdmin){
                             @if(carWithImages.Car.Pending==true){
                                 <h5 class="card-title">
                                     @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year <span class="text-danger">Waiting
