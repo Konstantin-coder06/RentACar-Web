@@ -2,11 +2,12 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    
+
 }
 @model AddingCarWithImagesViewModel
 
 @{
+    
     ViewData["Title"] = "Add New Car";
 }
 <link rel="stylesheet" href="~/css/addcar.css" asp-append-version="true" />
@@ -35,12 +36,12 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="row">
-                        <!-- Left Column (Form Fields) -->
+                        <!-- Left Column (Basic Info and Images) -->
                         <div class="col-md-6">
                             <!-- Key Information Section -->
                             <fieldset>
-                                <legend>Key Information</legend>
-                                <p class="text-muted">This information is necessary to create the listing.</p>
+                                <legend>Basic Information</legend>
+                                <p class="text-muted">These details are what customers will see first.</p>
                                 <div class="form-group mb-3">
                                     <label asp-for="Brand" class="control-label">Brand*</label>
                                     <input asp-for="Brand" class="form-control" />
@@ -51,6 +52,22 @@
                                     <input asp-for="Model" class="form-control" />
                                     <span asp-validation-for="Model" class="text-danger"></span>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="Year" class="control-label">Year*</label>
+                                            <input asp-for="Year" class="form-control" />
+                                            <span asp-validation-for="Year" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="Color" class="control-label">Color</label>
+                                            <input asp-for="Color" class="form-control" />
+                                            <span asp-validation-for="Color" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group mb-3">
                                     <label asp-for="ClassOfCarId" class="control-label">Vehicle Class*</label>
                                     <select asp-for="ClassOfCarId" asp-items="Model.ClassOptions" class="form-control">
@@ -58,55 +75,111 @@
                                     </select>
                                     <span asp-validation-for="ClassOfCarId" class="text-danger"></span>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="Year" class="control-label">Year*</label>
-                                    <input asp-for="Year" class="form-control" />
-                                    <span asp-validation-for="Year" class="text-danger"></span>
+                            </fieldset>
+
+                            <!-- Images Section -->
+                            <fieldset>
+                                <legend>Vehicle Images</legend>
+                                <p class="text-muted">Great photos increase booking rates. First image will be your main listing photo.</p>
+                                <div class="image-preview">
+                                    <div id="imagePreviewContainer" class="d-flex flex-wrap gap-2 mt-2 border p-2" style="min-height: 100px;"></div>
+                                    <div class="add-image" onclick="document.getElementById('imageUpload').click();">
+                                        <span>Add Photos</span>
+                                    </div>
+                                    <input asp-for="Images" id="imageUpload" type="file" multiple class="form-control" style="display: none;" />
+                                    <input type="hidden" asp-for="OrderOfImages" id="imageOrder" data-val="false" />
                                 </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Right Column (Details) -->
+                        <div class="col-md-6">
+                            <!-- Pricing and Rental Details Section -->
+                            <fieldset>
+                                <legend>Pricing & Rental Terms</legend>
                                 <div class="form-group mb-3">
                                     <label asp-for="PricePerDay" class="control-label">Price Per Day*</label>
                                     <input asp-for="PricePerDay" class="form-control" />
                                     <span asp-validation-for="PricePerDay" class="text-danger"></span>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label asp-for="Color" class="control-label">Color</label>
-                                    <input asp-for="Color" class="form-control" />
-                                    <span asp-validation-for="Color" class="text-danger"></span>
+                                    <label asp-for="PricePerWeek" class="control-label">Price Per Week</label>
+                                    <input asp-for="PricePerWeek" class="form-control" />
+                                    <span asp-validation-for="PricePerWeek" class="text-danger"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="MileageLimitForDay" class="control-label">Daily Mileage Limit</label>
+                                            <input asp-for="MileageLimitForDay" class="form-control" />
+                                            <span asp-validation-for="MileageLimitForDay" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="MileageLimitForWeek" class="control-label">Weekly Mileage Limit</label>
+                                            <input asp-for="MileageLimitForWeek" class="form-control" />
+                                            <span asp-validation-for="MileageLimitForWeek" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label asp-for="AdditionalMileageCharge" class="control-label">Additional Mileage Charge</label>
+                                    <input asp-for="AdditionalMileageCharge" class="form-control" />
+                                    <span asp-validation-for="AdditionalMileageCharge" class="text-danger"></span>
                                 </div>
                             </fieldset>
 
                             <!-- Technical Specifications Section -->
                             <fieldset>
-                                <legend>Technical Specifications</legend>
-                                <div class="form-group mb-3">
-                                    <label asp-for="EngineCapacity" class="control-label">Engine Capacity</label>
-                                    <input asp-for="EngineCapacity" class="form-control" step="0.1" />
-                                    <span asp-validation-for="EngineCapacity" class="text-danger"></span>
+                                <legend>Performance Specs</legend>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="EngineCapacity" class="control-label">Engine Capacity</label>
+                                            <input asp-for="EngineCapacity" class="form-control" step="0.1" />
+                                            <span asp-validation-for="EngineCapacity" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="HorsePower" class="control-label">Horse Power</label>
+                                            <input asp-for="HorsePower" class="form-control" />
+                                            <span asp-validation-for="HorsePower" class="text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="HorsePower" class="control-label">Horse Power</label>
-                                    <input asp-for="HorsePower" class="form-control" />
-                                    <span asp-validation-for="HorsePower" class="text-danger"></span>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="TopSpeed" class="control-label">Top Speed</label>
+                                            <input asp-for="TopSpeed" class="form-control" />
+                                            <span asp-validation-for="TopSpeed" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="ZeroToHundred" class="control-label">0-100 km/h</label>
+                                            <input asp-for="ZeroToHundred" class="form-control" />
+                                            <span asp-validation-for="ZeroToHundred" class="text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="TopSpeed" class="control-label">Top Speed</label>
-                                    <input asp-for="TopSpeed" class="form-control" />
-                                    <span asp-validation-for="TopSpeed" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="ZeroToHundred" class="control-label">Zero to Hundred</label>
-                                    <input asp-for="ZeroToHundred" class="form-control" />
-                                    <span asp-validation-for="ZeroToHundred" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="DriveTrain" class="control-label">Drive Train</label>
-                                    <input asp-for="DriveTrain" class="form-control" />
-                                    <span asp-validation-for="DriveTrain" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="Gearbox" class="control-label">Gearbox</label>
-                                    <input asp-for="Gearbox" class="form-control" />
-                                    <span asp-validation-for="Gearbox" class="text-danger"></span>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="DriveTrain" class="control-label">Drive Train</label>
+                                            <input asp-for="DriveTrain" class="form-control" />
+                                            <span asp-validation-for="DriveTrain" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label asp-for="Gearbox" class="control-label">Gearbox</label>
+                                            <input asp-for="Gearbox" class="form-control" />
+                                            <span asp-validation-for="Gearbox" class="text-danger"></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </fieldset>
 
@@ -114,34 +187,9 @@
                             <fieldset>
                                 <legend>Description</legend>
                                 <div class="form-group mb-3">
-                                    <label asp-for="Description" class="control-label">Description</label>
-                                    <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                                    <label asp-for="Description" class="control-label">Vehicle Description</label>
+                                    <textarea asp-for="Description" class="form-control" rows="5" placeholder="Describe what makes this vehicle special..."></textarea>
                                     <span asp-validation-for="Description" class="text-danger"></span>
-                                </div>
-                            </fieldset>
-
-                            <!-- Rental Details Section -->
-                            <fieldset>
-                                <legend>Rental Details</legend>
-                                <div class="form-group mb-3">
-                                    <label asp-for="PricePerWeek" class="control-label">Price Per Week</label>
-                                    <input asp-for="PricePerWeek" class="form-control" />
-                                    <span asp-validation-for="PricePerWeek" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="MileageLimitForDay" class="control-label">Mileage Limit For Day</label>
-                                    <input asp-for="MileageLimitForDay" class="form-control" />
-                                    <span asp-validation-for="MileageLimitForDay" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="MileageLimitForWeek" class="control-label">Mileage Limit For Week</label>
-                                    <input asp-for="MileageLimitForWeek" class="form-control" />
-                                    <span asp-validation-for="MileageLimitForWeek" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label asp-for="AdditionalMileageCharge" class="control-label">Additional Mileage Charge</label>
-                                    <input asp-for="AdditionalMileageCharge" class="form-control" />
-                                    <span asp-validation-for="AdditionalMileageCharge" class="text-danger"></span>
                                 </div>
                             </fieldset>
 
@@ -161,23 +209,7 @@
                                 </fieldset>
                             }
                         </div>
-
-                        <!-- Right Column (Image Upload) -->
-                        <div class="col-md-6">
-                            <fieldset>
-                                <legend>Images</legend>
-                                <div class="image-preview">
-                                    <div id="imagePreviewContainer" class="d-flex flex-wrap gap-2 mt-2 border p-2" style="min-height: 100px;"></div>
-                                    <div class="add-image" onclick="document.getElementById('imageUpload').click();">
-                                        <span>Add Image</span>
-                                    </div>
-                                    <input asp-for="Images" id="imageUpload" type="file" multiple class="form-control" style="display: none;" />
-                                    <input type="hidden" asp-for="OrderOfImages" id="imageOrder" data-val="false" />
-                                </div>
-                            </fieldset>
-                        </div>
                     </div>
-
                     <!-- Submit and Cancel Buttons -->
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary">Add Car</button>
@@ -228,4 +260,5 @@
             updateImageOrder();
         });
     </script>
+
 </body>

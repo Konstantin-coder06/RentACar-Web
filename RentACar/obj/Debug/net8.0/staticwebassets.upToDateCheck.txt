@@ -8,11 +8,14 @@ wwwroot\css\homeindex.css
 wwwroot\css\login.css
 wwwroot\css\pendings.css
 wwwroot\css\register.css
+wwwroot\css\report.css
 wwwroot\css\reservation.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\js\calendar.js
 wwwroot\js\customerRotation.js
 wwwroot\js\main.js
+wwwroot\js\sorting.js
 wwwroot\js\theme-toggler.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

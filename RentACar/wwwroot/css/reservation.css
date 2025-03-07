@@ -1,10 +1,10 @@
-﻿/* Main container */
-.booking-layout {
+﻿.booking-layout {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
+    margin: 2.5rem auto;
+    padding: 1.5rem;
+    font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Carousel Section */
@@ -17,7 +17,7 @@
 .carousel {
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 
 .carousel-inner {
@@ -27,128 +27,227 @@
 .carousel-item img {
     height: 100%;
     width: 100%;
-    justify-content: contain;
+    object-fit: cover;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(0,0,0,0.3);
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255,255,255,0.8);
     border-radius: 50%;
     top: 50%;
-    transform: translateY(-350%);
+    transform: translateY(-50%);
     margin: 0 1rem;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+        background-color: rgba(255,255,255,0.95);
+    }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* Car Info Section */
+.carousel-section h5 {
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+/* Price Section */
+.price-container {
+    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eaeaea;
+}
+
+.price-text {
+    text-align: center;
+}
+
+.price-day {
+    font-size: 1.8rem;
+    color: #e74c3c;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
+
+.price-week {
+    color: #555;
+    font-size: 1.1rem;
 }
 
 /* Details Section */
 .details-section {
     flex: 1;
-    padding: 0 1rem;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.card-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: #1a1a1a;
-}
+    .details-section h4 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 1.5rem 0 1.2rem 0;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid #f0f0f0;
+    }
 
-.card-text {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 1.5rem;
-    margin-left: 5%;
-}
+        .details-section h4:first-child {
+            margin-top: 0;
+        }
 
-/* Price Section */
-.price-container {
-    background: #f8f9fa;
+/* Form Elements */
+.form-check {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
     border-radius: 8px;
-    padding: 1.5rem;
-    margin: 2rem 0;
+    transition: background 0.2s ease;
 }
 
-.price-day {
-    font-size: 1.5rem;
-    color: #f76c6c;
-    margin-bottom: 0.5rem;
+    .form-check:hover {
+        background-color: #f8f9fa;
+    }
+
+.form-check-input {
+    margin-top: 0.3rem;
+    cursor: pointer;
 }
 
-.price-week {
-    color: #666;
-    font-size: 0.9rem;
+.form-check-label {
+    font-size: 1.1rem;
+    color: #444;
+    padding-left: 0.5rem;
+    cursor: pointer;
 }
 
-/* Features List */
-.features-list {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
+#addressInput {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #3498db;
 }
 
-    .features-list li {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.8rem;
+    #addressInput label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
         color: #444;
     }
 
+#streetAddress {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.2s ease;
+}
+
+    #streetAddress:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+
+/* Date Selection */
+input[type="date"] {
+    padding: 0.8rem;
+    margin: 1rem 0.5rem 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3);
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(145deg, #2980b9, #3498db);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(41, 128, 185, 0.4);
+    }
+
+button[value="BookNow"] {
+    background: linear-gradient(145deg, #e74c3c, #c0392b);
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+    button[value="BookNow"]:hover {
+        background: linear-gradient(145deg, #c0392b, #e74c3c);
+        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    }
+
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .booking-layout {
         flex-direction: column;
     }
 
-    .carousel-section {
+    .carousel-section,
+    .details-section {
         width: 100%;
         min-width: auto;
     }
+}
 
-    .carousel-inner {
-        aspect-ratio: 16/9;
+@media (max-width: 576px) {
+    .booking-layout {
+        padding: 1rem;
+        margin: 1rem auto;
     }
-}
 
-.carousel-section h5 {
-    margin-top: 5%;
-    margin-left: 5%;
-}
+    .details-section {
+        padding: 1.5rem;
+    }
 
+    input[type="date"] {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
 
-.details-section {
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 0 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    flex: 1;
-}
-
-.details-section h4 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 1rem;
-}
-
-.form-check {
-    margin-bottom: 0.8rem;
-}
-
-.form-check-label {
-    font-size: 1rem;
-    color: #444;
-}
-
-#addressInput {
-    display: none;
-    margin-top: 1rem;
-}
-
-#streetAddress {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    .btn-primary {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
 }

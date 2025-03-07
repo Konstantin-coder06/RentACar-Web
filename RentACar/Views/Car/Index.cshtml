@@ -1,149 +1,239 @@
 ﻿@model CarImagesWithDatesViewModel
 
 <link rel="stylesheet" href="~/css/carIndex.css" asp-append-version="true" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 @{
+  
     int seed = DateTime.UtcNow.Date.GetHashCode();
     Random random = new Random(seed);
-
     var isAdmin = User.IsInRole("Admin");
     var isCompany = User.IsInRole("Company");
+
+    var startDate = Model.StartDate?.ToString("d MMM yyyy") ?? "8 Mar 2025";
+    var endDate = Model.EndDate?.ToString("d MMM yyyy") ?? "11 Mar 2025";
 }
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-@if (!isAdmin && !isCompany)
-{
-    <form asp-controller="Car" asp-action="FilterDates" method="post" id="dateForm">
-        <button type="button" id="openCalendar">📅 Select Dates</button>
+<body>
+    <!-- Header with dates -->
+    <div class="container">
+        <div class="rental-header">
+            <div class="date-range">
+                Daily rentals in Dubai<br>
+                <span>@startDate — @endDate</span>
+            </div>
+            <button type="button" id="openCalendar" class="edit-button">
+                <i class="fas fa-edit"></i>
+            </button>
+        </div>
 
-    
-        <div id="calendarModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <input type="text" id="datePicker" readonly>
-                <button type="button" id="confirmDates">Confirm Dates</button>
+        <!-- Search and filters bar similar to image -->
+        <div class="search-filter-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search cars" id="searchInput">
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-button" id="sortButton">
+                    <i class="fas fa-sort"></i> Sort
+                </button>
+                <button class="filter-button" id="filtersButton">
+                    <i class="fas fa-filter"></i> Filters
+                </button>
+                <button class="filter-button" id="mapButton">
+                    <i class="fas fa-map-marker-alt"></i> Show map
+                </button>
             </div>
         </div>
 
-     
+        <!-- Filter chips like in image -->
+        <div class="filter-chips">
+            <div class="filter-chip">
+                <i class="fas fa-moon"></i> Ramadan
+            </div>
+            <div class="filter-chip">
+                <i class="fas fa-money-bill-wave"></i> No deposit
+            </div>
+            <div class="filter-chip">
+                <i class="fas fa-car"></i> Economy
+            </div>
+            <div class="filter-chip">
+                <i class="fas fa-car-side"></i> Standard
+            </div>
+            <div class="filter-chip">
+                <i class="fas fa-briefcase"></i> Business
+            </div>
+            <div class="filter-chip">
+                <i class="fas fa-crown"></i> Luxury
+            </div>
+            <div class="filter-chip">
+                <i class="fas fa-tachometer-alt"></i> Sport
+            </div>
+            <div class="filter-chip">
+                <i class="fas fa-charging-station"></i> Electric
+            </div>
+            <div class="filter-chip">
+                <i class="fas fa-users"></i> Seats 7
+            </div>
+        </div>
+
+        <!-- Car listings -->
+        <div class="cars-list">
+            @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => random.Next()))
+            {
+                <div class="car-item" data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")">
+                    <div class="card">
+                        <img src="@carWithImages.Images.OrderBy(x=>x.Order).First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
+
+                        <div class="card-body">
+                            @if (isCompany || isAdmin)
+                            {
+                                @if (carWithImages.Car.Pending == true)
+                                {
+                                    <h5 class="card-title">
+                                        @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year
+                                        <span class="text-danger">Waiting approval</span>
+                                    </h5>
+                                }
+                                else
+                                {
+                                    <h5 class="card-title">
+                                        @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year
+                                        <span class="text-success">Approved</span>
+                                    </h5>
+                                }
+                            }
+                            else
+                            {
+                                <h5 class="card-title">@carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year</h5>
+                            }
+
+                            <p class="card-text">
+                                @carWithImages.Car.Gearbox • @carWithImages.Car.MileageLimitForDay km/rental
+                            </p>
+
+                            <div class="price-container">
+                                <div class="price-text">
+                                    <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / day</h3>
+                                    <p class="price-week">@carWithImages.Car.PricePerWeek BGN / week</p>
+                                </div>
+                                <a asp-controller="Car" asp-action="@(isAdmin || isCompany ? "EditPendingCar" : "Reservation")"
+                                   asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
+                                    @(isAdmin || isCompany ? "Review" : "Reserve now")
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Date picker modal -->
+    <div id="calendarModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h4>Select your rental dates</h4>
+            <input type="text" id="datePicker" readonly>
+            <button type="button" id="confirmDates">Confirm Dates</button>
+        </div>
+    </div>
+
+    <!-- Hidden form for date submission -->
+    <form asp-controller="Car" asp-action="FilterDates" method="post" id="dateForm">
         <input type="hidden" id="startDateInput" name="StartDate" asp-for="StartDate">
         <input type="hidden" id="endDateInput" name="EndDate" asp-for="EndDate">
     </form>
 
-    
-    
-}<script>
-       document.addEventListener("DOMContentLoaded", function () {
-         const modal = document.getElementById("calendarModal");
-         const openBtn = document.getElementById("openCalendar");
-         const closeBtn = document.querySelector(".close");
-         const confirmBtn = document.getElementById("confirmDates");
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Date picker functionality
+            const modal = document.getElementById("calendarModal");
+            const openBtn = document.getElementById("openCalendar");
+            const closeBtn = document.querySelector(".close");
+            const confirmBtn = document.getElementById("confirmDates");
+            const startDateInput = document.getElementById("startDateInput");
+            const endDateInput = document.getElementById("endDateInput");
+            const form = document.getElementById("dateForm");
 
-         const startDateInput = document.getElementById("startDateInput");
-         const endDateInput = document.getElementById("endDateInput");
-         const form = document.getElementById("dateForm");
+            var startDate = '@(Model.StartDate?.ToString("yyyy-MM-dd") ?? "")';
+            var endDate = '@(Model.EndDate?.ToString("yyyy-MM-dd") ?? "")';
 
-       
-         var startDate = '@(Model.StartDate?.ToString("yyyy-MM-dd") ?? "")';
-         var endDate = '@(Model.EndDate?.ToString("yyyy-MM-dd") ?? "")';
+            const datePicker = flatpickr("#datePicker", {
+                mode: "range",
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                maxDate: new Date().fp_incr(210),
+                inline: true,
+                defaultDate: startDate && endDate ? [startDate, endDate] : [],
+                showMonths: 2
+            });
 
-         const datePicker = flatpickr("#datePicker", {
-             mode: "range",
-             dateFormat: "Y-m-d",
-             minDate: "today",
-             maxDate: new Date().fp_incr(210),
-             inline: true,
-             numberOfMonths:3,
-             defaultDate: startDate && endDate ? [startDate, endDate] : []
-         });
+            // Open calendar modal
+            openBtn.addEventListener("click", function () {
+                modal.style.display = "flex";
+            });
 
-     
-         openBtn.addEventListener("click", function () {
-             modal.style.display = "flex";
-         });
+            // Close calendar modal
+            closeBtn.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
 
-        
-         closeBtn.addEventListener("click", function () {
-             modal.style.display = "none";
-         });
+            window.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
 
-         window.addEventListener("click", function (event) {
-             if (event.target === modal) {
-                 modal.style.display = "none";
-             }
-         });
+            // Confirm date selection and submit
+            confirmBtn.addEventListener("click", function () {
+                let selectedDates = datePicker.selectedDates;
+                if (selectedDates.length === 2) {
+                    let start = selectedDates[0].toLocaleDateString('en-CA');
+                    let end = selectedDates[1].toLocaleDateString('en-CA');
 
+                    startDateInput.value = start;
+                    endDateInput.value = end;
 
-             confirmBtn.addEventListener("click", function () {
-         let selectedDates = datePicker.selectedDates;
-         if (selectedDates.length === 2) {
-             // Use 'en-CA' locale to get YYYY-MM-DD format in local time
-             let start = selectedDates[0].toLocaleDateString('en-CA');
-             let end = selectedDates[1].toLocaleDateString('en-CA');
+                    modal.style.display = "none";
+                    form.submit();
+                } else {
+                    alert("Please select both start and end dates.");
+                }
+            });
 
-             startDateInput.value = start;
-             endDateInput.value = end;
+            // Search functionality
+            const searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("input", function() {
+                const searchTerm = this.value.toLowerCase();
+                const carItems = document.querySelectorAll(".car-item");
 
-             modal.style.display = "none";
-             form.submit();
-         } else {
-             alert("Please select both start and end dates.");
-         }
-     });
-     });
-</script>
-<form asp-action="Search" method="post" class="search-container">
-    <div class="input-group">
-        <span class="search-icon">🔍</span>
-        <input type="text" name="searchBar" id="searchInput" placeholder="Търси кола..." />
-       
-    </div>
-    <button type="submit" class="search-btn">🔍</button>
-    <a asp-action="Filters" asp-controller="Car" class="btn-primary btn-filter">Filters</a>
-</form>
+                carItems.forEach(item => {
+                    const title = item.getAttribute("data-title").toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
 
-<div class="container cars-list">
-    <div class="row" id="carList">
-        @foreach (var carWithImages in Model.CarWithImages.OrderBy(x=>random.Next()))
-        {
-            <div class="col-md-4 mb-4 car-item" data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")">
-                <div class="card">
-                    <img src="@carWithImages.Images.OrderBy(x=>x.Order).First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
+            // Sort button functionality
+            const sortButton = document.getElementById("sortButton");
+            sortButton.addEventListener("click", function() {
+                // You can implement a dropdown or modal for sorting options here
+                alert("Sort options would appear here");
+            });
 
-                    <div class="card-body">
-                        @if(isCompany || isAdmin){
-                            @if(carWithImages.Car.Pending==true){
-                                <h5 class="card-title">
-                                    @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year <span class="text-danger">Waiting
-                                        approval
-                                    </span>
-                                </h5>
-                            }
-                            else{                     
-                                <h5 class="card-title">@carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year <span class="text-success">Approved</span></h5>
-                            }
-                        }
-                        else{
-                             <h5 class="card-title">@carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year</h5>
-                        }
-                        <p class="card-text">
-                            @carWithImages.Car.Gearbox • @carWithImages.Car.MileageLimitForDay km/rental
-                        </p>
-                        <div class="price-container">
-                            <div class="price-text">
-                                <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / на ден</h3>
-                                <p class="price-week">@carWithImages.Car.PricePerWeek BGN / на седмица</p>
-                            </div>
-                            <a asp-controller="Car" asp-action="@(isAdmin || isCompany ? "EditPendingCar" : "Reservation")" asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
-                                @(isAdmin || isCompany ? "Прегледай" : "Резервирай сега")
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
-
-
-
+            // Filter button functionality
+            const filtersButton = document.getElementById("filtersButton");
+            filtersButton.addEventListener("click", function() {
+                // You can implement a dropdown or modal for filter options here
+                alert("Filter options would appear here");
+            });
+        });
+    </script>
+</body>

@@ -57,9 +57,13 @@ namespace RentACar.Controllers
                 cars=carService.FindAll(x=>x.CarCompanyId == companyId).ToList();
             }
             if(!User.IsInRole("Admin")&& !companyId.HasValue)
-            { 
-                cars = carService.GetAll().Where(car => reservations.All(r => r.CarId != car.Id && car.Pending == false)).ToList();
+            {
+                var reservedCarIds = reservations.Select(r => r.CarId).ToList();
+                cars = carService.GetAll()
+                    .Where(car => !reservedCarIds.Contains(car.Id) && !car.Pending)
+                    .ToList();
             }
+           
             var carsWithImages = cars.Select(car => new CarWithImages
             {
                 Car = car,
@@ -71,7 +75,7 @@ namespace RentACar.Controllers
                 CarWithImages = carsWithImages,
                 StartDate=startDay,
                 EndDate=endDay,
-
+               
             };
           
             return View(viewModel);
@@ -227,6 +231,82 @@ namespace RentACar.Controllers
             };
 
             return View("Index", viewModel);
+        }
+        [HttpPost]
+        public IActionResult Sorting(int sort)
+        {
+            DateTime? startDay = null;
+            DateTime? endDay = null;
+
+            var startDayStr = HttpContext.Session.GetString("StartDate");
+            if (!string.IsNullOrEmpty(startDayStr))
+            {
+                startDay = DateTime.ParseExact(startDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            }
+
+            var endDayStr = HttpContext.Session.GetString("EndDate");
+            if (!string.IsNullOrEmpty(endDayStr))
+            {
+                endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            }
+
+            // Get reservations based on date range
+            List<Reservation> reservations = reservationService.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
+                                                                            (!endDay.HasValue || x.StartDate <= endDay)).ToList();
+
+            // Get cars based on user role or company
+            var cars = new List<Car>();
+            if (User.IsInRole("Admin"))
+            {
+                cars = carService.GetAll().ToList();
+            }
+            else if (HttpContext.Session.GetInt32("CompanyId").HasValue)
+            {
+                var companyId = HttpContext.Session.GetInt32("CompanyId").Value;
+                cars = carService.FindAll(x => x.CarCompanyId == companyId).ToList();
+            }
+            else
+            {
+                var reservedCarIds = reservations.Select(r => r.CarId).ToList();
+                cars = carService.GetAll()
+                    .Where(car => !reservedCarIds.Contains(car.Id) && !car.Pending)
+                    .ToList();
+            }
+
+            // Apply sorting
+            switch (sort)
+            {
+                case 1:
+                    cars = cars.OrderBy(x => x.PricePerDay).ToList();
+                    break;
+                case 2:
+                    cars = cars.OrderByDescending(x => x.PricePerDay).ToList();
+                    break;
+                default:
+                    // No sorting applied if sort value is invalid or empty
+                    break;
+            }
+
+            // Pair cars with images
+            var carsWithImages = cars.Select(car => new CarWithImages
+            {
+                Car = car,
+                Images = imageService.GetImagesByCarId(car.Id).ToList()
+            }).ToList();
+
+            // Create view model
+            var viewModel = new CarImagesWithDatesViewModel
+            {
+                CarWithImages = carsWithImages,
+                StartDate = startDay,
+                EndDate = endDay,
+                Sort = sort,
+               
+            };
+
+            // Return the Index view with the sorted data
+            return View("Index", viewModel);
+        
         }
         public IActionResult Reservation(int id)
         {
