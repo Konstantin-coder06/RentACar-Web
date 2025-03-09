@@ -47,6 +47,8 @@ namespace RentACar.Core.Services
             return repository.GetAll().ToList();
         }
 
+
+
         public void Save()
         {
            repository.Save();

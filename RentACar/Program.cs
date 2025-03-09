@@ -34,6 +34,7 @@ builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<ICarFeatureService, CarFeatureService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 

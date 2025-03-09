@@ -1,46 +1,89 @@
-﻿@{
+﻿@model ListOfReportsViewModel
+@{
     // Your existing Razor comments remain unchanged
 }
 <link rel="stylesheet" href="~/css/allReports.css" asp-append-version="true" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+<div class="page-container">
+    <!-- Decorative elements -->
+    <div class="decorative-dot" style="top: 10%; left: 5%;"></div>
+    <div class="decorative-dot" style="top: 15%; right: 10%;"></div>
+    <div class="decorative-dot" style="bottom: 20%; left: 8%;"></div>
+    <div class="decorative-dot" style="bottom: 10%; right: 5%;"></div>
 
-<form asp-action="Search" method="post" class="search-container">
-    <div class="input-group">
-        <span class="search-icon">🔍</span>
-        <input type="text" name="searchBar" id="searchInput" placeholder="Търси ПОТРЕБИТЕЛ..." />
+    <div class="page-title">
+        <h1>Reports Dashboard</h1>
+        <p>View and manage all system reports</p>
     </div>
-    <button type="submit" class="search-btn">🔍</button>
-</form>
 
-<form asp-action="Filters" method="post">
-    <div>
-        <input type="date" asp-for="StartTime" />
-        <input type="date" asp-for="EndTime" />
-        <button type="submit" class="search-btn">Filter</button>
+    <div class="controls-container">
+        <form asp-action="Search" method="post" class="search-container">
+            <div class="input-group">
+                <span class="search-icon"><i class="fas fa-search"></i></span>
+                <input type="text" name="searchBar" id="searchInput" placeholder="Search users..." />
+            </div>
+            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+        </form>
+
+        <form asp-action="Filters" method="post" class="date-filter-container">
+            <div class="filter-group">
+                <span class="filter-label">From:</span>
+                <input type="date" asp-for="StartTime" />
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">To:</span>
+                <input type="date" asp-for="EndTime" />
+            </div>
+            <button type="submit" class="filter-btn">
+                <i class="fas fa-filter"></i> Filter
+            </button>
+        </form>
     </div>
-</form>
 
-@model ListOfReportsViewModel
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>User Name</th>
-                <th>Create At</th>
-            </tr>
-        </thead>
-        @foreach (var x in Model.ReportViewModels)
+    <div class="table-container">
+        @if (Model.ReportViewModels != null && Model.ReportViewModels.Any())
         {
-            <tbody>
-                <tr>
-                    <td>@x.Title</td>
-                    <td>@x.Description</td>
-                    <td>@x.Customer.Name</td>
-                    <td class="warning">@x.CreatedAt</td>
-                </tr>
-            </tbody>
+            <table>
+                <thead>
+                    <tr>
+                        <th><i class="fas fa-heading mr-2"></i> Title</th>
+                        <th><i class="fas fa-align-left mr-2"></i> Description</th>
+                        <th><i class="fas fa-user mr-2"></i> User Name</th>
+                        <th><i class="fas fa-calendar-alt mr-2"></i> Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.ReportViewModels)
+                    {
+                        <tr>
+                            <td>@x.Title</td>
+                            <td>@x.Description</td>
+                            <td>@x.Customer.Name</td>
+                            <td class="warning">@x.CreatedAt.ToString("MMM dd, yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-    </table>
+        else
+        {
+            <div class="empty-state">
+                <div class="empty-state-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3>No Reports Found</h3>
+                <p>There are no reports matching your search criteria.</p>
+            </div>
+        }
+    </div>
+
+    <!-- Pagination example - you can integrate with your actual pagination system -->
+    <div class="pagination">
+        <button class="pagination-btn active">1</button>
+        <button class="pagination-btn">2</button>
+        <button class="pagination-btn">3</button>
+        <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
 </div>

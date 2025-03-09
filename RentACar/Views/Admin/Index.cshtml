@@ -1,10 +1,9 @@
 ﻿@{
     Layout = null;
 }
-<link rel="stylesheet" href="~/css/adminIndex.css" asp-append-version="true" />
-
-
 @model RecentReservation
+<link rel="stylesheet" href="~/css/adminIndex.css"/>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
 <body>
     <script src="~/js/theme-toggler.js" asp-append-version="true"></script>
@@ -15,7 +14,7 @@
                 <div class="logo">
                     <h2><span class="danger">RentACar</span> </h2>
                 </div>
-               
+
             </div>
             <!-- end top -->
             <div class="sidebar">
@@ -46,7 +45,7 @@
                     <h3>Reports</h3>
                     <span class="msg_count">@Model.ReportCount</span>
                 </a>
-                <a href="#">
+                <a asp-action="Settings" asp-controller="Admin">
                     <span class="material-symbols-sharp">settings </span>
                     <h3>settings</h3>
                 </a>
@@ -208,16 +207,17 @@
                 <h2>Recent Update</h2>
                 <div class="updates">
                     <div class="update">
-                        @for(int i=0;i<=3;i++){
+                        @for (int i = 0; i <= 3; i++)
+                        {
                             <div class="profile-photo">
                                 <img src="@Model.Customers[i].Image.Url" alt="" />
                             </div>
                             <div class="message">
                                 <p><b>@Model.Customers[i].Customer.Name</b> made a reservation for @Model.Customers[i].Brand  @Model.Customers[i].Model</p>
                             </div>
-                        }                 
+                        }
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -234,10 +234,12 @@
                             <h3>Last day:</h3>
                             <small class="text-muted">@Model.TotalPriceForLast24Hours,</small>
                         </div>
-                        @if(Model.ProcentPerDay <= 0){
+                        @if (Model.ProcentPerDay <= 0)
+                        {
                             <h5 class="danger">@Model.ProcentPerDay% less</h5>
                         }
-                        else{
+                        else
+                        {
                             <h5 class="success">@Model.ProcentPerDay% more</h5>
                         }
                         <h3>Before last day:</h3>
@@ -261,7 +263,7 @@
                         {
                             <h5 class="success">@Model.ProcentPerWeek% more</h5>
                         }
-                        
+
                         <h3>Before Last Week:</h3>
                         <small class="text-muted">@Model.TotalPriceForLastWeekBeforeWeek</small>
                     </div>
@@ -288,13 +290,13 @@
                         <small class="text-muted">@Model.TotalPriceForLastMounthBeforeMonth</small>
                     </div>
                 </div>
-               
+
 
 
 
             </div>
 
-          
+
         </div>
 
 
@@ -319,18 +321,18 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
-                       
+
                     `;
 
             // Смяна на съдържанието
             tableBody.innerHTML = `
         @for (int i = 0; i < Model.AllCustomers.Count; i++)
         {
-                                        <tr>
-                                            <td>@Model.AllCustomers[i].Customer.Name</td>
-                                            <td>@Model.AllCustomers[i].Email</td>
-                                            <td>@Model.AllCustomers[i].PhoneNumber</td>
-                                        </tr>
+                                            <tr>
+                                                <td>@Model.AllCustomers[i].Customer.Name</td>
+                                                <td>@Model.AllCustomers[i].Email</td>
+                                                <td>@Model.AllCustomers[i].PhoneNumber</td>
+                                            </tr>
         }
                     `;
         });
@@ -354,21 +356,22 @@
             tableBody.innerHTML = `
         @for (int i = 0; i < Model.Pending.Count; i++)
         {
-                                        <tr>
-                                            <td>@Model.Pending[i].Brand</td>
-                                            <td>@Model.Pending[i].Model</td>
-                                            <td>@Model.Pending[i].CreatedAt</td>
-                                            <td class="warning">Pending</td>
-                                            <td>
-                                                <div class="button">
-                                                    <a asp-action="EditPendingCar" asp-controller="Car" asp-route-id="@Model.Pending[i].Id" class="primary">Details</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>@Model.Pending[i].Brand</td>
+                                                <td>@Model.Pending[i].Model</td>
+                                                <td>@Model.Pending[i].CreatedAt</td>
+                                                <td class="warning">Pending</td>
+                                                <td>
+                                                    <div class="button">
+                                                        <a asp-action="EditPendingCar" asp-controller="Car" asp-route-id="@Model.Pending[i].Id" class="primary">Details</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
         }
                     `;
         });</script>
-   
-    }
-   
+
+  
+
 </body>
+

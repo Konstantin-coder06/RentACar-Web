@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\css\\reservation.css"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\settings.css",
+      "PackagePath": "staticwebassets\\css\\settings.css"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

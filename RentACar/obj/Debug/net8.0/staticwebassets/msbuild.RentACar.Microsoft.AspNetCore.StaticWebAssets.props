@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>asq81nsmpt</Fingerprint>
-      <Integrity>ZimfE5aJEz+c4RJqrC6UdBuNtT9Y5kFDKOPqZk+nBBU=</Integrity>
+      <Fingerprint>2d7fi9ab6v</Fingerprint>
+      <Integrity>+rZCoZS6py6J9yyOjI/rSX4MwjB79m/o0CgI3RfmY3M=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\adminIndex.css'))</OriginalItemSpec>
@@ -48,8 +48,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ev7o72ggn9</Fingerprint>
-      <Integrity>JhM2XAH1o+HRM1aVENPFGiekP+ehx9GqjyFKfzYpMN8=</Integrity>
+      <Fingerprint>7mjyrslp7g</Fingerprint>
+      <Integrity>zxJO2bz3BNUsV3lfdP9qSqECwAquc24QqdK7Euc3Sbc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\allReports.css'))</OriginalItemSpec>
@@ -120,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5ptjsnztjp</Fingerprint>
-      <Integrity>GeXDSlxE63I4GjE0lh2eao8oHcJuPfFlDjCB3h9GVpU=</Integrity>
+      <Fingerprint>r3guhojeoy</Fingerprint>
+      <Integrity>B25+v/gRqd9Avq/jVXyukPWB5YmNpR2zFwjJ/AqV3ow=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\homeindex.css'))</OriginalItemSpec>
@@ -210,11 +210,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>3jcc9w8s8l</Fingerprint>
-      <Integrity>kYwYszW6vo67+wewk7yM9P7t9KUhbacyu2ELlXOouAA=</Integrity>
+      <Fingerprint>y54w0h4vi3</Fingerprint>
+      <Integrity>FsHf0X5oW2pSWQkXgrbygCG85AmYZHsPGZMCjQhoCQ8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\reservation.css'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\settings.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>css/settings.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>6224ulad12</Fingerprint>
+      <Integrity>kuqDcPr4yBPFDfJgfamZrbnzFYDTPdYFyzo7c74P2eg=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\settings.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))">
       <SourceType>Package</SourceType>

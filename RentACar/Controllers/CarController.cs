@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using RentACar.Core.IServices;
@@ -18,14 +19,16 @@ namespace RentACar.Controllers
         IImageService imageService;
         IClassOfCarService classOfCarService;
         IReservationService reservationService;
-       
-        public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IWebHostEnvironment webHostEnvironment)
+       IFeatureService featureService;
+        ICarFeatureService carFeatureService;
+        public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IFeatureService featureService, ICarFeatureService carFeatureService)
         {
             this.carService = _carService;
             this.imageService = _imageService;
             this.classOfCarService = _classOfCarService;
             this.reservationService = reservationService;
-          
+            this.featureService = featureService;
+            this.carFeatureService = carFeatureService;
         }
       
         public IActionResult Index()
@@ -336,13 +339,24 @@ namespace RentACar.Controllers
                 return RedirectToAction("Register", "Account");
             }
 
+
             var car = carService.FindOne(x => x.Id == id);
+            var featuresOfACar = carFeatureService.GetByCarIDAllFeatures(car.Id).ToList();
+            var features = new List<Feature>();
+            Feature feature = new Feature();
+            foreach (var x in featuresOfACar)
+            {
+                feature = featureService.FindOne(f => f.Id == x);
+                features.Add(feature);
+            }
+
             var carWithImages = new CarWithImages
             {
                 Car = car,
-                Images = imageService.GetImagesByCarId(car.Id).OrderBy(x=>x.Order).ToList(),
-                StartDate=startDay,
-                EndDate=endDay
+                Images = imageService.GetImagesByCarId(car.Id).OrderBy(x => x.Order).ToList(),
+                StartDate = startDay,
+                EndDate = endDay,
+                Features = features
 
             };
 

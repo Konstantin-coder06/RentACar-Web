@@ -1,79 +1,95 @@
 ﻿body {
-    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%); /* White gradient */
-    font-family: 'Cinzel', serif; /* Luxurious font */
-    color: #e65a5a; /* Vibrant red theme */
+    background: linear-gradient(135deg, #f8f0f0 0%, #fff5f5 100%);
+    font-family: 'Cinzel', serif;
+    color: #e65a5a;
     margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem;
 }
 
-table {
-    background: #ffffff; /* Pure white base */
-    width: 100%;
-    border-radius: 1.5rem;
-    padding: 2.5rem;
+.page-title {
     text-align: center;
-    box-shadow: 0 1rem 2rem rgba(230, 90, 90, 0.15), inset 0 0 1rem rgba(230, 90, 90, 0.05);
-    transition: all 0.4s ease;
-    color: #e65a5a;
-    border-collapse: collapse;
+    margin-bottom: 2rem;
+    position: relative;
 }
 
-    table:hover {
-        box-shadow: 0 1.5rem 3rem rgba(230, 90, 90, 0.25);
-        transform: translateY(-5px); /* Subtle lift */
-    }
-
-    table thead th {
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        padding: 1.5rem;
-        background: linear-gradient(90deg, #e65a5a, #c0392b); /* Red gradient */
+    .page-title h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(90deg, #e65a5a, #c0392b);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        border-bottom: 2px solid rgba(230, 90, 90, 0.3);
+        display: inline-block;
     }
 
-    table tbody td {
-        height: 4rem;
-        color: #e65a5a; /* Red for text */
-        border-bottom: 1px solid rgba(230, 90, 90, 0.1);
-        padding: 1.5rem;
-        transition: background 0.3s ease;
+    .page-title::after {
+        content: "";
+        display: block;
+        width: 150px;
+        height: 3px;
+        background: linear-gradient(90deg, #e65a5a, #c0392b);
+        margin: 1rem auto;
+        border-radius: 3px;
     }
 
-    table tbody tr:hover td {
-        background: rgba(230, 90, 90, 0.05); /* Subtle red glow on hover */
-    }
+.controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(230, 90, 90, 0.1);
+}
 
 .search-container {
     display: flex;
-    justify-content: left;
     align-items: center;
-    margin-bottom: 2.5rem;
+    flex: 1;
+    min-width: 300px;
+}
+
+.date-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .input-group {
     position: relative;
-    width: 350px;
+    width: 100%;
 }
 
 #searchInput {
     width: 100%;
-    padding: 12px 50px 12px 45px;
-    border: 1px solid #e65a5a; /* Red border */
+    padding: 14px 50px 14px 45px;
+    border: 2px solid rgba(230, 90, 90, 0.3);
     border-radius: 25px;
     outline: none;
     font-size: 1.1rem;
     background: #ffffff;
     color: #e65a5a;
-    box-shadow: inset 0 0 10px rgba(230, 90, 90, 0.1);
+    box-shadow: inset 0 0 10px rgba(230, 90, 90, 0.05);
     transition: all 0.3s ease;
 }
 
     #searchInput:focus {
-        border-color: #c0392b; /* Darker red */
-        box-shadow: 0 0 15px rgba(230, 90, 90, 0.3);
+        border-color: #e65a5a;
+        box-shadow: 0 0 15px rgba(230, 90, 90, 0.2);
+    }
+
+    #searchInput::placeholder {
+        color: rgba(230, 90, 90, 0.5);
     }
 
 .search-icon {
@@ -87,44 +103,187 @@ table {
 
 .search-btn {
     margin-left: 15px;
-    background: linear-gradient(45deg, #e65a5a, #c0392b); /* Red gradient */
+    background: linear-gradient(45deg, #e65a5a, #c0392b);
     border: none;
-    padding: 12px;
+    padding: 14px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2rem;
-    color: #ffffff; /* White icon/text */
-    box-shadow: 0 5px 15px rgba(230, 90, 90, 0.4);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(230, 90, 90, 0.2);
     transition: all 0.3s ease;
 }
 
     .search-btn:hover {
         transform: scale(1.1);
-        box-shadow: 0 8px 20px rgba(230, 90, 90, 0.6);
+        box-shadow: 0 8px 20px rgba(230, 90, 90, 0.4);
     }
 
-form div input[type="date"] {
-    padding: 10px;
-    border: 1px solid #e65a5a;
+.filter-label {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    color: #e65a5a;
+}
+
+input[type="date"] {
+    padding: 12px 15px;
+    border: 2px solid rgba(230, 90, 90, 0.3);
     border-radius: 15px;
     background: #ffffff;
     color: #e65a5a;
     font-family: 'Cinzel', serif;
-    margin-right: 1rem;
+    transition: all 0.3s ease;
 }
 
-form div button {
+    input[type="date"]:focus {
+        border-color: #e65a5a;
+        box-shadow: 0 0 10px rgba(230, 90, 90, 0.2);
+        outline: none;
+    }
+
+.filter-btn {
     background: linear-gradient(45deg, #e65a5a, #c0392b);
     border: none;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 20px;
     color: #ffffff;
     font-family: 'Cinzel', serif;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
-    form div button:hover {
+    .filter-btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(230, 90, 90, 0.5);
     }
+
+.table-container {
+    background: #ffffff;
+    border-radius: 1.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 1rem 2rem rgba(230, 90, 90, 0.15);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #e65a5a;
+}
+
+    table thead th {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 1.5rem;
+        background: linear-gradient(90deg, #e65a5a, #c0392b);
+        color: white;
+        position: relative;
+    }
+
+        table thead th:first-child {
+            border-top-left-radius: 1rem;
+        }
+
+        table thead th:last-child {
+            border-top-right-radius: 1rem;
+        }
+
+    table tbody td {
+        padding: 1.5rem;
+        border-bottom: 1px solid rgba(230, 90, 90, 0.1);
+        transition: all 0.3s ease;
+        font-size: 1.05rem;
+    }
+
+    table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    table tbody td.warning {
+        font-weight: 500;
+        color: #c0392b;
+    }
+
+    table tbody tr {
+        transition: all 0.3s ease;
+    }
+
+        table tbody tr:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 90, 90, 0.1);
+            z-index: 1;
+            position: relative;
+        }
+
+            table tbody tr:hover td {
+                background: rgba(230, 90, 90, 0.05);
+            }
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: rgba(230, 90, 90, 0.7);
+}
+
+.empty-state-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 0.5rem;
+}
+
+.pagination-btn {
+    padding: 10px 15px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid rgba(230, 90, 90, 0.3);
+    color: #e65a5a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .pagination-btn:hover, .pagination-btn.active {
+        background: linear-gradient(45deg, #e65a5a, #c0392b);
+        color: white;
+    }
+
+/* Decorative elements */
+.decorative-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(230, 90, 90, 0.2);
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .controls-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-container, .date-filter-container {
+        width: 100%;
+    }
+
+    table thead th {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    table tbody td {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}

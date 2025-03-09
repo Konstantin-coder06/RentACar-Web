@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace RentACar.Core.IServices
 {
-    public interface IFeatureService:IRepository<Feature>
+    public interface ICarFeatureService:IRepository<CarFeature>
     {
-      
+        IEnumerable<int>GetByCarIDAllFeatures(int carID);
     }
 }

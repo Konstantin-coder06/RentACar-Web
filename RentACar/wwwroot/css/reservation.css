@@ -5,6 +5,7 @@
     margin: 2.5rem auto;
     padding: 1.5rem;
     font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    align-items: stretch; /* Added to ensure equal height columns */
 }
 
 /* Carousel Section */
@@ -12,12 +13,23 @@
     flex: 1;
     min-width: 400px;
     position: relative;
+    display: flex; /* Added for flex layout */
+    flex-direction: column; /* Stack items vertically */
+    height: 100%; /* Take full height */
+}
+
+/* New wrapper for carousel content */
+.carousel-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .carousel {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    flex-grow: 0; /* Don't let carousel stretch */
 }
 
 .carousel-inner {
@@ -77,6 +89,7 @@
     margin: 1.5rem 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border: 1px solid #eaeaea;
+    margin-top: auto; /* Push to bottom of flex container */
 }
 
 .price-text {
@@ -218,6 +231,81 @@ button[value="BookNow"] {
         box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
     }
 
+/* Features Container Styles */
+.features-container {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-top: 2.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .features-container h4 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid #f0f0f0;
+        position: relative;
+    }
+
+        .features-container h4:after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+            bottom: -2px;
+            left: 0;
+        }
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+
+    .feature-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        border-color: #3498db;
+    }
+
+.feature-icon {
+    margin-right: 1rem;
+    color: #3498db;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    background-color: rgba(52, 152, 219, 0.1);
+    border-radius: 50%;
+}
+
+.feature-name {
+    font-size: 1rem;
+    color: #444;
+    font-weight: 500;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .booking-layout {
@@ -231,6 +319,12 @@ button[value="BookNow"] {
     }
 }
 
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
 @media (max-width: 576px) {
     .booking-layout {
         padding: 1rem;
@@ -239,6 +333,19 @@ button[value="BookNow"] {
 
     .details-section {
         padding: 1.5rem;
+    }
+
+    .features-container {
+        padding: 1.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+
+    .feature-item {
+        padding: 0.8rem;
     }
 
     input[type="date"] {
