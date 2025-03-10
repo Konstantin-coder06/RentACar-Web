@@ -1,0 +1,260 @@
+﻿/* About Us specific styles */
+.about-hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dhibmotzx/image/upload/v1741539427/F1rst-Motors-1_rrxnov.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 50px;
+}
+
+    .about-hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+    }
+
+    .about-hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+.about-section {
+    margin-bottom: 60px;
+}
+
+    .about-section h2 {
+        position: relative;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        color: #333;
+        padding-bottom: 15px;
+    }
+
+        .about-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: #f76c6c;
+        }
+
+.about-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+    .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .about-image:hover img {
+        transform: scale(1.05);
+    }
+
+.about-text {
+    flex: 1;
+}
+
+    .about-text p {
+        margin-bottom: 20px;
+        line-height: 1.7;
+        color: #555;
+    }
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.value-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+    text-align: center;
+}
+
+    .value-card:hover {
+        transform: translateY(-10px);
+    }
+
+.value-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #f76c6c;
+}
+
+.value-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-member {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+    .team-member:hover {
+        transform: translateY(-10px);
+    }
+
+.team-photo {
+    height: 280px;
+    overflow: hidden;
+}
+
+    .team-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+.team-member:hover .team-photo img {
+    transform: scale(1.05);
+}
+
+.team-info {
+    padding: 20px;
+    text-align: center;
+}
+
+    .team-info h3 {
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+.team-role {
+    color: #f76c6c;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.team-bio {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: #f5f5f5;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+        border-radius: 10px;
+    }
+
+.timeline-container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+    .timeline-container.left {
+        left: 0;
+    }
+
+    .timeline-container.right {
+        left: 50%;
+    }
+
+    .timeline-container::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background-color: white;
+        border: 4px solid #f76c6c;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .timeline-container.right::after {
+        left: -10px;
+    }
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: #f76c6c;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+        .timeline-container.right {
+            left: 0%;
+        }
+
+            .timeline-container.left::after,
+            .timeline-container.right::after {
+                left: 21px;
+            }
+}

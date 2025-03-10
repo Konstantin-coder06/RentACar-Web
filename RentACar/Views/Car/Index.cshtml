@@ -11,8 +11,8 @@
     var isAdmin = User.IsInRole("Admin");
     var isCompany = User.IsInRole("Company");
 
-    var startDate = Model.StartDate?.ToString("d MMM yyyy") ?? "8 Mar 2025";
-    var endDate = Model.EndDate?.ToString("d MMM yyyy") ?? "11 Mar 2025";
+    var startDate = Model.StartDate?.ToString("d MMM yyyy") ?? DateTime.Now.ToString("d MMMM yyyy");
+    var endDate = Model.EndDate?.ToString("d MMM yyyy") ?? DateTime.Now.AddDays(3).ToString("d MMMM yyyy");
 }
 
 <body>
@@ -27,7 +27,14 @@
                 <i class="fas fa-edit"></i>
             </button>
         </div>
-
+        <div id="calendarModal" class="modal">
+            <div class="modal-content">
+                <span class="close">×</span>
+                <h4>Select your rental dates</h4>
+                <input type="text" id="datePicker" readonly>
+                <button type="button" id="confirmDates">Confirm Dates</button>
+            </div>
+        </div>
         <!-- Search and filters bar similar to image -->
         <div class="search-filter-container">
             <div class="search-box">
@@ -50,32 +57,41 @@
 
         <!-- Filter chips like in image -->
         <div class="filter-chips">
+            
             <div class="filter-chip">
-                <i class="fas fa-moon"></i> Ramadan
-            </div>
-            <div class="filter-chip">
-                <i class="fas fa-money-bill-wave"></i> No deposit
-            </div>
-            <div class="filter-chip">
+                <button class="filter-button">
                 <i class="fas fa-car"></i> Economy
+                </button>
             </div>
             <div class="filter-chip">
+                <button class="filter-button">
                 <i class="fas fa-car-side"></i> Standard
+                </button>
             </div>
             <div class="filter-chip">
+                <button class="filter-button">
                 <i class="fas fa-briefcase"></i> Business
+                </button>
             </div>
             <div class="filter-chip">
+                <button class="filter-button">
                 <i class="fas fa-crown"></i> Luxury
+                </button>
             </div>
             <div class="filter-chip">
+                <button class="filter-button">
                 <i class="fas fa-tachometer-alt"></i> Sport
+                </button>
             </div>
             <div class="filter-chip">
+                <button class="filter-button">
                 <i class="fas fa-charging-station"></i> Electric
+                </button>
             </div>
             <div class="filter-chip">
+                <button class="filter-button">
                 <i class="fas fa-users"></i> Seats 7
+                </button>
             </div>
         </div>
 
@@ -148,13 +164,14 @@
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Date picker functionality
             const modal = document.getElementById("calendarModal");
             const openBtn = document.getElementById("openCalendar");
             const closeBtn = document.querySelector(".close");
             const confirmBtn = document.getElementById("confirmDates");
+
             const startDateInput = document.getElementById("startDateInput");
             const endDateInput = document.getElementById("endDateInput");
             const form = document.getElementById("dateForm");
@@ -162,22 +179,26 @@
             var startDate = '@(Model.StartDate?.ToString("yyyy-MM-dd") ?? "")';
             var endDate = '@(Model.EndDate?.ToString("yyyy-MM-dd") ?? "")';
 
+            // Ensure Flatpickr is loaded and initialize
+            if (typeof flatpickr === "undefined") {
+                console.error("Flatpickr is not loaded!");
+                return;
+            }
+
             const datePicker = flatpickr("#datePicker", {
                 mode: "range",
                 dateFormat: "Y-m-d",
                 minDate: "today",
                 maxDate: new Date().fp_incr(210),
                 inline: true,
-                defaultDate: startDate && endDate ? [startDate, endDate] : [],
-                showMonths: 2
+                numberOfMonths: 3,
+                defaultDate: startDate && endDate ? [startDate, endDate] : []
             });
 
-            // Open calendar modal
             openBtn.addEventListener("click", function () {
                 modal.style.display = "flex";
             });
 
-            // Close calendar modal
             closeBtn.addEventListener("click", function () {
                 modal.style.display = "none";
             });
@@ -188,16 +209,14 @@
                 }
             });
 
-            // Confirm date selection and submit
             confirmBtn.addEventListener("click", function () {
                 let selectedDates = datePicker.selectedDates;
-                if (selectedDates.length === 2) {
-                    let start = selectedDates[0].toLocaleDateString('en-CA');
-                    let end = selectedDates[1].toLocaleDateString('en-CA');
-
+                console.log("Selected Dates:", selectedDates); // Debug
+                if (selectedDates && selectedDates.length === 2) {
+                    let start = selectedDates[0].toISOString().split("T")[0];
+                    let end = selectedDates[1].toISOString().split("T")[0];
                     startDateInput.value = start;
                     endDateInput.value = end;
-
                     modal.style.display = "none";
                     form.submit();
                 } else {
@@ -207,10 +226,9 @@
 
             // Search functionality
             const searchInput = document.getElementById("searchInput");
-            searchInput.addEventListener("input", function() {
+            searchInput.addEventListener("input", function () {
                 const searchTerm = this.value.toLowerCase();
                 const carItems = document.querySelectorAll(".car-item");
-
                 carItems.forEach(item => {
                     const title = item.getAttribute("data-title").toLowerCase();
                     if (title.includes(searchTerm)) {
@@ -221,17 +239,12 @@
                 });
             });
 
-            // Sort button functionality
-            const sortButton = document.getElementById("sortButton");
-            sortButton.addEventListener("click", function() {
-                // You can implement a dropdown or modal for sorting options here
+            // Sort and Filter buttons (placeholders)
+            document.getElementById("sortButton").addEventListener("click", function () {
                 alert("Sort options would appear here");
             });
 
-            // Filter button functionality
-            const filtersButton = document.getElementById("filtersButton");
-            filtersButton.addEventListener("click", function() {
-                // You can implement a dropdown or modal for filter options here
+            document.getElementById("filtersButton").addEventListener("click", function () {
                 alert("Filter options would appear here");
             });
         });

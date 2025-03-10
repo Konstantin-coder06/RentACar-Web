@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Fast Drive</title>
+  
+    <link rel="stylesheet" href="~/css/homeindex.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/contactUs.css" />
+</head>
+@{
+    Layout = null;
+}
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">FAST DRIVE</a>
+                <nav class="nav-links">
+                    <a asp-action="Index" asp-controller="Home">Home</a>
+                    <a asp-action="Index" asp-controller="Car">Cars</a>
+                    <a asp-action="AboutUs" asp-controller="Home">About Us</a>
+                    <a asp-action="ContactUs" asp-controller="Home">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="contact-hero">
+            <div class="contact-hero-content">
+                <h1>Contact Us</h1>
+                <p>We're here to help with your car rental needs. Reach out to our team for assistance.</p>
+            </div>
+        </section>
+
+        <section class="contact-content">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <p>+971 4 123 4567</p>
+                    <p>Available 24/7 for customer support</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>info@fastdrive.ae</p>
+                    <p>We'll respond within 2 hours</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Sheikh Zayed Road, Dubai, UAE</p>
+                    <p>Open daily from 8:00 AM to 10:00 PM</p>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <h2>Send Us a Message</h2>
+                <form asp-action="Contact" asp-controller="Home" method="post" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="Name" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="Email" placeholder="Your Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="Phone" placeholder="Your Phone Number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="Subject">
+                            <option value="booking">Booking Inquiry</option>
+                            <option value="support">Customer Support</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="Message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>How do I book a car?</h3>
+                    <p>You can book a car through our website by selecting your desired dates and car model. Alternatively, you can contact our customer service team by phone or email.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What documents do I need for rental?</h3>
+                    <p>You'll need a valid driver's license, passport or Emirates ID, and a credit card for the security deposit.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you offer airport pickup?</h3>
+                    <p>Yes, we offer complimentary airport pickup and drop-off for rentals longer than 3 days.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FAST DRIVE</h3>
+                    <p>Premium car rental services in Dubai with a wide selection of vehicles for your travel needs.</p>
+                    <div class="social-links">
+                        <a href="#">F</a>
+                        <a href="#">I</a>
+                        <a href="#">T</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Cars</a></li>
+                        <li><a href="#">Monthly Offers</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Dubai, UAE</li>
+                        <li>+971 4 123 4567</li>
+                        <li>info@fastdrive.ae</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 FAST DRIVE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

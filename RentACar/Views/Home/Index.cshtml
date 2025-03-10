@@ -17,11 +17,11 @@
             <div class="header-content">
                 <a href="#" class="logo">FAST DRIVE</a>
                 <nav class="nav-links">
-                    <a href="#">Home</a>
-                    <a href="#">Cars</a>
-                    <a href="#">Monthly Offers</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
+                    <a asp-action="Index" asp-controller="Home">Home</a>
+                    <a asp-action="Index" asp-controller="Car">Cars</a>
+                   
+                    <a asp-action="AboutUs" asp-controller="Home">About Us</a>
+                    <a asp-action="ContactUs" asp-controller="Home">Contact</a>
                 </nav>
             </div>
         </div>
@@ -130,6 +130,20 @@
                     <div class="car-details">
                         <h3>Economy Car</h3>
                         <div class="car-price">From AED 180/day</div>
+                        <div class="car-features">
+                            <span>Automatic</span>
+                            <span>5 Seats</span>
+                            <span>AC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741592109/eb7df8de-d8b2881a-173e4dc5-c042692_tgxt2f.webp" alt="Economy Car">
+                    </div>
+                    <div class="car-details">
+                        <h3>Electric Car</h3>
+                        <div class="car-price">From AED 230/day</div>
                         <div class="car-features">
                             <span>Automatic</span>
                             <span>5 Seats</span>

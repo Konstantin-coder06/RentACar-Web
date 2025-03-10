@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\RentACar.ad7aimlmm7.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\aboutUS.css",
+      "PackagePath": "staticwebassets\\css\\aboutUS.css"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\addcar.css",
       "PackagePath": "staticwebassets\\css\\addcar.css"
     },
@@ -19,6 +23,10 @@
     {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\carIndex.css",
       "PackagePath": "staticwebassets\\css\\carIndex.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\contactUs.css",
+      "PackagePath": "staticwebassets\\css\\contactUs.css"
     },
     {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\editCar.css",

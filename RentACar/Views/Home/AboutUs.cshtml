@@ -1,0 +1,274 @@
+﻿<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Fast Drive</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="~/css/homeindex.css"/>
+    <link rel="stylesheet" href="~/css/aboutUS.css" asp-append-version="true" />
+ 
+</head>
+@{
+    Layout = null;
+}
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">FAST DRIVE</a>
+             
+                <nav class="nav-links">
+                    <a asp-action="Index" asp-controller="Home">Home</a>
+                    <a asp-action="Index" asp-controller="Car">Cars</a>
+                    <a asp-action="AboutUs" asp-controller="Home">About Us</a>
+                    <a asp-action="ContactUs" asp-controller="Home">Contact</a>
+                   <a asp-action="LogIn" asp-controller="Account">LogIn</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="about-hero">
+            <h1>Driving Excellence Since 2018</h1>
+            <p>Fast Drive is Dubai's premier car rental service, providing luxury vehicles with exceptional customer service at competitive prices.</p>
+        </section>
+
+        <section class="about-section">
+            <h2>Our Story</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741539479/F1rst-Motors-8_ni4gis.jpg" alt="Fast Drive Office">
+                </div>
+                <div class="about-text">
+                    <p>Fast Drive was founded in 2018 with a simple mission: to provide an exceptional car rental experience in Dubai. What began as a small fleet of 10 luxury vehicles has grown into one of the city's most trusted rental services.</p>
+                    <p>Our founder, Konstantin Mitkov, noticed a gap in the market for a transparent, customer-focused car rental service. After experiencing frustration with hidden fees and poor customer service from existing providers, he decided to create a company that puts the customer experience first.</p>
+                    <p>Today, Fast Drive operates a fleet of over 200 vehicles ranging from economy cars to luxury SUVs and sports cars. We serve thousands of customers each year, from tourists exploring the wonders of Dubai to residents needing reliable transportation for longer periods.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Our Values</h2>
+            <p>At Fast Drive, our business is built on core values that guide every decision we make.</p>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3>Transparency</h3>
+                    <p>We believe in clear, upfront pricing with no hidden fees or surprises. What you see is what you pay.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Efficiency</h3>
+                    <p>We value your time and strive to make the rental process as quick and seamless as possible.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Reliability</h3>
+                    <p>Our vehicles are meticulously maintained to ensure your safety and peace of mind on the road.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⭐</div>
+                    <h3>Excellence</h3>
+                    <p>We're committed to providing the highest quality service in every aspect of our business.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Sustainability</h3>
+                    <p>We're actively expanding our fleet with electric and hybrid vehicles to reduce our environmental impact.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">♾️</div>
+                    <h3>Innovation</h3>
+                    <p>We continually seek new ways to improve our service through technology and creative solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018</div>
+                        <h3>Foundation</h3>
+                        <p>Fast Drive was established with a fleet of 10 luxury vehicles and a small office in Dubai Marina.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019</div>
+                        <h3>Expansion</h3>
+                        <p>Our fleet expanded to 50 vehicles and we opened our second location at Dubai International Airport.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020</div>
+                        <h3>Digital Transformation</h3>
+                        <p>We launched our mobile app and implemented a fully digital booking system with contactless pickup options.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h3>Premium Service Launch</h3>
+                        <p>Introduced our VIP service with chauffeur options and exclusive vehicle selections for our premium clients.</p>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h3>Eco-Friendly Initiative</h3>
+                        <p>Added 30 electric and hybrid vehicles to our fleet as part of our commitment to sustainability.</p>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <h3>Present Day</h3>
+                        <p>Now operating with over 200 vehicles and 3 locations across Dubai, serving thousands of satisfied customers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Our Fleet</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>We take pride in our diverse fleet of vehicles that cater to every need and preference. From compact economy cars perfect for city exploration to luxury SUVs and sports cars for those special occasions, we have it all.</p>
+                    <p>All our vehicles are less than three years old and undergo rigorous maintenance checks between rentals. Each car is thoroughly cleaned and sanitized before handover to ensure the highest standards of hygiene and comfort.</p>
+                    <p>Our fleet includes popular models from brands like Mercedes-Benz, BMW, Audi, Range Rover, and more. We regularly update our selection to include the latest models with the newest features and technology.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741539655/First-Motors-wide-5-scaled_rmemz6.jpg" alt="Fast Drive Fleet">
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741540279/viber_image_2025-03-09_19-07-05-235_aubhca.jpg" alt="Ahmed Al Mansoor">
+                    </div>
+                    <div class="team-info">
+                        <h3>Konstantin Mitkov</h3>
+                        <div class="team-role">Founder & CEO</div>
+                        <p class="team-bio">With over 15 years in the automotive industry, Konstantin's vision and leadership have been instrumental in Fast Drive's growth and success.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741540353/viber_image_2025-03-09_19-12-06-581_xg6prx.jpg" alt="Sarah Johnson">
+                    </div>
+                    <div class="team-info">
+                        <h3>Ivan Mitkov</h3>
+                        <div class="team-role">Chief Operations Officer</div>
+                        <p class="team-bio">Ivan oversees our day-to-day operations, ensuring smooth service delivery and operational excellence across all locations.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-photo">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741540812/viber_image_2025-03-09_19-17-20-546_lhniom.jpg" alt="Raj Patel">
+                    </div>
+                    <div class="team-info">
+                        <h3>Asia Mitkova</h3>
+                        <div class="team-role">Chief Technology Officer</div>
+                        <p class="team-bio">Asialeads our digital transformation initiatives, developing innovative solutions to enhance the customer experience.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Our Locations</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741540758/sddefault_ry5vzr.jpg" alt="Fast Drive Location">
+                </div>
+                <div class="about-text">
+                    <p>We currently operate from three strategic locations across Dubai:</p>
+                    <p>
+                        <strong>Dubai Marina Branch</strong><br>
+                        Our flagship location in the heart of Dubai Marina offers our full range of vehicles and services.
+                    </p>
+                    <p>
+                        <strong>Dubai International Airport</strong><br>
+                        Conveniently located at Terminal 3 for seamless pickups and returns for travelers.
+                    </p>
+                    <p>
+                        <strong>Downtown Dubai</strong><br>
+                        Our newest branch near Dubai Mall caters to tourists and business travelers in the downtown area.
+                    </p>
+                    <p>All our locations are open 24/7 to accommodate your schedule, with dedicated staff ready to assist you at any time.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Customer Testimonials</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">⭐⭐⭐⭐⭐</div>
+                    <p>"The most transparent car rental service I've used in Dubai. No hidden fees and the car was in perfect condition."</p>
+                    <h3>- Michael T., UK</h3>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⭐⭐⭐⭐⭐</div>
+                    <p>"Fast Drive made my Dubai trip amazing! The Mercedes I rented was spotless and the staff were incredibly helpful."</p>
+                    <h3>- Aisha H., Saudi Arabia</h3>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⭐⭐⭐⭐⭐</div>
+                    <p>"As a Dubai resident, I regularly rent from Fast Drive for business trips. Their monthly rates are unbeatable!"</p>
+                    <h3>- Karan S., UAE</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FAST DRIVE</h3>
+                    <p>Premium car rental services in Dubai with a wide selection of vehicles for your travel needs.</p>
+                    <div class="social-links">
+                        <a href="#">F</a>
+                        <a href="#">I</a>
+                        <a href="#">T</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Cars</a></li>
+                        <li><a href="#">Monthly Offers</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Dubai, UAE</li>
+                        <li>+971 4 123 4567</li>
+                        <li>info@fastdrive.ae</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 FAST DRIVE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

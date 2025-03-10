@@ -21,6 +21,14 @@ namespace RentACar.Controllers
             
             return View();
         }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+        public IActionResult ContactUs() 
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult Index(StartEndDateViewModel model)
         {
