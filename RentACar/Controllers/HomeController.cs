@@ -1,7 +1,9 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RentACar.Core.IServices;
+using RentACar.Core.Services;
 using RentACar.Models;
 
 namespace RentACar.Controllers
@@ -9,11 +11,12 @@ namespace RentACar.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        IReservationService reservationService;
-        public HomeController(ILogger<HomeController> logger, IReservationService reservationService)
+       
+        IReportService reportService;
+        public HomeController(ILogger<HomeController> logger,IReportService reportService)
         {
             _logger = logger;
-            this.reservationService= reservationService;
+            this.reportService= reportService;
         }
 
         public IActionResult Index()
@@ -25,10 +28,37 @@ namespace RentACar.Controllers
         {
             return View();
         }
+        [Authorize(Roles ="User")]
         public IActionResult ContactUs() 
-        {
+        {      
             return View();
         }
+        [HttpPost]
+        public IActionResult ContactUs(AddReportViewModel reportViewModel)
+        {
+           
+                if (ModelState.IsValid)
+                {
+                    var userId = HttpContext.Session.GetInt32("UserId");
+
+                    if (!userId.HasValue)
+                    {
+                        return RedirectToAction("Register", "Account");
+                    }
+                    Report report = new Report()
+                    {
+                        Title = reportViewModel.Title,
+                        Description = reportViewModel.Description,
+                        CustomerId = userId.Value,
+                        CreateAt = DateTime.Now,
+                    };
+                    reportService.Add(report);
+                    reportService.Save();
+                    return RedirectToAction("Index", "Home");
+                }
+                return View(reportViewModel);
+            }
+        
         [HttpPost]
         public IActionResult Index(StartEndDateViewModel model)
         {
@@ -44,10 +74,7 @@ namespace RentACar.Controllers
 
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+    
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

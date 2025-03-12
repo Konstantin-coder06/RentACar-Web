@@ -15,14 +15,20 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">FAST DRIVE</a>
-             
-                <nav class="nav-links">
-                    <a asp-action="Index" asp-controller="Home">Home</a>
-                    <a asp-action="Index" asp-controller="Car">Cars</a>
-                    <a asp-action="AboutUs" asp-controller="Home">About Us</a>
-                    <a asp-action="ContactUs" asp-controller="Home">Contact</a>
-                   <a asp-action="LogIn" asp-controller="Account">LogIn</a>
+                <div class="left-nav">
+                    <a href="#" class="logo">FAST DRIVE</a>
+                    <nav class="main-nav">
+                        <a asp-action="Index" asp-controller="Home">Home</a>
+                        <a asp-action="Index" asp-controller="Car">Cars</a>
+                        <a asp-action="AboutUs" asp-controller="Home">About Us</a>
+                        <a asp-action="ContactUs" asp-controller="Home">Contact</a>
+                    </nav>
+                </div>
+
+                <nav class="account-nav">
+                    <a asp-action="LogIn" asp-controller="Account">Log in</a>
+                    <a asp-action="Register" asp-controller="Account">Register as User</a>
+                    <a asp-action="RegisterCompany" asp-controller="Account">Register as a Company</a>
                 </nav>
             </div>
         </div>
@@ -237,21 +243,16 @@
                 <div class="footer-column">
                     <h3>FAST DRIVE</h3>
                     <p>Premium car rental services in Dubai with a wide selection of vehicles for your travel needs.</p>
-                    <div class="social-links">
-                        <a href="#">F</a>
-                        <a href="#">I</a>
-                        <a href="#">T</a>
-                    </div>
+                   
                 </div>
 
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Cars</a></li>
-                        <li><a href="#">Monthly Offers</a></li>
-                        <li><a href="#">Locations</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="Car" asp-action="Index">Cars</a></li>
+                       
+                        <li><a asp-controller="Home" asp-action="AboutUs">About us</a></li>
                     </ul>
                 </div>
 

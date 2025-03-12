@@ -3,8 +3,70 @@
     margin: 0 auto;
     padding: 0 15px;
 }
+
+
 body {
-    background-color: #f6f6f9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+.header-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.account-nav {
+    display: flex;
+    gap: 30px;
+}
+
+    .main-nav a, .account-nav a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+        .main-nav a:hover, .account-nav a:hover {
+            color: #f76c6c;
+        }
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f76c6c;
+    text-decoration: none;
 }
 /* Header section with date range */
 .rental-header {
@@ -87,26 +149,42 @@ body {
     }
 
 /* Filter chips section */
+.filter-chip {
+    margin: 0;
+    padding: 0;
+}
+
+    .filter-chip button {
+        background-color: #f0f0f0;
+        border: none;
+        border-radius: 20px;
+        padding: 8px 16px;
+        font-size: 14px;
+        color: #333;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: background-color 0.2s;
+    }
+
+        .filter-chip button:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Add style for active filters */
+        .filter-chip button.active {
+            background-color: #333;
+            color: white;
+        }
+
+/* Make filter chips container more compact */
 .filter-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 15px 0;
+    gap: 8px;
+    margin: 12px 0;
 }
-
-.filter-chip {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 8px 15px;
-    background-color: #f0f0f0;
-    border-radius: 20px;
-    font-size: 14px;
-}
-
-    .filter-chip i {
-        font-size: 20px;
-    }
 
 /* Car listing grid */
 .cars-list {
@@ -194,6 +272,7 @@ body {
     .btn-primary:hover {
         background-color: #e65a5a;
     }
+ 
 
 
 .modal {
@@ -335,5 +414,22 @@ body {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+.filter-button.active {
+    background-color: #0366d6;
+    color: white;
+}
+
+.filter-button:not(.active) {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.filter-button {
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
     cursor: pointer;
 }

@@ -7,20 +7,30 @@
   
     <link rel="stylesheet" href="~/css/homeindex.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/contactUs.css" />
+  
 </head>
 @{
     Layout = null;
 }
+  @model ReportViewModel
 <body>
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">FAST DRIVE</a>
-                <nav class="nav-links">
-                    <a asp-action="Index" asp-controller="Home">Home</a>
-                    <a asp-action="Index" asp-controller="Car">Cars</a>
-                    <a asp-action="AboutUs" asp-controller="Home">About Us</a>
-                    <a asp-action="ContactUs" asp-controller="Home">Contact</a>
+                <div class="left-nav">
+                    <a href="#" class="logo">FAST DRIVE</a>
+                    <nav class="main-nav">
+                        <a asp-action="Index" asp-controller="Home">Home</a>
+                        <a asp-action="Index" asp-controller="Car">Cars</a>
+                        <a asp-action="AboutUs" asp-controller="Home">About Us</a>
+                        <a asp-action="ContactUs" asp-controller="Home">Contact</a>
+                    </nav>
+                </div>
+
+                <nav class="account-nav">
+                    <a asp-action="LogIn" asp-controller="Account">Log in</a>
+                    <a asp-action="Register" asp-controller="Account">Register as User</a>
+                    <a asp-action="RegisterCompany" asp-controller="Account">Register as a Company</a>
                 </nav>
             </div>
         </div>
@@ -60,25 +70,12 @@
 
             <div class="contact-form-container">
                 <h2>Send Us a Message</h2>
-                <form asp-action="Contact" asp-controller="Home" method="post" class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="Name" placeholder="Your Name" required>
-                    </div>
+                <form asp-action="ContactUs" asp-controller="Home" method="post" class="contact-form">
+                    
 
                     <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="Email" placeholder="Your Email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="Phone" placeholder="Your Phone Number">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="Subject">
+                        <label asp-for="Title">Subject</label>
+                        <select id="subject" asp-for="Title">
                             <option value="booking">Booking Inquiry</option>
                             <option value="support">Customer Support</option>
                             <option value="feedback">Feedback</option>
@@ -87,8 +84,9 @@
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="Message" rows="5" placeholder="Your Message" required></textarea>
+                        <label asp-for="Description">Description
+                        </label>
+                        <textarea id="message" asp-for="Description" rows="5" placeholder="Your Message" required></textarea>
                     </div>
 
                     <button type="submit" class="btn-primary">Send Message</button>
@@ -123,21 +121,16 @@
                 <div class="footer-column">
                     <h3>FAST DRIVE</h3>
                     <p>Premium car rental services in Dubai with a wide selection of vehicles for your travel needs.</p>
-                    <div class="social-links">
-                        <a href="#">F</a>
-                        <a href="#">I</a>
-                        <a href="#">T</a>
-                    </div>
+                   
                 </div>
 
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Cars</a></li>
-                        <li><a href="#">Monthly Offers</a></li>
-                        <li><a href="#">Locations</a></li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="Car" asp-action="Index">Cars</a></li>
+
+                        <li><a asp-controller="Home" asp-action="AboutUs">About us</a></li>
                     </ul>
                 </div>
 

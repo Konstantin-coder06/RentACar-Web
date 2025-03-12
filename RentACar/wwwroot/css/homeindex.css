@@ -29,6 +29,33 @@ header {
     align-items: center;
 }
 
+.left-nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.account-nav {
+    display: flex;
+    gap: 30px;
+}
+
+    .main-nav a, .account-nav a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+        .main-nav a:hover, .account-nav a:hover {
+            color: #f76c6c;
+        }
+
 .logo {
     font-size: 24px;
     font-weight: bold;

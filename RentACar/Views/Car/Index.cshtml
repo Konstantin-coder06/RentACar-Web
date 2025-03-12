@@ -15,7 +15,32 @@
     var endDate = Model.EndDate?.ToString("d MMM yyyy") ?? DateTime.Now.AddDays(3).ToString("d MMMM yyyy");
 }
 
+
+@{
+    Layout = null;
+}
 <body>
+    <header>
+        <div class="header-container">
+            <div class="header-content">
+                <div class="left-nav">
+                    <a href="#" class="logo">FAST DRIVE</a>
+                    <nav class="main-nav">
+                        <a asp-action="Index" asp-controller="Home">Home</a>
+                        <a asp-action="Index" asp-controller="Car">Cars</a>
+                        <a asp-action="AboutUs" asp-controller="Home">About Us</a>
+                        <a asp-action="ContactUs" asp-controller="Home">Contact</a>
+                    </nav>
+                </div>
+
+                <nav class="account-nav">
+                    <a asp-action="LogIn" asp-controller="Account">Log in</a>
+                    <a asp-action="Register" asp-controller="Account">Register as User</a>
+                    <a asp-action="RegisterCompany" asp-controller="Account">Register as a Company</a>
+                </nav>
+            </div>
+        </div>
+    </header>
     <!-- Header with dates -->
     <div class="container">
         <div class="rental-header">
@@ -56,50 +81,53 @@
         </div>
 
         <!-- Filter chips like in image -->
+        <!-- Filter chips like in image -->
         <div class="filter-chips">
-            
+
             <div class="filter-chip">
                 <button class="filter-button">
-                <i class="fas fa-car"></i> Economy
+                    <i class="fas fa-car"></i> Economy
                 </button>
             </div>
             <div class="filter-chip">
                 <button class="filter-button">
-                <i class="fas fa-car-side"></i> Standard
+                    <i class="fas fa-car-side"></i> Standard
                 </button>
             </div>
             <div class="filter-chip">
                 <button class="filter-button">
-                <i class="fas fa-briefcase"></i> Business
+                    <i class="fas fa-briefcase"></i> Business
                 </button>
             </div>
             <div class="filter-chip">
                 <button class="filter-button">
-                <i class="fas fa-crown"></i> Luxury
+                    <i class="fas fa-crown"></i> Luxury
                 </button>
             </div>
             <div class="filter-chip">
                 <button class="filter-button">
-                <i class="fas fa-tachometer-alt"></i> Sport
+                    <i class="fas fa-tachometer-alt"></i> Sport
                 </button>
             </div>
             <div class="filter-chip">
                 <button class="filter-button">
-                <i class="fas fa-charging-station"></i> Electric
+                    <i class="fas fa-charging-station"></i> Electric
                 </button>
             </div>
             <div class="filter-chip">
                 <button class="filter-button">
-                <i class="fas fa-users"></i> Seats 7
+                    <i class="fas fa-users"></i> Seats 7
                 </button>
             </div>
         </div>
-
+        
         <!-- Car listings -->
         <div class="cars-list">
             @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => random.Next()))
             {
-                <div class="car-item" data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")">
+                <div class="car-item"
+                     data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")"
+                     data-categories="@carWithImages.Car.ClassOfCar">
                     <div class="card">
                         <img src="@carWithImages.Images.OrderBy(x=>x.Order).First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
 
@@ -249,4 +277,5 @@
             });
         });
     </script>
+    <script src="~/js/categorySelection.js"></script>
 </body>
