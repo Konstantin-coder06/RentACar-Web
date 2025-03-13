@@ -6,5 +6,6 @@
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public int? Sort { get; set; }
+        public List<string>SelectedCategories { get; set; }=new List<string>();
     }
 }

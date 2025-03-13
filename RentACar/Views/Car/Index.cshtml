@@ -52,14 +52,7 @@
                 <i class="fas fa-edit"></i>
             </button>
         </div>
-        <div id="calendarModal" class="modal">
-            <div class="modal-content">
-                <span class="close">×</span>
-                <h4>Select your rental dates</h4>
-                <input type="text" id="datePicker" readonly>
-                <button type="button" id="confirmDates">Confirm Dates</button>
-            </div>
-        </div>
+      
         <!-- Search and filters bar similar to image -->
         <div class="search-filter-container">
             <div class="search-box">
@@ -82,45 +75,41 @@
 
         <!-- Filter chips like in image -->
         <!-- Filter chips like in image -->
-        <div class="filter-chips">
-
-            <div class="filter-chip">
-                <button class="filter-button">
-                    <i class="fas fa-car"></i> Economy
-                </button>
+        <form asp-action="FilterByCategory" asp-controller="Car" method="post">
+            <div class="filter-chips">
+                <div class="filter-chip">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Economy") ? "active" : "")" name="categories" value="toggle_Economy">
+                        <i class="fas fa-car"></i> Economy
+                    </button>
+                </div>
+                <div class="filter-chip">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Standard") ? "active" : "")" name="categories" value="toggle_Standard">
+                        <i class="fas fa-car-side"></i> Standard
+                    </button>
+                </div>
+                <div class="filter-chip">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Business") ? "active" : "")" name="categories" value="toggle_Business">
+                        <i class="fas fa-briefcase"></i> Business
+                    </button>
+                </div>
+                <div class="filter-chip">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Luxury") ? "active" : "")" name="categories" value="toggle_Luxury">
+                        <i class="fas fa-crown"></i> Luxury
+                    </button>
+                </div>
+                <div class="filter-chip">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Sport") ? "active" : "")" name="categories" value="toggle_Sport">
+                        <i class="fas fa-tachometer-alt"></i> Sport
+                    </button>
+                </div>
+                <div class="filter-chip">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Electric") ? "active" : "")" name="categories" value="toggle_Electric">
+                        <i class="fas fa-charging-station"></i> Electric
+                    </button>
+                </div>
             </div>
-            <div class="filter-chip">
-                <button class="filter-button">
-                    <i class="fas fa-car-side"></i> Standard
-                </button>
-            </div>
-            <div class="filter-chip">
-                <button class="filter-button">
-                    <i class="fas fa-briefcase"></i> Business
-                </button>
-            </div>
-            <div class="filter-chip">
-                <button class="filter-button">
-                    <i class="fas fa-crown"></i> Luxury
-                </button>
-            </div>
-            <div class="filter-chip">
-                <button class="filter-button">
-                    <i class="fas fa-tachometer-alt"></i> Sport
-                </button>
-            </div>
-            <div class="filter-chip">
-                <button class="filter-button">
-                    <i class="fas fa-charging-station"></i> Electric
-                </button>
-            </div>
-            <div class="filter-chip">
-                <button class="filter-button">
-                    <i class="fas fa-users"></i> Seats 7
-                </button>
-            </div>
-        </div>
         
+        </form>
         <!-- Car listings -->
         <div class="cars-list">
             @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => random.Next()))
@@ -191,91 +180,65 @@
         <input type="hidden" id="endDateInput" name="EndDate" asp-for="EndDate">
     </form>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+   
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const modal = document.getElementById("calendarModal");
-            const openBtn = document.getElementById("openCalendar");
-            const closeBtn = document.querySelector(".close");
-            const confirmBtn = document.getElementById("confirmDates");
+          const modal = document.getElementById("calendarModal");
+          const openBtn = document.getElementById("openCalendar");
+          const closeBtn = document.querySelector(".close");
+          const confirmBtn = document.getElementById("confirmDates");
 
-            const startDateInput = document.getElementById("startDateInput");
-            const endDateInput = document.getElementById("endDateInput");
-            const form = document.getElementById("dateForm");
+          const startDateInput = document.getElementById("startDateInput");
+          const endDateInput = document.getElementById("endDateInput");
+          const form = document.getElementById("dateForm");
 
-            var startDate = '@(Model.StartDate?.ToString("yyyy-MM-dd") ?? "")';
-            var endDate = '@(Model.EndDate?.ToString("yyyy-MM-dd") ?? "")';
 
-            // Ensure Flatpickr is loaded and initialize
-            if (typeof flatpickr === "undefined") {
-                console.error("Flatpickr is not loaded!");
-                return;
-            }
+          var startDate = '@(Model.StartDate?.ToString("yyyy-MM-dd") ?? "")';
+          var endDate = '@(Model.EndDate?.ToString("yyyy-MM-dd") ?? "")';
 
-            const datePicker = flatpickr("#datePicker", {
-                mode: "range",
-                dateFormat: "Y-m-d",
-                minDate: "today",
-                maxDate: new Date().fp_incr(210),
-                inline: true,
-                numberOfMonths: 3,
-                defaultDate: startDate && endDate ? [startDate, endDate] : []
-            });
+          const datePicker = flatpickr("#datePicker", {
+              mode: "range",
+              dateFormat: "Y-m-d",
+              minDate: "today",
+              maxDate: new Date().fp_incr(210),
+              inline: true,
+              numberOfMonths:3,
+              defaultDate: startDate && endDate ? [startDate, endDate] : []
+          });
 
-            openBtn.addEventListener("click", function () {
-                modal.style.display = "flex";
-            });
 
-            closeBtn.addEventListener("click", function () {
+          openBtn.addEventListener("click", function () {
+              modal.style.display = "flex";
+          });
+
+
+          closeBtn.addEventListener("click", function () {
+              modal.style.display = "none";
+          });
+
+          window.addEventListener("click", function (event) {
+              if (event.target === modal) {
+                  modal.style.display = "none";
+              }
+          });
+           confirmBtn.addEventListener("click", function () {
+          let selectedDates = datePicker.selectedDates;
+          if (selectedDates.length === 2) {
+              // Use 'en-CA' locale to get YYYY-MM-DD format in local time
+              let start = selectedDates[0].toLocaleDateString('en-CA');
+              let end = selectedDates[1].toLocaleDateString('en-CA');
+                   startDateInput.value = start;
+                endDateInput.value = end;
+
                 modal.style.display = "none";
-            });
-
-            window.addEventListener("click", function (event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            });
-
-            confirmBtn.addEventListener("click", function () {
-                let selectedDates = datePicker.selectedDates;
-                console.log("Selected Dates:", selectedDates); // Debug
-                if (selectedDates && selectedDates.length === 2) {
-                    let start = selectedDates[0].toISOString().split("T")[0];
-                    let end = selectedDates[1].toISOString().split("T")[0];
-                    startDateInput.value = start;
-                    endDateInput.value = end;
-                    modal.style.display = "none";
-                    form.submit();
-                } else {
-                    alert("Please select both start and end dates.");
-                }
-            });
-
-            // Search functionality
-            const searchInput = document.getElementById("searchInput");
-            searchInput.addEventListener("input", function () {
-                const searchTerm = this.value.toLowerCase();
-                const carItems = document.querySelectorAll(".car-item");
-                carItems.forEach(item => {
-                    const title = item.getAttribute("data-title").toLowerCase();
-                    if (title.includes(searchTerm)) {
-                        item.style.display = "block";
-                    } else {
-                        item.style.display = "none";
-                    }
-                });
-            });
-
-            // Sort and Filter buttons (placeholders)
-            document.getElementById("sortButton").addEventListener("click", function () {
-                alert("Sort options would appear here");
-            });
-
-            document.getElementById("filtersButton").addEventListener("click", function () {
-                alert("Filter options would appear here");
-            });
+                form.submit();
+            } else {
+                alert("Please select both start and end dates.");
+            }
         });
+        });
+    
     </script>
     <script src="~/js/categorySelection.js"></script>
 </body>

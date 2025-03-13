@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.Models;
+using System;
 using System.Globalization;
 
 namespace RentACar.Controllers
@@ -30,7 +31,7 @@ namespace RentACar.Controllers
             this.featureService = featureService;
             this.carFeatureService = carFeatureService;
         }
-      
+
         public IActionResult Index()
         {
             DateTime? startDay = null;
@@ -47,9 +48,19 @@ namespace RentACar.Controllers
             {
                 endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             }
-            List<Reservation> reservations = reservationService.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
-                 (!endDay.HasValue || x.StartDate <= endDay)).ToList();
-            var cars=new List<Car>();
+
+            // Calculate reserved car IDs only if both dates are provided
+            List<int> reservedCarIds = new List<int>();
+            if (startDay.HasValue && endDay.HasValue)
+            {
+                reservedCarIds = reservationService.GetAll()
+                    .Where(r => r.StartDate < endDay.Value && r.EndDate > startDay.Value)
+                    .Select(r => r.CarId)
+                    .Distinct()
+                    .ToList();
+            }
+
+            var cars = new List<Car>();
             if (User.IsInRole("Admin"))
             {
                 cars = carService.GetAll().ToList();
@@ -57,14 +68,25 @@ namespace RentACar.Controllers
             var companyId = HttpContext.Session.GetInt32("CompanyId");
             if (companyId.HasValue)
             {
-                cars=carService.FindAll(x=>x.CarCompanyId == companyId).ToList();
+                cars = carService.FindAll(x => x.CarCompanyId == companyId).ToList();
             }
-            if(!User.IsInRole("Admin")&& !companyId.HasValue)
+            if (!User.IsInRole("Admin") && !companyId.HasValue)
             {
-                var reservedCarIds = reservations.Select(r => r.CarId).ToList();
                 cars = carService.GetAll()
                     .Where(car => !reservedCarIds.Contains(car.Id) && !car.Pending)
                     .ToList();
+            }
+            var selectedCategoriesStr = HttpContext.Session.GetString("SelectedCategories");
+            var selectedCategories = new List<string>();
+            if (!string.IsNullOrEmpty(selectedCategoriesStr))
+            {
+
+               selectedCategories= selectedCategoriesStr.Split(',').ToList();
+            }
+            if (selectedCategories.Any())
+            {
+                var categoryIds = classOfCarService.FindAll(x => selectedCategories.Contains(x.Name)).Select(x => x.Id).ToList();
+                cars = cars.Where(x => categoryIds.Contains(x.ClassOfCarId)).ToList();
             }
            
             var carsWithImages = cars.Select(car => new CarWithImages
@@ -76,12 +98,54 @@ namespace RentACar.Controllers
             var viewModel = new CarImagesWithDatesViewModel
             {
                 CarWithImages = carsWithImages,
-                StartDate=startDay,
-                EndDate=endDay,
-               
+                StartDate = startDay,
+                EndDate = endDay,
+                SelectedCategories = selectedCategories,
             };
-          
+
             return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult FilterByCategory(string categories)
+        {
+            if (categories != null && categories.StartsWith("toggle_"))
+            {
+                string category = categories.Substring(7); // Extract category name, e.g., "Economy" from "toggle_Economy"
+                var selectedCategories = HttpContext.Session.GetString("SelectedCategories")?.Split(',')?.ToList() ?? new List<string>();
+
+                if (selectedCategories.Contains(category))
+                {
+                    selectedCategories.Remove(category); // Deselect if already selected
+                }
+                else
+                {
+                    selectedCategories.Add(category); // Select if not already selected
+                }
+
+                HttpContext.Session.SetString("SelectedCategories", string.Join(",", selectedCategories));
+            }
+
+            return RedirectToAction("Index");
+           /* int categoryId=classOfCarService.FindOne(x=>x.Name== category).Id;
+            var filterByCategoryCars = carService.FindAll(x => x.ClassOfCarId == categoryId && !x.Pending);
+            var carsWithImages = filterByCategoryCars.Select(car => new CarWithImages
+            {
+                Car = car,
+                Images = imageService.GetImagesByCarId(car.Id).ToList()
+            }).ToList();
+            var startDayStr = HttpContext.Session.GetString("StartDate");
+            var endDayStr = HttpContext.Session.GetString("EndDate");
+
+            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
+            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
+            var viewModel = new CarImagesWithDatesViewModel
+            {
+                CarWithImages = carsWithImages,
+                StartDate = startDay,
+                EndDate = endDay,
+            };
+
+            return View("Index",viewModel);*/
         }
         [HttpPost]
         [Route("Car/Search")]
@@ -134,25 +198,23 @@ namespace RentACar.Controllers
         [HttpPost]
         public IActionResult FilterDates(CarImagesWithDatesViewModel carImagesView)
         {
-            if (carImagesView.StartDate.HasValue)
+            // Validate dates
+            if (!carImagesView.StartDate.HasValue || !carImagesView.EndDate.HasValue)
             {
-                HttpContext.Session.SetString("StartDate", carImagesView.StartDate.Value.ToString("yyyy-MM-dd"));
-            }
-            else
-            {
-                HttpContext.Session.Remove("StartDate");
+                return BadRequest("Please provide both start and end dates.");
             }
 
-            if (carImagesView.EndDate.HasValue)
-            {
-                HttpContext.Session.SetString("EndDate", carImagesView.EndDate.Value.ToString("yyyy-MM-dd"));
-            }
-            else
-            {
-                HttpContext.Session.Remove("EndDate");
-            }
+            // Set session variables
+            HttpContext.Session.SetString("StartDate", carImagesView.StartDate.Value.ToString("yyyy-MM-dd"));
+            HttpContext.Session.SetString("EndDate", carImagesView.EndDate.Value.ToString("yyyy-MM-dd"));
 
-            List<Reservation> reservations = reservationService.GetAll().Where(x => x.StartDate >= carImagesView.StartDate && x.StartDate <= carImagesView.EndDate).ToList();
+            // Get overlapping reservations
+            var overlappingReservations = reservationService.GetAll()
+                .Where(r => r.StartDate < carImagesView.EndDate && r.EndDate > carImagesView.StartDate)
+                .Select(r => r.CarId)
+                .Distinct()
+                .ToList();
+
             List<Car> cars = new List<Car>();
             if (User.IsInRole("Admin"))
             {
@@ -165,26 +227,19 @@ namespace RentACar.Controllers
             }
             if (!User.IsInRole("Admin") && !companyId.HasValue)
             {
-                cars = carService.FindAll(car => reservations.All(r => r.CarId != car.Id && car.Pending == false)).ToList();
+                cars = carService.GetAll()
+                    .Where(car => !overlappingReservations.Contains(car.Id) && !car.Pending)
+                    .ToList();
             }
-           
+
             var carsWithImages = cars.Select(car => new CarWithImages
             {
                 Car = car,
                 Images = imageService.GetImagesByCarId(car.Id).ToList()
             }).ToList();
-            //datata
-            HttpContext.Session.SetString("StartDate", carImagesView.StartDate?.ToString("yyyy-MM-dd"));
-            HttpContext.Session.SetString("EndDate", carImagesView.EndDate?.ToString("yyyy-MM-dd"));
-            var viewModel = new CarImagesWithDatesViewModel
-            {
-                CarWithImages = carsWithImages,
-                StartDate=carImagesView.StartDate,
-                EndDate=carImagesView.EndDate,
-            };
 
-
-            return RedirectToAction("Index",viewModel);
+            // Redirect to Index, which will use session data
+            return RedirectToAction("Index");
         }
         public IActionResult Filters()
         {
