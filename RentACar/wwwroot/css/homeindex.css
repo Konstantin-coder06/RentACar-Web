@@ -259,7 +259,7 @@ h1 {
 
 .car-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
@@ -433,4 +433,21 @@ footer {
         .monthly-rentals h2 {
             font-size: 2rem;
         }
+}
+@media (max-width: 992px) {
+    .car-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .car-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.text-danger {
+    color: #dc3545 !important;
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 5px;
 }

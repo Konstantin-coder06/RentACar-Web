@@ -10,5 +10,7 @@ namespace RentACar.Core.IServices
 {
     public interface ICarService:IRepository<Car>
     {
+        int CountOfCarsWithCategory(int categoryId);  
+        double MinPriceOfCarByCategory(int categoryId);
     }
 }

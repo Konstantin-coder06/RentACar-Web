@@ -27,6 +27,11 @@ namespace RentACar.Core.Services
             return carRepository.AllWithInclude(filters).ToList();
         }
 
+        public int CountOfCarsWithCategory(int categoryId)
+        {
+            return carRepository.FindAll(x => x.ClassOfCarId == categoryId).Count();
+        }
+
         public void Delete(Car entity)
         {
            carRepository.Delete(entity);
@@ -45,6 +50,12 @@ namespace RentACar.Core.Services
         public IEnumerable<Car> GetAll()
         {
            return carRepository.GetAll().ToList();
+        }
+
+        public double MinPriceOfCarByCategory(int categoryId)
+        {
+            var cars=carRepository.FindAll(x=>x.ClassOfCarId==categoryId).ToList();
+            return cars.OrderBy(x => x.PricePerDay).Select(x => x.PricePerDay).First();
         }
 
         public void Save()

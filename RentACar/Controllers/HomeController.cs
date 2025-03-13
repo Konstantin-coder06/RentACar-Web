@@ -11,18 +11,40 @@ namespace RentACar.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        ICarService carService;
        
         IReportService reportService;
-        public HomeController(ILogger<HomeController> logger,IReportService reportService)
+        public HomeController(ILogger<HomeController> logger,IReportService reportService, ICarService carService)
         {
             _logger = logger;
             this.reportService= reportService;
+            this.carService = carService;
         }
 
         public IActionResult Index()
         {
-            
-            return View();
+            StartEndDateWithCarsCountViewModel viewModel = new StartEndDateWithCarsCountViewModel()
+            {
+                StartDay = DateTime.Now,
+                EndDay = DateTime.Now.AddDays(3),
+                StandardCount = carService.CountOfCarsWithCategory(6),
+                LuxuryCount = carService.CountOfCarsWithCategory(2),
+                EconomyCount=carService.CountOfCarsWithCategory(1),
+                BusinessCount=carService.CountOfCarsWithCategory(4),
+                ElectricCount=carService.CountOfCarsWithCategory(5),
+                SportCount=carService.CountOfCarsWithCategory(3),
+
+
+                MinPriceStandard=carService.MinPriceOfCarByCategory(6),
+                MinPriceLuxury=carService.MinPriceOfCarByCategory(2),
+                MinPriceEconomy=carService.MinPriceOfCarByCategory(1),
+                MinPriceBusiness=carService.MinPriceOfCarByCategory(4),
+                MinPriceElectric=carService.MinPriceOfCarByCategory(5),
+                MinPriceSport=carService.MinPriceOfCarByCategory(3),
+            };
+
+
+            return View(viewModel);
         }
         public IActionResult AboutUs()
         {
@@ -60,8 +82,12 @@ namespace RentACar.Controllers
             }
         
         [HttpPost]
-        public IActionResult Index(StartEndDateViewModel model)
+        public IActionResult Index(StartEndDateWithCarsCountViewModel model)
         {
+            if (model.StartDay >= model.EndDay)
+            {
+                ModelState.AddModelError("StartDate","The start date must be earlier than the end date.");
+            }
             if (ModelState.IsValid)
             {
                 HttpContext.Session.SetString("StartDate", model.StartDay?.ToString("yyyy-MM-dd"));
@@ -69,7 +95,7 @@ namespace RentACar.Controllers
 
                 return Redirect("/Car/Index");
             }
-            return Redirect("/Home/Index");
+            return View(model);
 
 
         }

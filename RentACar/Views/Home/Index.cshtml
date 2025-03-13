@@ -10,7 +10,8 @@
 @{
     Layout = null;
 }
-@model StartEndDateViewModel
+
+@model StartEndDateWithCarsCountViewModel
 <body>
     <header>
         <div class="container">
@@ -44,18 +45,30 @@
                     <div class="search-box">
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" id="location" placeholder="Location" value="Dubai" disabled>
+                            <input type="text" value="Dubai" disabled>
                         </div>
 
                         <div class="form-group">
                             <label asp-for="StartDay">Pick-up Date</label>
-                            <input asp-for="StartDay" type="date" id="startDate" value="@DateTime.Now.ToString("yyyy-MM-dd")">
+                            <input asp-for="StartDay" type="date" >
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                <div>
+                                    <ul>
+                                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                        {
+                                            <span class="text-danger">@error.ErrorMessage</span>
+                                        }
+                                    </ul>
+                                </div>
+                            }
                         </div>
 
                         <div class="form-group">
                             <label asp-for="EndDay">Return Date</label>
-                            <input asp-for="EndDay" type="date" id="endDate" value="@DateTime.Now.AddDays(3).ToString("yyyy-MM-dd")">
-                            <p class="error-message" id="dateError">The start date must be earlier than the end date.</p>
+                            <input asp-for="EndDay" type="date" >
+                           
+                      
                         </div>
 
                         <button type="submit" class="btn-primary">Find Your Car</button>
@@ -102,59 +115,87 @@
             <div class="car-grid">
                 <div class="car-card">
                     <div class="car-image">
-                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741344585/culi1_hnrra4.webp" alt="Premium SUV">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1740770316/cars/Images/46cd213c-8185-44b4-9ae4-efd3a0f6105b.webp" alt="Standard">
                     </div>
                     <div class="car-details">
-                        <h3>Premium SUV</h3>
-                        <div class="car-price">From AED 350/day</div>
+                        <h3>Standard Cars</h3>
+                        <div class="car-price">From BGN @Model.MinPriceStandard/day</div>
                         <div class="car-features">
                             <span>Automatic</span>
-                            <span>5 Seats</span>
-                            <span>AC</span>
+                            <span>5/7 Seats</span>
+                            <span>@Model.StandardCount cars</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="car-card">
                     <div class="car-image">
-                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741344691/mers_mnj3vp.webp" alt="Luxury Sedan">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741344691/mers_mnj3vp.webp" alt="Luxury">
                     </div>
                     <div class="car-details">
-                        <h3>Luxury Sedan</h3>
-                        <div class="car-price">From AED 450/day</div>
+                        <h3>Luxury Cars</h3>
+                        <div class="car-price">From BGN @Model.MinPriceLuxury/day</div>
                         <div class="car-features">
                             <span>Automatic</span>
                             <span>5 Seats</span>
-                            <span>AC</span>
+                            <span>@Model.LuxuryCount cars</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="car-card">
                     <div class="car-image">
-                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741344770/a3_gaeaq1.webp" alt="Economy Car">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1740767518/cars/Images/acbba22d-a0ba-4eed-aa07-d390eec5da91.webp" alt="Sport Cars">
                     </div>
                     <div class="car-details">
-                        <h3>Economy Car</h3>
-                        <div class="car-price">From AED 180/day</div>
+                        <h3>Sport Cars</h3>
+                        <div class="car-price">From BGN @Model.MinPriceSport/day</div>
                         <div class="car-features">
                             <span>Automatic</span>
                             <span>5 Seats</span>
-                            <span>AC</span>
+                            <span>@Model.SportCount cars</span>
                         </div>
                     </div>
                 </div>
                 <div class="car-card">
                     <div class="car-image">
-                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1741592109/eb7df8de-d8b2881a-173e4dc5-c042692_tgxt2f.webp" alt="Economy Car">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1740736705/cars/Images/381852b3-c708-4004-8b8e-fd9800ff0a99.webp" alt="Business Cars">
                     </div>
                     <div class="car-details">
-                        <h3>Electric Car</h3>
-                        <div class="car-price">From AED 230/day</div>
+                        <h3>Business Cars</h3>
+                        <div class="car-price">From BGN @Model.MinPriceBusiness/day</div>
                         <div class="car-features">
                             <span>Automatic</span>
                             <span>5 Seats</span>
-                            <span>AC</span>
+                            <span>@Model.BusinessCount cars</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1739624138/cybertruck-1_s3nz5x.webp" alt="Electric Cars">
+                    </div>
+                    <div class="car-details">
+                        <h3>Electric Cars</h3>
+                        <div class="car-price">From BGN @Model.MinPriceElectric/day</div>
+                        <div class="car-features">
+                            <span>Automatic</span>
+                            <span>5 Seats</span>
+                            <span>@Model.ElectricCount cars</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="https://res.cloudinary.com/dhibmotzx/image/upload/v1740769699/cars/Images/a92f534c-50d0-4d41-a778-9f152b67ffa1.webp" alt="Economy Cars">
+                    </div>
+                    <div class="car-details">
+                        <h3>Economy Cars</h3>
+                        <div class="car-price">From BGN @Model.MinPriceEconomy/day</div>
+                        <div class="car-features">
+                            <span>Automatic</span>
+                            <span>5 Seats</span>
+                            <span>@Model.EconomyCount</span>
                         </div>
                     </div>
                 </div>
@@ -168,7 +209,7 @@
                 <div class="footer-column">
                     <h3>FAST DRIVE</h3>
                     <p>Premium car rental services in Dubai with a wide selection of vehicles for your travel needs.</p>
-                 
+
                 </div>
 
                 <div class="footer-column">
@@ -176,8 +217,8 @@
                     <ul>
                         <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                         <li><a asp-controller="Car" asp-action="Index">Cars</a></li>
-                      
-                      
+
+
                         <li><a asp-controller="Home" asp-action="AboutUs">About us</a></li>
                     </ul>
                 </div>
@@ -198,33 +239,5 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var startDateInput = document.getElementById("startDate");
-            var endDateInput = document.getElementById("endDate");
-            var searchButton = document.querySelector(".btn-primary");
-            var errorMessage = document.getElementById("dateError");
-
-            function validateDates() {
-                var startDate = new Date(startDateInput.value);
-                var endDate = new Date(endDateInput.value);
-
-                if (startDate >= endDate) {
-                    errorMessage.style.display = "block";
-                    searchButton.disabled = true;
-                    searchButton.style.opacity = "0.7";
-                    searchButton.style.cursor = "not-allowed";
-                } else {
-                    errorMessage.style.display = "none";
-                    searchButton.disabled = false;
-                    searchButton.style.opacity = "1";
-                    searchButton.style.cursor = "pointer";
-                }
-            }
-
-            startDateInput.addEventListener("input", validateDates);
-            endDateInput.addEventListener("input", validateDates);
-        });
-    </script>
 </body>
 </html>
