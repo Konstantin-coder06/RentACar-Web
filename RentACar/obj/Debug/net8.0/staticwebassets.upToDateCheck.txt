@@ -16,7 +16,6 @@ wwwroot\css\settings.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\calendar.js
-wwwroot\js\categorySelection.js
 wwwroot\js\customerRotation.js
 wwwroot\js\main.js
 wwwroot\js\sorting.js

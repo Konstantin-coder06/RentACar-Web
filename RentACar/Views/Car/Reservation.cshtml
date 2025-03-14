@@ -2,9 +2,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 @model CarWithImages
 
-<!-- Main booking layout - contains only carousel and form -->
+
 <div class="booking-layout">
-    <!-- Left Carousel Section -->
+  
     <div class="carousel-section">
         <div class="carousel-wrapper">
             <div id="carCarousel-@Model.Car.Id" class="carousel slide" data-bs-ride="carousel">
@@ -31,7 +31,7 @@
                 @Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
             </p>
 
-            <!-- This will be pushed to the bottom of the carousel section -->
+          
             <div class="price-container">
                 <div class="price-text">
                     <h3 class="price-day">@Model.Car.PricePerDay BGN / на ден</h3>
@@ -42,7 +42,7 @@
     </div>
 
     <form asp-action="Reservation" asp-controller="Car" method="post">
-        <!-- Right Details Section -->
+       
         <input type="hidden" asp-for="Car.Id" />
         <div class="details-section">
             <h4>Избор на получаване</h4>
@@ -89,7 +89,6 @@
     </form>
 </div>
 
-<!-- Features section moved outside the booking-layout -->
 <div class="features-container">
     <h4>Car Features</h4>
     <div class="features-grid">
@@ -119,7 +118,7 @@
                     }
                     else if (feature.NameOfFeatures.Contains("Adaptive"))
                     {
-                        //this
+                      
                         <i class="bi bi-speedometer"></i>
                     }
                     else if (feature.NameOfFeatures.Contains("Lane Departure Warning"))
@@ -151,7 +150,7 @@
                         <i class="bi bi-brightness-high"></i>
                     }
                     else if (feature.NameOfFeatures.Contains("Power Adjustable Seats"))
-                    {//
+                    {
                         <i class="bi bi-check-circle-fill"></i>
                     }
                     else if (feature.NameOfFeatures.Contains("Backup Sensors"))
@@ -179,7 +178,7 @@
                         <i class="bi bi-apple"></i>
                     }
                     else if (feature.NameOfFeatures.Contains("Adaptive Cruise Control"))
-                    {//
+                    {
                         <i class="bi bi-check-circle-fill"></i>
                     }
                     else if (feature.NameOfFeatures.Contains("Android"))
@@ -259,7 +258,7 @@
                         <i class="bi bi-ev-front"></i>
                     }
                     else if (feature.NameOfFeatures.Contains("Wireless Smartphone Charging"))
-                    {//
+                    {
                         <i class="bi bi-battery-charging"></i>
                         
                     }
@@ -309,28 +308,3 @@
         }
     </div>
 </div>
-
-<script>
-    function initAutocomplete() {
-        const streetAddress = document.getElementById("streetAddress");
-        const autocomplete = new google.maps.places.Autocomplete(streetAddress, {
-            types: ["geocode"],
-            componentRestrictions: { country: "BG" }
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const pickUpOptions = document.getElementsByName("pickUpOption");
-        const addressInput = document.getElementById("addressInput");
-
-        pickUpOptions.forEach(option => {
-            option.addEventListener("change", function () {
-                if (this.value === "custom") {
-                    addressInput.style.display = "block";
-                } else {
-                    addressInput.style.display = "none";
-                }
-            });
-        });
-    });
-</script>

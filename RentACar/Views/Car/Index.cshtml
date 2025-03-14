@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="~/css/carIndex.css" asp-append-version="true" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<title>Rent A Car</title>
 @{
   
     int seed = DateTime.UtcNow.Date.GetHashCode();
@@ -41,7 +41,7 @@
             </div>
         </div>
     </header>
-    <!-- Header with dates -->
+  
     <div class="container">
         <div class="rental-header">
             <div class="date-range">
@@ -52,29 +52,36 @@
                 <i class="fas fa-edit"></i>
             </button>
         </div>
-      
-        <!-- Search and filters bar similar to image -->
-        <div class="search-filter-container">
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" placeholder="Search cars" id="searchInput">
-            </div>
 
-            <div class="filter-buttons">
-                <button class="filter-button" id="sortButton">
+        <div class="search-filter-container">
+            <form asp-action="Search" asp-controller="Car" method="post" class="search-form">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" name="searchBar" placeholder="Search cars" id="searchInput">
+                </div>
+            </form>
+            <div class="sort-dropdown">
+                <input type="checkbox" id="sortToggle" class="dropdown-toggle">
+                <label for="sortToggle" class="filter-button">
                     <i class="fas fa-sort"></i> Sort
-                </button>
-                <button class="filter-button" id="filtersButton">
-                    <i class="fas fa-filter"></i> Filters
-                </button>
-                <button class="filter-button" id="mapButton">
-                    <i class="fas fa-map-marker-alt"></i> Show map
-                </button>
+                </label>
+                <div class="dropdown-content">
+                    <form asp-action="Sort" asp-controller="Car" method="post">
+                        <button type="submit" name="sortOrder" value="name_asc">Name (A-Z)</button>
+                        <button type="submit" name="sortOrder" value="name_desc">Name (Z-A)</button>
+                        <button type="submit" name="sortOrder" value="year_asc">Year (Oldest First)</button>
+                        <button type="submit" name="sortOrder" value="year_desc">Year (Newest First)</button>
+                        <button type="submit" name="sortOrder" value="price_asc">Price (Lowest First)</button>
+                        <button type="submit" name="sortOrder" value="price_desc">Price (Highest First)</button>
+                        <button type="submit" name="sortOrder" value="default">Sort by default</button>
+                    </form>
+                </div>
             </div>
+            <a asp-controller="Car" asp-action="Filters" class="button-form filter-button"> <i class="fas fa-filter"></i> Filters</a>
+          
         </div>
 
-        <!-- Filter chips like in image -->
-        <!-- Filter chips like in image -->
+      
         <form asp-action="FilterByCategory" asp-controller="Car" method="post">
             <div class="filter-chips">
                 <div class="filter-chip">
@@ -110,9 +117,9 @@
             </div>
         
         </form>
-        <!-- Car listings -->
+      
         <div class="cars-list">
-            @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => random.Next()))
+            @foreach (var carWithImages in Model.CarWithImages)
             {
                 <div class="car-item"
                      data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")"
@@ -164,7 +171,7 @@
         </div>
     </div>
 
-    <!-- Date picker modal -->
+  
     <div id="calendarModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -174,7 +181,7 @@
         </div>
     </div>
 
-    <!-- Hidden form for date submission -->
+   
     <form asp-controller="Car" asp-action="FilterDates" method="post" id="dateForm">
         <input type="hidden" id="startDateInput" name="StartDate" asp-for="StartDate">
         <input type="hidden" id="endDateInput" name="EndDate" asp-for="EndDate">
@@ -182,63 +189,7 @@
 
    
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const modal = document.getElementById("calendarModal");
-          const openBtn = document.getElementById("openCalendar");
-          const closeBtn = document.querySelector(".close");
-          const confirmBtn = document.getElementById("confirmDates");
+    <script src="~/js/calendar.js"></script>
 
-          const startDateInput = document.getElementById("startDateInput");
-          const endDateInput = document.getElementById("endDateInput");
-          const form = document.getElementById("dateForm");
-
-
-          var startDate = '@(Model.StartDate?.ToString("yyyy-MM-dd") ?? "")';
-          var endDate = '@(Model.EndDate?.ToString("yyyy-MM-dd") ?? "")';
-
-          const datePicker = flatpickr("#datePicker", {
-              mode: "range",
-              dateFormat: "Y-m-d",
-              minDate: "today",
-              maxDate: new Date().fp_incr(210),
-              inline: true,
-              numberOfMonths:3,
-              defaultDate: startDate && endDate ? [startDate, endDate] : []
-          });
-
-
-          openBtn.addEventListener("click", function () {
-              modal.style.display = "flex";
-          });
-
-
-          closeBtn.addEventListener("click", function () {
-              modal.style.display = "none";
-          });
-
-          window.addEventListener("click", function (event) {
-              if (event.target === modal) {
-                  modal.style.display = "none";
-              }
-          });
-           confirmBtn.addEventListener("click", function () {
-          let selectedDates = datePicker.selectedDates;
-          if (selectedDates.length === 2) {
-              // Use 'en-CA' locale to get YYYY-MM-DD format in local time
-              let start = selectedDates[0].toLocaleDateString('en-CA');
-              let end = selectedDates[1].toLocaleDateString('en-CA');
-                   startDateInput.value = start;
-                endDateInput.value = end;
-
-                modal.style.display = "none";
-                form.submit();
-            } else {
-                alert("Please select both start and end dates.");
-            }
-        });
-        });
     
-    </script>
-    <script src="~/js/categorySelection.js"></script>
 </body>

@@ -37,15 +37,11 @@
             modal.style.display = "none";
         }
     });
-
-
     confirmBtn.addEventListener("click", function () {
         let selectedDates = datePicker.selectedDates;
         if (selectedDates.length === 2) {
-            // Use 'en-CA' locale to get YYYY-MM-DD format in local time
             let start = selectedDates[0].toLocaleDateString('en-CA');
             let end = selectedDates[1].toLocaleDateString('en-CA');
-
             startDateInput.value = start;
             endDateInput.value = end;
 

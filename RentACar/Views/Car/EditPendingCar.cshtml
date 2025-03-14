@@ -29,7 +29,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="row">
-            <!-- Basic Information -->
+           
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Brand" class="control-label"></label>
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- Technical Specifications -->
+           
             <div class="row mt-3">
                 <legend>Technical Specifications</legend>
                 <div class="col-md-4">
@@ -100,7 +100,7 @@
             </div>
         </div>
 
-        <!-- Pricing Section -->
+        
         <div class="row mt-3">
             <legend>Price</legend>
             <div class="col-md-4">
@@ -164,7 +164,7 @@
 		<div class="form-group mt-4">
 			<label asp-for="Images" class="control-label">Uploaded Images</label>
 
-			<!-- Контейнер за подреждане на снимките -->
+		
 			<div id="imagePreviewContainer" class="d-flex flex-wrap mt-2 border p-2" style="min-height: 100px;">
 				@if (Model.Images != null && Model.Images.Any())
 				{
@@ -177,10 +177,10 @@
 				}
 			</div>
 
-			<!-- Скрито поле за изпращане на новия ред на снимките -->
+		
 			<input type="hidden" id="imageOrder" name="imageOrder">
 
-			<!-- Бутон за запазване -->
+			
 			<button type="button" id="saveOrderButton" class="btn btn-primary mt-3">Save Order</button>
 		</div>
 
@@ -237,7 +237,7 @@
 			});
 		});
 	});
-</script>       <!-- Image Upload -->
+</script>      
       
 
 

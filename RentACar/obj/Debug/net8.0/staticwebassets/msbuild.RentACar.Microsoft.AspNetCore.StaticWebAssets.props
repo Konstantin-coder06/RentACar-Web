@@ -84,8 +84,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vcwnq29svt</Fingerprint>
-      <Integrity>jzVqtAA9QecaeTTS3x4yIuS1JcvpzkmYUxw4435mXcU=</Integrity>
+      <Fingerprint>sl8ht5nrdr</Fingerprint>
+      <Integrity>0OYc61TTaM9fGgNYf5kbgMmEVCOfSKhJ0cBzGAg1pdY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\carIndex.css'))</OriginalItemSpec>
@@ -138,8 +138,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>84yt77qi1m</Fingerprint>
-      <Integrity>CKsbRGUtUcW3VYYjPtQj5Xw/dKXkNv+FmANBd/GyBws=</Integrity>
+      <Fingerprint>sgaqglr6c7</Fingerprint>
+      <Integrity>hJR/wuB18sK/OkhOnufphZfFiONXZS3gi44nQP9PApY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\filter.css'))</OriginalItemSpec>
@@ -318,29 +318,11 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rlozkkglue</Fingerprint>
-      <Integrity>sfR+ob3uKH/BYzdIwc6EhGtSvoX9zl5OGbKAzkC/Y7o=</Integrity>
+      <Fingerprint>x79f5zz5nv</Fingerprint>
+      <Integrity>kyJHjRXIwbyzo1S2KlQw7RiJVuVz3PssNborTW4YFs0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\calendar.js'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\categorySelection.js'))">
-      <SourceType>Package</SourceType>
-      <SourceId>RentACar</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/RentACar</BasePath>
-      <RelativePath>js/categorySelection.js</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>u1vzf7n6j5</Fingerprint>
-      <Integrity>Dp2EdlNfw+vQzZZY1OfbmWT+gx/agFS76nVc5frcZ+A=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\categorySelection.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customerRotation.js'))">
       <SourceType>Package</SourceType>

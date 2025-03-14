@@ -1,29 +1,52 @@
 ﻿@model CarWithFilters
+<title>FAST DRIVE - Find Your Perfect Car</title>
+<link rel="stylesheet" href="~/css/homeindex.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/filter.css" asp-append-version="true" />
-<form method="post" asp-action="Filters" asp-controller="Car" class="luxury-filter">
-    <div class="filter-container">
-        <h2 class="filter-title">Филтрирай Луксозните Автомобили</h2>
-        <label class="filter-label">Цена на ден</label>
-        <div class="price-inputs">
-            <input type="number" name="MinPrice" placeholder="От цена" class="filter-input" />
-            <input type="number" name="MaxPrice" placeholder="До цена" class="filter-input" />
-        </div>
+@{
+    Layout = null;
+}
+<div class="container">
+    <form method="post" asp-action="Filters" asp-controller="Car" class="luxury-filter">
+        <div class="filter-container">
+            <h2 class="filter-title">Find Your Perfect Car</h2>
 
-        <h4>Клас на колата:</h4>
-        @foreach (var carClass in Model.Classes)
-        {
-            <div class="form-check">
-                <input type="checkbox" name="SelectedClassIds" value="@carClass.Id"
-                       class="form-check-input"
-                @(Model.SelectedClassIds.Contains(carClass.Id) ? "checked" : "") />
-                <label class="form-check-label">@carClass.Name</label>
+            <label class="filter-label">Daily Price Range</label>
+            <div class="price-inputs">
+                <input type="number" name="MinPrice" placeholder="From BGN" class="filter-input" />
+                <input type="number" name="MaxPrice" placeholder="To BGN" class="filter-input" />
             </div>
-        }
-        <div class="button-group">
-            <button type="submit" class="luxury-button">Филтрирай</button>
-            <a asp-controller="Car" asp-action="Index" class="luxury-button">Cancel</a>
-        </div>
-    </div>
-</form>
 
+            <h4>Car Class</h4>
+            @foreach (var carClass in Model.Classes)
+            {
+                <div class="form-check">
+                    <input type="checkbox" name="SelectedClassIds" value="@carClass.Id"
+                           class="form-check-input"
+                           id="class-@carClass.Id"
+                    @(Model.SelectedClassIds.Contains(carClass.Id) ? "checked" : "") />
+                    <label class="form-check-label" for="class-@carClass.Id">@carClass.Name</label>
+                </div>
+            }
+
+            <h4>Car Brands</h4>
+            <div class="brands-container">
+                @foreach (var brand in Model.CarBrands.OrderBy(x => x))
+                {
+                    <div class="form-check">
+                        <input type="checkbox" name="SelectedBrands" value="@brand"
+                               class="form-check-input"
+                               id="brand-@brand"
+                        @(Model.SelectedBrands.Contains(brand) ? "checked" : "") />
+                        <label class="form-check-label" for="brand-@brand">@brand</label>
+                    </div>
+                }
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="luxury-button">Apply Filters</button>
+                <a asp-controller="Car" asp-action="Index" class="luxury-button">Reset</a>
+            </div>
+        </div>
+    </form>
+</div>
 

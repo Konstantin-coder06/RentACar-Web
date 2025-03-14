@@ -126,26 +126,7 @@ namespace RentACar.Controllers
             }
 
             return RedirectToAction("Index");
-           /* int categoryId=classOfCarService.FindOne(x=>x.Name== category).Id;
-            var filterByCategoryCars = carService.FindAll(x => x.ClassOfCarId == categoryId && !x.Pending);
-            var carsWithImages = filterByCategoryCars.Select(car => new CarWithImages
-            {
-                Car = car,
-                Images = imageService.GetImagesByCarId(car.Id).ToList()
-            }).ToList();
-            var startDayStr = HttpContext.Session.GetString("StartDate");
-            var endDayStr = HttpContext.Session.GetString("EndDate");
-
-            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
-            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
-            var viewModel = new CarImagesWithDatesViewModel
-            {
-                CarWithImages = carsWithImages,
-                StartDate = startDay,
-                EndDate = endDay,
-            };
-
-            return View("Index",viewModel);*/
+           
         }
         [HttpPost]
         [Route("Car/Search")]
@@ -155,8 +136,13 @@ namespace RentACar.Controllers
 
             if (!string.IsNullOrEmpty(searchBar))
             {
-                queries = queries.Where(x => x.Brand.Contains(searchBar, StringComparison.OrdinalIgnoreCase) ||
-                                             x.Model.Contains(searchBar, StringComparison.OrdinalIgnoreCase));
+               
+                var searchTerms = searchBar.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+              
+                queries = queries.Where(x => searchTerms.All(term =>
+                    x.Brand.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                    x.Model.Contains(term, StringComparison.OrdinalIgnoreCase)));
             }
 
           
@@ -166,19 +152,18 @@ namespace RentACar.Controllers
             DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
             DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
 
-         
             List<Reservation> overlappingReservations = new List<Reservation>();
             if (startDay.HasValue && endDay.HasValue)
             {
                 overlappingReservations = reservationService.FindAll(x => x.EndDate >= startDay &&
-                                                                          x.StartDate <= endDay).ToList();
+                                                                        x.StartDate <= endDay).ToList();
             }
 
-           
             var cars = queries.AsEnumerable().Where(x => (overlappingReservations.Count == 0 ||
-                                                          !overlappingReservations.Any(r => r.CarId == x.Id)) &&
-                                                          x.Pending == false).ToList();
+                                                        !overlappingReservations.Any(r => r.CarId == x.Id)) &&
+                                                        x.Pending == false).ToList();
 
+        
             var carsWithImages = cars.Select(car => new CarWithImages
             {
                 Car = car,
@@ -193,7 +178,69 @@ namespace RentACar.Controllers
             };
 
             return View("Index", viewModel);
-        
+
+        }
+        [HttpPost]
+        public IActionResult Sort(string sortOrder)
+        {
+            var sortedCars = new List<Car>();
+            var startDayStr = HttpContext.Session.GetString("StartDate");
+            var endDayStr = HttpContext.Session.GetString("EndDate");
+
+            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
+            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
+
+            List<int> reservedCarIds = new List<int>();
+            if (startDay.HasValue && endDay.HasValue)
+            {
+                reservedCarIds = reservationService.GetAll()
+                    .Where(r => r.StartDate < endDay.Value && r.EndDate > startDay.Value)
+                    .Select(r => r.CarId)
+                    .Distinct()
+                    .ToList();
+            }
+            var cars=new List<Car>();
+            cars = carService.GetAll()
+                  .Where(car => !reservedCarIds.Contains(car.Id) && !car.Pending)
+                  .ToList();
+            switch (sortOrder)
+            {
+                case "name_asc":
+                    sortedCars = cars.OrderBy(c => c.Brand).ToList();
+                    break;
+                case "name_desc":
+                    sortedCars = cars.OrderByDescending(c => c.Brand).ToList();
+                    break;
+                case "year_asc":
+                    sortedCars = cars.OrderBy(c => c.Year).ToList();
+                    break;
+                case "year_desc":
+                    sortedCars = cars.OrderByDescending(c => c.Year).ToList();
+                    break;
+                case "default":
+                    sortedCars = cars;
+                    break;
+                case "price_asc":
+                    sortedCars= cars.OrderBy(c=>c.PricePerDay).ToList();
+                    break;
+                case "price_desc":
+                    sortedCars = cars.OrderByDescending(c => c.PricePerDay).ToList();
+                    break;
+            }
+            var carsWithImages = sortedCars.Select(car => new CarWithImages
+            {
+                Car = car,
+                Images = imageService.GetImagesByCarId(car.Id).ToList()
+            }).ToList();
+
+            var viewModel = new CarImagesWithDatesViewModel
+            {
+                CarWithImages = carsWithImages,
+                StartDate = startDay,
+                EndDate = endDay,
+                
+            };
+            return View("Index", viewModel);
         }
         [HttpPost]
         public IActionResult FilterDates(CarImagesWithDatesViewModel carImagesView)
@@ -246,6 +293,7 @@ namespace RentACar.Controllers
             var model = new CarWithFilters
             {
                 Classes = classOfCarService.GetAll().ToList(),
+                CarBrands=carService.GetAll().Select(x=>x.Brand).Distinct().ToList(),
             };
             return View(model);
         }
@@ -270,6 +318,12 @@ namespace RentACar.Controllers
                 
                 queries = queries.Where(x => carWithFilters.SelectedClassIds.Contains(x.ClassOfCarId));
             }
+            if (carWithFilters.SelectedBrands != null && carWithFilters.SelectedBrands.Any())
+            {
+                queries= queries.Where(x=>carWithFilters.SelectedBrands.Contains(x.Brand) &&!x.Pending);
+
+            }
+
 
             var cars = queries.ToList();
             var carsWithImages = cars.Select(car => new CarWithImages
