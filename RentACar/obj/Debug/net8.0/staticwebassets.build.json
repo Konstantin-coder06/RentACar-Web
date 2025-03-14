@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ey3T+tuRnken0ykbFCva8JGUmzxwxQW0krODoULHWOI=",
+  "Hash": "N6yVTodYly0DhZyzOPVhxVGjiKl1YyoXHJcLawQ7qnY=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "sl8ht5nrdr",
-      "Integrity": "0OYc61TTaM9fGgNYf5kbgMmEVCOfSKhJ0cBzGAg1pdY=",
+      "Fingerprint": "le5qczekqt",
+      "Integrity": "3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\carIndex.css"
@@ -1480,8 +1480,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "sgaqglr6c7",
-      "Integrity": "hJR/wuB18sK/OkhOnufphZfFiONXZS3gi44nQP9PApY=",
+      "Fingerprint": "vygj4w4uad",
+      "Integrity": "p6CedoqFXHsxabLr3Q4SkifjAg6wbzEskSGRl+75UsY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\filter.css"
@@ -1501,8 +1501,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "gudcwvdz30",
-      "Integrity": "GF2QCy4X/eRkazj+TfXnbQ8ypQzCLErpE0TD3xZ8IWU=",
+      "Fingerprint": "86h9n0c3n5",
+      "Integrity": "0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\homeindex.css"
@@ -3318,7 +3318,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10979"
+          "Value": "11084"
         },
         {
           "Name": "Content-Type",
@@ -3326,11 +3326,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0OYc61TTaM9fGgNYf5kbgMmEVCOfSKhJ0cBzGAg1pdY=\""
+          "Value": "\"3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 09:43:01 GMT"
+          "Value": "Fri, 14 Mar 2025 10:15:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3340,12 +3340,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0OYc61TTaM9fGgNYf5kbgMmEVCOfSKhJ0cBzGAg1pdY="
+          "Value": "sha256-3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc="
         }
       ]
     },
     {
-      "Route": "css/carIndex.sl8ht5nrdr.css",
+      "Route": "css/carIndex.le5qczekqt.css",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\carIndex.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3355,7 +3355,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10979"
+          "Value": "11084"
         },
         {
           "Name": "Content-Type",
@@ -3363,11 +3363,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0OYc61TTaM9fGgNYf5kbgMmEVCOfSKhJ0cBzGAg1pdY=\""
+          "Value": "\"3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 09:43:01 GMT"
+          "Value": "Fri, 14 Mar 2025 10:15:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3377,7 +3377,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sl8ht5nrdr"
+          "Value": "le5qczekqt"
         },
         {
           "Name": "label",
@@ -3385,7 +3385,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0OYc61TTaM9fGgNYf5kbgMmEVCOfSKhJ0cBzGAg1pdY="
+          "Value": "sha256-3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc="
         }
       ]
     },
@@ -3564,7 +3564,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3490"
+          "Value": "4823"
         },
         {
           "Name": "Content-Type",
@@ -3572,11 +3572,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hJR/wuB18sK/OkhOnufphZfFiONXZS3gi44nQP9PApY=\""
+          "Value": "\"p6CedoqFXHsxabLr3Q4SkifjAg6wbzEskSGRl+75UsY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 09:54:46 GMT"
+          "Value": "Fri, 14 Mar 2025 10:50:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3586,12 +3586,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-hJR/wuB18sK/OkhOnufphZfFiONXZS3gi44nQP9PApY="
+          "Value": "sha256-p6CedoqFXHsxabLr3Q4SkifjAg6wbzEskSGRl+75UsY="
         }
       ]
     },
     {
-      "Route": "css/filter.sgaqglr6c7.css",
+      "Route": "css/filter.vygj4w4uad.css",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\filter.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3601,7 +3601,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3490"
+          "Value": "4823"
         },
         {
           "Name": "Content-Type",
@@ -3609,11 +3609,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hJR/wuB18sK/OkhOnufphZfFiONXZS3gi44nQP9PApY=\""
+          "Value": "\"p6CedoqFXHsxabLr3Q4SkifjAg6wbzEskSGRl+75UsY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 09:54:46 GMT"
+          "Value": "Fri, 14 Mar 2025 10:50:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3623,7 +3623,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "sgaqglr6c7"
+          "Value": "vygj4w4uad"
         },
         {
           "Name": "label",
@@ -3631,7 +3631,52 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-hJR/wuB18sK/OkhOnufphZfFiONXZS3gi44nQP9PApY="
+          "Value": "sha256-p6CedoqFXHsxabLr3Q4SkifjAg6wbzEskSGRl+75UsY="
+        }
+      ]
+    },
+    {
+      "Route": "css/homeindex.86h9n0c3n5.css",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\homeindex.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9614"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Mar 2025 10:10:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "86h9n0c3n5"
+        },
+        {
+          "Name": "label",
+          "Value": "css/homeindex.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o="
         }
       ]
     },
@@ -3646,7 +3691,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8964"
+          "Value": "9614"
         },
         {
           "Name": "Content-Type",
@@ -3654,11 +3699,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GF2QCy4X/eRkazj+TfXnbQ8ypQzCLErpE0TD3xZ8IWU=\""
+          "Value": "\"0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Mar 2025 09:02:40 GMT"
+          "Value": "Fri, 14 Mar 2025 10:10:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3668,52 +3713,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-GF2QCy4X/eRkazj+TfXnbQ8ypQzCLErpE0TD3xZ8IWU="
-        }
-      ]
-    },
-    {
-      "Route": "css/homeindex.gudcwvdz30.css",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\homeindex.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "8964"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"GF2QCy4X/eRkazj+TfXnbQ8ypQzCLErpE0TD3xZ8IWU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 13 Mar 2025 09:02:40 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "gudcwvdz30"
-        },
-        {
-          "Name": "label",
-          "Value": "css/homeindex.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-GF2QCy4X/eRkazj+TfXnbQ8ypQzCLErpE0TD3xZ8IWU="
+          "Value": "sha256-0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o="
         }
       ]
     },

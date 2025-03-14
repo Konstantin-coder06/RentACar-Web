@@ -149,7 +149,6 @@ h4 {
         transform: translateY(-2px);
         box-shadow: 0 5px 10px rgba(247, 108, 108, 0.3);
     }
-
 /* Custom scrollbar for checkboxes sections when they get too many */
 .filter-container {
     max-height: 80vh;
@@ -171,3 +170,41 @@ h4 {
         background-color: #f76c6c;
         border-radius: 10px;
     }
+
+/* Background styling */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+    background-attachment: fixed;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path d="M36,10c0,1.1-0.9,2-2,2H26c-1.1,0-2-0.9-2-2V2c0-1.1,0.9-2,2-2h8c1.1,0,2,0.9,2,2V10z M10,26c-1.1,0-2-0.9-2-2v-8c0-1.1,0.9-2,2-2h8c1.1,0,2,0.9,2,2v8c0,1.1-0.9,2-2,2H10z M2,44c-1.1,0-2-0.9-2-2v-8c0-1.1,0.9-2,2-2h8c1.1,0,2,0.9,2,2v8c0,1.1-0.9,2-2,2H2z M26,52c-1.1,0-2-0.9-2-2v-8c0-1.1,0.9-2,2-2h8c1.1,0,2,0.9,2,2v8c0,1.1-0.9,2-2,2H26z M42,60c-1.1,0-2-0.9-2-2v-8c0-1.1,0.9-2,2-2h8c1.1,0,2,0.9,2,2v8c0,1.1-0.9,2-2,2H42z M52,26c-1.1,0-2-0.9-2-2v-8c0-1.1,0.9-2,2-2h8c1.1,0,2,0.9,2,2v8c0,1.1-0.9,2-2,2H52z" fill="%23f76c6c" opacity="0.05"/></svg>');
+        z-index: -1;
+    }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .luxury-filter {
+        margin: 15px auto;
+        padding: 20px;
+    }
+}

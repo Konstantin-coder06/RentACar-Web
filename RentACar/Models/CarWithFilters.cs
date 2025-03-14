@@ -1,4 +1,6 @@
-﻿namespace RentACar.Models
+﻿using System.Linq.Expressions;
+
+namespace RentACar.Models
 {
     public class CarWithFilters
     {
@@ -9,6 +11,10 @@
         public List<int> SelectedClassIds { get; set; } = new List<int>();
         public List<string> CarBrands { get; set; } = new List<string>();
         public List<string> SelectedBrands { get;set; } = new List<string>();
+        public List<string>Colors { get; set; }= new List<string>();
+        public List<string> SelectedColors { get;set; } = new List<string>();
+        public List<string> DriveTrains { get; set; }=new List<string>();
+        public List<string>SelectedDriveTrains { get; set; }=new List<string>();
 
     }
 }

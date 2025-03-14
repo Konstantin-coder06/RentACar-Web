@@ -22,7 +22,7 @@
                 <div class="form-check">
                     <input type="checkbox" name="SelectedClassIds" value="@carClass.Id"
                            class="form-check-input"
-                           id="class-@carClass.Id"
+                           
                     @(Model.SelectedClassIds.Contains(carClass.Id) ? "checked" : "") />
                     <label class="form-check-label" for="class-@carClass.Id">@carClass.Name</label>
                 </div>
@@ -35,13 +35,38 @@
                     <div class="form-check">
                         <input type="checkbox" name="SelectedBrands" value="@brand"
                                class="form-check-input"
-                               id="brand-@brand"
+                              
                         @(Model.SelectedBrands.Contains(brand) ? "checked" : "") />
                         <label class="form-check-label" for="brand-@brand">@brand</label>
                     </div>
                 }
             </div>
-
+            <h4>Colors:</h4>
+            <div class="brands-container">
+                @foreach (var colors in Model.Colors.OrderBy(x => x))
+                {
+                    <div class="form-check">
+                        <input type="checkbox" name="SelectedColors" value="@colors"
+                               class="form-check-input"
+                               
+                        @(Model.SelectedColors.Contains(colors) ? "checked" : "") />
+                        <label class="form-check-label" for="brand-@colors">@colors</label>
+                    </div>
+                }
+            </div>
+            <h4>DriveTrain:</h4>
+            <div class="brands-container">
+                @foreach (var driveTrain in Model.DriveTrains.OrderBy(x => x))
+                {
+                    <div class="form-check">
+                        <input type="checkbox" name="SelectedDriveTrains" value="@driveTrain"
+                               class="form-check-input"
+                               
+                        @(Model.SelectedDriveTrains.Contains(driveTrain) ? "checked" : "") />
+                        <label class="form-check-label" for="brand-@driveTrain">@driveTrain</label>
+                    </div>
+                }
+            </div>
             <div class="button-group">
                 <button type="submit" class="luxury-button">Apply Filters</button>
                 <a asp-controller="Car" asp-action="Index" class="luxury-button">Reset</a>

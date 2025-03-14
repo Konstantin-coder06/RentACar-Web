@@ -535,3 +535,9 @@ header {
 .dropdown-toggle:checked + label {
     background-color: #e0e0e0;
 }
+.text-success{
+    color:forestgreen !important;
+}
+.text-danger{
+    color:firebrick !important;
+}

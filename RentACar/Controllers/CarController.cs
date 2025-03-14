@@ -294,6 +294,8 @@ namespace RentACar.Controllers
             {
                 Classes = classOfCarService.GetAll().ToList(),
                 CarBrands=carService.GetAll().Select(x=>x.Brand).Distinct().ToList(),
+                Colors=carService.GetAll().Select(x=>x.Color).Distinct().ToList(),
+                DriveTrains=carService.GetAll().Select(x=>x.DriveTrain).Distinct().ToList(),
             };
             return View(model);
         }
@@ -321,6 +323,16 @@ namespace RentACar.Controllers
             if (carWithFilters.SelectedBrands != null && carWithFilters.SelectedBrands.Any())
             {
                 queries= queries.Where(x=>carWithFilters.SelectedBrands.Contains(x.Brand) &&!x.Pending);
+
+            }
+            if (carWithFilters.SelectedColors != null && carWithFilters.SelectedColors.Any())
+            {
+                queries = queries.Where(x => carWithFilters.SelectedColors.Contains(x.Color) && !x.Pending);
+
+            }
+            if (carWithFilters.SelectedDriveTrains != null && carWithFilters.SelectedDriveTrains.Any())
+            {
+                queries = queries.Where(x => carWithFilters.SelectedDriveTrains.Contains(x.DriveTrain) && !x.Pending);
 
             }
 
