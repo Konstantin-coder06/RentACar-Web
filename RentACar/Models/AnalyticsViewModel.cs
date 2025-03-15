@@ -1,4 +1,6 @@
-﻿namespace RentACar.Models
+﻿using NuGet.Protocol;
+
+namespace RentACar.Models
 {
     public class AnalyticsViewModel
     {
@@ -14,6 +16,17 @@
         public double AvgReservationDuration {  get; set; }
         public int CountAllReservations {  get; set; }
         public List<TopCarsViewModel> Top10Cars {  get; set; }
+        public int ReportCount {  get; set; }
+        public int PendingsCount { get; set; }
+        public double Difference24 {  get; set; }
+        public double DifferenceWeek { get;set; }
+        public double DifferenceMonth { get;set; }
+        public double DifferenceReservation24 {  get; set; }
+        public double DifferenceReservationWeek { get; set; }
+        public double DifferenceReservationMonth {  get; set; }
+        public int TotalReservationPreviousDay {  get; set; }
+        public int TotalReservationPreviousWeek { get;set; }
+        public int TotalReservationPreviousMonth { get; set;}
 
     }
 }

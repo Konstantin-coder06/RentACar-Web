@@ -720,3 +720,11 @@ MEDIA QUERY PHONE
         margin-bottom: 40px;
     }
 }
+.container.no-sidebar {
+    grid-template-columns: 14rem auto;
+}
+
+  
+    .container.no-sidebar main {
+        width: 100%;
+    }

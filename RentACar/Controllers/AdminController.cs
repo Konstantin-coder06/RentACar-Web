@@ -331,6 +331,8 @@ namespace RentACar.Controllers
             double totalWeekBeforeWeek = 0;
             var top10 = new List<TopCarsViewModel>();
             var reservations = new List<Reservation>();
+           
+            var reportCount = reportService.GetAll().Count();
             double avg = 0;
             if (User.IsInRole("Admin"))
             {
@@ -494,11 +496,13 @@ namespace RentACar.Controllers
                     return BadRequest("Ei spongeBOb ne si kompaniq");
                 }
             }
-           
 
-      
 
-           
+
+            var difference24 = totalFor24Hours - total24before24hours;
+            var differenceWeek = totalWeek - totalWeekBeforeWeek;
+            var differenceMonth=totalMonth - totalMonthBeforeMonth;
+            var countPending = carService.FindAll(x => x.Pending == true).Count();
             AnalyticsViewModel analyticsViewModel = new AnalyticsViewModel()
             {
                 TotalLast24Hours = totalFor24Hours,
@@ -513,7 +517,19 @@ namespace RentACar.Controllers
                 AvgReservationDuration = avg,
                 CountAllReservations = reservations.Count(),
                 Top10Cars = top10,
+                PendingsCount = countPending,
+                ReportCount = reportCount,
+                Difference24 = difference24,
+                DifferenceMonth = differenceMonth,
+                DifferenceWeek = differenceWeek,
+                DifferenceReservation24 = resCarsForLast24Hours.Count() - resCarsForLast24After24Hours.Count(),
+                DifferenceReservationWeek = resCarsForLastWeek.Count() - resCarsForLastWeekBeforeWeek.Count(),
+                DifferenceReservationMonth = resCarsForLastMonth.Count() - resCarsForLastMonthBeforeMonth.Count(),
+                TotalReservationPreviousDay = resCarsForLast24After24Hours.Count(),
+                TotalReservationPreviousWeek = resCarsForLastWeekBeforeWeek.Count(),
+                TotalReservationPreviousMonth =resCarsForLastMonthBeforeMonth.Count(),
             };
+
             return View(analyticsViewModel);
         }
         [Authorize(Roles = "Company,Admin")]

@@ -2,6 +2,7 @@ wwwroot\css\aboutUS.css
 wwwroot\css\addcar.css
 wwwroot\css\adminIndex.css
 wwwroot\css\allReports.css
+wwwroot\css\analytics.css
 wwwroot\css\carIndex.css
 wwwroot\css\contactUs.css
 wwwroot\css\editCar.css

@@ -1,0 +1,49 @@
+﻿.analytics-title {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--clr-dark);
+    border-bottom: 1px solid var(--clr-light);
+    padding-bottom: 0.5rem;
+}
+
+
+
+.insights-section {
+    margin-bottom: 2rem;
+}
+
+.current-period {
+    background: var(--clr-white);
+}
+
+.previous-period {
+    background: var(--clr-white);
+}
+
+    .previous-period span {
+        background: var(--clr-primary-variant) !important;
+    }
+
+.comparison-indicator {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--border-radius-1);
+    margin-left: 0.5rem;
+}
+
+.increase {
+    color: var(--clr-success);
+}
+
+.decrease {
+    color: var(--clr-danger);
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .insights-row {
+        grid-template-columns: 1fr;
+    }
+}

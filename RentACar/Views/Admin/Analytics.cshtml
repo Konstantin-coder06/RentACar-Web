@@ -8,227 +8,449 @@
 }
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
 <link rel="stylesheet" href="~/css/adminIndex.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/analytics.css" asp-append-version="true" />
 @model AnalyticsViewModel
 
-<main>
-    <h1>📊 Analytics</h1>
+<body>
+    <div class="container no-sidebar ">
+        <aside>
 
-    <div class="date">
-        <input type="date">
+            <div class="top">
+                <div class="logo">
+                    <h2><span class="danger">RentACar</span> </h2>
+                </div>
+
+            </div>
+            <!-- end top -->
+            <div class="sidebar">
+
+                <a asp-controller="Admin" asp-action="Index">
+                    <span class="material-symbols-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="#" id="cutomer_btn">
+                    <span class="material-symbols-sharp">person_outline </span>
+                    <h3>Custumers</h3>
+                </a>
+                <a asp-controller="Admin" asp-action="Analytics" class="active">
+                    <span class="material-symbols-sharp">insights </span>
+                    <h3>Analytics</h3>
+                </a>
+                <a asp-action="Pendings" asp-controller="Car">
+                    <span class="material-symbols-sharp">mail_outline </span>
+                    <h3>Pending Cars</h3>
+                    <span class="msg_count">@Model.PendingsCount</span>
+                </a>
+                <a asp-action="Index" asp-controller="Car">
+                    <span class="material-symbols-sharp">receipt_long </span>
+                    <h3>All Cars</h3>
+                </a>
+                <a asp-action="AllReports" asp-controller="Admin">
+                    <span class="material-symbols-sharp">report_gmailerrorred </span>
+                    <h3>Reports</h3>
+                    <span class="msg_count">@Model.ReportCount</span>
+                </a>
+                <a asp-action="Settings" asp-controller="Admin">
+                    <span class="material-symbols-sharp">settings </span>
+                    <h3>settings</h3>
+                </a>
+                <a asp-action="AddCar" asp-controller="Admin">
+                    <span class="material-symbols-sharp">add </span>
+                    <h3>Add Product</h3>
+                </a>
+                <a asp-action="Logout" asp-controller="Account">
+                    <span class="material-symbols-sharp">logout </span>
+                    <h3>logout</h3>
+                </a>
+
+
+
+            </div>
+
+        </aside>
+        <main>
+            <h1>📊 Analytics</h1>
+
+            <div class="date">
+                <input type="date">
+            </div>
+
+            <!-- Daily Analytics Section -->
+            <div class="insights-section">
+                <h2 class="analytics-title">Daily Performance</h2>
+
+                <!-- Current Day Analytics -->
+                <div class="insights">
+
+                    <div class="sales">
+                        <span class="material-symbols-sharp">trending_up</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Sales</h3>
+                                <h1>BGN @Model.TotalLast24Hours</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last 24 Hours</small>
+                    </div>
+
+                    <div class="sales previous-period">
+                        <span class="material-symbols-sharp">history</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Sales</h3>
+                                <h1>BGN @Model.TotalPriceForLast24HoursBefore24Hours</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Day Before Last</small>
+                    </div>
+                    <div class="sales">
+                        <span class="material-symbols-sharp">compare</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Difference</h3>
+                                <h1>BGN @Model.Difference24</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last Two Days</small>
+                    </div>
+                </div>
+                
+                <!-- Previous Day Analytics -->
+                <div class="insights">
+                    <div class="income">
+                        <span class="material-symbols-sharp">stacked_line_chart</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Reservations</h3>
+                                <h1>@Model.Count24Hours</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last 24 Hours</small>
+                    </div>
+                   
+
+                    <!-- Placeholder for previous day reservations - you may need to add this data to your model -->
+                    <div class="income previous-period">
+                        <span class="material-symbols-sharp">history</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Reservations</h3>
+                                <h1>@Model.TotalReservationPreviousDay</h1> <!-- Replace with actual data when available -->
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Day Before Last</small>
+                    </div>
+                    <div class="sales">
+                        <span class="material-symbols-sharp">compare</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Difference</h3>
+                                <h1>@Model.DifferenceReservation24</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last Two Days</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Weekly Analytics Section -->
+            <div class="insights-section">
+                <h2 class="analytics-title">Weekly Performance</h2>
+
+                <!-- Current Week Analytics -->
+                <div class="insights">
+
+                    <div class="expenses">
+                        <span class="material-symbols-sharp">local_mall</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Sales</h3>
+                                <h1>BGN @Model.TotalLastWeek</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last Week</small>
+                    </div>
+
+                    <div class="expenses previous-period">
+                        <span class="material-symbols-sharp">history</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Sales</h3>
+                                <h1>BGN @Model.TotalPriceForLastWeekBeforeWeek</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Week Before Last</small>
+                    </div>
+                    <div class="sales">
+                        <span class="material-symbols-sharp">compare</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Difference</h3>
+                                <h1>BGN @Model.DifferenceWeek</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last Two Weeks</small>
+                    </div>
+                </div>
+                <!-- Previous Week Analytics -->
+                <div class="insights">
+
+                        <div class="income">
+                            <span class="material-symbols-sharp">stacked_line_chart</span>
+                            <div class="middle">
+                                <div class="left">
+                                    <h3>Total Reservations</h3>
+                                    <h1>@Model.CountWeek</h1>
+                                </div>
+                                <div class="progress">
+                                    <svg>
+                                        <circle r="30" cy="40" cx="40"></circle>
+                                    </svg>
+                                    <div class="number"><p>80%</p></div>
+                                </div>
+                            </div>
+                            <small>Last Week</small>
+                        </div>
+                    
+                   
+
+                    <!-- Placeholder for previous week reservations - you may need to add this data to your model -->
+                    <div class="income previous-period">
+                        <span class="material-symbols-sharp">history</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Reservations</h3>
+                                <h1>@Model.TotalReservationPreviousWeek</h1> <!-- Replace with actual data when available -->
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Week Before Last</small>
+                    </div>
+                    <div class="sales">
+                        <span class="material-symbols-sharp">compare</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Difference</h3>
+                                <h1>@Model.DifferenceReservationWeek</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last Two Weeks</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Monthly Analytics Section -->
+            <div class="insights-section">
+                <h2 class="analytics-title">Monthly Performance</h2>
+
+                <!-- Current Month Analytics -->
+                <div class="insights">
+
+                    <div class="sales">
+                        <span class="material-symbols-sharp">trending_up</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Sales</h3>
+                                <h1>BGN @Model.TotalLastMonth</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last Month</small>
+                    </div>
+
+                    <div class="sales previous-period">
+                        <span class="material-symbols-sharp">history</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Sales</h3>
+                                <h1>BGN @Model.TotalPriceForLastMounthBeforeMonth</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Month Before Last</small>
+                    </div>
+                    <div class="sales">
+                        <span class="material-symbols-sharp">compare</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Difference</h3>
+                                <h1>@Model.DifferenceMonth</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last Two Weeks</small>
+                    </div>
+                </div>
+                <!-- Previous Month Analytics -->
+                <div class="insights">
+                        <div class="income">
+                            <span class="material-symbols-sharp">stacked_line_chart</span>
+                            <div class="middle">
+                                <div class="left">
+                                    <h3>Total Reservations</h3>
+                                    <h1>@Model.CountMonth</h1>
+                                </div>
+                                <div class="progress">
+                                    <svg>
+                                        <circle r="30" cy="40" cx="40"></circle>
+                                    </svg>
+                                    <div class="number"><p>80%</p></div>
+                                </div>
+                            </div>
+                            <small>Last Month</small>
+                        </div>
+                    
+
+                 
+
+                    <!-- Placeholder for previous month reservations - you may need to add this data to your model -->
+                    <div class="income previous-period">
+                        <span class="material-symbols-sharp">history</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Total Reservations</h3>
+                                <h1>@Model.TotalReservationPreviousMonth</h1> <!-- Replace with actual data when available -->
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Month Before Last</small>
+                    </div>
+                    <div class="sales">
+                        <span class="material-symbols-sharp">compare</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3>Difference</h3>
+                                <h1>@Model.DifferenceReservationMonth</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle r="30" cy="40" cx="40"></circle>
+                                </svg>
+                                <div class="number"><p>80%</p></div>
+                            </div>
+                        </div>
+                        <small>Last Two Weeks</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="recent_order">
+                <h2>🚗 Топ 10 най-продавани автомобили</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Brand</td>
+                            <td>Model</td>
+                            <td>Count</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Top10Cars)
+                        {
+                            <tr>
+                                <td>@x.Brand</td>
+                                <td>@x.Model</td>
+                                <td>@x.Count</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </main>
     </div>
+    <script>
 
-    <div class="insights">
+        document.querySelector("#cutomer_btn").addEventListener("click", function() {
 
-
-
-        <!-- start seling -->
-        <div class="sales">
-
-            <span class="material-symbols-sharp">trending_up</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Sales</h3>
-                    <h1>BGN @Model.TotalLast24Hours</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last 24 Hours</small>
-        </div>
-        <!-- end seling -->
-        <!-- start expenses -->
-
-        <div class="expenses">
-
-            <span class="material-symbols-sharp">local_mall</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Sales</h3>
-                    <h1>BGN @Model.TotalLastWeek</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last Week</small>
-
-        </div>
-        <!-- end seling -->
-
-        <div class="sales">
-
-            <span class="material-symbols-sharp">trending_up</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Sales</h3>
-                    <h1>BGN @Model.TotalLastMonth</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last Month</small>
-        </div>
-
-        <div class="sales">
-
-            <span class="material-symbols-sharp">trending_up</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Sales Before Last Day</h3>
-                    <h1>BGN @Model.TotalPriceForLast24HoursBefore24Hours</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last 24 Hours</small>
-        </div>
-        <!-- end seling -->
-        <!-- start expenses -->
-        <div class="expenses">
-
-            <span class="material-symbols-sharp">local_mall</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Sales Before Last Week</h3>
-                    <h1>BGN @Model.TotalPriceForLastWeekBeforeWeek</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last Week</small>
-        </div>
-        <!-- end seling -->
-        <div class="sales">
-
-            <span class="material-symbols-sharp">trending_up</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Sales Before Last Month</h3>
-                    <h1>BGN @Model.TotalPriceForLastMounthBeforeMonth</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last Month</small>
-        </div>
-        <!-- start seling -->
-        <div class="income">
-
-            <span class="material-symbols-sharp">stacked_line_chart</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Reservation</h3>
-                    <h1>@Model.Count24Hours</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last Day</small>
-        </div>
-        <div class="income">
-
-            <span class="material-symbols-sharp">stacked_line_chart</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Reservation</h3>
-                    <h1>@Model.CountWeek</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last Week</small>
-        </div>
-        <div class="income">
-
-            <span class="material-symbols-sharp">stacked_line_chart</span>
-            <div class="middle">
-
-                <div class="left">
-                    <h3>Total Reservation</h3>
-                    <h1>@Model.CountMonth</h1>
-                </div>
-                <div class="progress">
-                    <svg>
-                        <circle r="30" cy="40" cx="40"></circle>
-                    </svg>
-                    <div class="number"><p>80%</p></div>
-                </div>
-
-            </div>
-            <small>Last Mounth</small>
-        </div>
-        <!-- end seling -->
-
-    </div>
-
-
-    <div class="recent_order">
-        <h2>🚗 Топ 10 най-продавани автомобили</h2>
-        <table>
-            <thead>
-                <tr>
-                    <td>Brand</td>
-                    <td>Model</td>
-                    <td>Count</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var x in Model.Top10Cars)
-                {
-                    <tr>
-                        <td>@x.Brand</td>
-                        <td>@x.Model</td>
-                        <td>@x.Count</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</main>
+            window.location.href = '@Url.Action("Index", "Admin")?view=customers';
+        });
+    </script>
+</body>
