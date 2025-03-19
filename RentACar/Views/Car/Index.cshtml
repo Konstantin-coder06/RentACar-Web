@@ -119,7 +119,7 @@
         </form>
       
         <div class="cars-list">
-            @foreach (var carWithImages in Model.CarWithImages)
+            @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => random.Next()))
             {
                 <div class="car-item"
                      data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")"

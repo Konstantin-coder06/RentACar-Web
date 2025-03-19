@@ -12,7 +12,9 @@ namespace RentACar.Models
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
         public bool ShowResetPassword { get; set; }
-        public string NewPassword { get; set; }
-        public string ConfirmPassword { get; set; }
+        [DataType(DataType.Password)]
+        public string? NewPassword { get; set; }
+        [DataType(DataType.Password)]
+        public string? ConfirmPassword { get; set; }
     }
 }

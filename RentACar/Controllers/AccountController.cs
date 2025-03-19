@@ -28,11 +28,44 @@ namespace RentACar.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
         }
-        public IActionResult Login() => View(new LoginViewModel());
+        [HttpGet]
+        public IActionResult Login()
+        {
+            var model = new LoginViewModel
+            {
+                ShowResetPassword = false
+            };
+            return View(model);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model, string action)
         {
-           
+         
+            if (action == "showResetForm")
+            { 
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError("Email", "No account found with this email.");
+                    model.ShowResetPassword = false;
+                    return View(model);
+                }
+
+             
+                model.ShowResetPassword = true;
+                return View(model);
+            }
+
+          
+            if (action == "cancelReset")
+            {
+                model.ShowResetPassword = false;
+                model.NewPassword = null;
+                model.ConfirmPassword = null;
+                return View(model);
+            }
+
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
@@ -42,18 +75,29 @@ namespace RentACar.Controllers
                     return View(model);
                 }
 
-                // Ако потребителят е въвел нова парола (иска да я смени)
-                if (!string.IsNullOrEmpty(model.NewPassword))
+              
+                if (action == "resetPassword" && !string.IsNullOrEmpty(model.NewPassword))
                 {
+                    if (model.NewPassword != model.ConfirmPassword)
+                    {
+                        ModelState.AddModelError("ConfirmPassword", "Passwords do not match.");
+                        model.ShowResetPassword = true;
+                        return View(model);
+                    }
+
                     var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
                     var resetResult = await _userManager.ResetPasswordAsync(user, resetToken, model.NewPassword);
                     if (!resetResult.Succeeded)
                     {
-                        ModelState.AddModelError("", "Failed to reset password.");
+                        foreach (var error in resetResult.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                        model.ShowResetPassword = true;
                         return View(model);
                     }
 
-                    // Автоматично логваме потребителя с новата парола
+                  
                     if (await _userManager.IsInRoleAsync(user, "Company"))
                     {
                         var company = carCompanyService.GetByUserId(user.Id);
@@ -62,7 +106,7 @@ namespace RentACar.Controllers
                         await _signInManager.SignInAsync(user, isPersistent: model.RememberMe);
                         return RedirectToAction("Index", "Company");
                     }
-                    else if (await _userManager.IsInRoleAsync(user,"User"))
+                    else if (await _userManager.IsInRoleAsync(user, "User"))
                     {
                         var userCustomer = customerService.GetByUserId(user.Id);
                         if (userCustomer != null)
@@ -72,42 +116,41 @@ namespace RentACar.Controllers
                         await _signInManager.SignInAsync(user, isPersistent: model.RememberMe);
                         return RedirectToAction("Index", "Home");
                     }
-
-                  
                 }
 
-                // Ако няма смяна на паролата - стандартен логин
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-                if (result.Succeeded)
+              
+                if (action == "login")
                 {
-                    if (await _userManager.IsInRoleAsync(user, "Company"))
+                    var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                    if (result.Succeeded)
                     {
-                        var company = carCompanyService.GetByUserId(user.Id);
-                        if (company != null)
+                        if (await _userManager.IsInRoleAsync(user, "Company"))
                         {
-                            HttpContext.Session.SetInt32("CompanyId", company.Id);
-                            return RedirectToAction("Index", "Company");
+                            var company = carCompanyService.GetByUserId(user.Id);
+                            if (company != null)
+                            {
+                                HttpContext.Session.SetInt32("CompanyId", company.Id);
+                                return RedirectToAction("Index", "Company");
+                            }
                         }
-                    }
-                    if (await _userManager.IsInRoleAsync(user, "User"))
-                    {
-                        var userCustomer = customerService.GetByUserId(user.Id);
-                        if (userCustomer != null)
+                        if (await _userManager.IsInRoleAsync(user, "User"))
                         {
-                            HttpContext.Session.SetInt32("UserId", userCustomer.Id);
+                            var userCustomer = customerService.GetByUserId(user.Id);
+                            if (userCustomer != null)
+                            {
+                                HttpContext.Session.SetInt32("UserId", userCustomer.Id);
+                            }
                         }
+                        if (model.Email == "admin@admin.com" && model.Password == "AdminPassword123!")
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        return RedirectToAction("Index", "Home");
                     }
-                    if (model.Email == "admin@admin.com" && model.Password == "AdminPassword123!")
-                    {
-                        return RedirectToAction("Index", "Admin");
-                    }
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("", "Invalid login attempt.");
                 }
-
-                ModelState.AddModelError("", "Invalid login attempt.");
             }
             return View(model);
-        
         }
         public IActionResult Register() => View();
         public IActionResult RegisterCompany() => View();
