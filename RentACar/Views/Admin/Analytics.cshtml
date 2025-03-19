@@ -23,15 +23,25 @@
             </div>
             <!-- end top -->
             <div class="sidebar">
-
-                <a asp-controller="Admin" asp-action="Index">
-                    <span class="material-symbols-sharp">grid_view</span>
-                    <h3>Dashboard</h3>
-                </a>
-                <a href="#" id="cutomer_btn">
-                    <span class="material-symbols-sharp">person_outline </span>
-                    <h3>Custumers</h3>
-                </a>
+                @if(User.IsInRole("Admin")){
+                    <a asp-controller="Admin" asp-action="Index">
+                        <span class="material-symbols-sharp">grid_view</span>
+                        <h3>Dashboard</h3>
+                    </a>
+                }
+                @if(User.IsInRole("Company")){
+                    <a asp-controller="Company" asp-action="Index">
+                        <span class="material-symbols-sharp">grid_view</span>
+                        <h3>Dashboard</h3>
+                    </a>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <a href="#" id="cutomer_btn">
+                        <span class="material-symbols-sharp">person_outline </span>
+                        <h3>Custumers</h3>
+                    </a>
+                }
                 <a asp-controller="Admin" asp-action="Analytics" class="active">
                     <span class="material-symbols-sharp">insights </span>
                     <h3>Analytics</h3>
@@ -39,17 +49,32 @@
                 <a asp-action="Pendings" asp-controller="Car">
                     <span class="material-symbols-sharp">mail_outline </span>
                     <h3>Pending Cars</h3>
+                    @if(User.IsInRole("Admin")){
+
+                    
                     <span class="msg_count">@Model.PendingsCount</span>
+                    }else if(User.IsInRole("Company")){
+                        <span class="msg_count">@Model.CompanyCarPendingCount</span>
+                    }
                 </a>
                 <a asp-action="Index" asp-controller="Car">
                     <span class="material-symbols-sharp">receipt_long </span>
-                    <h3>All Cars</h3>
+                    @if(User.IsInRole("Admin")){
+                        <h3>All Cars</h3>
+                    }
+                   else if(User.IsInRole("Company")){
+                       <h3>All Your Cars</h3>
+                   }
                 </a>
-                <a asp-action="AllReports" asp-controller="Admin">
-                    <span class="material-symbols-sharp">report_gmailerrorred </span>
-                    <h3>Reports</h3>
-                    <span class="msg_count">@Model.ReportCount</span>
-                </a>
+                @if(User.IsInRole("Admin")){
+                   
+                    <a asp-action="AllReports" asp-controller="Admin">
+                        <span class="material-symbols-sharp">report_gmailerrorred </span>
+                        <h3>Reports</h3>
+                        <span class="msg_count">@Model.ReportCount</span>
+                    </a>
+                }
+
                 <a asp-action="Settings" asp-controller="Admin">
                     <span class="material-symbols-sharp">settings </span>
                     <h3>settings</h3>

@@ -228,6 +228,7 @@ h1 {
         font-weight: 600;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.2s;
+        text-decoration:none;
     }
 
         .monthly-rentals .btn-primary:hover {
@@ -479,4 +480,20 @@ footer {
 .logout-btn:hover .logout-icon {
     transform: rotate(-180deg);
 }
+.active {
+    color: #f76c6c !important;
+}
+.profile-link {
+    font-size: 0.85em;
+    color: #888;
+}
+.user-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 15px;
+}
 
+    .user-welcome div {
+        margin-bottom: 2px;
+    }

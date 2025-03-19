@@ -334,6 +334,7 @@ namespace RentACar.Controllers
            
             var reportCount = reportService.GetAll().Count();
             double avg = 0;
+            int pendingCount = 0;
             if (User.IsInRole("Admin"))
             {
 
@@ -405,6 +406,7 @@ namespace RentACar.Controllers
                     .OrderByDescending(x => x.Count)
                     .FirstOrDefault();
             }
+           
             else if (User.IsInRole("Company"))
             {
                 var companyId = HttpContext.Session.GetInt32("CompanyId");
@@ -412,6 +414,7 @@ namespace RentACar.Controllers
                 {
 
                     var cars=carService.FindAll(x=>x.CarCompanyId == companyId);
+                    pendingCount=cars.Count(x=>x.Pending);
                     foreach (var c in cars)
                     {
 
@@ -527,7 +530,8 @@ namespace RentACar.Controllers
                 DifferenceReservationMonth = resCarsForLastMonth.Count() - resCarsForLastMonthBeforeMonth.Count(),
                 TotalReservationPreviousDay = resCarsForLast24After24Hours.Count(),
                 TotalReservationPreviousWeek = resCarsForLastWeekBeforeWeek.Count(),
-                TotalReservationPreviousMonth =resCarsForLastMonthBeforeMonth.Count(),
+                TotalReservationPreviousMonth = resCarsForLastMonthBeforeMonth.Count(),
+                CompanyCarPendingCount = pendingCount
             };
 
             return View(analyticsViewModel);

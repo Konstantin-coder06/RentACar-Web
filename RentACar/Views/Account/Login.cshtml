@@ -11,29 +11,57 @@
     <div class="login-container">
         <form asp-action="Login" method="post" class="login-form">
             <h1>Log in</h1>
-            <div class="form-group">
-                <span><i class="ri-user-3-line"></i></span>
-                <div class="input-wrapper">
-                    <input type="text" asp-for="Email" placeholder=" " id="name" />
-                    <label asp-for="Email">Email</label>
+            @if (!Model.ShowResetPassword)
+            {
+                <!-- Login Form -->
+                <div class="form-group">
+                    <span><i class="ri-user-3-line"></i></span>
+                    <div class="input-wrapper">
+                        <input type="text" asp-for="Email" placeholder=" " id="name" />
+                        <label asp-for="Email">Email</label>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <span><i class="ri-lock-2-line"></i></span>
-                <div class="input-wrapper">
-                    <input id="password" type="password" asp-for="Password" placeholder=" " />
-                    <label asp-for="Password">Password</label>
+                <div class="form-group">
+                    <span><i class="ri-lock-2-line"></i></span>
+                    <div class="input-wrapper">
+                        <input id="password" type="password" asp-for="Password" placeholder=" " />
+                        <label asp-for="Password">Password</label>
+                    </div>
+                    <span id="toggle-password"><i class="ri-eye-off-line"></i></span>
                 </div>
-                <span id="toggle-password"><i class="ri-eye-off-line"></i></span>
-            </div>
-            <div class="form-actions">
-                <div class="remember-me">
-                    <input type="checkbox" asp-for="RememberMe" id="remember" />
-                    <label asp-for="RememberMe">Remember me</label>
+                <div class="form-actions">
+                    <button type="submit" name="action" value="login" class="submit-btn">Login</button>
+                    <button type="submit" name="action" value="forgotPassword" class="forgot-password">Forgot Password?</button>
                 </div>
-                <a href="#" class="forgot-password">Forgot Password?</a>
-            </div>
-            <button class="submit-btn">Login</button>
+            }
+            else
+            {
+                <!-- Password Reset Form -->
+                <div class="form-group">
+                    <span><i class="ri-user-3-line"></i></span>
+                    <div class="input-wrapper">
+                        <input type="text" asp-for="Email" placeholder=" " id="name" readonly />
+                        <label asp-for="Email">Email</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span><i class="ri-lock-2-line"></i></span>
+                    <div class="input-wrapper">
+                        <input type="password" asp-for="NewPassword" placeholder=" " id="newPassword" />
+                        <label asp-for="NewPassword">New Password</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span><i class="ri-lock-2-line"></i></span>
+                    <div class="input-wrapper">
+                        <input type="password" asp-for="ConfirmPassword" placeholder=" " id="confirmPassword" />
+                        <label asp-for="ConfirmPassword">Confirm Password</label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" name="action" value="resetPassword" class="submit-btn">Reset Password</button>
+                </div>
+            }
             <div class="register">
                 Don't have an account? <a asp-action="Register" asp-controller="Account">Register as user</a> or as <a asp-action="RegisterCompany">Company</a>
             </div>
@@ -43,30 +71,7 @@
     <script src="~/js/main.js" asp-append-version="true"></script>
 </body>
 
-<!--<div class="page-container">
-<div class="login-container">
-    <h2>
-        <svg class="car-icon" viewBox="0 0 24 24" fill="#e65a5a">
-            <path d="M18.9 5.5C18.8 5.2 18.5 5 18.1 5H5.9c-.4 0-.7.2-.8.5L3 11v8c0 .5.5 1 1 1h1c.5 0 1-.5 1-1v-1h12v1c0 .5.5 1 1 1h1c.5 0 1-.5 1-1v-8l-2.1-5.5zM6.5 12c-.8 0-1.5-.7-1.5-1.5S5.7 9 6.5 9s1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm11 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5zM5 10l1.5-4h11L19 10H5z"/>
-        </svg>
-        Car Rental Login
-    </h2>
-
-    <form asp-action="Login" method="post">
-        <div class="form-group">
-            <label asp-for="Email">Email</label>
-            <input asp-for="Email" placeholder="Enter your email" />
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Password">Password</label>
-            <input asp-for="Password" type="password" placeholder="Enter your password" />
-        </div>
-
-        <div class="remember-me">
-            <input asp-for="RememberMe" />
-            <label asp-for="RememberMe">Remember me</label>
-        </div>
+<!--
             <div class="forgot-password">
                 <input type="checkbox" id="forgotPasswordCheck" />
                 <label for="forgotPasswordCheck">Forgot Password?</label>
@@ -80,9 +85,7 @@
             </div>
 
             <button type="submit">Continue to Dashboard</button>
-        </form>
-    </div>
-</div>
+        
 
 <script>
     document.getElementById("forgotPasswordCheck").addEventListener("change", function () {

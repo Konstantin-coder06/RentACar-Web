@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "X9cWLw24iSVT8m4Fsj1u9HIa1BBGdWEXBdIM50onjM8=",
+  "Hash": "VvkzHgUelE9E+/tMYqspR9AkkIeCTYL+lS5U+F6XgBw=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -1522,8 +1522,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "86h9n0c3n5",
-      "Integrity": "0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o=",
+      "Fingerprint": "tzjlkg5kww",
+      "Integrity": "h4P9DtN2N4/3Q7H0Ceeax/gGQviQlTrMVxXfrXhyQoI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\homeindex.css"
@@ -3739,51 +3739,6 @@
       ]
     },
     {
-      "Route": "css/homeindex.86h9n0c3n5.css",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\homeindex.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "9614"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 10:10:28 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "86h9n0c3n5"
-        },
-        {
-          "Name": "label",
-          "Value": "css/homeindex.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o="
-        }
-      ]
-    },
-    {
       "Route": "css/homeindex.css",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\homeindex.css",
       "Selectors": [],
@@ -3794,7 +3749,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9614"
+          "Value": "9938"
         },
         {
           "Name": "Content-Type",
@@ -3802,11 +3757,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o=\""
+          "Value": "\"h4P9DtN2N4/3Q7H0Ceeax/gGQviQlTrMVxXfrXhyQoI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 10:10:28 GMT"
+          "Value": "Sun, 16 Mar 2025 11:48:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3816,7 +3771,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0ElBLaDYAVO9wfmQnM+SL+ZoU+hySZ+PHl2immTJt4o="
+          "Value": "sha256-h4P9DtN2N4/3Q7H0Ceeax/gGQviQlTrMVxXfrXhyQoI="
+        }
+      ]
+    },
+    {
+      "Route": "css/homeindex.tzjlkg5kww.css",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\homeindex.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9938"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h4P9DtN2N4/3Q7H0Ceeax/gGQviQlTrMVxXfrXhyQoI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Mar 2025 11:48:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tzjlkg5kww"
+        },
+        {
+          "Name": "label",
+          "Value": "css/homeindex.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-h4P9DtN2N4/3Q7H0Ceeax/gGQviQlTrMVxXfrXhyQoI="
         }
       ]
     },

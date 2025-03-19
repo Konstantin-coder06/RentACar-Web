@@ -27,6 +27,6 @@ namespace RentACar.Models
         public int TotalReservationPreviousDay {  get; set; }
         public int TotalReservationPreviousWeek { get;set; }
         public int TotalReservationPreviousMonth { get; set;}
-
+        public int CompanyCarPendingCount { get; set; }
     }
 }

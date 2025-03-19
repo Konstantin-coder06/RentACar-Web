@@ -22,5 +22,9 @@ namespace RentACar.Models
         public string Country {  get; set; }
         [Required]
         public string Address {  get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "The passwords do not match.")]
+        public string ConfirmPassword { get; set; }
     }
 }
