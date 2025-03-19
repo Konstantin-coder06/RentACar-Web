@@ -17,14 +17,15 @@ namespace RentACar.Core.Services
         {
             this.repository = repository;
         }
-        public void Add(Feature entity)
+        public async Task Add(Feature entity)
         {
-            repository.Add(entity);
+            await repository.Add(entity);
         }
 
-        public IEnumerable<Feature> AllWithInclude(params Expression<Func<Feature, object>>[] filters)
+        public async Task<IEnumerable<Feature>> AllWithInclude(params Expression<Func<Feature, object>>[] filters)
         {
-            return repository.AllWithInclude(filters).ToList();
+            var features=await repository.AllWithInclude(filters);
+            return features.ToList();
         }
 
         public void Delete(Feature entity)
@@ -32,26 +33,28 @@ namespace RentACar.Core.Services
             repository.Delete(entity);
         }
 
-        public IEnumerable<Feature> FindAll(Expression<Func<Feature, bool>> predicate)
+        public async Task<IEnumerable<Feature>> FindAll(Expression<Func<Feature, bool>> predicate)
         {
-            return repository.FindAll(predicate).ToList();
+            var features = await repository.FindAll(predicate);
+            return features.ToList();
         }
 
-        public Feature FindOne(Expression<Func<Feature, bool>> predicate)
+        public async Task<Feature> FindOne(Expression<Func<Feature, bool>> predicate)
         {
-            return repository.FindOne(predicate);
+            return await repository.FindOne(predicate);
         }
 
-        public IEnumerable<Feature> GetAll()
+        public async Task<IEnumerable<Feature>> GetAll()
         {
-            return repository.GetAll().ToList();
+            var features = await repository.GetAll();
+            return features.ToList();
         }
 
 
 
-        public void Save()
+        public async Task Save()
         {
-           repository.Save();
+          await repository.Save();
         }
 
         public void Update(Feature entity)

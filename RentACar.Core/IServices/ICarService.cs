@@ -10,7 +10,7 @@ namespace RentACar.Core.IServices
 {
     public interface ICarService:IRepository<Car>
     {
-        int CountOfCarsWithCategory(int categoryId);  
-        double MinPriceOfCarByCategory(int categoryId);
+       Task<int> CountOfCarsWithCategory(int categoryId);  
+       Task<double> MinPriceOfCarByCategory(int categoryId);
     }
 }

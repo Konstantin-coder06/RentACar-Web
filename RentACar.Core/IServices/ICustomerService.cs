@@ -10,7 +10,7 @@ namespace RentACar.Core.IServices
 {
     public interface ICustomerService:IRepository<Customer>
     {
-        Customer GetByUserId(string userId);
-        Customer GetByReport(int id);
+        Task<Customer> GetByUserId(string userId);
+        Task<Customer> GetByReport(int id);
     }
 }

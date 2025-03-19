@@ -17,14 +17,15 @@ namespace RentACar.Core.Services
         {
             this.repository = repository;
         }
-        public void Add(CType entity)
+        public async Task Add(CType entity)
         {
-            repository.Add(entity);
+           await repository.Add(entity);
         }
 
-        public IEnumerable<CType> AllWithInclude(params Expression<Func<CType, object>>[] filters)
+        public async Task<IEnumerable<CType>> AllWithInclude(params Expression<Func<CType, object>>[] filters)
         {
-           return repository.AllWithInclude(filters).ToList();
+            var cType = await repository.AllWithInclude(filters);
+            return cType.ToList();
         }
 
         public void Delete(CType entity)
@@ -32,24 +33,26 @@ namespace RentACar.Core.Services
             repository.Delete(entity);
         }
 
-        public IEnumerable<CType> FindAll(Expression<Func<CType, bool>> predicate)
+        public async Task<IEnumerable<CType>> FindAll(Expression<Func<CType, bool>> predicate)
         {
-            return repository.FindAll(predicate).ToList();
+            var cType = await repository.FindAll(predicate);
+            return cType.ToList();
         }
 
-        public CType FindOne(Expression<Func<CType, bool>> predicate)
+        public async Task<CType> FindOne(Expression<Func<CType, bool>> predicate)
         {
-            return repository.FindOne(predicate);
+            return await repository.FindOne(predicate);
         }
 
-        public IEnumerable<CType> GetAll()
+        public async Task<IEnumerable<CType>> GetAll()
         {
-           return repository.GetAll().ToList();
+            var cType = await repository.GetAll();
+            return cType.ToList();
         }
 
-        public void Save()
+        public async Task Save()
         {
-            repository.Save();  
+           await repository.Save();  
         }
 
         public void Update(CType entity)

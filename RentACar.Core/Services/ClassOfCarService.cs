@@ -17,14 +17,15 @@ namespace RentACar.Core.Services
         {
             this.repository = repository;
         }
-        public void Add(ClassOfCar entity)
+        public async Task Add(ClassOfCar entity)
         {
-            repository.Add(entity);
+           await repository.Add(entity);
         }
 
-        public IEnumerable<ClassOfCar> AllWithInclude(params Expression<Func<ClassOfCar, object>>[] filters)
+        public async Task<IEnumerable<ClassOfCar>> AllWithInclude(params Expression<Func<ClassOfCar, object>>[] filters)
         {
-            return repository.AllWithInclude(filters).ToList();
+            var classOfCars = await repository.AllWithInclude(filters);
+            return classOfCars.ToList();
         }
 
         public void Delete(ClassOfCar entity)
@@ -32,33 +33,38 @@ namespace RentACar.Core.Services
             repository.Delete(entity);
         }
 
-        public IEnumerable<ClassOfCar> FindAll(Expression<Func<ClassOfCar, bool>> predicate)
+        public async Task<IEnumerable<ClassOfCar>> FindAll(Expression<Func<ClassOfCar, bool>> predicate)
         {
-            return repository.FindAll(predicate).ToList();
+            var classOfCars = await repository.FindAll(predicate);
+            return classOfCars.ToList();
         }
 
-        public ClassOfCar FindOne(Expression<Func<ClassOfCar, bool>> predicate)
+        public async Task<ClassOfCar> FindOne(Expression<Func<ClassOfCar, bool>> predicate)
         {
-            return repository.FindOne(predicate);
+            return await repository.FindOne(predicate);
         }
 
-        public IEnumerable<ClassOfCar> GetAll()
+        public async Task<IEnumerable<ClassOfCar>> GetAll()
         {
-            return repository.GetAll().ToList();
+            var classOfCars = await repository.GetAll();
+            return classOfCars.ToList();
         }
 
-        public void Save()
+     
+        public async Task<List<ClassOfCar>> GetClassOptionsAsync()
         {
-           repository.Save();
-        }
-        public List<ClassOfCar> GetClassOptionsAsync()
-        {
-            return  repository.GetAll().ToList();
+            var classOfCars = await repository.GetAll();
+            return classOfCars.ToList();
         }
 
         public void Update(ClassOfCar entity)
         {
             repository.Update(entity);
+        }
+
+        public async Task Save()
+        {
+            await repository.Save();
         }
     }
 }

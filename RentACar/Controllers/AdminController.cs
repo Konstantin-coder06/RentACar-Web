@@ -42,7 +42,8 @@ namespace RentACar.Controllers
         [Authorize(Roles = "Admin" )]
         public async Task<IActionResult> Index()
         {
-            var reservationedCars=reservationService.GetAll().OrderByDescending(x=>x.CreateTime).ToList();
+            var reservationedCars = await reservationService.GetAll();
+            reservationedCars=  reservationedCars.OrderBy(x => x.CreateTime).ToList();
             var cars=new List<Car>();
             var customers=new List<CustomerReservationedCarViewModel>();
             var last24Hours = DateTime.Now.AddDays(-1);
@@ -51,20 +52,30 @@ namespace RentACar.Controllers
             var lastMonthAfterMonth = DateTime.Now.AddDays(-60);
             var lastWeek = DateTime.Now.AddDays(-7);
             var lastWeekBeforeWeek = DateTime.Now.AddDays(-14);
-            var customers1 = customerService.GetAll().ToList();
-            var resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
-            var resCarsForLast24After24Hours = reservationService.FindAll(x => x.CreateTime >= last24After24Hours && x.CreateTime <= last24Hours).ToList();
-            
-            var countPending=carService.FindAll(x=>x.Pending==true).Count();
-            
-            var resCarsForLastMounth=reservationService.GetAll().Where(x=>x.CreateTime >= lastMonth).ToList();
-            var resCarsForLastMonthBeforeMonth = reservationService.FindAll(x => x.CreateTime >= lastMonthAfterMonth && x.CreateTime <= lastMonth).ToList();
-            
-            var resCarsForLastWeek = reservationService.GetAll().Where(x => x.CreateTime >= lastWeek).ToList();
-            var resCarsForLastWeekBeforeWeek = reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek).ToList();
-            
-            var pending = carService.FindAll(x => x.Pending == true).ToList();
-            var reportCount=reportService.GetAll().Count();
+            var customers1 = await customerService.GetAll();
+            customers1=customers1.ToList();
+            var resCarsForLast24Hours =await reservationService.GetAll();
+            resCarsForLast24Hours=resCarsForLast24Hours.Where(x => x.CreateTime >= last24Hours).ToList();
+            var resCarsForLast24After24Hours = await reservationService.FindAll(x => x.CreateTime >= last24After24Hours && x.CreateTime <= last24Hours);
+            resCarsForLast24After24Hours=resCarsForLast24After24Hours.ToList();
+
+            var countPendin = await carService.FindAll(x => x.Pending == true);
+            int countPending=countPendin.Count();
+
+            var resCarsForLastMounth = await reservationService.GetAll();
+            resCarsForLastMounth=resCarsForLastMounth.Where(x=>x.CreateTime >= lastMonth).ToList();
+            var resCarsForLastMonthBeforeMonth =await reservationService.FindAll(x => x.CreateTime >= lastMonthAfterMonth && x.CreateTime <= lastMonth);
+            resCarsForLastMonthBeforeMonth=resCarsForLastMonthBeforeMonth.ToList();
+
+            var resCarsForLastWeek =await reservationService.GetAll();
+            resCarsForLastWeek=resCarsForLastWeek.Where(x => x.CreateTime >= lastWeek).ToList();
+            var resCarsForLastWeekBeforeWeek = await reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek);
+            resCarsForLastWeekBeforeWeek=resCarsForLastWeekBeforeWeek.ToList();
+
+            var pendin = await carService.FindAll(x => x.Pending == true);
+            var pending=pendin.ToList();
+            var reportC = await reportService.GetAll();
+            int reportCount=reportC.Count();
             double total24Hours = 0;
             double totalMounth = 0;
             double total24before24hours = 0;
@@ -77,12 +88,12 @@ namespace RentACar.Controllers
                
 
 
-                    var customer = customerService.FindOne(x => x.Id == carx.CustomerId);
-                var car = carService.FindOne(x => x.Id == carx.CarId);
-                    var image = imageService.ImageByCarId(car.Id);
+                    var customer = await customerService.FindOne(x => x.Id == carx.CustomerId);
+                var car = await carService.FindOne(x => x.Id == carx.CarId);
+                    var image =await imageService.ImageByCarId(car.Id);
                     if (customer != null)
                     {
-                        customers.Add(new CustomerReservationedCarViewModel
+                         customers.Add(new CustomerReservationedCarViewModel
                         {
                             Customer = customer,
                             Brand = car.Brand,
@@ -188,7 +199,7 @@ namespace RentACar.Controllers
                 {
                     customerEmailPhoneViewModel.PhoneNumber = "-";
                 }
-                allCustomersEmails.Add(customerEmailPhoneViewModel);
+                 allCustomersEmails.Add(customerEmailPhoneViewModel);
             }
             RecentReservation recentReservationViewModel = new RecentReservation()
             {
@@ -213,41 +224,44 @@ namespace RentACar.Controllers
             return View(recentReservationViewModel);
         }
         [Authorize(Roles = "Admin")]
-        public IActionResult AllReports()
+        public async Task<IActionResult> AllReports()
         {
-
-            var reports = reportService.GetAll().ToList();
-            var view = reports.Select(report => new ReportViewModel
+            var reports = await reportService.GetAll();
+            reports=reports.ToList();
+            var view = new List<ReportViewModel>();
+            foreach (var report in reports)
             {
-                Title = report.Title,
-                Description = report.Description,
-                Customer = customerService.FindOne(x => x.Id == report.CustomerId),
-                CreatedAt=report.CreateAt
-            }).ToList();
-            view = view.OrderBy(x => x.CreatedAt).ToList();
+                var customer = await customerService.FindOne(x => x.Id == report.CustomerId);
+                view.Add(new ReportViewModel
+                {
+                    Title = report.Title,
+                    Description = report.Description,
+                    Customer = customer,
+                    CreatedAt = report.CreateAt
+                });
+            }
             var reportsViewModel = new ListOfReportsViewModel()
             {
-                ReportViewModels =view,
+                ReportViewModels = view.OrderBy(x => x.CreatedAt).ToList(),
             };
-            if(reportsViewModel == null)
+            if (reportsViewModel == null)
             {
-
                 return BadRequest();
             }
             return View(reportsViewModel);
         }
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult Search(string searchbar)
+        public async Task<IActionResult> Search(string searchbar)
         {
-            var customers = customerService.FindAll(x => x.Name.ToUpper().Contains(searchbar.ToUpper()));
+            var customers = await customerService.FindAll(x => x.Name.ToUpper().Contains(searchbar.ToUpper()));
 
             var reportsViewModel = new ListOfReportsViewModel();
             var view = new List<ReportViewModel>();
 
             foreach (var x in customers)
             {
-                var reports = reportService.GetReportFromUser(x.Id);
+                var reports = await reportService.GetReportFromUser(x.Id);
 
                 view.AddRange(reports.Select(report => new ReportViewModel
                 {
@@ -262,7 +276,7 @@ namespace RentACar.Controllers
         }
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult Filters(ListOfReportsViewModel listOfReportsViewModel)
+        public async Task<IActionResult> Filters(ListOfReportsViewModel listOfReportsViewModel)
         {
             List<Report>reports;
             if (listOfReportsViewModel.StartTime >listOfReportsViewModel.EndTime)
@@ -274,38 +288,51 @@ namespace RentACar.Controllers
             {
                 if (listOfReportsViewModel.StartTime == null && listOfReportsViewModel.EndTime == null)
                 {
-                    reports = reportService.GetAll().ToList();
+                    reports = (await reportService.GetAll()).ToList();
+                    
                 }
                 else if (listOfReportsViewModel.StartTime != null && listOfReportsViewModel.EndTime == null)
                 {
-                    reports = reportService.FindAll(x => x.CreateAt >= listOfReportsViewModel.StartTime).ToList();
+                    var reportsss = await reportService.FindAll(x => x.CreateAt >= listOfReportsViewModel.StartTime);
+                    reports=reportsss.ToList();
                 }
                 else if (listOfReportsViewModel.StartTime == null && listOfReportsViewModel.EndTime != null)
                 {
-                    reports = reportService.FindAll(x => x.CreateAt <= listOfReportsViewModel.EndTime).ToList();
+                    var reportssss =await reportService.FindAll(x => x.CreateAt <= listOfReportsViewModel.EndTime);
+                    reports=reportssss.ToList();
                 }
                 else
                 {
-                    reports = reportService.FindAll(x => x.CreateAt >= listOfReportsViewModel.StartTime && x.CreateAt <= listOfReportsViewModel.EndTime).ToList();
+                    var reportss = await reportService.FindAll(x => x.CreateAt >= listOfReportsViewModel.StartTime && x.CreateAt <= listOfReportsViewModel.EndTime);
+                    reports=reportss.ToList();
                 }
 
-                var view = reports.Select(report => new ReportViewModel
+                var view = new List<ReportViewModel>();
+
+              
+                foreach (var report in reports)
                 {
-                    Title = report.Title,
-                    Description = report.Description,
-                    Customer = customerService.FindOne(x => x.Id == report.CustomerId),
-                    CreatedAt = report.CreateAt
-                }).ToList();
-                view = view.OrderBy(x => x.CreatedAt).ToList();
-                var reportsViewModel = new ListOfReportsViewModel()
+                    var customer = await customerService.FindOne(x => x.Id == report.CustomerId);
+
+                    view.Add(new ReportViewModel
+                    {
+                        Title = report.Title,
+                        Description = report.Description,
+                        Customer = customer,
+                        CreatedAt = report.CreateAt
+                    });
+                }
+
+               
+                var reportsViewModel = new ListOfReportsViewModel
                 {
-                    ReportViewModels = view,
+                    ReportViewModels = view.OrderBy(x => x.CreatedAt).ToList()
                 };
                 return View("AllReports", reportsViewModel);
             }
         }
         [Authorize(Roles ="Admin,Company")]
-        public IActionResult Analytics()
+        public async Task<IActionResult> Analytics()
         {//total revenue +, reservations per day/week/month +, average rental duration +,
          //popular cars +, peak rental reservation +, cancelation of reservations !!!-
             var last24Hours = DateTime.Now.AddDays(-1);
@@ -332,23 +359,23 @@ namespace RentACar.Controllers
             var top10 = new List<TopCarsViewModel>();
             var reservations = new List<Reservation>();
            
-            var reportCount = reportService.GetAll().Count();
+            var reportCount = (await reportService.GetAll()).Count();
             double avg = 0;
             int pendingCount = 0;
             if (User.IsInRole("Admin"))
             {
 
 
-                resCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours).ToList();
-                resCarsForLast24After24Hours = reservationService.FindAll(x => x.CreateTime >= last24HoursBefore24Hours && x.CreateTime <= last24Hours).ToList();
+                resCarsForLast24Hours = (await reservationService.GetAll()).Where(x => x.CreateTime >= last24Hours).ToList();
+                resCarsForLast24After24Hours = (await reservationService.FindAll(x => x.CreateTime >= last24HoursBefore24Hours && x.CreateTime <= last24Hours)).ToList();
 
-                resCarsForLastMonth = reservationService.GetAll().Where(x => x.CreateTime >= lastMonth).ToList();
-                resCarsForLastMonthBeforeMonth = reservationService.FindAll(x => x.CreateTime >= lastMonthBeforeMonth && x.CreateTime <= lastMonth).ToList();
+                resCarsForLastMonth = (await reservationService.GetAll()).Where(x => x.CreateTime >= lastMonth).ToList();
+                resCarsForLastMonthBeforeMonth = (await reservationService.FindAll(x => x.CreateTime >= lastMonthBeforeMonth && x.CreateTime <= lastMonth)).ToList();
 
 
-                resCarsForLastWeek = reservationService.FindAll(x => x.CreateTime >= lastWeek).ToList();
-                resCarsForLastWeekBeforeWeek = reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek).ToList();
-                reservations = reservationService.GetAll().ToList();
+                resCarsForLastWeek = (await reservationService.FindAll(x => x.CreateTime >= lastWeek)).ToList();
+                resCarsForLastWeekBeforeWeek = (await reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek)).ToList();
+                reservations = (await reservationService.GetAll()).ToList();
                 var avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
 
                 if (avgDuration.Any())
@@ -383,62 +410,77 @@ namespace RentACar.Controllers
                     countLastMonth++;
                 }
                 int days = 30;
-                var top10Cars = reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).Take(10).ToList();
                 var startDate = DateTime.Now.AddDays(-days);
-                var reservationsApi = reservationService.GetAll()
+
+                var reservationsApi = (await reservationService.GetAll())
                     .Where(x => x.CreateTime >= startDate)
                     .ToList();
-                top10 = top10Cars
-                   .Select(x =>
-                   {
-                       var car = carService.FindOne(cr => cr.Id == x.CarId);
-                       return new TopCarsViewModel
-                       {
-                           Brand = car.Brand,
-                           Model = car.Model,
-                           Count = x.Count
-                       };
-                   })
-                   .ToList();
+
+                var top10Cars = reservationsApi
+                    .GroupBy(x => x.CarId)
+                    .Select(g => new { CarId = g.Key, Count = g.Count() })
+                    .OrderByDescending(x => x.Count)
+                    .Take(10)
+                    .ToList();
+
+                top10 = new List<TopCarsViewModel>();
+                foreach (var x in top10Cars)
+                {
+                    var car = await carService.FindOne(cr => cr.Id == x.CarId);
+                    top10.Add(new TopCarsViewModel
+                    {
+                        Brand = car.Brand,
+                        Model = car.Model,
+                        Count = x.Count
+                    });
+                }
+
                 var peakReservations = reservationsApi
                     .GroupBy(x => x.CreateTime.Date)
                     .Select(g => new { Date = g.Key, Count = g.Count() })
                     .OrderByDescending(x => x.Count)
                     .FirstOrDefault();
-            }
-           
-            else if (User.IsInRole("Company"))
-            {
-                var companyId = HttpContext.Session.GetInt32("CompanyId");
-                if (companyId.HasValue)
+
+                if (User.IsInRole("Company"))
                 {
-
-                    var cars=carService.FindAll(x=>x.CarCompanyId == companyId);
-                    pendingCount=cars.Count(x=>x.Pending);
-                    foreach (var c in cars)
+                    var companyId = HttpContext.Session.GetInt32("CompanyId");
+                    if (companyId.HasValue)
                     {
+                        var cars = await carService.FindAll(x => x.CarCompanyId == companyId);
+                        pendingCount = cars.Count(x => x.Pending);
 
-                        var last24= reservationService.GetAll().Where(x => x.CreateTime >= last24Hours &&x.CarId==c.Id).ToList();
-                        resCarsForLast24Hours.AddRange(last24);
-                        var lastLast24= reservationService.FindAll(x => x.CreateTime >= last24HoursBefore24Hours && x.CreateTime <= last24Hours && x.CarId == c.Id).ToList();
-                        resCarsForLast24After24Hours.AddRange(lastLast24);
+                        foreach (var c in cars)
+                        {
+                            var last24 = (await reservationService.GetAll())
+                                .Where(x => x.CreateTime >= last24Hours && x.CarId == c.Id)
+                                .ToList();
+                            resCarsForLast24Hours.AddRange(last24);
 
-                        var lastMonthCompany= reservationService.GetAll().Where(x => x.CreateTime >= lastMonth && x.CarId == c.Id).ToList();
-                        resCarsForLastMonth.AddRange(lastMonthCompany);
-                        var lastLastMonthCompany= reservationService.FindAll(x => x.CreateTime >= lastMonthBeforeMonth && x.CreateTime <= lastMonth && x.CarId == c.Id).ToList();
-                        resCarsForLastMonthBeforeMonth.AddRange(lastLastMonthCompany);
+                            var lastLast24 = (await reservationService.FindAll(x => x.CreateTime >= last24HoursBefore24Hours && x.CreateTime <= last24Hours && x.CarId == c.Id)).ToList();
+                            resCarsForLast24After24Hours.AddRange(lastLast24);
 
-                        var lastWeekCompany= reservationService.FindAll(x => x.CreateTime >= lastWeek && x.CarId == c.Id).ToList();
-                        resCarsForLastWeek.AddRange(lastWeekCompany);
-                        var lastLastWeekCompany= reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek && x.CarId == c.Id).ToList();
-                        resCarsForLastWeekBeforeWeek.AddRange(lastLastWeekCompany);
+                            var lastMonthCompany = (await reservationService.GetAll())
+                                .Where(x => x.CreateTime >= lastMonth && x.CarId == c.Id)
+                                .ToList();
+                            resCarsForLastMonth.AddRange(lastMonthCompany);
 
-                       var reservationsCar = reservationService.FindAll(x=>x.CarId==c.Id).ToList();
-                        reservations.AddRange(reservationsCar);
+                            var lastLastMonthCompany = (await reservationService.FindAll(x => x.CreateTime >= lastMonthBeforeMonth && x.CreateTime <= lastMonth && x.CarId == c.Id)).ToList();
+                            resCarsForLastMonthBeforeMonth.AddRange(lastLastMonthCompany);
+
+                            var lastWeekCompany = (await reservationService.FindAll(x => x.CreateTime >= lastWeek && x.CarId == c.Id)).ToList();
+                            resCarsForLastWeek.AddRange(lastWeekCompany);
+
+                            var lastLastWeekCompany = (await reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek && x.CarId == c.Id)).ToList();
+                            resCarsForLastWeekBeforeWeek.AddRange(lastLastWeekCompany);
+
+                            var reservationsCar = (await reservationService.FindAll(x => x.CarId == c.Id)).ToList();
+                            reservations.AddRange(reservationsCar);
+                        }
+
+                        avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
                     }
-                    
-                    var avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
-                    
+
+
                     if (avgDuration.Any())
                     {
                         avg = avgDuration.Average();
@@ -470,29 +512,40 @@ namespace RentACar.Controllers
                         totalMonth += x.TotalPrice;
                         countLastMonth++;
                     }
-                    int days = 30;
-                    var top10Cars = reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).Take(10).ToList();
-                    var startDate = DateTime.Now.AddDays(-days);
-                    var reservationsApi = reservationService.GetAll()
-                        .Where(x => x.CreateTime >= startDate)
+                    int days1 = 30;
+                    var startDate1 = DateTime.Now.AddDays(-days1);
+
+                    var reservationsApi1 = (await reservationService.GetAll())
+                        .Where(x => x.CreateTime >= startDate1)
                         .ToList();
-                    top10 = top10Cars
-                       .Select(x =>
-                       {
-                           var car = carService.FindOne(cr => cr.Id == x.CarId);
-                           return new TopCarsViewModel
-                           {
-                               Brand = car.Brand,
-                               Model = car.Model,
-                               Count = x.Count
-                           };
-                       })
-                       .ToList();
-                    var peakReservations = reservationsApi
+
+                   
+
+                    var top10Cars1 = reservationsApi1
+         .GroupBy(x => x.CarId)
+         .Select(g => new { CarId = g.Key, Count = g.Count() })
+         .OrderByDescending(x => x.Count)
+         .Take(10)
+         .ToList();
+
+                    top10 = new List<TopCarsViewModel>();
+
+                    foreach (var x in top10Cars1)
+                    {
+                        var car = await carService.FindOne(cr => cr.Id == x.CarId);
+                        top10.Add(new TopCarsViewModel
+                        {
+                            Brand = car.Brand,
+                            Model = car.Model,
+                            Count = x.Count
+                        });
+                    }
+
+                    var peakReservations1 = reservationsApi1
                         .GroupBy(x => x.CreateTime.Date)
                         .Select(g => new { Date = g.Key, Count = g.Count() })
                         .OrderByDescending(x => x.Count)
-                        .FirstOrDefault();
+                        .FirstOrDefault(); ;
                 }
                 else
                 {
@@ -505,7 +558,7 @@ namespace RentACar.Controllers
             var difference24 = totalFor24Hours - total24before24hours;
             var differenceWeek = totalWeek - totalWeekBeforeWeek;
             var differenceMonth=totalMonth - totalMonthBeforeMonth;
-            var countPending = carService.FindAll(x => x.Pending == true).Count();
+            var countPending = (await carService.FindAll(x => x.Pending == true)).Count();
             AnalyticsViewModel analyticsViewModel = new AnalyticsViewModel()
             {
                 TotalLast24Hours = totalFor24Hours,
@@ -537,19 +590,21 @@ namespace RentACar.Controllers
             return View(analyticsViewModel);
         }
         [Authorize(Roles = "Company,Admin")]
-        public IActionResult AddCar()
+        public async Task<IActionResult> AddCar()
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
             var admin = User.IsInRole("Admin");
+
             if (!companyId.HasValue && !admin)
             {
                 return RedirectToAction("AccessDenied", "Account");
             }
-
+            var classOptions = await classOfCarService.GetAll();
+            var companies = await carCompanyService.GetAll();       
             var viewModel = new AddingCarWithImagesViewModel
             {
-                ClassOptions = new SelectList(classOfCarService.GetAll().ToList(), "Id", "Name"),
-                Companies=new SelectList(carCompanyService.GetAll().ToList(),"Id","Name")
+                ClassOptions = new SelectList(classOptions, "Id", "Name"),
+                Companies = new SelectList(companies, "Id", "Name")
             };
             return View(viewModel);
         }
@@ -560,7 +615,8 @@ namespace RentACar.Controllers
         [Authorize(Roles = "Company,Admin")]
         public async Task<IActionResult> AddCar(AddingCarWithImagesViewModel viewModel)
         {
-            viewModel.ClassOptions = new SelectList(classOfCarService.GetAll().ToList(), "Id", "Name");
+            var classes=await classOfCarService.GetAll();
+            viewModel.ClassOptions = new SelectList(classes, "Id", "Name");
 
             if (!ModelState.IsValid)
             {
@@ -577,11 +633,11 @@ namespace RentACar.Controllers
             {
                 return BadRequest("Maika ti user");
             }
-                // Split the order string into an array.
+                
                 var orderIndexesStrings = viewModel.OrderOfImages.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             var orderIndexes = new List<int>();
 
-            // Parse each value and check that it is a valid integer.
+         
             foreach (var indexStr in orderIndexesStrings)
             {
                 if (!int.TryParse(indexStr, out int index))
@@ -592,14 +648,14 @@ namespace RentACar.Controllers
                 orderIndexes.Add(index);
             }
 
-            // Ensure the count of indexes matches the number of uploaded images.
+           
             if (orderIndexes.Count != viewModel.Images.Count)
             {
                 ModelState.AddModelError("", "The number of images does not match the provided order.");
                 return View(viewModel);
             }
 
-            // Reorder the images based on the provided indexes.
+           
             var orderedImages = new List<IFormFile>();
             foreach (var idx in orderIndexes)
             {
@@ -611,7 +667,7 @@ namespace RentACar.Controllers
                 orderedImages.Add(viewModel.Images[idx]);
             }
 
-            // Process each ordered image using the file service.
+           
             var savedImagePaths = new List<string>();
             foreach (var file in orderedImages)
             {
@@ -663,8 +719,8 @@ namespace RentACar.Controllers
                 {
                     car.CarCompanyId = companyId.Value;
                 }
-                carService.Add(car);
-                carService.Save();
+                await carService.Add(car);
+                await carService.Save();
 
                 for (int i = 0; i < savedImagePaths.Count; i++)
                 {
@@ -675,8 +731,8 @@ namespace RentACar.Controllers
                         Order = i 
                     };
 
-                     imageService.Add(carImage);
-                   imageService.Save();
+                    await imageService.Add(carImage);
+                    await imageService.Save();
                 }
 
 

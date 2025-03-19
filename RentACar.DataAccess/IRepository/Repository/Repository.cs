@@ -18,20 +18,20 @@ namespace RentACar.DataAccess.IRepository.Repository
             this.dbSet = dbContext.Set<T>();
         }
 
-        public void Add(T entity)
+        public async Task Add(T entity)
         {
-            dbSet.Add(entity);
+            await dbSet.AddAsync(entity);
            
         }
 
-        public IEnumerable<T> AllWithInclude(params Expression<Func<T, object>>[] filters)
+        public async Task<IEnumerable<T>> AllWithInclude(params Expression<Func<T, object>>[] filters)
         {
             IQueryable<T> queries = dbSet;
             foreach(var  x in filters) 
             {
                 queries=queries.Include(x);
             }
-            return queries.ToList();
+            return await queries.ToListAsync();
         }
 
         public void Delete(T entity)
@@ -40,29 +40,29 @@ namespace RentACar.DataAccess.IRepository.Repository
           
         }
 
-        public IEnumerable<T> FindAll(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> FindAll(Expression<Func<T, bool>> predicate)
         {
-            return dbSet.Where(predicate).ToList();
+            return await dbSet.Where(predicate).ToListAsync();
         }
 
-        public T FindOne(Expression<Func<T, bool>> predicate)
+        public async Task<T> FindOne(Expression<Func<T, bool>> predicate)
         {
-            return dbSet.FirstOrDefault(predicate);
+            return await dbSet.FirstOrDefaultAsync(predicate);
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            return dbSet.ToList();
+            return await dbSet.ToListAsync();
         }
 
-        public void Save()
+        public async Task Save()
         {
-           dbContext.SaveChanges();
+          await dbContext.SaveChangesAsync();
         }
 
         public void Update(T entity)
         {
-            dbContext.Update(entity); 
+           dbContext.Update(entity); 
     
         }
     }

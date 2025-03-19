@@ -16,22 +16,21 @@ namespace RentACar.Core.Services
     public class ImageService:IImageService
     {
         IRepository<Image> repository;
-        private readonly IWebHostEnvironment _webHostEnvironment;
         CloudinaryService cloudinaryService;
-        public ImageService(IRepository<Image> _repository,CloudinaryService cloudinaryService,  IWebHostEnvironment webHostEnvironment)
+        public ImageService(IRepository<Image> _repository,CloudinaryService cloudinaryService)
         {
             this.repository = _repository;
-            _webHostEnvironment = webHostEnvironment;
             this.cloudinaryService = cloudinaryService;
         }
-        public void Add(Image entity)
+        public async Task Add(Image entity)
         {
-            repository.Add(entity);
+           await  repository.Add(entity);
         }
 
-        public IEnumerable<Image> AllWithInclude(params Expression<Func<Image, object>>[] filters)
+        public async Task<IEnumerable<Image>> AllWithInclude(params Expression<Func<Image, object>>[] filters)
         {
-            return repository.AllWithInclude(filters).ToList();
+            var images = await repository.AllWithInclude(filters);
+            return images.ToList();
         }
 
         public void Delete(Image entity)
@@ -39,39 +38,38 @@ namespace RentACar.Core.Services
             repository.Delete(entity);
         }
 
-        public IEnumerable<Image> FindAll(Expression<Func<Image, bool>> predicate)
+        public async Task<IEnumerable<Image>> FindAll(Expression<Func<Image, bool>> predicate)
         {
-            return repository.FindAll(predicate).ToList();
+            var images=await repository.FindAll(predicate);
+            return images.ToList();
         }
 
-        public Image FindOne(Expression<Func<Image, bool>> predicate)
+        public async Task<Image> FindOne(Expression<Func<Image, bool>> predicate)
         {
-            return repository.FindOne(predicate);
+           return await repository.FindOne(predicate);
         }
 
-        public IEnumerable<Image> GetAll()
+        public async Task<IEnumerable<Image>> GetAll()
         {
-            return repository.GetAll().ToList();
+            var images=await repository.GetAll();
+            return images.ToList();
         }
 
-        public IEnumerable<Image> GetImagesByCarId(int carId)
+        public async Task<IEnumerable<Image>> GetImagesByCarId(int carId)
         {
-            return repository.FindAll(x => x.CarId == carId).OrderBy(x=>x.Order).ToList();
+            var images =await repository.FindAll(x => x.CarId == carId);
+            return images.OrderBy(x=>x.Order).ToList();
         }
 
         public async Task ProcessImages(List<IFormFile> images, int carId,string imageOrder)
         {
             if (images == null || !images.Any())
                 return;
-
             List<int> orderIndices = new List<int>();
             if (!string.IsNullOrEmpty(imageOrder))
             {
-                orderIndices = imageOrder.Split(',', StringSplitOptions.RemoveEmptyEntries)
-                                         .Select(int.Parse).ToList();
+                orderIndices = imageOrder.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
             }
-
-            // Validate orderIndices matches the number of images
             if (orderIndices.Count != images.Count || orderIndices.Any(i => i < 0 || i >= images.Count))
             {
                 orderIndices = Enumerable.Range(0, images.Count).ToList();
@@ -86,7 +84,7 @@ namespace RentACar.Core.Services
                     var imageUrl = await cloudinaryService.UploadImageAsync(file);
                     if (!string.IsNullOrEmpty(imageUrl))
                     {
-                        repository.Add(new Image
+                        await repository.Add(new Image
                         {
                             Url = imageUrl,
                             CarId = carId,
@@ -96,11 +94,11 @@ namespace RentACar.Core.Services
                     }
                 }
             }
-            repository.Save();
+            await repository.Save();
         }
-        public void Save()
+        public async Task Save()
         {
-          repository.Save();
+          await repository.Save();
         }
 
         public void Update(Image entity)
@@ -108,14 +106,14 @@ namespace RentACar.Core.Services
            repository.Update(entity);
         }
 
-        public Image FindByid(int id)
+        public async Task<Image> FindByid(int id)
         {
-            return repository.FindOne(x => x.Id == id);
+            return await repository.FindOne(x => x.Id == id);
         }
 
-        public Image ImageByCarId(int carid)
+        public async Task<Image> ImageByCarId(int carid)
         {
-            return repository.FindOne(x=>x.CarId == carid && x.Order==1);
+            return await repository.FindOne(x=>x.CarId == carid && x.Order==1);
         }
     }
 }

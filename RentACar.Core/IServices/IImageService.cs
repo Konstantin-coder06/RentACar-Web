@@ -14,8 +14,8 @@ namespace RentACar.Core.IServices
     public interface IImageService: DataAccess.IRepository.IRepository<Image>
     {
         Task ProcessImages(List<IFormFile> images, int carId,string imageOrder);
-        IEnumerable<Image> GetImagesByCarId(int carid);
-        Image FindByid(int id);
-        Image ImageByCarId(int carid);
+        Task<IEnumerable<Image>> GetImagesByCarId(int carid);
+        Task<Image> FindByid(int id);
+        Task<Image> ImageByCarId(int carid);
     }
 }

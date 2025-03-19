@@ -9,14 +9,14 @@ namespace RentACar.DataAccess.IRepository
 {
     public interface IRepository<T> where T : class
     {
-        void Add(T entity);
+        Task Add(T entity);
         void Update(T entity);
         void Delete(T entity);
-        IEnumerable<T> GetAll();
-        IEnumerable<T> FindAll(Expression<Func<T,bool>> predicate);
-        T FindOne(Expression<Func<T,bool>> predicate);
-        IEnumerable<T> AllWithInclude(params Expression<Func<T, object>>[] filters);
-        void Save();
+        Task<IEnumerable<T>> GetAll();
+        Task<IEnumerable<T>> FindAll(Expression<Func<T,bool>> predicate);
+        Task<T> FindOne(Expression<Func<T,bool>> predicate);
+        Task<IEnumerable<T>> AllWithInclude(params Expression<Func<T, object>>[] filters);
+        Task Save();
         
     }
 }

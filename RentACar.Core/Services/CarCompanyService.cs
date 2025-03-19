@@ -17,49 +17,52 @@ namespace RentACar.Core.Services
         {
             this.carCompanyRepository = carCompanyRepository;
         }
-        public void Add(CarCompany entity)
+        public async Task Add(CarCompany entity)
         {
-            carCompanyRepository.Add(entity);
+            await carCompanyRepository.Add(entity);
         }
 
-        public IEnumerable<CarCompany> AllWithInclude(params Expression<Func<CarCompany, object>>[] filters)
+        public async Task<IEnumerable<CarCompany>> AllWithInclude(params Expression<Func<CarCompany, object>>[] filters)
         {
-            throw new NotImplementedException();
+           var company=await carCompanyRepository.AllWithInclude(filters);
+            return company.ToList();
         }
 
         public void Delete(CarCompany entity)
         {
-            throw new NotImplementedException();
+            carCompanyRepository.Delete(entity);
         }
 
-        public IEnumerable<CarCompany> FindAll(Expression<Func<CarCompany, bool>> predicate)
+        public async Task<IEnumerable<CarCompany>> FindAll(Expression<Func<CarCompany, bool>> predicate)
         {
-            throw new NotImplementedException();
+           var company= await carCompanyRepository.FindAll(predicate);
+            return company.ToList();
         }
 
-        public CarCompany FindOne(Expression<Func<CarCompany, bool>> predicate)
+        public async Task<CarCompany> FindOne(Expression<Func<CarCompany, bool>> predicate)
         {
-            return carCompanyRepository.FindOne(predicate);
+            return await carCompanyRepository.FindOne(predicate);
         }
 
-        public IEnumerable<CarCompany> GetAll()
+        public async Task<IEnumerable<CarCompany>> GetAll()
         {
-            return carCompanyRepository.GetAll().ToList();
+            var company= await carCompanyRepository.GetAll();
+            return company.ToList();
         }
 
-        public CarCompany GetByUserId(string id)
+        public async Task<CarCompany> GetByUserId(string id)
         {
-           return carCompanyRepository.FindOne(x=>x.UserId== id);
+           return await carCompanyRepository.FindOne(x=>x.UserId== id);
         }
 
-        public void Save()
+        public async Task Save()
         {
-            carCompanyRepository.Save();
+           await carCompanyRepository.Save();
         }
 
         public void Update(CarCompany entity)
         {
-            throw new NotImplementedException();
+            carCompanyRepository.Update(entity);
         }
     }
 }

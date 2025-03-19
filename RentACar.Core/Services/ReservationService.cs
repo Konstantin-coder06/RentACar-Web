@@ -17,14 +17,15 @@ namespace RentACar.Core.Services
         {
             this.reservationsRepository = reservationsRepository;
         }
-        public void Add(Reservation entity)
+        public async Task Add(Reservation entity)
         {
-           reservationsRepository.Add(entity);
+          await reservationsRepository.Add(entity);
         }
 
-        public IEnumerable<Reservation> AllWithInclude(params Expression<Func<Reservation, object>>[] filters)
+        public async Task<IEnumerable<Reservation>> AllWithInclude(params Expression<Func<Reservation, object>>[] filters)
         {
-            return reservationsRepository.AllWithInclude(filters).ToList();
+            var reservations=await reservationsRepository.AllWithInclude(filters);
+            return reservations.ToList();
         }
 
         public void Delete(Reservation entity)
@@ -32,24 +33,26 @@ namespace RentACar.Core.Services
             reservationsRepository.Delete(entity);
         }
 
-        public IEnumerable<Reservation> FindAll(Expression<Func<Reservation, bool>> predicate)
+        public async Task<IEnumerable<Reservation>> FindAll(Expression<Func<Reservation, bool>> predicate)
         {
-            return reservationsRepository.FindAll(predicate).ToList();
+            var reservations=await reservationsRepository.FindAll(predicate);
+            return reservations.ToList();
         }
 
-        public Reservation FindOne(Expression<Func<Reservation, bool>> predicate)
+        public async Task<Reservation> FindOne(Expression<Func<Reservation, bool>> predicate)
         {
-            return reservationsRepository.FindOne(predicate);
+            return await reservationsRepository.FindOne(predicate);
         }
 
-        public IEnumerable<Reservation> GetAll()
+        public async Task<IEnumerable<Reservation>> GetAll()
         {
-            return reservationsRepository.GetAll().ToList();
+            var reservations=await reservationsRepository.GetAll();
+            return reservations.ToList();
         }
 
-        public void Save()
+        public async Task Save()
         {
-           reservationsRepository.Save();
+           await reservationsRepository.Save();
         }
 
         public void Update(Reservation entity)

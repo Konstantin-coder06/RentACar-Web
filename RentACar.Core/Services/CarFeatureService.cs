@@ -17,14 +17,15 @@ namespace RentACar.Core.Services
         {
             this.carFeatureRepository = carFeatureRepository;
         }
-        public void Add(CarFeature entity)
+        public async Task Add(CarFeature entity)
         {
-          carFeatureRepository.Add(entity);
+         await carFeatureRepository.Add(entity);
         }
 
-        public IEnumerable<CarFeature> AllWithInclude(params Expression<Func<CarFeature, object>>[] filters)
+        public async Task<IEnumerable<CarFeature>> AllWithInclude(params Expression<Func<CarFeature, object>>[] filters)
         {
-           return carFeatureRepository.AllWithInclude(filters);
+           var feature= await carFeatureRepository.AllWithInclude(filters);
+            return feature.ToList();
         }
 
         public void Delete(CarFeature entity)
@@ -32,30 +33,33 @@ namespace RentACar.Core.Services
            carFeatureRepository.Delete(entity);
         }
 
-        public IEnumerable<CarFeature> FindAll(Expression<Func<CarFeature, bool>> predicate)
+        public async Task<IEnumerable<CarFeature>> FindAll(Expression<Func<CarFeature, bool>> predicate)
         {
-            return carFeatureRepository.FindAll(predicate).ToList(); 
+            var feature= await carFeatureRepository.FindAll(predicate); 
+            return feature.ToList();
         }
 
-        public CarFeature FindOne(Expression<Func<CarFeature, bool>> predicate)
+        public async Task<CarFeature> FindOne(Expression<Func<CarFeature, bool>> predicate)
         {
-           return carFeatureRepository.FindOne(predicate);
+           return await carFeatureRepository.FindOne(predicate);
         }
 
-        public IEnumerable<CarFeature> GetAll()
+        public async Task<IEnumerable<CarFeature>> GetAll()
         {
-            return carFeatureRepository.GetAll();
+            var feature= await carFeatureRepository.GetAll();
+            return feature.ToList();
         }
 
-        public IEnumerable<int> GetByCarIDAllFeatures(int carID)
+        public async Task<IEnumerable<int>> GetByCarIDAllFeatures(int carID)
         {
-             
-            return carFeatureRepository.FindAll(x => x.CarId == carID).Select(x=>x.FeatureId).ToList();
+
+            var carFeatures = await carFeatureRepository.FindAll(x => x.CarId == carID);
+            return  carFeatures.Select(x => x.FeatureId).ToList();
         }
 
-        public void Save()
+        public async Task Save()
         {
-            carFeatureRepository.Save();
+            await carFeatureRepository.Save();
         }
 
         public void Update(CarFeature entity)

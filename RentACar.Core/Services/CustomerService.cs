@@ -18,14 +18,15 @@ namespace RentACar.Core.Services
         {
             this.repository = repository;
         }
-        public void Add(Customer entity)
+        public async Task Add(Customer entity)
         {
-            repository.Add(entity);
+           await repository.Add(entity);
         }
 
-        public IEnumerable<Customer> AllWithInclude(params Expression<Func<Customer, object>>[] filters)
+        public async Task<IEnumerable<Customer>> AllWithInclude(params Expression<Func<Customer, object>>[] filters)
         {
-            return repository.AllWithInclude(filters).ToList();
+            var customers= await repository.AllWithInclude(filters);
+            return customers.ToList();
         }
 
         public void Delete(Customer entity)
@@ -33,34 +34,36 @@ namespace RentACar.Core.Services
             repository.Delete(entity);
         }
 
-        public IEnumerable<Customer> FindAll(Expression<Func<Customer, bool>> predicate)
+        public async Task<IEnumerable<Customer>> FindAll(Expression<Func<Customer, bool>> predicate)
         {
-            return repository.FindAll(predicate).ToList();
+            var customers=await repository.FindAll(predicate);
+            return customers.ToList();
         }
 
-        public Customer FindOne(Expression<Func<Customer, bool>> predicate)
+        public async Task<Customer> FindOne(Expression<Func<Customer, bool>> predicate)
         {
-            return repository.FindOne(predicate);
+            return await repository.FindOne(predicate);
         }
 
-        public IEnumerable<Customer> GetAll()
+        public async Task<IEnumerable<Customer>> GetAll()
         {
-            return repository.GetAll().ToList();
+            var customers=await repository.GetAll();
+            return customers.ToList();
         }
 
-        public Customer GetByReport(int id)
+        public async Task<Customer> GetByReport(int id)
         {
-            return repository.FindOne(x=>x.Id == id);
+            return await repository.FindOne(x=>x.Id == id);
         }
 
-        public Customer GetByUserId(string userId)
+        public async Task<Customer> GetByUserId(string userId)
         {
-            return repository.FindOne(x=>x.UserId==userId);
+            return await repository.FindOne(x=>x.UserId==userId);
         }
 
-        public void Save()
+        public async Task Save()
         {
-           repository.Save();
+           await repository.Save();
         }
 
         public void Update(Customer entity)

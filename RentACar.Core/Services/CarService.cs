@@ -17,19 +17,21 @@ namespace RentACar.Core.Services
         {
             this.carRepository = _carRepository;
         }
-        public void Add(Car entity)
+        public async Task Add(Car entity)
         {
-            carRepository.Add(entity);
+           await carRepository.Add(entity);
         }
 
-        public IEnumerable<Car> AllWithInclude(params Expression<Func<Car, object>>[] filters)
+        public async Task<IEnumerable<Car>> AllWithInclude(params Expression<Func<Car, object>>[] filters)
         {
-            return carRepository.AllWithInclude(filters).ToList();
+            var cars= await carRepository.AllWithInclude(filters);
+            return cars.ToList();
         }
 
-        public int CountOfCarsWithCategory(int categoryId)
+        public async Task<int> CountOfCarsWithCategory(int categoryId)
         {
-            return carRepository.FindAll(x => x.ClassOfCarId == categoryId).Count();
+            var cars = await carRepository.FindAll(x => x.ClassOfCarId == categoryId);
+            return cars.Count();
         }
 
         public void Delete(Car entity)
@@ -37,30 +39,33 @@ namespace RentACar.Core.Services
            carRepository.Delete(entity);
         }
 
-        public IEnumerable<Car> FindAll(Expression<Func<Car, bool>> predicate)
+        public async Task<IEnumerable<Car>> FindAll(Expression<Func<Car, bool>> predicate)
         {
-            return carRepository.FindAll(predicate).ToList();
+            var cars=await carRepository.FindAll(predicate);
+            return cars.ToList();
         }
 
-        public Car FindOne(Expression<Func<Car, bool>> predicate)
+        public async Task<Car> FindOne(Expression<Func<Car, bool>> predicate)
         {
-           return carRepository.FindOne(predicate);
+           return await carRepository.FindOne(predicate);
         }
 
-        public IEnumerable<Car> GetAll()
+        public async Task<IEnumerable<Car>> GetAll()
         {
-           return carRepository.GetAll().ToList();
+            var cars = await carRepository.GetAll();
+            return cars.ToList();
         }
 
-        public double MinPriceOfCarByCategory(int categoryId)
+        public async Task<double> MinPriceOfCarByCategory(int categoryId)
         {
-            var cars=carRepository.FindAll(x=>x.ClassOfCarId==categoryId).ToList();
+            var cars = await carRepository.FindAll(x => x.ClassOfCarId == categoryId);
+            cars=cars.ToList();
             return cars.OrderBy(x => x.PricePerDay).Select(x => x.PricePerDay).First();
         }
 
-        public void Save()
+        public async Task Save()
         {
-           carRepository.Save();
+           await carRepository.Save();
         }
 
         public void Update(Car entity)

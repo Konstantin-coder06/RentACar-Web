@@ -17,14 +17,15 @@ namespace RentACar.Core.Services
         {
             this.reports = reports;
         }
-        public void Add(Report entity)
+        public async Task Add(Report entity)
         {
-           reports.Add(entity);
+          await reports.Add(entity);
         }
 
-        public IEnumerable<Report> AllWithInclude(params Expression<Func<Report, object>>[] filters)
+        public async Task<IEnumerable<Report>> AllWithInclude(params Expression<Func<Report, object>>[] filters)
         {
-            return reports.AllWithInclude(filters).ToList();
+            var report= await reports.AllWithInclude(filters);
+            return report.ToList();
         }
 
         public void Delete(Report entity)
@@ -32,29 +33,32 @@ namespace RentACar.Core.Services
             reports.Delete(entity);
         }
 
-        public IEnumerable<Report> FindAll(Expression<Func<Report, bool>> predicate)
+        public async Task<IEnumerable<Report>> FindAll(Expression<Func<Report, bool>> predicate)
         {
-            return reports.FindAll(predicate).ToList();
+            var report = await reports.FindAll(predicate);
+            return report.ToList();
         }
 
-        public Report FindOne(Expression<Func<Report, bool>> predicate)
+        public async Task<Report> FindOne(Expression<Func<Report, bool>> predicate)
         {
-            return reports.FindOne(predicate);
+            return await reports.FindOne(predicate);
         }
 
-        public IEnumerable<Report> GetAll()
+        public async Task<IEnumerable<Report>> GetAll()
         {
-            return reports.GetAll().ToList();
+            var report = await reports.GetAll();
+            return report.ToList();
         }
 
-        public IEnumerable<Report> GetReportFromUser(int customerId)
+        public async Task<IEnumerable<Report>> GetReportFromUser(int customerId)
         {
-           return reports.FindAll(x=>x.CustomerId == customerId).ToList();
+           var report= await reports.FindAll(x=>x.CustomerId == customerId);
+            return report.ToList();
         }
 
-        public void Save()
+        public async Task Save()
         {
-            reports.Save();
+           await reports.Save();
         }
 
         public void Update(Report entity)
