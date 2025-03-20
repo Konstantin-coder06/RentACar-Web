@@ -146,8 +146,8 @@ header {
     font-size: 14px;
 }
     .filter-button.active {
-        background-color: black;
-        color: white;
+        background-color: black !important;
+        color: white !important;
     }
     .filter-button:hover {
         background-color: #f0f0f0;
@@ -179,8 +179,8 @@ header {
 
         /* Add style for active filters */
         .filter-chip button.active {
-            background-color: #333;
-            color: white;
+            background-color: #333 !important;
+            color: white !important;
         }
 
 /* Make filter chips container more compact */
@@ -541,3 +541,45 @@ header {
 .text-danger{
     color:firebrick !important;
 }
+.clear-search-container {
+    margin: 12px 0;
+}
+
+.clear-search-button {
+    background-color: #f76c6c;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+    .clear-search-button:hover {
+        background-color: #e65a5a;
+        color: white;
+        text-decoration: none;
+    }
+.category-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .category-button.active {
+        background-color: black !important;
+        color: white !important;
+    }
+
+    .category-button:hover {
+        background-color: #f0f0f0;
+    }

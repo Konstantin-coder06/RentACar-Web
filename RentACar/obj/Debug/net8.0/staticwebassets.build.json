@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x7oycA+/qayCH5fgTwhzHyJjBHCLYt9ERUxBMYpUAiM=",
+  "Hash": "kzy8fUvBQ56yh3fODExnbx3J6iLd6y/Wy0L+RzeOlzg=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -1438,8 +1438,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "le5qczekqt",
-      "Integrity": "3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc=",
+      "Fingerprint": "6oh3pa5to7",
+      "Integrity": "ytJ1NRHyvuuOVCDjBGT2eiVNSWWDfmRGBBegMSm70Xs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\carIndex.css"
@@ -3411,6 +3411,51 @@
       ]
     },
     {
+      "Route": "css/carIndex.6oh3pa5to7.css",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\carIndex.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12063"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ytJ1NRHyvuuOVCDjBGT2eiVNSWWDfmRGBBegMSm70Xs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Mar 2025 08:31:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6oh3pa5to7"
+        },
+        {
+          "Name": "label",
+          "Value": "css/carIndex.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ytJ1NRHyvuuOVCDjBGT2eiVNSWWDfmRGBBegMSm70Xs="
+        }
+      ]
+    },
+    {
       "Route": "css/carIndex.css",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\carIndex.css",
       "Selectors": [],
@@ -3421,7 +3466,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11084"
+          "Value": "12063"
         },
         {
           "Name": "Content-Type",
@@ -3429,11 +3474,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc=\""
+          "Value": "\"ytJ1NRHyvuuOVCDjBGT2eiVNSWWDfmRGBBegMSm70Xs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 10:15:14 GMT"
+          "Value": "Thu, 20 Mar 2025 08:31:46 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3443,52 +3488,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc="
-        }
-      ]
-    },
-    {
-      "Route": "css/carIndex.le5qczekqt.css",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\carIndex.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "11084"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 14 Mar 2025 10:15:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "le5qczekqt"
-        },
-        {
-          "Name": "label",
-          "Value": "css/carIndex.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-3XUIOmWzEgodNhEP51reb1UBbcV8zduPEunyfrjGLoc="
+          "Value": "sha256-ytJ1NRHyvuuOVCDjBGT2eiVNSWWDfmRGBBegMSm70Xs="
         }
       ]
     },

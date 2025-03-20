@@ -67,12 +67,12 @@
                 </label>
                 <div class="dropdown-content">
                     <form asp-action="Sort" asp-controller="Car" method="post">
-                        <button type="submit" name="sortOrder" value="name_asc">Name (A-Z)</button>
-                        <button type="submit" name="sortOrder" value="name_desc">Name (Z-A)</button>
-                        <button type="submit" name="sortOrder" value="year_asc">Year (Oldest First)</button>
-                        <button type="submit" name="sortOrder" value="year_desc">Year (Newest First)</button>
-                        <button type="submit" name="sortOrder" value="price_asc">Price (Lowest First)</button>
-                        <button type="submit" name="sortOrder" value="price_desc">Price (Highest First)</button>
+                        <button type="submit" name="sortOrder" value="Name (A-Z)">Name (A-Z)</button>
+                        <button type="submit" name="sortOrder" value="Name (Z-A)">Name (Z-A)</button>
+                        <button type="submit" name="sortOrder" value="Year (Oldest First)">Year (Oldest First)</button>
+                        <button type="submit" name="sortOrder" value="Year (Newest First)">Year (Newest First)</button>
+                        <button type="submit" name="sortOrder" value="Price (Lowest First)">Price (Lowest First)</button>
+                        <button type="submit" name="sortOrder" value="Price (Highest First)">Price (Highest First)</button>
                         <button type="submit" name="sortOrder" value="default">Sort by default</button>
                     </form>
                 </div>
@@ -85,12 +85,12 @@
         <form asp-action="FilterByCategory" asp-controller="Car" method="post">
             <div class="filter-chips">
                 <div class="filter-chip">
-                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Economy") ? "active" : "")" name="categories" value="toggle_Economy">
+                    <button type="submit" class="category-button @(Model.SelectedCategories.Contains("Economy") ? "active" : "")" name="categories" value="toggle_Economy">
                         <i class="fas fa-car"></i> Economy
                     </button>
                 </div>
                 <div class="filter-chip">
-                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Standard") ? "active" : "")" name="categories" value="toggle_Standard">
+                    <button type="submit" class="category-button @(Model.SelectedCategories.Contains("Standard") ? "active" : "")" name="categories" value="toggle_Standard">
                         <i class="fas fa-car-side"></i> Standard
                     </button>
                 </div>
@@ -115,11 +115,29 @@
                     </button>
                 </div>
             </div>
-        
+            @if (!string.IsNullOrEmpty(Model.SearchTerm))
+            {
+                <div class="clear-search-container">
+                    <a asp-action="Index" asp-controller="Car" class="clear-search-button">
+                        <i class="fas fa-times"></i> @Model.SearchTerm
+                    </a>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(Model.SortTerm))
+            {
+                if(Model.SortTerm!="default")
+                {
+                <div class="clear-search-container">
+                    <a asp-action="Index" asp-controller="Car" class="clear-search-button">
+                        <i class="fas fa-times"></i> @Model.SortTerm
+                    </a>
+                </div>
+                }
+            }
         </form>
       
         <div class="cars-list">
-            @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => random.Next()))
+            @foreach (var carWithImages in Model.CarWithImages)
             {
                 <div class="car-item"
                      data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")"

@@ -23,11 +23,11 @@ namespace RentACar.Controllers
             this.imageService = imageService;
         }
         [Authorize(Roles ="Company")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
-            var company=carCompanyService.FindOne(x=>x.Id == companyId);
-            var cars=carService.FindAll(x=>x.CarCompanyId== companyId).ToList();
+            var company=await carCompanyService.FindOne(x=>x.Id == companyId);
+            var cars=(await carService.FindAll(x=>x.CarCompanyId== companyId)).ToList();
             var reservationedCars=new List<Reservation>();
             var reservatedCars = new List<Car>();
             var customers = new List<CustomerReservationedCarViewModel>();
@@ -46,19 +46,19 @@ namespace RentACar.Controllers
             var resCarsForLastWeekBeforeWeek = new List<Reservation>();
             foreach (var c in cars)
             {
-                var reservations = reservationService.GetAll().Where(x => x.CarId == c.Id).OrderByDescending(x => x.CreateTime).ToList();
+                var reservations = (await reservationService.FindAll(x => x.CarId == c.Id)).OrderByDescending(x => x.CreateTime).ToList();
                 if (reservations.Count > 0)
                 {
                     reservatedCars.Add(c);
                 }
-                var ttresCarsForLast24Hours = reservationService.GetAll().Where(x => x.CreateTime >= last24Hours && x.CarId == c.Id).ToList();
-                var ttresCarsForLast24After24Hours = reservationService.FindAll(x => x.CreateTime >= last24After24Hours && x.CreateTime <= last24Hours && x.CarId == c.Id).ToList();
+                var ttresCarsForLast24Hours = (await reservationService.FindAll(x => x.CreateTime >= last24Hours && x.CarId == c.Id)).ToList();
+                var ttresCarsForLast24After24Hours = (await reservationService.FindAll(x => x.CreateTime >= last24After24Hours && x.CreateTime <= last24Hours && x.CarId == c.Id)).ToList();
 
-                var ttresCarsForLastMounth = reservationService.GetAll().Where(x => x.CreateTime >= lastMonth && x.CarId == c.Id).ToList();
-                var ttresCarsForLastMonthBeforeMonth = reservationService.FindAll(x => x.CreateTime >= lastMonthAfterMonth && x.CreateTime <= lastMonth && x.CarId == c.Id).ToList();
+                var ttresCarsForLastMounth =(await reservationService.FindAll(x => x.CreateTime >= lastMonth && x.CarId == c.Id)).ToList();
+                var ttresCarsForLastMonthBeforeMonth = (await reservationService.FindAll(x => x.CreateTime >= lastMonthAfterMonth && x.CreateTime <= lastMonth && x.CarId == c.Id)).ToList();
 
-                var ttresCarsForLastWeek = reservationService.GetAll().Where(x => x.CreateTime >= lastWeek && x.CarId == c.Id).ToList();
-                var ttresCarsForLastWeekBeforeWeek = reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek && x.CarId == c.Id).ToList();
+                var ttresCarsForLastWeek = (await reservationService.FindAll(x => x.CreateTime >= lastWeek && x.CarId == c.Id)).ToList();
+                var ttresCarsForLastWeekBeforeWeek = (await reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek && x.CarId == c.Id)).ToList();
                 reservationedCars.AddRange(reservations);
                 resCarsForLast24Hours.AddRange(ttresCarsForLast24Hours);
                 resCarsForLast24After24Hours.AddRange(ttresCarsForLast24After24Hours);
@@ -70,8 +70,8 @@ namespace RentACar.Controllers
                 {
 
 
-                    var customer = customerService.FindOne(x => x.Id == reservation.CustomerId);
-                    var image=imageService.ImageByCarId(c.Id);
+                    var customer = await customerService.FindOne(x => x.Id == reservation.CustomerId);
+                    var image= await imageService.ImageByCarId(c.Id);
                     if (customer != null)
                     {
                         customers.Add(new CustomerReservationedCarViewModel
@@ -86,24 +86,27 @@ namespace RentACar.Controllers
             }
             var carsCount = reservationedCars.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).ToList();
 
-            var carsWithCount = carsCount
-             .Select(x =>
-             {
-                 var car = carService.FindOne(cr => cr.Id == x.CarId && cr.CarCompanyId==companyId);
-                 return new TopCarsViewModel
-                 {
-                     Brand = car.Brand,
-                     Model = car.Model,
-                     CarId = car.Id,
-                     Count = x.Count
-                 };
-             })
-             .ToList();
-            //var cars = new List<Car>();
-          
+            var carsWithCount = new List<TopCarsViewModel>();
+
+            foreach (var x in carsCount)
+            {
+                var car = await carService.FindOne(cr => cr.Id == x.CarId && cr.CarCompanyId == companyId);
+                if (car != null) 
+                {
+                    carsWithCount.Add(new TopCarsViewModel
+                    {
+                        Brand = car.Brand,
+                        Model = car.Model,
+                        CarId = car.Id,
+                        Count = x.Count
+                    });
+                }
+            }
           
 
-            var countPending = carService.FindAll(x => x.Pending == true && x.CarCompanyId==companyId).Count();
+
+
+            var countPending = (await carService.FindAll(x => x.Pending == true && x.CarCompanyId==companyId)).Count();
 
           
 

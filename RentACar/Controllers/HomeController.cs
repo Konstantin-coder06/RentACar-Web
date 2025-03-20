@@ -21,26 +21,26 @@ namespace RentACar.Controllers
             this.carService = carService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             StartEndDateWithCarsCountViewModel viewModel = new StartEndDateWithCarsCountViewModel()
             {
                 StartDay = DateTime.Now,
                 EndDay = DateTime.Now.AddDays(3),
-                StandardCount = carService.CountOfCarsWithCategory(6),
-                LuxuryCount = carService.CountOfCarsWithCategory(2),
-                EconomyCount=carService.CountOfCarsWithCategory(1),
-                BusinessCount=carService.CountOfCarsWithCategory(4),
-                ElectricCount=carService.CountOfCarsWithCategory(5),
-                SportCount=carService.CountOfCarsWithCategory(3),
+                StandardCount =await carService.CountOfCarsWithCategory(6),
+                LuxuryCount = await carService.CountOfCarsWithCategory(2),
+                EconomyCount=await carService.CountOfCarsWithCategory(1),
+                BusinessCount=await carService.CountOfCarsWithCategory(4),
+                ElectricCount=await carService.CountOfCarsWithCategory(5),
+                SportCount=await carService.CountOfCarsWithCategory(3),
 
 
-                MinPriceStandard=carService.MinPriceOfCarByCategory(6),
-                MinPriceLuxury=carService.MinPriceOfCarByCategory(2),
-                MinPriceEconomy=carService.MinPriceOfCarByCategory(1),
-                MinPriceBusiness=carService.MinPriceOfCarByCategory(4),
-                MinPriceElectric=carService.MinPriceOfCarByCategory(5),
-                MinPriceSport=carService.MinPriceOfCarByCategory(3),
+                MinPriceStandard=await carService.MinPriceOfCarByCategory(6),
+                MinPriceLuxury=await carService.MinPriceOfCarByCategory(2),
+                MinPriceEconomy=await carService.MinPriceOfCarByCategory(1),
+                MinPriceBusiness=await carService.MinPriceOfCarByCategory(4),
+                MinPriceElectric=await carService.MinPriceOfCarByCategory(5),
+                MinPriceSport=await carService.MinPriceOfCarByCategory(3),
             };
 
 
