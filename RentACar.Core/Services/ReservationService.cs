@@ -1,4 +1,5 @@
-﻿using RentACar.Core.IServices;
+﻿using Microsoft.EntityFrameworkCore;
+using RentACar.Core.IServices;
 using RentACar.DataAccess.IRepository;
 using RentACar.Models;
 using System;
@@ -28,6 +29,11 @@ namespace RentACar.Core.Services
             return reservations.ToList();
         }
 
+        public Task<bool> AnyAsync(Expression<Func<Reservation, bool>> predicate)
+        {
+            return reservationsRepository.AnyAsync(predicate);
+        }
+
         public void Delete(Reservation entity)
         {
             reservationsRepository.Delete(entity);
@@ -49,7 +55,13 @@ namespace RentACar.Core.Services
             var reservations=await reservationsRepository.GetAll();
             return reservations.ToList();
         }
-
+        public async Task<bool> HasOverlappingReservation(int carId, DateTime startDate, DateTime endDate)
+        {
+            return await reservationsRepository
+                .AnyAsync(r => r.CarId == carId &&
+                               r.StartDate < endDate &&
+                               r.EndDate > startDate);
+        }
         public async Task Save()
         {
            await reservationsRepository.Save();

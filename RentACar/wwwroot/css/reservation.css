@@ -132,7 +132,7 @@
 
 /* Form Elements */
 .form-check {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     padding: 0.8rem;
     border-radius: 8px;
     transition: background 0.2s ease;
@@ -155,7 +155,7 @@
 }
 
 #addressInput {
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 1rem;
     border-radius: 8px;
     background-color: #f8f9fa;
@@ -215,7 +215,7 @@ input[type="date"] {
     }
 
 button[value="BookNow"] {
-    background: linear-gradient(145deg, #e74c3c, #c0392b);
+    background: linear-gradient(145deg, #f76c6c, #c0392b);
     display: block;
     width: 100%;
     padding: 1rem;
@@ -259,7 +259,7 @@ button[value="BookNow"] {
             position: absolute;
             width: 60px;
             height: 3px;
-            background-color: #3498db;
+            background-color: #f76c6c;
             bottom: -2px;
             left: 0;
         }
@@ -289,7 +289,7 @@ button[value="BookNow"] {
 
 .feature-icon {
     margin-right: 1rem;
-    color: #3498db;
+    color: #f76c6c;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
@@ -358,3 +358,89 @@ button[value="BookNow"] {
         margin: 0.5rem 0;
     }
 }
+
+#addressInput {
+    display: none;
+}
+
+#deliveryAddress:checked ~ #addressInput {
+    display: block;
+}
+
+#addressInput p {
+    font-size: 0.8rem;
+    color: #888888;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.self-pick-message {
+    display: none;
+}
+
+/* Show message when Self Pick is selected */
+#selfPick:checked ~ .self-pick-message {
+    font-size: 0.8rem;
+    color: #888888;
+    margin-top: 0.5rem;
+    font-style: italic;
+    display: block;
+}
+
+/* Hide Return back at same place when Self Pick is selected */
+#selfPick:checked ~ .return-options .return-same-place {
+    display: none;
+}
+
+/* Show Return back at same place when Delivery to address is selected */
+#deliveryAddress:checked ~ .return-options .return-same-place {
+    display: block;
+}
+
+/* Ensure Return back at same place is hidden by default until Delivery to address is selected */
+.return-same-place {
+    display: none;
+}
+
+.return-options {
+    margin-top: 2rem; /* Added to increase space above return options */
+}
+
+.details-section label {
+    margin-bottom: 0.5rem; /* Added to space labels from inputs */
+}
+
+.details-section input[type="date"] {
+    padding: 0.8rem;
+    margin: 0 0 1.5rem 0; /* Updated to add bottom margin, overriding previous 1rem 0.5rem 1rem 0 */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+#returnSamePlace p {
+    font-size: 0.8rem;
+    color: #888888;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+.conflict-message {
+    background: #f8d7da;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #f5c6cb;
+}
+
+    .conflict-message p {
+        color: #721c24;
+        margin-bottom: 1rem;
+    }
+
+    .conflict-message .btn-secondary {
+        background: #6c757d;
+        border: none;
+    }
+
+        .conflict-message .btn-secondary:hover {
+            background: #5a6268;
+        }

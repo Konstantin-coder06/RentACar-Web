@@ -34,6 +34,11 @@ namespace RentACar.DataAccess.IRepository.Repository
             return await queries.ToListAsync();
         }
 
+        public async Task<bool> AnyAsync(Expression<Func<T,bool>>predicate)
+        {
+            return await dbSet.AnyAsync(predicate);
+        }
+
         public void Delete(T entity)
         {
             dbContext.Remove(entity);

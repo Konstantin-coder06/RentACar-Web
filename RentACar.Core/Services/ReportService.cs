@@ -1,5 +1,6 @@
 ﻿using RentACar.Core.IServices;
 using RentACar.DataAccess.IRepository;
+using RentACar.DataAccess.IRepository.Repository;
 using RentACar.Models;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,10 @@ namespace RentACar.Core.Services
         {
            await reports.Save();
         }
-
+        public async Task<bool> AnyAsync(Expression<Func<Report, bool>> predicate)
+        {
+            return await reports.AnyAsync(predicate);
+        }
         public void Update(Report entity)
         {
             reports.Update(entity);

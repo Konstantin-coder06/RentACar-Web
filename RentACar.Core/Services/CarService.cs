@@ -1,5 +1,6 @@
 ﻿using RentACar.Core.IServices;
 using RentACar.DataAccess.IRepository;
+using RentACar.DataAccess.IRepository.Repository;
 using RentACar.Models;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,10 @@ namespace RentACar.Core.Services
             var cars=await carRepository.FindAll(predicate);
             return cars.ToList();
         }
-
+        public async Task<bool> AnyAsync(Expression<Func<Car, bool>> predicate)
+        {
+            return await carRepository.AnyAsync(predicate);
+        }
         public async Task<Car> FindOne(Expression<Func<Car, bool>> predicate)
         {
            return await carRepository.FindOne(predicate);

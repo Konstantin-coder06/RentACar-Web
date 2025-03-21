@@ -489,8 +489,10 @@ namespace RentACar.Controllers
                 Images = (await imageService.GetImagesByCarId(car.Id)).OrderBy(x => x.Order).ToList(),
                 StartDate = startDay,
                 EndDate = endDay,
-                Features = features
-
+                Features = features,
+                IsSelfPick=true,
+                IsReturnOptionsEnabled=false,
+                IsAddressInputVisible=false,
             };
 
 
@@ -499,36 +501,88 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> Reservation(CarWithImages carWithImages,string submitButton)
         {
-            if (submitButton == "ChangeDate")
-            {
-                HttpContext.Session.SetString("StartDate", carWithImages.StartDate?.ToString("yyyy-MM-dd"));
-                HttpContext.Session.SetString("EndDate", carWithImages.EndDate?.ToString("yyyy-MM-dd"));
-                return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
-            }
-
-           
-
             var userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
                 return RedirectToAction("AccessDenied", "Account");
             }
 
-         
+            // Load car and images if not already present
             if (carWithImages.Car == null || carWithImages.Car.Id == 0)
             {
-                carWithImages.Car =await carService.FindOne(x => x.Id == carWithImages.Car.Id);
+                carWithImages.Car = await carService.FindOne(x => x.Id == carWithImages.Car.Id);
             }
             if (carWithImages.Car == null)
             {
                 ModelState.AddModelError("", "Car not found.");
                 return View(carWithImages);
             }
-
-         
             carWithImages.Images = (await imageService.GetImagesByCarId(carWithImages.Car.Id)).OrderBy(x => x.Order).ToList();
 
-            if (carWithImages.IsSelfPick)
+            if (submitButton == "ChangeDate")
+            {
+                var newStartDate = carWithImages.StartDate;
+                var newEndDate = carWithImages.EndDate;
+
+                if (!newStartDate.HasValue || !newEndDate.HasValue || newStartDate >= newEndDate)
+                {
+                    ModelState.AddModelError("", "Invalid dates: Start date must be before end date.");
+                    return View(carWithImages);
+                }
+
+                // Check for overlapping reservations
+                bool hasConflict = await reservationService.HasOverlappingReservation(
+                    carWithImages.Car.Id,
+                    newStartDate.Value,
+                    newEndDate.Value
+                );
+
+                if (!hasConflict)
+                {
+                    // No conflict, update session and redirect
+                    HttpContext.Session.SetString("StartDate", newStartDate.Value.ToString("yyyy-MM-dd"));
+                    HttpContext.Session.SetString("EndDate", newEndDate.Value.ToString("yyyy-MM-dd"));
+                    return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
+                }
+                else
+                {
+                    // Conflict detected, prepare for confirmation
+                    TempData["HasConflict"] = true;
+                    TempData["ProposedStartDate"] = newStartDate.Value.ToString("yyyy-MM-dd");
+                    TempData["ProposedEndDate"] = newEndDate.Value.ToString("yyyy-MM-dd");
+                    // Set the form to show proposed dates
+                    var car = await carService.FindOne(x => x.Id ==carWithImages.Car.Id);
+                    var featuresOfACar = (await carFeatureService.GetByCarIDAllFeatures(car.Id)).ToList();
+                    var features = new List<Feature>();
+                    Feature feature = new Feature();
+                    foreach (var x in featuresOfACar)
+                    {
+                        feature = await featureService.FindOne(f => f.Id == x);
+                        features.Add(feature);
+                    }
+                    carWithImages.Car = car;
+                    carWithImages.Images = (await imageService.GetImagesByCarId(car.Id)).OrderBy(x => x.Order).ToList();
+                    carWithImages.StartDate = newStartDate;
+                    carWithImages.EndDate = newEndDate;
+                    carWithImages.Features = features;
+                    return View(carWithImages);
+                }
+            }
+            else if (submitButton == "KeepDates")
+            {
+                // User chose to keep the conflicting dates
+                var proposedStartDate = DateTime.Parse(TempData["ProposedStartDate"]?.ToString());
+                var proposedEndDate = DateTime.Parse(TempData["ProposedEndDate"]?.ToString());
+                HttpContext.Session.SetString("StartDate", proposedStartDate.ToString("yyyy-MM-dd"));
+                HttpContext.Session.SetString("EndDate", proposedEndDate.ToString("yyyy-MM-dd"));
+                return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
+            }
+            else if (submitButton == "RevertDates")
+            {
+                // User chose to revert, keep old dates in session
+                return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
+            }
+            else if (submitButton == "BookNow")
             {
                 if (!carWithImages.StartDate.HasValue || !carWithImages.EndDate.HasValue)
                 {
@@ -539,13 +593,26 @@ namespace RentACar.Controllers
                 DateTime startDay = carWithImages.StartDate.Value;
                 DateTime endDay = carWithImages.EndDate.Value;
                 int totalDays = (int)(endDay - startDay).TotalDays;
-                var car = await carService.FindOne(x => x.Id == carWithImages.Car.Id);
+
                 if (totalDays <= 0)
                 {
                     ModelState.AddModelError("", "End date must be after start date.");
                     return View(carWithImages);
                 }
 
+                // Check for overlapping reservations before booking
+                bool hasConflict = await reservationService.HasOverlappingReservation(
+                    carWithImages.Car.Id,
+                    startDay,
+                    endDay
+                );
+                if (hasConflict)
+                {
+                    ModelState.AddModelError("", "The car is already reserved for the selected dates.");
+                    return View(carWithImages);
+                }
+
+                // Proceed with booking
                 Reservation reservation = new Reservation()
                 {
                     StartDate = startDay,
@@ -553,98 +620,179 @@ namespace RentACar.Controllers
                     IsSelfPick = carWithImages.IsSelfPick,
                     PaidDeliveryPlace = carWithImages.CustomAddress,
                     IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
-                    CarId = car.Id,
+                    CarId = carWithImages.Car.Id,
                     CustomerId = userId.Value,
                     CreateTime = DateTime.Now,
-                    
                 };
-                if (totalDays == 7) 
+
+                if (totalDays == 7)
                 {
-                    reservation.TotalPrice = car.PricePerWeek;
+                    reservation.TotalPrice = carWithImages.Car.PricePerWeek;
                 }
-                else if (totalDays > 0) 
+                else if (totalDays > 0)
                 {
-                    reservation.TotalPrice = (totalDays * car.PricePerDay) * 0.9;
+                    reservation.TotalPrice = (totalDays * carWithImages.Car.PricePerDay) * 0.9;
                 }
+
                 await reservationService.Add(reservation);
                 await reservationService.Save();
-                TempData["success"] = $" Days {totalDays} Total price: {car.PricePerDay}";
+                TempData["success"] = $"Days {totalDays} Total price: {reservation.TotalPrice}";
                 return RedirectToAction("Index", "Home");
             }
-            if (!ModelState.IsValid)
-            {
-                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-                return BadRequest($"Model is invalid: {string.Join(", ", errors)}");
-            }
+
             return View(carWithImages);
-        
-         
-        }
-        public async Task<IActionResult> Pendings()
-        {
-            var companyId = HttpContext.Session.GetInt32("CompanyId");
-            var cars=new List<Car>();
-            if (companyId.HasValue)
-            {
-                cars = (await carService.FindAll(x => x.Pending == true && x.CarCompanyId == companyId)).OrderBy(x => x.CreatedAt).ToList();
-            }
-            else
-            {
+            /* if (submitButton == "ChangeDate")
+             {
+                 HttpContext.Session.SetString("StartDate", carWithImages.StartDate?.ToString("yyyy-MM-dd"));
+                 HttpContext.Session.SetString("EndDate", carWithImages.EndDate?.ToString("yyyy-MM-dd"));
+                 return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
+             }
+             if (submitButton == "UpdateOptions")
+             {
+                 // Update form state based on IsSelfPick
+                 carWithImages.IsReturnOptionsEnabled = !carWithImages.IsSelfPick;
+                 carWithImages.IsAddressInputVisible = !carWithImages.IsSelfPick;
+                 return RedirectToAction("Reservation",carWithImages.Car.Id); // Re-render the form
+             }
 
 
-                cars = (await carService.FindAll(x => x.Pending == true)).OrderBy(x => x.CreatedAt).ToList();
-            }
-            var carImages = new List<CarWithImages>();
+             var userId = HttpContext.Session.GetInt32("UserId");
+             if (!userId.HasValue)
+             {
+                 return RedirectToAction("AccessDenied", "Account");
+             }
 
-            foreach (var car in cars)
-            {
-                var images = await imageService.GetImagesByCarId(car.Id);
-                carImages.Add(new CarWithImages
-                {
-                    Car = car,
-                    Images = images.ToList()
-                });
-            }
 
-            var carImagesViewModel= new CarImagesViewModel() 
-            {
-                CarWithImages = carImages,
-            };
-            return View(carImagesViewModel);
-        }
-        public int CarId { get; set; } = 0;
-        public async Task<IActionResult> EditPendingCar(int id)
-        {
-            if (id == 0 ||id == null) 
-            { 
-                return NotFound();
-            }
-            var car= await carService.FindOne(x => x.Id == id);
-            CarId = car.Id;
-            var viewModel = new EditCarWithImagesPendingViewModel
-            {
-                Brand=car.Brand,
-                Model=car.Model,
-                Gearbox=car.Gearbox,
-                Year=car.Year,
-                PricePerDay=car.PricePerDay,
-                PricePerWeek=car.PricePerWeek,
-                MileageLimitForDay=car.MileageLimitForDay,
-                MileageLimitForWeek=car.MileageLimitForWeek,
-                AdditionalMileageCharge=car.AdditionalMileageCharge,
-                EngineCapacity=car.EngineCapacity,
-                Color=car.Color,
-                Description=car.Description,
-                DriveTrain=car.DriveTrain,
-                HorsePower=car.HorsePower,
-                ZeroToHundred=car.ZeroToHundred,
-                TopSpeed=car.TopSpeed,
-                Images = (await imageService.GetImagesByCarId(car.Id)).Select(img => new ImageViewModel { Id = img.Id, Url = img.Url, Order=img.Order }).ToList(),
-                ClassOfCarId =car.ClassOfCarId,
-                ClassOptions =  new SelectList((await classOfCarService.GetAll()).ToList(), "Id", "Name")
-            };
-            return View(viewModel);
-            
+             if (carWithImages.Car == null || carWithImages.Car.Id == 0)
+             {
+                 carWithImages.Car =await carService.FindOne(x => x.Id == carWithImages.Car.Id);
+             }
+             if (carWithImages.Car == null)
+             {
+                 ModelState.AddModelError("", "Car not found.");
+                 return View(carWithImages);
+             }
+
+
+             carWithImages.Images = (await imageService.GetImagesByCarId(carWithImages.Car.Id)).OrderBy(x => x.Order).ToList();
+
+             if (carWithImages.IsSelfPick)
+             {
+                 if (!carWithImages.StartDate.HasValue || !carWithImages.EndDate.HasValue)
+                 {
+                     ModelState.AddModelError("", "Start and end dates are required.");
+                     return View(carWithImages);
+                 }
+
+                 DateTime startDay = carWithImages.StartDate.Value;
+                 DateTime endDay = carWithImages.EndDate.Value;
+                 int totalDays = (int)(endDay - startDay).TotalDays;
+                 var car = await carService.FindOne(x => x.Id == carWithImages.Car.Id);
+                 if (totalDays <= 0)
+                 {
+                     ModelState.AddModelError("", "End date must be after start date.");
+                     return View(carWithImages);
+                 }
+
+                 Reservation reservation = new Reservation()
+                 {
+                     StartDate = startDay,
+                     EndDate = endDay,
+                     IsSelfPick = carWithImages.IsSelfPick,
+                     PaidDeliveryPlace = carWithImages.CustomAddress,
+                     IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
+                     CarId = car.Id,
+                     CustomerId = userId.Value,
+                     CreateTime = DateTime.Now,
+
+                 };
+                 if (totalDays == 7) 
+                 {
+                     reservation.TotalPrice = car.PricePerWeek;
+                 }
+                 else if (totalDays > 0) 
+                 {
+                     reservation.TotalPrice = (totalDays * car.PricePerDay) * 0.9;
+                 }
+                 await reservationService.Add(reservation);
+                 await reservationService.Save();
+                 TempData["success"] = $" Days {totalDays} Total price: {car.PricePerDay}";
+                 return RedirectToAction("Index", "Home");
+             }
+             if (!ModelState.IsValid)
+             {
+                 var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+                 return BadRequest($"Model is invalid: {string.Join(", ", errors)}");
+             }
+             return View(carWithImages);
+
+
+         }
+         public async Task<IActionResult> Pendings()
+         {
+             var companyId = HttpContext.Session.GetInt32("CompanyId");
+             var cars=new List<Car>();
+             if (companyId.HasValue)
+             {
+                 cars = (await carService.FindAll(x => x.Pending == true && x.CarCompanyId == companyId)).OrderBy(x => x.CreatedAt).ToList();
+             }
+             else
+             {
+
+
+                 cars = (await carService.FindAll(x => x.Pending == true)).OrderBy(x => x.CreatedAt).ToList();
+             }
+             var carImages = new List<CarWithImages>();
+
+             foreach (var car in cars)
+             {
+                 var images = await imageService.GetImagesByCarId(car.Id);
+                 carImages.Add(new CarWithImages
+                 {
+                     Car = car,
+                     Images = images.ToList()
+                 });
+             }
+
+             var carImagesViewModel= new CarImagesViewModel() 
+             {
+                 CarWithImages = carImages,
+             };
+             return View(carImagesViewModel);
+         }
+         public int CarId { get; set; } = 0;
+         public async Task<IActionResult> EditPendingCar(int id)
+         {
+             if (id == 0 ||id == null) 
+             { 
+                 return NotFound();
+             }
+             var car= await carService.FindOne(x => x.Id == id);
+             CarId = car.Id;
+             var viewModel = new EditCarWithImagesPendingViewModel
+             {
+                 Brand=car.Brand,
+                 Model=car.Model,
+                 Gearbox=car.Gearbox,
+                 Year=car.Year,
+                 PricePerDay=car.PricePerDay,
+                 PricePerWeek=car.PricePerWeek,
+                 MileageLimitForDay=car.MileageLimitForDay,
+                 MileageLimitForWeek=car.MileageLimitForWeek,
+                 AdditionalMileageCharge=car.AdditionalMileageCharge,
+                 EngineCapacity=car.EngineCapacity,
+                 Color=car.Color,
+                 Description=car.Description,
+                 DriveTrain=car.DriveTrain,
+                 HorsePower=car.HorsePower,
+                 ZeroToHundred=car.ZeroToHundred,
+                 TopSpeed=car.TopSpeed,
+                 Images = (await imageService.GetImagesByCarId(car.Id)).Select(img => new ImageViewModel { Id = img.Id, Url = img.Url, Order=img.Order }).ToList(),
+                 ClassOfCarId =car.ClassOfCarId,
+                 ClassOptions =  new SelectList((await classOfCarService.GetAll()).ToList(), "Id", "Name")
+             };
+             return View(viewModel);*/
+
         }
         [HttpPost("Car/EditPendingCar/{id?}")]
         public async Task<IActionResult> EditPendingCar(int? id, EditCarWithImagesPendingViewModel viewModel)

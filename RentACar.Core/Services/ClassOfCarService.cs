@@ -61,7 +61,10 @@ namespace RentACar.Core.Services
         {
             repository.Update(entity);
         }
-
+        public async Task<bool> AnyAsync(Expression<Func<ClassOfCar, bool>> predicate)
+        {
+            return await repository.AnyAsync(predicate);
+        }
         public async Task Save()
         {
             await repository.Save();

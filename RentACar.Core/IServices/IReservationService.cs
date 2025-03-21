@@ -10,5 +10,6 @@ namespace RentACar.Core.IServices
 {
     public interface IReservationService:IRepository<Reservation>
     {
+        Task<bool> HasOverlappingReservation(int carId, DateTime startDate, DateTime endDate);
     }
 }

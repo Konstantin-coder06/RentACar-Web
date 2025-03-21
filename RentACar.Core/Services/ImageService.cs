@@ -115,5 +115,10 @@ namespace RentACar.Core.Services
         {
             return await repository.FindOne(x=>x.CarId == carid && x.Order==1);
         }
+
+        public async Task<bool> AnyAsync(Expression<Func<Image, bool>> predicate)
+        {
+            return await repository.AnyAsync(predicate);
+        }
     }
 }

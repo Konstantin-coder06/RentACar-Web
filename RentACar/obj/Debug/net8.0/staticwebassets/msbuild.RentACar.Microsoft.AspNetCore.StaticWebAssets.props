@@ -264,8 +264,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>y54w0h4vi3</Fingerprint>
-      <Integrity>FsHf0X5oW2pSWQkXgrbygCG85AmYZHsPGZMCjQhoCQ8=</Integrity>
+      <Fingerprint>1r199ru7an</Fingerprint>
+      <Integrity>4/klqbFIaMnPqbOAc2eZuRoWkkEEJ+pt9ADnuH/mibg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\reservation.css'))</OriginalItemSpec>

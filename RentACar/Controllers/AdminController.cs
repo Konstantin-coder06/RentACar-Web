@@ -73,7 +73,7 @@ namespace RentACar.Controllers
             resCarsForLastWeekBeforeWeek=resCarsForLastWeekBeforeWeek.ToList();
 
             var pendin = await carService.FindAll(x => x.Pending == true);
-            var pending=pendin.ToList();
+            var pending=pendin.Take(8).ToList();
             var reportC = await reportService.GetAll();
             int reportCount=reportC.Count();
             double total24Hours = 0;
@@ -709,7 +709,7 @@ namespace RentACar.Controllers
                     TopSpeed = viewModel.TopSpeed,
                     ClassOfCarId = viewModel.ClassOfCarId,
                     Pending = true,
-                    CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 };
                 if (admin)
                 {

@@ -14,5 +14,7 @@ namespace RentACar.Models
         [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
         public List<Feature> Features { get; set; }
+        public bool IsReturnOptionsEnabled { get; set; }
+        public bool IsAddressInputVisible { get; set; }
     }
 }
