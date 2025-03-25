@@ -13,10 +13,10 @@ namespace RentACar.Models
     {
         [Required]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Name is required")]
         public string Name { get; set; }
-        [Required(ErrorMessage ="Age is required")]
-        public int Age {  get; set; }
+        [Required(ErrorMessage ="Birth Day is required")]
+        public DateTime BirthDay {  get; set; }
 
         public string UserId { get; set; }  
 

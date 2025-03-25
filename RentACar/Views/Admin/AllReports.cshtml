@@ -1,6 +1,7 @@
 ﻿@model ListOfReportsViewModel
 @{
-    // Your existing Razor comments remain unchanged
+    TempData["HideNavagation"] = true;
+    @Html.Partial("_Navigation")
 }
 <link rel="stylesheet" href="~/css/allReports.css" asp-append-version="true" />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">

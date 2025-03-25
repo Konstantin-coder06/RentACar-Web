@@ -211,7 +211,7 @@ namespace RentACar.Controllers
                     {
                         UserId = user.Id,
                         Name = model.Name,
-                        Age = model.Age,
+                        BirthDay = model.BirthDay,
                     };              
                     await customerService.Add(customer);
                     await customerService.Save();
