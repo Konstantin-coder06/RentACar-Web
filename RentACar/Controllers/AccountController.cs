@@ -100,18 +100,22 @@ namespace RentACar.Controllers
                   
                     if (await _userManager.IsInRoleAsync(user, "Company"))
                     {
-                        var company = carCompanyService.GetByUserId(user.Id);
+                        var company = await carCompanyService.GetByUserId(user.Id);
                         if (company != null)
+                        {
                             HttpContext.Session.SetInt32("CompanyId", company.Id);
+                            HttpContext.Session.SetString("CompanyName", company.Name);
+                        }
                         await _signInManager.SignInAsync(user, isPersistent: model.RememberMe);
                         return RedirectToAction("Index", "Company");
                     }
                     else if (await _userManager.IsInRoleAsync(user, "User"))
                     {
-                        var userCustomer = customerService.GetByUserId(user.Id);
+                        var userCustomer = await customerService.GetByUserId(user.Id);
                         if (userCustomer != null)
                         {
                             HttpContext.Session.SetInt32("UserId", userCustomer.Id);
+                            HttpContext.Session.SetString("UserName", userCustomer.Name);
                         }
                         await _signInManager.SignInAsync(user, isPersistent: model.RememberMe);
                         return RedirectToAction("Index", "Home");
@@ -126,19 +130,21 @@ namespace RentACar.Controllers
                     {
                         if (await _userManager.IsInRoleAsync(user, "Company"))
                         {
-                            var company = carCompanyService.GetByUserId(user.Id);
+                            var company = await carCompanyService.GetByUserId(user.Id);
                             if (company != null)
                             {
                                 HttpContext.Session.SetInt32("CompanyId", company.Id);
+                                HttpContext.Session.SetString("CompanyName", company.Name);
                                 return RedirectToAction("Index", "Company");
                             }
                         }
                         if (await _userManager.IsInRoleAsync(user, "User"))
                         {
-                            var userCustomer = customerService.GetByUserId(user.Id);
+                            var userCustomer = await customerService.GetByUserId(user.Id);
                             if (userCustomer != null)
                             {
                                 HttpContext.Session.SetInt32("UserId", userCustomer.Id);
+                                HttpContext.Session.SetString("UserName", userCustomer.Name);
                             }
                         }
                         if (model.Email == "admin@admin.com" && model.Password == "AdminPassword123!")
@@ -174,11 +180,12 @@ namespace RentACar.Controllers
                         Address = model.Address,
                         UserId = user.Id,
                     };
-                    carCompanyService.Add(company);
-                    carCompanyService.Save();
+                    await carCompanyService.Add(company);
+                    await carCompanyService.Save();
                     IsRegisterCompany = true;
                     CompanyId = company.Id;
                     HttpContext.Session.SetInt32("CompanyId", company.Id);
+                    HttpContext.Session.SetString("CompanyName", company.Name);
                     return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
@@ -206,9 +213,10 @@ namespace RentACar.Controllers
                         Name = model.Name,
                         Age = model.Age,
                     };              
-                    customerService.Add(customer);
-                    customerService.Save();
+                    await customerService.Add(customer);
+                    await customerService.Save();
                     HttpContext.Session.SetInt32("UserId", customer.Id);
+                    HttpContext.Session.SetString("UserName", customer.Name);
                     return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)

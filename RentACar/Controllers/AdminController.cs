@@ -362,6 +362,8 @@ namespace RentACar.Controllers
             var reportCount = (await reportService.GetAll()).Count();
             double avg = 0;
             int pendingCount = 0;
+            var avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
+
             if (User.IsInRole("Admin"))
             {
 
@@ -376,8 +378,7 @@ namespace RentACar.Controllers
                 resCarsForLastWeek = (await reservationService.FindAll(x => x.CreateTime >= lastWeek)).ToList();
                 resCarsForLastWeekBeforeWeek = (await reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek)).ToList();
                 reservations = (await reservationService.GetAll()).ToList();
-                var avgDuration = reservations.Select(x => (x.EndDate - x.StartDate).Days).Where(days => days > 0).ToList();
-
+                
                 if (avgDuration.Any())
                 {
                     avg = avgDuration.Average();
@@ -440,8 +441,9 @@ namespace RentACar.Controllers
                     .Select(g => new { Date = g.Key, Count = g.Count() })
                     .OrderByDescending(x => x.Count)
                     .FirstOrDefault();
+            }
 
-                if (User.IsInRole("Company"))
+                else if (User.IsInRole("Company"))
                 {
                     var companyId = HttpContext.Session.GetInt32("CompanyId");
                     if (companyId.HasValue)
@@ -551,7 +553,7 @@ namespace RentACar.Controllers
                 {
                     return BadRequest("Ei spongeBOb ne si kompaniq");
                 }
-            }
+            
 
 
 

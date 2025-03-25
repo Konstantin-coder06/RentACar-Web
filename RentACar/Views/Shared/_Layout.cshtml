@@ -16,51 +16,64 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <header>
+    @if (ViewData["HideNavigation"] == null || !(bool)ViewData["HideNavigation"])
+    {
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="left-nav">
+                        <a href="#" class="logo">FAST DRIVE</a>
+                        <nav class="main-nav">
+                            <a asp-action="Index" asp-controller="Home" class="active">Home</a>
+                            <a asp-action="Index" asp-controller="Car">Cars</a>
+                            <a asp-action="AboutUs" asp-controller="Home">About Us</a>
+                            <a asp-action="ContactUs" asp-controller="Home">Contact</a>
+                        </nav>
+                    </div>
 
-        @if (ViewData["HideNavigation"] == null || !(bool)ViewData["HideNavigation"])
-        {
-           
-
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container-fluid">
-                    @if (User.IsInRole(SD.Admin))
-                    {
-                        <a class="navbar-brand"  asp-controller="Admin" asp-action="Index">Home</a>
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home of customers</a>
-                    }
-                    @if (User.IsInRole(SD.Company))
-                    {
-                        <a class="navbar-brand" asp-area="" asp-controller="Company" asp-action="Index">Return to Home</a>
-                    }
-                    else
-                    {
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    }
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-
-                        @using RentACar.Utility
+                    <nav class="account-nav">
+                        @if (!User.IsInRole("Admin") && !User.IsInRole("Company") && !User.IsInRole("User"))
+                        {
+                            <a asp-action="LogIn" asp-controller="Account">Log in</a>
+                            <a asp-action="Register" asp-controller="Account">Register as User</a>
+                            <a asp-action="RegisterCompany" asp-controller="Account">Register as a Company</a>
+                        }
+                        else
+                        {
+                            <div class="user-welcome">
+                                <div><a>Welcome,  Maria</a></div>
+                                <a href="#" class="profile-link">Go to profile</a>
+                            </div>
+                            <a asp-action="Logout" asp-controller="Account" class="logout-btn">
+                                <span class="logout-icon">⟲</span>
+                                Log out
+                            </a>
+                        }
+                    </nav>
+                </div>
+            </div>
+     @using RentACar.Utility
+            <div class="container">
+                <div class="header-container">
+                    <div class="left-nav">
+                        <a href="#" class="logo">FAST DRIVE</a>
+                        <nav class="main-nav">
                             @if (User.IsInRole(SD.Admin))
                             {
-                                <li class="nav-item dropdown">
+                                <div class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Content Management
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="@Url.Action("AddCar", "Admin")">Добави кола</a>
+                                        <a class="dropdown-item" href="@Url.Action("AddCar", "Admin")">Add Car</a>
 
 
                                     </div>
-                                </li>
+                                </div>
                             } 
                             @if (User.IsInRole(SD.User))
                             {
-                                <li class="nav-item dropdown">
+                                <div class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Content Management
                                     </a>
@@ -69,15 +82,16 @@
 
 
                                     </div>
-                                </li>
+                                </div>
                             }
-                        </ul>
+                        </nav>
                         <partial name="_LoginPartial"/>​
                     </div>
                 </div>
-            </nav>
-        }
-    </header>
+            </div>
+            }
+        </header>
+    }     
     <div class="container">
         <main role="main" class="pb-3">
              <partial name="Notification"></partial>

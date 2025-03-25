@@ -2,7 +2,8 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-   
+    ViewData["HideNavigation"] = true;
+    @Html.Partial("_Navigation")
 }
 <link rel="stylesheet" href="~/css/pendings.css" asp-append-version="true" />
 @model CarImagesViewModel
@@ -17,15 +18,15 @@
             <div class="card-body">
                 <h5 class="card-title">@carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year</h5>
                 <p class="card-text">
-                    @carWithImages.Car.Gearbox • @carWithImages.Car.MileageLimitForDay km/rental
+                    @carWithImages.Car.Gearbox • @carWithImages.Car.MileageLimitForDay km/rental per day
                 </p>
                 <div class="price-container">
                     <div class="price-text">
-                        <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / на ден</h3>
-                        <p class="price-week">@carWithImages.Car.PricePerWeek BGN / на седмица</p>
+                        <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / per day</h3>
+                        <p class="price-week">@carWithImages.Car.PricePerWeek BGN / per week</p>
                     </div>
                     <a asp-controller="Car" asp-action="EditPendingCar" asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
-                        Прегледай
+                        Review
                     </a>
                 </div>
             </div>

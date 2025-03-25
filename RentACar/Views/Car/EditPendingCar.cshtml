@@ -6,6 +6,7 @@
 @model EditCarWithImagesPendingViewModel
 
 @{
+    ViewData["HideNavigation"] = true;
     ViewData["Title"] = "Edit Your Car";
     
 }
@@ -22,7 +23,7 @@
     </div>
 }
 <div class="container mt-5">
-    <h2>Add New Car</h2>
+    <h2>Edit Car</h2>
     <hr />
 
     <form asp-action="EditPendingCar" asp-controller="Car"  enctype="multipart/form-data">
@@ -188,7 +189,7 @@
 
 
 		<div class="form-group mt-4">
-			<button type="submit" class="btn btn-primary">Edit Car</button>
+			<button type="submit" class="btn btn-primary">Approve Car</button>
 			<a asp-action="Index" class="btn btn-secondary">Cancel</a>
 		</div>
 	</form>

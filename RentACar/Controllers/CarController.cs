@@ -86,8 +86,35 @@ namespace RentACar.Controllers
                 var categoryIds = (await classOfCarService.FindAll(x => selectedCategories.Contains(x.Name))).Select(x => x.Id).ToList();
                 cars = cars.Where(x => categoryIds.Contains(x.ClassOfCarId)).ToList();
             }
-            var carsWithImages = new List<CarWithImages>();
+            var sortOrder = HttpContext.Session.GetString("SortOrder") ?? "default";
+            switch (sortOrder)
+            {
+                case "Name (A-Z)":
+                    cars = cars.OrderBy(c => c.Brand).ToList();
+                    break;
+                case "Name (Z-A)":
+                    cars = cars.OrderByDescending(c => c.Brand).ToList();
+                    break;
+                case "Year (Oldest First)":
+                    cars = cars.OrderBy(c => c.Year).ToList();
+                    break;
+                case "Year (Newest First)":
+                    cars = cars.OrderByDescending(c => c.Year).ToList();
+                    break;
+                case "Price (Lowest First)":
+                    cars = cars.OrderBy(c => c.PricePerDay).ToList();
+                    break;
+                case "Price (Highest First)":
+                    cars = cars.OrderByDescending(c => c.PricePerDay).ToList();
+                    break;
+                case "default":
+                    int seed = DateTime.UtcNow.Date.GetHashCode();
+                    Random random = new Random(seed);
+                    cars = cars.OrderBy(x => random.Next()).ToList();
+                    break;
+            }
 
+            var carsWithImages = new List<CarWithImages>();
             foreach (var car in cars)
             {
                 var images = await imageService.GetImagesByCarId(car.Id);
@@ -103,7 +130,8 @@ namespace RentACar.Controllers
                 CarWithImages = carsWithImages,
                 StartDate = startDay,
                 EndDate = endDay,
-                SelectedCategories = selectedCategories
+                SelectedCategories = selectedCategories,
+                SortTerm = sortOrder
             };
 
             return View(viewModel);
@@ -190,69 +218,10 @@ namespace RentACar.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> Sort(string sortOrder)
-        {
-            var sortedCars = new List<Car>();
-            var startDayStr = HttpContext.Session.GetString("StartDate");
-            var endDayStr = HttpContext.Session.GetString("EndDate");
-
-            DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
-            DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
-
-            List<int> reservedCarIds = new List<int>();
-            if (startDay.HasValue && endDay.HasValue)
-            {
-                reservedCarIds =(await reservationService.FindAll(r => r.StartDate < endDay.Value && r.EndDate > startDay.Value))
-                    .Select(r => r.CarId)
-                    .Distinct()
-                    .ToList();
-            }
-            var cars=new List<Car>();
-            cars = (await carService.FindAll(car => !reservedCarIds.Contains(car.Id) && !car.Pending)).ToList();
-            switch (sortOrder)
-            {
-                case "Name (A-Z)":
-                    sortedCars = cars.OrderBy(c => c.Brand).ToList();
-                    break;
-                case "Name (Z-A)":
-                    sortedCars = cars.OrderByDescending(c => c.Brand).ToList();
-                    break;
-                case "Year (Oldest First)":
-                    sortedCars = cars.OrderBy(c => c.Year).ToList();
-                    break;
-                case "Year (Newest First)":
-                    sortedCars = cars.OrderByDescending(c => c.Year).ToList();
-                    break;
-                case "default":
-                    sortedCars = cars;
-                    break;
-                case "Price (Lowest First)":
-                    sortedCars= cars.OrderBy(c=>c.PricePerDay).ToList();
-                    break;
-                case "Price (Highest First)":
-                    sortedCars = cars.OrderByDescending(c => c.PricePerDay).ToList();
-                    break;
-            }
-            var carsWithImages = new List<CarWithImages>();
-
-            foreach (var car in sortedCars)
-            {
-                var images = await imageService.GetImagesByCarId(car.Id);
-                carsWithImages.Add(new CarWithImages
-                {
-                    Car = car,
-                    Images = images.ToList()
-                });
-            }
-
-            var viewModel = new CarImagesWithDatesViewModel
-            {
-                CarWithImages = carsWithImages,
-                StartDate = startDay,
-                EndDate = endDay,
-                SortTerm =sortOrder,
-            };
-            return View("Index", viewModel);
+        public IActionResult Sort(string sortOrder)
+        {          
+            HttpContext.Session.SetString("SortOrder", sortOrder);
+            return RedirectToAction("Index");
         }
         [HttpPost]
         public async Task<IActionResult> FilterDates(CarImagesWithDatesViewModel carImagesView)
@@ -570,12 +539,17 @@ namespace RentACar.Controllers
             }
             else if (submitButton == "KeepDates")
             {
-                // User chose to keep the conflicting dates
-                var proposedStartDate = DateTime.Parse(TempData["ProposedStartDate"]?.ToString());
-                var proposedEndDate = DateTime.Parse(TempData["ProposedEndDate"]?.ToString());
-                HttpContext.Session.SetString("StartDate", proposedStartDate.ToString("yyyy-MM-dd"));
-                HttpContext.Session.SetString("EndDate", proposedEndDate.ToString("yyyy-MM-dd"));
-                return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
+                if (carWithImages.StartDate.HasValue && carWithImages.EndDate.HasValue)
+                {
+                    HttpContext.Session.SetString("StartDate", carWithImages.StartDate.Value.ToString("yyyy-MM-dd"));
+                    HttpContext.Session.SetString("EndDate", carWithImages.EndDate.Value.ToString("yyyy-MM-dd"));
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Start and end dates are required.");
+                    return View(carWithImages);
+                }
             }
             else if (submitButton == "RevertDates")
             {
@@ -640,7 +614,7 @@ namespace RentACar.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(carWithImages);
+            return View(carWithImages); 
             /* if (submitButton == "ChangeDate")
              {
                  HttpContext.Session.SetString("StartDate", carWithImages.StartDate?.ToString("yyyy-MM-dd"));
@@ -794,7 +768,72 @@ namespace RentACar.Controllers
              return View(viewModel);*/
 
         }
-        [HttpPost("Car/EditPendingCar/{id?}")]
+        public async Task<IActionResult> Pendings()
+        {
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            var cars = new List<Car>();
+            if (companyId.HasValue)
+            {
+                cars = (await carService.FindAll(x => x.Pending == true && x.CarCompanyId == companyId)).OrderBy(x => x.CreatedAt).ToList();
+            }
+            else
+            {
+
+
+                cars = (await carService.FindAll(x => x.Pending == true)).OrderBy(x => x.CreatedAt).ToList();
+            }
+            var carImages = new List<CarWithImages>();
+
+            foreach (var car in cars)
+            {
+                var images = await imageService.GetImagesByCarId(car.Id);
+                carImages.Add(new CarWithImages
+                {
+                    Car = car,
+                    Images = images.ToList()
+                });
+            }
+
+            var carImagesViewModel = new CarImagesViewModel()
+            {
+                CarWithImages = carImages,
+            };
+            return View(carImagesViewModel);
+        }
+        public int CarId { get; set; } = 0;
+        public async Task<IActionResult> EditPendingCar(int id)
+        {
+            if (id == 0 || id == null)
+            {
+                return NotFound();
+            }
+            var car = await carService.FindOne(x => x.Id == id);
+            CarId = car.Id;
+            var viewModel = new EditCarWithImagesPendingViewModel
+            {
+                Brand = car.Brand,
+                Model = car.Model,
+                Gearbox = car.Gearbox,
+                Year = car.Year,
+                PricePerDay = car.PricePerDay,
+                PricePerWeek = car.PricePerWeek,
+                MileageLimitForDay = car.MileageLimitForDay,
+                MileageLimitForWeek = car.MileageLimitForWeek,
+                AdditionalMileageCharge = car.AdditionalMileageCharge,
+                EngineCapacity = car.EngineCapacity,
+                Color = car.Color,
+                Description = car.Description,
+                DriveTrain = car.DriveTrain,
+                HorsePower = car.HorsePower,
+                ZeroToHundred = car.ZeroToHundred,
+                TopSpeed = car.TopSpeed,
+                Images = (await imageService.GetImagesByCarId(car.Id)).Select(img => new ImageViewModel { Id = img.Id, Url = img.Url, Order = img.Order }).ToList(),
+                ClassOfCarId = car.ClassOfCarId,
+                ClassOptions = new SelectList((await classOfCarService.GetAll()).ToList(), "Id", "Name")
+            };
+            return View(viewModel);
+        }
+            [HttpPost("Car/EditPendingCar/{id?}")]
         public async Task<IActionResult> EditPendingCar(int? id, EditCarWithImagesPendingViewModel viewModel)
         {
             if (!ModelState.IsValid)

@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\css\\login.css"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\navigation.css",
+      "PackagePath": "staticwebassets\\css\\navigation.css"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\pendings.css",
       "PackagePath": "staticwebassets\\css\\pendings.css"
     },
