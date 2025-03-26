@@ -18,6 +18,10 @@ namespace RentACar.DataAccess.IRepository
         Task<IEnumerable<T>> AllWithInclude(params Expression<Func<T, object>>[] filters);
         Task Save();
         Task<bool> AnyAsync(Expression<Func<T,bool>>predicate);
+        Task<int>CountAsync(Expression<Func<T, bool>> predicate);
+        Task<int> Count();
+        Task<IEnumerable<T>> FindAllLimited(Expression<Func<T, bool>> predicate, int limit);
+        Task<IEnumerable<T>> GetAllOrderBy(Expression<Func<T, object>> predicate);
         
     }
 }

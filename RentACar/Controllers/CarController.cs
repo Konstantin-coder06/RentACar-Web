@@ -615,158 +615,7 @@ namespace RentACar.Controllers
             }
 
             return View(carWithImages); 
-            /* if (submitButton == "ChangeDate")
-             {
-                 HttpContext.Session.SetString("StartDate", carWithImages.StartDate?.ToString("yyyy-MM-dd"));
-                 HttpContext.Session.SetString("EndDate", carWithImages.EndDate?.ToString("yyyy-MM-dd"));
-                 return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
-             }
-             if (submitButton == "UpdateOptions")
-             {
-                 // Update form state based on IsSelfPick
-                 carWithImages.IsReturnOptionsEnabled = !carWithImages.IsSelfPick;
-                 carWithImages.IsAddressInputVisible = !carWithImages.IsSelfPick;
-                 return RedirectToAction("Reservation",carWithImages.Car.Id); // Re-render the form
-             }
-
-
-             var userId = HttpContext.Session.GetInt32("UserId");
-             if (!userId.HasValue)
-             {
-                 return RedirectToAction("AccessDenied", "Account");
-             }
-
-
-             if (carWithImages.Car == null || carWithImages.Car.Id == 0)
-             {
-                 carWithImages.Car =await carService.FindOne(x => x.Id == carWithImages.Car.Id);
-             }
-             if (carWithImages.Car == null)
-             {
-                 ModelState.AddModelError("", "Car not found.");
-                 return View(carWithImages);
-             }
-
-
-             carWithImages.Images = (await imageService.GetImagesByCarId(carWithImages.Car.Id)).OrderBy(x => x.Order).ToList();
-
-             if (carWithImages.IsSelfPick)
-             {
-                 if (!carWithImages.StartDate.HasValue || !carWithImages.EndDate.HasValue)
-                 {
-                     ModelState.AddModelError("", "Start and end dates are required.");
-                     return View(carWithImages);
-                 }
-
-                 DateTime startDay = carWithImages.StartDate.Value;
-                 DateTime endDay = carWithImages.EndDate.Value;
-                 int totalDays = (int)(endDay - startDay).TotalDays;
-                 var car = await carService.FindOne(x => x.Id == carWithImages.Car.Id);
-                 if (totalDays <= 0)
-                 {
-                     ModelState.AddModelError("", "End date must be after start date.");
-                     return View(carWithImages);
-                 }
-
-                 Reservation reservation = new Reservation()
-                 {
-                     StartDate = startDay,
-                     EndDate = endDay,
-                     IsSelfPick = carWithImages.IsSelfPick,
-                     PaidDeliveryPlace = carWithImages.CustomAddress,
-                     IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
-                     CarId = car.Id,
-                     CustomerId = userId.Value,
-                     CreateTime = DateTime.Now,
-
-                 };
-                 if (totalDays == 7) 
-                 {
-                     reservation.TotalPrice = car.PricePerWeek;
-                 }
-                 else if (totalDays > 0) 
-                 {
-                     reservation.TotalPrice = (totalDays * car.PricePerDay) * 0.9;
-                 }
-                 await reservationService.Add(reservation);
-                 await reservationService.Save();
-                 TempData["success"] = $" Days {totalDays} Total price: {car.PricePerDay}";
-                 return RedirectToAction("Index", "Home");
-             }
-             if (!ModelState.IsValid)
-             {
-                 var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-                 return BadRequest($"Model is invalid: {string.Join(", ", errors)}");
-             }
-             return View(carWithImages);
-
-
-         }
-         public async Task<IActionResult> Pendings()
-         {
-             var companyId = HttpContext.Session.GetInt32("CompanyId");
-             var cars=new List<Car>();
-             if (companyId.HasValue)
-             {
-                 cars = (await carService.FindAll(x => x.Pending == true && x.CarCompanyId == companyId)).OrderBy(x => x.CreatedAt).ToList();
-             }
-             else
-             {
-
-
-                 cars = (await carService.FindAll(x => x.Pending == true)).OrderBy(x => x.CreatedAt).ToList();
-             }
-             var carImages = new List<CarWithImages>();
-
-             foreach (var car in cars)
-             {
-                 var images = await imageService.GetImagesByCarId(car.Id);
-                 carImages.Add(new CarWithImages
-                 {
-                     Car = car,
-                     Images = images.ToList()
-                 });
-             }
-
-             var carImagesViewModel= new CarImagesViewModel() 
-             {
-                 CarWithImages = carImages,
-             };
-             return View(carImagesViewModel);
-         }
-         public int CarId { get; set; } = 0;
-         public async Task<IActionResult> EditPendingCar(int id)
-         {
-             if (id == 0 ||id == null) 
-             { 
-                 return NotFound();
-             }
-             var car= await carService.FindOne(x => x.Id == id);
-             CarId = car.Id;
-             var viewModel = new EditCarWithImagesPendingViewModel
-             {
-                 Brand=car.Brand,
-                 Model=car.Model,
-                 Gearbox=car.Gearbox,
-                 Year=car.Year,
-                 PricePerDay=car.PricePerDay,
-                 PricePerWeek=car.PricePerWeek,
-                 MileageLimitForDay=car.MileageLimitForDay,
-                 MileageLimitForWeek=car.MileageLimitForWeek,
-                 AdditionalMileageCharge=car.AdditionalMileageCharge,
-                 EngineCapacity=car.EngineCapacity,
-                 Color=car.Color,
-                 Description=car.Description,
-                 DriveTrain=car.DriveTrain,
-                 HorsePower=car.HorsePower,
-                 ZeroToHundred=car.ZeroToHundred,
-                 TopSpeed=car.TopSpeed,
-                 Images = (await imageService.GetImagesByCarId(car.Id)).Select(img => new ImageViewModel { Id = img.Id, Url = img.Url, Order=img.Order }).ToList(),
-                 ClassOfCarId =car.ClassOfCarId,
-                 ClassOptions =  new SelectList((await classOfCarService.GetAll()).ToList(), "Id", "Name")
-             };
-             return View(viewModel);*/
-
+            
         }
         public async Task<IActionResult> Pendings()
         {
@@ -811,6 +660,7 @@ namespace RentACar.Controllers
             CarId = car.Id;
             var viewModel = new EditCarWithImagesPendingViewModel
             {
+                Id = car.Id,
                 Brand = car.Brand,
                 Model = car.Model,
                 Gearbox = car.Gearbox,
@@ -833,7 +683,7 @@ namespace RentACar.Controllers
             };
             return View(viewModel);
         }
-            [HttpPost("Car/EditPendingCar/{id?}")]
+        [HttpPost("Car/EditPendingCar/{id?}")]
         public async Task<IActionResult> EditPendingCar(int? id, EditCarWithImagesPendingViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -879,10 +729,19 @@ namespace RentACar.Controllers
 
             carService.Update(car);
             await carService.Save();
-           
+
             return RedirectToAction("Index", "Car");
-            
-          
+
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteCar(int id)
+        {
+            var car=await carService.FindOne(x=>x.Id == id);
+            car.Available = false;
+            carService.Update(car);
+            await carService.Save();
+            return RedirectToAction("Index","Admin");
         }
         [HttpPost]
         public async Task<IActionResult> UpdateImageOrder([FromBody] ImageOrderUpdateRequest request)

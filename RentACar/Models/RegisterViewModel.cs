@@ -9,6 +9,7 @@ namespace RentACar.Models
         public string Name {  get; set; }
         [Required]
         public DateTime BirthDay {  get; set; }
+      
         [Required]
         [EmailAddress]
         public string Email { get; set; }

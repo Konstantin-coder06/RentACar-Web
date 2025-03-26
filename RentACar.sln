@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar", "RentACar\RentACar.csproj", "{AFB9781B-4EDB-4FAB-846D-3FA893C83933}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.Models", "RentACar.Models\RentACar.Models.csproj", "{A26F3808-7DFF-4C58-BF12-DE5EBF6B0165}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.Utility", "RentACar.Utility\RentACar.Utility.csproj", "{D7DF070B-9DF3-4658-9A86-FB1777F19FD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar.Tests", "RentACar.Tests\RentACar.Tests.csproj", "{61490E3F-2219-4DD4-A4DE-05645A58E15A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D7DF070B-9DF3-4658-9A86-FB1777F19FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7DF070B-9DF3-4658-9A86-FB1777F19FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7DF070B-9DF3-4658-9A86-FB1777F19FD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61490E3F-2219-4DD4-A4DE-05645A58E15A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61490E3F-2219-4DD4-A4DE-05645A58E15A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61490E3F-2219-4DD4-A4DE-05645A58E15A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61490E3F-2219-4DD4-A4DE-05645A58E15A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

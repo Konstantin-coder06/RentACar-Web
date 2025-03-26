@@ -5,6 +5,8 @@ namespace RentACar.Models
 {
     public class EditCarWithImagesPendingViewModel
     {
+        [Required]
+        public int Id { get; set; }
         [Required(ErrorMessage = "Brand is required")]
         public string Brand { get; set; }
 

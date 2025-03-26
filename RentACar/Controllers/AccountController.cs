@@ -213,6 +213,7 @@ namespace RentACar.Controllers
                         Name = model.Name,
                         BirthDay = model.BirthDay,
                     };              
+                    
                     await customerService.Add(customer);
                     await customerService.Save();
                     HttpContext.Session.SetInt32("UserId", customer.Id);

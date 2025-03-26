@@ -12,5 +12,6 @@ namespace RentACar.Core.IServices
     {
         Task<Customer> GetByUserId(string userId);
         Task<Customer> GetByReport(int id);
+      
     }
 }

@@ -69,5 +69,30 @@ namespace RentACar.Core.Services
         {
             reports.Update(entity);
         }
+
+        public async Task<int> ReportCount()
+        {
+            return await reports.Count();
+        }
+
+        public async Task<int> CountAsync(Expression<Func<Report, bool>> predicate)
+        {
+            return await reports.CountAsync(predicate);
+        }
+
+        public async Task<IEnumerable<Report>> GetAllOrderBy(Expression<Func<Report, object>> predicate)
+        {
+          return await reports.GetAllOrderBy(predicate);
+        }
+
+        public async Task<int> Count()
+        {
+           return await reports.Count();
+        }
+
+        public Task<IEnumerable<Report>> FindAllLimited(Expression<Func<Report, bool>> predicate, int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

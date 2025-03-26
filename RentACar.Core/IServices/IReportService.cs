@@ -11,6 +11,6 @@ namespace RentACar.Core.IServices
     public interface IReportService:IRepository<Report>
     {
         Task<IEnumerable<Report>> GetReportFromUser(int customerId);
-        
+        Task<int> ReportCount();
     }
 }

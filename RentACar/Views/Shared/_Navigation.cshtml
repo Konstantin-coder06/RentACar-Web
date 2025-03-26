@@ -26,14 +26,14 @@
                     <div class="user-welcome">
                         @if (User.IsInRole("User"))
                         {
-                            <div><a>Welcome, @Context.Session.GetString("UserName")</a></div>
-                            <a href="#" class="profile-link">Go to profile</a>
+                           <a>Welcome, @Context.Session.GetString("UserName")</a>
+                        
                             
                         }
                         @if (User.IsInRole("Company"))
                         {
-                            <div><a>Welcome, @Context.Session.GetString("CompanyName")</a></div>
-                            <a href="#" class="profile-link">Go to profile</a>
+                            <a>Welcome, @Context.Session.GetString("CompanyName")</a>
+                           
                         }
                     </div>
                     <a asp-action="Logout" asp-controller="Account" class="logout-btn">

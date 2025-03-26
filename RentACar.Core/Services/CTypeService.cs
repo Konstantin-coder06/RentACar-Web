@@ -62,5 +62,25 @@ namespace RentACar.Core.Services
         {
             repository.Update(entity);
         }
+
+        public Task<int> CountAsync(Expression<Func<CType, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> Count()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<CType>> GetAllOrderBy(Expression<Func<CType, object>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<CType>> FindAllLimited(Expression<Func<CType, bool>> predicate, int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

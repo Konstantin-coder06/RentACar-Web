@@ -42,147 +42,50 @@ namespace RentACar.Controllers
         [Authorize(Roles = "Admin" )]
         public async Task<IActionResult> Index()
         {
-            var reservationedCars = await reservationService.GetAll();
-            reservationedCars=  reservationedCars.OrderBy(x => x.CreateTime).ToList();
+            var reservationedCars = await reservationService.GetAllByOrderByCreateTime();
             var cars=new List<Car>();
             var customers=new List<CustomerReservationedCarViewModel>();
-            var last24Hours = DateTime.Now.AddDays(-1);
-            var last24After24Hours=DateTime.Now.AddDays(-2);
-            var lastMonth=DateTime.Now.AddDays(-30);
-            var lastMonthAfterMonth = DateTime.Now.AddDays(-60);
-            var lastWeek = DateTime.Now.AddDays(-7);
-            var lastWeekBeforeWeek = DateTime.Now.AddDays(-14);
             var customers1 = await customerService.GetAll();
-            customers1=customers1.ToList();
-            var resCarsForLast24Hours =await reservationService.GetAll();
-            resCarsForLast24Hours=resCarsForLast24Hours.Where(x => x.CreateTime >= last24Hours).ToList();
-            var resCarsForLast24After24Hours = await reservationService.FindAll(x => x.CreateTime >= last24After24Hours && x.CreateTime <= last24Hours);
-            resCarsForLast24After24Hours=resCarsForLast24After24Hours.ToList();
+            var countPending = await carService.PendingCarsCount();
 
-            var countPendin = await carService.FindAll(x => x.Pending == true);
-            int countPending=countPendin.Count();
+            var resCarsForLast24Hours = await reservationService.FindAllForLast24Hours();
+            var resCarsForLast24After24Hours = await reservationService.FindAllForLast24HoursBefore24Hours();
+            var resCarsForLastMounth = await reservationService.FindAllForLastMonth();
+            var resCarsForLastMonthBeforeMonth = await reservationService.FindAllForPreviousMonth();
 
-            var resCarsForLastMounth = await reservationService.GetAll();
-            resCarsForLastMounth=resCarsForLastMounth.Where(x=>x.CreateTime >= lastMonth).ToList();
-            var resCarsForLastMonthBeforeMonth =await reservationService.FindAll(x => x.CreateTime >= lastMonthAfterMonth && x.CreateTime <= lastMonth);
-            resCarsForLastMonthBeforeMonth=resCarsForLastMonthBeforeMonth.ToList();
+            var resCarsForLastWeek = await reservationService.FindAllForLastWeek();
+            var resCarsForLastWeekBeforeWeek = await reservationService.FindAllForWeekBeforeLast();
 
-            var resCarsForLastWeek =await reservationService.GetAll();
-            resCarsForLastWeek=resCarsForLastWeek.Where(x => x.CreateTime >= lastWeek).ToList();
-            var resCarsForLastWeekBeforeWeek = await reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek);
-            resCarsForLastWeekBeforeWeek=resCarsForLastWeekBeforeWeek.ToList();
-
-            var pendin = await carService.FindAll(x => x.Pending == true);
-            var pending=pendin.Take(8).ToList();
-            var reportC = await reportService.GetAll();
-            int reportCount=reportC.Count();
-            double total24Hours = 0;
-            double totalMounth = 0;
-            double total24before24hours = 0;
-            double totalMonthBeforeMonth = 0;
-            double totalWeek = 0;
-            double totalWeekBeforeWeek = 0;
+            var pending = await carService.FindAllPendingCars();
+            var reportCount = await reportService.ReportCount();
+            double total24Hours = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLast24Hours);
+            double totalMounth = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLastMounth);
+            double total24before24hours = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLast24After24Hours);
+            double totalMonthBeforeMonth = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLastMonthBeforeMonth);
+            double totalWeek = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLastWeek);
+            double totalWeekBeforeWeek = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLastWeekBeforeWeek);
             int count = 0;
             foreach (var carx in reservationedCars)
             {
-               
-
-
-                    var customer = await customerService.FindOne(x => x.Id == carx.CustomerId);
+                var customer = await customerService.FindOne(x => x.Id == carx.CustomerId);
                 var car = await carService.FindOne(x => x.Id == carx.CarId);
-                    var image =await imageService.ImageByCarId(car.Id);
-                    if (customer != null)
+                var image = await imageService.ImageByCarId(car.Id);
+                if (customer != null)
+                {
+                    customers.Add(new CustomerReservationedCarViewModel
                     {
-                         customers.Add(new CustomerReservationedCarViewModel
-                        {
-                            Customer = customer,
-                            Brand = car.Brand,
-                            Model = car.Model,
-                            Image = image,
-                        });
-                    }
-                
+                        Customer = customer,
+                        Brand = car.Brand,
+                        Model = car.Model,
+                        Image = image,
+                    });
+                }
+            }
 
-
-            }
-            foreach(var x in resCarsForLastMonthBeforeMonth)
-            {
-                totalMonthBeforeMonth += x.TotalPrice;
-            }
-            foreach(var x in resCarsForLast24After24Hours)
-            {
-                total24before24hours += x.TotalPrice;
-            }
-            foreach(var x in resCarsForLast24Hours)
-            {
-                total24Hours += x.TotalPrice;
-            }
-            foreach(var x in resCarsForLastMounth)
-            {
-                totalMounth += x.TotalPrice;
-                count++;
-            }
-            foreach (var x in resCarsForLastWeek)
-            {
-                totalWeek += x.TotalPrice;
-            }
-            foreach (var x in resCarsForLastWeekBeforeWeek)
-            {
-                totalWeekBeforeWeek += x.TotalPrice;
-            }
-            double difference24 =total24Hours - total24before24hours;
-           
-            int percent24 = 0;
-
-            if (total24before24hours != 0)
-            {
-                percent24 = (int)((difference24 / total24before24hours) * 100);
-            }
-            else
-            {
-                if (total24Hours > 0)
-                {
-                    percent24 = 100;
-                }
-                else
-                {
-                    percent24 = 0;
-                }
-            }
-            double differenceWeek = totalWeek - totalWeekBeforeWeek;
-            int percentWeek = 0;
-            if (totalWeekBeforeWeek != 0)
-            {
-                percentWeek = (int)((differenceWeek /totalWeekBeforeWeek) * 100);
-            }
-            else
-            {
-                if (totalWeek > 0)
-                {
-                    percentWeek = 100;
-                }
-                else
-                {
-                    percentWeek = 0;
-                }
-            }
-            double differenceMonth = totalMounth -totalMonthBeforeMonth;
-            int percentMonth = 0;
-            if (totalMonthBeforeMonth != 0)
-            {
-                percentMonth = (int)((differenceMonth / totalMonthBeforeMonth) * 100);
-            }
-            else
-            {
-                if (totalMounth > 0)
-                {
-                    percentMonth = 100;
-                }
-                else
-                {
-                    percentMonth = 0;
-                }
-            }
+            int percentages24 = await reservationService.PercentagesOfDifferentPeriods(total24Hours, total24before24hours);
+            int percentagesWeek = await reservationService.PercentagesOfDifferentPeriods(totalWeek, totalWeekBeforeWeek);
+            int percentagesMonth = await reservationService.PercentagesOfDifferentPeriods(totalMounth,totalMonthBeforeMonth);
+            
 
             List<CustomerEmailPhoneViewModel> allCustomersEmails = new List<CustomerEmailPhoneViewModel>();
             foreach (var x in customers1)
@@ -214,11 +117,11 @@ namespace RentACar.Controllers
                 TotalPriceForLastMounthBeforeMonth = totalMonthBeforeMonth,
                 Count = count,
                 CountPending = countPending,
-                Pending = pending,
+                Pending = pending.ToList(),
                 ReportCount = reportCount,
-                ProcentPerDay = percent24,
-                ProcentPerWeek = percentWeek,
-                ProcentPerMonth = percentMonth,
+                ProcentPerDay = percentages24,
+                ProcentPerWeek = percentagesWeek,
+                ProcentPerMonth = percentagesMonth,
             };
             
             return View(recentReservationViewModel);
@@ -227,7 +130,7 @@ namespace RentACar.Controllers
         public async Task<IActionResult> AllReports()
         {
             var reports = await reportService.GetAll();
-            reports=reports.ToList();
+
             var view = new List<ReportViewModel>();
             foreach (var report in reports)
             {

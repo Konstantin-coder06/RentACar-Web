@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace RentACar.Core.Services
 {
-    public class ImageService:IImageService
+    public class ImageService : IImageService
     {
         IRepository<Image> repository;
         CloudinaryService cloudinaryService;
@@ -119,6 +119,26 @@ namespace RentACar.Core.Services
         public async Task<bool> AnyAsync(Expression<Func<Image, bool>> predicate)
         {
             return await repository.AnyAsync(predicate);
+        }
+
+        public Task<int> CountAsync(Expression<Func<Image, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> Count()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Image>> GetAllOrderBy(Expression<Func<Image, object>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Image>> FindAllLimited(Expression<Func<Image, bool>> predicate, int limit)
+        {
+            throw new NotImplementedException();
         }
     }
 }

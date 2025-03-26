@@ -76,5 +76,36 @@ namespace RentACar.Core.Services
         {
             carRepository.Update(entity);
         }
+
+        public Task<int> PendingCarsCount()
+        {
+            return carRepository.CountAsync(x => x.Pending == true);
+        }
+
+        public Task<int> CountAsync(Expression<Func<Car, bool>> predicate)
+        {
+           return carRepository.CountAsync(predicate);
+        }
+
+        public Task<IEnumerable<Car>> GetAllOrderBy(Expression<Func<Car, object>> predicate)
+        {
+            return carRepository.GetAllOrderBy(predicate);
+        }
+
+        public async Task<IEnumerable<Car>> FindAllPendingCars()
+        {
+
+            return await carRepository.FindAllLimited(x => x.Pending == true, 8);
+        }
+
+        public async Task<int> Count()
+        {
+            return await carRepository.Count();
+        }
+
+        public async Task<IEnumerable<Car>> FindAllLimited(Expression<Func<Car, bool>> predicate, int limit)
+        {
+            return await carRepository.FindAllLimited(predicate,limit);
+        }
     }
 }

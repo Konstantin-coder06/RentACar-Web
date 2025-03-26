@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using RentACar.Core.IServices;
 using RentACar.DataAccess.IRepository;
 using RentACar.Models;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-
+using RentACar;
 namespace RentACar.Core.Services
 {
     public class CustomerService : ICustomerService
@@ -72,6 +73,28 @@ namespace RentACar.Core.Services
         public void Update(Customer entity)
         {
             repository.Update(entity);
+        }
+
+        public Task<int> CountAsync(Expression<Func<Customer, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> Count()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Customer>> GetAllOrderBy(Expression<Func<Customer, object>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
+        public Task<IEnumerable<Customer>> FindAllLimited(Expression<Func<Customer, bool>> predicate, int limit)
+        {
+            throw new NotImplementedException();
         }
     }
 }

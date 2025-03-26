@@ -69,5 +69,25 @@ namespace RentACar.Core.Services
         {
             await repository.Save();
         }
+
+        public Task<int> CountAsync(Expression<Func<ClassOfCar, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> Count()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<ClassOfCar>> GetAllOrderBy(Expression<Func<ClassOfCar, object>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<ClassOfCar>> FindAllLimited(Expression<Func<ClassOfCar, bool>> predicate, int limit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
