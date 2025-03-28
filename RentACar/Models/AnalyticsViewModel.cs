@@ -13,7 +13,7 @@ namespace RentACar.Models
         public double TotalPriceForLastWeekBeforeWeek { get; set; }
         public double TotalPriceForLastMounthBeforeMonth { get; set; }
         public int CountMonth { get; set; }
-        public double AvgReservationDuration {  get; set; }
+    
         public int CountAllReservations {  get; set; }
         public List<TopCarsViewModel> Top10Cars {  get; set; }
         public int ReportCount {  get; set; }

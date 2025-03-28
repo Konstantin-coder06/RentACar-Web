@@ -12,5 +12,10 @@ namespace RentACar.Core.IServices
     {
         Task<IEnumerable<Report>> GetReportFromUser(int customerId);
         Task<int> ReportCount();
+        Task<List<(string title, string description, Customer customer, DateTime CreatedAt)>> GetAllReportsWithCustomersName();
+        Task<List<(string title, string description, Customer customer, DateTime CreatedAt)>> GetAllReportsWithCustomersNameWithStartDate(DateTime? startDate);
+        Task<List<(string title, string description, Customer customer, DateTime CreatedAt)>> GetAllReportsWithCustomersNameWithEndDate(DateTime? endDate);
+        Task<List<(string title, string description, Customer customer, DateTime CreatedAt)>> GetAllReportsWithCustomersNameWithStartEndDate(DateTime? startDate, DateTime? endDate);
+        Task<List<Report>> GetReportsByCustomerName(string searchbar);
     }
 }

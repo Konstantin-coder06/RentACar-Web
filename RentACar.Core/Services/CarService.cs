@@ -107,5 +107,27 @@ namespace RentACar.Core.Services
         {
             return await carRepository.FindAllLimited(predicate,limit);
         }
+        public async Task<List<(string brand, string model, int count)>> GetTop10ReservedCars(List<int> carIds)
+        {
+            var topCars = new List<(string brand, string model, int count)>();
+            
+            foreach (var carId in carIds)
+            {
+                var car = await carRepository.FindOne(cr => cr.Id == carId);
+                var brand=car.Brand;
+                var model=car.Model;
+                var count = carIds.Count(id => id == carId);
+                topCars.Add((brand, model, count));
+            }
+
+            return topCars;
+        }
+
+        public async Task<IEnumerable<Car>> GetAllCarsOfCompany(int companyId)
+        {
+           return await carRepository.FindAll(x=>x.CarCompanyId == companyId);
+        }
+
+       
     }
 }

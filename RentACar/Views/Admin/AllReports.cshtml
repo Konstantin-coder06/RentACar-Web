@@ -1,24 +1,20 @@
-﻿@model ListOfReportsViewModel
-@{
+﻿@{
     TempData["HideNavagation"] = true;
-    @Html.Partial("_Navigation")
 }
+@model ListOfReportsViewModel
 <link rel="stylesheet" href="~/css/allReports.css" asp-append-version="true" />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 <div class="page-container">
     <!-- Decorative elements -->
     <div class="decorative-dot" style="top: 10%; left: 5%;"></div>
     <div class="decorative-dot" style="top: 15%; right: 10%;"></div>
     <div class="decorative-dot" style="bottom: 20%; left: 8%;"></div>
     <div class="decorative-dot" style="bottom: 10%; right: 5%;"></div>
-
     <div class="page-title">
         <h1>Reports Dashboard</h1>
         <p>View and manage all system reports</p>
     </div>
-
     <div class="controls-container">
         <form asp-action="Search" method="post" class="search-container">
             <div class="input-group">
@@ -27,7 +23,6 @@
             </div>
             <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
         </form>
-
         <form asp-action="Filters" method="post" class="date-filter-container">
             <div class="filter-group">
                 <span class="filter-label">From:</span>
@@ -42,7 +37,6 @@
             </button>
         </form>
     </div>
-
     <div class="table-container">
         @if (Model.ReportViewModels != null && Model.ReportViewModels.Any())
         {
@@ -79,8 +73,7 @@
             </div>
         }
     </div>
-
-    <!-- Pagination example - you can integrate with your actual pagination system -->
+  
     <div class="pagination">
         <button class="pagination-btn active">1</button>
         <button class="pagination-btn">2</button>

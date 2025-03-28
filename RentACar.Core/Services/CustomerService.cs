@@ -15,9 +15,11 @@ namespace RentACar.Core.Services
     public class CustomerService : ICustomerService
     {
         IRepository<Customer> repository;
-        public CustomerService(IRepository<Customer> repository)
+        private readonly UserManager<IdentityUser> userManager;
+        public CustomerService(IRepository<Customer> repository, UserManager<IdentityUser> userManager)
         {
             this.repository = repository;
+            this.userManager = userManager;
         }
         public async Task Add(Customer entity)
         {
@@ -95,6 +97,23 @@ namespace RentACar.Core.Services
         public Task<IEnumerable<Customer>> FindAllLimited(Expression<Func<Customer, bool>> predicate, int limit)
         {
             throw new NotImplementedException();
+        }
+        public async Task<List<(Customer customer, string email, string phoneNumber)>> GetCustomersWithEmailsAndPhoneNumbers()
+        {
+            var customers = await repository.GetAll();
+            var result = new List<(Customer, string, string)>();
+            foreach (var customer in customers)
+            {
+                var identityUser = await userManager.FindByIdAsync(customer.UserId);
+                var email = identityUser?.Email;
+                var phoneNumber = identityUser?.PhoneNumber;
+                if (string.IsNullOrEmpty(phoneNumber))
+                {
+                    phoneNumber = "-";
+                }
+                result.Add((customer, email, phoneNumber));
+            }
+            return result;
         }
     }
 }

@@ -58,7 +58,7 @@ namespace RentACar.DataAccess.IRepository.Repository
 
         public async Task<IEnumerable<T>> FindAll(Expression<Func<T, bool>> predicate)
         {
-            return await dbSet.Where(predicate).ToListAsync();
+            return await  dbSet.Where(predicate).ToListAsync();
         }
 
         public async Task<IEnumerable<T>> FindAllLimited(Expression<Func<T, bool>> predicate, int limit)

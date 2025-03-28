@@ -172,13 +172,13 @@
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\report.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-gQCsLfQSFJ2MoIe/ffoqR1s8XWbGz7en2DfuzeqOniM="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"909"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022gQCsLfQSFJ2MoIe/ffoqR1s8XWbGz7en2DfuzeqOniM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 07 Mar 2025 10:40:40 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"909"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022gQCsLfQSFJ2MoIe/ffoqR1s8XWbGz7en2DfuzeqOniM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 27 Mar 2025 14:30:33 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RentACar/css/report.folf0x0rxe.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\report.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"folf0x0rxe"},{"Name":"integrity","Value":"sha256-gQCsLfQSFJ2MoIe/ffoqR1s8XWbGz7en2DfuzeqOniM="},{"Name":"label","Value":"_content/RentACar/css/report.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"909"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022gQCsLfQSFJ2MoIe/ffoqR1s8XWbGz7en2DfuzeqOniM=\u0022"},{"Name":"Last-Modified","Value":"Fri, 07 Mar 2025 10:40:40 GMT"}]]]></ResponseHeaders>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"909"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022gQCsLfQSFJ2MoIe/ffoqR1s8XWbGz7en2DfuzeqOniM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 27 Mar 2025 14:30:33 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/RentACar/css/reservation.1r199ru7an.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\reservation.css'))</AssetFile>
