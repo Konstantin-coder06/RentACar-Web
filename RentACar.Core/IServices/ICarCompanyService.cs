@@ -11,5 +11,6 @@ namespace RentACar.Core.IServices
     public interface ICarCompanyService:IRepository<CarCompany>
     {
         Task<CarCompany> GetByUserId(string id);
+        Task<CarCompany>GetById(int? id);
     }
 }

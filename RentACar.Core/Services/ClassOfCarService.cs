@@ -89,5 +89,11 @@ namespace RentACar.Core.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<int>> GetAllClassSelectedIds(List<string> selectedCategories)
+        {
+            var result = await repository.FindAll(x => selectedCategories.Contains(x.Name));
+            return  result.Select(x => x.Id).ToList();
+        }
     }
 }

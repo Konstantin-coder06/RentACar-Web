@@ -1,4 +1,5 @@
-﻿using RentACar.Core.IServices;
+﻿using Microsoft.AspNetCore.Cors.Infrastructure;
+using RentACar.Core.IServices;
 using RentACar.DataAccess.IRepository;
 using RentACar.DataAccess.IRepository.Repository;
 using RentACar.Models;
@@ -128,6 +129,42 @@ namespace RentACar.Core.Services
            return await carRepository.FindAll(x=>x.CarCompanyId == companyId);
         }
 
-       
+        public async Task<IEnumerable<Car>> GetAllNotReservetedAndNotPendingCars(List<int> reservedCarIds)
+        {
+            return await carRepository.FindAll(car => !reservedCarIds.Contains(car.Id) && !car.Pending);
+        }
+
+        public async Task<Car> FindById(int carId)
+        {
+            return await carRepository.FindOne(x=>x.Id== carId);
+        }
+
+        public async Task SetCarUnavailable(int id)
+        {
+            var car = await FindById(id);
+            if (car!=null)
+            {
+                car.Available = false;
+                Update(car);
+                await Save();
+            }
+           
+        }
+
+        public async Task<IEnumerable<Car>> GetAllPendingCompanyCars(int? companyId)
+        {
+            IEnumerable<Car> result=new List<Car>();
+            if (companyId != null)
+            {
+
+
+                result = await carRepository.FindAll(x => x.Pending == true && x.CarCompanyId == companyId);
+            }
+            else
+            {
+                var cars = await FindAllPendingCars();
+            }
+            return result.OrderBy(x => x.CreatedAt).ToList();
+        }
     }
 }

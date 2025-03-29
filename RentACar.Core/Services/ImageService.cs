@@ -140,5 +140,11 @@ namespace RentACar.Core.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<Image>> GetImagesOrderByOrderCarId(int carId)
+        {
+            var result = await GetImagesByCarId(carId);
+           return result.OrderBy(x => x.Order).ToList();
+        }
     }
 }

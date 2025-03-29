@@ -13,6 +13,7 @@ namespace RentACar.Core.IServices
         Task<Customer> GetByUserId(string userId);
         Task<Customer> GetByReport(int id);
         Task<List<(Customer customer, string email, string phoneNumber)>> GetCustomersWithEmailsAndPhoneNumbers();
+        Task<Customer>FindById(int id);
 
     }
 }

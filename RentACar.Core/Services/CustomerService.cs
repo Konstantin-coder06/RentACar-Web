@@ -115,5 +115,10 @@ namespace RentACar.Core.Services
             }
             return result;
         }
+
+        public async Task<Customer> FindById(int id)
+        {
+            return await repository.FindOne(x=>x.Id == id);
+        }
     }
 }

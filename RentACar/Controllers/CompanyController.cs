@@ -26,72 +26,47 @@ namespace RentACar.Controllers
         public async Task<IActionResult> Index()
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
-            var company=await carCompanyService.FindOne(x=>x.Id == companyId);
-            var cars=(await carService.FindAll(x=>x.CarCompanyId== companyId)).ToList();
-            var reservationedCars=new List<Reservation>();
-            var reservatedCars = new List<Car>();
-            var customers = new List<CustomerReservationedCarViewModel>();
-            var last24Hours = DateTime.Now.AddDays(-1);
-            var last24After24Hours = DateTime.Now.AddDays(-2);
-            var lastMonth = DateTime.Now.AddDays(-30);
-            var lastMonthAfterMonth = DateTime.Now.AddDays(-60);
-            var lastWeek = DateTime.Now.AddDays(-7);
-            var lastWeekBeforeWeek = DateTime.Now.AddDays(-14);
+            var company = await carCompanyService.GetById(companyId);
+            var companyCars = await carService.GetAllCarsOfCompany(companyId.Value);
+            List<int> companyCarIds = companyCars.Select(c => c.Id).ToList();
+
            
-            var resCarsForLast24Hours = new List<Reservation>();
-            var resCarsForLast24After24Hours = new List<Reservation>();
-            var resCarsForLastMounth = new List<Reservation>(); 
-            var resCarsForLastMonthBeforeMonth = new List<Reservation>();
-            var resCarsForLastWeek = new List<Reservation>();
-            var resCarsForLastWeekBeforeWeek = new List<Reservation>();
-            foreach (var c in cars)
+            var allReservations = await reservationService.GetAllReservationsContaingCompanyIds(companyCarIds);
+            var reservationedCars = allReservations.ToList();
+            var reservatedCars = await reservationService.GetAllReservationsForCompany(companyCars);
+            var customers = new List<CustomerReservationedCarViewModel>();
+
+          
+            foreach (var reservation in reservationedCars.TakeLast(4))
             {
-                var reservations = (await reservationService.FindAll(x => x.CarId == c.Id)).OrderByDescending(x => x.CreateTime).ToList();
-                if (reservations.Count > 0)
+                var customer = await customerService.FindById(reservation.CustomerId);
+                var car = await carService.FindById(reservation.CarId);
+                var image = await imageService.ImageByCarId(reservation.CarId);
+                if (customer != null && car != null)
                 {
-                    reservatedCars.Add(c);
-                }
-                var ttresCarsForLast24Hours = (await reservationService.FindAll(x => x.CreateTime >= last24Hours && x.CarId == c.Id)).ToList();
-                var ttresCarsForLast24After24Hours = (await reservationService.FindAll(x => x.CreateTime >= last24After24Hours && x.CreateTime <= last24Hours && x.CarId == c.Id)).ToList();
-
-                var ttresCarsForLastMounth =(await reservationService.FindAll(x => x.CreateTime >= lastMonth && x.CarId == c.Id)).ToList();
-                var ttresCarsForLastMonthBeforeMonth = (await reservationService.FindAll(x => x.CreateTime >= lastMonthAfterMonth && x.CreateTime <= lastMonth && x.CarId == c.Id)).ToList();
-
-                var ttresCarsForLastWeek = (await reservationService.FindAll(x => x.CreateTime >= lastWeek && x.CarId == c.Id)).ToList();
-                var ttresCarsForLastWeekBeforeWeek = (await reservationService.FindAll(x => x.CreateTime >= lastWeekBeforeWeek && x.CreateTime <= lastWeek && x.CarId == c.Id)).ToList();
-                reservationedCars.AddRange(reservations);
-                resCarsForLast24Hours.AddRange(ttresCarsForLast24Hours);
-                resCarsForLast24After24Hours.AddRange(ttresCarsForLast24After24Hours);
-                resCarsForLastMounth.AddRange(ttresCarsForLastMounth);
-                resCarsForLastMonthBeforeMonth.AddRange(ttresCarsForLastMonthBeforeMonth);
-                resCarsForLastWeek.AddRange(ttresCarsForLastWeek);
-                resCarsForLastWeekBeforeWeek.AddRange(ttresCarsForLastWeekBeforeWeek);
-                foreach (var reservation in reservations)
-                {
-
-
-                    var customer = await customerService.FindOne(x => x.Id == reservation.CustomerId);
-                    var image= await imageService.ImageByCarId(c.Id);
-                    if (customer != null)
+                    customers.Add(new CustomerReservationedCarViewModel
                     {
-                        customers.Add(new CustomerReservationedCarViewModel
-                        {
-                            Customer = customer,
-                            Brand = c.Brand,
-                            Model = c.Model,
-                            Image = image,
-                        });
-                    }
+                        Customer = customer,
+                        Brand = car.Brand,
+                        Model = car.Model,
+                        Image = image,
+                    });
                 }
             }
-            var carsCount = reservationedCars.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).ToList();
 
+            var resLast24Hours = await reservationService.FindAllForLast24HoursCompany(companyCarIds);
+            var resLast24HoursPrev = await reservationService.FindAllForLast24HoursBefore24HoursCompany(companyCarIds);
+            var resLastMonth = await reservationService.FindAllForLastMonthCompany(companyCarIds);
+            var resLastMonthPrev = await reservationService.FindAllForPreviousMonthCompany(companyCarIds);
+            var resLastWeekPrev = await reservationService.FindAllForLastWeekCompany(companyCarIds);
+            var resLastWeek = await reservationService.FindAllForWeekBeforeLastCompany(companyCarIds);
+
+            var carsCount = reservationService.GetCarReservationCounts(reservationedCars);
             var carsWithCount = new List<TopCarsViewModel>();
-
             foreach (var x in carsCount)
             {
-                var car = await carService.FindOne(cr => cr.Id == x.CarId && cr.CarCompanyId == companyId);
-                if (car != null) 
+                var car = await carService.FindById(x.CarId);
+                if (car != null)
                 {
                     carsWithCount.Add(new TopCarsViewModel
                     {
@@ -102,121 +77,146 @@ namespace RentACar.Controllers
                     });
                 }
             }
-          
 
+            var countPending = await carService.PendingCarsCount();
 
-
-            var countPending = (await carService.FindAll(x => x.Pending == true && x.CarCompanyId==companyId)).Count();
-
-          
-
-          
-          
-            double total24Hours = 0;
-            double totalMounth = 0;
-            double total24before24hours = 0;
-            double totalMonthBeforeMonth = 0;
-            double totalWeek = 0;
-            double totalWeekBeforeWeek = 0;
-            int count = 0;
-            
-            foreach (var x in resCarsForLastMonthBeforeMonth)
-            {
-                totalMonthBeforeMonth += x.TotalPrice;
-            }
-            foreach (var x in resCarsForLast24After24Hours)
-            {
-                total24before24hours += x.TotalPrice;
-            }
-            foreach (var x in resCarsForLast24Hours)
-            {
-                total24Hours += x.TotalPrice;
-            }
-            foreach (var x in resCarsForLastMounth)
-            {
-                totalMounth += x.TotalPrice;
-                count++;
-            }
-            foreach (var x in resCarsForLastWeek)
-            {
-                totalWeek += x.TotalPrice;
-            }
-            foreach (var x in resCarsForLastWeekBeforeWeek)
-            {
-                totalWeekBeforeWeek += x.TotalPrice;
-            }
-            double difference24 = total24Hours - total24before24hours;
-
-            int percent24 = 0;
-
-            if (total24before24hours != 0)
-            {
-                percent24 = (int)((difference24 / total24before24hours) * 100);
-            }
-            else
-            {
-                if (total24Hours > 0)
-                {
-                    percent24 = 100;
-                }
-                else
-                {
-                    percent24 = 0;
-                }
-            }
-            double differenceWeek = totalWeek - totalWeekBeforeWeek;
-            int percentWeek = 0;
-            if (totalWeekBeforeWeek != 0)
-            {
-                percentWeek = (int)((differenceWeek / totalWeekBeforeWeek) * 100);
-            }
-            else
-            {
-                if (totalWeek > 0)
-                {
-                    percentWeek = 100;
-                }
-                else
-                {
-                    percentWeek = 0;
-                }
-            }
-            double differenceMonth = totalMounth - totalMonthBeforeMonth;
-            int percentMonth = 0;
-            if (totalMonthBeforeMonth != 0)
-            {
-                percentMonth = (int)((differenceMonth / totalMonthBeforeMonth) * 100);
-            }
-            else
-            {
-                if (totalMounth > 0)
-                {
-                    percentMonth = 100;
-                }
-                else
-                {
-                    percentMonth = 0;
-                }
-            }
+            var totalLast24Hours = await reservationService.TotalPriceForOnePeriodOfTime(resLast24Hours);
+            var totalLast24HoursPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLast24HoursPrev);
+            var totalLastWeek = await reservationService.TotalPriceForOnePeriodOfTime(resLastWeek);
+            var totalLastWeekPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastWeekPrev);
+            var totalLastMonth = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonth);
+            var totalLastMonthPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonthPrev);
+            var difference24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLast24Hours, totalLast24HoursPrev);
+            var differenceWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastWeek, totalLastWeekPrev);
+            var differenceMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastMonth, totalLastMonthPrev);
+            var differenceReservation24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLast24Hours.Count(), resLast24HoursPrev.Count());
+            var differenceReservationWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastWeek.Count(), resLastWeekPrev.Count());
+            var differenceReservationMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastMonth.Count(), resLastMonthPrev.Count());
+            int percentages24 = await reservationService.PercentagesOfDifferentPeriods(totalLast24Hours, totalLast24HoursPrev);
+            int percentagesWeek = await reservationService.PercentagesOfDifferentPeriods(totalLastWeek, totalLastWeekPrev);
+            int percentagesMonth = await reservationService.PercentagesOfDifferentPeriods(totalLastMonth, totalLastMonthPrev);
 
             CompanyIndexViewModel viewModel = new CompanyIndexViewModel()
             {
                 AllCars = carsWithCount,
                 CountPending = countPending,
-                TotalPriceForLast24Hours = total24Hours,
-                TotalPriceForLast24HoursBefore24Hours = total24before24hours,
-                TotalPriceForLastMounth = totalMounth,
-                TotalPriceForLastMounthBeforeMonth = totalMonthBeforeMonth,
-                TotalPriceForLastWeek = totalWeek,
-                TotalPriceForLastWeekBeforeWeek = totalWeekBeforeWeek,
-                ProcentPerDay = percent24,
-                ProcentPerMonth = percentMonth,
-                ProcentPerWeek = percentWeek,
+                TotalPriceForLast24Hours = totalLast24Hours,
+                TotalPriceForLast24HoursBefore24Hours = totalLast24HoursPrev,
+                TotalPriceForLastMounth = totalLastMonth,
+                TotalPriceForLastMounthBeforeMonth = totalLastMonthPrev,
+                TotalPriceForLastWeek = totalLastWeek,
+                TotalPriceForLastWeekBeforeWeek = totalLastWeekPrev,
+                ProcentPerDay = percentages24,
+                ProcentPerMonth = percentagesMonth,
+                ProcentPerWeek = percentagesWeek,
                 Count = reservationedCars.Count,
                 Customers = customers,
                 CompanyName = company.Name
             };
             return View(viewModel);
+            /* var companyId = HttpContext.Session.GetInt32("CompanyId");       
+             var company=await carCompanyService.FindOne(x=>x.Id == companyId);          
+             var companyCars = await carService.GetAllCarsOfCompany(companyId.Value);
+             List<int>companyCarIds = companyCars.Select(c => c.Id).ToList();
+
+             var reservationedCars=new List<Reservation>();
+             var reservatedCars = await reservationService.GetAllReservationsForCompany(companyCars);
+             var customers = new List<CustomerReservationedCarViewModel>();
+
+
+             var resLast24Hours = await reservationService.FindAllForLast24HoursCompany(companyCarIds);
+             var resLast24HoursPrev = await reservationService.FindAllForLast24HoursBefore24HoursCompany(companyCarIds);
+             var resLastMonth = await reservationService.FindAllForLastMonthCompany(companyCarIds);
+             var resLastMonthPrev = await reservationService.FindAllForPreviousMonthCompany(companyCarIds);
+             var resLastWeekPrev = await reservationService.FindAllForLastWeekCompany(companyCarIds);
+             var resLastWeek = await reservationService.FindAllForWeekBeforeLastCompany(companyCarIds);
+
+
+
+
+
+             foreach (var c in companyCars)
+             {
+
+
+                 foreach (var reservation in reservationedCars)
+                 {
+
+
+                     var customer = await customerService.FindById(reservation.CustomerId);
+                     var image = await imageService.ImageByCarId(c.Id);
+                     if (customer != null)
+                     {
+                         customers.Add(new CustomerReservationedCarViewModel
+                         {
+                             Customer = customer,
+                             Brand = c.Brand,
+                             Model = c.Model,
+                             Image = image,
+                         });
+                     }
+                 }
+             }
+             var carsCount = reservationService.GetCarReservationCounts(reservationedCars);
+             var carsWithCount = new List<TopCarsViewModel>();
+
+             foreach (var x in carsCount)
+             {
+                 var car = await carService.FindById(x.CarId);
+                 if (car != null)
+                 {
+                     carsWithCount.Add(new TopCarsViewModel
+                     {
+                         Brand = car.Brand,
+                         Model = car.Model,
+                         CarId = car.Id,
+                         Count = x.Count
+                     });
+                 }
+             }
+
+
+
+
+             var countPending = await carService.PendingCarsCount();
+
+
+
+
+
+             var totalLast24Hours = await reservationService.TotalPriceForOnePeriodOfTime(resLast24Hours);
+             var totalLast24HoursPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLast24HoursPrev);
+             var totalLastWeek = await reservationService.TotalPriceForOnePeriodOfTime(resLastWeek);
+             var totalLastWeekPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastWeekPrev);
+             var totalLastMonth = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonth);
+             var totalLastMonthPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonthPrev);
+             var difference24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLast24Hours, totalLast24HoursPrev);
+             var differenceWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastWeek, totalLastWeekPrev);
+             var differenceMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastMonth, totalLastMonthPrev);
+             var differenceReservation24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLast24Hours.Count(), resLast24HoursPrev.Count());
+             var differenceReservationWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastWeek.Count(), resLastWeekPrev.Count());
+             var differenceReservationMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastMonth.Count(), resLastMonthPrev.Count());
+             int percentages24 = await reservationService.PercentagesOfDifferentPeriods(totalLast24Hours, totalLast24HoursPrev);
+             int percentagesWeek = await reservationService.PercentagesOfDifferentPeriods(totalLastWeek, totalLastWeekPrev);
+             int percentagesMonth = await reservationService.PercentagesOfDifferentPeriods(totalLastMonth, totalLastMonthPrev);
+             CompanyIndexViewModel viewModel = new CompanyIndexViewModel()
+             {
+                 AllCars = carsWithCount,
+                 CountPending = countPending,
+                 TotalPriceForLast24Hours = totalLast24Hours,
+                 TotalPriceForLast24HoursBefore24Hours = totalLast24HoursPrev,
+                 TotalPriceForLastMounth = totalLastMonth,
+                 TotalPriceForLastMounthBeforeMonth = totalLastMonthPrev,
+                 TotalPriceForLastWeek = totalLastWeek,
+                 TotalPriceForLastWeekBeforeWeek = totalLastWeekPrev,
+                 ProcentPerDay = percentages24,
+                 ProcentPerMonth = percentagesMonth,
+                 ProcentPerWeek = percentagesWeek,
+                 Count = reservationedCars.Count,
+                 Customers = customers,
+                 CompanyName = company.Name
+             };
+             return View(viewModel);*/
         }
     }
 }

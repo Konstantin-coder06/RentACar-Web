@@ -12,5 +12,6 @@ namespace RentACar.Core.IServices
     public interface IClassOfCarService:IRepository<ClassOfCar>
     {
         Task<List<ClassOfCar>> GetClassOptionsAsync();
+        Task<List<int>> GetAllClassSelectedIds(List<string> selectedCategories);
     }
 }

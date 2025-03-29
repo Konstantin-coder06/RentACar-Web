@@ -88,5 +88,10 @@ namespace RentACar.Core.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<CarCompany> GetById(int? id)
+        {
+            return await carCompanyRepository.FindOne(x=>x.Id==id);
+        }
     }
 }

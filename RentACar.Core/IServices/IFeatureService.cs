@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace RentACar.Core.IServices
 {
     public interface IFeatureService:IRepository<Feature>
-    {     
+    {
+        Task<Feature> GetById(int id);
+        Task<List<Feature>>GetAllFeaturesByIds(IEnumerable<int> ids);
     }
 }

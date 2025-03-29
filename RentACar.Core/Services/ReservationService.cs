@@ -21,7 +21,7 @@ namespace RentACar.Core.Services
         ICustomerService customerService;
         ICarService carService;
         IImageService imageService;
-     
+
 
         public ReservationService(IRepository<Reservation> reservationsRepository, ICustomerService customerService, ICarService carService, IImageService imageService)
         {
@@ -29,16 +29,16 @@ namespace RentACar.Core.Services
             this.customerService = customerService;
             this.carService = carService;
             this.imageService = imageService;
-          
+
         }
         public async Task Add(Reservation entity)
         {
-          await reservationsRepository.Add(entity);
+            await reservationsRepository.Add(entity);
         }
 
         public async Task<IEnumerable<Reservation>> AllWithInclude(params Expression<Func<Reservation, object>>[] filters)
         {
-            var reservations=await reservationsRepository.AllWithInclude(filters);
+            var reservations = await reservationsRepository.AllWithInclude(filters);
             return reservations.ToList();
         }
 
@@ -58,7 +58,7 @@ namespace RentACar.Core.Services
         }
 
         public async Task<IEnumerable<Reservation>> FindAll(Expression<Func<Reservation, bool>> predicate)
-        {       
+        {
             return await reservationsRepository.FindAll(predicate);
         }
 
@@ -69,14 +69,14 @@ namespace RentACar.Core.Services
 
         public async Task<IEnumerable<Reservation>> GetAll()
         {
-            var reservations=await reservationsRepository.GetAll();
+            var reservations = await reservationsRepository.GetAll();
             return reservations.ToList();
         }
 
-      
+
         public async Task<IEnumerable<Reservation>> GetAllOrderBy(Expression<Func<Reservation, object>> predicate)
         {
-           return await reservationsRepository.GetAllOrderBy(predicate);
+            return await reservationsRepository.GetAllOrderBy(predicate);
         }
         public async Task<IEnumerable<Reservation>> GetAllByOrderByCreateTime()
         {
@@ -92,7 +92,7 @@ namespace RentACar.Core.Services
         }
         public async Task Save()
         {
-           await reservationsRepository.Save();
+            await reservationsRepository.Save();
         }
 
         public void Update(Reservation entity)
@@ -109,7 +109,7 @@ namespace RentACar.Core.Services
         public async Task<IEnumerable<Reservation>> FindAllForLast24HoursBefore24Hours()
         {
             var last24Hours = DateTime.Now.AddDays(-1);
-            var last24Before24Hours= DateTime.Now.AddDays(-2);
+            var last24Before24Hours = DateTime.Now.AddDays(-2);
             return await reservationsRepository.FindAll(x => x.CreateTime >= last24Before24Hours && x.CreateTime <= last24Hours);
         }
 
@@ -132,8 +132,8 @@ namespace RentACar.Core.Services
 
         public async Task<IEnumerable<Reservation>> FindAllForLastMonth()
         {
-            var today = DateTime.UtcNow;         
-            var firstDayOfCurrentMonth = new DateTime(today.Year, today.Month, 1, 0, 0, 0, DateTimeKind.Utc);        
+            var today = DateTime.UtcNow;
+            var firstDayOfCurrentMonth = new DateTime(today.Year, today.Month, 1, 0, 0, 0, DateTimeKind.Utc);
             var startOfLastMonth = firstDayOfCurrentMonth.AddMonths(-1);
             var endOfLastMonth = firstDayOfCurrentMonth.AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59);
 
@@ -155,10 +155,10 @@ namespace RentACar.Core.Services
             return reservationsRepository.Count();
         }
 
-        public async Task<double> TotalPriceForOnePeriodOfTime(IEnumerable<Reservation>list)
+        public async Task<double> TotalPriceForOnePeriodOfTime(IEnumerable<Reservation> list)
         {
             double total = 0;
-            foreach (var reservation in list) 
+            foreach (var reservation in list)
             {
                 total += reservation.TotalPrice;
             }
@@ -214,32 +214,32 @@ namespace RentACar.Core.Services
             return result;
         }
 
-      
+
 
         public async Task<IEnumerable<Reservation>> GetAllReservationsByStartDate(DateTime startDate)
         {
-            return await reservationsRepository.FindAll(x=>x.CreateTime >= startDate);
-           
+            return await reservationsRepository.FindAll(x => x.CreateTime >= startDate);
+
         }
-        public async Task<List<int>> GetTop10ReservedCarIdsByStartDate(DateTime startDate, List<int>carIds)
+        public async Task<List<int>> GetTop10ReservedCarIdsByStartDate(DateTime startDate, List<int> carIds)
         {
             var reservations = await reservationsRepository.FindAll(x =>
                 (carIds == null || carIds.Contains(x.CarId)) && x.StartDate >= startDate);
 
-            return  reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count)
+            return reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count)
             .Take(10).Select(x => x.CarId).ToList();
         }
 
         public async Task<IEnumerable<Reservation>> GetAllIfItIsNotCompany(List<int> carIds)
         {
-           
+
             return await reservationsRepository.FindAll(x => carIds == null || carIds.Contains(x.CarId));
         }
 
         public async Task<IEnumerable<Reservation>> FindAllForLast24HoursCompany(List<int> companyCarIds)
         {
             var last24Hours = DateTime.Now.AddDays(-1);
-            return await reservationsRepository.FindAll(x =>companyCarIds.Contains(x.CarId) && x.CreateTime >= last24Hours);
+            return await reservationsRepository.FindAll(x => companyCarIds.Contains(x.CarId) && x.CreateTime >= last24Hours);
         }
 
         public async Task<IEnumerable<Reservation>> FindAllForLast24HoursBefore24HoursCompany(List<int> companyCarIds)
@@ -264,7 +264,7 @@ namespace RentACar.Core.Services
             var startOfWeekBeforeLast = today.AddDays(-(int)today.DayOfWeek - 13).Date;
             var endOfWeekBeforeLast = startOfWeekBeforeLast.AddDays(6).Date.AddHours(23).AddMinutes(59).AddSeconds(59);
 
-            return await reservationsRepository.FindAll(x => companyCarIds.Contains(x.CarId) &&  x.CreateTime >= startOfWeekBeforeLast && x.CreateTime < endOfWeekBeforeLast);
+            return await reservationsRepository.FindAll(x => companyCarIds.Contains(x.CarId) && x.CreateTime >= startOfWeekBeforeLast && x.CreateTime < endOfWeekBeforeLast);
         }
 
         public async Task<IEnumerable<Reservation>> FindAllForLastMonthCompany(List<int> companyCarIds)
@@ -274,7 +274,7 @@ namespace RentACar.Core.Services
             var startOfLastMonth = firstDayOfCurrentMonth.AddMonths(-1);
             var endOfLastMonth = firstDayOfCurrentMonth.AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59);
 
-            return await reservationsRepository.FindAll(x => companyCarIds.Contains(x.CarId) && x.CreateTime >= startOfLastMonth && x.CreateTime <endOfLastMonth);
+            return await reservationsRepository.FindAll(x => companyCarIds.Contains(x.CarId) && x.CreateTime >= startOfLastMonth && x.CreateTime < endOfLastMonth);
         }
 
         public async Task<IEnumerable<Reservation>> FindAllForPreviousMonthCompany(List<int> companyCarIds)
@@ -291,5 +291,55 @@ namespace RentACar.Core.Services
         {
             return (total - totalPrev);
         }
+
+        public async Task<List<int>> GetAllReservatedCarsId(DateTime? start, DateTime? end)
+        {
+            var result = await reservationsRepository.FindAll(r => r.StartDate < end.Value && r.EndDate > start.Value);
+            return result.Select(r => r.CarId).Distinct().ToList();
+        }
+
+        public async Task<double> TotalPriceForOneReservation(Reservation reservation, int days, double price)
+        {
+            if (days == 7)
+            {
+                reservation.TotalPrice = price;
+            }
+            else if (days > 0)
+            {
+                reservation.TotalPrice = (days * price) * 0.9;
+            }
+            return reservation.TotalPrice;
+        }
+
+        public async Task<List<Car>> GetAllReservationsForCompany(IEnumerable<Car> companyCars)
+        {
+            List<Car> reservatedCars = new List<Car>();
+            foreach (var c in companyCars)
+            {
+                var reservations = (await FindAll(x => x.CarId == c.Id)).OrderByDescending(x => x.CreateTime).ToList();
+                if (reservations.Count > 0)
+                {
+                    reservatedCars.Add(c);
+                }
+            }
+            return reservatedCars;
+        }
+        public List<(int CarId, int Count)> GetCarReservationCounts(List<Reservation> reservations)
+        {
+            return  reservations
+                .GroupBy(x => x.CarId)
+                .Select(g => (CarId: g.Key, Count: g.Count()))
+                .OrderByDescending(x => x.Count)
+                .ToList();
+        }
+
+        public async Task<List<Reservation>> GetAllReservationsContaingCompanyIds(List<int> companyCarIds)
+        {
+            var result = await reservationsRepository.FindAll(x => companyCarIds.Contains(x.CarId));
+            return result.ToList();
+        }
     }
 }
+
+        
+    

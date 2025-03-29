@@ -84,5 +84,22 @@ namespace RentACar.Core.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<Feature> GetById(int id)
+        {
+            return await repository.FindOne(x=>x.Id == id);
+        }
+
+        public async Task<List<Feature>> GetAllFeaturesByIds(IEnumerable<int> ids)
+        {
+            Feature feature = new Feature();
+            List<Feature> features = new List<Feature>();
+            foreach (var x in ids)
+            {
+                feature = await GetById(x);
+                features.Add(feature);
+            }
+            return features;
+        }
     }
 }

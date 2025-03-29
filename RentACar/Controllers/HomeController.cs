@@ -56,7 +56,7 @@ namespace RentACar.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult ContactUs(AddReportViewModel reportViewModel)
+        public async Task<IActionResult> ContactUs(AddReportViewModel reportViewModel)
         {
            
                 if (ModelState.IsValid)
@@ -74,8 +74,8 @@ namespace RentACar.Controllers
                         CustomerId = userId.Value,
                         CreateAt = DateTime.Now,
                     };
-                    reportService.Add(report);
-                    reportService.Save();
+                    await reportService.Add(report);
+                    await reportService.Save();
                     return RedirectToAction("Index", "Home");
                 }
                 return View(reportViewModel);

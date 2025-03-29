@@ -31,6 +31,12 @@ namespace RentACar.Core.IServices
         Task<List<int>> GetTop10ReservedCarIdsByStartDate(DateTime startDate,List<int>carIds);
         Task<IEnumerable<Reservation>> GetAllIfItIsNotCompany(List<int>carIds);
         Task<double> DifferenceOfPriceBetweenTwoPeriods(double total, double totalPrev);
+        Task<List<int>> GetAllReservatedCarsId(DateTime? start, DateTime? end);
+        Task<double>TotalPriceForOneReservation(Reservation reservation, int days, double price);
+        Task<List<Car>> GetAllReservationsForCompany(IEnumerable<Car> companyCars);
+
+        List<(int CarId, int Count)> GetCarReservationCounts(List<Reservation> reservations);
+        Task<List<Reservation>> GetAllReservationsContaingCompanyIds(List<int> companyCarIds);
 
     }
 }

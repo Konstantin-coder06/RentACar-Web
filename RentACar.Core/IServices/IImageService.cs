@@ -17,5 +17,6 @@ namespace RentACar.Core.IServices
         Task<IEnumerable<Image>> GetImagesByCarId(int carid);
         Task<Image> FindByid(int id);
         Task<Image> ImageByCarId(int carid);
+        Task<List<Image>> GetImagesOrderByOrderCarId(int carid);
     }
 }
