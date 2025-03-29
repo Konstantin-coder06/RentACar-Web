@@ -92,9 +92,9 @@ namespace RentACar.Core.Services
            return await reports.Count();
         }
 
-        public Task<IEnumerable<Report>> FindAllLimited(Expression<Func<Report, bool>> predicate, int limit)
+        public async Task<IEnumerable<Report>> FindAllLimited(Expression<Func<Report, bool>> predicate, int limit)
         {
-            throw new NotImplementedException();
+            return await reports.FindAllLimited(predicate, limit);  
         }
 
         public async Task<List<(string title, string description, Customer customer, DateTime CreatedAt)>> GetAllReportsWithCustomersName()

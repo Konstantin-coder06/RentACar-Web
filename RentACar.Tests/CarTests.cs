@@ -6,7 +6,7 @@ using RentACar.Models;
 using System.Linq.Expressions;
 namespace RentACar.Tests
 {
-    public class Tests
+    public class CarTests
     {
         private Mock<IRepository<Car>> mockRepository;
         private CarService carService;

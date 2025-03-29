@@ -71,24 +71,24 @@ namespace RentACar.Core.Services
            carFeatureRepository.Update(entity);
         }
 
-        public Task<int> CountAsync(Expression<Func<CarFeature, bool>> predicate)
+        public  async Task<int> CountAsync(Expression<Func<CarFeature, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await carFeatureRepository.CountAsync(predicate);
         }
 
-        public Task<int> Count()
+        public async Task<int> Count()
         {
-            throw new NotImplementedException();
+            return await carFeatureRepository.Count();    
         }
 
-        public Task<IEnumerable<CarFeature>> GetAllOrderBy(Expression<Func<CarFeature, object>> predicate)
+        public async Task<IEnumerable<CarFeature>> GetAllOrderBy(Expression<Func<CarFeature, object>> predicate)
         {
-            throw new NotImplementedException();
+           return await carFeatureRepository.GetAllOrderBy(predicate);
         }
 
-        public Task<IEnumerable<CarFeature>> FindAllLimited(Expression<Func<CarFeature, bool>> predicate, int limit)
+        public async Task<IEnumerable<CarFeature>> FindAllLimited(Expression<Func<CarFeature, bool>> predicate, int limit)
         {
-            throw new NotImplementedException();
+            return await carFeatureRepository.FindAllLimited(predicate, limit);
         }
     }
 }

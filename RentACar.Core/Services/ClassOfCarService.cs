@@ -70,24 +70,24 @@ namespace RentACar.Core.Services
             await repository.Save();
         }
 
-        public Task<int> CountAsync(Expression<Func<ClassOfCar, bool>> predicate)
+        public async Task<int> CountAsync(Expression<Func<ClassOfCar, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await repository.CountAsync(predicate);
         }
 
-        public Task<int> Count()
+        public async Task<int> Count()
         {
-            throw new NotImplementedException();
+            return await repository.Count();
         }
 
-        public Task<IEnumerable<ClassOfCar>> GetAllOrderBy(Expression<Func<ClassOfCar, object>> predicate)
+        public async Task<IEnumerable<ClassOfCar>> GetAllOrderBy(Expression<Func<ClassOfCar, object>> predicate)
         {
-            throw new NotImplementedException();
+            return await repository.GetAllOrderBy(predicate);
         }
 
-        public Task<IEnumerable<ClassOfCar>> FindAllLimited(Expression<Func<ClassOfCar, bool>> predicate, int limit)
+        public async Task<IEnumerable<ClassOfCar>> FindAllLimited(Expression<Func<ClassOfCar, bool>> predicate, int limit)
         {
-            throw new NotImplementedException();
+            return await repository.FindAllLimited(predicate, limit);
         }
 
         public async Task<List<int>> GetAllClassSelectedIds(List<string> selectedCategories)

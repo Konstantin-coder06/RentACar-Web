@@ -165,9 +165,9 @@ namespace RentACar.Core.Services
             return total;
         }
 
-        public Task<IEnumerable<Reservation>> FindAllLimited(Expression<Func<Reservation, bool>> predicate, int limit)
+        public async Task<IEnumerable<Reservation>> FindAllLimited(Expression<Func<Reservation, bool>> predicate, int limit)
         {
-            throw new NotImplementedException();
+            return await reservationsRepository.FindAllLimited(predicate, limit);
         }
 
         public async Task<int> PercentagesOfDifferentPeriods(double firstPeriod, double lastPeriod)

@@ -63,24 +63,24 @@ namespace RentACar.Core.Services
             repository.Update(entity);
         }
 
-        public Task<int> CountAsync(Expression<Func<CType, bool>> predicate)
+        public async Task<int> CountAsync(Expression<Func<CType, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await repository.CountAsync(predicate);
         }
 
-        public Task<int> Count()
+        public async Task<int> Count()
         {
-            throw new NotImplementedException();
+            return await repository.Count();
         }
 
-        public Task<IEnumerable<CType>> GetAllOrderBy(Expression<Func<CType, object>> predicate)
+        public async Task<IEnumerable<CType>> GetAllOrderBy(Expression<Func<CType, object>> predicate)
         {
-            throw new NotImplementedException();
+            return await repository.GetAllOrderBy(predicate);
         }
 
-        public Task<IEnumerable<CType>> FindAllLimited(Expression<Func<CType, bool>> predicate, int limit)
+        public async Task<IEnumerable<CType>> FindAllLimited(Expression<Func<CType, bool>> predicate, int limit)
         {
-            throw new NotImplementedException();
+            return await repository.FindAllLimited(predicate, limit);
         }
     }
 }

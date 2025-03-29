@@ -73,7 +73,7 @@ namespace RentACar.Tests
 
         }
         [Test]
-        public async Task GetAll_ReturnsAllCars()
+        public async Task GetAll_ReturnsAllReservations()
         {
             var reservations= new List<Reservation> { new Reservation { Id = 1 }, new Reservation { Id = 2 } };
             mockRepository.Setup(r => r.GetAll()).ReturnsAsync(reservations);
@@ -125,8 +125,8 @@ namespace RentACar.Tests
         [TestCase(2)]
         public async Task FindAllLimited_ReturnsLimitedReservations(int limit)
         {
-            var cars = new List<Reservation> { new Reservation { Id = 1 }, new Reservation { Id = 2 } };
-            mockRepository.Setup(r => r.FindAllLimited(c => true, limit)).ReturnsAsync(cars);
+            var reservations = new List<Reservation> { new Reservation { Id = 1 }, new Reservation { Id = 2 } };
+            mockRepository.Setup(r => r.FindAllLimited(c => true, limit)).ReturnsAsync(reservations);
 
             var result = await reservationService.FindAllLimited(c => true, limit);
             Assert.That(result.Count().Equals(2));

@@ -77,26 +77,26 @@ namespace RentACar.Core.Services
             repository.Update(entity);
         }
 
-        public Task<int> CountAsync(Expression<Func<Customer, bool>> predicate)
+        public async Task<int> CountAsync(Expression<Func<Customer, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await repository.CountAsync(predicate);
         }
 
-        public Task<int> Count()
+        public async Task<int> Count()
         {
-            throw new NotImplementedException();
+            return await repository.Count();
         }
 
-        public Task<IEnumerable<Customer>> GetAllOrderBy(Expression<Func<Customer, object>> predicate)
+        public async Task<IEnumerable<Customer>> GetAllOrderBy(Expression<Func<Customer, object>> predicate)
         {
-            throw new NotImplementedException();
+            return await repository.GetAllOrderBy(predicate);
         }
 
         
 
-        public Task<IEnumerable<Customer>> FindAllLimited(Expression<Func<Customer, bool>> predicate, int limit)
+        public async Task<IEnumerable<Customer>> FindAllLimited(Expression<Func<Customer, bool>> predicate, int limit)
         {
-            throw new NotImplementedException();
+            return await repository.FindAllLimited(predicate, limit);
         }
         public async Task<List<(Customer customer, string email, string phoneNumber)>> GetCustomersWithEmailsAndPhoneNumbers()
         {

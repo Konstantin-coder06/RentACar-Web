@@ -2,6 +2,7 @@
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using RentACar.Core.IServices;
 using RentACar.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace RentACar.Core.Services
 {
-    public class CloudinaryService
+    public class CloudinaryService:ICloudinaryService
     {
         private readonly Cloudinary _cloudinary;
         public CloudinaryService(IConfiguration config)

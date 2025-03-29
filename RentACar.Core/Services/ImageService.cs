@@ -16,8 +16,8 @@ namespace RentACar.Core.Services
     public class ImageService : IImageService
     {
         IRepository<Image> repository;
-        CloudinaryService cloudinaryService;
-        public ImageService(IRepository<Image> _repository,CloudinaryService cloudinaryService)
+        ICloudinaryService cloudinaryService;
+        public ImageService(IRepository<Image> _repository,ICloudinaryService cloudinaryService)
         {
             this.repository = _repository;
             this.cloudinaryService = cloudinaryService;
@@ -121,24 +121,24 @@ namespace RentACar.Core.Services
             return await repository.AnyAsync(predicate);
         }
 
-        public Task<int> CountAsync(Expression<Func<Image, bool>> predicate)
+        public async Task<int> CountAsync(Expression<Func<Image, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return await repository.CountAsync(predicate);
         }
 
-        public Task<int> Count()
+        public async Task<int> Count()
         {
-            throw new NotImplementedException();
+            return await repository.Count();
         }
 
-        public Task<IEnumerable<Image>> GetAllOrderBy(Expression<Func<Image, object>> predicate)
+        public async Task<IEnumerable<Image>> GetAllOrderBy(Expression<Func<Image, object>> predicate)
         {
-            throw new NotImplementedException();
+            return await repository.GetAllOrderBy(predicate);
         }
 
-        public Task<IEnumerable<Image>> FindAllLimited(Expression<Func<Image, bool>> predicate, int limit)
+        public async Task<IEnumerable<Image>> FindAllLimited(Expression<Func<Image, bool>> predicate, int limit)
         {
-            throw new NotImplementedException();
+            return await repository.FindAllLimited(predicate, limit);
         }
 
         public async Task<List<Image>> GetImagesOrderByOrderCarId(int carId)
