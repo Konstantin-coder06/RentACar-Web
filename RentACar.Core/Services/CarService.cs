@@ -162,7 +162,7 @@ namespace RentACar.Core.Services
             }
             else
             {
-                var cars = await FindAllPendingCars();
+                result = await carRepository.FindAll(x => x.Pending == true);
             }
             return result.OrderBy(x => x.CreatedAt).ToList();
         }
