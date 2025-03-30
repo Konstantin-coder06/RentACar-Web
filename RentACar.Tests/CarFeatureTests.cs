@@ -1,4 +1,5 @@
 ﻿using Moq;
+using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.DataAccess.IRepository;
 using RentACar.Models;
@@ -146,6 +147,27 @@ namespace RentACar.Tests
             mockRepository.Setup(r => r.AnyAsync(c => c.FeatureId==3)).ReturnsAsync(true);
             bool result = await carFeatureService.AnyAsync(c => c.FeatureId==3);
             Assert.IsTrue(result);
+        }
+        [TestCase(1)]
+        public async Task GetByCarIDAllFeatures_ReturnsFeatureIdsForGivenCarId(int carId)
+        {
+            var carFeatures = new List<CarFeature>
+            {
+                new CarFeature { CarId = carId, FeatureId = 10 },
+                new CarFeature { CarId = carId, FeatureId = 20 },
+                new CarFeature { CarId = 2, FeatureId = 30 } 
+            };
+
+            mockRepository.Setup(r => r.FindAll(x => x.CarId == carId)).ReturnsAsync(carFeatures.Where(x => x.CarId == carId));
+
+            var expectedFeatureIds = new List<int> { 10, 20 };
+            var result = await carFeatureService.GetByCarIDAllFeatures(carId);
+
+           
+            Assert.IsNotNull(result);
+            Assert.AreEqual(2, result.Count());
+            Assert.That(result.OrderBy(x => x), Is.EqualTo(expectedFeatureIds.OrderBy(x => x))); 
+            mockRepository.Verify(r => r.FindAll(x => x.CarId == carId), Times.Once());
         }
     }
 }
