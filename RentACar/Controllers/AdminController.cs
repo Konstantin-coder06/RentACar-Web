@@ -21,12 +21,13 @@ namespace RentACar.Controllers
         CloudinaryService cloudinaryService;
         IReportService reportService;
         ICarCompanyService carCompanyService;
-        
+        IFeatureService featureService;
+        ICarFeatureService carFeatureService;
        
         public AdminController(ICarService _carService, IImageService _imageService, 
             IClassOfCarService _classOfCarService,IReservationService reservationService, 
             ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportServicе,
-            ICarCompanyService carCompanyService)
+            ICarCompanyService carCompanyService, IFeatureService featureService,ICarFeatureService carFeatureService)
         {
             this.carService = _carService;
             this.imageService = _imageService;
@@ -36,18 +37,20 @@ namespace RentACar.Controllers
             this.cloudinaryService = cloudinaryService;
             this.reportService = reportServicе;
             this.carCompanyService = carCompanyService;
-           
+            this.featureService = featureService;
+            this.carFeatureService = carFeatureService;
             
         }
+
         [Authorize(Roles = "Admin" )]
         public async Task<IActionResult> Index()
         {
             var reservationedCars = await reservationService.GetAllByOrderByCreateTime();
             var cars=new List<Car>();
-            var customers=new List<CustomerReservationedCarViewModel>();
-            var customers1 = await customerService.GetAll();
+            var customers=new List<CustomerReservationedCarViewModel>();          
             var countPending = await carService.PendingCarsCount();
-
+            var pending = await carService.FindAllPendingCarsForAdmin();
+            var reportCount = await reportService.Count();
             var resCarsForLast24Hours = await reservationService.FindAllForLast24Hours();
             var resCarsForLast24After24Hours = await reservationService.FindAllForLast24HoursBefore24Hours();
             var resCarsForLastMounth = await reservationService.FindAllForLastMonth();
@@ -55,8 +58,7 @@ namespace RentACar.Controllers
             var resCarsForLastWeek = await reservationService.FindAllForLastWeek();
             var resCarsForLastWeekBeforeWeek = await reservationService.FindAllForWeekBeforeLast();
 
-            var pending = await carService.FindAllPendingCars();
-            var reportCount = await reportService.Count();
+            
             double total24Hours = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLast24Hours);
             double totalMounth = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLastMounth);
             double total24before24hours = await reservationService.TotalPriceForOnePeriodOfTime(resCarsForLast24After24Hours);
@@ -109,6 +111,7 @@ namespace RentACar.Controllers
             
             return View(recentReservationViewModel);
         }
+
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllReports()
         {
@@ -133,10 +136,10 @@ namespace RentACar.Controllers
             }
             return View(reportsViewModel);
         }
+
         [HttpPost]
         [Authorize(Roles = "Admin")]
-
-        public async Task<IActionResult> Search(string searchbar)
+        public async Task<IActionResult> SearchByCustomerName(string searchbar)
         {
             var reports = await reportService.GetReportsByCustomerName(searchbar);
             var reportsViewModel = new ListOfReportsViewModel
@@ -159,7 +162,7 @@ namespace RentACar.Controllers
             List<(string title,string description,Customer customer,DateTime CreatedAt)> reports=new List<(string, string, Customer, DateTime)>();
             if (listOfReportsViewModel.StartTime >listOfReportsViewModel.EndTime)
             {
-                ModelState.AddModelError("StartDate", "Must be ");
+                ModelState.AddModelError("StartDate", "The start date must be earlier than the end date.");
                 return View("Index");
             }
             else
@@ -203,6 +206,7 @@ namespace RentACar.Controllers
                 return View("AllReports", reportsViewModel);
             }
         }
+
         [Authorize(Roles ="Admin,Company")]
         public async Task<IActionResult> Analytics()
         {      
@@ -246,40 +250,30 @@ namespace RentACar.Controllers
             {
                 return BadRequest("User must be Admin or Company.");
             }
-
             var totalLast24Hours = await reservationService.TotalPriceForOnePeriodOfTime(resLast24Hours);
             var totalLast24HoursPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLast24HoursPrev);
             var totalLastWeek = await reservationService.TotalPriceForOnePeriodOfTime(resLastWeek);
             var totalLastWeekPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastWeekPrev);
             var totalLastMonth = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonth);
-            var totalLastMonthPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonthPrev);
-
-           
+            var totalLastMonthPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonthPrev);          
             var difference24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLast24Hours,totalLast24HoursPrev);
             var differenceWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastWeek,totalLastWeekPrev);
             var differenceMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastMonth, totalLastMonthPrev);
             var differenceReservation24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLast24Hours.Count(), resLast24HoursPrev.Count());
             var differenceReservationWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastWeek.Count(),resLastWeekPrev.Count());
-            var differenceReservationMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastMonth.Count(), resLastMonthPrev.Count());
-
-           
-            var allReservations = await reservationService.GetAllIfItIsNotCompany(companyCarIds);
-          
+            var differenceReservationMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastMonth.Count(), resLastMonthPrev.Count());        
+            var allReservations = await reservationService.GetAllIfItIsNotCompany(companyCarIds);     
             var top10CarIds = await reservationService.GetTop10ReservedCarIdsByStartDate(startDate,companyCarIds);
             var top10Cars = await carService.GetTop10ReservedCars(top10CarIds);
+            
             var top10 = top10Cars.Select(x => new TopCarsViewModel
             {
                 Brand = x.brand,
                 Model = x.model,
                 Count = x.count,
             }).ToList();
-
-
-            var approvedCarsCount = await carService.CountAsync(x => x.Pending);
-           
-            var reportCount = await reportService.Count();
-
-          
+            var approvedCarsCount = await carService.CountAsync(x => x.Pending);       
+            var reportCount = await reportService.Count();       
             var analyticsViewModel = new AnalyticsViewModel
             {
                 TotalLast24Hours = totalLast24Hours,
@@ -290,8 +284,7 @@ namespace RentACar.Controllers
                 CountMonth = resLastMonth.Count(),
                 TotalPriceForLast24HoursBefore24Hours = totalLast24HoursPrev,
                 TotalPriceForLastWeekBeforeWeek = totalLastWeekPrev,
-                TotalPriceForLastMounthBeforeMonth = totalLastMonthPrev,
-              
+                TotalPriceForLastMounthBeforeMonth = totalLastMonthPrev,             
                 CountAllReservations = allReservations.Count(),
                 Top10Cars = top10,
                 PendingsCount = approvedCarsCount,
@@ -321,11 +314,13 @@ namespace RentACar.Controllers
                 return RedirectToAction("AccessDenied", "Account");
             }
             var classOptions = await classOfCarService.GetAll();
-            var companies = await carCompanyService.GetAll();       
+            var companies = await carCompanyService.GetAll();
+            var features = (await featureService.GetAll()).Select(x=>x.NameOfFeatures).ToList();
             var viewModel = new AddingCarWithImagesViewModel
             {
                 ClassOptions = new SelectList(classOptions, "Id", "Name"),
-                Companies = new SelectList(companies, "Id", "Name")
+                Companies = new SelectList(companies, "Id", "Name"),
+                Features =features,
             };
             return View(viewModel);
         }
@@ -336,29 +331,32 @@ namespace RentACar.Controllers
         [Authorize(Roles = "Company,Admin")]
         public async Task<IActionResult> AddCar(AddingCarWithImagesViewModel viewModel)
         {
-            var classes=await classOfCarService.GetAll();
+            var classes = await classOfCarService.GetAll();
             viewModel.ClassOptions = new SelectList(classes, "Id", "Name");
+            var setfeatures = (await featureService.GetAll()).Select(x => x.NameOfFeatures).ToList();
+            viewModel.Features = setfeatures;
 
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
             }
+
             if (string.IsNullOrWhiteSpace(viewModel.OrderOfImages))
             {
                 ModelState.AddModelError("", "Image order information is missing.");
                 return View(viewModel);
             }
+
             var companyId = HttpContext.Session.GetInt32("CompanyId");
             var admin = User.IsInRole("Admin");
             if (!companyId.HasValue && !admin)
             {
                 return BadRequest("Maika ti user");
             }
-                
-                var orderIndexesStrings = viewModel.OrderOfImages.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var orderIndexesStrings = viewModel.OrderOfImages.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             var orderIndexes = new List<int>();
 
-         
             foreach (var indexStr in orderIndexesStrings)
             {
                 if (!int.TryParse(indexStr, out int index))
@@ -369,14 +367,12 @@ namespace RentACar.Controllers
                 orderIndexes.Add(index);
             }
 
-           
             if (orderIndexes.Count != viewModel.Images.Count)
             {
                 ModelState.AddModelError("", "The number of images does not match the provided order.");
                 return View(viewModel);
             }
 
-           
             var orderedImages = new List<IFormFile>();
             foreach (var idx in orderIndexes)
             {
@@ -388,7 +384,6 @@ namespace RentACar.Controllers
                 orderedImages.Add(viewModel.Images[idx]);
             }
 
-           
             var savedImagePaths = new List<string>();
             foreach (var file in orderedImages)
             {
@@ -398,7 +393,6 @@ namespace RentACar.Controllers
                     return View(viewModel);
                 }
 
-               
                 var filePath = await cloudinaryService.UploadImageAsync(file);
                 if (string.IsNullOrEmpty(filePath))
                 {
@@ -407,6 +401,13 @@ namespace RentACar.Controllers
                 }
                 savedImagePaths.Add(filePath);
             }
+
+            IEnumerable<Feature> features = new List<Feature>();
+            if (viewModel.SelectedFeatures != null && viewModel.SelectedFeatures.Any())
+            {
+                features = await featureService.FindAll(x => viewModel.SelectedFeatures.Contains(x.NameOfFeatures));
+            }
+
             try
             {
                 var car = new Car
@@ -449,13 +450,27 @@ namespace RentACar.Controllers
                     {
                         CarId = car.Id,
                         Url = savedImagePaths[i],
-                        Order = i 
+                        Order = i
                     };
-
                     await imageService.Add(carImage);
                     await imageService.Save();
                 }
 
+                // Fix for CarFeature saving
+                if (viewModel.SelectedFeatures != null && viewModel.SelectedFeatures.Any())
+                {
+                    var featureList = features.ToList(); // Convert to list for indexing
+                    for (int i = 0; i < viewModel.SelectedFeatures.Count; i++)
+                    {
+                        var carFeature = new CarFeature
+                        {
+                            CarId = car.Id,
+                            FeatureId = featureList[i].Id // Use the ID from the fetched features
+                        };
+                        await carFeatureService.Add(carFeature);
+                        await carFeatureService.Save();
+                    }
+                }
 
                 return RedirectToAction("Index", "Car");
             }
@@ -464,12 +479,9 @@ namespace RentACar.Controllers
                 ModelState.AddModelError("", "Error saving car. Please try again. " + ex.Message);
                 return View(viewModel);
             }
-          
+
 
         }
-        public IActionResult Settings()
-        {
-            return View();
-        }
+       
     }
 }

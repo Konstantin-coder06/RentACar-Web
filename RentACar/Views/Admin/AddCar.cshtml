@@ -90,6 +90,7 @@
                                     <input type="hidden" asp-for="OrderOfImages" id="imageOrder" data-val="false" />
                                 </div>
                             </fieldset>
+                            
                         </div>
 
                         <!-- Right Column (Details) -->
@@ -180,9 +181,12 @@
                                             <span asp-validation-for="Gearbox" class="text-danger"></span>
                                         </div>
                                     </div>
+                                   
+                                     
+                                    
                                 </div>
                             </fieldset>
-
+                          
                             <!-- Description Section -->
                             <fieldset>
                                 <legend>Description</legend>
@@ -192,7 +196,7 @@
                                     <span asp-validation-for="Description" class="text-danger"></span>
                                 </div>
                             </fieldset>
-
+                           
                             <!-- Company Selection for Admins -->
                             @using RentACar.Utility
                             @if (User.IsInRole(SD.Admin))
@@ -209,6 +213,22 @@
                                 </fieldset>
                             }
                         </div>
+                    </div><div class="col-12 mt-4">
+                        <fieldset class="features-fieldset">
+                            <legend>Vehicle Features</legend>
+                            <p class="text-muted">Select all the features this vehicle includes.</p>
+                            <div class="features-container">
+                                @foreach (var feature in Model.Features.OrderBy(x => x))
+                                {
+                                    <div class="form-check">
+                                        <input type="checkbox" name="SelectedFeatures" value="@feature"
+                                               class="form-check-input" id="feature-@feature"
+                                        @(Model.SelectedFeatures.Contains(feature) ? "checked" : "") />
+                                        <label class="form-check-label" for="feature-@feature">@feature</label>
+                                    </div>
+                                }
+                            </div>
+                        </fieldset>
                     </div>
                     <!-- Submit and Cancel Buttons -->
                     <div class="form-group mt-4">

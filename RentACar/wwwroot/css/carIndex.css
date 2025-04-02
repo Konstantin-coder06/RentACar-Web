@@ -195,7 +195,7 @@ header {
 .cars-list {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
 }
 
@@ -207,6 +207,7 @@ header {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     overflow: hidden;
     background-color: white;
+    width: 100%;
 }
 
     .card:hover {
@@ -215,10 +216,11 @@ header {
     }
 
     .card img {
-        height: 200px;
+        height: 230px;
         object-fit: cover;
         width: 100%;
         border-radius: 12px 12px 0 0;
+    
     }
 
 .card-body {
@@ -228,7 +230,7 @@ header {
 .card-title {
     font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: #333;
 }
 

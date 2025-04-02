@@ -13,8 +13,8 @@ namespace RentACar.Core.IServices
     {
         Task<int> CountOfCarsWithCategory(int categoryId);  
         Task<double> MinPriceOfCarByCategory(int categoryId);
+        Task<IEnumerable<Car>> FindAllPendingCarsForAdmin();
         Task<IEnumerable<Car>> FindAllPendingCars();
-        
         Task<int> PendingCarsCount();
         Task<List<(string brand, string model, int count)>> GetTop10ReservedCars(List<int> carIds);
         Task<IEnumerable<Car>> GetAllCarsOfCompany(int companyId);
@@ -22,6 +22,7 @@ namespace RentACar.Core.IServices
         Task<Car>FindById(int carId);
         Task SetCarUnavailable(int id);
         Task<IEnumerable<Car>> GetAllPendingCompanyCars(int? companyId);
+        
         
     }
 }

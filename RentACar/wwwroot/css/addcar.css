@@ -322,3 +322,61 @@
     .listing-page fieldset:nth-child(4) {
         animation-delay: 0.4s;
     }
+/* Features section styling */
+.listing-page .features-fieldset {
+    width: 100%;
+    margin-top: 20px;
+    clear: both;
+}
+
+.listing-page .features-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+}
+
+.listing-page .form-check {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.listing-page .form-check-input {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+    .listing-page .form-check-input:checked {
+        background-color: #f54242;
+        border-color: #f54242;
+    }
+
+.listing-page .form-check-label {
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+@media (max-width: 992px) {
+    .listing-page .features-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .listing-page .features-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .listing-page .features-container {
+        grid-template-columns: 1fr;
+    }
+}

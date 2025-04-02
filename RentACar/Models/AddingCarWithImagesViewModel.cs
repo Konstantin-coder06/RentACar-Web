@@ -65,6 +65,8 @@ namespace RentACar.Models
          public int CompanyId {  get; set; }
         public SelectList? Companies { get; set; }
         public string OrderOfImages { get; set; } = "";
+        public List<string> Features { get; set; }=new List<string>();
+        public List<string> SelectedFeatures { get; set; }=new List<string>();
 
     }
 }

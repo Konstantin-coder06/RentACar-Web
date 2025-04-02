@@ -165,7 +165,7 @@ namespace RentACar.Tests
             };
             mockRepository.Setup(r => r.GetAllOrderBy(x => x.CreateTime)).ReturnsAsync(reservations.OrderBy(x => x.CreateTime));
             var result = await reservationService.GetAllByOrderByCreateTime();
-            Assert.AreEqual(2, result.First().Id); // Oldest first
+            Assert.AreEqual(2, result.First().Id); 
             mockRepository.Verify(r => r.GetAllOrderBy(x => x.CreateTime), Times.Once());
         }
 
@@ -214,13 +214,13 @@ namespace RentACar.Tests
         [Test]
         public async Task FindAllForLastWeek_ReturnsReservationsInLastWeek()
         {
-            var now = DateTime.Now.Date; // Saturday, March 29, 2025
-            var startOfLastWeek = now.AddDays(-6).Date; // Sunday, March 23
+            var now = DateTime.Now.Date;
+            var startOfLastWeek = now.AddDays(-6).Date; 
             var endOfLastWeek = startOfLastWeek.AddDays(6).Date.AddHours(23).AddMinutes(59).AddSeconds(59);
             var reservations = new List<Reservation>
             {
-                new Reservation { Id = 1, CreateTime = now.AddDays(-5) }, // Within last week
-                new Reservation { Id = 2, CreateTime = now.AddDays(-10) } // Outside
+                new Reservation { Id = 1, CreateTime = now.AddDays(-5) },
+                new Reservation { Id = 2, CreateTime = now.AddDays(-10) } 
             };
             mockRepository.Setup(r => r.FindAll(It.IsAny<Expression<Func<Reservation, bool>>>())).ReturnsAsync(reservations.Where(x => x.CreateTime >= startOfLastWeek && x.CreateTime <= endOfLastWeek));
             var result = await reservationService.FindAllForLastWeek();
@@ -248,30 +248,27 @@ namespace RentACar.Tests
         [Test]
         public async Task FindAllForLastMonth_ReturnsReservationsInLastMonth()
         {
-            // Arrange
-            var now = DateTime.UtcNow; // Use real UTC time
+
+            var now = DateTime.UtcNow;
             var firstDayOfCurrentMonth = new DateTime(now.Year, now.Month, 1, 0, 0, 0, DateTimeKind.Utc);
             var startOfLastMonth = firstDayOfCurrentMonth.AddMonths(-1);
             var endOfLastMonth = firstDayOfCurrentMonth.AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59);
 
             var reservations = new List<Reservation>
             {
-                new Reservation { Id = 1, CreateTime = firstDayOfCurrentMonth.AddDays(-10) }, // Within last month
-                new Reservation { Id = 2, CreateTime = startOfLastMonth.AddMonths(-1) },       // Before last month
-                new Reservation { Id = 3, CreateTime = now }                                   // Current month
+                new Reservation { Id = 1, CreateTime = firstDayOfCurrentMonth.AddDays(-10) }, 
+                new Reservation { Id = 2, CreateTime = startOfLastMonth.AddMonths(-1) },       
+                new Reservation { Id = 3, CreateTime = now }                                   
             };
 
             mockRepository
                 .Setup(r => r.FindAll(It.Is<Expression<Func<Reservation, bool>>>(expr =>
-                    expr.Compile()(new Reservation { CreateTime = firstDayOfCurrentMonth.AddDays(-10) }) && // Matches last month
-                    !expr.Compile()(new Reservation { CreateTime = startOfLastMonth.AddMonths(-1) }) &&     // Excludes earlier
-                    !expr.Compile()(new Reservation { CreateTime = now }))))                         // Excludes current
-                .ReturnsAsync(reservations.Where(x => x.CreateTime >= startOfLastMonth && x.CreateTime <= endOfLastMonth));
+                    expr.Compile()(new Reservation { CreateTime = firstDayOfCurrentMonth.AddDays(-10) }) && 
+                    !expr.Compile()(new Reservation { CreateTime = startOfLastMonth.AddMonths(-1) }) &&     
+                    !expr.Compile()(new Reservation { CreateTime = now })))).ReturnsAsync(reservations.Where(x => x.CreateTime >= startOfLastMonth && x.CreateTime <= endOfLastMonth));
 
-            // Act
             var result = await reservationService.FindAllForLastMonth();
 
-            // Assert
             Assert.AreEqual(1, result.Count());
             Assert.AreEqual(1, result.First().Id);
             mockRepository.Verify(r => r.FindAll(It.IsAny<Expression<Func<Reservation, bool>>>()), Times.Once());
@@ -280,30 +277,27 @@ namespace RentACar.Tests
         [Test]
         public async Task FindAllForPreviousMonth_ReturnsReservationsInPreviousMonth()
         {
-            // Arrange
-            var now = DateTime.UtcNow; // Use real UTC time
+
+            var now = DateTime.UtcNow; 
             var firstDayOfCurrentMonth = new DateTime(now.Year, now.Month, 1, 0, 0, 0, DateTimeKind.Utc);
             var startOfMonthBeforeLast = firstDayOfCurrentMonth.AddMonths(-2);
             var endOfMonthBeforeLast = firstDayOfCurrentMonth.AddMonths(-1).AddDays(-1).AddHours(23).AddMinutes(59).AddSeconds(59);
 
             var reservations = new List<Reservation>
             {
-                new Reservation { Id = 1, CreateTime = startOfMonthBeforeLast.AddDays(10) },    // Within previous month
-                new Reservation { Id = 2, CreateTime = firstDayOfCurrentMonth.AddDays(-10) },   // Last month
-                new Reservation { Id = 3, CreateTime = now }                                    // Current month
+                new Reservation { Id = 1, CreateTime = startOfMonthBeforeLast.AddDays(10) },    
+                new Reservation { Id = 2, CreateTime = firstDayOfCurrentMonth.AddDays(-10) },  
+                new Reservation { Id = 3, CreateTime = now }                                   
             };
 
             mockRepository
                 .Setup(r => r.FindAll(It.Is<Expression<Func<Reservation, bool>>>(expr =>
-                    expr.Compile()(new Reservation { CreateTime = startOfMonthBeforeLast.AddDays(10) }) && // Matches previous month
-                    !expr.Compile()(new Reservation { CreateTime = firstDayOfCurrentMonth.AddDays(-10) }) && // Excludes last month
-                    !expr.Compile()(new Reservation { CreateTime = now }))))                         // Excludes current
-                .ReturnsAsync(reservations.Where(x => x.CreateTime >= startOfMonthBeforeLast && x.CreateTime <= endOfMonthBeforeLast));
-
-            // Act
+                    expr.Compile()(new Reservation { CreateTime = startOfMonthBeforeLast.AddDays(10) }) && 
+                    !expr.Compile()(new Reservation { CreateTime = firstDayOfCurrentMonth.AddDays(-10) }) && 
+                    !expr.Compile()(new Reservation { CreateTime = now })))).ReturnsAsync(reservations.Where(x => x.CreateTime >= startOfMonthBeforeLast && x.CreateTime <= endOfMonthBeforeLast));
             var result = await reservationService.FindAllForPreviousMonth();
 
-            // Assert
+           
             Assert.AreEqual(1, result.Count());
             Assert.AreEqual(1, result.First().Id);
             mockRepository.Verify(r => r.FindAll(It.IsAny<Expression<Func<Reservation, bool>>>()), Times.Once());

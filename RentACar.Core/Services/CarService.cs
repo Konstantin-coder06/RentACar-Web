@@ -93,10 +93,15 @@ namespace RentACar.Core.Services
             return carRepository.GetAllOrderBy(predicate);
         }
 
-        public async Task<IEnumerable<Car>> FindAllPendingCars()
+        public async Task<IEnumerable<Car>> FindAllPendingCarsForAdmin()
         {
 
             return await carRepository.FindAllLimited(x => x.Pending == true, 8);
+        }
+        public async Task<IEnumerable<Car>> FindAllPendingCars()
+        {
+
+            return await carRepository.FindAll(x => x.Pending == true);
         }
 
         public async Task<int> Count()

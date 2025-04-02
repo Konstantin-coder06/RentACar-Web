@@ -20,7 +20,7 @@ namespace RentACar.Controllers
         IImageService imageService;
         IClassOfCarService classOfCarService;
         IReservationService reservationService;
-       IFeatureService featureService;
+        IFeatureService featureService;
         ICarFeatureService carFeatureService;
         public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IFeatureService featureService, ICarFeatureService carFeatureService)
         {
@@ -160,7 +160,6 @@ namespace RentACar.Controllers
         public async Task<IActionResult> Search(string searchBar)
         {
             var queries = (await carService.GetAll()).AsQueryable();
-
             if (!string.IsNullOrEmpty(searchBar))
             {
                
@@ -593,7 +592,15 @@ namespace RentACar.Controllers
         public async Task<IActionResult> Pendings()
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
-            var cars = await carService.GetAllPendingCompanyCars(companyId.Value);
+            IEnumerable<Car> cars=new List<Car>();
+            if (companyId.HasValue)
+            {
+                cars = await carService.GetAllPendingCompanyCars(companyId.Value);
+            }
+            else if(User.IsInRole("Admin"))
+            {
+                cars=await carService.FindAllPendingCars();
+            }
             var carImages = new List<CarWithImages>();
             foreach (var car in cars)
             {
