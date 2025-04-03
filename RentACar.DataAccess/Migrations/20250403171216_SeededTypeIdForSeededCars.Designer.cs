@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentACar.DataAccess;
 
@@ -11,9 +12,11 @@ using RentACar.DataAccess;
 namespace RentACar.DataAccess.Migrations
 {
     [DbContext(typeof(RentACarDbContext))]
-    partial class RentACarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250403171216_SeededTypeIdForSeededCars")]
+    partial class SeededTypeIdForSeededCars
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,24 +279,12 @@ namespace RentACar.DataAccess.Migrations
                         new
                         {
                             Id = 5,
-                            Name = "Hatchback",
+                            Name = "Coupe",
                             SeatCapacity = 2
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Coupe",
-                            SeatCapacity = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Coupe",
-                            SeatCapacity = 4
-                        },
-                        new
-                        {
-                            Id = 8,
                             Name = "Grand Coupe",
                             SeatCapacity = 4
                         },
@@ -341,7 +332,7 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CTypeId")
+                    b.Property<int?>("CTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("CarCompanyId")
@@ -4996,9 +4987,7 @@ namespace RentACar.DataAccess.Migrations
                 {
                     b.HasOne("RentACar.Models.CType", "CType")
                         .WithMany("Cars")
-                        .HasForeignKey("CTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CTypeId");
 
                     b.HasOne("RentACar.Models.CarCompany", "CarCompany")
                         .WithMany("Cars")

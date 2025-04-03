@@ -33,6 +33,7 @@
         <div class="row">
            
             <div class="col-md-6">
+                <legend>Basic Information</legend>
                 <div class="form-group">
                     <label asp-for="Brand" class="control-label"></label>
                     <input asp-for="Brand" class="form-control" />
@@ -51,6 +52,13 @@
                         <option value="">-- Select Class --</option>
                     </select>
                     <span asp-validation-for="ClassOfCarId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TypeOptions" class="control-label">Vehicle Type</label>
+                    <select asp-for="TypeId" asp-items="Model.TypeOptions" class="form-control">
+                        <option value="">-- Select Type--</option>
+                    </select>
+                    <span asp-validation-for="TypeId" class="text-danger"></span>
                 </div>
             </div>
 
@@ -160,6 +168,35 @@
                 </div>
             </div>
         </div>
+        <fieldset class="mt-4 w-100">
+            <legend>Features</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group mb-3">
+                        @if (Model.Features != null && Model.Features.Any())
+                        {
+                            <div class="row">
+                                @foreach (var feature in Model.Features.OrderBy(x => x))
+                                {
+                                    <div class="col-md-3 col-sm-6 mb-2">
+                                        <div class="form-check">
+                                            <input type="checkbox" name="SelectedFeatures" value="@feature"
+                                                   class="form-check-input"
+                                            @(Model.SelectedFeatures != null && Model.SelectedFeatures.Contains(feature) ? "checked" : "") />
+                                            <label class="form-check-label" for="feature-@feature">@feature</label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <p>No features available.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </fieldset>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 

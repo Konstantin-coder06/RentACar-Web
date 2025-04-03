@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentACar.DataAccess;
 
@@ -11,9 +12,11 @@ using RentACar.DataAccess;
 namespace RentACar.DataAccess.Migrations
 {
     [DbContext(typeof(RentACarDbContext))]
-    partial class RentACarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250403164305_TypeIdAdded")]
+    partial class TypeIdAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -276,24 +279,12 @@ namespace RentACar.DataAccess.Migrations
                         new
                         {
                             Id = 5,
-                            Name = "Hatchback",
+                            Name = "Coupe",
                             SeatCapacity = 2
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Coupe",
-                            SeatCapacity = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Coupe",
-                            SeatCapacity = 4
-                        },
-                        new
-                        {
-                            Id = 8,
                             Name = "Grand Coupe",
                             SeatCapacity = 4
                         },
@@ -341,7 +332,7 @@ namespace RentACar.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CTypeId")
+                    b.Property<int?>("CTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("CarCompanyId")
@@ -423,7 +414,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.20000000000000001,
                             Available = true,
                             Brand = "Toyota",
-                            CTypeId = 1,
                             CarCompanyId = 1,
                             ClassOfCarId = 1,
                             Color = "White",
@@ -450,7 +440,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.25,
                             Available = true,
                             Brand = "Honda",
-                            CTypeId = 1,
                             CarCompanyId = 1,
                             ClassOfCarId = 6,
                             Color = "Black",
@@ -477,7 +466,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.22,
                             Available = true,
                             Brand = "Ford",
-                            CTypeId = 6,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Dark Gray",
@@ -487,7 +475,7 @@ namespace RentACar.DataAccess.Migrations
                             EngineCapacity = 2.2999999999999998,
                             Gearbox = "Automatic",
                             HorsePower = 317,
-                            IsConvertable = true,
+                            IsConvertable = false,
                             MileageLimitForDay = 250.0,
                             MileageLimitForWeek = 1500.0,
                             Model = "Mustang",
@@ -504,7 +492,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.5,
                             Available = true,
                             Brand = "BMW",
-                            CTypeId = 6,
                             CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Gray",
@@ -514,7 +501,7 @@ namespace RentACar.DataAccess.Migrations
                             EngineCapacity = 2.0,
                             Gearbox = "Automatic",
                             HorsePower = 190,
-                            IsConvertable = true,
+                            IsConvertable = false,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "420",
@@ -531,7 +518,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.55000000000000004,
                             Available = true,
                             Brand = "Mercedes-Benz",
-                            CTypeId = 6,
                             CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Red",
@@ -541,7 +527,7 @@ namespace RentACar.DataAccess.Migrations
                             EngineCapacity = 3.0,
                             Gearbox = "Automatic",
                             HorsePower = 258,
-                            IsConvertable = true,
+                            IsConvertable = false,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "C-Class",
@@ -558,7 +544,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Audi",
-                            CTypeId = 5,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Green",
@@ -568,7 +553,7 @@ namespace RentACar.DataAccess.Migrations
                             EngineCapacity = 5.2000000000000002,
                             Gearbox = "Automatic",
                             HorsePower = 570,
-                            IsConvertable = true,
+                            IsConvertable = false,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 2500.0,
                             Model = "R8 Spyder",
@@ -585,7 +570,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.5,
                             Available = true,
                             Brand = "Lamborghini",
-                            CTypeId = 5,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Black",
@@ -595,7 +579,7 @@ namespace RentACar.DataAccess.Migrations
                             EngineCapacity = 5.2000000000000002,
                             Gearbox = "Automatic",
                             HorsePower = 640,
-                            IsConvertable = true,
+                            IsConvertable = false,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "Huracan",
@@ -612,7 +596,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.3,
                             Available = true,
                             Brand = "Porsche",
-                            CTypeId = 5,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Silver",
@@ -639,7 +622,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Tesla",
-                            CTypeId = 1,
                             CarCompanyId = 1,
                             ClassOfCarId = 5,
                             Color = "White",
@@ -666,7 +648,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Ferrari",
-                            CTypeId = 5,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Red",
@@ -676,7 +657,7 @@ namespace RentACar.DataAccess.Migrations
                             EngineCapacity = 3.8999999999999999,
                             Gearbox = "Automatic",
                             HorsePower = 720,
-                            IsConvertable = true,
+                            IsConvertable = false,
                             MileageLimitForDay = 400.0,
                             MileageLimitForWeek = 3000.0,
                             Model = "F8 Spider",
@@ -693,7 +674,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Rolls-Royce",
-                            CTypeId = 1,
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
@@ -720,7 +700,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.5,
                             Available = true,
                             Brand = "Bentley",
-                            CTypeId = 6,
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
@@ -730,7 +709,7 @@ namespace RentACar.DataAccess.Migrations
                             EngineCapacity = 6.0,
                             Gearbox = "Automatic",
                             HorsePower = 659,
-                            IsConvertable = true,
+                            IsConvertable = false,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "Continental GT-GTC",
@@ -747,7 +726,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "McLaren",
-                            CTypeId = 5,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Blue",
@@ -774,7 +752,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.0,
                             Available = true,
                             Brand = "Aston Martin",
-                            CTypeId = 2,
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
@@ -801,7 +778,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Lexus",
-                            CTypeId = 3,
                             CarCompanyId = 1,
                             ClassOfCarId = 2,
                             Color = "Silver",
@@ -828,7 +804,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 2.2000000000000002,
                             Available = true,
                             Brand = "Mercedes-Benz",
-                            CTypeId = 5,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Orange",
@@ -855,7 +830,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.0,
                             Available = true,
                             Brand = "Audi",
-                            CTypeId = 2,
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Orange",
@@ -882,7 +856,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.5,
                             Available = true,
                             Brand = "BMW",
-                            CTypeId = 6,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "Yellow",
@@ -892,7 +865,7 @@ namespace RentACar.DataAccess.Migrations
                             EngineCapacity = 3.0,
                             Gearbox = "Automatic",
                             HorsePower = 510,
-                            IsConvertable = true,
+                            IsConvertable = false,
                             MileageLimitForDay = 300.0,
                             MileageLimitForWeek = 2000.0,
                             Model = "M4",
@@ -909,7 +882,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 0.25,
                             Available = true,
                             Brand = "Toyota",
-                            CTypeId = 1,
                             CarCompanyId = 1,
                             ClassOfCarId = 6,
                             Color = "Red",
@@ -936,7 +908,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Tesla",
-                            CTypeId = 11,
                             CarCompanyId = 1,
                             ClassOfCarId = 5,
                             Color = "Black",
@@ -963,7 +934,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Land Rover",
-                            CTypeId = 2,
                             CarCompanyId = 1,
                             ClassOfCarId = 4,
                             Color = "Black",
@@ -990,7 +960,6 @@ namespace RentACar.DataAccess.Migrations
                             AdditionalMileageCharge = 1.8,
                             Available = true,
                             Brand = "Toyota",
-                            CTypeId = 5,
                             CarCompanyId = 1,
                             ClassOfCarId = 3,
                             Color = "White",
@@ -4996,9 +4965,7 @@ namespace RentACar.DataAccess.Migrations
                 {
                     b.HasOne("RentACar.Models.CType", "CType")
                         .WithMany("Cars")
-                        .HasForeignKey("CTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CTypeId");
 
                     b.HasOne("RentACar.Models.CarCompany", "CarCompany")
                         .WithMany("Cars")

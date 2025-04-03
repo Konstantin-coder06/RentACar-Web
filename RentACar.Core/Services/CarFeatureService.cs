@@ -58,7 +58,7 @@ namespace RentACar.Core.Services
         {
 
             var carFeatures = await carFeatureRepository.FindAll(x => x.CarId == carID);
-            return  carFeatures.Select(x => x.FeatureId).ToList();
+            return carFeatures.Select(x => x.FeatureId).ToList();
         }
 
         public async Task Save()
@@ -89,6 +89,12 @@ namespace RentACar.Core.Services
         public async Task<IEnumerable<CarFeature>> FindAllLimited(Expression<Func<CarFeature, bool>> predicate, int limit)
         {
             return await carFeatureRepository.FindAllLimited(predicate, limit);
+        }
+
+        public async Task<IEnumerable<Feature>> GetByCarIDAllFeatureNames(int carID)
+        {
+            var carFeatures = await carFeatureRepository.FindAll(x => x.CarId == carID);
+            return carFeatures.Select(x => x.Feature).ToList();
         }
     }
 }

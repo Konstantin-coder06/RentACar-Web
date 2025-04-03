@@ -16,7 +16,7 @@ namespace RentACar.Models
         public string Name { get; set; }
         [Required]
         public int SeatCapacity {  get; set; }
-        
+        public ICollection<Car> Cars { get; set; }
 
     }
 }

@@ -17,7 +17,6 @@ namespace RentACar.DataAccess
         public RentACarDbContext(DbContextOptions<RentACarDbContext> options) : base(options) { }   
         public DbSet<Car> Cars { get; set; }
         public DbSet<CType> Types { get; set; }
-        public DbSet<CarType> CarsTypes { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<CarFeature> CarsFeatures { get; set; }
         public DbSet<Image> Images { get; set; }
@@ -25,26 +24,17 @@ namespace RentACar.DataAccess
         public DbSet<Customer>Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<CarCompany>CarCompanies { get; set; }
+      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
 
 
-            modelBuilder.Entity<Reservation>()
-    .HasOne(r => r.Customer)
-    .WithMany(c => c.Reservations)
-    .HasForeignKey(r => r.CustomerId)
-    .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Reservation>().HasOne(r => r.Customer).WithMany(c => c.Reservations).HasForeignKey(r => r.CustomerId).OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Customer>().HasOne(c => c.User)
-                .WithOne()
-                .HasForeignKey<Customer>(c => c.UserId).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Customer>().HasOne(c => c.User).WithOne().HasForeignKey<Customer>(c => c.UserId).OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<CarCompany>()
-    .HasOne(c => c.User)
-    .WithOne(u => u.CarCompany)
-    .HasForeignKey<CarCompany>(c => c.UserId)
-    .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<CarCompany>().HasOne(c => c.User).WithOne(u => u.CarCompany).HasForeignKey<CarCompany>(c => c.UserId).OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ClassOfCar>().HasData(
 new ClassOfCar { Id = 1, Name = "Economy" },
@@ -56,34 +46,47 @@ new ClassOfCar { Id = 6, Name = "Standard" },
 new ClassOfCar { Id = 7, Name = "Retro" }
 
 );
+            modelBuilder.Entity<CType>().HasData(
+                new CType { Id = 1, Name = "Sedan", SeatCapacity = 4 },
+                new CType { Id = 2, Name = "SUV", SeatCapacity = 5 },
+                new CType { Id = 3, Name = "SUV", SeatCapacity = 7 },
+                new CType { Id = 4, Name = "Hatchback", SeatCapacity = 4 },
+                new CType { Id = 5, Name = "Hatchback", SeatCapacity = 2 },
+                new CType { Id = 6, Name = "Coupe", SeatCapacity = 2 },
+                new CType { Id = 7, Name = "Coupe", SeatCapacity = 4 },
+                new CType { Id = 8, Name = "Grand Coupe", SeatCapacity = 4 },
+                new CType { Id = 9, Name = "Minivan", SeatCapacity = 7 },
+                new CType { Id = 10, Name = "Pickup", SeatCapacity = 2 },
+                new CType { Id = 11, Name = "Pickup", SeatCapacity = 4 },
+                new CType { Id = 12, Name = "Wagon", SeatCapacity = 5 }
 
-            modelBuilder.Entity<CarCompany>().HasData(
-new CarCompany { Id = 1, Name = "Dubai Luxury Cars", Description = "Luxury and sports car rentals in Dubai.", City = "Dubai", Country = "UAE", Address = "Sheikh Zayed Road, Dubai" });
-
+            );
             modelBuilder.Entity<Car>().HasData(
-  new Car { Id = 1, Brand = "Toyota", Model = "Corolla", Gearbox = "Automatic", Year = 2021, PricePerDay = 80, PricePerWeek = 450, MileageLimitForDay = 150, MileageLimitForWeek = 1000, AdditionalMileageCharge = 0.2, EngineCapacity = 1.6, Color = "White", Available = true, Description = "Compact and fuel-efficient", ClassOfCarId = 1, DriveTrain = "Front", HorsePower = 122, ZeroToHundred = 10.8, TopSpeed = 185, CarCompanyId = 1, Pending=false, CreatedAt= DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture)},
- new Car { Id = 2, Brand = "Honda", Model = "Civic", Gearbox = "Manual", Year = 2022, PricePerDay = 140, PricePerWeek = 600, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 1.5, Color = "Black", Available = true, Description = "Sporty and reliable", ClassOfCarId = 6, DriveTrain = "Front", HorsePower = 205, ZeroToHundred = 7.3, TopSpeed = 170, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 3, Brand = "Ford", Model = "Mustang", Gearbox = "Automatic", Year = 2020, PricePerDay = 200, PricePerWeek = 910, MileageLimitForDay = 250, MileageLimitForWeek = 1500, AdditionalMileageCharge = 0.22, EngineCapacity = 2.3, Color = "Dark Gray", Available = true, Description = "Comfortable and stylish", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 317, ZeroToHundred = 5.8, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 4, Brand = "BMW", Model = "420", Gearbox = "Automatic", Year = 2022, PricePerDay = 250, PricePerWeek = 1000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 0.5, EngineCapacity = 2.0, Color = "Gray", Available = true, Description = "Luxury and performance", ClassOfCarId = 2, DriveTrain = "Rear", HorsePower = 190, ZeroToHundred = 7.1, TopSpeed = 240, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 5, Brand = "Mercedes-Benz", Model = "C-Class", Gearbox = "Automatic", Year = 2021, PricePerDay = 210, PricePerWeek = 850, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 0.55, EngineCapacity = 3.0, Color = "Red", Available = true, Description = "Premium luxury", ClassOfCarId = 2, DriveTrain = "Rear", HorsePower = 258, ZeroToHundred = 6.2, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 6, Brand = "Audi", Model = "R8 Spyder", Gearbox = "Automatic", Year = 2021, PricePerDay = 750, PricePerWeek = 6400, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 1.0, EngineCapacity = 5.2, Color = "Green", Available = true, Description = "High-performance sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 570, ZeroToHundred = 3.8, TopSpeed = 327, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 7, Brand = "Lamborghini", Model = "Huracan", Gearbox = "Automatic", Year = 2023, PricePerDay = 1700, PricePerWeek = 9000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 1.5, EngineCapacity = 5.2, Color = "Black", Available = true, Description = "Exotic sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 640, ZeroToHundred = 3.0, TopSpeed = 310, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 8, Brand = "Porsche", Model = "911 GT3", Gearbox = "Automatic", Year = 2023, PricePerDay = 1400, PricePerWeek = 8400, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 1.3, EngineCapacity = 3.0, Color = "Silver", Available = true, Description = "Luxury sports car", ClassOfCarId = 3, DriveTrain = "Full Wheels", HorsePower = 450, ZeroToHundred = 3.8, TopSpeed = 304, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 9, Brand = "Tesla", Model = "Model S Plaid", Gearbox = "Automatic", Year = 2023, PricePerDay = 350, PricePerWeek = 2100, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 1.0, EngineCapacity = 0.0, Color = "White", Available = true, Description = "Electric luxury sedan", ClassOfCarId = 5, DriveTrain = "Rear", HorsePower = 1020, ZeroToHundred = 2.1, TopSpeed = 322, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 10, Brand = "Ferrari", Model = "F8 Spider", Gearbox = "Automatic", Year = 2022, PricePerDay = 2300, PricePerWeek = 10000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 2.0, EngineCapacity = 3.9, Color = "Red", Available = true, Description = "Iconic Italian sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 720, ZeroToHundred = 2.9, TopSpeed = 340, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 11, Brand = "Rolls-Royce", Model = "Phantom", Gearbox = "Automatic", Year = 2021, PricePerDay = 1000, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.0, EngineCapacity = 6.8, Color = "Black", Available = true, Description = "Ultimate luxury car", ClassOfCarId = 4, DriveTrain = "Rear", HorsePower = 571, ZeroToHundred = 5.4, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 12, Brand = "Bentley", Model = "Continental GT-GTC", Gearbox = "Automatic", Year = 2023, PricePerDay = 1300, PricePerWeek = 7600, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.5, EngineCapacity = 6.0, Color = "Black", Available = true, Description = "Grand luxury tourer", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 659, ZeroToHundred = 3.7, TopSpeed = 335, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 13, Brand = "McLaren", Model = "720S", Gearbox = "Automatic", Year = 2023, PricePerDay = 1700, PricePerWeek = 8000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 2.0, EngineCapacity = 4.0, Color = "Blue", Available = true, Description = "Exquisite British engineering", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 720, ZeroToHundred = 2.9, TopSpeed = 341, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 14, Brand = "Aston Martin", Model = "DBX", Gearbox = "Automatic", Year = 2023, PricePerDay = 600, PricePerWeek = 3600, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.0, EngineCapacity = 4.0, Color = "Black", Available = true, Description = "Luxury British SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 550, ZeroToHundred = 4.5, TopSpeed = 291, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 15, Brand = "Lexus", Model = "LX", Gearbox = "Automatic", Year = 2023, PricePerDay = 500, PricePerWeek = 3000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.5, Color = "Silver", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 2, DriveTrain = "Full Wheels", HorsePower = 415, ZeroToHundred = 6.8, TopSpeed = 210, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 16, Brand = "Mercedes-Benz", Model = "AMG GT", Gearbox = "Automatic", Year = 2022, PricePerDay = 2500, PricePerWeek = 1100, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 2.2, EngineCapacity = 4.0, Color = "Orange", Available = true, Description = "German engineering excellence", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 730, ZeroToHundred = 3.2, TopSpeed = 322, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 17, Brand = "Audi", Model = "Q8", Gearbox = "Automatic", Year = 2021, PricePerDay = 400, PricePerWeek = 2300, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.0, EngineCapacity = 3.0, Color = "Orange", Available = true, Description = "Luxury SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 340, ZeroToHundred = 5.9, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 18, Brand = "BMW", Model = "M4", Gearbox = "Automatic", Year = 2023, PricePerDay = 700, PricePerWeek = 4000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.5, EngineCapacity = 3.0, Color = "Yellow", Available = true, Description = "Sporty and agile", ClassOfCarId = 3, DriveTrain = "Full Wheels", HorsePower = 510, ZeroToHundred = 3.7, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 19, Brand = "Toyota", Model = "Camry", Gearbox = "Automatic", Year = 2021, PricePerDay = 130, PricePerWeek = 670, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 2.5, Color = "Red", Available = true, Description = "Dependable sedan", ClassOfCarId = 6, DriveTrain = "Rear", HorsePower = 182, ZeroToHundred = 9.9, TopSpeed = 210, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 20, Brand = "Tesla", Model = "Cybertruck", Gearbox = "Automatic", Year = 2024, PricePerDay = 2000, PricePerWeek = 12000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 0.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 5, DriveTrain = "Full Wheels", HorsePower = 845, ZeroToHundred = 2.7, TopSpeed = 210, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 21, Brand = "Land Rover", Model = "Range Rover", Gearbox = "Automatic", Year = 2023, PricePerDay = 1200, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 360, ZeroToHundred = 6.9, TopSpeed = 209, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) },
- new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Year = 2022, PricePerDay = 220, PricePerWeek = 1100, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "White", Available = true, Description = "Sporty and agile", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 340, ZeroToHundred = 4.4, TopSpeed = 262, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture) }
- );
+new Car { Id = 1, Brand = "Toyota", Model = "Corolla", Gearbox = "Automatic", Year = 2021, PricePerDay = 80, PricePerWeek = 450, MileageLimitForDay = 150, MileageLimitForWeek = 1000, AdditionalMileageCharge = 0.2, EngineCapacity = 1.6, Color = "White", Available = true, Description = "Compact and fuel-efficient", ClassOfCarId = 1, DriveTrain = "Front", HorsePower = 122, ZeroToHundred = 10.8, TopSpeed = 185, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 1 },
+new Car { Id = 2, Brand = "Honda", Model = "Civic", Gearbox = "Manual", Year = 2022, PricePerDay = 140, PricePerWeek = 600, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 1.5, Color = "Black", Available = true, Description = "Sporty and reliable", ClassOfCarId = 6, DriveTrain = "Front", HorsePower = 205, ZeroToHundred = 7.3, TopSpeed = 170, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 1 },
+new Car { Id = 3, Brand = "Ford", Model = "Mustang", Gearbox = "Automatic", Year = 2020, PricePerDay = 200, PricePerWeek = 910, MileageLimitForDay = 250, MileageLimitForWeek = 1500, AdditionalMileageCharge = 0.22, EngineCapacity = 2.3, Color = "Dark Gray", Available = true, Description = "Comfortable and stylish", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 317, ZeroToHundred = 5.8, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 6, IsConvertable = true },
+new Car { Id = 4, Brand = "BMW", Model = "420", Gearbox = "Automatic", Year = 2022, PricePerDay = 250, PricePerWeek = 1000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 0.5, EngineCapacity = 2.0, Color = "Gray", Available = true, Description = "Luxury and performance", ClassOfCarId = 2, DriveTrain = "Rear", HorsePower = 190, ZeroToHundred = 7.1, TopSpeed = 240, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 6, IsConvertable = true },
+new Car { Id = 5, Brand = "Mercedes-Benz", Model = "C-Class", Gearbox = "Automatic", Year = 2021, PricePerDay = 210, PricePerWeek = 850, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 0.55, EngineCapacity = 3.0, Color = "Red", Available = true, Description = "Premium luxury", ClassOfCarId = 2, DriveTrain = "Rear", HorsePower = 258, ZeroToHundred = 6.2, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 6, IsConvertable = true },
+new Car { Id = 6, Brand = "Audi", Model = "R8 Spyder", Gearbox = "Automatic", Year = 2021, PricePerDay = 750, PricePerWeek = 6400, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 1.0, EngineCapacity = 5.2, Color = "Green", Available = true, Description = "High-performance sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 570, ZeroToHundred = 3.8, TopSpeed = 327, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5, IsConvertable = true },
+new Car { Id = 7, Brand = "Lamborghini", Model = "Huracan", Gearbox = "Automatic", Year = 2023, PricePerDay = 1700, PricePerWeek = 9000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 1.5, EngineCapacity = 5.2, Color = "Black", Available = true, Description = "Exotic sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 640, ZeroToHundred = 3.0, TopSpeed = 310, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5, IsConvertable = true },
+new Car { Id = 8, Brand = "Porsche", Model = "911 GT3", Gearbox = "Automatic", Year = 2023, PricePerDay = 1400, PricePerWeek = 8400, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 1.3, EngineCapacity = 3.0, Color = "Silver", Available = true, Description = "Luxury sports car", ClassOfCarId = 3, DriveTrain = "Full Wheels", HorsePower = 450, ZeroToHundred = 3.8, TopSpeed = 304, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5 },
+new Car { Id = 9, Brand = "Tesla", Model = "Model S Plaid", Gearbox = "Automatic", Year = 2023, PricePerDay = 350, PricePerWeek = 2100, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 1.0, EngineCapacity = 0.0, Color = "White", Available = true, Description = "Electric luxury sedan", ClassOfCarId = 5, DriveTrain = "Rear", HorsePower = 1020, ZeroToHundred = 2.1, TopSpeed = 322, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 1 },
+new Car { Id = 10, Brand = "Ferrari", Model = "F8 Spider", Gearbox = "Automatic", Year = 2022, PricePerDay = 2300, PricePerWeek = 10000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 2.0, EngineCapacity = 3.9, Color = "Red", Available = true, Description = "Iconic Italian sports car", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 720, ZeroToHundred = 2.9, TopSpeed = 340, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5, IsConvertable = true },
+new Car { Id = 11, Brand = "Rolls-Royce", Model = "Phantom", Gearbox = "Automatic", Year = 2021, PricePerDay = 1000, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.0, EngineCapacity = 6.8, Color = "Black", Available = true, Description = "Ultimate luxury car", ClassOfCarId = 4, DriveTrain = "Rear", HorsePower = 571, ZeroToHundred = 5.4, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 1 },
+new Car { Id = 12, Brand = "Bentley", Model = "Continental GT-GTC", Gearbox = "Automatic", Year = 2023, PricePerDay = 1300, PricePerWeek = 7600, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.5, EngineCapacity = 6.0, Color = "Black", Available = true, Description = "Grand luxury tourer", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 659, ZeroToHundred = 3.7, TopSpeed = 335, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 6, IsConvertable = true },
+new Car { Id = 13, Brand = "McLaren", Model = "720S", Gearbox = "Automatic", Year = 2023, PricePerDay = 1700, PricePerWeek = 8000, MileageLimitForDay = 400, MileageLimitForWeek = 3000, AdditionalMileageCharge = 2.0, EngineCapacity = 4.0, Color = "Blue", Available = true, Description = "Exquisite British engineering", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 720, ZeroToHundred = 2.9, TopSpeed = 341, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5 },
+new Car { Id = 14, Brand = "Aston Martin", Model = "DBX", Gearbox = "Automatic", Year = 2023, PricePerDay = 600, PricePerWeek = 3600, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 2.0, EngineCapacity = 4.0, Color = "Black", Available = true, Description = "Luxury British SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 550, ZeroToHundred = 4.5, TopSpeed = 291, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 2 },
+new Car { Id = 15, Brand = "Lexus", Model = "LX", Gearbox = "Automatic", Year = 2023, PricePerDay = 500, PricePerWeek = 3000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.5, Color = "Silver", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 2, DriveTrain = "Full Wheels", HorsePower = 415, ZeroToHundred = 6.8, TopSpeed = 210, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 3 },
+new Car { Id = 16, Brand = "Mercedes-Benz", Model = "AMG GT", Gearbox = "Automatic", Year = 2022, PricePerDay = 2500, PricePerWeek = 1100, MileageLimitForDay = 400, MileageLimitForWeek = 2500, AdditionalMileageCharge = 2.2, EngineCapacity = 4.0, Color = "Orange", Available = true, Description = "German engineering excellence", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 730, ZeroToHundred = 3.2, TopSpeed = 322, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5 },
+new Car { Id = 17, Brand = "Audi", Model = "Q8", Gearbox = "Automatic", Year = 2021, PricePerDay = 400, PricePerWeek = 2300, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.0, EngineCapacity = 3.0, Color = "Orange", Available = true, Description = "Luxury SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 340, ZeroToHundred = 5.9, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 2 },
+new Car { Id = 18, Brand = "BMW", Model = "M4", Gearbox = "Automatic", Year = 2023, PricePerDay = 700, PricePerWeek = 4000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.5, EngineCapacity = 3.0, Color = "Yellow", Available = true, Description = "Sporty and agile", ClassOfCarId = 3, DriveTrain = "Full Wheels", HorsePower = 510, ZeroToHundred = 3.7, TopSpeed = 250, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 6, IsConvertable = true },
+new Car { Id = 19, Brand = "Toyota", Model = "Camry", Gearbox = "Automatic", Year = 2021, PricePerDay = 130, PricePerWeek = 670, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 2.5, Color = "Red", Available = true, Description = "Dependable sedan", ClassOfCarId = 6, DriveTrain = "Rear", HorsePower = 182, ZeroToHundred = 9.9, TopSpeed = 210, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 1 },
+new Car { Id = 20, Brand = "Tesla", Model = "Cybertruck", Gearbox = "Automatic", Year = 2024, PricePerDay = 2000, PricePerWeek = 12000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 0.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 5, DriveTrain = "Full Wheels", HorsePower = 845, ZeroToHundred = 2.7, TopSpeed = 210, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 11 },
+new Car { Id = 21, Brand = "Land Rover", Model = "Range Rover", Gearbox = "Automatic", Year = 2023, PricePerDay = 1200, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 360, ZeroToHundred = 6.9, TopSpeed = 209, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 2 },
+new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Year = 2022, PricePerDay = 220, PricePerWeek = 1100, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "White", Available = true, Description = "Sporty and agile", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 340, ZeroToHundred = 4.4, TopSpeed = 262, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5 }
+);
+
+
             modelBuilder.Entity<Feature>().HasData(
       new Feature { Id = 1, NameOfFeatures = "Air Conditioning" },
       new Feature { Id = 2, NameOfFeatures = "Heated Seats" },
@@ -706,60 +709,7 @@ new CarCompany { Id = 1, Name = "Dubai Luxury Cars", Description = "Luxury and s
             new CarFeature { Id = 382, CarId = 22, FeatureId = 23 },
             new CarFeature { Id = 383, CarId = 22, FeatureId = 28 }
             );
-            modelBuilder.Entity<CType>().HasData(
-     new CType { Id = 1, Name = "Sedan", SeatCapacity = 4 },
-     new CType { Id = 2, Name = "SUV", SeatCapacity = 5 },
-     new CType { Id = 3, Name = "SUV", SeatCapacity = 7 },
-     new CType { Id = 4, Name = "Hatchback", SeatCapacity = 4 },
-     new CType { Id = 5, Name = "Coupe", SeatCapacity = 2 },
-     new CType { Id = 6, Name = "Grand Coupe", SeatCapacity = 4 },
-     new CType { Id = 7, Name = "Convertible", SeatCapacity = 2 },
-     new CType { Id = 8, Name = "Convertible", SeatCapacity = 4 },
-     new CType { Id = 9, Name = "Minivan", SeatCapacity = 7 },
-     new CType { Id = 10, Name = "Pickup", SeatCapacity = 2 },
-     new CType { Id = 11, Name = "Pickup", SeatCapacity = 4 },
-     new CType { Id = 12, Name = "Wagon", SeatCapacity = 5 }
-
- );
-            modelBuilder.Entity<CarType>().HasData(
-                new CarType { Id = 1, CarId = 1, TypeId = 1 },
-                new CarType { Id = 2, CarId = 2, TypeId = 1 },
-                new CarType { Id = 3, CarId = 3, TypeId = 6 },
-                new CarType { Id = 4, CarId = 3, TypeId = 8 },
-                new CarType { Id = 5, CarId = 4, TypeId = 6 },
-                new CarType { Id = 6, CarId = 4, TypeId = 8 },
-                new CarType { Id = 7, CarId = 5, TypeId = 6 },
-                new CarType { Id = 8, CarId = 5, TypeId = 8 },
-                new CarType { Id = 9, CarId = 6, TypeId = 5 },
-                new CarType { Id = 10, CarId = 6, TypeId = 7 },
-                new CarType { Id = 11, CarId = 7, TypeId = 5 },
-                new CarType { Id = 12, CarId = 7, TypeId = 7 },
-                new CarType { Id = 13, CarId = 8, TypeId = 5 },
-                new CarType { Id = 14, CarId = 9, TypeId = 1 },
-                new CarType { Id = 15, CarId = 10, TypeId = 5 },
-                new CarType { Id = 16, CarId = 10, TypeId = 7 },
-                new CarType { Id = 17, CarId = 11, TypeId = 1 },
-                new CarType { Id = 18, CarId = 12, TypeId = 6 },
-                new CarType { Id = 19, CarId = 12, TypeId = 8 },
-                new CarType { Id = 20, CarId = 13, TypeId = 5 },
-                new CarType { Id = 21, CarId = 14, TypeId = 2 },
-                new CarType { Id = 22, CarId = 15, TypeId = 3 },
-                new CarType { Id = 23, CarId = 16, TypeId = 5 },
-                new CarType { Id = 24, CarId = 17, TypeId = 2 },
-                new CarType { Id = 25, CarId = 18, TypeId = 6 },
-                new CarType { Id = 26, CarId = 18, TypeId = 8 },
-                new CarType { Id = 27, CarId = 19, TypeId = 1 },
-                new CarType { Id = 28, CarId = 20, TypeId = 11 },
-                new CarType { Id = 29, CarId = 21, TypeId = 2 },
-                new CarType { Id = 30, CarId = 22, TypeId = 5 }
-                );
-            /* modelBuilder.Entity<Reservation>().HasData(
-                 new Reservation { Id=1,StartDate="",EndDate="",}
-             );*/
-
-
-
-
+           
             base.OnModelCreating(modelBuilder);
         }
     }

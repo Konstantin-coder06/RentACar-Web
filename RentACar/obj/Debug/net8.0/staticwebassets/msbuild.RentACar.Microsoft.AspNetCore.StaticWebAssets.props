@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>x95t7jb2h4</Fingerprint>
-      <Integrity>C316seo0aJ3/g+lwVWmWix38gicx7hcY7+uOjS5hGrM=</Integrity>
+      <Fingerprint>iw8gujcrs4</Fingerprint>
+      <Integrity>7uSn05N9HmrYlBJPL+1kbg7Bz9RxfZiYjP3NfNK3pww=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\addcar.css'))</OriginalItemSpec>
@@ -138,8 +138,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>lezb8638gt</Fingerprint>
-      <Integrity>/ZeYNaTqoBU/Bde0ibGcmG0d363bSi3m3gyTwKgZ9kM=</Integrity>
+      <Fingerprint>2evcbxjnds</Fingerprint>
+      <Integrity>6ijlmIfGVWRBPhsqO1/Ef3u4o8bevEd538ra79Hemzg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\editCar.css'))</OriginalItemSpec>

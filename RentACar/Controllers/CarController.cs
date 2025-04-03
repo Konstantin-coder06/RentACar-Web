@@ -22,7 +22,8 @@ namespace RentACar.Controllers
         IReservationService reservationService;
         IFeatureService featureService;
         ICarFeatureService carFeatureService;
-        public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IFeatureService featureService, ICarFeatureService carFeatureService)
+        ICTypeService cTypeService;
+        public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IFeatureService featureService, ICarFeatureService carFeatureService,ICTypeService cTypeService)
         {
             this.carService = _carService;
             this.imageService = _imageService;
@@ -30,6 +31,7 @@ namespace RentACar.Controllers
             this.reservationService = reservationService;
             this.featureService = featureService;
             this.carFeatureService = carFeatureService;
+            this.cTypeService = cTypeService;
         }
 
         public async Task<IActionResult> Index()
@@ -628,6 +630,10 @@ namespace RentACar.Controllers
             var car = await carService.FindById(id);
             var images=await imageService.GetImagesByCarId(car.Id);
             var classes = await classOfCarService.GetAll();
+            var allFeatures = (await featureService.GetAll()).Select(x => x.NameOfFeatures).ToList(); 
+            var carFeatures = await carFeatureService.GetByCarIDAllFeatureNames(id); 
+            var selectedFeatures = carFeatures.Select(f => f.NameOfFeatures).ToList();
+            var carTypes=await cTypeService.GetAll();
             var viewModel = new EditCarWithImagesPendingViewModel
             {
                 Id = car.Id,
@@ -649,7 +655,11 @@ namespace RentACar.Controllers
                 TopSpeed = car.TopSpeed,
                 Images = images.Select(img => new ImageViewModel { Id = img.Id, Url = img.Url, Order = img.Order }).ToList(),
                 ClassOfCarId = car.ClassOfCarId,
-                ClassOptions = new SelectList(classes, "Id", "Name")
+                ClassOptions = new SelectList(classes, "Id", "Name"),
+                Features = allFeatures, 
+                SelectedFeatures = selectedFeatures,
+                
+                
             };
             return View(viewModel);
         }
@@ -658,6 +668,11 @@ namespace RentACar.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var classes = await classOfCarService.GetAll();
+                var images = await imageService.GetImagesByCarId(id);
+                viewModel.ClassOptions = new SelectList(classes, "Id", "Name");
+                viewModel.Features = (await featureService.GetAll()).Select(x => x.NameOfFeatures).ToList();
+                viewModel.Images = images.Select(img => new ImageViewModel { Id = img.Id, Url = img.Url, Order = img.Order }).ToList();
                 return View(viewModel);
             }
 
@@ -688,18 +703,50 @@ namespace RentACar.Controllers
 
             if (User.IsInRole("Company"))
             {
-                car.Pending = false;
+                car.Pending = true;
             }
             else
             {
 
 
-                car.Pending = true;
+                car.Pending = false;
             }
 
             carService.Update(car);
             await carService.Save();
+            var allFeatures = await featureService.GetAll(); 
+            var currentCarFeatures = await carFeatureService.GetByCarIDAllFeatureNames(id);
+            var currentFeatureNames = currentCarFeatures.Select(f => f.NameOfFeatures).ToList(); 
+            var newFeatureNames = viewModel.SelectedFeatures ?? new List<string>();
 
+            
+            var featuresToRemove = currentCarFeatures.Where(f => !newFeatureNames.Contains(f.NameOfFeatures));
+            foreach (var feature in featuresToRemove)
+            {
+                var carFeature = await carFeatureService.FindOne(cf => cf.CarId == car.Id && cf.FeatureId == feature.Id);
+                if (carFeature != null)
+                {
+                    carFeatureService.Delete(carFeature); 
+                }
+            }
+            await carFeatureService.Save(); 
+
+            
+            var featuresToAdd = newFeatureNames.Where(n => !currentFeatureNames.Contains(n));
+            foreach (var featureName in featuresToAdd)
+            {
+                var feature = allFeatures.FirstOrDefault(f => f.NameOfFeatures == featureName);
+                if (feature != null)
+                {
+                    var carFeature = new CarFeature
+                    {
+                        CarId = car.Id,
+                        FeatureId = feature.Id
+                    };
+                    await carFeatureService.Add(carFeature); 
+                }
+            }
+            await carFeatureService.Save(); 
             return RedirectToAction("Index", "Car");
 
 

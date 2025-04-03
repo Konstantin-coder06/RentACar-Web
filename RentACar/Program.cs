@@ -36,6 +36,7 @@ builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 builder.Services.AddScoped<ICarFeatureService, CarFeatureService>();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 

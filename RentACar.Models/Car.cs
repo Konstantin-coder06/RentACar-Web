@@ -31,13 +31,20 @@ namespace RentACar.Models
 
         public int ClassOfCarId { get; set; }
         public ClassOfCar ClassOfCar { get; set; }
+        
 
-        // Ensure you're using CarCompanyId for the foreign key
         public int CarCompanyId { get; set; }
         public CarCompany CarCompany { get; set; }
-        public bool Pending {  get; set; }
+        public bool Pending { get; set; }
         public DateTime CreatedAt { get; set; }
         public ICollection<Image> Images { get; set; }
+        
+        public int CTypeId {  get; set; }
+        public CType CType { get; set; } 
+
+        public bool IsConvertable { get; set; }
+
+       
     }
 
 }

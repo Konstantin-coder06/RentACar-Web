@@ -255,6 +255,13 @@
         margin-bottom: 0;
         padding-left: 20px;
     }
+legend {
+    font-weight: 700;
+    color: #f54242;
+    padding: 0 10px;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
 
 /* Additional styling for better visual hierarchy */
 .listing-page .text-muted {

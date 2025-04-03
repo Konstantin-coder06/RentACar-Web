@@ -23,11 +23,14 @@ namespace RentACar.Controllers
         ICarCompanyService carCompanyService;
         IFeatureService featureService;
         ICarFeatureService carFeatureService;
+        ICTypeService typeService;
+      
        
         public AdminController(ICarService _carService, IImageService _imageService, 
             IClassOfCarService _classOfCarService,IReservationService reservationService, 
             ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportServicе,
-            ICarCompanyService carCompanyService, IFeatureService featureService,ICarFeatureService carFeatureService)
+            ICarCompanyService carCompanyService, IFeatureService featureService,
+            ICarFeatureService carFeatureService, ICTypeService cTypeService)
         {
             this.carService = _carService;
             this.imageService = _imageService;
@@ -39,6 +42,8 @@ namespace RentACar.Controllers
             this.carCompanyService = carCompanyService;
             this.featureService = featureService;
             this.carFeatureService = carFeatureService;
+            this.typeService = cTypeService;
+            
             
         }
 
@@ -316,11 +321,21 @@ namespace RentACar.Controllers
             var classOptions = await classOfCarService.GetAll();
             var companies = await carCompanyService.GetAll();
             var features = (await featureService.GetAll()).Select(x=>x.NameOfFeatures).ToList();
+            var types=await typeService.GetAll();
             var viewModel = new AddingCarWithImagesViewModel
             {
                 ClassOptions = new SelectList(classOptions, "Id", "Name"),
                 Companies = new SelectList(companies, "Id", "Name"),
                 Features =features,
+                TypeOptions = new SelectList(
+            types.Select(t => new
+            {
+                Id = t.Id,
+                DisplayText = $"{t.Name} ({t.SeatCapacity} seats)"
+            }),
+            "Id", // Value field
+            "DisplayText" // Text field
+        )
             };
             return View(viewModel);
         }
@@ -431,7 +446,8 @@ namespace RentACar.Controllers
                     TopSpeed = viewModel.TopSpeed,
                     ClassOfCarId = viewModel.ClassOfCarId,
                     Pending = true,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                   
                 };
                 if (admin)
                 {
@@ -456,21 +472,31 @@ namespace RentACar.Controllers
                     await imageService.Save();
                 }
 
-                // Fix for CarFeature saving
+                
                 if (viewModel.SelectedFeatures != null && viewModel.SelectedFeatures.Any())
                 {
-                    var featureList = features.ToList(); // Convert to list for indexing
+                    var featureList = features.ToList(); 
                     for (int i = 0; i < viewModel.SelectedFeatures.Count; i++)
                     {
                         var carFeature = new CarFeature
                         {
                             CarId = car.Id,
-                            FeatureId = featureList[i].Id // Use the ID from the fetched features
+                            FeatureId = featureList[i].Id 
                         };
                         await carFeatureService.Add(carFeature);
                         await carFeatureService.Save();
                     }
                 }
+               /* if (viewModel.TypeId != 0)
+                {
+                    var carType = new CarType
+                    {
+                        CarId = car.Id,
+                        TypeId = viewModel.TypeId
+                    };
+                    await  carTypeService.Add(carType);
+                    await carTypeService.Save();
+                }*/
 
                 return RedirectToAction("Index", "Car");
             }

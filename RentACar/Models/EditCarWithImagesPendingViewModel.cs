@@ -60,9 +60,12 @@ namespace RentACar.Models
         [Required(ErrorMessage = "Class of car is required")]
         public int ClassOfCarId { get; set; }
         public SelectList? ClassOptions { get; set; }
+        public List<string>? Features { get; set; } 
+        public List<string>? SelectedFeatures { get; set; }
 
-       
         public List<ImageViewModel>? Images { get; set; }=new List<ImageViewModel>();
-    
-}
+        public int TypeId { get; set; }
+        public SelectList? TypeOptions { get; set; }
+
+    }
 }

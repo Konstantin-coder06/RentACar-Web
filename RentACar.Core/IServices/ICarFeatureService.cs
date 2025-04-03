@@ -11,5 +11,6 @@ namespace RentACar.Core.IServices
     public interface ICarFeatureService:IRepository<CarFeature>
     {
         Task<IEnumerable<int>>GetByCarIDAllFeatures(int carID);
+        Task<IEnumerable<Feature>> GetByCarIDAllFeatureNames(int carID);
+    } 
     }
-}

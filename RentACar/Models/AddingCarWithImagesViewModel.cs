@@ -67,6 +67,9 @@ namespace RentACar.Models
         public string OrderOfImages { get; set; } = "";
         public List<string> Features { get; set; }=new List<string>();
         public List<string> SelectedFeatures { get; set; }=new List<string>();
+        public int TypeId {  get; set; }
+        public SelectList? TypeOptions { get; set; }
+        public bool IsConvertible {  get; set; }
 
     }
 }

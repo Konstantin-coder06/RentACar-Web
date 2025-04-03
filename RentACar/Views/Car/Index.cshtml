@@ -133,16 +133,19 @@
                                 @if (carWithImages.Car.Pending == true)
                                 {
                                     <h5 class="card-title">
-                                        @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year
-                                        <span class="text-danger">Waiting approval</span>
-                                    </h5>
+                                        @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year                                    
+                                     </h5>
+                                      <h5 class="card-title"><span class="text-danger">Waiting approval</span>
+                                          </h5>
                                 }
                                 else
                                 {
                                     <h5 class="card-title">
                                         @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year
-                                        <span class="text-success">Approved</span>
                                     </h5>
+                                    <h5 class="card-title"><span class="text-success">Approved</span></h5>
+                                      
+                                    
                                 }
                             }
                             else
