@@ -66,6 +66,7 @@ namespace RentACar.Models
         public List<ImageViewModel>? Images { get; set; }=new List<ImageViewModel>();
         public int TypeId { get; set; }
         public SelectList? TypeOptions { get; set; }
+        public bool IsConvertible {  get; set; }
 
     }
 }

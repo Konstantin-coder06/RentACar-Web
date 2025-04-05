@@ -10,5 +10,6 @@ namespace RentACar.Core.IServices
 {
     public interface ICTypeService:IRepository<CType>
     {
+        Task<bool> IsThereTypeWithThisName(string typeName, int seatCapacity);
     }
 }

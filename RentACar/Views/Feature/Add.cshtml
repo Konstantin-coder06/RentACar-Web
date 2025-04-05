@@ -1,0 +1,62 @@
+﻿
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Type - FAST DRIVE</title>
+    <link rel="stylesheet" href="~/css/featureClassCar.css"/>
+    @model AddFeatureOrClassOfCarViewModel
+</head>
+@{
+    ViewData["HideNavigation"] = true;
+    ViewData["HideFooter"] = true;
+    @Html.Partial("_Navigation")
+    
+}
+<body>
+    <div class="hero">
+       
+        <div class="hero-content">
+            @if (ViewBag.AddFeature == true)
+            {
+                <h1>Add New Feature</h1>
+
+                <p>Add a new feature to your rental inventory.</p>
+
+                <div class="form-container">
+                    <h2 class="form-title">Feature Details</h2>
+                    <form asp-action="Add" asp-controller="Feature" method="post">
+                        <input type="hidden" name="Type" value="feature" />
+                        <div class="form-group">
+                            <label for="Name" class="form-label">Feature Name</label>
+                            <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter feature name" required>
+                            <span asp-validation-for="Name" class="error-message"></span>
+                        </div>
+
+                        <button type="submit" class="btn">Add Feature</button>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <h1>Add New Class of Car</h1>
+                <p>Add a new class of car to your rental inventory.</p>
+
+                <div class="form-container">
+                    <h2 class="form-title">Class Details</h2>
+                    <form asp-action="Add" asp-controller="Feature" method="post">
+                        <input type="hidden" name="Type" value="class" />
+                        <div class="form-group">
+                            <label for="Name" class="form-label">Class Name</label>
+                            <input type="text" id="Name" name="Name" class="form-control" placeholder="Enter class name" required>
+                            <span asp-validation-for="Name" class="error-message"></span>
+                        </div>
+
+                        <button type="submit" class="btn">Add Class</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+

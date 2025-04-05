@@ -10,6 +10,7 @@
 @{
     Layout = null;
     @Html.Partial("_Navigation")
+    
 }
 
 @model StartEndDateWithCarsCountViewModel
@@ -170,40 +171,9 @@
         </section>
     </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>FAST DRIVE</h3>
-                    <p>Premium car rental services in Dubai with a wide selection of vehicles for your travel needs.</p>
-
-                </div>
-
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-controller="Car" asp-action="Index">Cars</a></li>
-                        <li><a asp-controller="Home" asp-action="AboutUs">About us</a></li>
-                        <li><a asp-controller="Home" asp-action="ContactUs">Contact us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li>Dubai, UAE</li>
-                        <li>+971 4 123 4567</li>
-                        <li>info@fastdrive.ae</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="copyright">
-                <p>&copy; 2025 FAST DRIVE. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+  @{
+        @Html.Partial("_Footer")
+  }
     <script>
              document.addEventListener('DOMContentLoaded', function() {
             // Select the inputs by their IDs

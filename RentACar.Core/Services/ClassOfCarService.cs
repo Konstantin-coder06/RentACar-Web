@@ -95,5 +95,17 @@ namespace RentACar.Core.Services
             var result = await repository.FindAll(x => selectedCategories.Contains(x.Name));
             return  result.Select(x => x.Id).ToList();
         }
+        public async Task<bool> IsThereClassWithThisName(string className)
+        {
+            var feature = await repository.FindOne(x => x.Name.ToLower() == className.ToLower());
+            if (feature == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

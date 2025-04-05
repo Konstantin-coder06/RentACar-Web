@@ -82,5 +82,17 @@ namespace RentACar.Core.Services
         {
             return await repository.FindAllLimited(predicate, limit);
         }
+        public async Task<bool> IsThereTypeWithThisName(string typeName, int seatCapacity)
+        {
+            var type = await repository.FindOne(x => x.Name.ToLower() == typeName.ToLower() && x.SeatCapacity==seatCapacity);
+            if (type == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

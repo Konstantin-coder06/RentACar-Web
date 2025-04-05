@@ -37,8 +37,16 @@
       "PackagePath": "staticwebassets\\css\\editCar.css"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\featureClassCar.css",
+      "PackagePath": "staticwebassets\\css\\featureClassCar.css"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\filter.css",
       "PackagePath": "staticwebassets\\css\\filter.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\footer.css",
+      "PackagePath": "staticwebassets\\css\\footer.css"
     },
     {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\homeindex.css",

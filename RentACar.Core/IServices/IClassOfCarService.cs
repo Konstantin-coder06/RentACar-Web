@@ -13,5 +13,7 @@ namespace RentACar.Core.IServices
     {
         Task<List<ClassOfCar>> GetClassOptionsAsync();
         Task<List<int>> GetAllClassSelectedIds(List<string> selectedCategories);
+        Task<bool> IsThereClassWithThisName(string className);
+
     }
 }

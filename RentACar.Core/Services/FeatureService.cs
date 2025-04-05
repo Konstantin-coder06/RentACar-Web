@@ -101,5 +101,18 @@ namespace RentACar.Core.Services
             }
             return features;
         }
+
+        public async Task<bool> IsThereFeatureWithThisName(string featureName)
+        {
+            var feature = await repository.FindOne(x => x.NameOfFeatures.ToLower()==featureName.ToLower());
+            if(feature == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

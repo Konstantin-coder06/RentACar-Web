@@ -632,8 +632,9 @@ namespace RentACar.Controllers
             var classes = await classOfCarService.GetAll();
             var allFeatures = (await featureService.GetAll()).Select(x => x.NameOfFeatures).ToList(); 
             var carFeatures = await carFeatureService.GetByCarIDAllFeatureNames(id); 
-            var selectedFeatures = carFeatures.Select(f => f.NameOfFeatures).ToList();
-            var carTypes=await cTypeService.GetAll();
+            var selectedFeatures = carFeatures.Select(f => f.NameOfFeatures).ToList(); 
+            var carTypes= await cTypeService.GetAll();
+
             var viewModel = new EditCarWithImagesPendingViewModel
             {
                 Id = car.Id,
@@ -658,7 +659,15 @@ namespace RentACar.Controllers
                 ClassOptions = new SelectList(classes, "Id", "Name"),
                 Features = allFeatures, 
                 SelectedFeatures = selectedFeatures,
-                
+                TypeId=car.CType.Id,
+                TypeOptions=new SelectList(carTypes.Select(t => new
+                {
+                    Id = t.Id,
+                    DisplayText = $"{t.Name} ({t.SeatCapacity} seats)"
+                }),
+                "Id", 
+                "DisplayText" ),
+                IsConvertible=car.IsConvertable,
                 
             };
             return View(viewModel);
