@@ -32,7 +32,7 @@ namespace RentACar.Core.IServices
         Task<IEnumerable<Reservation>> GetAllIfItIsNotCompany(List<int>carIds);
         Task<double> DifferenceOfPriceBetweenTwoPeriods(double total, double totalPrev);
         Task<List<int>> GetAllReservatedCarsId(DateTime? start, DateTime? end);
-        Task<double>TotalPriceForOneReservation(Reservation reservation, int days, double price);
+        double TotalPriceForOneReservation(Reservation reservation, int days, double price,bool isSelfPick, bool isReturnAtSamePlace);
         Task<List<Car>> GetAllReservationsForCompany(IEnumerable<Car> companyCars);
 
         List<(int CarId, int Count)> GetCarReservationCounts(List<Reservation> reservations);

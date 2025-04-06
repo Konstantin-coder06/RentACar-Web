@@ -171,5 +171,18 @@ namespace RentACar.Core.Services
             }
             return result.OrderBy(x => x.CreatedAt).ToList();
         }
+
+        public async Task<double> GetPricePerDayByCarId(int carId)
+        {
+            var car= await carRepository.FindOne(x=>x.Id == carId);
+            if (car != null)
+            {
+                return car.PricePerDay;
+            }
+            else
+            {
+                throw new Exception("The car is not located!");
+            }
+        }
     }
 }

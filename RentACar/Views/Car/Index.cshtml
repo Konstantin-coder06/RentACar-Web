@@ -10,7 +10,7 @@
     Random random = new Random(seed);
     var isAdmin = User.IsInRole("Admin");
     var isCompany = User.IsInRole("Company");
-
+  
     var startDate = Model.StartDate?.ToString("d MMM yyyy") ?? DateTime.Now.ToString("d MMMM yyyy");
     var endDate = Model.EndDate?.ToString("d MMM yyyy") ?? DateTime.Now.AddDays(3).ToString("d MMMM yyyy");
 }
@@ -19,6 +19,7 @@
 @{
     Layout = null;
     @Html.Partial("_Navigation")
+    
 }
 <body>
  
@@ -174,8 +175,9 @@
             
         </div>
     </div>
-
   
+  
+    
     <div id="calendarModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -191,9 +193,10 @@
         <input type="hidden" id="endDateInput" name="EndDate" asp-for="EndDate">
     </form>
 
+
    
+    <link rel="stylesheet" href="~/css/footer.css" />
+    @Html.Partial("_Footer")
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="~/js/calendar.js"></script>
-
-    
 </body>

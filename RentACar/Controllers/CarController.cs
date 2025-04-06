@@ -460,7 +460,7 @@ namespace RentACar.Controllers
                 IsReturnOptionsEnabled=false,
                 IsAddressInputVisible=false,
             };
-
+           
 
             return View(carWithImages);
         }
@@ -534,6 +534,10 @@ namespace RentACar.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Start and end dates are required.");
+                    var car = await carService.FindById(carWithImages.Car.Id);
+                    var featuresOfACar = await carFeatureService.GetByCarIDAllFeatures(car.Id);
+                    var features = await featureService.GetAllFeaturesByIds(featuresOfACar);
+                    carWithImages.Features =features;
                     return View(carWithImages);
                 }
             }
@@ -544,9 +548,11 @@ namespace RentACar.Controllers
             }
             else if (submitButton == "BookNow")
             {
+                
                 if (!carWithImages.StartDate.HasValue || !carWithImages.EndDate.HasValue)
                 {
                     ModelState.AddModelError("", "Start and end dates are required.");
+                   
                     return View(carWithImages);
                 }
 
@@ -569,25 +575,26 @@ namespace RentACar.Controllers
                 }
 
                
-                Reservation reservation = new Reservation()
-                {
-                    StartDate = startDay,
-                    EndDate = endDay,
-                    IsSelfPick = carWithImages.IsSelfPick,
-                    PaidDeliveryPlace = carWithImages.CustomAddress,
-                    IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
-                    CarId = carWithImages.Car.Id,
-                    CustomerId = userId.Value,
-                    CreateTime = DateTime.Now,
-                };
-          
-                reservation.TotalPrice = await reservationService.TotalPriceForOneReservation(reservation, totalDays, carWithImages.Car.PricePerDay);
-                await reservationService.Add(reservation);
-                await reservationService.Save();
-                TempData["success"] = $"Days {totalDays} Total price: {reservation.TotalPrice}";
-                return RedirectToAction("Index", "Home");
-            }
+                 Reservation reservation = new Reservation()
+                 {
+                     StartDate = startDay,
+                     EndDate = endDay,
+                     IsSelfPick = carWithImages.IsSelfPick,
+                     PaidDeliveryPlace = carWithImages.CustomAddress,
+                     IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
+                     CarId = carWithImages.Car.Id,
+                     CustomerId = userId.Value,
+                     CreateTime = DateTime.Now,
+                 };
+                 var price= await carService.GetPricePerDayByCarId(carWithImages.Car.Id);
+                 reservation.TotalPrice = reservationService.TotalPriceForOneReservation(reservation, totalDays, price, carWithImages.IsSelfPick, carWithImages.IsReturningBackAtSamePlace);
+                 TempData["success"] = $"Days {totalDays} Total price: {reservation.TotalPrice}";
+                 await reservationService.Add(reservation);
+                 await reservationService.Save();
 
+                 return RedirectToAction("Index", "Home");
+            }
+           
             return View(carWithImages); 
             
         }

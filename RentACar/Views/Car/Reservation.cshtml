@@ -120,6 +120,7 @@
 <div class="features-container">
     <h4>Car Features</h4>
     <div class="features-grid">
+        @if(Model.Features!=null){
         @foreach (var feature in Model.Features)
         {
             <div class="feature-item">
@@ -333,6 +334,9 @@
                 </span>
                 <span class="feature-name">@feature.NameOfFeatures</span>
             </div>
+        }
+        }else{
+            <p>No features available.</p>
         }
     </div>
 </div>

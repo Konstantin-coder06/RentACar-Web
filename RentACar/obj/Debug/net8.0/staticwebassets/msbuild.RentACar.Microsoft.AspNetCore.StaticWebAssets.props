@@ -102,8 +102,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>kfme9ny8zf</Fingerprint>
-      <Integrity>8BGZVdENKhmyqJ6npaFJ2M4fFJTBQLzesIGxvmQN+4U=</Integrity>
+      <Fingerprint>pdgr86mwx3</Fingerprint>
+      <Integrity>rcswjJCcOewOVZlfFkm22P0pGOp5CXIeBcHsYrwbeIE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\carIndex.css'))</OriginalItemSpec>
@@ -390,8 +390,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>x79f5zz5nv</Fingerprint>
-      <Integrity>kyJHjRXIwbyzo1S2KlQw7RiJVuVz3PssNborTW4YFs0=</Integrity>
+      <Fingerprint>60mpe15udq</Fingerprint>
+      <Integrity>WoLwaoCfidSGmBfm/LMaYwNJ/klEfcyrT/9n1+ZKWBk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\calendar.js'))</OriginalItemSpec>

@@ -298,7 +298,7 @@ namespace RentACar.Core.Services
             return result.Select(r => r.CarId).Distinct().ToList();
         }
 
-        public async Task<double> TotalPriceForOneReservation(Reservation reservation, int days, double price)
+        public double TotalPriceForOneReservation(Reservation reservation, int days, double price, bool isSelfPick, bool isReturnAtSamePlace)
         {
             if (days == 7)
             {
@@ -307,6 +307,14 @@ namespace RentACar.Core.Services
             else if (days > 0)
             {
                 reservation.TotalPrice = (days * price) * 0.9;
+            }
+            if (isSelfPick == false)
+            {
+                reservation.TotalPrice += 25;
+            }
+            if (isReturnAtSamePlace == true)
+            {
+                reservation.TotalPrice += 25;
             }
             return reservation.TotalPrice;
         }

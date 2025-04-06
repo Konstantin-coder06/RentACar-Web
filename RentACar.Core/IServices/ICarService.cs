@@ -22,7 +22,7 @@ namespace RentACar.Core.IServices
         Task<Car>FindById(int carId);
         Task SetCarUnavailable(int id);
         Task<IEnumerable<Car>> GetAllPendingCompanyCars(int? companyId);
-        
+        Task<double>GetPricePerDayByCarId(int carId);
         
     }
 }
