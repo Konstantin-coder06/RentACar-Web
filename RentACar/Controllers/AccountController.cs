@@ -43,7 +43,12 @@ namespace RentACar.Controllers
         {
          
             if (action == "showResetForm")
-            { 
+            {
+                if (string.IsNullOrEmpty(model.Email))
+                {
+                    ModelState.AddModelError("Email", "To reset your password you must enter your email!");
+                    return View(model);
+                }
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null)
                 {
@@ -65,7 +70,11 @@ namespace RentACar.Controllers
                 model.ConfirmPassword = null;
                 return View(model);
             }
-
+            if (string.IsNullOrEmpty(model.Password))
+            {
+                ModelState.AddModelError("Password", "The Password field is required");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
@@ -122,10 +131,16 @@ namespace RentACar.Controllers
                     }
                 }
 
-              
+
                 if (action == "login")
                 {
+                    if (string.IsNullOrEmpty(model.Password))
+                    {
+                        ModelState.AddModelError("Password", "The password is required");
+                        return View(model);
+                    }
                     var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                  
                     if (result.Succeeded)
                     {
                         if (await _userManager.IsInRoleAsync(user, "Company"))
@@ -158,7 +173,7 @@ namespace RentACar.Controllers
             }
             return View(model);
         }
-        public IActionResult Register() => View();
+       
         public IActionResult RegisterCompany() => View();
         [HttpPost]
         public async Task<IActionResult> RegisterCompany(RegisterCompanyViewModel model)
@@ -195,6 +210,7 @@ namespace RentACar.Controllers
             }
             return View(model);
         }
+        public IActionResult Register() => View();
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)

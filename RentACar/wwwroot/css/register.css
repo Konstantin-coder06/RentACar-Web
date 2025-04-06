@@ -162,7 +162,9 @@ input[type="checkbox"] {
     .submit-btn:hover {
         background-color: #202528;
     }
-
+.text-red{
+    color:red;
+}
 .register {
     color: var(--text-light);
     text-align: center;

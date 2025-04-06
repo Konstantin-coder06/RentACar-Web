@@ -203,3 +203,6 @@ input[type="checkbox"] {
 div.register a:hover {
     color: #cb0000 !important;
 }
+.text-red{
+    color:red;
+}

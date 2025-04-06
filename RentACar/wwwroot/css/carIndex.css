@@ -563,6 +563,10 @@ header {
         color: white;
         text-decoration: none;
     }
+
+    .clear-search-button i {
+        margin-right: 5px;
+    }
 .category-button {
     display: flex;
     align-items: center;
@@ -583,4 +587,4 @@ header {
 
     .category-button:hover {
         background-color: #f0f0f0;
-    }
+    

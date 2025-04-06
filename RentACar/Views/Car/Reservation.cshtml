@@ -2,365 +2,372 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 @{
     ViewData["HideNavigation"] = true;
-  
+    ViewData["HideFooter"] = true;
+
 }
 @model CarWithImages
-
-@if (TempData["HasConflict"] != null && (bool)TempData["HasConflict"])
-{
-    <div class="conflict-message" style="background: #f8d7da; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-        <p style="color: #721c24; margin-bottom: 1rem;">
-            The car is already reserved for the selected dates (@TempData["ProposedStartDate"] to @TempData["ProposedEndDate"]).
-            Do you still want to keep these dates?
-        </p>
-        <form asp-action="Reservation" asp-controller="Car" method="post">
-            <input type="hidden" name="Car.Id" value="@Model.Car.Id" />
-            <input type="hidden" name="StartDate" value="@TempData["ProposedStartDate"]" />
-            <input type="hidden" name="EndDate" value="@TempData["ProposedEndDate"]" />
-            <button type="submit" name="submitButton" value="KeepDates" class="btn btn-primary" style="margin-right: 1rem;">
-                Yes, keep dates
-            </button>
-            <button type="submit" name="submitButton" value="RevertDates" class="btn btn-secondary">
-                No, revert to previous dates
-            </button>
-            <p>*If you select to keep dates, you will be redirect to the view with all cars</p>
-        </form>
-    </div>
-}
-<div class="booking-layout">
-
-    <div class="carousel-section">
-        <div class="carousel-wrapper">
-            <div id="carCarousel-@Model.Car.Id" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    @for (int i = 0; i < Model.Images.Count; i++)
-                    {
-                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <img src="@Model.Images[i].Url" class="d-block w-100" alt="@Model.Car.Brand">
-                        </div>
-                    }
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel-@Model.Car.Id" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carCarousel-@Model.Car.Id" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-
-            <h5 class="card-title">@Model.Car.Brand @Model.Car.Model @Model.Car.Year</h5>
-            <p class="card-text">
-                @Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
+<body>
+    @if (TempData["HasConflict"] != null && (bool)TempData["HasConflict"])
+    {
+        <div class="conflict-message" style="background: #f8d7da; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+            <p style="color: #721c24; margin-bottom: 1rem;">
+                The car is already reserved for the selected dates (@TempData["ProposedStartDate"] to @TempData["ProposedEndDate"]).
+                Do you still want to keep these dates?
             </p>
-            <p class="card-text">
-                Additional Mileage Charge • @Model.Car.AdditionalMileageCharge BGN per km
-            </p>
-
-
-            <div class="price-container">
-                <div class="price-text">
-                    <h3 class="price-day">@Model.Car.PricePerDay BGN / per day</h3>
-                    <p class="price-week">@Model.Car.PricePerWeek BGN / per week</p>
-                </div>
-            </div>
+            <form asp-action="Reservation" asp-controller="Car" method="post">
+                <input type="hidden" name="Car.Id" value="@Model.Car.Id" />
+                <input type="hidden" name="StartDate" value="@TempData["ProposedStartDate"]" />
+                <input type="hidden" name="EndDate" value="@TempData["ProposedEndDate"]" />
+                <button type="submit" name="submitButton" value="KeepDates" class="btn btn-primary" style="margin-right: 1rem;">
+                    Yes, keep dates
+                </button>
+                <button type="submit" name="submitButton" value="RevertDates" class="btn btn-secondary">
+                    No, revert to previous dates
+                </button>
+                <p>*If you select to keep dates, you will be redirect to the view with all cars</p>
+            </form>
         </div>
-    </div>
+    }
+    <div class="booking-layout">
 
-    <form asp-action="Reservation" asp-controller="Car" method="post">
-        <input type="hidden" asp-for="Car.Id" />
-        <div class="details-section">
-            <h4>Receiving Selection</h4>
-            <input class="form-check-input" type="radio" name="IsSelfPick" value="true" id="selfPick" @(Model.IsSelfPick ? "checked" : "")>
-            <label class="form-check-label" for="selfPick">Self Pick (from our office)</label>
+        <div class="carousel-section">
+            <div class="carousel-wrapper">
+                <div id="carCarousel-@Model.Car.Id" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @for (int i = 0; i < Model.Images.Count; i++)
+                        {
+                            <div class="carousel-item @(i == 0 ? "active" : "")">
+                                <img src="@Model.Images[i].Url" class="d-block w-100" alt="@Model.Car.Brand">
+                            </div>
+                        }
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carCarousel-@Model.Car.Id" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carCarousel-@Model.Car.Id" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
 
-            <input class="form-check-input" type="radio" name="IsSelfPick" value="false" id="deliveryAddress" @(!Model.IsSelfPick ? "checked" : "")>
-            <label class="form-check-label" for="deliveryAddress">Delivery to address</label>
+                <h5 class="card-title">@Model.Car.Brand @Model.Car.Model @Model.Car.Year</h5>
+                <p class="card-text">
+                    @Model.Car.Gearbox • @Model.Car.MileageLimitForDay km/rental
+                </p>
+                <p class="card-text">
+                    Additional Mileage Charge • @Model.Car.AdditionalMileageCharge BGN per km
+                </p>
 
-            <span class="self-pick-message">*For Self Pick, return is only available at the office.</span>
 
-            <div id="addressInput">
-                <label asp-for="CustomAddress">Address:</label>
-                <input type="text" asp-for="CustomAddress" id="streetAddress" placeholder="Enter Address">
-                <p>*This will cost 25 BGN</p>
-            </div>
-            <h4>Return options</h4>
-            <div class="return-options">
-                <div class="return-same-place" style="margin-top: 2.5rem; margin-bottom:2.5rem;">
-                    <input type="radio" name="IsReturningBackAtSamePlace" value="true" id="returnSamePlace">
-                    <label for="returnSamePlace">Return back at same place</label>
-                    <div id="returnSamePlace">
-                        <p>*This will cost 25 BGN</p>
+                <div class="price-container">
+                    <div class="price-text">
+                        <h3 class="price-day">@Model.Car.PricePerDay BGN / per day</h3>
+                        <p class="price-week">@Model.Car.PricePerWeek BGN / per week</p>
                     </div>
                 </div>
-              
-                <div class="return-office">
-                    <input type="radio" name="IsReturningBackAtSamePlace" value="false" id="returnOffice" checked>
-                    <label for="returnOffice">Return in office</label>
-                </div>
-            </div>
-
-            <div style="margin-top: 2.5rem;">
-                <label asp-for="StartDate">Start Date:</label>
-                <input type="date" asp-for="StartDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
-                <label asp-for="EndDate">End Date:</label>
-                <input type="date" asp-for="EndDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
-                <button type="submit" name="submitButton" value="ChangeDate" class="btn btn-primary">Change the date</button>
-            </div>
-
-            <div style="margin-top: 2rem;">
-
-                <button type="submit" name="submitButton" value="BookNow" class="btn btn-primary">Book Now</button>
             </div>
         </div>
-    </form>
-</div>
 
-<div class="features-container">
-    <h4>Car Features</h4>
-    <div class="features-grid">
-        @if(Model.Features!=null){
-        @foreach (var feature in Model.Features)
-        {
-            <div class="feature-item">
-                <span class="feature-icon">
-                    @if (feature.NameOfFeatures.Contains("Air Conditioning"))
-                    {
-                        <i class="bi bi-wind"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Heated Seats"))
-                    {
-                        <i class="bi bi-thermometer-high"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Bluetooth"))
-                    {
-                        <i class="bi bi-bluetooth"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Navigation"))
-                    {
-                        <i class="bi bi-map"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Camera") || feature.NameOfFeatures.Contains("Parking"))
-                    {
-                        <i class="bi bi-camera-video"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Adaptive"))
-                    {
+        <form asp-action="Reservation" asp-controller="Car" method="post">
+            <input type="hidden" asp-for="Car.Id" />
+            <div class="details-section">
+                <h4>Receiving Selection</h4>
+                <input class="form-check-input" type="radio" name="IsSelfPick" value="true" id="selfPick" @(Model.IsSelfPick ? "checked" : "")>
+                <label class="form-check-label" for="selfPick">Self Pick (from our office)</label>
 
-                        <i class="bi bi-speedometer"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Lane Departure Warning"))
-                    {
-                        <i class="bi bi-exclamation-triangle"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Adaptive Headlights"))
-                    {
-                        <i class="bi bi-lightbulb"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Blind Spot Detection"))
-                    {
-                        <i class="bi bi-eye"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Automatic Parking"))
-                    {
-                        <i class="bi bi-car-front-fill"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Push-Button Start"))
-                    {
-                        <i class="bi bi-power"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Wireless Charging"))
-                    {
-                        <i class="bi bi-lightning-charge"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Panoramic Sunroof"))
-                    {
-                        <i class="bi bi-brightness-high"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Power Adjustable Seats"))
-                    {
-                        <i class="bi bi-check-circle-fill"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Backup Sensors"))
-                    {
-                        <i class="bi bi-radar"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Heated Steering Wheel"))
-                    {
-                        <i class="bi bi-steering-wheel"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Keyless"))
-                    {
-                        <i class="bi bi-key"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Surround-View Camera"))
-                    {
-                        <i class="bi bi-camera-reels"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Remote Start"))
-                    {
-                        <i class="bi bi-wifi"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Apple"))
-                    {
-                        <i class="bi bi-apple"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Adaptive Cruise Control"))
-                    {
-                        <i class="bi bi-check-circle-fill"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Android"))
-                    {
-                        <i class="bi bi-android2"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Rear Cross Traffic Alert"))
-                    {
-                        <i class="bi bi-arrow-left-right"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Heads-Up Display"))
-                    {
-                        <i class="bi bi-display"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Ambient Lighting"))
-                    {
-                        <i class="bi bi-lightbulb-fill"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Wireless Apple CarPlay"))
-                    {
-                        <i class="bi bi-broadcast"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Power Tailgate"))
-                    {
-                        <i class="bi bi-box-arrow-up"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Automatic Emergency Braking"))
-                    {
-                        <i class="bi bi-exclamation-diamond"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Traffic Sign Recognition"))
-                    {
-                        <i class="bi bi-signpost"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Rain-Sensing Wipers"))
-                    {
-                        <i class="bi bi-cloud-rain"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Dual-Zone Climate Control"))
-                    {
-                        <i class="bi bi-thermometer-sun"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Power Folding Mirrors"))
-                    {
-                        <i class="bi bi-arrows-angle-contract"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Lane Keeping Assist"))
-                    {
-                        <i class="bi bi-arrow-left-right"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Electric Power Steering"))
-                    {
-                        <i class="bi bi-lightning"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Turbocharged Engine"))
-                    {
-                        <i class="bi bi-speedometer"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Carbon Fiber Trim"))
-                    {
-                        <i class="bi bi-boxes"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Active Noise Cancellation"))
-                    {
-                        <i class="bi bi-volume-mute"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("All-Wheel Drive"))
-                    {
-                        <i class="bi bi-gear-wide-connected"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Front Parking Sensors"))
-                    {
-                        <i class="bi bi-radar"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Sport Mode"))
-                    {
-                        <i class="bi bi-ev-front"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Wireless Smartphone Charging"))
-                    {
-                        <i class="bi bi-battery-charging"></i>
+                <input class="form-check-input" type="radio" name="IsSelfPick" value="false" id="deliveryAddress" @(!Model.IsSelfPick ? "checked" : "")>
+                <label class="form-check-label" for="deliveryAddress">Delivery to address</label>
 
-                    }
-                    else if (feature.NameOfFeatures.Contains("Massaging Seats"))
-                    {
-                        <i class="bi bi-person-hearts"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Self-Healing Paint"))
-                    {
-                        <i class="bi bi-brush"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Night Vision"))
-                    {
-                        <i class="bi bi-moon-stars"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Active Rear Spoiler"))
-                    {
-                        <i class="bi bi-airplane-engines"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Heads-Up Display with Navigation"))
-                    {
-                        <i class="bi bi-display"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Wireless Internet Access"))
-                    {
-                        <i class="bi bi-wifi"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Active Suspension"))
-                    {
-                        <i class="bi bi-car-front"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Power Adjustable Steering Whee"))
-                    {
-                        <i class="bi bi-check-circle-fill"></i>
-                    }
-                    else if (feature.NameOfFeatures.Contains("Touchscreen Control Panel"))
-                    {
-                        <i class="bi bi-tablet-landscape"></i>
-                    }
-                    else
-                    {
-                        <i class="bi bi-check-circle-fill"></i>
-                    }
-                </span>
-                <span class="feature-name">@feature.NameOfFeatures</span>
+                <span class="self-pick-message">*For Self Pick, return is only available at the office.</span>
+
+                <div id="addressInput">
+                    <label asp-for="CustomAddress">Address:</label>
+                    <input type="text" asp-for="CustomAddress" id="streetAddress" placeholder="Enter Address">
+                    <p>*This will cost 25 BGN</p>
+                </div>
+                <h4>Return options</h4>
+                <div class="return-options">
+                    <div class="return-same-place" style="margin-top: 2.5rem; margin-bottom:2.5rem;">
+                        <input type="radio" name="IsReturningBackAtSamePlace" value="true" id="returnSamePlace">
+                        <label for="returnSamePlace">Return back at same place</label>
+                        <div id="returnSamePlace">
+                            <p>*This will cost 25 BGN</p>
+                        </div>
+                    </div>
+
+                    <div class="return-office">
+                        <input type="radio" name="IsReturningBackAtSamePlace" value="false" id="returnOffice" checked>
+                        <label for="returnOffice">Return in office</label>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2.5rem;">
+                    <label asp-for="StartDate">Start Date:</label>
+                    <input type="date" asp-for="StartDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                    <label asp-for="EndDate">End Date:</label>
+                    <input type="date" asp-for="EndDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                    <button type="submit" name="submitButton" value="ChangeDate" class="btn btn-primary">Change the date</button>
+                </div>
+
+                <div style="margin-top: 2rem;">
+
+                    <button type="submit" name="submitButton" value="BookNow" class="btn btn-primary">Book Now</button>
+                </div>
             </div>
-        }
-        }else{
-            <p>No features available.</p>
-        }
+        </form>
     </div>
-</div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const startDateInput = document.querySelector('input[asp-for="StartDate"]');
-        const endDateInput = document.querySelector('input[asp-for="EndDate"]');
 
-        // Set min date to today for both inputs initially
-        const today = new Date().toISOString().split('T')[0];
-        startDateInput.min = today;
-        endDateInput.min = today;
+    <div class="features-container">
+        <h4>Car Features</h4>
+        <div class="features-grid">
+            @if (Model.Features != null)
+            {
+                @foreach (var feature in Model.Features)
+                {
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            @if (feature.NameOfFeatures.Contains("Air Conditioning"))
+                            {
+                                <i class="bi bi-wind"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Heated Seats"))
+                            {
+                                <i class="bi bi-thermometer-high"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Bluetooth"))
+                            {
+                                <i class="bi bi-bluetooth"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Navigation"))
+                            {
+                                <i class="bi bi-map"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Camera") || feature.NameOfFeatures.Contains("Parking"))
+                            {
+                                <i class="bi bi-camera-video"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Adaptive"))
+                            {
 
-        // Update end date min when start date changes
-        startDateInput.addEventListener('change', function() {
-            if (startDateInput.value) {
-                // Set end date min to be the selected start date
-                endDateInput.min = startDateInput.value;
+                                <i class="bi bi-speedometer"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Lane Departure Warning"))
+                            {
+                                <i class="bi bi-exclamation-triangle"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Adaptive Headlights"))
+                            {
+                                <i class="bi bi-lightbulb"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Blind Spot Detection"))
+                            {
+                                <i class="bi bi-eye"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Automatic Parking"))
+                            {
+                                <i class="bi bi-car-front-fill"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Push-Button Start"))
+                            {
+                                <i class="bi bi-power"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Wireless Charging"))
+                            {
+                                <i class="bi bi-lightning-charge"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Panoramic Sunroof"))
+                            {
+                                <i class="bi bi-brightness-high"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Power Adjustable Seats"))
+                            {
+                                <i class="bi bi-check-circle-fill"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Backup Sensors"))
+                            {
+                                <i class="bi bi-radar"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Heated Steering Wheel"))
+                            {
+                                <i class="bi bi-steering-wheel"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Keyless"))
+                            {
+                                <i class="bi bi-key"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Surround-View Camera"))
+                            {
+                                <i class="bi bi-camera-reels"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Remote Start"))
+                            {
+                                <i class="bi bi-wifi"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Apple"))
+                            {
+                                <i class="bi bi-apple"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Adaptive Cruise Control"))
+                            {
+                                <i class="bi bi-check-circle-fill"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Android"))
+                            {
+                                <i class="bi bi-android2"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Rear Cross Traffic Alert"))
+                            {
+                                <i class="bi bi-arrow-left-right"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Heads-Up Display"))
+                            {
+                                <i class="bi bi-display"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Ambient Lighting"))
+                            {
+                                <i class="bi bi-lightbulb-fill"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Wireless Apple CarPlay"))
+                            {
+                                <i class="bi bi-broadcast"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Power Tailgate"))
+                            {
+                                <i class="bi bi-box-arrow-up"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Automatic Emergency Braking"))
+                            {
+                                <i class="bi bi-exclamation-diamond"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Traffic Sign Recognition"))
+                            {
+                                <i class="bi bi-signpost"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Rain-Sensing Wipers"))
+                            {
+                                <i class="bi bi-cloud-rain"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Dual-Zone Climate Control"))
+                            {
+                                <i class="bi bi-thermometer-sun"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Power Folding Mirrors"))
+                            {
+                                <i class="bi bi-arrows-angle-contract"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Lane Keeping Assist"))
+                            {
+                                <i class="bi bi-arrow-left-right"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Electric Power Steering"))
+                            {
+                                <i class="bi bi-lightning"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Turbocharged Engine"))
+                            {
+                                <i class="bi bi-speedometer"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Carbon Fiber Trim"))
+                            {
+                                <i class="bi bi-boxes"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Active Noise Cancellation"))
+                            {
+                                <i class="bi bi-volume-mute"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("All-Wheel Drive"))
+                            {
+                                <i class="bi bi-gear-wide-connected"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Front Parking Sensors"))
+                            {
+                                <i class="bi bi-radar"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Sport Mode"))
+                            {
+                                <i class="bi bi-ev-front"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Wireless Smartphone Charging"))
+                            {
+                                <i class="bi bi-battery-charging"></i>
 
-                // If current end date is before new start date, update end date
-                if (endDateInput.value && endDateInput.value < startDateInput.value) {
-                    endDateInput.value = startDateInput.value;
+                            }
+                            else if (feature.NameOfFeatures.Contains("Massaging Seats"))
+                            {
+                                <i class="bi bi-person-hearts"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Self-Healing Paint"))
+                            {
+                                <i class="bi bi-brush"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Night Vision"))
+                            {
+                                <i class="bi bi-moon-stars"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Active Rear Spoiler"))
+                            {
+                                <i class="bi bi-airplane-engines"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Heads-Up Display with Navigation"))
+                            {
+                                <i class="bi bi-display"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Wireless Internet Access"))
+                            {
+                                <i class="bi bi-wifi"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Active Suspension"))
+                            {
+                                <i class="bi bi-car-front"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Power Adjustable Steering Whee"))
+                            {
+                                <i class="bi bi-check-circle-fill"></i>
+                            }
+                            else if (feature.NameOfFeatures.Contains("Touchscreen Control Panel"))
+                            {
+                                <i class="bi bi-tablet-landscape"></i>
+                            }
+                            else
+                            {
+                                <i class="bi bi-check-circle-fill"></i>
+                            }
+                        </span>
+                        <span class="feature-name">@feature.NameOfFeatures</span>
+                    </div>
                 }
             }
+            else
+            {
+                <p>No features available.</p>
+            }
+        </div>
+    </div>
+
+   
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const startDateInput = document.querySelector('input[asp-for="StartDate"]');
+            const endDateInput = document.querySelector('input[asp-for="EndDate"]');
+
+            // Set min date to today for both inputs initially
+            const today = new Date().toISOString().split('T')[0];
+            startDateInput.min = today;
+            endDateInput.min = today;
+
+            // Update end date min when start date changes
+            startDateInput.addEventListener('change', function() {
+                if (startDateInput.value) {
+                    // Set end date min to be the selected start date
+                    endDateInput.min = startDateInput.value;
+
+                    // If current end date is before new start date, update end date
+                    if (endDateInput.value && endDateInput.value < startDateInput.value) {
+                        endDateInput.value = startDateInput.value;
+                    }
+                }
+            });
         });
-    });
-</script>
+    </script>
+</body>

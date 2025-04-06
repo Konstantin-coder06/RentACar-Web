@@ -36,6 +36,7 @@ namespace RentACar.Controllers
 
         public async Task<IActionResult> Index()
         {
+            
             DateTime? startDay = null;
             DateTime? endDay = null;
 
@@ -135,6 +136,13 @@ namespace RentACar.Controllers
             return View(viewModel);
         }
         [HttpPost]
+        public IActionResult ClearSort()
+        {
+            HttpContext.Session.Remove("SortOrder");
+            Console.WriteLine("ClearSort executed");
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
         public IActionResult FilterByCategory(string categories)
         {
             if (categories != null && categories.StartsWith("toggle_"))
@@ -161,6 +169,7 @@ namespace RentACar.Controllers
         [Route("Car/Search")]
         public async Task<IActionResult> Search(string searchBar)
         {
+            
             var queries = (await carService.GetAll()).AsQueryable();
             if (!string.IsNullOrEmpty(searchBar))
             {
@@ -216,7 +225,7 @@ namespace RentACar.Controllers
         }
         [HttpPost]
         public IActionResult Sort(string sortOrder)
-        {          
+        {
             HttpContext.Session.SetString("SortOrder", sortOrder);
             return RedirectToAction("Index");
         }
@@ -716,7 +725,9 @@ namespace RentACar.Controllers
             car.HorsePower = viewModel.HorsePower;
             car.ZeroToHundred = viewModel.ZeroToHundred;
             car.TopSpeed = viewModel.TopSpeed;
-
+            car.IsConvertable = viewModel.IsConvertible;
+            car.ClassOfCarId = viewModel.ClassOfCarId;
+            car.CTypeId = viewModel.TypeId;
             if (User.IsInRole("Company"))
             {
                 car.Pending = true;

@@ -3,17 +3,6 @@
     Layout = null;
 }
 
-@if (!ViewData.ModelState.IsValid)
-{
-    <div class="alert alert-danger">
-        <ul>
-            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-            {
-                <li>@error.ErrorMessage</li>
-            }
-        </ul>
-    </div>
-}
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
 <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 <body>
@@ -25,9 +14,10 @@
                 <div class="input-wrapper">
                     <input type="text" asp-for="Email" placeholder=" " id="name" />
                     <label asp-for="Email">Email</label>
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                  
                 </div>
             </div>
+            <span asp-validation-for="Email" class="text-red"></span>
             @if (!Model.ShowResetPassword)
             {
            
@@ -36,10 +26,12 @@
                     <div class="input-wrapper">
                         <input id="password" type="password" asp-for="Password" placeholder=" " />
                         <label asp-for="Password">Password</label>
-                        <span asp-validation-for="Password" class="text-danger"></span>
+                       
                     </div>
                     <span id="toggle-password"><i class="ri-eye-off-line"></i></span>
+                    
                 </div>
+                <span asp-validation-for="Password" class="text-red"></span>
                 <div class="form-actions">
                     <button type="submit" name="action" value="login" class="submit-btn">Login</button>
                 </div>
@@ -53,16 +45,18 @@
                     <div class="input-wrapper">
                         <input type="password" asp-for="NewPassword" placeholder=" " id="newPassword" />
                         <label asp-for="NewPassword">New Password</label>
-                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                       
                     </div>
+                    <span asp-validation-for="NewPassword" class="text-red"></span>
                 </div>
                 <div class="form-group">
                     <span><i class="ri-lock-2-line"></i></span>
                     <div class="input-wrapper">
                         <input type="password" asp-for="ConfirmPassword" placeholder=" " id="confirmPassword" />
                         <label asp-for="ConfirmPassword">Confirm Password</label>
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        
                     </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-red"></span>
                 </div>
                 <div class="form-actions">
                     <button type="submit" name="action" value="resetPassword" class="submit-btn">Reset Password</button>

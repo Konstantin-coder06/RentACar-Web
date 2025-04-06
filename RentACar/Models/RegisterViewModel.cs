@@ -8,6 +8,7 @@ namespace RentACar.Models
         [Required]
         public string Name {  get; set; }
         [Required]
+        [DataType(DataType.DateTime)]
         public DateTime BirthDay {  get; set; }
       
         [Required]
@@ -18,7 +19,7 @@ namespace RentACar.Models
         public string Password { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "The passwords do not match.")]
+        [Compare("Password", ErrorMessage = "The  passwords  do  not  match.")]
         public string ConfirmPassword { get; set; }
     }
 }

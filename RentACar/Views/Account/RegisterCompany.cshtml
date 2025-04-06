@@ -11,7 +11,7 @@
 <body>
     <div class="login-container">
 
-        <form asp-action="Register" method="post" class="login-form">
+        <form asp-action="RegisterCompany" method="post" class="login-form">
             <h1>Register As Company</h1>
 
             <div class="form-group">
@@ -20,10 +20,10 @@
                 <div class="input-wrapper">
                     <input type="text" asp-for="CompanyName" placeholder=" " id="name" />
                     <label asp-for="CompanyName">Company Name</label>
-                    <span asp-validation-for="CompanyName" class="text-danger"></span>
+                   
                 </div>
             </div>
-           
+            <span asp-validation-for="CompanyName" class="text-red"></span>
            
             <div class="form-group">
                 <span><i class="ri-profile-line"></i></span>
@@ -31,60 +31,67 @@
                 <div class="input-wrapper">
                     <input id="password" type="text" asp-for="Description" placeholder=" " />
                     <label asp-for="Description">Description</label>
-                    <span asp-validation-for="Description" class="text-danger"></span>
+                    
                 </div>
                 
             </div>
+            <span asp-validation-for="Description" class="text-red"></span>
             <div class="form-group">
                 <span><i class="ri-user-3-line"></i></span>
                 <div class="input-wrapper">
                     <input type="text" asp-for="City" placeholder=" " id="name" />
                     <label asp-for="City">City</label>
-                    <span asp-validation-for="City" class="text-danger"></span>
+                    
                 </div>
             </div>
+            <span asp-validation-for="City" class="text-red"></span>
             <div class="form-group">
                 <span><i class="ri-building-line"></i></span>
                 <div class="input-wrapper">
                     <input type="text" asp-for="Country" placeholder=" " id="name" />
                     <label asp-for="Country">Coutnry</label>
-                    <span asp-validation-for="Country" class="text-danger"></span>
+                   
                 </div>
             </div>
+            <span asp-validation-for="Country" class="text-red"></span>
             <div class="form-group">
                 <span><i class="ri-map-pin-2-line"></i></span>
                 <div class="input-wrapper">
                     <input type="text" asp-for="Address" placeholder=" " id="name" />
                     <label asp-for="Address">Address</label>
-                    <span asp-validation-for="Address" class="text-danger"></span>
+                    
                 </div>
             </div>
+            <span asp-validation-for="Address" class="text-red"></span>
             <div class="form-group">
                 <span><i class="ri-user-3-line"></i></span>
                 <div class="input-wrapper">
                     <input type="text" asp-for="Email" placeholder=" " id="name" />
                     <label asp-for="Email">Email</label>
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                    
                 </div>
             </div>
+            <span asp-validation-for="Email" class="text-red"></span>
             <div class="form-group">
                 <span><i class="ri-lock-2-line"></i></span>
                 <div class="input-wrapper">
                     <input id="password" type="password" asp-for="Password" placeholder=" " />
                     <label asp-for="Password">Password</label>
-                    <span asp-validation-for="Password" class="text-danger"></span>
+                    
                 </div>
                 <span id="toggle-password"><i class="ri-eye-off-line"></i></span>
             </div>
+            <span asp-validation-for="Password" class="text-red"></span>
             <div class="form-group">
                 <span><i class="ri-lock-2-line"></i></span>
                 <div class="input-wrapper">
                     <input id="password" type="password" asp-for="ConfirmPassword" placeholder=" " />
                     <label asp-for="ConfirmPassword">Confirm Password</label>
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    
                 </div>
                 <span id="toggle-password"><i class="ri-eye-off-line"></i></span>
             </div>
+            <span asp-validation-for="ConfirmPassword" class="text-red"></span>
             <button class="submit-btn">Register</button>
             <div class="register">
                 Already have an account? <a asp-action="Login" asp-controller="Account">Log in</a>

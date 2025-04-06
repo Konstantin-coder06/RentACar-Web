@@ -104,16 +104,13 @@
                     </a>
                 </div>
             }
-            @if (!string.IsNullOrEmpty(Model.SortTerm))
+            @if (!string.IsNullOrEmpty(Model.SortTerm) && Model.SortTerm != "default")
             {
-                if(Model.SortTerm!="default")
-                {
                 <div class="clear-search-container">
                     <a asp-action="Index" asp-controller="Car" class="clear-search-button">
                         <i class="fas fa-times"></i> @Model.SortTerm
                     </a>
                 </div>
-                }
             }
         </form>
       

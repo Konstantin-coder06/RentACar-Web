@@ -8,7 +8,7 @@
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 15px;
@@ -91,4 +91,11 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 30px;
     font-size: 0.9rem;
+}
+.full-width-footer {
+    width: 100%;
+    margin: 0;
+    padding: 60px 0 30px;
+    background: #800000;
+    color: white;
 }
