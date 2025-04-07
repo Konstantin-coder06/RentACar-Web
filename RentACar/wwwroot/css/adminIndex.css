@@ -1,5 +1,4 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap');
-/* variables */
 :root {
     --clr-primary: #7380ec;
     --clr-danger: #ff7782;
@@ -22,7 +21,6 @@
     --box-shadow: 0 2rem 3rem var(--clr-light);
 }
 
-/* dark theme */
 .dark-theme-variables {
     --clr-color-background: #181a1e;
     --clr-white: #202528;
@@ -127,7 +125,6 @@ b {
 }
 
 
-/* aside */
 aside {
     height: 100vh;
 }
@@ -153,10 +150,6 @@ aside {
     aside .top div.close span {
         display: none;
     }
-
-    /* ===================
- Sidebar
- ================== */
 
     aside .sidebar {
         background: var(--clr-white);
@@ -212,9 +205,6 @@ aside {
             border-radius: var(--border-radius-1);
         }
 
-/* ----------------------------
- --------- Main--------------
- ------------------------------ */
 
 main {
     margin-top: 1.4rem;
@@ -352,7 +342,6 @@ main {
         align-items: center;
     }
 
-    /* recent order */
 
     main .recent_order {
         margin-top: 2rem;
@@ -399,9 +388,6 @@ main {
     }
 
 
-/*********************
-Right Side
-**********************/
 
 .right {
     margin-top: 1.4rem;
@@ -464,7 +450,6 @@ Right Side
         color: var(--clr-dark);
     }
 
-    /* recent update */
 
     .right .recent_updates {
         margin-top: 1rem;
@@ -494,7 +479,6 @@ Right Side
             .right .recent_updates .update p {
             }
 
-    /* see analytics */
 
     .right .sales-analytics {
         margin-top: 2rem;
@@ -566,11 +550,6 @@ Right Side
 
 
 
-
-/* **********8
-MEDIA QUERY
-****************/
-
 @media screen and (max-width:1200px) {
     .container {
         width: 94%;
@@ -596,9 +575,7 @@ MEDIA QUERY
     }
 }
 
-/* ****************
-MEDIA QUERY PHONE
-************************/
+
 
 @media screen and (max-width:768px) {
     .container {

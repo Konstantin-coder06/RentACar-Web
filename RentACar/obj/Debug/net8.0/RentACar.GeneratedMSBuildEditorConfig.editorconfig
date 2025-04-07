@@ -232,10 +232,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXFBlbmRpbmdzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Software engineering/RentACar/RentACar-Web/RentACar/Views/Car/Reservation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXFJlc2VydmF0aW9uLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/User/Documents/Software engineering/RentACar/RentACar-Web/RentACar/Views/Company/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -254,6 +250,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/User/Documents/Software engineering/RentACar/RentACar-Web/RentACar/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Documents/Software engineering/RentACar/RentACar-Web/RentACar/Views/Reservation/FinalStepsReservation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cRmluYWxTdGVwc1Jlc2VydmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Documents/Software engineering/RentACar/RentACar-Web/RentACar/Views/Reservation/Reservation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cUmVzZXJ2YXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/Documents/Software engineering/RentACar/RentACar-Web/RentACar/Views/Shared/Error.cshtml]

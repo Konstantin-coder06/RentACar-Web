@@ -21,7 +21,7 @@
                 </div>
 
             </div>
-            <!-- end top -->
+
             <div class="sidebar">
                 @if(User.IsInRole("Admin")){
                     <a asp-controller="Admin" asp-action="Index">
@@ -37,9 +37,9 @@
                 }
                 @if (User.IsInRole("Admin"))
                 {
-                    <a href="#" id="cutomer_btn">
+                    <a asp-controller="Admin" asp-action="Index" asp-route-view="customers">
                         <span class="material-symbols-sharp">person_outline </span>
-                        <h3>Custumers</h3>
+                        <h3>Customers</h3>
                     </a>
                 }
                 <a asp-controller="Admin" asp-action="Analytics" class="active">
@@ -100,11 +100,9 @@
                 <input type="date">
             </div>
 
-            <!-- Daily Analytics Section -->
             <div class="insights-section">
                 <h2 class="analytics-title">Daily Performance</h2>
 
-                <!-- Current Day Analytics -->
                 <div class="insights">
 
                     <div class="sales">
@@ -158,7 +156,6 @@
                     </div>
                 </div>
                 
-                <!-- Previous Day Analytics -->
                 <div class="insights">
                     <div class="income">
                         <span class="material-symbols-sharp">stacked_line_chart</span>
@@ -178,13 +175,12 @@
                     </div>
                    
 
-                    <!-- Placeholder for previous day reservations - you may need to add this data to your model -->
                     <div class="income previous-period">
                         <span class="material-symbols-sharp">history</span>
                         <div class="middle">
                             <div class="left">
                                 <h3>Total Reservations</h3>
-                                <h1>@Model.TotalReservationPreviousDay</h1> <!-- Replace with actual data when available -->
+                                <h1>@Model.TotalReservationPreviousDay</h1>
                             </div>
                             <div class="progress">
                                 <svg>
@@ -215,11 +211,9 @@
 
             </div>
 
-            <!-- Weekly Analytics Section -->
             <div class="insights-section">
                 <h2 class="analytics-title">Weekly Performance</h2>
 
-                <!-- Current Week Analytics -->
                 <div class="insights">
 
                     <div class="expenses">
@@ -272,7 +266,6 @@
                         <small>Last Two Weeks</small>
                     </div>
                 </div>
-                <!-- Previous Week Analytics -->
                 <div class="insights">
 
                         <div class="income">
@@ -294,13 +287,12 @@
                     
                    
 
-                    <!-- Placeholder for previous week reservations - you may need to add this data to your model -->
                     <div class="income previous-period">
                         <span class="material-symbols-sharp">history</span>
                         <div class="middle">
                             <div class="left">
                                 <h3>Total Reservations</h3>
-                                <h1>@Model.TotalReservationPreviousWeek</h1> <!-- Replace with actual data when available -->
+                                <h1>@Model.TotalReservationPreviousWeek</h1>
                             </div>
                             <div class="progress">
                                 <svg>
@@ -331,11 +323,9 @@
 
             </div>
 
-            <!-- Monthly Analytics Section -->
             <div class="insights-section">
                 <h2 class="analytics-title">Monthly Performance</h2>
 
-                <!-- Current Month Analytics -->
                 <div class="insights">
 
                     <div class="sales">
@@ -388,7 +378,6 @@
                         <small>Last Two Weeks</small>
                     </div>
                 </div>
-                <!-- Previous Month Analytics -->
                 <div class="insights">
                         <div class="income">
                             <span class="material-symbols-sharp">stacked_line_chart</span>
@@ -409,14 +398,12 @@
                     
 
                  
-
-                    <!-- Placeholder for previous month reservations - you may need to add this data to your model -->
                     <div class="income previous-period">
                         <span class="material-symbols-sharp">history</span>
                         <div class="middle">
                             <div class="left">
                                 <h3>Total Reservations</h3>
-                                <h1>@Model.TotalReservationPreviousMonth</h1> <!-- Replace with actual data when available -->
+                                <h1>@Model.TotalReservationPreviousMonth</h1> 
                             </div>
                             <div class="progress">
                                 <svg>
@@ -448,7 +435,7 @@
             </div>
 
             <div class="recent_order">
-                <h2>🚗 Топ 10 най-продавани автомобили</h2>
+                <h2>🚗 Top 10 most reservated cars</h2>
                 <table>
                     <thead>
                         <tr>
@@ -471,11 +458,4 @@
             </div>
         </main>
     </div>
-    <script>
-
-        document.querySelector("#cutomer_btn").addEventListener("click", function() {
-
-            window.location.href = '@Url.Action("Index", "Admin")?view=customers';
-        });
-    </script>
 </body>

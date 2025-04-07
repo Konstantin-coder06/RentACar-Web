@@ -93,5 +93,18 @@ namespace RentACar.Core.Services
         {
             return await carCompanyRepository.FindOne(x=>x.Id==id);
         }
+
+        public async Task<string> GetNameById(int id)
+        {
+            var company=await carCompanyRepository.FindOne(x=>x.Id == id);
+            return company.Name;
+
+        }
+        public async Task<string> GetAddressById(int id)
+        {
+            var company = await carCompanyRepository.FindOne(x => x.Id == id);
+            return company.Address;
+
+        }
     }
 }

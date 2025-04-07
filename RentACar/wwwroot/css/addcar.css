@@ -8,8 +8,7 @@
     color: #333;
     padding-bottom: 50px;
 }
-
-    /* Main container styling */
+  
     .listing-page .container {
         max-width: 1200px;
         padding: 30px;
@@ -19,7 +18,6 @@
         margin-top: 40px;
     }
 
-    /* Header styling */
     .listing-page h2 {
         font-weight: 800;
         color: #222;
@@ -45,13 +43,11 @@
         margin: 20px 0 30px 0;
     }
 
-    /* Form layout - 2 column grid */
     .listing-page .row {
         display: flex;
         flex-wrap: wrap;
     }
 
-    /* Section styling */
     .listing-page fieldset {
         border: none;
         margin-bottom: 25px;
@@ -87,7 +83,6 @@
         margin-bottom: 15px;
     }
 
-    /* Form controls */
     .listing-page .form-control {
         background-color: #f9f9f9;
         color: #333;
@@ -104,12 +99,10 @@
             background-color: #fff;
         }
 
-    /* Form groups */
     .listing-page .form-group {
         margin-bottom: 20px;
     }
 
-    /* Form labels */
     .listing-page .control-label {
         font-weight: 600;
         color: #222;
@@ -117,7 +110,6 @@
         display: block;
     }
 
-    /* Buttons */
     .listing-page .btn-primary {
         background-color: #f54242;
         color: white;
@@ -156,7 +148,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-    /* Image preview section */
     .listing-page .image-preview {
         background-color: white;
         border-radius: 8px;
@@ -234,7 +225,6 @@
                 font-weight: 700;
             }
 
-    /* Validation error messages */
     .listing-page .text-danger {
         color: #f54242 !important;
         font-size: 0.85rem;
@@ -263,14 +253,12 @@ legend {
     margin-bottom: 15px;
 }
 
-/* Additional styling for better visual hierarchy */
 .listing-page .text-muted {
     color: #777;
     font-style: italic;
     margin-bottom: 15px;
 }
 
-/* Select dropdown custom styling */
 .listing-page select.form-control {
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -280,7 +268,6 @@ legend {
     padding-right: 35px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .listing-page .col-md-6 {
         margin-bottom: 20px;
@@ -296,7 +283,6 @@ legend {
     }
 }
 
-/* Add some animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -313,7 +299,6 @@ legend {
     animation: fadeIn 0.4s ease-out forwards;
 }
 
-    /* Staggered animation for fieldsets */
     .listing-page fieldset:nth-child(1) {
         animation-delay: 0.1s;
     }
@@ -329,7 +314,7 @@ legend {
     .listing-page fieldset:nth-child(4) {
         animation-delay: 0.4s;
     }
-/* Features section styling */
+
 .listing-page .features-fieldset {
     width: 100%;
     margin-top: 20px;

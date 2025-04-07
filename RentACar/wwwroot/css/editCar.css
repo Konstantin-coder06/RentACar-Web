@@ -1,5 +1,4 @@
-﻿/* Main container and body styling */
-body {
+﻿body {
     background-color: #f5f5f5;
     background-image: linear-gradient(135deg, rgba(245, 66, 66, 0.05) 25%, transparent 25%), linear-gradient(225deg, rgba(245, 66, 66, 0.05) 25%, transparent 25%), linear-gradient(45deg, rgba(245, 66, 66, 0.05) 25%, transparent 25%), linear-gradient(315deg, rgba(245, 66, 66, 0.05) 25%, #f5f5f5 25%);
     background-position: 20px 0, 20px 0, 0 0, 0 0;
@@ -19,7 +18,6 @@ body {
     margin-top: 40px;
 }
 
-/* Header styling */
 h2 {
     font-weight: 800;
     color: #222;
@@ -45,7 +43,6 @@ hr {
     margin: 20px 0 30px 0;
 }
 
-/* Section styling with improved fieldset design */
 fieldset {
     border: none;
     margin-bottom: 25px;
@@ -73,7 +70,6 @@ fieldset {
         background-color: #f54242;
     }
 
-/* Form layout */
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -96,7 +92,6 @@ fieldset {
         animation-delay: 0.4s;
     }
 
-/* Legend styling */
 legend {
     font-weight: 700;
     color: #f54242;
@@ -105,7 +100,6 @@ legend {
     margin-bottom: 15px;
 }
 
-/* Form controls */
 .form-control {
     background-color: #f9f9f9;
     color: #333;
@@ -122,12 +116,10 @@ legend {
         background-color: #fff;
     }
 
-/* Form groups */
 .form-group {
     margin-bottom: 20px;
 }
 
-/* Form labels */
 .control-label {
     font-weight: 600;
     color: #222;
@@ -135,7 +127,6 @@ legend {
     display: block;
 }
 
-/* Buttons */
 .btn-primary {
     background-color: #f54242;
     color: white;
@@ -193,7 +184,6 @@ legend {
         box-shadow: 0 6px 15px rgba(220, 53, 69, 0.4);
     }
 
-/* Image preview container */
 #imagePreviewContainer {
     display: flex;
     flex-wrap: wrap;
@@ -239,7 +229,6 @@ legend {
     background: #f1f1f1;
 }
 
-/* Validation error messages */
 .text-danger {
     color: #f54242 !important;
     font-size: 0.85rem;
@@ -261,7 +250,6 @@ legend {
         padding-left: 20px;
     }
 
-/* Select dropdown custom styling */
 select.form-control {
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -271,7 +259,6 @@ select.form-control {
     padding-right: 35px;
 }
 
-/* Features section styling */
 .features-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -305,7 +292,7 @@ select.form-control {
     cursor: pointer;
 }
 
-/* Add animation for better UX */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -318,7 +305,7 @@ select.form-control {
     }
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 992px) {
     .features-container {
         grid-template-columns: repeat(3, 1fr);

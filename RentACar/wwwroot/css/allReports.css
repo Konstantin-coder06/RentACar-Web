@@ -298,7 +298,6 @@ table {
         border-color: var(--primary-color);
     }
 
-/* Dropdown styles */
 .dropdown-container {
     position: relative;
     width: 100%;

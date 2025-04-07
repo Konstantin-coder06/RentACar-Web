@@ -11,16 +11,13 @@
     const start = startDate !== null ? new Date(startDate) : null;
     const end = endDate !== null ? new Date(endDate) : null;
 
-    // Validate dates
     const isValidStart = start && !isNaN(start.getTime());
     const isValidEnd = end && !isNaN(end.getTime());
 
-    // Fallback dates
     const today = new Date();
     const threeDaysLater = new Date(today);
     threeDaysLater.setDate(today.getDate() + 3);
 
-    // Set default dates
     let defaultDates;
     if (isValidStart && isValidEnd && start <= end) {
         defaultDates = [start, end];
@@ -28,7 +25,6 @@
         defaultDates = [today, threeDaysLater];
     }
 
-    // Initialize Flatpickr with validated dates
     const datePicker = flatpickr("#datePicker", {
         mode: "range",
         dateFormat: "Y-m-d",
@@ -36,11 +32,11 @@
         maxDate: new Date().fp_incr(210),
         inline: true,
         numberOfMonths: 3,
-        defaultDate: defaultDates // This now contains valid Date objects
+        defaultDate: defaultDates 
     });
 
 
-    // Close calendar modal
+
     closeBtn.addEventListener("click", function () {
         modal.style.display = "none";
     });
@@ -49,10 +45,10 @@
 
 
 
-    // Confirm date selection and submit
+
     confirmBtn.addEventListener("click", function () {
         let selectedDates = datePicker.selectedDates;
-        console.log("Selected Dates:", selectedDates); // Debug
+        console.log("Selected Dates:", selectedDates); 
         if (selectedDates && selectedDates.length === 2) {
             let start = selectedDates[0].toISOString().split("T")[0];
             let end = selectedDates[1].toISOString().split("T")[0];
@@ -66,7 +62,7 @@
         }
     });
 
-    // Search functionality
+
     const searchInput = document.getElementById("searchInput");
 
     searchInput.addEventListener("input", function () {
@@ -84,8 +80,7 @@
     });
 
 
-    // You can implement a dropdown or modal for sorting options here
-    // Sort and Filter buttons (placeholders)
+  
     document.getElementById("sortButton").addEventListener("click", function () {
         alert("Sort options would appear here");
     });

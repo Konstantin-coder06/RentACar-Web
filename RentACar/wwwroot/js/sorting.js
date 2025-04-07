@@ -2,9 +2,9 @@
     var sortSelect = document.getElementById('sortSelect');
     if (sortSelect) {
         sortSelect.addEventListener('change', function () {
-            var sortForm = this.form; // Access the form containing the select
+            var sortForm = this.form; 
             if (sortForm) {
-                sortForm.submit(); // Submit the form
+                sortForm.submit(); 
             } else {
                 console.log("Error: Form not found.");
             }

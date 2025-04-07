@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\RentACar.ad7aimlmm7.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\FinalStepReservation.css",
+      "PackagePath": "staticwebassets\\css\\FinalStepReservation.css"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\aboutUS.css",
       "PackagePath": "staticwebassets\\css\\aboutUS.css"
     },
@@ -77,10 +81,6 @@
       "PackagePath": "staticwebassets\\css\\reservation.css"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\settings.css",
-      "PackagePath": "staticwebassets\\css\\settings.css"
-    },
-    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -93,8 +93,20 @@
       "PackagePath": "staticwebassets\\js\\calendar.js"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerLoader.js",
+      "PackagePath": "staticwebassets\\js\\customerLoader.js"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerRotation.js",
       "PackagePath": "staticwebassets\\js\\customerRotation.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\editImageOrder.js",
+      "PackagePath": "staticwebassets\\js\\editImageOrder.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\imageOrder.js",
+      "PackagePath": "staticwebassets\\js\\imageOrder.js"
     },
     {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\main.js",

@@ -149,7 +149,7 @@ h4 {
         transform: translateY(-2px);
         box-shadow: 0 5px 10px rgba(247, 108, 108, 0.3);
     }
-/* Custom scrollbar for checkboxes sections when they get too many */
+
 .filter-container {
     max-height: 80vh;
     overflow-y: auto;
@@ -171,7 +171,7 @@ h4 {
         border-radius: 10px;
     }
 
-/* Background styling */
+
 body {
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
     background-attachment: fixed;

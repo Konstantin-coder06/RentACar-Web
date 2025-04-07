@@ -254,5 +254,11 @@ namespace RentACar.Core.Services
         {
             return (await carRepository.GetAll()).Select(x => x.DriveTrain).Distinct().ToList();
         }
+
+        public async Task<int> GetCompanyIdByCarId(int carId)
+        {
+            var car = await carRepository.FindOne(x => x.Id == carId);
+            return car.CarCompanyId;
+        }
     }
 }

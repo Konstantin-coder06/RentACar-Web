@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ved77fn6nj</Fingerprint>
-      <Integrity>Wc0kqbL2BvfPx7Cg0XyDBiCc69NA5xwtPnE/ROFNoO0=</Integrity>
+      <Fingerprint>rwx7l8nm38</Fingerprint>
+      <Integrity>lRM0Ic04v9GPFmvBjXwcdr2c00CxekCC4x8AYXmOjIo=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\aboutUS.css'))</OriginalItemSpec>
@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>iw8gujcrs4</Fingerprint>
-      <Integrity>7uSn05N9HmrYlBJPL+1kbg7Bz9RxfZiYjP3NfNK3pww=</Integrity>
+      <Fingerprint>m12tw9b8l6</Fingerprint>
+      <Integrity>Zrzyzpl7jQ31Yn/5AoQhv2xX25hbpOSYu95rJYLCxis=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\addcar.css'))</OriginalItemSpec>
@@ -48,8 +48,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>a8o1pp83s3</Fingerprint>
-      <Integrity>6i0XFhzIj0hfichctXzumK/wRsCZ0A+p0fhaY0X9nP4=</Integrity>
+      <Fingerprint>n19xxabdc2</Fingerprint>
+      <Integrity>9TpdA/8NefHUnqu1zqiwzNpi5ROyFiU6dyp0OUlfeO0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\adminIndex.css'))</OriginalItemSpec>
@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>qal8uhmzo0</Fingerprint>
-      <Integrity>0v/BgfgiYutS2VlmiQoc55JTPr5HdSjERup1vNeiR0c=</Integrity>
+      <Fingerprint>2vitocc8sg</Fingerprint>
+      <Integrity>vozOLAPJBIZ5CrZnPjrqDlSCBhXMbERneTVpYip28ug=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\allReports.css'))</OriginalItemSpec>
@@ -102,8 +102,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>tnpsqmzn4x</Fingerprint>
-      <Integrity>6dIXzws0I2BiRu8hMPOguqUdNSuyu9M3VRf4feLu3K0=</Integrity>
+      <Fingerprint>fe6xur1cld</Fingerprint>
+      <Integrity>p9jKD7GTBm0jbrj1SlxBCQXTjLQ1fgt/zdAguH+ly/E=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\carIndex.css'))</OriginalItemSpec>
@@ -120,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>orfl0miaxt</Fingerprint>
-      <Integrity>FPsbC24II+5E22izBYwTfmaoR2/jfnm29ydg+GxHswU=</Integrity>
+      <Fingerprint>8ycsuz7n8q</Fingerprint>
+      <Integrity>kKpqMZNKdi4koXebq5awZqo0HHQ6g7DmP/D8EktnEzI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\contactUs.css'))</OriginalItemSpec>
@@ -138,8 +138,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>2evcbxjnds</Fingerprint>
-      <Integrity>6ijlmIfGVWRBPhsqO1/Ef3u4o8bevEd538ra79Hemzg=</Integrity>
+      <Fingerprint>mn2gcm8cri</Fingerprint>
+      <Integrity>cpXvPIVOj111DrOnIk4bSzeogTJ6b7iDpgOvNRwRI1w=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\editCar.css'))</OriginalItemSpec>
@@ -174,11 +174,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vygj4w4uad</Fingerprint>
-      <Integrity>p6CedoqFXHsxabLr3Q4SkifjAg6wbzEskSGRl+75UsY=</Integrity>
+      <Fingerprint>15699f3f53</Fingerprint>
+      <Integrity>q0NvBs+vir7/fe4Aunpj3+D9waxq7hrnfRE2yCH3iDc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\filter.css'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\FinalStepReservation.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>css/FinalStepReservation.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>mazuipjrxd</Fingerprint>
+      <Integrity>0qsOGtntFHmsTWDU+dej9lXa2vsbO0vFf6ZXQ4XSTb4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\FinalStepReservation.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\footer.css'))">
       <SourceType>Package</SourceType>
@@ -192,8 +210,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>s5160bcr1g</Fingerprint>
-      <Integrity>oChQf8ksWSjLWqLK3CSxj5NSUHVe0AqNoURZKn7iucg=</Integrity>
+      <Fingerprint>z34tojc2uq</Fingerprint>
+      <Integrity>Dz6dm2ZXP/MeNcofAuPGd4oZlQTvQ4BfzVFLUNtsyOQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\footer.css'))</OriginalItemSpec>
@@ -264,8 +282,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>7ifnvmool5</Fingerprint>
-      <Integrity>wTpy4EzWWsjfrfQg3pZ2odRutB+kKB6COYYwsSyEpBY=</Integrity>
+      <Fingerprint>8ab7hyiw53</Fingerprint>
+      <Integrity>IDIVyMgJr6br1ijM46DoDcRPPWzmiYG03m2wNwelCWA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\pendings.css'))</OriginalItemSpec>
@@ -282,8 +300,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>1hknn5stb5</Fingerprint>
-      <Integrity>m416teASemeY0kx9nM1kzr8wE/BJV5uZ/xImzqRIXFs=</Integrity>
+      <Fingerprint>idljr4m17p</Fingerprint>
+      <Integrity>CuKeBwsS7w+s/QciDOxCvAJMA/YrAM7tRJOIs1Y/VGc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\register.css'))</OriginalItemSpec>
@@ -318,29 +336,11 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>1r199ru7an</Fingerprint>
-      <Integrity>4/klqbFIaMnPqbOAc2eZuRoWkkEEJ+pt9ADnuH/mibg=</Integrity>
+      <Fingerprint>qye0pzin89</Fingerprint>
+      <Integrity>wlCYiSrPbEpJ0F3kI5VTsOvn8wG36FtS8u3fqaQrjao=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\reservation.css'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\settings.css'))">
-      <SourceType>Package</SourceType>
-      <SourceId>RentACar</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/RentACar</BasePath>
-      <RelativePath>css/settings.css</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>6224ulad12</Fingerprint>
-      <Integrity>kuqDcPr4yBPFDfJgfamZrbnzFYDTPdYFyzo7c74P2eg=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\settings.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))">
       <SourceType>Package</SourceType>
@@ -390,11 +390,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>60mpe15udq</Fingerprint>
-      <Integrity>WoLwaoCfidSGmBfm/LMaYwNJ/klEfcyrT/9n1+ZKWBk=</Integrity>
+      <Fingerprint>xvyxo1ntz2</Fingerprint>
+      <Integrity>3ZrsTDUveYlZd06Xheex4xwKpw67AjADgQao7b3O89Y=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\calendar.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customerLoader.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>js/customerLoader.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ffyrjshqn8</Fingerprint>
+      <Integrity>C1qOciO1BI40kWtHFz7z/Msfu0UIadjV/rGx11X4qvw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customerLoader.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customerRotation.js'))">
       <SourceType>Package</SourceType>
@@ -408,11 +426,47 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ckdvsx4v2r</Fingerprint>
-      <Integrity>bBZnSCsgn0Mkzmk1VbNMVOYwtWe7m+oe2dQ6JhjGukM=</Integrity>
+      <Fingerprint>npy1vs2wiq</Fingerprint>
+      <Integrity>+/SV3J6b4oR4fuVDoxOQxNKK2z6zp8LIKU3qj/Mjrz0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\customerRotation.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\editImageOrder.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>js/editImageOrder.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>q9txawhns0</Fingerprint>
+      <Integrity>bqxwOMY3RQdUOXMHqw09Ur9SW2+sR9bLbFiKf/FKshE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\editImageOrder.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\imageOrder.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>RentACar</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/RentACar</BasePath>
+      <RelativePath>js/imageOrder.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>8zblx5d0jy</Fingerprint>
+      <Integrity>HAtfERkqpn2Eqnd08YGmPrrvbcbWG+uqZMqeMyxIay8=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\imageOrder.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\main.js'))">
       <SourceType>Package</SourceType>
@@ -444,8 +498,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>jbqap62lum</Fingerprint>
-      <Integrity>QWu4MBFDIKe3f0Axph5yBwZuf5ZY0PsYKw+HudUdi6A=</Integrity>
+      <Fingerprint>lqbolqe9lk</Fingerprint>
+      <Integrity>k7FHEQpYT5WR7zIGksc5xHNc3e3jD2eAhUr8AGOOV/s=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\sorting.js'))</OriginalItemSpec>
@@ -462,8 +516,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>r4jyzbnmkz</Fingerprint>
-      <Integrity>W5RC+0WSNU9FVDwc7/wxHxye81SAR4uqxG4IN6c94Ro=</Integrity>
+      <Fingerprint>fr0qki6w35</Fingerprint>
+      <Integrity>pf3jVfoZuE3N3u1RwJ30UCMz8EaC3viwXNvtqVLSYdc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\theme-toggler.js'))</OriginalItemSpec>

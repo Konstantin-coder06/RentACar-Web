@@ -1,0 +1,148 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+@model FinalStepReservationViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Reservation</title>
+    <link rel="stylesheet" href="~/css/FinalStepReservation.css"/>
+</head>
+<body>
+    <div style="height: 40px;"></div>
+    <div class="container">
+        <div class="header">
+            <div>Premium rental</div>
+            <div>
+                <span class="rating">★★★★★</span>
+                <span class="rating-number">5</span>
+            </div>
+            <div class="company-name">@Model.CompanyName</div>
+            <div class="location">@Model.Address</div>
+            <div class="features">
+                <div class="feature">
+                    <span class="rating-box">9.4</span>
+                    <span class="review-count">Uncreadible · 1254 real positive reports</span>
+                </div>
+            </div>
+            <div class="features">
+                <div class="feature"><i>🚗</i> Fast delivery</div>
+                <div class="feature"><i>📱</i> Free Wi-Fi</div>
+            </div>
+            <div class="features">
+                <div class="feature"><i>🛡️</i> Free insurance</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Information for your reservation</div>
+            <div class="dates">
+                <div class="date-box">
+                    <div class="date-label">Taking</div>
+                    <div class="date-value">@Model.StartDay</div>
+                    <div class="time">10:00  — 18:00 </div>
+                </div>
+                <div class="date-box">
+                    <div class="date-label">Return</div>
+                    <div class="date-value">@Model.EndDay</div>
+                    <div class="time">To 18:00</div>
+                </div>
+            </div>
+            <div class="duration">
+                <div>Total duration for the rental:</div>
+                <div>3 days</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="selection-box">
+                <div>
+                    <div>You choosed</div>
+                    <div class="car-info">
+                        <div class="car-image">
+                            @if (!string.IsNullOrEmpty(Model.ImageHref) && Model.ImageHref != "No Image Available")
+                            {
+                                <img src="@Model.ImageHref" alt="@Model.Brand @Model.Model" class="car-image" />
+                            }
+                            else
+                            {
+                                <span style="color: #999;">No Image Available</span>
+                            }
+                        </div>
+                        <div class="car-details">
+                            <h3>@Model.Brand @Model.Model @Model.Year</h3>
+                            <div class="car-specs">@Model.Transmittion • @Model.LimitForOneDay km/per day</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" class="change-btn">Change your choice <i class="dropdown-icon"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="price-summary">
+            <div class="section-title">Summery for the price</div>
+            <div class="price-row">
+                <div>Initial price</div>
+                <div>@Model.TotalPriceWithoutTheDiscount BGN / day</div>
+            </div>
+            <div class="price-row">
+                <div>After discout</div>
+                <div class="price-discount">- BGN @Model.DifferenceTotalPriceWithDiscounted</div>
+            </div>
+        </div>
+
+        <div class="total">
+            <div>Total</div>
+            <div>BGN @Model.TotalPrice</div>
+        </div>
+
+        <div class="tax-details">
+            <input type="checkbox" id="toggle-details" class="toggle-checkbox">
+            <div class="tax-content">
+                <div class="section-title">Information for the price</div>
+                <div class="tax-row">
+                    <div>Include BGN @Model.PriceOfTaxes for taxes and fees</div>
+                </div>
+                <div class="tax-row">
+                    <div>9 % VAT</div>
+                </div>
+            </div>
+            <div>
+                <label for="toggle-details" class="toggle-details">
+                    <span class="hide-text">Hide details</span>
+                    <span class="show-text">Show details</span>
+                </label>
+            </div>
+        </div>
+        <form asp-action="FinalStepsReservation" asp-controller="Reservation" method="post">
+            <input type="hidden" asp-for="TotalPrice" />
+            <div style="padding: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <button type="submit" class="reserve-button">Reserve now</button>
+                <a asp-controller="Reservation" asp-action="Reservation" class="reserve-button" asp-route-id="@Model.CarId">Cancel</a>
+            </div>
+        </form>
+    </div>
+    @Html.Partial("_Footer")
+</body>
+
+
+</html>

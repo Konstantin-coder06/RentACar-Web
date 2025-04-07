@@ -37,9 +37,7 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="row">
-                        <!-- Left Column (Basic Info and Images) -->
                         <div class="col-md-6">
-                            <!-- Key Information Section -->
                             <fieldset>
                                 <legend>Basic Information</legend>
                                 <p class="text-muted">These details are what customers will see first.</p>
@@ -98,7 +96,6 @@
                                     <span asp-validation-for="IsConvertible" class="text-danger"></span>
                                 </div>
                             </fieldset>
-                            <!-- Images Section -->
                             <fieldset>
                                 <legend>Vehicle Images</legend>
                                 <p class="text-muted">Great photos increase booking rates. First image will be your main listing photo.</p>
@@ -114,9 +111,7 @@
                             
                         </div>
 
-                        <!-- Right Column (Details) -->
                         <div class="col-md-6">
-                            <!-- Pricing and Rental Details Section -->
                             <fieldset>
                                 <legend>Pricing & Rental Terms</legend>
                                 <div class="form-group mb-3">
@@ -152,7 +147,6 @@
                                 </div>
                             </fieldset>
 
-                            <!-- Technical Specifications Section -->
                             <fieldset>
                                 <legend>Performance Specs</legend>
                                 <div class="row">
@@ -208,7 +202,6 @@
                                 </div>
                             </fieldset>
                           
-                            <!-- Description Section -->
                             <fieldset>
                                 <legend>Description</legend>
                                 <div class="form-group mb-3">
@@ -218,7 +211,6 @@
                                 </div>
                             </fieldset>
                            
-                            <!-- Company Selection for Admins -->
                             @using RentACar.Utility
                             @if (User.IsInRole(SD.Admin))
                             {
@@ -251,7 +243,6 @@
                             </div>
                         </fieldset>
                     </div>
-                    <!-- Submit and Cancel Buttons -->
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary">Add Car</button>
                         <a asp-action="Index" class="btn btn-secondary">Cancel</a>
@@ -261,45 +252,9 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
-    <script>
-        document.getElementById('imageUpload').addEventListener('change', function(e) {
-            var files = e.target.files;
-            var container = document.getElementById('imagePreviewContainer');
-            container.innerHTML = '';
-            Array.from(files).forEach((file, index) => {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    var img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.classList.add('img-thumbnail', 'm-2');
-                    img.setAttribute('data-original-index', index);
-                    container.appendChild(img);
-                    updateImageOrder();
-                };
-                reader.readAsDataURL(file);
-            });
-        });
-
-        var container = document.getElementById('imagePreviewContainer');
-        var sortable = Sortable.create(container, {
-            animation: 150,
-            onSort: function(evt) {
-                updateImageOrder();
-            }
-        });
-
-        function updateImageOrder() {
-            const order = Array.from(document.querySelectorAll('#imagePreviewContainer img'))
-                .map(img => img.getAttribute('data-original-index'));
-            document.getElementById('imageOrder').value = order.join(',');
-        }
-
-        document.querySelector('form').addEventListener('submit', function(e) {
-            updateImageOrder();
-        });
-    </script>
+    <script src="~/js/imageOrder.js"></script>
 
 </body>

@@ -29,5 +29,6 @@ namespace RentACar.Core.IServices
         Task<List<string>> GetAllBrandsDistinct();
         Task<List<string>> GetAllColorsDistinct();
         Task<List<string>> GetAllDriveTrainsDistinct();
+        Task<int> GetCompanyIdByCarId(int carId);
     }
 }

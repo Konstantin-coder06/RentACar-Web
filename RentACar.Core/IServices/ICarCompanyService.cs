@@ -12,5 +12,7 @@ namespace RentACar.Core.IServices
     {
         Task<CarCompany> GetByUserId(string id);
         Task<CarCompany>GetById(int? id);
+        Task<string> GetNameById(int id);
+        Task<string> GetAddressById(int id);
     }
 }

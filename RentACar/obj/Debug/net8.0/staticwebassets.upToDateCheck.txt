@@ -8,6 +8,7 @@ wwwroot\css\contactUs.css
 wwwroot\css\editCar.css
 wwwroot\css\featureClassCar.css
 wwwroot\css\filter.css
+wwwroot\css\FinalStepReservation.css
 wwwroot\css\footer.css
 wwwroot\css\homeindex.css
 wwwroot\css\login.css
@@ -16,11 +17,13 @@ wwwroot\css\pendings.css
 wwwroot\css\register.css
 wwwroot\css\report.css
 wwwroot\css\reservation.css
-wwwroot\css\settings.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\calendar.js
+wwwroot\js\customerLoader.js
 wwwroot\js\customerRotation.js
+wwwroot\js\editImageOrder.js
+wwwroot\js\imageOrder.js
 wwwroot\js\main.js
 wwwroot\js\sorting.js
 wwwroot\js\theme-toggler.js

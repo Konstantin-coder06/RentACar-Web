@@ -160,10 +160,18 @@
                                     <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / day</h3>
                                     <p class="price-week">@carWithImages.Car.PricePerWeek BGN / week</p>
                                 </div>
-                                <a asp-controller="Car" asp-action="@(isAdmin || isCompany ? "EditPendingCar" : "Reservation")"
-                                   asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
-                                    @(isAdmin || isCompany ? "Review" : "Reserve now")
-                                </a>
+                              @if(isAdmin || isCompany){
+                                    <a asp-controller="Car" asp-action="EditPendingCar"
+                                       asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
+                                         "Review"
+                                    </a>
+                              }
+                              else{
+                                    <a asp-controller="Reservation" asp-action="Reservation"
+                                       asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
+                                        "Reserve now"
+                                    </a>
+                              }
                             </div>
                         </div>
                     </div>

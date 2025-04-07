@@ -8,10 +8,10 @@ customerBtn.addEventListener("click", () => {
     dashboardBtn.classList.remove("active");
     customerBtn.classList.add("active");
 
-    // Промяна на заглавието
+
     tableTitle.textContent = "Customers List";
 
-    // Смяна на хедърите
+
     tableHeaders.innerHTML = `
                 <th>Name</th>
                 <th>Email</th>
@@ -19,7 +19,7 @@ customerBtn.addEventListener("click", () => {
                 <th>Status</th>
             `;
 
-    // Смяна на съдържанието
+
     tableBody.innerHTML = `
         @for (int i = 0; i < Model.Customers.Count; i++)
         {
@@ -36,10 +36,10 @@ dashboardBtn.addEventListener("click", () => {
     customerBtn.classList.remove("active");
     dashboardBtn.classList.add("active");
 
-    // Възстановяване на заглавието
+
     tableTitle.textContent = "Pending Cars";
 
-    // Възстановяване на хедърите
+
     tableHeaders.innerHTML = `
                 <th>Car Brand</th>
                 <th>Model</th>
@@ -47,7 +47,7 @@ dashboardBtn.addEventListener("click", () => {
                 <th>Status</th>
             `;
 
-    // Възстановяване на съдържанието
+
     tableBody.innerHTML = `
         @for (int i = 0; i < Model.Pending.Count; i++)
         {

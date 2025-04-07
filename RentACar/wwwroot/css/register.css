@@ -193,12 +193,10 @@ div.register a:hover {
     position: relative;
 }
 
-    /* Hide default date picker */
     .form-group input[type="date"]::-webkit-calendar-picker-indicator {
         display: none;
     }
 
-    /* Custom date placeholder and label behavior */
     .form-group input[type="date"]:placeholder-shown ~ label {
         font-size: 1rem;
         top: 0;
@@ -211,7 +209,6 @@ div.register a:hover {
         top: -1.25rem;
     }
 
-    /* Ensure the date input has a default placeholder */
     .form-group input[type="date"]:before {
         content: attr(placeholder) !important;
         color: var(--white);
@@ -222,7 +219,6 @@ div.register a:hover {
         content: "" !important;
     }
 
-    /* Ensure date input looks consistent */
     .form-group input[type="date"]:valid {
         color: #f54242;
     }

@@ -1,0 +1,306 @@
+﻿body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 40px 0 40px;
+    background-color: #f5f5f5;
+    background-image: linear-gradient(135deg, rgba(245, 66, 66, 0.05) 25%, transparent 25%), linear-gradient(225deg, rgba(245, 66, 66, 0.05) 25%, transparent 25%), linear-gradient(45deg, rgba(245, 66, 66, 0.05) 25%, transparent 25%), linear-gradient(315deg, rgba(245, 66, 66, 0.05) 25%, #f5f5f5 25%);
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding:20px 20px 20px 20px;
+}
+
+.header {
+    padding: 20px 15px;
+    background-color: #222;
+    color: white;
+    border-bottom: 1px solid #333;
+}
+
+.rating {
+    color: #FFB600;
+}
+
+.rating-number {
+    display: inline-block;
+    background: #FFB600;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+.company-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.location {
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.features {
+    display: flex;
+    margin-top: 10px;
+}
+
+.feature {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: #ddd;
+}
+
+    .feature i {
+        margin-right: 5px;
+        color: #ddd;
+    }
+
+.rating-box {
+    background: #FF6F61;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.review-count {
+    font-size: 0.85em;
+    color: #ddd;
+}
+
+.section {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.dates {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-box {
+    width: 48%;
+}
+
+.date-label {
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.date-value {
+    font-weight: bold;
+}
+
+.time {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.duration {
+    margin-top: 10px;
+}
+
+.selection {
+    margin-top: 15px;
+}
+
+.selection-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.change-btn {
+    color: #FF6F61;
+    text-decoration: none;
+}
+
+.price-summary {
+    padding: 15px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+
+.price-discount {
+    color: #FF6F61;
+}
+
+.price-note {
+    font-size: 0.8em;
+    color: #777;
+    font-style: italic;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.tax-details {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+}
+
+.tax-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.toggle-details {
+    color: #FF6F61;
+    text-decoration: none;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.strike-through {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.dropdown-icon {
+    border: solid #FF6F61;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+
+.reserve-button[type="submit"] {
+    background-color: #FF6F61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    width: auto; 
+}
+
+a.reserve-button {
+    background-color: #000; 
+    color: #fff; 
+    text-decoration: none; 
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    width: auto; 
+}
+
+.car-info {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.car-image {
+    width: 120px;
+    height: 80px;
+    background-color: #eee;
+    margin-right: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.car-details h3 {
+    margin: 0 0 5px 0;
+}
+
+.car-specs {
+    font-size: 0.9em;
+    color: #666;
+}
+.toggle-checkbox {
+    display: none;
+}
+
+.tax-content {
+    display: block;
+}
+
+.toggle-checkbox:checked + .tax-content {
+    display: none;
+}
+
+.toggle-details .hide-text {
+    display: inline;
+}
+
+.toggle-details .show-text {
+    display: none;
+}
+
+
+.toggle-checkbox:checked + .tax-content + div .toggle-details .hide-text {
+    display: none;
+}
+
+.toggle-checkbox:checked + .tax-content + div .toggle-details .show-text {
+    display: inline;
+}
+
+
+.tax-details {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+}
+
+.toggle-details {
+    color: #FF6F61;
+    text-decoration: none;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+.car-image {
+    width: 120px;
+    height: 80px;
+    background-color: #eee; 
+    margin-right: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+.car-image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center; 
+}

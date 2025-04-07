@@ -4,7 +4,7 @@
     const closeBtn = document.querySelector('#close_btn');
     const themeToggler = document.querySelector('.theme-toggler');
 
-    // Menu button functionality
+    
     if (menuBtn && sideMenu) {
         menuBtn.addEventListener('click', () => {
             sideMenu.style.display = "block";
@@ -13,7 +13,7 @@
         console.error("Menu button or side menu not found");
     }
 
-    // Close button functionality
+    
     if (closeBtn && sideMenu) {
         closeBtn.addEventListener('click', () => {
             sideMenu.style.display = "none";
@@ -22,7 +22,7 @@
         console.error("Close button or side menu not found");
     }
 
-    // Theme toggler functionality
+   
     if (themeToggler) {
         themeToggler.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme-variables');
