@@ -23,6 +23,11 @@ namespace RentACar.Core.IServices
         Task SetCarUnavailable(int id);
         Task<IEnumerable<Car>> GetAllPendingCompanyCars(int? companyId);
         Task<double>GetPricePerDayByCarId(int carId);
-        
+        Task<IEnumerable<Car>> GetCarsBySearchBrandAndModel(string[] terms);
+        Task<IEnumerable<Car>> GetAllNotReservationedCarsForOnePeriod(IEnumerable<Car> cars,List<Reservation> reservations);
+        Task<IEnumerable<Car>> GetFilteredCarsAsync(double minPrice, double maxPrice, List<int> selectedClassIds, List<string> selectedBrands, List<string> selectedColors, List<string> selectedDriveTrains);
+        Task<List<string>> GetAllBrandsDistinct();
+        Task<List<string>> GetAllColorsDistinct();
+        Task<List<string>> GetAllDriveTrainsDistinct();
     }
 }

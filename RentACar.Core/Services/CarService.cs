@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using RentACar.Core.IServices;
 using RentACar.DataAccess.IRepository;
 using RentACar.DataAccess.IRepository.Repository;
@@ -183,6 +184,75 @@ namespace RentACar.Core.Services
             {
                 throw new Exception("The car is not located!");
             }
+        }
+
+        public async Task<IEnumerable<Car>> GetCarsBySearchBrandAndModel(string[] terms)
+        {
+            if (terms == null || !terms.Any())
+            {
+                return await carRepository.GetAll();
+            }
+
+            return await carRepository.FindAll(x =>
+                terms.Any(term =>
+                    (x.Brand != null && x.Brand.ToLower().Contains(term.ToLower())) ||
+                    (x.Model != null && x.Model.ToLower().Contains(term.ToLower()))));
+        }
+
+        public async Task<IEnumerable<Car>> GetAllNotReservationedCarsForOnePeriod(IEnumerable<Car> cars, List<Reservation> reservations)
+        {
+            var reservedCarIds = reservations.Select(r => r.CarId).Distinct().ToList();
+
+         
+            if (cars is IQueryable<Car> queryableCars)
+            {
+                return await queryableCars
+                    .Where(x => (reservedCarIds.Count == 0 || !reservedCarIds.Contains(x.Id)) && x.Pending == false)
+                    .ToListAsync();
+            }
+
+            
+            var carsList = cars.ToList();
+            return carsList.Where(x =>
+                (reservations.Count == 0 || !reservations.Any(r => r.CarId == x.Id)) &&
+                x.Pending == false);
+        }
+        public async Task<IEnumerable<Car>> GetFilteredCarsAsync(double minPrice,double maxPrice, List<int> selectedClassIds, List<string> selectedBrands, List<string> selectedColors, List<string> selectedDriveTrains)
+        {
+            var cars = (await GetAll()).AsQueryable();
+
+            if (minPrice > 0)
+                cars = cars.Where(x => x.PricePerDay >= minPrice);
+
+            if (maxPrice > 0 && maxPrice > minPrice)
+                cars = cars.Where(x => x.PricePerDay <= maxPrice);
+
+            if (selectedClassIds?.Any() == true)
+                cars = cars.Where(x => selectedClassIds.Contains(x.ClassOfCarId));
+
+            if (selectedBrands?.Any() == true)
+                cars = cars.Where(x => selectedBrands.Contains(x.Brand) && !x.Pending);
+
+            if (selectedColors?.Any() == true)
+                cars = cars.Where(x => selectedColors.Contains(x.Color) && !x.Pending);
+
+            if (selectedDriveTrains?.Any() == true)
+                cars = cars.Where(x => selectedDriveTrains.Contains(x.DriveTrain) && !x.Pending);
+
+            return cars.ToList();
+        }
+
+        public async Task<List<string>> GetAllBrandsDistinct()
+        {
+            return (await carRepository.GetAll()).Select(x=>x.Brand).Distinct().ToList();
+        }
+        public async Task<List<string>> GetAllColorsDistinct()
+        {
+            return (await carRepository.GetAll()).Select(x => x.Color).Distinct().ToList();
+        }
+        public async Task<List<string>> GetAllDriveTrainsDistinct()
+        {
+            return (await carRepository.GetAll()).Select(x => x.DriveTrain).Distinct().ToList();
         }
     }
 }

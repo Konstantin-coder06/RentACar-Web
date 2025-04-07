@@ -346,6 +346,15 @@ namespace RentACar.Core.Services
             var result = await reservationsRepository.FindAll(x => companyCarIds.Contains(x.CarId));
             return result.ToList();
         }
+
+        public async Task<IEnumerable<Reservation>> GetAllByStartAndEndDate(DateTime? startDate, DateTime? endDate)
+        {
+            if (!startDate.HasValue || !endDate.HasValue)
+            {
+                return new List<Reservation>();
+            }
+            return await reservationsRepository.FindAll(x => x.EndDate >= startDate && x.StartDate <= endDate);
+        }
     }
 }
 

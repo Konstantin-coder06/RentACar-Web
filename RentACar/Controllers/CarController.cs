@@ -11,6 +11,7 @@ using RentACar.Core.Services;
 using RentACar.Models;
 using System;
 using System.Globalization;
+using static NuGet.Packaging.PackagingConstants;
 
 namespace RentACar.Controllers
 {
@@ -35,24 +36,21 @@ namespace RentACar.Controllers
         }
 
         public async Task<IActionResult> Index()
-        {
-            
+        {          
             DateTime? startDay = null;
             DateTime? endDay = null;
-
             var startDayStr = HttpContext.Session.GetString("StartDate");
             if (!string.IsNullOrEmpty(startDayStr))
             {
-                startDay = DateTime.ParseExact(startDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+                startDay = DateTime.ParseExact(startDayStr, "yyyy-MM-dd", 
+                    CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             }
-
             var endDayStr = HttpContext.Session.GetString("EndDate");
             if (!string.IsNullOrEmpty(endDayStr))
             {
-                endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
-            }
-
-            
+                endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", 
+                    CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+            }       
             List<int> reservedCarIds = new List<int>();
             if (startDay.HasValue && endDay.HasValue)
             {
@@ -147,16 +145,16 @@ namespace RentACar.Controllers
         {
             if (categories != null && categories.StartsWith("toggle_"))
             {
-                string category = categories.Substring(7); // Extract category name, e.g., "Economy" from "toggle_Economy"
+                string category = categories.Substring(7); 
                 var selectedCategories = HttpContext.Session.GetString("SelectedCategories")?.Split(',')?.ToList() ?? new List<string>();
 
                 if (selectedCategories.Contains(category))
                 {
-                    selectedCategories.Remove(category); // Deselect if already selected
+                    selectedCategories.Remove(category); 
                 }
                 else
                 {
-                    selectedCategories.Add(category); // Select if not already selected
+                    selectedCategories.Add(category);
                 }
 
                 HttpContext.Session.SetString("SelectedCategories", string.Join(",", selectedCategories));
@@ -169,39 +167,19 @@ namespace RentACar.Controllers
         [Route("Car/Search")]
         public async Task<IActionResult> Search(string searchBar)
         {
-            
-            var queries = (await carService.GetAll()).AsQueryable();
+            var queries = await carService.GetAll();
             if (!string.IsNullOrEmpty(searchBar))
             {
-               
                 var searchTerms = searchBar.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-              
-                queries = queries.Where(x => searchTerms.All(term =>
-                    x.Brand.Contains(term, StringComparison.OrdinalIgnoreCase) ||
-                    x.Model.Contains(term, StringComparison.OrdinalIgnoreCase)));
+                queries = await carService.GetCarsBySearchBrandAndModel(searchTerms);
             }
-
-          
             var startDayStr = HttpContext.Session.GetString("StartDate");
             var endDayStr = HttpContext.Session.GetString("EndDate");
-
             DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
             DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
-
-            List<Reservation> overlappingReservations = new List<Reservation>();
-            if (startDay.HasValue && endDay.HasValue)
-            {
-                overlappingReservations = (await reservationService.FindAll(x => x.EndDate >= startDay && x.StartDate <= endDay)).ToList();
-            }
-
-            var cars = queries.AsEnumerable().Where(x => (overlappingReservations.Count == 0 ||
-                                                        !overlappingReservations.Any(r => r.CarId == x.Id)) &&
-                                                        x.Pending == false).ToList();
-
-
+            var overlappingReservations = await reservationService.GetAllByStartAndEndDate(startDay, endDay);        
+            var cars = await carService.GetAllNotReservationedCarsForOnePeriod(queries, overlappingReservations.ToList());
             var carsWithImages = new List<CarWithImages>();
-
             foreach (var car in cars)
             {
                 var images = await imageService.GetImagesByCarId(car.Id);
@@ -219,7 +197,6 @@ namespace RentACar.Controllers
                 EndDate = endDay,
                 SearchTerm = searchBar
             };
-
             return View("Index", viewModel);
 
         }
@@ -238,24 +215,20 @@ namespace RentACar.Controllers
             }
             HttpContext.Session.SetString("StartDate", carImagesView.StartDate.Value.ToString("yyyy-MM-dd"));
             HttpContext.Session.SetString("EndDate", carImagesView.EndDate.Value.ToString("yyyy-MM-dd"));
-            var overlappingReservations =(await reservationService.FindAll(r => r.StartDate < carImagesView.EndDate && r.EndDate > carImagesView.StartDate))
-                .Select(r => r.CarId)
-                .Distinct()
-                .ToList();
+            var overlappingReservations = await reservationService.GetAllReservatedCarsId(carImagesView.StartDate, carImagesView.EndDate);
             List<Car> cars = new List<Car>();
             if (User.IsInRole("Admin"))
             {
-                cars =(await carService.GetAll()).ToList();
+                cars = (await carService.GetAll()).ToList();
             }
             var companyId = HttpContext.Session.GetInt32("CompanyId");
             if (companyId.HasValue)
             {
-                cars = (await carService.FindAll(x => x.CarCompanyId == companyId)).ToList();
+                cars = (await carService.GetAllCarsOfCompany(companyId.Value)).ToList();
             }
             if (!User.IsInRole("Admin") && !companyId.HasValue)
             {
-                cars =(await carService.FindAll(car => !overlappingReservations.Contains(car.Id) && !car.Pending))
-                    .ToList();
+                cars =(await carService.GetAllNotReservetedAndNotPendingCars(overlappingReservations)).ToList();
             }
             var carsWithImages = new List<CarWithImages>();
             foreach (var car in cars)
@@ -274,48 +247,17 @@ namespace RentACar.Controllers
             var model = new CarWithFilters
             {
                 Classes = (await classOfCarService.GetAll()).ToList(),
-                CarBrands=(await carService.GetAll()).Select(x=>x.Brand).Distinct().ToList(),
-                Colors=(await carService.GetAll()).Select(x=>x.Color).Distinct().ToList(),
-                DriveTrains=(await carService.GetAll()).Select(x=>x.DriveTrain).Distinct().ToList(),
+                CarBrands = await carService.GetAllBrandsDistinct(),
+                Colors = await carService.GetAllColorsDistinct(),
+                DriveTrains = await carService.GetAllDriveTrainsDistinct()
             };
             return View(model);
         }
-        [HttpPost]
-        
+        [HttpPost]       
         public async Task<IActionResult> Filters(CarWithFilters carWithFilters)
         {
-            IQueryable<Car> queries = (await carService.GetAll()).AsQueryable();
-
-            if (carWithFilters.MinPrice > 0)
-            {
-                queries = queries.Where(x => x.PricePerDay >= carWithFilters.MinPrice);
-            }
-
-            if (carWithFilters.MaxPrice > 0 && carWithFilters.MaxPrice > carWithFilters.MinPrice)
-            {
-                queries = queries.Where(x => x.PricePerDay <= carWithFilters.MaxPrice);
-            }
-
-            if (carWithFilters.SelectedClassIds != null && carWithFilters.SelectedClassIds.Any())
-            {
-                
-                queries = queries.Where(x => carWithFilters.SelectedClassIds.Contains(x.ClassOfCarId));
-            }
-            if (carWithFilters.SelectedBrands != null && carWithFilters.SelectedBrands.Any())
-            {
-                queries= queries.Where(x=>carWithFilters.SelectedBrands.Contains(x.Brand) &&!x.Pending);
-
-            }
-            if (carWithFilters.SelectedColors != null && carWithFilters.SelectedColors.Any())
-            {
-                queries = queries.Where(x => carWithFilters.SelectedColors.Contains(x.Color) && !x.Pending);
-
-            }
-            if (carWithFilters.SelectedDriveTrains != null && carWithFilters.SelectedDriveTrains.Any())
-            {
-                queries = queries.Where(x => carWithFilters.SelectedDriveTrains.Contains(x.DriveTrain) && !x.Pending);
-
-            }
+            var queries = await carService.GetFilteredCarsAsync(carWithFilters.MinPrice,carWithFilters.MaxPrice,carWithFilters.SelectedClassIds,
+                carWithFilters.SelectedBrands,carWithFilters.SelectedColors,carWithFilters.SelectedDriveTrains);
             var cars = queries.ToList();
             var carsWithImages = new List<CarWithImages>();
             foreach (var car in cars)

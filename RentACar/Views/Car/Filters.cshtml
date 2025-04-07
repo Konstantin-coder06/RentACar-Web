@@ -9,33 +9,27 @@
     <form method="post" asp-action="Filters" asp-controller="Car" class="luxury-filter">
         <div class="filter-container">
             <h2 class="filter-title">Find Your Perfect Car</h2>
-
             <label class="filter-label">Daily Price Range</label>
             <div class="price-inputs">
                 <input type="number" name="MinPrice" placeholder="From BGN" class="filter-input" />
                 <input type="number" name="MaxPrice" placeholder="To BGN" class="filter-input" />
             </div>
-
             <h4>Car Class</h4>
             @foreach (var carClass in Model.Classes)
             {
                 <div class="form-check">
-                    <input type="checkbox" name="SelectedClassIds" value="@carClass.Id"
-                           class="form-check-input"
-                           
+                    <input type="checkbox" name="SelectedClassIds" value="@carClass.Id" class="form-check-input"           
                     @(Model.SelectedClassIds.Contains(carClass.Id) ? "checked" : "") />
                     <label class="form-check-label" for="class-@carClass.Id">@carClass.Name</label>
                 </div>
             }
-
             <h4>Car Brands</h4>
             <div class="brands-container">
                 @foreach (var brand in Model.CarBrands.OrderBy(x => x))
                 {
                     <div class="form-check">
                         <input type="checkbox" name="SelectedBrands" value="@brand"
-                               class="form-check-input"
-                              
+                               class="form-check-input"  
                         @(Model.SelectedBrands.Contains(brand) ? "checked" : "") />
                         <label class="form-check-label" for="brand-@brand">@brand</label>
                     </div>
@@ -46,9 +40,7 @@
                 @foreach (var colors in Model.Colors.OrderBy(x => x))
                 {
                     <div class="form-check">
-                        <input type="checkbox" name="SelectedColors" value="@colors"
-                               class="form-check-input"
-                               
+                        <input type="checkbox" name="SelectedColors" value="@colors" class="form-check-input"                 
                         @(Model.SelectedColors.Contains(colors) ? "checked" : "") />
                         <label class="form-check-label" for="brand-@colors">@colors</label>
                     </div>

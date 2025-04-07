@@ -5,12 +5,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <title>Rent A Car</title>
 @{
-  
-    int seed = DateTime.UtcNow.Date.GetHashCode();
-    Random random = new Random(seed);
     var isAdmin = User.IsInRole("Admin");
     var isCompany = User.IsInRole("Company");
-  
     var startDate = Model.StartDate?.ToString("d MMM yyyy") ?? DateTime.Now.ToString("d MMMM yyyy");
     var endDate = Model.EndDate?.ToString("d MMM yyyy") ?? DateTime.Now.AddDays(3).ToString("d MMMM yyyy");
 }
@@ -22,7 +18,6 @@
     
 }
 <body>
- 
     <div class="container">
         <div class="rental-header">
             <div class="date-range">
@@ -33,7 +28,6 @@
                 <i class="fas fa-edit"></i>
             </button>
         </div>
-
         <div class="search-filter-container">
             <form asp-action="Search" asp-controller="Car" method="post" class="search-form">
                 <div class="search-box">
@@ -66,32 +60,38 @@
         <form asp-action="FilterByCategory" asp-controller="Car" method="post">
             <div class="filter-chips">
                 <div class="filter-chip">
-                    <button type="submit" class="category-button @(Model.SelectedCategories.Contains("Economy") ? "active" : "")" name="categories" value="toggle_Economy">
+                    <button type="submit" class="category-button @(Model.SelectedCategories.Contains("Economy") ? "active" : "")"
+                    name="categories" value="toggle_Economy">
                         <i class="fas fa-car"></i> Economy
                     </button>
                 </div>
                 <div class="filter-chip">
-                    <button type="submit" class="category-button @(Model.SelectedCategories.Contains("Standard") ? "active" : "")" name="categories" value="toggle_Standard">
+                    <button type="submit" class="category-button @(Model.SelectedCategories.Contains("Standard") ? "active" : "")" 
+                    name="categories" value="toggle_Standard">
                         <i class="fas fa-car-side"></i> Standard
                     </button>
                 </div>
                 <div class="filter-chip">
-                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Business") ? "active" : "")" name="categories" value="toggle_Business">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Business") ? "active" : "")" 
+                    name="categories" value="toggle_Business">
                         <i class="fas fa-briefcase"></i> Business
                     </button>
                 </div>
                 <div class="filter-chip">
-                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Luxury") ? "active" : "")" name="categories" value="toggle_Luxury">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Luxury") ? "active" : "")" 
+                    name="categories" value="toggle_Luxury">
                         <i class="fas fa-crown"></i> Luxury
                     </button>
                 </div>
                 <div class="filter-chip">
-                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Sport") ? "active" : "")" name="categories" value="toggle_Sport">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Sport") ? "active" : "")" 
+                    name="categories" value="toggle_Sport">
                         <i class="fas fa-tachometer-alt"></i> Sport
                     </button>
                 </div>
                 <div class="filter-chip">
-                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Electric") ? "active" : "")" name="categories" value="toggle_Electric">
+                    <button type="submit" class="filter-button @(Model.SelectedCategories.Contains("Electric") ? "active" : "")" 
+                    name="categories" value="toggle_Electric">
                         <i class="fas fa-charging-station"></i> Electric
                     </button>
                 </div>
@@ -108,7 +108,7 @@
             {
                 <div class="clear-search-container">
                     <a asp-action="Index" asp-controller="Car" class="clear-search-button">
-                        <i class="fas fa-times"></i> @Model.SortTerm
+                         @Model.SortTerm
                     </a>
                 </div>
             }
