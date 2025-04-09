@@ -17,7 +17,12 @@
     const today = new Date();
     const threeDaysLater = new Date(today);
     threeDaysLater.setDate(today.getDate() + 3);
-
+    if (openBtn) {
+        openBtn.addEventListener("click", function () {
+            modal.style.display = "block";
+            console.log("Modal opened");
+        });
+    }
     let defaultDates;
     if (isValidStart && isValidEnd && start <= end) {
         defaultDates = [start, end];
@@ -32,7 +37,7 @@
         maxDate: new Date().fp_incr(210),
         inline: true,
         numberOfMonths: 3,
-        defaultDate: defaultDates 
+        defaultDate: defaultDates
     });
 
 
@@ -48,7 +53,7 @@
 
     confirmBtn.addEventListener("click", function () {
         let selectedDates = datePicker.selectedDates;
-        console.log("Selected Dates:", selectedDates); 
+        console.log("Selected Dates:", selectedDates);
         if (selectedDates && selectedDates.length === 2) {
             let start = selectedDates[0].toISOString().split("T")[0];
             let end = selectedDates[1].toISOString().split("T")[0];
@@ -77,16 +82,5 @@
                 item.style.display = "none";
             }
         });
-    });
-
-
-  
-    document.getElementById("sortButton").addEventListener("click", function () {
-        alert("Sort options would appear here");
-    });
-
-
-    document.getElementById("filtersButton").addEventListener("click", function () {
-        alert("Filter options would appear here");
     });
 });

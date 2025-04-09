@@ -107,5 +107,10 @@ namespace RentACar.Core.Services
                 return true;
             }
         }
+
+        public async Task<ClassOfCar> GetClassOfCarById(int id)
+        {
+            return await repository.FindOne(x => x.Id == id);
+        }
     }
 }

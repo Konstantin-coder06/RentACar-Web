@@ -106,5 +106,7 @@ namespace RentACar.Core.Services
             return company.Address;
 
         }
+
+      
     }
 }

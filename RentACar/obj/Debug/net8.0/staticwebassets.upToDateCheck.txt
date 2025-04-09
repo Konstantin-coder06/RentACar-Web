@@ -26,6 +26,7 @@ wwwroot\js\customerRotation.js
 wwwroot\js\editImageOrder.js
 wwwroot\js\imageOrder.js
 wwwroot\js\main.js
+wwwroot\js\oldDateDisabled.js
 wwwroot\js\sorting.js
 wwwroot\js\theme-toggler.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

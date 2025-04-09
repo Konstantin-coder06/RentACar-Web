@@ -27,7 +27,7 @@
                             @if (User.IsInRole("User"))
                             {
                                 <a>Welcome, @Context.Session.GetString("UserName")</a>
-                                <a asp-action="Index" asp-controller="User" asp-route-id="@Context.Session.GetInt32("UserId")">Go to your profile</a>
+                                <a asp-action="Index" asp-controller="User" asp-route-id="@Context.Session.GetInt32("UserId")">Manage your reservation</a>
 
                             }
                             @if (User.IsInRole("Company"))

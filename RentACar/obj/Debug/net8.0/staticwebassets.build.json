@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4s+3+QIowI8tqfO/hH7gK6NN70NciKHEERTWCv9FT3Q=",
+  "Hash": "p73CyzdURGTsv3NXDSWS8yIf96hTOSWkyEDvrmsQpCg=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -1753,8 +1753,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "3ttr36lj4h",
-      "Integrity": "p5pzNIeLbY9CQvETiPVhkpEXEKQU5sZSWrmENUPphks=",
+      "Fingerprint": "4yazbf8ro1",
+      "Integrity": "1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\userIndex.css"
@@ -1795,8 +1795,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xvyxo1ntz2",
-      "Integrity": "3ZrsTDUveYlZd06Xheex4xwKpw67AjADgQao7b3O89Y=",
+      "Fingerprint": "tv8vf0qvwm",
+      "Integrity": "R/J/SXYfgqeKk2ljsMlxpEpr2yQLB1DYd5e4BpFLwb8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\calendar.js"
@@ -1905,6 +1905,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\main.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\oldDateDisabled.js",
+      "SourceId": "RentACar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
+      "BasePath": "_content/RentACar",
+      "RelativePath": "js/oldDateDisabled#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ppmkfsmrmp",
+      "Integrity": "/S4fkyRTjSh/G0E9F+lMZOnHeYyH1lPppRe1pW11SrM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\oldDateDisabled.js"
     },
     {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\sorting.js",
@@ -4788,7 +4809,7 @@
       ]
     },
     {
-      "Route": "css/userIndex.3ttr36lj4h.css",
+      "Route": "css/userIndex.4yazbf8ro1.css",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\userIndex.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -4798,7 +4819,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2956"
+          "Value": "6285"
         },
         {
           "Name": "Content-Type",
@@ -4806,11 +4827,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"p5pzNIeLbY9CQvETiPVhkpEXEKQU5sZSWrmENUPphks=\""
+          "Value": "\"1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 07:20:34 GMT"
+          "Value": "Wed, 09 Apr 2025 12:35:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4820,7 +4841,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "3ttr36lj4h"
+          "Value": "4yazbf8ro1"
         },
         {
           "Name": "label",
@@ -4828,7 +4849,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-p5pzNIeLbY9CQvETiPVhkpEXEKQU5sZSWrmENUPphks="
+          "Value": "sha256-1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw="
         }
       ]
     },
@@ -4843,7 +4864,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2956"
+          "Value": "6285"
         },
         {
           "Name": "Content-Type",
@@ -4851,11 +4872,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"p5pzNIeLbY9CQvETiPVhkpEXEKQU5sZSWrmENUPphks=\""
+          "Value": "\"1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 07:20:34 GMT"
+          "Value": "Wed, 09 Apr 2025 12:35:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4865,7 +4886,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-p5pzNIeLbY9CQvETiPVhkpEXEKQU5sZSWrmENUPphks="
+          "Value": "sha256-1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw="
         }
       ]
     },
@@ -7182,7 +7203,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2947"
+          "Value": "2825"
         },
         {
           "Name": "Content-Type",
@@ -7190,11 +7211,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3ZrsTDUveYlZd06Xheex4xwKpw67AjADgQao7b3O89Y=\""
+          "Value": "\"R/J/SXYfgqeKk2ljsMlxpEpr2yQLB1DYd5e4BpFLwb8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 17:12:18 GMT"
+          "Value": "Wed, 09 Apr 2025 14:29:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7204,12 +7225,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-3ZrsTDUveYlZd06Xheex4xwKpw67AjADgQao7b3O89Y="
+          "Value": "sha256-R/J/SXYfgqeKk2ljsMlxpEpr2yQLB1DYd5e4BpFLwb8="
         }
       ]
     },
     {
-      "Route": "js/calendar.xvyxo1ntz2.js",
+      "Route": "js/calendar.tv8vf0qvwm.js",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\calendar.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -7219,7 +7240,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2947"
+          "Value": "2825"
         },
         {
           "Name": "Content-Type",
@@ -7227,11 +7248,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"3ZrsTDUveYlZd06Xheex4xwKpw67AjADgQao7b3O89Y=\""
+          "Value": "\"R/J/SXYfgqeKk2ljsMlxpEpr2yQLB1DYd5e4BpFLwb8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 17:12:18 GMT"
+          "Value": "Wed, 09 Apr 2025 14:29:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7241,7 +7262,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xvyxo1ntz2"
+          "Value": "tv8vf0qvwm"
         },
         {
           "Name": "label",
@@ -7249,7 +7270,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-3ZrsTDUveYlZd06Xheex4xwKpw67AjADgQao7b3O89Y="
+          "Value": "sha256-R/J/SXYfgqeKk2ljsMlxpEpr2yQLB1DYd5e4BpFLwb8="
         }
       ]
     },
@@ -7660,6 +7681,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-S5+bE6h9s8GNN0RnDUozufyaQ8XRbxMwAWz1omJh5rY="
+        }
+      ]
+    },
+    {
+      "Route": "js/oldDateDisabled.js",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\oldDateDisabled.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "653"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/S4fkyRTjSh/G0E9F+lMZOnHeYyH1lPppRe1pW11SrM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 13:09:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/S4fkyRTjSh/G0E9F+lMZOnHeYyH1lPppRe1pW11SrM="
+        }
+      ]
+    },
+    {
+      "Route": "js/oldDateDisabled.ppmkfsmrmp.js",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\oldDateDisabled.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "653"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/S4fkyRTjSh/G0E9F+lMZOnHeYyH1lPppRe1pW11SrM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 09 Apr 2025 13:09:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ppmkfsmrmp"
+        },
+        {
+          "Name": "label",
+          "Value": "js/oldDateDisabled.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/S4fkyRTjSh/G0E9F+lMZOnHeYyH1lPppRe1pW11SrM="
         }
       ]
     },
@@ -12524,7 +12627,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Feb 2025 06:41:00 GMT"
+          "Value": "Wed, 09 Apr 2025 14:18:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12569,7 +12672,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Feb 2025 06:41:00 GMT"
+          "Value": "Wed, 09 Apr 2025 14:18:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12614,7 +12717,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Feb 2025 06:41:00 GMT"
+          "Value": "Wed, 09 Apr 2025 14:18:19 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12651,7 +12754,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 07 Feb 2025 06:41:00 GMT"
+          "Value": "Wed, 09 Apr 2025 14:18:19 GMT"
         },
         {
           "Name": "Cache-Control",

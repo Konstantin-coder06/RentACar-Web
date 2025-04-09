@@ -104,9 +104,9 @@
 
                 <div style="margin-top: 2.5rem;">
                     <label asp-for="StartDate">Start Date:</label>
-                    <input type="date" asp-for="StartDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                    <input asp-for="StartDate" type="date" name="StartDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
                     <label asp-for="EndDate">End Date:</label>
-                    <input type="date" asp-for="EndDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                    <input asp-for="EndDate" type="date" name="EndDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
                     <button type="submit" name="submitButton" value="ChangeDate" class="btn btn-primary">Change the date</button>
                 </div>
 
@@ -344,29 +344,6 @@
         </div>
     </div>
 
-   
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const startDateInput = document.querySelector('input[asp-for="StartDate"]');
-            const endDateInput = document.querySelector('input[asp-for="EndDate"]');
 
-            // Set min date to today for both inputs initially
-            const today = new Date().toISOString().split('T')[0];
-            startDateInput.min = today;
-            endDateInput.min = today;
-
-            // Update end date min when start date changes
-            startDateInput.addEventListener('change', function() {
-                if (startDateInput.value) {
-                    // Set end date min to be the selected start date
-                    endDateInput.min = startDateInput.value;
-
-                    // If current end date is before new start date, update end date
-                    if (endDateInput.value && endDateInput.value < startDateInput.value) {
-                        endDateInput.value = startDateInput.value;
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="~/js/oldDateDisabled.js"></script>
 </body>

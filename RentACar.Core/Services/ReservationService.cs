@@ -369,7 +369,14 @@ namespace RentACar.Core.Services
                      r.EndDate > startDay.Value
             );
 
-            return overlappingReservations.CarId;
+            if (overlappingReservations != null)
+            {
+                return overlappingReservations.CarId;
+            }
+            else
+            {
+                return 0;
+            }
             /*
             var reservation= await GetAllReservatedCarsId(startDay,endDay);
             bool flag = false;
@@ -386,7 +393,7 @@ namespace RentACar.Core.Services
 
         public async Task<IEnumerable<Reservation>> GetReservationsByUserId(int userId)
         {
-            return await reservationsRepository.FindAll(x=>x.CustomerId == userId);
+            return (await reservationsRepository.FindAll(x=>x.CustomerId == userId)).OrderByDescending(x=>x.CreateTime);
         }
 
         public async Task<string> GetStatusOfReservation(Reservation reservation)
@@ -400,7 +407,38 @@ namespace RentACar.Core.Services
             {
                 status= "Completed";
             }
+            else if (reservation.StartDate > DateTime.Now)
+            {
+                status = "Coming";
+             
+            }
+            else if (reservation.IsCanceled == true)
+            {
+                status = "Cancelled";
+            }
+            
             return status;
+        }
+
+        public async Task<(bool isReserved, DateTime? startDate, DateTime? endDate)> IsTheCarReservatedForToday(int carId)
+        {
+          
+            var today = DateTime.Today;
+
+          
+            var overlappingReservation = await reservationsRepository
+                .FindOne(r => r.CarId == carId && r.StartDate.Date <= today && r.EndDate.Date >= today);
+               
+
+            
+            if (overlappingReservation != null)
+            {
+                return (true, overlappingReservation.StartDate, overlappingReservation.EndDate);
+            }
+            else
+            {
+                return (false, null, null);
+            }
         }
     }
 }

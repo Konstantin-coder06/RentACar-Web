@@ -174,30 +174,6 @@
   @{
         @Html.Partial("_Footer")
   }
-    <script>
-             document.addEventListener('DOMContentLoaded', function() {
-            // Select the inputs by their IDs
-            const startDateInput = document.getElementById('StartDay');
-            const endDateInput = document.getElementById('EndDay');
-
-            // Set the minimum date to today for both inputs
-            const today = new Date().toISOString().split('T')[0];
-            startDateInput.min = today;
-            endDateInput.min = today;
-
-            // Update the end date's minimum when the start date changes
-            startDateInput.addEventListener('change', function() {
-                if (startDateInput.value) {
-                    // Set the end date's min attribute to the selected start date
-                    endDateInput.min = startDateInput.value;
-
-                    // If the current end date is before the start date, adjust it
-                    if (endDateInput.value && endDateInput.value < startDateInput.value) {
-                        endDateInput.value = startDateInput.value;
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="~/js/oldDateDisabled.js"></script>
 </body>
 </html>

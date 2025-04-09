@@ -117,6 +117,10 @@
       "PackagePath": "staticwebassets\\js\\main.js"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\oldDateDisabled.js",
+      "PackagePath": "staticwebassets\\js\\oldDateDisabled.js"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\sorting.js",
       "PackagePath": "staticwebassets\\js\\sorting.js"
     },

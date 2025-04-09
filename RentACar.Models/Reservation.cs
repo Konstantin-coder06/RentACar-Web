@@ -33,5 +33,7 @@ namespace RentACar.Models
         public double TotalPrice { get; set; }
         [Required]
         public DateTime CreateTime { get; set; }
+        [Required]
+        public bool IsCanceled {  get; set; }
     }
 }

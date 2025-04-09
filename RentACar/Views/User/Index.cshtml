@@ -11,6 +11,7 @@
     Layout = null;
     TempData["HideNavigation"] = true;
     @Html.Partial("_Navigation")
+    var userId = Context.Session.GetInt32("UserId") ?? 0;
 }
 <body>
 
@@ -21,24 +22,63 @@
             <p>View and manage all your car rental bookings</p>
             <p>Welcome back, @Context.Session.GetString("UserName")</p>
         </div>
-
         <div class="filter-section">
-            <select>
-                <option>All Reservations</option>
-                <option>Active</option>
-                <option>Completed</option>
-                <option>Cancelled</option>
-            </select>
-            <input type="date" placeholder="From Date">
-            <input type="date" placeholder="To Date">
-            <button class="filter-btn">Filter</button>
+            <div class="sort-dropdown">
+                <input type="checkbox" id="statusFilterToggle" class="dropdown-toggle">
+                <label for="statusFilterToggle" class="filter-button">
+                    <i class="fas fa-filter"></i> Filter Status
+                </label>
+                <div class="dropdown-content">
+                    <form asp-action="Filter" asp-controller="User" method="post">
+                        <input type="hidden" name="id" value="@userId" />
+                        <button type="submit" name="statusFilter" value="All Reservations">All Reservations</button>
+                        <button type="submit" name="statusFilter" value="Active">Active</button>
+                        <button type="submit" name="statusFilter" value="Coming">Coming</button>
+                        <button type="submit" name="statusFilter" value="Completed">Completed</button>
+                        <button type="submit" name="statusFilter" value="Canceled">Canceled</button>
+                    </form>
+                </div>
+            </div>
+            <div class="date-filters">
+                <form asp-action="FilterDate" asp-controller="User" method="post" class="date-filter-form">
+                    <div class="date-input-container">
+                        <input type="date" name="startDate" value="@ViewBag.StartDateFilter" placeholder="From Date">
+                        <input type="date" name="endDate" value="@ViewBag.EndDateFilter" placeholder="To Date">
+                    </div>
+                    <button type="submit" class="filter-btn">Filter</button>
+                </form>
+            </div>
         </div>
+         @if (Model.ReservationCar == null || !Model.ReservationCar.Any())
+        {
+            <div class="no-reservations">
+                <div class="no-reservations-content">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>No Reservations Found</h3>
+                    <p>You don't have any car reservations yet.</p>
+                    <a asp-action="Index" asp-controller="Car" class="action-btn">Browse Cars</a>
+                </div>
+            </div>
+        }
+        else
+        {
         @foreach (var x in Model.ReservationCar)
         {
             <div class="reservation-card">
                 <div class="reservation-header">
-                    <h3>Booking @x.ReservationId</h3>
-                    <span class="reservation-status">@x.Status</span>
+                    <h3>Booking #@x.ReservationId</h3>
+                    @if(x.Status=="Completed"){
+                        <span class="reservation-status" style="background-color: #777;">@x.Status</span>
+                    }
+                    else if(x.Status=="Active"){
+                        <span class="reservation-status">@x.Status</span>
+                    }
+                    else if(x.Status=="Coming"){
+                        <span class="reservation-status" style="background-color: #3366CC">@x.Status</span>
+                    }
+                    else if(x.Status=="Canceled"){
+                        <span class="reservation-status" style="background-color: #f44336;">@x.Status</span>
+                    }
                 </div>
                 <div class="reservation-details">
                     <div>
@@ -73,18 +113,31 @@
                             <span class="detail-label">Payment Method:</span>
                             <span class="detail-value">By hand</span>
                         </div>
-                        @if(x.Status=="Active"){
+                            <div class="detail-row">
+                                <span class="detail-label">Created At:</span>
+                                <span class="detail-value">@x.CreateTime</span>
+                            </div>
+                        @if(x.Status=="Coming"){
                             <button class="action-btn">Modify Booking</button>
                             <button class="action-btn secondary">Cancel Booking</button>
                         }
-                        else{
-                            <button class="action-btn">Book Again</button>
+                        else if(x.Status=="Canceled" || x.Status=="Completed"){
+                            <button class="action-btn" >Book Again</button>
+                            if (x.IsTheCarReservatedForToday)
+                            {
+                                <span class="detail-label" style="color:#880000">*The Car Is Reservated From: @x.StartDateOfCar To: @x.EndDateOfCar. If You To Book It, You Will Get The Earliest Posible Dates For The Car</span>
+                            }
+                         
                         } 
+                        else if(x.Status=="Active"){
+                            <span class="detail-label" style="color:#880000">*You can not make anything with this reservation for now. Enjoy the car!</span>
+                        }
                        
                     </div>
                 </div>
 
             </div>
+        }
         }
     </div>
     @Html.Partial("_Footer")
