@@ -18,6 +18,7 @@ wwwroot\css\register.css
 wwwroot\css\report.css
 wwwroot\css\reservation.css
 wwwroot\css\site.css
+wwwroot\css\userIndex.css
 wwwroot\favicon.ico
 wwwroot\js\calendar.js
 wwwroot\js\customerLoader.js

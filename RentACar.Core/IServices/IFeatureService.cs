@@ -13,5 +13,7 @@ namespace RentACar.Core.IServices
         Task<Feature> GetById(int id);
         Task<List<Feature>>GetAllFeaturesByIds(IEnumerable<int> ids);
         Task<bool> IsThereFeatureWithThisName(string featureName);
+        Task<IEnumerable<string>> GetAllSelectedNames();
+        Task<IEnumerable<Feature>> GetAllSelectedFeatures(List<string>selectedFeatures);
     }
 }

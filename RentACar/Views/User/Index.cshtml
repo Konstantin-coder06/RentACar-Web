@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST DRIVE - Your Reservations</title>
+    <link rel="stylesheet" href="~/css/userIndex.css"/>
+</head>
+@model UserViewModel
+@{
+    Layout = null;
+    TempData["HideNavigation"] = true;
+    @Html.Partial("_Navigation")
+}
+<body>
+
+
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Your Reservations</h1>
+            <p>View and manage all your car rental bookings</p>
+            <p>Welcome back, @Context.Session.GetString("UserName")</p>
+        </div>
+
+        <div class="filter-section">
+            <select>
+                <option>All Reservations</option>
+                <option>Active</option>
+                <option>Completed</option>
+                <option>Cancelled</option>
+            </select>
+            <input type="date" placeholder="From Date">
+            <input type="date" placeholder="To Date">
+            <button class="filter-btn">Filter</button>
+        </div>
+        @foreach (var x in Model.ReservationCar)
+        {
+            <div class="reservation-card">
+                <div class="reservation-header">
+                    <h3>Booking @x.ReservationId</h3>
+                    <span class="reservation-status">@x.Status</span>
+                </div>
+                <div class="reservation-details">
+                    <div>
+                        <img src="@x.CarImageHref" alt="@x.CarBrand @x.CarModel" class="car-image">
+                    </div>
+                    <div>
+                        <div class="detail-row">
+                            <span class="detail-label">Car:</span>
+                            <span class="detail-value">@x.CarBrand @x.CarModel - @x.CarClass</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Pickup Date:</span>
+                            <span class="detail-value">@x.StartDate</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Return Date:</span>
+                            <span class="detail-value">@x.EndDate</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Duration:</span>
+                            <span class="detail-value">@x.Duration Days</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Pickup Location:</span>
+                            <span class="detail-value">@x.PickUpAddress</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Total Amount:</span>
+                            <span class="detail-value">BGN @x.TotalPrice</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Payment Method:</span>
+                            <span class="detail-value">By hand</span>
+                        </div>
+                        @if(x.Status=="Active"){
+                            <button class="action-btn">Modify Booking</button>
+                            <button class="action-btn secondary">Cancel Booking</button>
+                        }
+                        else{
+                            <button class="action-btn">Book Again</button>
+                        } 
+                       
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+    @Html.Partial("_Footer")
+</body>
+</html>

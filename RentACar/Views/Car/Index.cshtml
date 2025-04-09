@@ -18,6 +18,27 @@
     
 }
 <body>
+    @if (TempData["Conflict"] != null && (bool)TempData["Conflict"])
+    {
+        <div class="conflict-message" style="background: #f8d7da; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+            <p style="color: #721c24; margin-bottom: 1rem;">
+                You  already reserved for the selected dates (@TempData["ProposedStartDate"] to @TempData["ProposedEndDate"] the Car: @Model.BrandOfCar @Model.ModelOfCar).
+                Do you still want to keep these dates?
+            </p>
+            <form asp-action="Reservation" asp-controller="Car" method="post">
+                <input type="hidden" name="Car.Id" value="" />
+                <input type="hidden" name="StartDate" value="@TempData["ProposedStartDate"]" />
+                <input type="hidden" name="EndDate" value="@TempData["ProposedEndDate"]" />
+                <button type="submit" name="submitButton" value="KeepDates" class="btn btn-primary" style="margin-right: 1rem;">
+                    Yes, keep dates
+                </button>
+                <button type="submit" name="submitButton" value="RevertDates" class="btn btn-secondary">
+                    No, select others dates
+                </button>
+                <p>*If you select to keep dates, you will be redirect to view with all your reservation. Make sure to remove </p>
+            </form>
+        </div>
+    }
     <div class="container">
         <div class="rental-header">
             <div class="date-range">

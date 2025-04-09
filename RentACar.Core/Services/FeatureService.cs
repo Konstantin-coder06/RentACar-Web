@@ -114,5 +114,15 @@ namespace RentACar.Core.Services
                 return true;
             }
         }
+
+        public async Task<IEnumerable<string>> GetAllSelectedNames()
+        {
+            return (await repository.GetAll()).Select(x=>x.NameOfFeatures);
+        }
+
+        public async Task<IEnumerable<Feature>> GetAllSelectedFeatures(List<string> selectedFeatures)
+        {
+            return await repository.FindAll(x => selectedFeatures.Contains(x.NameOfFeatures));
+        }
     }
 }

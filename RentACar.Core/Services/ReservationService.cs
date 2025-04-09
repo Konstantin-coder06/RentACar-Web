@@ -355,6 +355,53 @@ namespace RentACar.Core.Services
             }
             return await reservationsRepository.FindAll(x => x.EndDate >= startDate && x.StartDate <= endDate);
         }
+
+        public async Task<int> FindIfUserHasReservationForOnePeriod(DateTime? startDay, DateTime? endDay,int userId)
+        {
+            if (!startDay.HasValue || !endDay.HasValue)
+            {
+                return 0; 
+            }
+
+            var overlappingReservations = await reservationsRepository.FindOne(
+                r => r.CustomerId == userId &&
+                     r.StartDate < endDay.Value &&
+                     r.EndDate > startDay.Value
+            );
+
+            return overlappingReservations.CarId;
+            /*
+            var reservation= await GetAllReservatedCarsId(startDay,endDay);
+            bool flag = false;
+            foreach (var reservationId in reservation) 
+            {
+                if (reservationId == userId)
+                {
+                    flag= true;
+                    break;
+                }
+            }
+            return flag;*/
+        }
+
+        public async Task<IEnumerable<Reservation>> GetReservationsByUserId(int userId)
+        {
+            return await reservationsRepository.FindAll(x=>x.CustomerId == userId);
+        }
+
+        public async Task<string> GetStatusOfReservation(Reservation reservation)
+        {
+            string status = "";
+            if (reservation.StartDate < DateTime.Now && reservation.EndDate > DateTime.Now)
+            {
+                status = "Active";           
+            }
+            else if(reservation.StartDate < DateTime.Now && reservation.EndDate < DateTime.Now) 
+            {
+                status= "Completed";
+            }
+            return status;
+        }
     }
 }
 

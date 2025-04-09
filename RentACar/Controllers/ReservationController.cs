@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.Models;
@@ -23,6 +24,7 @@ namespace RentACar.Controllers
             this.carFeatureService = carFeatureService;
             this.featureService = featureService;
         }
+        [Authorize(Roles ="User")]
         public async Task<IActionResult> Reservation(int id)
         {
             DateTime? startDay = null;
@@ -31,27 +33,19 @@ namespace RentACar.Controllers
             var startDayStr = HttpContext.Session.GetString("StartDate");
             if (!string.IsNullOrEmpty(startDayStr))
             {
-                startDay = DateTime.ParseExact(
-                    startDayStr,
-                    "yyyy-MM-dd",
-                    CultureInfo.InvariantCulture,
-                    DateTimeStyles.None
+                startDay = DateTime.ParseExact(startDayStr,"yyyy-MM-dd",CultureInfo.InvariantCulture,DateTimeStyles.None
                 );
             }
-
             var endDayStr = HttpContext.Session.GetString("EndDate");
             if (!string.IsNullOrEmpty(endDayStr))
             {
                 endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             }
             var userId = HttpContext.Session.GetInt32("UserId");
-
             if (!userId.HasValue)
             {
                 return RedirectToAction("Register", "Account");
             }
-
-
             var car = await carService.FindById(id);
             var featuresOfACar = await carFeatureService.GetByCarIDAllFeatures(car.Id);
             var features = new List<Feature>();
@@ -85,8 +79,6 @@ namespace RentACar.Controllers
             {
                 return RedirectToAction("AccessDenied", "Account");
             }
-
-
             if (carWithImages.Car == null || carWithImages.Car.Id == 0)
             {
                 carWithImages.Car = await carService.FindById(carWithImages.Car.Id);
@@ -97,7 +89,6 @@ namespace RentACar.Controllers
                 return View(carWithImages);
             }
             carWithImages.Images = await imageService.GetImagesOrderByOrderCarId(carWithImages.Car.Id);
-
             if (submitButton == "ChangeDate")
             {
                 var newStartDate = carWithImages.StartDate;
@@ -108,10 +99,7 @@ namespace RentACar.Controllers
                     ModelState.AddModelError("", "Invalid dates: Start date must be before end date.");
                     return View(carWithImages);
                 }
-
-
                 bool hasConflict = await reservationService.HasOverlappingReservation(carWithImages.Car.Id, newStartDate.Value, newEndDate.Value);
-
                 if (!hasConflict)
                 {
                     HttpContext.Session.SetString("StartDate", newStartDate.Value.ToString("yyyy-MM-dd"));
@@ -200,7 +188,8 @@ namespace RentACar.Controllers
                     CreateTime = DateTime.Now,
                 };
                 var price = await carService.GetPricePerDayByCarId(carWithImages.Car.Id);
-                reservation.TotalPrice = reservationService.TotalPriceForOneReservation(reservation, totalDays, price, carWithImages.IsSelfPick, carWithImages.IsReturningBackAtSamePlace);
+                reservation.TotalPrice = reservationService.TotalPriceForOneReservation(reservation, totalDays, price, 
+                    carWithImages.IsSelfPick, carWithImages.IsReturningBackAtSamePlace);
 
                 TempData["TotalPrice"] = reservation.TotalPrice.ToString(CultureInfo.InvariantCulture);
                 TempData["IsSelfPick"] = carWithImages.IsSelfPick.ToString(); 
@@ -209,8 +198,6 @@ namespace RentACar.Controllers
                 TempData["CarId"] = carWithImages.Car.Id.ToString(); 
                 TempData["CustomerId"] = userId.Value.ToString();
                 TempData["success"] = $"Days {totalDays} Total price: {reservation.TotalPrice}";
-                //await reservationService.Add(reservation);
-                //await reservationService.Save();
 
                 return RedirectToAction("FinalStepsReservation", new { id = carWithImages.Car.Id });
             }
@@ -219,10 +206,7 @@ namespace RentACar.Controllers
 
         }
         public async Task<IActionResult> FinalStepsReservation(int id)
-        {
-
-
-
+        { 
             var companyId = await carService.GetCompanyIdByCarId(id);
 
             var companyName = await carCompanyService.GetNameById(companyId) ?? "Unknown Company"; ;

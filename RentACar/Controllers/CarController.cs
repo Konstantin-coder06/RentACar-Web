@@ -24,7 +24,10 @@ namespace RentACar.Controllers
         IFeatureService featureService;
         ICarFeatureService carFeatureService;
         ICTypeService cTypeService;
-        public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IFeatureService featureService, ICarFeatureService carFeatureService,ICTypeService cTypeService)
+        CloudinaryService cloudinaryService;
+        ICarCompanyService carCompanyService;
+        ICTypeService typeService;
+        public CarController(ICarService _carService, IImageService _imageService, IClassOfCarService _classOfCarService,IReservationService reservationService, IFeatureService featureService, ICarFeatureService carFeatureService,ICTypeService cTypeService, CloudinaryService cloudinaryService,ICarCompanyService carCompanyService, ICTypeService typeService)
         {
             this.carService = _carService;
             this.imageService = _imageService;
@@ -33,6 +36,9 @@ namespace RentACar.Controllers
             this.featureService = featureService;
             this.carFeatureService = carFeatureService;
             this.cTypeService = cTypeService;
+            this.cloudinaryService = cloudinaryService;
+            this.typeService = typeService;
+            this.carCompanyService = carCompanyService;
         }
 
         public async Task<IActionResult> Index()
@@ -56,7 +62,30 @@ namespace RentACar.Controllers
             {
                 reservedCarIds = await reservationService.GetAllReservatedCarsId(startDay.Value,endDay.Value);
             }
+            var viewModel = new CarImagesWithDatesViewModel();
+            if (User.IsInRole("User"))
+            {
+                var userId = HttpContext.Session.GetInt32("UserId");
+                if (userId.HasValue)
+                {
 
+
+                    var hasUserReservationForOnePeriod = await reservationService.FindIfUserHasReservationForOnePeriod(startDay, endDay, userId.Value);
+                    if (hasUserReservationForOnePeriod !=0)
+                    {
+                        TempData["Conflict"] = true;
+                        TempData["ProposedStartDate"] = startDay.Value.ToString("yyyy-MM-dd");
+                        TempData["ProposedEndDate"] = endDay.Value.ToString("yyyy-MM-dd");
+                        var car = await carService.FindById(hasUserReservationForOnePeriod);
+                        viewModel.BrandOfCar = car.Brand;
+                        viewModel.ModelOfCar=car.Model;
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Register", "Account");
+                }
+            }
             IEnumerable<Car> cars=new List<Car>();
             if (User.IsInRole("Admin"))
             {
@@ -122,14 +151,14 @@ namespace RentACar.Controllers
                 });
             }
 
-            var viewModel = new CarImagesWithDatesViewModel
-            {
-                CarWithImages = carsWithImages,
-                StartDate = startDay,
-                EndDate = endDay,
-                SelectedCategories = selectedCategories,
-                SortTerm = sortOrder
-            };
+
+
+            viewModel.CarWithImages = carsWithImages;
+            viewModel.StartDate = startDay;
+            viewModel.EndDate = endDay;
+            viewModel.SelectedCategories = selectedCategories;
+            viewModel.SortTerm = sortOrder;
+            
 
             return View(viewModel);
         }
@@ -361,7 +390,195 @@ namespace RentACar.Controllers
             return View("Index", viewModel);
         
         }
-      
+
+        [Authorize(Roles = "Company,Admin")]
+        public async Task<IActionResult> AddCar()
+        {
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            var admin = User.IsInRole("Admin");
+
+            if (!companyId.HasValue && !admin)
+            {
+                return RedirectToAction("AccessDenied", "Account");
+            }
+            var classOptions = await classOfCarService.GetAll();
+            var companies = await carCompanyService.GetAll();
+            var features = (await featureService.GetAllSelectedNames()).ToList();
+            var types = await typeService.GetAll();
+            var viewModel = new AddingCarWithImagesViewModel
+            {
+                ClassOptions = new SelectList(classOptions, "Id", "Name"),
+                Companies = new SelectList(companies, "Id", "Name"),
+                Features = features,
+                TypeOptions = new SelectList(
+            types.Select(t => new
+            {
+                Id = t.Id,
+                DisplayText = $"{t.Name} ({t.SeatCapacity} seats)"
+            }),
+            "Id", "DisplayText")};
+            return View(viewModel);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        [Authorize(Roles = "Company,Admin")]
+        public async Task<IActionResult> AddCar(AddingCarWithImagesViewModel viewModel)
+        {
+            var classes = await classOfCarService.GetAll();
+            viewModel.ClassOptions = new SelectList(classes, "Id", "Name");
+            var setfeatures = (await featureService.GetAllSelectedNames()).ToList();
+            viewModel.Features = setfeatures;
+
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            if (string.IsNullOrWhiteSpace(viewModel.OrderOfImages))
+            {
+                ModelState.AddModelError("", "Image order information is missing.");
+                return View(viewModel);
+            }
+
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            var admin = User.IsInRole("Admin");
+            if (!companyId.HasValue && !admin)
+            {
+                return BadRequest("The user can not have access to this page");
+            }
+
+            var orderIndexesStrings = viewModel.OrderOfImages.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var orderIndexes = new List<int>();
+
+            foreach (var indexStr in orderIndexesStrings)
+            {
+                if (!int.TryParse(indexStr, out int index))
+                {
+                    ModelState.AddModelError("", "Invalid image order data provided.");
+                    return View(viewModel);
+                }
+                orderIndexes.Add(index);
+            }
+
+            if (orderIndexes.Count != viewModel.Images.Count)
+            {
+                ModelState.AddModelError("", "The number of images does not match the provided order.");
+                return View(viewModel);
+            }
+
+            var orderedImages = new List<IFormFile>();
+            foreach (var idx in orderIndexes)
+            {
+                if (idx < 0 || idx >= viewModel.Images.Count)
+                {
+                    ModelState.AddModelError("", "Invalid image index in order data.");
+                    return View(viewModel);
+                }
+                orderedImages.Add(viewModel.Images[idx]);
+            }
+
+            var savedImagePaths = new List<string>();
+            foreach (var file in orderedImages)
+            {
+                if (file == null || file.Length == 0)
+                {
+                    ModelState.AddModelError("", "One of the uploaded files is empty or invalid.");
+                    return View(viewModel);
+                }
+
+                var filePath = await cloudinaryService.UploadImageAsync(file);
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    ModelState.AddModelError("", "Failed to save one of the images.");
+                    return View(viewModel);
+                }
+                savedImagePaths.Add(filePath);
+            }
+
+            IEnumerable<Feature> features = new List<Feature>();
+            if (viewModel.SelectedFeatures != null && viewModel.SelectedFeatures.Any())
+            {
+                features = await featureService.GetAllSelectedFeatures(viewModel.SelectedFeatures);
+            }
+
+            try
+            {
+                var car = new Car
+                {
+                    Brand = viewModel.Brand,
+                    Model = viewModel.Model,
+                    Gearbox = viewModel.Gearbox,
+                    Year = viewModel.Year,
+                    PricePerDay = viewModel.PricePerDay,
+                    PricePerWeek = viewModel.PricePerWeek,
+                    MileageLimitForDay = viewModel.MileageLimitForDay,
+                    MileageLimitForWeek = viewModel.MileageLimitForWeek,
+                    AdditionalMileageCharge = viewModel.AdditionalMileageCharge,
+                    EngineCapacity = viewModel.EngineCapacity,
+                    Color = viewModel.Color,
+                    Available = viewModel.Available,
+                    Description = viewModel.Description,
+                    DriveTrain = viewModel.DriveTrain,
+                    HorsePower = viewModel.HorsePower,
+                    ZeroToHundred = viewModel.ZeroToHundred,
+                    TopSpeed = viewModel.TopSpeed,
+                    ClassOfCarId = viewModel.ClassOfCarId,
+                    Pending = true,
+                    CreatedAt = DateTime.UtcNow,
+                    CTypeId=viewModel.TypeId
+
+                };
+                if (admin)
+                {
+                    car.CarCompanyId = viewModel.CompanyId;
+                }
+                else
+                {
+                    car.CarCompanyId = companyId.Value;
+                }
+                await carService.Add(car);
+                await carService.Save();
+
+                for (int i = 0; i < savedImagePaths.Count; i++)
+                {
+                    var carImage = new Image
+                    {
+                        CarId = car.Id,
+                        Url = savedImagePaths[i],
+                        Order = i
+                    };
+                    await imageService.Add(carImage);
+                    await imageService.Save();
+                }
+
+
+                if (viewModel.SelectedFeatures != null && viewModel.SelectedFeatures.Any())
+                {
+                    var featureList = features.ToList();
+                    for (int i = 0; i < viewModel.SelectedFeatures.Count; i++)
+                    {
+                        var carFeature = new CarFeature
+                        {
+                            CarId = car.Id,
+                            FeatureId = featureList[i].Id
+                        };
+                        await carFeatureService.Add(carFeature);
+                        await carFeatureService.Save();
+                    }
+                }
+           
+
+                return RedirectToAction("Index", "Car");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error saving car. Please try again. " + ex.Message);
+                return View(viewModel);
+            }
+
+
+        }
         public async Task<IActionResult> Pendings()
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");

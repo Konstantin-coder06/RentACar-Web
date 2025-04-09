@@ -38,6 +38,9 @@ namespace RentACar.Core.IServices
         List<(int CarId, int Count)> GetCarReservationCounts(List<Reservation> reservations);
         Task<List<Reservation>> GetAllReservationsContaingCompanyIds(List<int> companyCarIds);
         Task<IEnumerable<Reservation>> GetAllByStartAndEndDate(DateTime? startDate, DateTime? endDate);
+        Task<int> FindIfUserHasReservationForOnePeriod(DateTime? startDay, DateTime? endDay, int userId);
+        Task<IEnumerable<Reservation>>GetReservationsByUserId(int userId);
+        Task<string>GetStatusOfReservation(Reservation reservation);
 
     }
 }
