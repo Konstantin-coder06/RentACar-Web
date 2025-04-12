@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JIWbAPtR0+Dh/RKzknhiT+0/EpdjJhCOTjXiZ9PFLyY=",
+  "Hash": "kUlAk8S0426BXuH795Vzdk19HVbuRdvhVfgavgSslns=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -1823,48 +1823,6 @@
       "OriginalItemSpec": "wwwroot\\js\\calendar.js"
     },
     {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerLoader.js",
-      "SourceId": "RentACar",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
-      "BasePath": "_content/RentACar",
-      "RelativePath": "js/customerLoader#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "ffyrjshqn8",
-      "Integrity": "C1qOciO1BI40kWtHFz7z/Msfu0UIadjV/rGx11X4qvw=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\customerLoader.js"
-    },
-    {
-      "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerRotation.js",
-      "SourceId": "RentACar",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\",
-      "BasePath": "_content/RentACar",
-      "RelativePath": "js/customerRotation#[.{fingerprint}]?.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "npy1vs2wiq",
-      "Integrity": "+/SV3J6b4oR4fuVDoxOQxNKK2z6zp8LIKU3qj/Mjrz0=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\customerRotation.js"
-    },
-    {
       "Identity": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\editImageOrder.js",
       "SourceId": "RentACar",
       "SourceType": "Discovered",
@@ -3376,7 +3334,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 17:12:19 GMT"
+          "Value": "Sat, 12 Apr 2025 13:47:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3413,7 +3371,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 17:12:19 GMT"
+          "Value": "Sat, 12 Apr 2025 13:47:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7374,170 +7332,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-2dv+1Z8giJi/Yff8iYSNicftt1NtISYQBZyxMv3eNzw="
-        }
-      ]
-    },
-    {
-      "Route": "js/customerLoader.ffyrjshqn8.js",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerLoader.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2829"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"C1qOciO1BI40kWtHFz7z/Msfu0UIadjV/rGx11X4qvw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 17:15:00 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ffyrjshqn8"
-        },
-        {
-          "Name": "label",
-          "Value": "js/customerLoader.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-C1qOciO1BI40kWtHFz7z/Msfu0UIadjV/rGx11X4qvw="
-        }
-      ]
-    },
-    {
-      "Route": "js/customerLoader.js",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerLoader.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2829"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"C1qOciO1BI40kWtHFz7z/Msfu0UIadjV/rGx11X4qvw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 17:15:00 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-C1qOciO1BI40kWtHFz7z/Msfu0UIadjV/rGx11X4qvw="
-        }
-      ]
-    },
-    {
-      "Route": "js/customerRotation.js",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerRotation.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2163"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+/SV3J6b4oR4fuVDoxOQxNKK2z6zp8LIKU3qj/Mjrz0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 17:12:18 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-+/SV3J6b4oR4fuVDoxOQxNKK2z6zp8LIKU3qj/Mjrz0="
-        }
-      ]
-    },
-    {
-      "Route": "js/customerRotation.npy1vs2wiq.js",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerRotation.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2163"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"+/SV3J6b4oR4fuVDoxOQxNKK2z6zp8LIKU3qj/Mjrz0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 17:12:18 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "npy1vs2wiq"
-        },
-        {
-          "Name": "label",
-          "Value": "js/customerRotation.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-+/SV3J6b4oR4fuVDoxOQxNKK2z6zp8LIKU3qj/Mjrz0="
         }
       ]
     },

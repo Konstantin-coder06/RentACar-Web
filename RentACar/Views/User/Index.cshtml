@@ -150,7 +150,7 @@
                         }
                         else if(x.Status=="Canceled" || x.Status=="Completed"){
                             <button class="action-btn" >Book Again</button>
-                            if (x.IsTheCarReservatedForToday)
+                            if (x.IsTheCarReservatedForToday!=null)
                             {
                                 <span class="detail-label" style="color:#880000">*The Car Is Reservated From: @x.StartDateOfCar To: @x.EndDateOfCar. If You To Book It, You Will Get The Earliest Posible Dates For The Car</span>
                             }

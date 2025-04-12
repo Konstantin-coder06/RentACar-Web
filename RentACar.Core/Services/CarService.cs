@@ -298,5 +298,10 @@ namespace RentACar.Core.Services
                     (x.CarCompanyId==companyId && x.Brand != null && x.Brand.ToLower().Contains(term.ToLower())) ||
                     (x.CarCompanyId == companyId && x.Model != null && x.Model.ToLower().Contains(term.ToLower()))));
         }
+
+        public async Task<List<int>> GetAllCarsIdByCompanyId(int companyId)
+        {
+            return (await carRepository.FindAll(x => x.CarCompanyId == companyId)).Select(x=>x.Id).ToList();
+        }
     }
 }

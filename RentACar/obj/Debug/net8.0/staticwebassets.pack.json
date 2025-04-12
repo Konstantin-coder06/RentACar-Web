@@ -101,14 +101,6 @@
       "PackagePath": "staticwebassets\\js\\calendar.js"
     },
     {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerLoader.js",
-      "PackagePath": "staticwebassets\\js\\customerLoader.js"
-    },
-    {
-      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\customerRotation.js",
-      "PackagePath": "staticwebassets\\js\\customerRotation.js"
-    },
-    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\editImageOrder.js",
       "PackagePath": "staticwebassets\\js\\editImageOrder.js"
     },

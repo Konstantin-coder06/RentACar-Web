@@ -433,6 +433,16 @@ namespace RentACar.Core.Services
         {
             return reservationsRepository.FindOne(r => r.Id == id);
         }
+
+        public async Task<List<Reservation>> GetAllReservationOfCompanyCars(List<int> companyCarIds)
+        {
+            List<Reservation>reservations=new List<Reservation>();
+            foreach(var x in companyCarIds)
+            {
+              reservations.AddRange((await reservationsRepository.FindAll(r => r.CarId == x)));
+            }
+            return reservations.OrderByDescending(x=>x.Id).ToList();
+        }
     }
 }
 

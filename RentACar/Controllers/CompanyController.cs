@@ -14,13 +14,15 @@ namespace RentACar.Controllers
         ICustomerService customerService;
         ICarCompanyService carCompanyService;
         IImageService imageService;
-        public CompanyController(ICarService carService,IReservationService reservationService, ICustomerService customerService,ICarCompanyService carCompanyService, IImageService  imageService) 
+        IClassOfCarService classOfCarService;
+        public CompanyController(ICarService carService,IReservationService reservationService, ICustomerService customerService,ICarCompanyService carCompanyService, IImageService  imageService,IClassOfCarService classOfCarService) 
         {
           this.carService = carService;
             this.reservationService = reservationService;
             this.customerService = customerService;
             this.carCompanyService = carCompanyService;
             this.imageService = imageService;
+            this.classOfCarService = classOfCarService;
         }
         [Authorize(Roles ="Company")]
         public async Task<IActionResult> Index()
@@ -115,6 +117,118 @@ namespace RentACar.Controllers
             };
             return View(viewModel);
            
+        }
+        public async Task<IActionResult> ViewReservations(int id)
+        {
+            var company = HttpContext.Session.GetInt32("CompanyId");//await carCompanyService.GetById(id);
+            var companyCars = await carService.GetAllCarsIdByCompanyId(company.Value);
+            var reservations = await reservationService.GetAllReservationOfCompanyCars(companyCars);
+            var reservationsWithCarInf = await BuildReservationViewModels(reservations);
+            var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
+            return View(userViewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Filter(int id, string statusFilter)
+        {
+            var company = HttpContext.Session.GetInt32("CompanyId");
+            if (!company.HasValue)
+            {
+                return RedirectToAction("Register", "Account");
+            }
+
+            var companyCars = await carService.GetAllCarsIdByCompanyId(company.Value);
+            var reservations = await reservationService.GetAllReservationOfCompanyCars(companyCars);
+
+            if (statusFilter != "All Reservations")
+            {
+                var reservationStatuses = new List<(Reservation Reservation, string Status)>();
+                foreach (var reservation in reservations)
+                {
+                    string status = await reservationService.GetStatusOfReservation(reservation);
+                    reservationStatuses.Add((reservation, status));
+                }
+
+                reservations = reservationStatuses
+                    .Where(rs => rs.Status == statusFilter)
+                    .Select(rs => rs.Reservation)
+                    .ToList();
+
+              
+                if (!reservations.Any() && statusFilter != "Unknown")
+                {
+                    var unexpectedStatuses = reservationStatuses.Select(rs => rs.Status).Distinct();
+                    Console.WriteLine($"No reservations found for filter '{statusFilter}'. Available statuses: {string.Join(", ", unexpectedStatuses)}");
+                }
+            }
+
+            var reservationsWithCarInf = await BuildReservationViewModels(reservations);
+            var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
+
+            TempData["StatusFilter"] = statusFilter;
+
+            return View("ViewReservations", userViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> FilterDate(int id, DateTime? startDate, DateTime? endDate)
+        {
+            var company = HttpContext.Session.GetInt32("CompanyId");
+            var companyCars = await carService.GetAllCarsIdByCompanyId(company.Value);
+            var reservations = await reservationService.GetAllReservationOfCompanyCars(companyCars);
+
+            if (startDate.HasValue)
+            {
+                reservations = reservations.Where(r => r.StartDate >= startDate.Value).ToList();
+            }
+            if (endDate.HasValue)
+            {
+                reservations = reservations.Where(r => r.EndDate <= endDate.Value).ToList();
+            }
+
+            var reservationsWithCarInf = await BuildReservationViewModels(reservations);
+            var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
+
+            TempData["StartDateFilter"] = startDate?.ToString("yyyy-MM-dd");
+            TempData["EndDateFilter"] = endDate?.ToString("yyyy-MM-dd");
+
+            return View("ViewReservations", userViewModel);
+        }
+        private async Task<List<ReservationWithCarInfViewModel>> BuildReservationViewModels(IEnumerable<Reservation> reservations)
+        {
+            var reservationsWithCarInf = new List<ReservationWithCarInfViewModel>();
+            foreach (var x in reservations)
+            {
+                string status = await reservationService.GetStatusOfReservation(x);
+                var car = await carService.FindById(x.CarId);
+                var classOfCar = await classOfCarService.GetClassOfCarById(car.ClassOfCarId);
+             var customer=await customerService.FindById(x.CustomerId);
+
+                var image = await imageService.ImageByCarId(car.Id);
+                var carCompany = await carCompanyService.GetById(car.CarCompanyId);
+                if (x.PaidDeliveryPlace == null)
+                {
+                    x.PaidDeliveryPlace = carCompany.Address;
+                }
+
+                var model = new ReservationWithCarInfViewModel
+                {
+                    ReservationId = x.Id,
+                    Status = status,
+                    CarBrand = car.Brand,
+                    CarModel = car.Model,
+                    CarClass = classOfCar.Name,
+                    CarImageHref = image.Url,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                    Duration = (int)(x.EndDate - x.StartDate).TotalDays,
+                    PickUpAddress = x.PaidDeliveryPlace,
+                    TotalPrice = x.TotalPrice,
+                    CreateTime = x.CreateTime,
+                    CreatedBy=customer.Name
+                };
+                reservationsWithCarInf.Add(model);
+            }
+            return reservationsWithCarInf;
         }
     }
 }

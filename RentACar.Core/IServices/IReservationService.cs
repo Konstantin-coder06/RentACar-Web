@@ -43,5 +43,6 @@ namespace RentACar.Core.IServices
         Task<string>GetStatusOfReservation(Reservation reservation);
         Task<(bool isReserved, DateTime? startDate, DateTime? endDate)> IsTheCarReservatedForToday(int carId);
         Task<Reservation>FindById(int id);
+        Task<List<Reservation>>GetAllReservationOfCompanyCars(List<int> companyCarIds);
     }
 }

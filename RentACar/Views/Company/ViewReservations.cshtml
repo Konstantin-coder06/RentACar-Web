@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST DRIVE - Your Reservations</title>
+    <link rel="stylesheet" href="~/css/userIndex.css" />
+</head>
+@model UserViewModel
+@{
+    Layout = null;
+    TempData["HideNavigation"] = true;
+var companyId = Context.Session.GetInt32("CompanyId") ?? 0;
+    var currentFilter = TempData["StatusFilter"]?.ToString() ?? "All Reservations";
+}
+<body>
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Your Reservations</h1>
+            <p>View and manage all your car rental bookings</p>
+            <p>Welcome back, @Context.Session.GetString("CompanyName")</p>
+        </div>
+        <div class="filter-section">
+            <div class="sort-dropdown">
+                <input type="checkbox" id="statusFilterToggle" class="dropdown-toggle">
+                <label for="statusFilterToggle" class="filter-button">
+                    <i class="fas fa-filter"></i> Filter Status
+                </label>
+                <div class="dropdown-content">
+                    <form asp-action="Filter" asp-controller="Company" method="post">
+                        <input type="hidden" name="id" value="@companyId" />
+                        <button type="submit" name="statusFilter" value="All Reservations" class="@(currentFilter == "All Reservations" ? "active" : "")">All Reservations</button>
+                        <button type="submit" name="statusFilter" value="Active" class="@(currentFilter == "Active" ? "active" : "")">Active</button>
+                        <button type="submit" name="statusFilter" value="Coming" class="@(currentFilter == "Coming" ? "active" : "")">Coming</button>
+                        <button type="submit" name="statusFilter" value="Completed" class="@(currentFilter == "Completed" ? "active" : "")">Completed</button>
+                        <button type="submit" name="statusFilter" value="Canceled" class="@(currentFilter == "Canceled" ? "active" : "")">Canceled</button>
+                    </form>
+                </div>
+            </div>
+            <div class="date-filters">
+                <form asp-action="FilterDate" asp-controller="Company" method="post" class="date-filter-form">
+                    <div class="date-input-container">
+                        <input type="date" name="startDate" value="@ViewBag.StartDateFilter" placeholder="From Date">
+                        <input type="date" name="endDate" value="@ViewBag.EndDateFilter" placeholder="To Date">
+                    </div>
+                    <button type="submit" class="filter-btn">Filter</button>
+                </form>
+            </div>
+        </div>
+        @if (Model.ReservationCar == null || !Model.ReservationCar.Any())
+        {
+            <div class="no-reservations">
+                <div class="no-reservations-content">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>No Reservations Found</h3>
+                    <p>No reservations match the selected status.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (var x in Model.ReservationCar)
+            {
+                <div class="reservation-card">
+                    <div class="reservation-header">
+                        <h3>Booking #@x.ReservationId</h3>
+                        @switch (x.Status)
+                        {
+                            case "Completed":
+                                <span class="reservation-status" style="background-color: #777;">@x.Status</span>
+                                break;
+                            case "Active":
+                                <span class="reservation-status">@x.Status</span>
+                                break;
+                            case "Coming":
+                                <span class="reservation-status" style="background-color: #3366CC">@x.Status</span>
+                                break;
+                            case "Canceled":
+                                <span class="reservation-status" style="background-color: #f44336;">@x.Status</span>
+                                break;
+                            default:
+                                <span class="reservation-status" style="background-color: #999;">@x.Status</span>
+                                break;
+                        }
+                    </div>
+                    <div class="reservation-details">
+                        <div>
+                            <img src="@x.CarImageHref" alt="@x.CarBrand @x.CarModel" class="car-image">
+                        </div>
+                        <div>
+                            <div class="detail-row">
+                                <span class="detail-label">Car:</span>
+                                <span class="detail-value">@x.CarBrand @x.CarModel - @x.CarClass</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Pickup Date:</span>
+                                <span class="detail-value">@x.StartDate</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Return Date:</span>
+                                <span class="detail-value">@x.EndDate</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Duration:</span>
+                                <span class="detail-value">@x.Duration Days</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Pickup Location:</span>
+                                <span class="detail-value">@x.PickUpAddress</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Total Amount:</span>
+                                <span class="detail-value">BGN @x.TotalPrice</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Payment Method:</span>
+                                <span class="detail-value">By hand</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Created At:</span>
+                                <span class="detail-value">@x.CreateTime</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Created By:</span>
+                                <span class="detail-value">@x.CreatedBy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    @Html.Partial("_Footer")
+</body>
+</html>

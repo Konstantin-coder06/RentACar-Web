@@ -22,8 +22,6 @@ wwwroot\css\site.css
 wwwroot\css\userIndex.css
 wwwroot\favicon.ico
 wwwroot\js\calendar.js
-wwwroot\js\customerLoader.js
-wwwroot\js\customerRotation.js
 wwwroot\js\editImageOrder.js
 wwwroot\js\imageOrder.js
 wwwroot\js\main.js
