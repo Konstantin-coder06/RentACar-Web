@@ -22,10 +22,9 @@ namespace RentACar.Core.Services
             await repository.Add(entity);
         }
 
-        public async Task<IEnumerable<Feature>> AllWithInclude(params Expression<Func<Feature, object>>[] filters)
+        public IQueryable<Feature> AllWithInclude(params Expression<Func<Feature, object>>[] filters)
         {
-            var features=await repository.AllWithInclude(filters);
-            return features.ToList();
+            return repository.AllWithInclude(filters);
         }
 
         public void Delete(Feature entity)

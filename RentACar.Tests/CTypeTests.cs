@@ -45,17 +45,17 @@ namespace RentACar.Tests
             mockRepository.Verify(r => r.Save(), Times.Once());
         }
         [Test]
-        public async Task AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedTypes()
+        public void AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedTypes()
         {
             var expectedTypes = new List<CType>
         {
             new CType { Id = 1,  Name = "Pickup" },
             new CType { Id = 2,  Name = "Sedan"}
-        };
+        }.AsQueryable();
 
             Expression<Func<CType, object>>[] filters = { c => c.SeatCapacity };
-            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<CType, object>>[]>())).ReturnsAsync(expectedTypes);
-            var result = await cTypeService.AllWithInclude(filters);
+            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<CType, object>>[]>())).Returns(expectedTypes);
+            var result = cTypeService.AllWithInclude(filters);
 
             mockRepository.Verify(r => r.AllWithInclude(filters), Times.Once());
             Assert.AreEqual(expectedTypes, result);

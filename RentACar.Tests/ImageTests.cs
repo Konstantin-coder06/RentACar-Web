@@ -48,17 +48,17 @@ namespace RentACar.Tests
             mockRepository.Verify(r => r.Save(), Times.Once());
         }
         [Test]
-        public async Task AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedImage()
+        public void AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedImage()
         {
             var expectedImages = new List<Image>
         {
             new Image { Id = 1,  CarId=4},
             new Image { Id = 2,  CarId=2}
-        };
+        }.AsQueryable();
 
             Expression<Func<Image, object>>[] filters = { c => c.CarId };
-            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Image, object>>[]>())).ReturnsAsync(expectedImages);
-            var result = await imageService.AllWithInclude(filters);
+            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Image, object>>[]>())).Returns(expectedImages);
+            var result = imageService.AllWithInclude(filters);
 
             mockRepository.Verify(r => r.AllWithInclude(filters), Times.Once());
             Assert.AreEqual(expectedImages, result);

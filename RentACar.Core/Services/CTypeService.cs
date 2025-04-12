@@ -22,10 +22,9 @@ namespace RentACar.Core.Services
            await repository.Add(entity);
         }
 
-        public async Task<IEnumerable<CType>> AllWithInclude(params Expression<Func<CType, object>>[] filters)
+        public IQueryable<CType> AllWithInclude(params Expression<Func<CType, object>>[] filters)
         {
-            var cType = await repository.AllWithInclude(filters);
-            return cType.ToList();
+            return repository.AllWithInclude(filters);
         }
 
         public void Delete(CType entity)

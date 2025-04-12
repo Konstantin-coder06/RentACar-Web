@@ -28,17 +28,17 @@ namespace RentACar.Tests
             mockRepository.Verify(r => r.Add(car), Times.Once());
         }
         [Test]
-        public async Task AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedCars()
+        public void AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedCars()
         {
             var expectedCars = new List<Car>
         {
             new Car { Id = 1, Brand = "Toyota", Model = "Camry" },
             new Car { Id = 2, Brand = "Honda", Model = "Civic" }
-        };
+        }.AsQueryable();
 
             Expression<Func<Car, object>>[] filters = { c => c.ClassOfCar };
-            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Car, object>>[]>())).ReturnsAsync(expectedCars);
-            var result = await carService.AllWithInclude(filters);
+            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Car, object>>[]>())).Returns(expectedCars);
+            var result =  carService.AllWithInclude(filters);
 
             mockRepository.Verify(r => r.AllWithInclude(filters), Times.Once());
             Assert.AreEqual(expectedCars, result);

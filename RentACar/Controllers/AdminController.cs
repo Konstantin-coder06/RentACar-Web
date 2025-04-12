@@ -142,8 +142,38 @@ namespace RentACar.Controllers
                     Customer = report.Customer 
                 }).ToList()
             };
-
+            TempData["ShowClearButton"] = true;
             return View("AllReports", reportsViewModel);
+        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> FilterByTitle(ListOfReportsViewModel listOfReportsViewModel)
+        {
+            try
+            {
+
+                var allReports = await reportService.GetAll();
+                var reports = reportService.GetReportsByTitle(listOfReportsViewModel.TitleFilter);
+                var reportsViewModel = new ListOfReportsViewModel
+                {
+                    ReportViewModels = reports.Select(report => new ReportViewModel
+                    {
+                        Title = report.Title,
+                        Description = report.Description,
+                        CreatedAt = report.CreateAt,
+                        Customer = report.Customer
+                    }).ToList()
+                    
+                };
+                TempData["ShowClearButton"] = true;
+                return View("AllReports", reportsViewModel);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("",  ex.Message);
+                return View("AllReports",listOfReportsViewModel);
+            };
+            
         }
         [HttpPost]
         [Authorize(Roles = "Admin")]
@@ -188,7 +218,7 @@ namespace RentACar.Controllers
                     Customer = x.customer,
                     CreatedAt = x.CreatedAt
                 }).ToList();
-
+                TempData["ShowClearButton"] = true;
                 var reportsViewModel = new ListOfReportsViewModel()
                 {
                     ReportViewModels = reportsView
@@ -196,7 +226,31 @@ namespace RentACar.Controllers
                 return View("AllReports", reportsViewModel);
             }
         }
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> ClearFilters()
+        {
+            var reports = await reportService.GetAllReportsWithCustomersName();
+            var reportsView = new List<ReportViewModel>();
+            reportsView = reports.Select(x => new ReportViewModel
+            {
+                Title = x.title,
+                Description = x.description,
+                Customer = x.customer,
+                CreatedAt = x.CreatedAt
+            }).ToList();
 
+            var reportsViewModel = new ListOfReportsViewModel()
+            {
+                ReportViewModels = reportsView
+            };
+            TempData["ShowClearButton"] = false;
+            if (reportsViewModel == null)
+            {
+                return BadRequest();
+            }
+            return RedirectToAction("AllReports",reportsViewModel);
+        }
         [Authorize(Roles ="Admin,Company")]
         public async Task<IActionResult> Analytics()
         {      

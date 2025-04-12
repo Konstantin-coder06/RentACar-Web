@@ -46,24 +46,26 @@ namespace RentACar.Tests
             mockRepository.Verify(r => r.Save(), Times.Once());
         }
         [Test]
-        public async Task AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedCarCompanies()
+        public void AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedCarCompanies()
         {
             var expectedCarCompanies = new List<CarCompany>
-        {
-            new CarCompany { Id = 1,  Name = "NASHATA FIRMA", Description = "Naj-dobrata firma"},
-            new CarCompany { Id = 2,  Name = "Kastomoni", Description = "Rejem dUrva"}
-        };
+            {
+                new CarCompany { Id = 1, Name = "NASHATA FIRMA", Description = "Naj-dobrata firma" },
+                new CarCompany { Id = 2, Name = "Kastomoni", Description = "Rejem dUrva" }
+            }.AsQueryable(); 
 
             Expression<Func<CarCompany, object>>[] filters = { c => c.Description };
-            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<CarCompany, object>>[]>())).ReturnsAsync(expectedCarCompanies);
-            var result = await carCompanyService.AllWithInclude(filters);
+            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<CarCompany, object>>[]>())).Returns(expectedCarCompanies);
 
+          
+            var result = carCompanyService.AllWithInclude(filters).ToList(); 
+
+            
             mockRepository.Verify(r => r.AllWithInclude(filters), Times.Once());
-            Assert.AreEqual(expectedCarCompanies, result);
-            Assert.That(result.Count().Equals(2));
-            Assert.IsTrue(result.Any(c => c.Id == 1 && c.Name == "NASHATA FIRMA"&& c.Description == "Naj-dobrata firma"));
-            Assert.IsTrue(result.Any(c => c.Id == 2 && c.Name == "Kastomoni"&& c.Description == "Rejem dUrva"));
-
+            Assert.AreEqual(expectedCarCompanies.ToList(), result);
+            Assert.That(result.Count, Is.EqualTo(2));
+            Assert.IsTrue(result.Any(c => c.Id == 1 && c.Name == "NASHATA FIRMA" && c.Description == "Naj-dobrata firma"));
+            Assert.IsTrue(result.Any(c => c.Id == 2 && c.Name == "Kastomoni" && c.Description == "Rejem dUrva"));
         }
         [Test]
         public async Task GetAll_ReturnsAllCarCompanies()

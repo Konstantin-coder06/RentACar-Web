@@ -25,10 +25,9 @@ namespace RentACar.Core.Services
            await carRepository.Add(entity);
         }
 
-        public async Task<IEnumerable<Car>> AllWithInclude(params Expression<Func<Car, object>>[] filters)
+        public IQueryable<Car> AllWithInclude(params Expression<Func<Car, object>>[] filters)
         {
-            var cars= await carRepository.AllWithInclude(filters);
-            return cars.ToList();
+            return carRepository.AllWithInclude(filters);
         }
 
         public async Task<int> CountOfCarsWithCategory(int categoryId)

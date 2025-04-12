@@ -45,17 +45,17 @@ namespace RentACar.Tests
             mockRepository.Verify(r => r.Save(), Times.Once());
         }
         [Test]
-        public async Task AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedFeatures()
+        public void AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedFeatures()
         {
             var expectedFeatures = new List<Feature>
         {
             new Feature { Id = 1,  NameOfFeatures = "Distronic"},
             new Feature { Id = 2,  NameOfFeatures = "Sensor for Death Zone"}
-        };
+        }.AsQueryable();
 
             Expression<Func<Feature, object>>[] filters = { c => c.NameOfFeatures };
-            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Feature, object>>[]>())).ReturnsAsync(expectedFeatures);
-            var result = await featureService.AllWithInclude(filters);
+            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Feature, object>>[]>())).Returns(expectedFeatures);
+            var result = featureService.AllWithInclude(filters);
 
             mockRepository.Verify(r => r.AllWithInclude(filters), Times.Once());
             Assert.AreEqual(expectedFeatures, result);

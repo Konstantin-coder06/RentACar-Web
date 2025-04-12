@@ -48,17 +48,17 @@ namespace RentACar.Tests
             mockRepository.Verify(r => r.Save(), Times.Once());
         }
         [Test]
-        public async Task AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedCustomers()
+        public void AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedCustomers()
         {
             var expectedCustomers = new List<Customer>
         {
             new Customer { Id = 1,  Name = "Ivan"},
             new Customer { Id = 2,  Name = "Ivanka"}
-        };
+        }.AsQueryable();
 
             Expression<Func<Customer, object>>[] filters = { c => c.Name };
-            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Customer, object>>[]>())).ReturnsAsync(expectedCustomers);
-            var result = await customerService.AllWithInclude(filters);
+            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Customer, object>>[]>())).Returns(expectedCustomers);
+            var result = customerService.AllWithInclude(filters);
 
             mockRepository.Verify(r => r.AllWithInclude(filters), Times.Once());
             Assert.AreEqual(expectedCustomers, result);

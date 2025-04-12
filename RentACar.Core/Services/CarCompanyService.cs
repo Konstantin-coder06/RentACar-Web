@@ -23,10 +23,9 @@ namespace RentACar.Core.Services
             await carCompanyRepository.Add(entity);
         }
 
-        public async Task<IEnumerable<CarCompany>> AllWithInclude(params Expression<Func<CarCompany, object>>[] filters)
+        public IQueryable<CarCompany> AllWithInclude(params Expression<Func<CarCompany, object>>[] filters)
         {
-           var company=await carCompanyRepository.AllWithInclude(filters);
-            return company.ToList();
+            return carCompanyRepository.AllWithInclude(filters);
         }
 
         public void Delete(CarCompany entity)

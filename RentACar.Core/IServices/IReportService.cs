@@ -17,5 +17,6 @@ namespace RentACar.Core.IServices
         Task<List<(string title, string description, Customer customer, DateTime CreatedAt)>> GetAllReportsWithCustomersNameWithEndDate(DateTime? endDate);
         Task<List<(string title, string description, Customer customer, DateTime CreatedAt)>> GetAllReportsWithCustomersNameWithStartEndDate(DateTime? startDate, DateTime? endDate);
         Task<List<Report>> GetReportsByCustomerName(string searchbar);
+        List<Report>GetReportsByTitle(string title);
     }
 }

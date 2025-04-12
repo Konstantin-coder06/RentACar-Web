@@ -53,17 +53,17 @@ namespace RentACar.Tests
             mockRepository.Verify(r => r.Save(), Times.Once());
         }
         [Test]
-        public async Task AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedReservations()
+        public void AllWithInclude_CallsRepositoryAllWithInclude_ReturnsExpectedReservations()
         {
             var expectedReservations = new List<Reservation>
         {
             new Reservation { Id = 1, StartDate =DateTime.Now.Date, EndDate=DateTime.Now.Date.AddDays(3) },
             new Reservation { Id = 2,  StartDate =DateTime.Now.Date.AddDays(2), EndDate=DateTime.Now.Date.AddDays(5)  }
-        };
+        }.AsQueryable();
 
             Expression<Func<Reservation, object>>[] filters = { c => c.Customer };
-            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Reservation, object>>[]>())).ReturnsAsync(expectedReservations);
-            var result = await reservationService.AllWithInclude(filters);
+            mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Reservation, object>>[]>())).Returns(expectedReservations);
+            var result = reservationService.AllWithInclude(filters);
 
             mockRepository.Verify(r => r.AllWithInclude(filters), Times.Once());
             Assert.AreEqual(expectedReservations, result);

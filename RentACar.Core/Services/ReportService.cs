@@ -25,10 +25,9 @@ namespace RentACar.Core.Services
           await reports.Add(entity);
         }
 
-        public async Task<IEnumerable<Report>> AllWithInclude(params Expression<Func<Report, object>>[] filters)
+        public IQueryable<Report> AllWithInclude(params Expression<Func<Report, object>>[] filters)
         {
-            var report= await reports.AllWithInclude(filters);
-            return report.ToList();
+            return reports.AllWithInclude(filters);
         }
 
         public void Delete(Report entity)
@@ -121,7 +120,7 @@ namespace RentACar.Core.Services
             {
                 var title = report.Title;
                 var description = report.Description;
-                var customer = await customerService.GetByReport(report.Id);
+                var customer = await customerService.GetByReport(report.CustomerId);
                 var createdAt = report.CreateAt;
                 result.Add((title, description, customer, createdAt));
             }
@@ -138,7 +137,7 @@ namespace RentACar.Core.Services
             {
                 var title = report.Title;
                 var description = report.Description;
-                var customer = await customerService.GetByReport(report.Id);
+                var customer = await customerService.GetByReport(report.CustomerId);
                 var createdAt = report.CreateAt;
                 result.Add((title, description, customer, createdAt));
             }
@@ -154,7 +153,7 @@ namespace RentACar.Core.Services
             {
                 var title = report.Title;
                 var description = report.Description;
-                var customer = await customerService.GetByReport(report.Id);
+                var customer = await customerService.GetByReport(report.CustomerId);
                 var createdAt = report.CreateAt;
                 result.Add((title, description, customer, createdAt));
             }
@@ -173,6 +172,20 @@ namespace RentACar.Core.Services
             }
 
             return reports;
+        }
+
+        public List<Report> GetReportsByTitle(string title)
+        {
+            var query = reports.AllWithInclude(r => r.Customer);
+            if (title.ToLower() == "others")
+            {
+                query = query.Where(x => x.Title != "Booking Inquiry" && x.Title != "Customer Support" && x.Title != "Feedback");
+            }
+            else
+            {
+                query = query.Where(x => x.Title.ToUpper() == title.ToUpper());
+            }
+            return query.ToList();
         }
     }
 }

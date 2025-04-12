@@ -36,10 +36,9 @@ namespace RentACar.Core.Services
             await reservationsRepository.Add(entity);
         }
 
-        public async Task<IEnumerable<Reservation>> AllWithInclude(params Expression<Func<Reservation, object>>[] filters)
+        public IQueryable<Reservation> AllWithInclude(params Expression<Func<Reservation, object>>[] filters)
         {
-            var reservations = await reservationsRepository.AllWithInclude(filters);
-            return reservations.ToList();
+            return reservationsRepository.AllWithInclude(filters);
         }
 
         public Task<bool> AnyAsync(Expression<Func<Reservation, bool>> predicate)

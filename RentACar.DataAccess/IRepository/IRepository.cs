@@ -15,7 +15,7 @@ namespace RentACar.DataAccess.IRepository
         Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> FindAll(Expression<Func<T,bool>> predicate);
         Task<T> FindOne(Expression<Func<T,bool>> predicate);
-        Task<IEnumerable<T>> AllWithInclude(params Expression<Func<T, object>>[] filters);
+        IQueryable<T> AllWithInclude(params Expression<Func<T, object>>[] filters);
         Task Save();
         Task<bool> AnyAsync(Expression<Func<T,bool>>predicate);
         Task<int>CountAsync(Expression<Func<T, bool>> predicate);

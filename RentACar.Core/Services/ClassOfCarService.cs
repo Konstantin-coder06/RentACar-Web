@@ -22,10 +22,9 @@ namespace RentACar.Core.Services
            await repository.Add(entity);
         }
 
-        public async Task<IEnumerable<ClassOfCar>> AllWithInclude(params Expression<Func<ClassOfCar, object>>[] filters)
+        public IQueryable<ClassOfCar> AllWithInclude(params Expression<Func<ClassOfCar, object>>[] filters)
         {
-            var classOfCars = await repository.AllWithInclude(filters);
-            return classOfCars.ToList();
+            return repository.AllWithInclude(filters);
         }
 
         public void Delete(ClassOfCar entity)

@@ -27,11 +27,11 @@ namespace RentACar.Core.Services
            await  repository.Add(entity);
         }
 
-        public async Task<IEnumerable<Image>> AllWithInclude(params Expression<Func<Image, object>>[] filters)
+        public IQueryable<Image> AllWithInclude(params Expression<Func<Image, object>>[] filters)
         {
-            var images = await repository.AllWithInclude(filters);
-            return images.ToList();
+            return repository.AllWithInclude(filters);
         }
+
 
         public void Delete(Image entity)
         {

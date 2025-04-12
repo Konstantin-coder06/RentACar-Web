@@ -1,5 +1,7 @@
 ﻿@{
     Layout = null;
+    var showClearButton = TempData["ShowClearButton"] as bool? ?? false;
+   
 }
 @model ListOfReportsViewModel
 <html lang="en">
@@ -12,6 +14,18 @@
     <link rel="stylesheet" href="~/css/allReports.css" />
 </head>
 <body>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
     <header class="header">
         <div class="container">
             <a href="#" class="logo">FAST DRIVE</a>
@@ -27,22 +41,16 @@
 
     <div class="container">
         <div class="controls-container">
-            <form class="search-container">
-                <div class="input-group">
-                    <span class="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" name="searchBar" placeholder="Search by customer name..." />
-                </div>
-                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
-            </form>
+           
 
-            <form class="search-container">
+            <form class="search-container" asp-action="FilterByTitle" asp-controller="Admin">
                 <div class="dropdown-container">
-                    <select class="select-title" name="reportTitle">
+                    <select class="select-title" asp-for="TitleFilter">
                         <option value="" disabled selected>Search by title...</option>
-                        <option value="car_issues">Car Rental Issues</option>
-                        <option value="billing">Billing Discrepancies</option>
-                        <option value="damage">Vehicle Damage Reports</option>
-                        <option value="customer">Customer Service Feedback</option>
+                        <option value="Booking Inquiry">Booking Inquiry</option>
+                        <option value="Customer Support">Customer Support</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="others">Others</option>
                     </select>
                     <span class="dropdown-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
@@ -52,7 +60,7 @@
             <form asp-action="SearchByCustomerName" method="post" class="search-container">
                 <div class="input-group">
                     <span class="search-icon"><i class="fas fa-search"></i></span>
-                    <input type="text" name="searchBar" id="searchInput" placeholder="Search users..." />
+                    <input type="text" name="searchBar" id="searchInput" placeholder="Search by customer name..." />
                 </div>
                 <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
             </form>
@@ -71,6 +79,13 @@
                     <i class="fas fa-filter"></i> Filter
                 </button>
             </form>
+            @if(showClearButton==true){
+                <form asp-controller="Admin" asp-action="ClearFilters" method="post">
+                    <button type="submit" class="filter-btn">
+                        <i class="fas fa-times"></i> Clear Filters
+                    </button>
+                </form>
+            }
         </div>
 
         <div class="table-container">
@@ -91,7 +106,7 @@
                             <tr>
                                 <td>@x.Title</td>
                                 <td>@x.Description</td>
-                                <td>@x.Customer.Name</td>
+                                <td>@(x.Customer?.Name ?? "N/A")</td>
                                 <td class="warning">@x.CreatedAt.ToString("MMM dd, yyyy HH:mm")</td>
                             </tr>
                         }

@@ -25,14 +25,14 @@ namespace RentACar.DataAccess.IRepository.Repository
            
         }
 
-        public async Task<IEnumerable<T>> AllWithInclude(params Expression<Func<T, object>>[] filters)
+        public IQueryable<T> AllWithInclude(params Expression<Func<T, object>>[] filters)
         {
             IQueryable<T> queries = dbSet;
-            foreach(var  x in filters) 
+            foreach (var x in filters)
             {
-                queries=queries.Include(x);
+                queries = queries.Include(x);
             }
-            return await queries.ToListAsync();
+            return queries;
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T,bool>>predicate)
