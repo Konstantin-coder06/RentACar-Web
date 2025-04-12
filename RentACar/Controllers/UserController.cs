@@ -32,7 +32,6 @@ namespace RentACar.Controllers
         {
             var reservations = await reservationService.GetReservationsByUserId(id);
 
-            // Filter reservations based on statusFilter
             if (statusFilter != "All Reservations")
             {
                 reservations = reservations.Where(r => reservationService.GetStatusOfReservation(r).Result == statusFilter).ToList();
@@ -41,7 +40,6 @@ namespace RentACar.Controllers
             var reservationsWithCarInf = await BuildReservationViewModels(reservations);
             var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
 
-            // Store the filter in TempData to persist it in the view if needed
             TempData["StatusFilter"] = statusFilter;
 
             return View("Index", userViewModel);
@@ -52,7 +50,6 @@ namespace RentACar.Controllers
         {
             var reservations = await reservationService.GetReservationsByUserId(id);
 
-            // Apply date filter if provided
             if (startDate.HasValue)
             {
                 reservations = reservations.Where(r => r.StartDate >= startDate.Value).ToList();
@@ -65,14 +62,37 @@ namespace RentACar.Controllers
             var reservationsWithCarInf = await BuildReservationViewModels(reservations);
             var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
 
-            // Store dates in TempData to prefill the form
             TempData["StartDateFilter"] = startDate?.ToString("yyyy-MM-dd");
             TempData["EndDateFilter"] = endDate?.ToString("yyyy-MM-dd");
 
             return View("Index", userViewModel);
         }
-
-        // Helper method to build the view models
+        [HttpPost]
+        public IActionResult ShowCancelConfirmation(int userId,int reservationId)
+        {
+            TempData["ReservationToCancel"] = reservationId;
+            TempData["ShowConfirmModal"] = true;
+           
+            return RedirectToAction("Index", new {id=userId});
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteReservation(int id)
+        {
+            var reservation = await reservationService.FindById(id);
+            if (reservation != null)
+            {
+                var userId= reservation.CustomerId;
+                reservationService.Delete(reservation);
+                await reservationService.Save();
+                return RedirectToAction("Index", new {id=userId});
+            }
+            else
+            {
+                ModelState.AddModelError("", "Something happend! Please relog in");
+                return RedirectToAction("Index");
+            }
+        }
+        
         private async Task<List<ReservationWithCarInfViewModel>> BuildReservationViewModels(IEnumerable<Reservation> reservations)
         {
             var reservationsWithCarInf = new List<ReservationWithCarInfViewModel>();

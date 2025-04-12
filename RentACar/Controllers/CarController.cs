@@ -73,10 +73,29 @@ namespace RentACar.Controllers
                     var hasUserReservationForOnePeriod = await reservationService.FindIfUserHasReservationForOnePeriod(startDay, endDay, userId.Value);
                     if (hasUserReservationForOnePeriod !=0)
                     {
+                        var reservation = await reservationService.FindById(hasUserReservationForOnePeriod);
+                        var car = await carService.FindById(reservation.CarId);
                         TempData["Conflict"] = true;
-                        TempData["ProposedStartDate"] = startDay.Value.ToString("yyyy-MM-dd");
-                        TempData["ProposedEndDate"] = endDay.Value.ToString("yyyy-MM-dd");
-                        var car = await carService.FindById(hasUserReservationForOnePeriod);
+                        TempData["ProposedStartDate"] = reservation.StartDate.ToString("yyyy-MM-dd");
+                        TempData["ProposedEndDate"] = reservation.EndDate.ToString("yyyy-MM-dd");
+                        if(reservation.StartDate<=startDay.Value&& reservation.EndDate >= startDay.Value)
+                        {
+                            if (reservation.StartDate <= DateTime.Now && reservation.EndDate <= DateTime.Now)
+                            {
+
+
+                                TempData["ReservationOnAction"] = "But Your Reservation Is On Action. Please Select New Dates!";
+                            }
+                         
+                        }
+                        if (TempData["RservationOnAction"] == null)
+                        {
+                            int difference = (int)(reservation.StartDate - DateTime.Now).TotalDays;
+                            if (difference <= 2)
+                            {
+                                TempData["ReservationAlmostOnAction"] = "The Upcoming Reservation Is Too Close To Be Postponed! Please Select New Dates";
+                            }
+                        }
                         viewModel.BrandOfCar = car.Brand;
                         viewModel.ModelOfCar=car.Model;
                     }

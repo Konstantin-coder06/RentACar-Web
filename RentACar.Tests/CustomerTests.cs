@@ -22,17 +22,7 @@ namespace RentACar.Tests
         {
             mockRepository = new Mock<IRepository<Customer>>();
             var store = new Mock<IUserStore<IdentityUser>>();
-            _mockUserManager = new Mock<UserManager<IdentityUser>>(
-                store.Object, // IUserStore<IdentityUser>
-                null,         // IOptions<IdentityOptions>
-                null,         // IPasswordHasher<IdentityUser>
-                null,         // IEnumerable<IUserValidator<IdentityUser>>
-                null,         // IEnumerable<IPasswordValidator<IdentityUser>>
-                null,         // ILookupNormalizer
-                null,         // IdentityErrorDescriber
-                null,         // IServiceProvider
-                null          // ILogger<UserManager<IdentityUser>>
-            );
+            _mockUserManager = new Mock<UserManager<IdentityUser>>(store.Object, null, null, null, null, null, null, null, null);
             customerService = new CustomerService(mockRepository.Object,_mockUserManager.Object);
         }
 

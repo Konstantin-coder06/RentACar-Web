@@ -42,5 +42,6 @@ namespace RentACar.Core.IServices
         Task<IEnumerable<Reservation>>GetReservationsByUserId(int userId);
         Task<string>GetStatusOfReservation(Reservation reservation);
         Task<(bool isReserved, DateTime? startDate, DateTime? endDate)> IsTheCarReservatedForToday(int carId);
+        Task<Reservation>FindById(int id);
     }
 }

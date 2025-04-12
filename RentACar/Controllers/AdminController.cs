@@ -14,35 +14,20 @@ namespace RentACar.Controllers
     public class AdminController : Controller
     {
         ICarService carService;
-        IImageService imageService;
-        IClassOfCarService classOfCarService;
         IReservationService reservationService;
-        ICustomerService customerService;
-        CloudinaryService cloudinaryService;
+        ICustomerService customerService;  
         IReportService reportService;
-        ICarCompanyService carCompanyService;
-        IFeatureService featureService;
-        ICarFeatureService carFeatureService;
-        ICTypeService typeService;
+      
       
        
-        public AdminController(ICarService _carService, IImageService _imageService, 
-            IClassOfCarService _classOfCarService,IReservationService reservationService, 
-            ICustomerService customerService,CloudinaryService cloudinaryService,IReportService reportServicе,
-            ICarCompanyService carCompanyService, IFeatureService featureService,
-            ICarFeatureService carFeatureService, ICTypeService cTypeService)
+        public AdminController(ICarService _carService, IReservationService reservationService, 
+            ICustomerService customerService, IReportService reportServicе)
         {
             this.carService = _carService;
-            this.imageService = _imageService;
-            this.classOfCarService = _classOfCarService;
             this.reservationService = reservationService;
-            this.customerService = customerService;
-            this.cloudinaryService = cloudinaryService;
+            this.customerService = customerService;     
             this.reportService = reportServicе;
-            this.carCompanyService = carCompanyService;
-            this.featureService = featureService;
-            this.carFeatureService = carFeatureService;
-            this.typeService = cTypeService;
+        
             
             
         }

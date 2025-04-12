@@ -390,8 +390,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>4yazbf8ro1</Fingerprint>
-      <Integrity>1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw=</Integrity>
+      <Fingerprint>dc6r715et4</Fingerprint>
+      <Integrity>I8x+xmNC3jPEsIYVlPHI5aZiFClavkO2ohJFVjjkOUY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\userIndex.css'))</OriginalItemSpec>
@@ -426,8 +426,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>orpbvlumgv</Fingerprint>
-      <Integrity>zFXUmMnwq1X6jLLwTdrY388EnNLy0ZmL2SODPLFXFu8=</Integrity>
+      <Fingerprint>feepjnyhd5</Fingerprint>
+      <Integrity>2dv+1Z8giJi/Yff8iYSNicftt1NtISYQBZyxMv3eNzw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\calendar.js'))</OriginalItemSpec>

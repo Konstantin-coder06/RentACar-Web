@@ -174,7 +174,6 @@ namespace RentACar.Controllers
                     return View(carWithImages);
                 }
 
-                // Корекция на логиката
                 string paidDeliveryPlace = carWithImages.IsSelfPick ? null : carWithImages.CustomAddress;
 
                 Reservation reservation = new Reservation()
@@ -182,7 +181,7 @@ namespace RentACar.Controllers
                     StartDate = startDay,
                     EndDate = endDay,
                     IsSelfPick = carWithImages.IsSelfPick,
-                    PaidDeliveryPlace = paidDeliveryPlace, // Задава се само ако IsSelfPick е false
+                    PaidDeliveryPlace = paidDeliveryPlace, 
                     IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
                     CarId = carWithImages.Car.Id,
                     CustomerId = userId.Value,
@@ -194,7 +193,7 @@ namespace RentACar.Controllers
 
                 TempData["TotalPrice"] = reservation.TotalPrice.ToString(CultureInfo.InvariantCulture);
                 TempData["IsSelfPick"] = carWithImages.IsSelfPick.ToString();
-                TempData["PaidDeliveryPlace"] = paidDeliveryPlace; // Корекция тук
+                TempData["PaidDeliveryPlace"] = paidDeliveryPlace; 
                 TempData["IsReturnBackAtSamePlace"] = carWithImages.IsReturningBackAtSamePlace.ToString();
                 TempData["CarId"] = carWithImages.Car.Id.ToString();
                 TempData["CustomerId"] = userId.Value.ToString();

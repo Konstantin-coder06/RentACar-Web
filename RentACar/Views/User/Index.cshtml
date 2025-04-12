@@ -12,8 +12,31 @@
     TempData["HideNavigation"] = true;
     @Html.Partial("_Navigation")
     var userId = Context.Session.GetInt32("UserId") ?? 0;
+    var showConfirmModal = TempData["ShowConfirmModal"] as bool? ?? false;
+    var reservationToCancel = TempData["ReservationToCancel"] as int? ?? 0;
 }
 <body>
+    @if (showConfirmModal)
+    {
+        <div class="modal-backdrop">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Cancel Booking</h3>
+                    <a href="@Url.Action("Index", "User", new { id = userId })" class="modal-close">×</a>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to cancel this booking? This will delete the reservation!</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="@Url.Action("Index", "User", new { id = userId })" class="modal-btn modal-btn-secondary">No</a>
+                    <form asp-action="DeleteReservation" asp-controller="User" method="post">
+                        <input type="hidden" name="id" value="@reservationToCancel" />
+                        <button type="submit" class="modal-btn modal-btn-primary">Yes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
 
 
     <div class="main-content">
@@ -119,7 +142,11 @@
                             </div>
                         @if(x.Status=="Coming"){
                             <button class="action-btn">Modify Booking</button>
-                            <button class="action-btn secondary">Cancel Booking</button>
+                                <form asp-action="ShowCancelConfirmation" asp-controller="User" method="post">
+                                    <input type="hidden" name="userId" value="@userId" />
+                                    <input type="hidden" name="reservationId" value="@x.ReservationId" />
+                                    <button type="submit" class="action-btn secondary">Cancel Booking</button>
+                                </form>
                         }
                         else if(x.Status=="Canceled" || x.Status=="Completed"){
                             <button class="action-btn" >Book Again</button>

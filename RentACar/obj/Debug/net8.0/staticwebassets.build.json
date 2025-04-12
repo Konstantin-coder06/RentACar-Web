@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XYK1Tn+6EJ3Qi3/xbpYIveCDpF35uMA4k47QbSC2FnE=",
+  "Hash": "JIWbAPtR0+Dh/RKzknhiT+0/EpdjJhCOTjXiZ9PFLyY=",
   "Source": "RentACar",
   "BasePath": "_content/RentACar",
   "Mode": "Default",
@@ -1774,8 +1774,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "4yazbf8ro1",
-      "Integrity": "1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw=",
+      "Fingerprint": "dc6r715et4",
+      "Integrity": "I8x+xmNC3jPEsIYVlPHI5aZiFClavkO2ohJFVjjkOUY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\userIndex.css"
@@ -1816,8 +1816,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "orpbvlumgv",
-      "Integrity": "zFXUmMnwq1X6jLLwTdrY388EnNLy0ZmL2SODPLFXFu8=",
+      "Fingerprint": "feepjnyhd5",
+      "Integrity": "2dv+1Z8giJi/Yff8iYSNicftt1NtISYQBZyxMv3eNzw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\calendar.js"
@@ -4912,51 +4912,6 @@
       ]
     },
     {
-      "Route": "css/userIndex.4yazbf8ro1.css",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\userIndex.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "6285"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 12:35:45 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4yazbf8ro1"
-        },
-        {
-          "Name": "label",
-          "Value": "css/userIndex.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw="
-        }
-      ]
-    },
-    {
       "Route": "css/userIndex.css",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\userIndex.css",
       "Selectors": [],
@@ -4967,7 +4922,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6285"
+          "Value": "7587"
         },
         {
           "Name": "Content-Type",
@@ -4975,11 +4930,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw=\""
+          "Value": "\"I8x+xmNC3jPEsIYVlPHI5aZiFClavkO2ohJFVjjkOUY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 09 Apr 2025 12:35:45 GMT"
+          "Value": "Sat, 12 Apr 2025 10:00:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4989,7 +4944,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1BbYsfHS6wzQe7swKRCV4nvVSKpShRkZ9E0iJEj2jGw="
+          "Value": "sha256-I8x+xmNC3jPEsIYVlPHI5aZiFClavkO2ohJFVjjkOUY="
+        }
+      ]
+    },
+    {
+      "Route": "css/userIndex.dc6r715et4.css",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\userIndex.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7587"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"I8x+xmNC3jPEsIYVlPHI5aZiFClavkO2ohJFVjjkOUY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 12 Apr 2025 10:00:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dc6r715et4"
+        },
+        {
+          "Name": "label",
+          "Value": "css/userIndex.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-I8x+xmNC3jPEsIYVlPHI5aZiFClavkO2ohJFVjjkOUY="
         }
       ]
     },
@@ -7296,6 +7296,51 @@
       ]
     },
     {
+      "Route": "js/calendar.feepjnyhd5.js",
+      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\calendar.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2830"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2dv+1Z8giJi/Yff8iYSNicftt1NtISYQBZyxMv3eNzw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 12 Apr 2025 08:30:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "feepjnyhd5"
+        },
+        {
+          "Name": "label",
+          "Value": "js/calendar.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2dv+1Z8giJi/Yff8iYSNicftt1NtISYQBZyxMv3eNzw="
+        }
+      ]
+    },
+    {
       "Route": "js/calendar.js",
       "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\calendar.js",
       "Selectors": [],
@@ -7306,7 +7351,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3115"
+          "Value": "2830"
         },
         {
           "Name": "Content-Type",
@@ -7314,11 +7359,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zFXUmMnwq1X6jLLwTdrY388EnNLy0ZmL2SODPLFXFu8=\""
+          "Value": "\"2dv+1Z8giJi/Yff8iYSNicftt1NtISYQBZyxMv3eNzw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 10 Apr 2025 13:26:17 GMT"
+          "Value": "Sat, 12 Apr 2025 08:30:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -7328,52 +7373,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zFXUmMnwq1X6jLLwTdrY388EnNLy0ZmL2SODPLFXFu8="
-        }
-      ]
-    },
-    {
-      "Route": "js/calendar.orpbvlumgv.js",
-      "AssetFile": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\js\\calendar.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3115"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"zFXUmMnwq1X6jLLwTdrY388EnNLy0ZmL2SODPLFXFu8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 10 Apr 2025 13:26:17 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "orpbvlumgv"
-        },
-        {
-          "Name": "label",
-          "Value": "js/calendar.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-zFXUmMnwq1X6jLLwTdrY388EnNLy0ZmL2SODPLFXFu8="
+          "Value": "sha256-2dv+1Z8giJi/Yff8iYSNicftt1NtISYQBZyxMv3eNzw="
         }
       ]
     },

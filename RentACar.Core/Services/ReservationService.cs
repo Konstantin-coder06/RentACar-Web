@@ -371,24 +371,13 @@ namespace RentACar.Core.Services
 
             if (overlappingReservations != null)
             {
-                return overlappingReservations.CarId;
+                return overlappingReservations.Id;
             }
             else
             {
                 return 0;
             }
-            /*
-            var reservation= await GetAllReservatedCarsId(startDay,endDay);
-            bool flag = false;
-            foreach (var reservationId in reservation) 
-            {
-                if (reservationId == userId)
-                {
-                    flag= true;
-                    break;
-                }
-            }
-            return flag;*/
+        
         }
 
         public async Task<IEnumerable<Reservation>> GetReservationsByUserId(int userId)
@@ -439,6 +428,11 @@ namespace RentACar.Core.Services
             {
                 return (false, null, null);
             }
+        }
+
+        public Task<Reservation> FindById(int id)
+        {
+            return reservationsRepository.FindOne(r => r.Id == id);
         }
     }
 }
