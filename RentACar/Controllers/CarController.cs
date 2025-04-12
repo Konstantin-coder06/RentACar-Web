@@ -200,14 +200,37 @@ namespace RentACar.Controllers
             if (!string.IsNullOrEmpty(searchBar))
             {
                 var searchTerms = searchBar.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                queries = await carService.GetCarsBySearchBrandAndModel(searchTerms);
+                if (User.IsInRole("Company"))
+                {
+                    var companyId = HttpContext.Session.GetInt32("CompanyId");
+                    if (companyId.HasValue)
+                    {
+                        queries = await carService.GetCarsOfCompanyBySearchBrandAndModel(companyId.Value, searchTerms);
+                    }
+                    else
+                    {
+                        throw new Exception("Please relog in! You made something incorrect");
+                    }
+                }
+                else
+                {
+                    queries = await carService.GetCarsBySearchBrandAndModel(searchTerms);
+                }
             }
             var startDayStr = HttpContext.Session.GetString("StartDate");
             var endDayStr = HttpContext.Session.GetString("EndDate");
             DateTime? startDay = string.IsNullOrEmpty(startDayStr) ? null : DateTime.Parse(startDayStr);
             DateTime? endDay = string.IsNullOrEmpty(endDayStr) ? null : DateTime.Parse(endDayStr);
-            var overlappingReservations = await reservationService.GetAllByStartAndEndDate(startDay, endDay);        
-            var cars = await carService.GetAllNotReservationedCarsForOnePeriod(queries, overlappingReservations.ToList());
+            var overlappingReservations = await reservationService.GetAllByStartAndEndDate(startDay, endDay);
+            IEnumerable<Car>cars=new List<Car>();
+            if (!User.IsInRole("Company"))
+            {
+                 cars = await carService.GetAllNotReservationedCarsForOnePeriod(queries, overlappingReservations.ToList());
+            }
+            else
+            {
+                cars = queries;
+            }
             var carsWithImages = new List<CarWithImages>();
             foreach (var car in cars)
             {
@@ -285,8 +308,25 @@ namespace RentACar.Controllers
         [HttpPost]       
         public async Task<IActionResult> Filters(CarWithFilters carWithFilters)
         {
-            var queries = await carService.GetFilteredCarsAsync(carWithFilters.MinPrice,carWithFilters.MaxPrice,carWithFilters.SelectedClassIds,
-                carWithFilters.SelectedBrands,carWithFilters.SelectedColors,carWithFilters.SelectedDriveTrains);
+            IEnumerable<Car> queries=new List<Car>();
+            if (User.IsInRole("Company"))
+            {
+                var companyId = HttpContext.Session.GetInt32("CompanyId");
+                if (companyId.HasValue)
+                {
+                    queries = await carService.GetFilteredCarsOfCompanyAsync(companyId.Value,carWithFilters.MinPrice, carWithFilters.MaxPrice, carWithFilters.SelectedClassIds,
+                        carWithFilters.SelectedBrands, carWithFilters.SelectedColors, carWithFilters.SelectedDriveTrains);
+                }
+                else
+                {
+                    throw new Exception("Please relog in! You made something incorrect");
+                }
+            }
+            else
+            {
+                queries = await carService.GetFilteredCarsAsync(carWithFilters.MinPrice, carWithFilters.MaxPrice, carWithFilters.SelectedClassIds,
+                    carWithFilters.SelectedBrands, carWithFilters.SelectedColors, carWithFilters.SelectedDriveTrains);
+            }
             var cars = queries.ToList();
             var carsWithImages = new List<CarWithImages>();
             foreach (var car in cars)

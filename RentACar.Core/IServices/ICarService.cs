@@ -31,5 +31,7 @@ namespace RentACar.Core.IServices
         Task<List<string>> GetAllDriveTrainsDistinct();
         Task<int> GetCompanyIdByCarId(int carId);
         
+        Task<IEnumerable<Car>> GetFilteredCarsOfCompanyAsync(int companyId, double minPrice, double maxPrice, List<int> selectedClassIds, List<string> selectedBrands, List<string> selectedColors, List<string> selectedDriveTrains);
+        Task<IEnumerable<Car>> GetCarsOfCompanyBySearchBrandAndModel(int companyId, string[] terms);
     }
 }

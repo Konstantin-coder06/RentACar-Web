@@ -23,5 +23,7 @@ namespace RentACar.Models
         {
             get; set;
         }
+        public string TakingPlace {  get; set; }
+        public string ReturningPlace {  get; set; }
     }
 }

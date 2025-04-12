@@ -1,10 +1,16 @@
-﻿namespace RentACar.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RentACar.Models
 {
     public class ReportViewModel
     {
-        public string Title {  get; set; }
+        [Required]
+        public  string Title {  get; set; }
+        [Required]
         public string Description { get; set; }
+        [Required]
         public DateTime CreatedAt { get; set; }
+        [Required]
         public Customer Customer { get; set; }
     }
 }

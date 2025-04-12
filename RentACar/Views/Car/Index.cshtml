@@ -44,15 +44,17 @@
         </div>
     }
     <div class="container">
-        <div class="rental-header">
-            <div class="date-range">
-                Daily rentals in Dubai<br>
-                <span>@startDate — @endDate</span>
+    @if(!User.IsInRole("Company")){
+            <div class="rental-header">
+                <div class="date-range">
+                    Daily rentals in Dubai<br>
+                    <span>@startDate — @endDate</span>
+                </div>
+                <button type="button" id="openCalendar" class="edit-button">
+                    <i class="fas fa-edit"></i>
+                </button>
             </div>
-            <button type="button" id="openCalendar" class="edit-button">
-                <i class="fas fa-edit"></i>
-            </button>
-        </div>
+    }   
         <div class="search-filter-container">
             <form asp-action="Search" asp-controller="Car" method="post" class="search-form">
                 <div class="search-box">

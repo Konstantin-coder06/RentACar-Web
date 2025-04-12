@@ -217,6 +217,7 @@ namespace RentACar.Core.Services
                 (reservations.Count == 0 || !reservations.Any(r => r.CarId == x.Id)) &&
                 x.Pending == false);
         }
+        
         public async Task<IEnumerable<Car>> GetFilteredCarsAsync(double minPrice,double maxPrice, List<int> selectedClassIds, List<string> selectedBrands, List<string> selectedColors, List<string> selectedDriveTrains)
         {
             var cars = (await GetAll()).AsQueryable();
@@ -259,6 +260,44 @@ namespace RentACar.Core.Services
         {
             var car = await carRepository.FindOne(x => x.Id == carId);
             return car.CarCompanyId;
+        }
+
+        public async Task<IEnumerable<Car>> GetFilteredCarsOfCompanyAsync(int companyId,double minPrice, double maxPrice, List<int> selectedClassIds, List<string> selectedBrands, List<string> selectedColors, List<string> selectedDriveTrains)
+        {
+            var cars = (await FindAll(x=>x.CarCompanyId==companyId)).AsQueryable();
+
+            if (minPrice > 0)
+                cars = cars.Where(x => x.PricePerDay >= minPrice);
+
+            if (maxPrice > 0 && maxPrice > minPrice)
+                cars = cars.Where(x => x.PricePerDay <= maxPrice);
+
+            if (selectedClassIds?.Any() == true)
+                cars = cars.Where(x => selectedClassIds.Contains(x.ClassOfCarId));
+
+            if (selectedBrands?.Any() == true)
+                cars = cars.Where(x => selectedBrands.Contains(x.Brand) && !x.Pending);
+
+            if (selectedColors?.Any() == true)
+                cars = cars.Where(x => selectedColors.Contains(x.Color) && !x.Pending);
+
+            if (selectedDriveTrains?.Any() == true)
+                cars = cars.Where(x => selectedDriveTrains.Contains(x.DriveTrain) && !x.Pending);
+
+            return cars.ToList();
+        }
+
+        public async Task<IEnumerable<Car>> GetCarsOfCompanyBySearchBrandAndModel(int companyId, string[] terms)
+        {
+            if (terms == null || !terms.Any())
+            {
+                return await carRepository.FindAll(x=>x.CarCompanyId==companyId);
+            }
+
+            return await carRepository.FindAll(x =>
+                terms.Any(term => 
+                    (x.CarCompanyId==companyId && x.Brand != null && x.Brand.ToLower().Contains(term.ToLower())) ||
+                    (x.CarCompanyId == companyId && x.Model != null && x.Model.ToLower().Contains(term.ToLower()))));
         }
     }
 }

@@ -16,5 +16,6 @@ namespace RentACar.Models
         public List<Feature> Features { get; set; }
         public bool IsReturnOptionsEnabled { get; set; }
         public bool IsAddressInputVisible { get; set; }
+        public string AddressOfCompany {  get; set; }
     }
 }

@@ -10,7 +10,6 @@ namespace RentACar.Models
         public DateTime? StartDay { get; set; }
         [Required(ErrorMessage ="End date is required")]
         [DataType(DataType.Date)]
-
         public DateTime? EndDay { get; set; }
         public int StandardCount {  get; set; }
         public double MinPriceStandard {  get; set; }

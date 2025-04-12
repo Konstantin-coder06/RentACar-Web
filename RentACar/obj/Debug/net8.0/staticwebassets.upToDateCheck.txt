@@ -1,6 +1,7 @@
 wwwroot\css\aboutUS.css
 wwwroot\css\addcar.css
 wwwroot\css\adminIndex.css
+wwwroot\css\alert.css
 wwwroot\css\allReports.css
 wwwroot\css\analytics.css
 wwwroot\css\carIndex.css

@@ -55,18 +55,21 @@ namespace RentACar.Controllers
         {      
             return View();
         }
+        [Authorize(Roles ="User")]
         [HttpPost]
         public async Task<IActionResult> ContactUs(AddReportViewModel reportViewModel)
         {
-           
-                if (ModelState.IsValid)
-                {
-                    var userId = HttpContext.Session.GetInt32("UserId");
+            if (ModelState.IsValid)
+            {
+                var userId = HttpContext.Session.GetInt32("UserId");
 
-                    if (!userId.HasValue)
-                    {
-                        return RedirectToAction("Register", "Account");
-                    }
+                if (!userId.HasValue)
+                {
+                    ModelState.AddModelError("", "You cancelled your session or there was update of the site! Please relog in");
+                    return View(reportViewModel);
+                }
+                try
+                {
                     Report report = new Report()
                     {
                         Title = reportViewModel.Title,
@@ -78,8 +81,14 @@ namespace RentACar.Controllers
                     await reportService.Save();
                     return RedirectToAction("Index", "Home");
                 }
-                return View(reportViewModel);
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Error saving report. Please try again. " + ex.Message);
+                    return View(reportViewModel);
+                }
             }
+            return View(reportViewModel);
+        }
         
         [HttpPost]
         public IActionResult Index(StartEndDateWithCarsCountViewModel model)

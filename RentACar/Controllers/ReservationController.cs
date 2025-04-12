@@ -47,6 +47,7 @@ namespace RentACar.Controllers
                 return RedirectToAction("Register", "Account");
             }
             var car = await carService.FindById(id);
+            var companyAddress=await carCompanyService.GetAddressById(car.CarCompanyId);
             var featuresOfACar = await carFeatureService.GetByCarIDAllFeatures(car.Id);
             var features = new List<Feature>();
             Feature feature = new Feature();
@@ -66,6 +67,7 @@ namespace RentACar.Controllers
                 IsSelfPick = true,
                 IsReturnOptionsEnabled = false,
                 IsAddressInputVisible = false,
+                AddressOfCompany = companyAddress
             };
 
 
@@ -149,11 +151,9 @@ namespace RentACar.Controllers
             }
             else if (submitButton == "BookNow")
             {
-
                 if (!carWithImages.StartDate.HasValue || !carWithImages.EndDate.HasValue)
                 {
                     ModelState.AddModelError("", "Start and end dates are required.");
-
                     return View(carWithImages);
                 }
 
@@ -167,7 +167,6 @@ namespace RentACar.Controllers
                     return View(carWithImages);
                 }
 
-
                 bool hasConflict = await reservationService.HasOverlappingReservation(carWithImages.Car.Id, startDay, endDay);
                 if (hasConflict)
                 {
@@ -175,38 +174,42 @@ namespace RentACar.Controllers
                     return View(carWithImages);
                 }
 
+                // Корекция на логиката
+                string paidDeliveryPlace = carWithImages.IsSelfPick ? null : carWithImages.CustomAddress;
 
                 Reservation reservation = new Reservation()
                 {
                     StartDate = startDay,
                     EndDate = endDay,
                     IsSelfPick = carWithImages.IsSelfPick,
-                    PaidDeliveryPlace = carWithImages.CustomAddress,
+                    PaidDeliveryPlace = paidDeliveryPlace, // Задава се само ако IsSelfPick е false
                     IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
                     CarId = carWithImages.Car.Id,
                     CustomerId = userId.Value,
                     CreateTime = DateTime.Now,
                 };
-                var price = await carService.GetPricePerDayByCarId(carWithImages.Car.Id);
-                reservation.TotalPrice = reservationService.TotalPriceForOneReservation(reservation, totalDays, price, 
+                var  price = await carService.GetPricePerDayByCarId(carWithImages.Car.Id);
+                reservation.TotalPrice = reservationService.TotalPriceForOneReservation(reservation, totalDays, price,
                     carWithImages.IsSelfPick, carWithImages.IsReturningBackAtSamePlace);
 
                 TempData["TotalPrice"] = reservation.TotalPrice.ToString(CultureInfo.InvariantCulture);
-                TempData["IsSelfPick"] = carWithImages.IsSelfPick.ToString(); 
-                TempData["PaidDeliveryPlace"] = carWithImages.CustomAddress;
-                TempData["IsReturnBackAtSamePlace"] = carWithImages.IsReturningBackAtSamePlace.ToString(); 
-                TempData["CarId"] = carWithImages.Car.Id.ToString(); 
+                TempData["IsSelfPick"] = carWithImages.IsSelfPick.ToString();
+                TempData["PaidDeliveryPlace"] = paidDeliveryPlace; // Корекция тук
+                TempData["IsReturnBackAtSamePlace"] = carWithImages.IsReturningBackAtSamePlace.ToString();
+                TempData["CarId"] = carWithImages.Car.Id.ToString();
                 TempData["CustomerId"] = userId.Value.ToString();
                 TempData["success"] = $"Days {totalDays} Total price: {reservation.TotalPrice}";
 
+                TempData.Keep("PaidDeliveryPlace");
+                TempData.Keep("IsSelfPick");
+
                 return RedirectToAction("FinalStepsReservation", new { id = carWithImages.Car.Id });
             }
-
             return View(carWithImages);
-
         }
         public async Task<IActionResult> FinalStepsReservation(int id)
-        { 
+        {
+         
             var companyId = await carService.GetCompanyIdByCarId(id);
 
             var companyName = await carCompanyService.GetNameById(companyId) ?? "Unknown Company"; ;
@@ -233,6 +236,12 @@ namespace RentACar.Controllers
                 total = double.Parse(TempData["TotalPrice"].ToString(), CultureInfo.InvariantCulture);
             }
             var priceOfTaxes = total * 0.09;
+            bool isSelfPick = TempData["IsSelfPick"] != null && bool.Parse(TempData["IsSelfPick"].ToString());
+            string paidDeliveryPlace = isSelfPick==false ? TempData["PaidDeliveryPlace"]?.ToString() : null;
+
+            bool isReturnBackAtSamePlace = TempData["IsReturnBackAtSamePlace"] != null && bool.Parse(TempData["IsReturnBackAtSamePlace"].ToString());
+            string returningPlace = isReturnBackAtSamePlace ? (string.IsNullOrWhiteSpace(paidDeliveryPlace) ? companyAddress : paidDeliveryPlace) : companyAddress;
+
             FinalStepReservationViewModel model = new FinalStepReservationViewModel()
             {
                 CompanyName = companyName,
@@ -250,10 +259,13 @@ namespace RentACar.Controllers
                 DifferenceTotalPriceWithDiscounted = price - total,
                 TotalPrice = total,
                 PriceOfTaxes = priceOfTaxes,
-                CarId = id
+                CarId = id,
+                ReturningPlace = returningPlace,
+                TakingPlace = string.IsNullOrWhiteSpace(paidDeliveryPlace) ? companyAddress : paidDeliveryPlace
             };
             return View(model);
         }
+        
 
         [HttpPost]
         public async Task<IActionResult> FinalStepsReservation(FinalStepReservationViewModel viewModel)

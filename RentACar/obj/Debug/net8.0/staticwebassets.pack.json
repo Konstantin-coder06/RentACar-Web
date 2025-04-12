@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\adminIndex.css"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\alert.css",
+      "PackagePath": "staticwebassets\\css\\alert.css"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\allReports.css",
       "PackagePath": "staticwebassets\\css\\allReports.css"
     },
