@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\css\\carIndex.css"
     },
     {
+      "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\companySettings.css",
+      "PackagePath": "staticwebassets\\css\\companySettings.css"
+    },
+    {
       "Id": "C:\\Users\\User\\Documents\\Software engineering\\RentACar\\RentACar-Web\\RentACar\\wwwroot\\css\\contactUs.css",
       "PackagePath": "staticwebassets\\css\\contactUs.css"
     },

@@ -14,6 +14,6 @@ namespace RentACar.Core.IServices
         Task<CarCompany>GetById(int? id);
         Task<string> GetNameById(int id);
         Task<string> GetAddressById(int id);
-       
+        Task<string> GetCompanyEmail(int id);
     }
 }

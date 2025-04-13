@@ -60,7 +60,80 @@
 .btn-primary:hover {
     background-color: #e65a5a;
 }
+.no-cars-container {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin: 40px auto;
+    max-width: 700px;
+}
 
+.no-cars-icon {
+    font-size: 80px;
+    color: #f76c6c;
+    margin-bottom: 20px;
+}
+
+.no-cars-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.no-cars-message {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.no-cars-btn {
+    background-color: #f76c6c;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    .no-cars-btn:hover {
+        background-color: #e65a5a;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(247, 108, 108, 0.3);
+    }
+
+.car-animation {
+    position: relative;
+    height: 100px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.car-icon {
+    position: absolute;
+    left: -100px;
+    top: 30px;
+    font-size: 40px;
+    color: #f76c6c;
+    animation: driveCar 5s infinite linear;
+}
+
+@keyframes driveCar {
+    0% {
+        left: -100px;
+    }
+
+    100% {
+        left: calc(100% + 100px);
+    }
+}
 .price-container {
     display: flex;
     justify-content: space-between;

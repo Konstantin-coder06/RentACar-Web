@@ -43,9 +43,9 @@
                     <h3>All Your Cars</h3>
                 </a>
 
-                <a href="#">
+                <a asp-action="Settings" asp-controller="Company">
                     <span class="material-symbols-sharp">settings </span>
-                    <h3>settings</h3>
+                    <h3>Settings</h3>
                 </a>
                 <a asp-action="AddCar" asp-controller="Car">
                     <span class="material-symbols-sharp">add </span>
@@ -145,7 +145,7 @@
                             <th>Car Brand</th>
                             <th>Model</th>
                             <th>Reservations</th>
-                            <th>Status</th>
+                            <th>Details</th>
                         </tr>
                     </thead>
                     <tbody id="table_body">
@@ -197,7 +197,7 @@
                 <h2>Recent Update</h2>
                 <div class="updates">
                     <div class="update">
-                        @for (int i = 0; i<Model.Customers.Count; i++)
+                        @for (int i = Model.Customers.Count-1; i>=0; i--)
                         {
 
 

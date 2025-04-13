@@ -1,4 +1,5 @@
-﻿using RentACar.Core.IServices;
+﻿using Microsoft.AspNetCore.Identity;
+using RentACar.Core.IServices;
 using RentACar.DataAccess.IRepository;
 using RentACar.DataAccess.IRepository.Repository;
 using RentACar.Models;
@@ -14,9 +15,11 @@ namespace RentACar.Core.Services
     public class CarCompanyService : ICarCompanyService
     {
         IRepository<CarCompany> carCompanyRepository;
-        public CarCompanyService(IRepository<CarCompany> carCompanyRepository)
+        private readonly UserManager<IdentityUser> userManager;
+        public CarCompanyService(IRepository<CarCompany> carCompanyRepository, UserManager<IdentityUser>userManager)
         {
             this.carCompanyRepository = carCompanyRepository;
+            this.userManager = userManager;
         }
         public async Task Add(CarCompany entity)
         {
@@ -106,6 +109,13 @@ namespace RentACar.Core.Services
 
         }
 
-      
+        public async Task<string> GetCompanyEmail(int id)
+        {
+            var carCompany = await carCompanyRepository.FindOne(x=>x.Id==id);
+            var identityUser = await userManager.FindByIdAsync(carCompany.UserId);
+            var email = identityUser?.Email;
+            return email;
+        }
+       
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAST DRIVE - Your Reservations</title>
+    <title>FAST DRIVE - Your Cars</title>
     <link rel="stylesheet" href="~/css/userIndex.css" />
 </head>
 @model UserViewModel
@@ -16,8 +16,8 @@ var companyId = Context.Session.GetInt32("CompanyId") ?? 0;
 <body>
     <div class="main-content">
         <div class="page-header">
-            <h1>Your Reservations</h1>
-            <p>View and manage all your car rental bookings</p>
+            <h1>Your Cars</h1>
+            <p>Here you can view all reservations made by users for your rental cars</p>
             <p>Welcome back, @Context.Session.GetString("CompanyName")</p>
         </div>
         <div class="filter-section">

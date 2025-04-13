@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.Models;
@@ -15,7 +17,8 @@ namespace RentACar.Controllers
         ICarCompanyService carCompanyService;
         IImageService imageService;
         IClassOfCarService classOfCarService;
-        public CompanyController(ICarService carService,IReservationService reservationService, ICustomerService customerService,ICarCompanyService carCompanyService, IImageService  imageService,IClassOfCarService classOfCarService) 
+        private readonly UserManager<IdentityUser> userManager;
+        public CompanyController(ICarService carService,IReservationService reservationService, ICustomerService customerService,ICarCompanyService carCompanyService, IImageService  imageService,IClassOfCarService classOfCarService,UserManager<IdentityUser>userManager) 
         {
           this.carService = carService;
             this.reservationService = reservationService;
@@ -23,6 +26,7 @@ namespace RentACar.Controllers
             this.carCompanyService = carCompanyService;
             this.imageService = imageService;
             this.classOfCarService = classOfCarService;
+            this.userManager = userManager;
         }
         [Authorize(Roles ="Company")]
         public async Task<IActionResult> Index()
@@ -55,7 +59,7 @@ namespace RentACar.Controllers
                     });
                 }
             }
-
+           
             var resLast24Hours = await reservationService.FindAllForLast24HoursCompany(companyCarIds);
             var resLast24HoursPrev = await reservationService.FindAllForLast24HoursBefore24HoursCompany(companyCarIds);
             var resLastMonth = await reservationService.FindAllForLastMonthCompany(companyCarIds);
@@ -80,7 +84,7 @@ namespace RentACar.Controllers
                 }
             }
 
-            var countPending = await carService.PendingCarsCount();
+            var countPending = await carService.PendingCompanyCarsCount(companyId.Value);
 
             var totalLast24Hours = await reservationService.TotalPriceForOnePeriodOfTime(resLast24Hours);
             var totalLast24HoursPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLast24HoursPrev);
@@ -229,6 +233,93 @@ namespace RentACar.Controllers
                 reservationsWithCarInf.Add(model);
             }
             return reservationsWithCarInf;
+        }
+        public async Task<IActionResult> Settings()
+        {
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            if (!companyId.HasValue)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var company=await carCompanyService.GetById(companyId);
+            CompanyEditInfoViewModel companyEditInfoViewModel = new CompanyEditInfoViewModel()
+            {
+                CompanyName = company.Name,
+                CompanyAddress = company.Address,
+                CompanyCity = company.City,
+                CompanyCountry = company.Country,
+                CompanyDescription = company.Description,
+                CompanyEmail = await carCompanyService.GetCompanyEmail(companyId.Value),
+               
+            };
+
+            return View(companyEditInfoViewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult>EditCompanyInfo(CompanyEditInfoViewModel viewModel)
+        {
+            try
+            {
+                // Get company ID from session or another source
+                var companyId = HttpContext.Session.GetInt32("CompanyId");
+                if (!companyId.HasValue)
+                {
+                    ModelState.AddModelError("", "Session expired. Please log in again.");
+                    return View("Settings", viewModel);
+                }
+
+                // Fetch the company
+                var company = await carCompanyService.GetById(companyId.Value);
+                if (company == null)
+                {
+                    ModelState.AddModelError("", "Company not found. Please log in again.");
+                    return View("Settings", viewModel);
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // Update company details
+                    company.Name = viewModel.CompanyName;
+                    company.Address = viewModel.CompanyAddress;
+                    company.City = viewModel.CompanyCity;
+                    company.Country = viewModel.CompanyCountry;
+                    company.Description = viewModel.CompanyDescription;
+
+                    // Save company changes
+                    carCompanyService.Update(company);
+                    await carCompanyService.Save();
+
+                    // Update the email in IdentityUser
+                    var user = await userManager.FindByIdAsync(company.UserId); // Assuming UserId links to IdentityUser
+                    if (user != null)
+                    {
+                        user.Email = viewModel.CompanyEmail;
+                        var result = await userManager.UpdateAsync(user);
+                        if (!result.Succeeded)
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                ModelState.AddModelError("", error.Description);
+                            }
+                            return View("Settings", viewModel);
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Associated user not found.");
+                        return View("Settings", viewModel);
+                    }
+
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Error saving changes: {ex.Message}");
+                return View("Settings", viewModel);
+            }
+
+            return View("Settings", viewModel);
         }
     }
 }

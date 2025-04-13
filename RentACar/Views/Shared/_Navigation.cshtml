@@ -5,7 +5,17 @@
             <div class="left-nav">
                 <a href="#" class="logo">FAST DRIVE</a>
                 <nav class="main-nav">
-                    <a asp-action="Index" asp-controller="Home" class="active">Home</a>
+                    @if (User.IsInRole("Company"))
+                    {
+                        <a asp-action="Index" asp-controller="Company">Home</a>
+                    }
+                    else if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Index" asp-controller="Admin">Home</a>
+                    }
+                    else{
+                        <a asp-action="Index" asp-controller="Home">Home</a>
+                    }
                     <a asp-action="Index" asp-controller="Car">Cars</a>
                     <a asp-action="AboutUs" asp-controller="Home">About Us</a>
                     @if (!User.IsInRole("Company"))

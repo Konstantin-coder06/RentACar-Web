@@ -79,10 +79,16 @@
                     <span class="material-symbols-sharp">settings </span>
                     <h3>settings</h3>
                 </a>
-                <a asp-action="AddCar" asp-controller="Admin">
+                <a asp-action="AddCar" asp-controller="Car">
                     <span class="material-symbols-sharp">add </span>
-                    <h3>Add Product</h3>
+                    <h3>Add Car</h3>
                 </a>
+                 @if(User.IsInRole("Company")){
+                <a asp-action="ViewReservations" asp-controller="Company">
+                    <span class="material-symbols-sharp">visibility</span>
+                    <h3>View Customers Reservations</h3>
+                </a>
+                 }
                 <a asp-action="Logout" asp-controller="Account">
                     <span class="material-symbols-sharp">logout </span>
                     <h3>logout</h3>
@@ -96,9 +102,7 @@
         <main>
             <h1>📊 Analytics</h1>
 
-            <div class="date">
-                <input type="date">
-            </div>
+         
 
             <div class="insights-section">
                 <h2 class="analytics-title">Daily Performance</h2>
@@ -433,7 +437,9 @@
                 </div>
 
             </div>
+            @if(User.IsInRole("Admin")){
 
+            
             <div class="recent_order">
                 <h2>🚗 Top 10 most reservated cars</h2>
                 <table>
@@ -456,6 +462,7 @@
                     </tbody>
                 </table>
             </div>
+            }
         </main>
     </div>
 </body>

@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Microsoft.AspNetCore.Identity;
+using Moq;
 using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.DataAccess.IRepository;
@@ -16,12 +17,14 @@ namespace RentACar.Tests
     {
         private Mock<IRepository<CarCompany>> mockRepository;
         private CarCompanyService carCompanyService;
-
+        private Mock<UserManager<IdentityUser>> _mockUserManager;
         [SetUp]
         public void Setup()
         {
             mockRepository = new Mock<IRepository<CarCompany>>();
-            carCompanyService = new CarCompanyService(mockRepository.Object);
+            var store = new Mock<IUserStore<IdentityUser>>();
+            _mockUserManager = new Mock<UserManager<IdentityUser>>(store.Object, null, null, null, null, null, null, null, null);
+            carCompanyService = new CarCompanyService(mockRepository.Object,_mockUserManager.Object);
         }
 
         [Test]

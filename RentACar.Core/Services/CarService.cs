@@ -82,7 +82,10 @@ namespace RentACar.Core.Services
         {
             return carRepository.CountAsync(x => x.Pending == true);
         }
-
+        public Task<int> PendingCompanyCarsCount(int companyId)
+        {
+            return carRepository.CountAsync(x=>x.CarCompanyId == companyId && x.Pending==true);
+        }
         public Task<int> CountAsync(Expression<Func<Car, bool>> predicate)
         {
            return carRepository.CountAsync(predicate);
