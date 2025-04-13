@@ -10,7 +10,7 @@ namespace RentACar.Core.IServices
 {
     public interface IReservationService:IRepository<Reservation>
     {
-        Task<bool> HasOverlappingReservation(int carId, DateTime startDate, DateTime endDate);
+        Task<bool> HasOverlappingReservation(int carId, DateTime startDate, DateTime endDate, int? excludeReservationId = null);
         Task<IEnumerable<Reservation>> GetAllByOrderByCreateTime();
         Task<IEnumerable<Reservation>> FindAllForLast24Hours();
         Task<IEnumerable<Reservation>> FindAllForLast24HoursBefore24Hours();

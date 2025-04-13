@@ -140,28 +140,27 @@
                                 <span class="detail-label">Created At:</span>
                                 <span class="detail-value">@x.CreateTime</span>
                             </div>
-                        @if(x.Status=="Coming"){
-                            
-                                    @if (x.Difference >= 2)
-                                    {           
-                                        <div class="detail-row">
-                                       <form asp-action="Reservation" asp-controller="Reservation" method="post">
-                                           @TempData["Edit"]==@true
-                                    <button type="submit" class="action-btn" asp-route-id="@x.CarId">Modify Booking</button>
-                                       </form>
-                                    <form asp-action="ShowCancelConfirmation" asp-controller="User" method="post">
-                                        <input type="hidden" name="userId" value="@userId" />
-                                        <input type="hidden" name="reservationId" value="@x.ReservationId" />
-                                        <button type="submit" class="action-btn secondary">Cancel Booking</button>
-                                    </form>
-                                        </div>
-                                    }
-                                    else{
-                                        <span class="detail-label" style="color:#880000">*You can not cancel this booking! It is too close to happend</span>
-                                    }
+                            @if (x.Status == "Coming")
+                            {
 
-                                
-                        }
+                                @if (x.Difference >= 2)
+                                {
+                                    <div class="detail-row">
+                                       
+                                        <form asp-action="ShowCancelConfirmation" asp-controller="User" method="post">
+                                            <input type="hidden" name="userId" value="@userId" />
+                                            <input type="hidden" name="reservationId" value="@x.ReservationId" />
+                                            <button type="submit" class="action-btn secondary">Cancel Booking</button>
+                                        </form>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="detail-label" style="color:#880000">*You can not cancel this booking! It is too close to happend</span>
+                                }
+
+
+                            }
                         else if (x.Status == "Canceled" || x.Status == "Completed")
                             {
                                 <form asp-action="BookAgain" asp-controller="User" method="post">

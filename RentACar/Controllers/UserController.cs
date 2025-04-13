@@ -108,13 +108,11 @@ namespace RentACar.Controllers
             var isCarAvailableTomorrow = await reservationService.IsCarReservationForTomorrow(car.Id);
             if (isCarAvailableTomorrow)
             {
-                // If the car is available tomorrow, set the dates to tomorrow and 2 days later
                 HttpContext.Session.SetString("StartDate", DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
                 HttpContext.Session.SetString("EndDate", DateTime.Now.AddDays(3).ToString("yyyy-MM-dd"));
             }
             else
             {
-                // If the car is not available tomorrow, find the earliest available dates
                 var (startDate, endDate) = await reservationService.GetEarliestAvailableDates(car.Id, minimumDurationDays: 2);
                 HttpContext.Session.SetString("StartDate", startDate.ToString("yyyy-MM-dd"));
                 HttpContext.Session.SetString("EndDate", endDate.ToString("yyyy-MM-dd"));
@@ -153,8 +151,8 @@ namespace RentACar.Controllers
                     PickUpAddress = x.PaidDeliveryPlace,
                     TotalPrice = x.TotalPrice,
                     IsTheCarReservatedForToday = isReserved,
-                    StartDateOfCar = isReserved ? startDate : null, // Set to null if not reserved
-                    EndDateOfCar = isReserved ? endDate : null,     // Set to null if not reserved
+                    StartDateOfCar = isReserved ? startDate : null, 
+                    EndDateOfCar = isReserved ? endDate : null,     
                     CreateTime = x.CreateTime,
                     Difference=(int)(x.StartDate-DateTime.Now).TotalDays,
                     CarId = car.Id,

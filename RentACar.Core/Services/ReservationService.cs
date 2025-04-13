@@ -82,12 +82,15 @@ namespace RentACar.Core.Services
             return await reservationsRepository.GetAllOrderBy(x => x.CreateTime);
         }
 
-        public async Task<bool> HasOverlappingReservation(int carId, DateTime startDate, DateTime endDate)
+        public async Task<bool> HasOverlappingReservation(int carId, DateTime startDate, DateTime endDate, int? excludeReservationId = null)
         {
-            return await reservationsRepository
-                .AnyAsync(r => r.CarId == carId &&
-                               r.StartDate < endDate &&
-                               r.EndDate > startDate);
+            var reservations = await reservationsRepository.FindAll(r => r.CarId == carId
+                    && (!excludeReservationId.HasValue || r.Id != excludeReservationId.Value)
+                    && r.StartDate <= endDate
+                    && r.EndDate >= startDate);
+                
+
+            return reservations.Any();
         }
         public async Task Save()
         {
@@ -458,55 +461,37 @@ namespace RentACar.Core.Services
         }
         public async Task<(DateTime startDate, DateTime endDate)> GetEarliestAvailableDates(int carId, int minimumDurationDays = 2)
         {
-            // Get the current date and the earliest possible start date (tomorrow)
-            var today = DateTime.Today; // April 13, 2025
-            var earliestPossibleStart = today.AddDays(1); // April 14, 2025
+            var today = DateTime.Today;
+            var earliestPossibleStart = today.AddDays(1);
 
-            // Get all reservations for the car, sorted by StartDate
             var reservations = await reservationsRepository.FindAll(r => r.CarId == carId);
-            var sortedReservations = reservations
-                .Where(r => r.EndDate >= earliestPossibleStart) // Ignore past reservations
-                .OrderBy(r => r.StartDate)
-                .ToList();
-
-            // If there are no reservations, return tomorrow and 2 days later
+            var sortedReservations = reservations.Where(r => r.EndDate >= earliestPossibleStart) .OrderBy(r => r.StartDate).ToList();
             if (!sortedReservations.Any())
             {
                 return (earliestPossibleStart, earliestPossibleStart.AddDays(minimumDurationDays));
             }
-
-            // Check for a gap starting from tomorrow
             var currentDate = earliestPossibleStart;
-
             for (int i = 0; i < sortedReservations.Count; i++)
             {
                 var reservation = sortedReservations[i];
                 var reservationStart = reservation.StartDate;
                 var reservationEnd = reservation.EndDate;
-
-                // If there's a gap between currentDate and the start of the reservation
                 if (currentDate < reservationStart)
                 {
                     var gapDays = (reservationStart - currentDate).Days;
                     if (gapDays >= minimumDurationDays)
                     {
-                        // Found a gap that's at least minimumDurationDays long
                         return (currentDate, currentDate.AddDays(minimumDurationDays));
                     }
                 }
 
-                // Move currentDate to the end of the current reservation (plus 1 day)
                 currentDate = reservationEnd.AddDays(1);
 
-                // If this is the last reservation, check if we can book after it
                 if (i == sortedReservations.Count - 1)
                 {
-                    // After the last reservation, we can book starting from currentDate
                     return (currentDate, currentDate.AddDays(minimumDurationDays));
                 }
             }
-
-            // If we reach here, we didn't find a gap, so book after the last reservation
             return (currentDate, currentDate.AddDays(minimumDurationDays));
         }
     }

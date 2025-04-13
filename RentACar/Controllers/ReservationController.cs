@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.Models;
 using System.Globalization;
+using System.Linq.Expressions;
 
 namespace RentACar.Controllers
 {
@@ -24,7 +26,7 @@ namespace RentACar.Controllers
             this.carFeatureService = carFeatureService;
             this.featureService = featureService;
         }
-        [Authorize(Roles ="User")]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Reservation(int id)
         {
 
@@ -34,8 +36,7 @@ namespace RentACar.Controllers
             var startDayStr = HttpContext.Session.GetString("StartDate");
             if (!string.IsNullOrEmpty(startDayStr))
             {
-                startDay = DateTime.ParseExact(startDayStr,"yyyy-MM-dd",CultureInfo.InvariantCulture,DateTimeStyles.None
-                );
+                startDay = DateTime.ParseExact(startDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None);
             }
             var endDayStr = HttpContext.Session.GetString("EndDate");
             if (!string.IsNullOrEmpty(endDayStr))
@@ -48,7 +49,7 @@ namespace RentACar.Controllers
                 return RedirectToAction("Register", "Account");
             }
             var car = await carService.FindById(id);
-            var companyAddress=await carCompanyService.GetAddressById(car.CarCompanyId);
+            var companyAddress = await carCompanyService.GetAddressById(car.CarCompanyId);
             var featuresOfACar = await carFeatureService.GetByCarIDAllFeatures(car.Id);
             var features = new List<Feature>();
             Feature feature = new Feature();
@@ -77,7 +78,7 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> Reservation(CarWithImages carWithImages, string submitButton)
         {
-           
+
             var userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
@@ -187,19 +188,19 @@ namespace RentACar.Controllers
                     StartDate = startDay,
                     EndDate = endDay,
                     IsSelfPick = carWithImages.IsSelfPick,
-                    PaidDeliveryPlace = paidDeliveryPlace, 
+                    PaidDeliveryPlace = paidDeliveryPlace,
                     IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
                     CarId = carWithImages.Car.Id,
                     CustomerId = userId.Value,
                     CreateTime = DateTime.Now,
                 };
-                var  price = await carService.GetPricePerDayByCarId(carWithImages.Car.Id);
+                var price = await carService.GetPricePerDayByCarId(carWithImages.Car.Id);
                 reservation.TotalPrice = reservationService.TotalPriceForOneReservation(reservation, totalDays, price,
                     carWithImages.IsSelfPick, carWithImages.IsReturningBackAtSamePlace);
 
                 TempData["TotalPrice"] = reservation.TotalPrice.ToString(CultureInfo.InvariantCulture);
                 TempData["IsSelfPick"] = carWithImages.IsSelfPick.ToString();
-                TempData["PaidDeliveryPlace"] = paidDeliveryPlace; 
+                TempData["PaidDeliveryPlace"] = paidDeliveryPlace;
                 TempData["IsReturnBackAtSamePlace"] = carWithImages.IsReturningBackAtSamePlace.ToString();
                 TempData["CarId"] = carWithImages.Car.Id.ToString();
                 TempData["CustomerId"] = userId.Value.ToString();
@@ -214,7 +215,7 @@ namespace RentACar.Controllers
         }
         public async Task<IActionResult> FinalStepsReservation(int id)
         {
-         
+
             var companyId = await carService.GetCompanyIdByCarId(id);
 
             var companyName = await carCompanyService.GetNameById(companyId) ?? "Unknown Company"; ;
@@ -242,7 +243,7 @@ namespace RentACar.Controllers
             }
             var priceOfTaxes = total * 0.09;
             bool isSelfPick = TempData["IsSelfPick"] != null && bool.Parse(TempData["IsSelfPick"].ToString());
-            string paidDeliveryPlace = isSelfPick==false ? TempData["PaidDeliveryPlace"]?.ToString() : null;
+            string paidDeliveryPlace = isSelfPick == false ? TempData["PaidDeliveryPlace"]?.ToString() : null;
 
             bool isReturnBackAtSamePlace = TempData["IsReturnBackAtSamePlace"] != null && bool.Parse(TempData["IsReturnBackAtSamePlace"].ToString());
             string returningPlace = isReturnBackAtSamePlace ? (string.IsNullOrWhiteSpace(paidDeliveryPlace) ? companyAddress : paidDeliveryPlace) : companyAddress;
@@ -270,7 +271,7 @@ namespace RentACar.Controllers
             };
             return View(model);
         }
-        
+
 
         [HttpPost]
         public async Task<IActionResult> FinalStepsReservation(FinalStepReservationViewModel viewModel)
@@ -289,19 +290,19 @@ namespace RentACar.Controllers
                 endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             }
 
-            
+
             bool isSelfPick = TempData["IsSelfPick"] != null && bool.Parse(TempData["IsSelfPick"].ToString());
             string paidDeliveryPlace = TempData["PaidDeliveryPlace"]?.ToString();
             bool isReturnBackAtSamePlace = TempData["IsReturnBackAtSamePlace"] != null && bool.Parse(TempData["IsReturnBackAtSamePlace"].ToString());
             int carId = TempData["CarId"] != null ? int.Parse(TempData["CarId"].ToString()) : 0;
             int customerId = TempData["CustomerId"] != null ? int.Parse(TempData["CustomerId"].ToString()) : 0;
             double totalPrice = 0;
-            if(!startDay.HasValue || !endDay.HasValue) 
+            if (!startDay.HasValue || !endDay.HasValue)
             {
                 ModelState.AddModelError("StartDate", "StartDate and EndDate are required");
                 return View(viewModel);
             }
-            if (viewModel.TotalPrice!=0)
+            if (viewModel.TotalPrice != 0)
             {
                 try
                 {
@@ -325,7 +326,7 @@ namespace RentACar.Controllers
                 return View(viewModel);
             }
 
-       
+
             Reservation reservation = new Reservation()
             {
                 StartDate = startDay.Value,
@@ -336,16 +337,15 @@ namespace RentACar.Controllers
                 CarId = carId,
                 CustomerId = customerId,
                 CreateTime = DateTime.Now,
-                TotalPrice = viewModel.TotalPrice 
+                TotalPrice = viewModel.TotalPrice
             };
             await reservationService.Add(reservation);
             await reservationService.Save();
 
-               
+
             TempData.Clear();
             TempData["success"] = "Reservation successfully created!";
             return RedirectToAction("Index", "Home");
         }
-       
     }
 }
