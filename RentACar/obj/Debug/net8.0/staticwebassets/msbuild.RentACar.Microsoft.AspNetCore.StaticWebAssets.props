@@ -48,8 +48,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>n19xxabdc2</Fingerprint>
-      <Integrity>9TpdA/8NefHUnqu1zqiwzNpi5ROyFiU6dyp0OUlfeO0=</Integrity>
+      <Fingerprint>4nslynhwrg</Fingerprint>
+      <Integrity>QLKuDgqAcTVQXfk8SZzds2m8h4ombGtX3h9kP/A0/pQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\adminIndex.css'))</OriginalItemSpec>
@@ -138,8 +138,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>8ezbkasttu</Fingerprint>
-      <Integrity>EHx0IlNzanCgAp1Uel9CR2x49HV6Ie02OXKFp/Mo8r8=</Integrity>
+      <Fingerprint>6jcogax660</Fingerprint>
+      <Integrity>cl0ywtnBE/VFuiWgyUwa0DBEsajHrGp5cAF+cEHg/+k=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\companySettings.css'))</OriginalItemSpec>
@@ -444,8 +444,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>feepjnyhd5</Fingerprint>
-      <Integrity>2dv+1Z8giJi/Yff8iYSNicftt1NtISYQBZyxMv3eNzw=</Integrity>
+      <Fingerprint>cdr43an88t</Fingerprint>
+      <Integrity>cOGsPRjbRObhccA1u+u9FC3cuLsZPuUmrs12XZ+NOc0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\calendar.js'))</OriginalItemSpec>
@@ -516,8 +516,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ppmkfsmrmp</Fingerprint>
-      <Integrity>/S4fkyRTjSh/G0E9F+lMZOnHeYyH1lPppRe1pW11SrM=</Integrity>
+      <Fingerprint>dz8tac5h9j</Fingerprint>
+      <Integrity>R6MY+9oDND7gDk9QXBrAKk+rDhIGpBBHoAL+R1oJQFQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\oldDateDisabled.js'))</OriginalItemSpec>

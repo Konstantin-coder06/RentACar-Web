@@ -10,9 +10,9 @@ namespace RentACar.Models
         public string CustomAddress {  get; set; }
         public bool IsReturningBackAtSamePlace {  get; set; }
         [DataType(DataType.Date)]
-        public DateTime? StartDate { get; set; }
+        public DateTime? StartDay { get; set; }
         [DataType(DataType.Date)]
-        public DateTime? EndDate { get; set; }
+        public DateTime? EndDay { get; set; }
         public List<Feature> Features { get; set; }
         public bool IsReturnOptionsEnabled { get; set; }
         public bool IsAddressInputVisible { get; set; }

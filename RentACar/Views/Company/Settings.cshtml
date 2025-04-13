@@ -112,45 +112,7 @@
                             <button class="section-edit-btn" onclick="toggleEditForm('security-form')">
                                 <span>✏️</span> Edit
                             </button>
-                        </div>
-
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <div class="info-label">Password</div>
-                                <div  class="info-value">*The Password can not be shown for savety reasons</div>
-                            </div>
-                        </div>
-
-                        <div id="security-form" class="edit-form">
-                            <div class="form-group">
-                                <label asp-for=CurrentPassword class="form-label">Current Password</label>
-                                <div class="password-input-wrapper">
-                                    <input asp-for="CurrentPassword" type="password" class="form-control" placeholder="Enter current password">
-                                    
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="NewPassword" class="form-label">New Password</label>
-                                <div class="password-input-wrapper">
-                                    <input asp-for="NewPassword" type="password" class="form-control" placeholder="Enter new password">
-                                 
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="ConfirmNewPassword" class="form-label">Confirm New Password</label>
-                                <div class="password-input-wrapper">
-                                    <input asp-for="ConfirmNewPassword" type="password" class="form-control" placeholder="Confirm new password">
-                                  
-                                </div>
-                            </div>
-
-
-
-                            <div class="form-actions">
-                                <button class="btn btn-outline" onclick="toggleEditForm('security-form')">Cancel</button>
-                                <button class="btn btn-primary">Update Security Settings</button>
-                            </div>
-                        </div>
+                        </div>            
                     </div>
                 </div>
 

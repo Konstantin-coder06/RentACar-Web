@@ -61,8 +61,8 @@ namespace RentACar.Controllers
             {
                 Car = car,
                 Images = await imageService.GetImagesOrderByOrderCarId(car.Id),
-                StartDate = startDay,
-                EndDate = endDay,
+                StartDay = startDay,
+                EndDay = endDay,
                 Features = features,
                 IsSelfPick = true,
                 IsReturnOptionsEnabled = false,
@@ -93,8 +93,8 @@ namespace RentACar.Controllers
             carWithImages.Images = await imageService.GetImagesOrderByOrderCarId(carWithImages.Car.Id);
             if (submitButton == "ChangeDate")
             {
-                var newStartDate = carWithImages.StartDate;
-                var newEndDate = carWithImages.EndDate;
+                var newStartDate = carWithImages.StartDay;
+                var newEndDate = carWithImages.EndDay;
 
                 if (!newStartDate.HasValue || !newEndDate.HasValue || newStartDate >= newEndDate)
                 {
@@ -120,18 +120,18 @@ namespace RentACar.Controllers
 
                     carWithImages.Car = car;
                     carWithImages.Images = await imageService.GetImagesOrderByOrderCarId(carWithImages.Car.Id);
-                    carWithImages.StartDate = newStartDate;
-                    carWithImages.EndDate = newEndDate;
+                    carWithImages.StartDay = newStartDate;
+                    carWithImages.EndDay = newEndDate;
                     carWithImages.Features = features;
                     return View(carWithImages);
                 }
             }
             else if (submitButton == "KeepDates")
             {
-                if (carWithImages.StartDate.HasValue && carWithImages.EndDate.HasValue)
+                if (carWithImages.StartDay.HasValue && carWithImages.EndDay.HasValue)
                 {
-                    HttpContext.Session.SetString("StartDate", carWithImages.StartDate.Value.ToString("yyyy-MM-dd"));
-                    HttpContext.Session.SetString("EndDate", carWithImages.EndDate.Value.ToString("yyyy-MM-dd"));
+                    HttpContext.Session.SetString("StartDate", carWithImages.StartDay.Value.ToString("yyyy-MM-dd"));
+                    HttpContext.Session.SetString("EndDate", carWithImages.EndDay.Value.ToString("yyyy-MM-dd"));
                     return RedirectToAction("Index");
                 }
                 else
@@ -151,14 +151,14 @@ namespace RentACar.Controllers
             }
             else if (submitButton == "BookNow")
             {
-                if (!carWithImages.StartDate.HasValue || !carWithImages.EndDate.HasValue)
+                if (!carWithImages.StartDay.HasValue || !carWithImages.EndDay.HasValue)
                 {
                     ModelState.AddModelError("", "Start and end dates are required.");
                     return View(carWithImages);
                 }
 
-                DateTime startDay = carWithImages.StartDate.Value;
-                DateTime endDay = carWithImages.EndDate.Value;
+                DateTime startDay = carWithImages.StartDay.Value;
+                DateTime endDay = carWithImages.EndDay.Value;
                 int totalDays = (int)(endDay - startDay).TotalDays;
 
                 if (totalDays <= 0)

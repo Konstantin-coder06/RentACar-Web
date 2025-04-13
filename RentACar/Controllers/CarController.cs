@@ -704,19 +704,20 @@ namespace RentACar.Controllers
                 Images = images.Select(img => new ImageViewModel { Id = img.Id, Url = img.Url, Order = img.Order }).ToList(),
                 ClassOfCarId = car.ClassOfCarId,
                 ClassOptions = new SelectList(classes, "Id", "Name"),
-                Features = allFeatures, 
+                Features = allFeatures,
                 SelectedFeatures = selectedFeatures,
-                TypeId=car.CType.Id,
-                TypeOptions=new SelectList(carTypes.Select(t => new
+                TypeId = car.CType.Id,
+                TypeOptions = new SelectList(carTypes.Select(t => new
                 {
                     Id = t.Id,
                     DisplayText = $"{t.Name} ({t.SeatCapacity} seats)"
                 }),
-                "Id", 
-                "DisplayText" ),
-                IsConvertible=car.IsConvertable,
-                
+                "Id",
+                "DisplayText"),
+                IsConvertible = car.IsConvertable,
+
             };
+            TempData["IsPending"] = car.Pending;
             return View(viewModel);
         }
         [HttpPost("Car/EditPendingCar/{id?}")]

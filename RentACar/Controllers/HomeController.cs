@@ -25,8 +25,8 @@ namespace RentACar.Controllers
         {
             StartEndDateWithCarsCountViewModel viewModel = new StartEndDateWithCarsCountViewModel()
             {
-                StartDay = DateTime.Now,
-                EndDay = DateTime.Now.AddDays(3),
+                StartDay = DateTime.Now.AddDays(1),
+                EndDay = DateTime.Now.AddDays(4),
                 StandardCount =await carService.CountOfCarsWithCategory(6),
                 LuxuryCount = await carService.CountOfCarsWithCategory(2),
                 EconomyCount=await carService.CountOfCarsWithCategory(1),

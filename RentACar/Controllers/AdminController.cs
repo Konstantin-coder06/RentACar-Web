@@ -267,7 +267,7 @@ namespace RentACar.Controllers
             if (isCompany)
             {
                 var companyId = HttpContext.Session.GetInt32("CompanyId");
-                if (!companyId.HasValue) return BadRequest("No company ID found.");
+                if (!companyId.HasValue) return RedirectToAction("Login","Account");
 
                 var companyCars = await carService.GetAllCarsOfCompany(companyId.Value);
                 companyCarIds = companyCars.Select(c => c.Id).ToList();

@@ -70,9 +70,7 @@
         <main>
             <h1>Dashbord</h1>
 
-            <div class="date">
-                <input type="date">
-            </div>
+          
 
             <div class="insights">
 
@@ -93,7 +91,7 @@
                         </div>
 
                     </div>
-                    <small>Last 24 Hours</small>
+                    <small>Last Day</small>
                 </div>
 
 
@@ -123,12 +121,7 @@
                             <h3>Total Reservation</h3>
                             <h1>@Model.Count</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle r="30" cy="40" cx="40"></circle>
-                            </svg>
-                            <div class="number"><p>80%</p></div>
-                        </div>
+                      
 
                     </div>
                     <small>Last Mounth</small>
@@ -136,7 +129,23 @@
 
 
             </div>
+            <form asp-controller="Company" asp-action="Index" method="get" class="search-form">
+                <div class="search-wrapper">
+                    <span class="material-symbols-sharp">search</span>
+                    <input type="text" name="searchTerm" placeholder="Search cars by brand, model..." value="@ViewData["SearchTerm"]">
+                    <button type="submit" class="search-button">
+                        <span class="material-symbols-sharp">arrow_forward</span>
+                    </button>
+                </div>
+            </form>
+            @if (Model.AllCars.Count == 0)
+            {
+                <div class="no-results">
+                    <p>No cars found matching your search criteria</p>
+                </div>
+            }else{
 
+            
             <div class="recent_order" id="table_container">
                 <h2 id="table_title">All Your Cars</h2>
                 <table id="data_table">
@@ -149,6 +158,7 @@
                         </tr>
                     </thead>
                     <tbody id="table_body">
+                      
                         @for (int i = 0; i < Model.AllCars.Count; i++)
                         {
                             <tr>
@@ -167,7 +177,7 @@
                 </table>
                 <a asp-action="Pendings" asp-controller="Car" class="btn btn-primary">Show All</a>
             </div>
-
+            }
         </main>
 
         <div class="right">

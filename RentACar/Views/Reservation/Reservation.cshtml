@@ -103,10 +103,10 @@
                 </div>
 
                 <div style="margin-top: 2.5rem;">
-                    <label asp-for="StartDate">Start Date:</label>
-                    <input asp-for="StartDate" type="date" name="StartDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
-                    <label asp-for="EndDate">End Date:</label>
-                    <input asp-for="EndDate" type="date" name="EndDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                    <label asp-for="StartDay">Start Date:</label>
+                    <input asp-for="StartDay" type="date" name="StartDay" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                    <label asp-for="EndDay">End Date:</label>
+                    <input asp-for="EndDay" type="date" name="EndDay" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
                     <button type="submit" name="submitButton" value="ChangeDate" class="btn btn-primary">Change the date</button>
                 </div>
 

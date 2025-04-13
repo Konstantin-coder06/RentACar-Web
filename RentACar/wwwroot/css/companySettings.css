@@ -325,7 +325,6 @@ body {
     cursor: pointer;
 }
 
-/* Show/hide classes */
 .show {
     display: block;
 }

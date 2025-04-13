@@ -705,3 +705,57 @@ main {
     .container.no-sidebar main {
         width: 100%;
     }
+.search-container {
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--clr-white);
+    border-radius: var(--border-radius-1);
+    padding: 0.5rem 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+    .search-wrapper span {
+        color: var(--clr-info-dark);
+        margin-right: 0.5rem;
+    }
+
+    .search-wrapper input {
+        width: 100%;
+        padding: 0.5rem;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--clr-dark);
+        font-size: 0.95rem;
+    }
+
+        .search-wrapper input::placeholder {
+            color: var(--clr-info-dark);
+        }
+
+.search-button {
+    background: var(--clr-primary);
+    border-radius: var(--border-radius-1);
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+}
+
+    .search-button span {
+        color: var(--clr-white);
+        margin: 0;
+    }
+
+.no-results {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--clr-dark-variant);
+    background: var(--clr-white);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+}

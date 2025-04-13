@@ -194,13 +194,13 @@
                               @if(isAdmin || isCompany){
                                     <a asp-controller="Car" asp-action="EditPendingCar"
                                        asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
-                                         "Review"
+                                         Review
                                     </a>
                               }
                               else{
                                     <a asp-controller="Reservation" asp-action="Reservation"
                                        asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
-                                        "Reserve now"
+                                        Reserve now
                                     </a>
                               }
                             </div>

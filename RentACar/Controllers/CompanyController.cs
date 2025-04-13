@@ -6,6 +6,7 @@ using RentACar.Core.IServices;
 using RentACar.Core.Services;
 using RentACar.Models;
 using RentACar.Utility;
+using System.ComponentModel.Design;
 
 namespace RentACar.Controllers
 {
@@ -28,21 +29,33 @@ namespace RentACar.Controllers
             this.classOfCarService = classOfCarService;
             this.userManager = userManager;
         }
-        [Authorize(Roles ="Company")]
-        public async Task<IActionResult> Index()
+        [Authorize(Roles = "Company")]
+        public async Task<IActionResult> Index(string searchTerm = null)
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
+            if (!companyId.HasValue)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             var company = await carCompanyService.GetById(companyId);
-            var companyCars = await carService.GetAllCarsOfCompany(companyId.Value);
+            if (company == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            string[] searchTerms = string.IsNullOrWhiteSpace(searchTerm)
+                ? Array.Empty<string>()
+                : searchTerm.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            var companyCars = await carService.SearchCarsByBrandOrModel(companyId.Value, searchTerms);
             List<int> companyCarIds = companyCars.Select(c => c.Id).ToList();
 
-           
             var allReservations = await reservationService.GetAllReservationsContaingCompanyIds(companyCarIds);
             var reservationedCars = allReservations.ToList();
             var reservatedCars = await reservationService.GetAllReservationsForCompany(companyCars);
             var customers = new List<CustomerReservationedCarViewModel>();
 
-          
             foreach (var reservation in reservationedCars.TakeLast(4))
             {
                 var customer = await customerService.FindById(reservation.CustomerId);
@@ -59,7 +72,7 @@ namespace RentACar.Controllers
                     });
                 }
             }
-           
+
             var resLast24Hours = await reservationService.FindAllForLast24HoursCompany(companyCarIds);
             var resLast24HoursPrev = await reservationService.FindAllForLast24HoursBefore24HoursCompany(companyCarIds);
             var resLastMonth = await reservationService.FindAllForLastMonthCompany(companyCarIds);
@@ -71,7 +84,7 @@ namespace RentACar.Controllers
             var carsWithCount = new List<TopCarsViewModel>();
             foreach (var x in carsCount)
             {
-                var car = await carService.FindById(x.CarId);
+                var car = companyCars.FirstOrDefault(c => c.Id == x.CarId);
                 if (car != null)
                 {
                     carsWithCount.Add(new TopCarsViewModel
@@ -119,30 +132,22 @@ namespace RentACar.Controllers
                 Customers = customers,
                 CompanyName = company.Name
             };
+
+            ViewData["SearchTerm"] = searchTerm;
             return View(viewModel);
-           
         }
         public async Task<IActionResult> ViewReservations(int id)
         {
-            var company = HttpContext.Session.GetInt32("CompanyId");//await carCompanyService.GetById(id);
-            var companyCars = await carService.GetAllCarsIdByCompanyId(company.Value);
-            var reservations = await reservationService.GetAllReservationOfCompanyCars(companyCars);
-            var reservationsWithCarInf = await BuildReservationViewModels(reservations);
-            var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
-            return View(userViewModel);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Filter(int id, string statusFilter)
-        {
-            var company = HttpContext.Session.GetInt32("CompanyId");
-            if (!company.HasValue)
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            if (!companyId.HasValue)
             {
-                return RedirectToAction("Register", "Account");
+                return RedirectToAction("Login", "Account");
             }
 
-            var companyCars = await carService.GetAllCarsIdByCompanyId(company.Value);
+            var companyCars = await carService.GetAllCarsIdByCompanyId(companyId.Value);
             var reservations = await reservationService.GetAllReservationOfCompanyCars(companyCars);
 
+            var statusFilter = TempData["StatusFilter"]?.ToString() ?? "All Reservations";
             if (statusFilter != "All Reservations")
             {
                 var reservationStatuses = new List<(Reservation Reservation, string Status)>();
@@ -157,7 +162,6 @@ namespace RentACar.Controllers
                     .Select(rs => rs.Reservation)
                     .ToList();
 
-              
                 if (!reservations.Any() && statusFilter != "Unknown")
                 {
                     var unexpectedStatuses = reservationStatuses.Select(rs => rs.Status).Distinct();
@@ -170,14 +174,29 @@ namespace RentACar.Controllers
 
             TempData["StatusFilter"] = statusFilter;
 
-            return View("ViewReservations", userViewModel);
+            return View(userViewModel);
+        }
+        [HttpPost]
+        public  IActionResult Filter(int id, string statusFilter)
+        {
+            var company = HttpContext.Session.GetInt32("CompanyId");
+            if (!company.HasValue)
+            {
+                return RedirectToAction("Register", "Account");
+            }    
+            TempData["StatusFilter"] = statusFilter;
+            return RedirectToAction("ViewReservations", new { id });
         }
 
         [HttpPost]
         public async Task<IActionResult> FilterDate(int id, DateTime? startDate, DateTime? endDate)
         {
-            var company = HttpContext.Session.GetInt32("CompanyId");
-            var companyCars = await carService.GetAllCarsIdByCompanyId(company.Value);
+            var companyId = HttpContext.Session.GetInt32("CompanyId");
+            if (!companyId.HasValue)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var companyCars = await carService.GetAllCarsIdByCompanyId(companyId.Value);
             var reservations = await reservationService.GetAllReservationOfCompanyCars(companyCars);
 
             if (startDate.HasValue)
@@ -259,16 +278,14 @@ namespace RentACar.Controllers
         public async Task<IActionResult>EditCompanyInfo(CompanyEditInfoViewModel viewModel)
         {
             try
-            {
-                // Get company ID from session or another source
+            {             
                 var companyId = HttpContext.Session.GetInt32("CompanyId");
                 if (!companyId.HasValue)
                 {
                     ModelState.AddModelError("", "Session expired. Please log in again.");
                     return View("Settings", viewModel);
                 }
-
-                // Fetch the company
+            
                 var company = await carCompanyService.GetById(companyId.Value);
                 if (company == null)
                 {
@@ -277,20 +294,17 @@ namespace RentACar.Controllers
                 }
 
                 if (ModelState.IsValid)
-                {
-                    // Update company details
+                {              
                     company.Name = viewModel.CompanyName;
                     company.Address = viewModel.CompanyAddress;
                     company.City = viewModel.CompanyCity;
                     company.Country = viewModel.CompanyCountry;
                     company.Description = viewModel.CompanyDescription;
-
-                    // Save company changes
+                  
                     carCompanyService.Update(company);
                     await carCompanyService.Save();
-
-                    // Update the email in IdentityUser
-                    var user = await userManager.FindByIdAsync(company.UserId); // Assuming UserId links to IdentityUser
+               
+                    var user = await userManager.FindByIdAsync(company.UserId);
                     if (user != null)
                     {
                         user.Email = viewModel.CompanyEmail;
