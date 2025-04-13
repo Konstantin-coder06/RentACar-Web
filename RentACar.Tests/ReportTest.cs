@@ -54,7 +54,7 @@ namespace RentACar.Tests
         {
             new Report { Id = 1,  Title="Others"},
             new Report { Id = 2,  Title= "Booking Inquiry"}
-        };
+        }.AsQueryable();
 
             Expression<Func<Report, object>>[] filters = { c => c.Description };
             mockRepository.Setup(r => r.AllWithInclude(It.IsAny<Expression<Func<Report, object>>[]>())).Returns(expectedReports);

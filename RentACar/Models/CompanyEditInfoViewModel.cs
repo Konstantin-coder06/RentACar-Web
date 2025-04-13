@@ -16,8 +16,5 @@ namespace RentACar.Models
         public string CompanyCountry {  get; set; }
         [Required]
         public string CompanyAddress {  get; set; }
-        public string? CurrentPassword {  get; set; }
-        public string? NewPassword {  get; set; }
-        public string? ConfirmNewPassword {  get; set; }
     }
 }

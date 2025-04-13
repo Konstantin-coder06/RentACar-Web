@@ -193,12 +193,12 @@ namespace RentACar.Controllers
         {
             if (categories != null && categories.StartsWith("toggle_"))
             {
-                string category = categories.Substring(7); 
+                string category = categories.Substring(7);
                 var selectedCategories = HttpContext.Session.GetString("SelectedCategories")?.Split(',')?.ToList() ?? new List<string>();
 
                 if (selectedCategories.Contains(category))
                 {
-                    selectedCategories.Remove(category); 
+                    selectedCategories.Remove(category);
                 }
                 else
                 {
@@ -209,7 +209,7 @@ namespace RentACar.Controllers
             }
 
             return RedirectToAction("Index");
-           
+
         }
         [HttpPost]
         [Route("Car/Search")]
@@ -244,7 +244,7 @@ namespace RentACar.Controllers
             IEnumerable<Car>cars=new List<Car>();
             if (!User.IsInRole("Company"))
             {
-                 cars = await carService.GetAllNotReservationedCarsForOnePeriod(queries, overlappingReservations.ToList());
+                cars = await carService.GetAllNotReservationedCarsForOnePeriod(queries, overlappingReservations.ToList());
             }
             else
             {
@@ -269,7 +269,7 @@ namespace RentACar.Controllers
                 SearchTerm = searchBar
             };
             return View("Index", viewModel);
-
+        
         }
         [HttpPost]
         public IActionResult Sort(string sortOrder)
@@ -327,13 +327,13 @@ namespace RentACar.Controllers
         [HttpPost]       
         public async Task<IActionResult> Filters(CarWithFilters carWithFilters)
         {
-            IEnumerable<Car> queries=new List<Car>();
+            IEnumerable<Car> queries = new List<Car>();
             if (User.IsInRole("Company"))
             {
                 var companyId = HttpContext.Session.GetInt32("CompanyId");
                 if (companyId.HasValue)
                 {
-                    queries = await carService.GetFilteredCarsOfCompanyAsync(companyId.Value,carWithFilters.MinPrice, carWithFilters.MaxPrice, carWithFilters.SelectedClassIds,
+                    queries = await carService.GetFilteredCarsOfCompanyAsync(companyId.Value, carWithFilters.MinPrice, carWithFilters.MaxPrice, carWithFilters.SelectedClassIds,
                         carWithFilters.SelectedBrands, carWithFilters.SelectedColors, carWithFilters.SelectedDriveTrains);
                 }
                 else
@@ -367,8 +367,17 @@ namespace RentACar.Controllers
                 StartDate = startDay,
                 EndDate = endDay,
             };
-
+            HttpContext.Session.SetString("Filter", "Clear Filter");
             return View("Index", viewModel);
+
+        }
+        public IActionResult ClearFilters()
+        {
+            HttpContext.Session.Remove("Filter");
+            HttpContext.Session.Remove("SearchTerm");
+            HttpContext.Session.Remove("SelectedCategories");
+            return RedirectToAction("Index");
+
         }
         [HttpPost]
         public async Task<IActionResult> Sorting(int sort)
@@ -824,7 +833,7 @@ namespace RentACar.Controllers
                 return Json(new { success = false, message = "Invalid request" });
             }
 
-         
+
             int order = 1;
             foreach (var imageId in request.OrderedImageIds)
             {
@@ -841,7 +850,7 @@ namespace RentACar.Controllers
             return Json(new { success = true });
         }
 
-       
+
         public class ImageOrderUpdateRequest
         {
             public List<string> OrderedImageIds { get; set; }

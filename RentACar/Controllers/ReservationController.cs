@@ -59,7 +59,7 @@ namespace RentACar.Controllers
                 features.Add(feature);
             }
 
-            var carWithImages = new CarWithImages
+            var CarWithImagesReservation = new CarWithImagesReservation
             {
                 Car = car,
                 Images = await imageService.GetImagesOrderByOrderCarId(car.Id),
@@ -73,10 +73,10 @@ namespace RentACar.Controllers
             };
 
 
-            return View(carWithImages);
+            return View(CarWithImagesReservation);
         }
         [HttpPost]
-        public async Task<IActionResult> Reservation(CarWithImages carWithImages, string submitButton)
+        public async Task<IActionResult> Reservation(CarWithImagesReservation CarWithImagesReservation, string submitButton)
         {
 
             var userId = HttpContext.Session.GetInt32("UserId");
@@ -84,36 +84,36 @@ namespace RentACar.Controllers
             {
                 return RedirectToAction("AccessDenied", "Account");
             }
-            if (carWithImages.Car == null || carWithImages.Car.Id == 0)
+            if (CarWithImagesReservation.Car == null || CarWithImagesReservation.Car.Id == 0)
             {
-                carWithImages.Car = await carService.FindById(carWithImages.Car.Id);
+                CarWithImagesReservation.Car = await carService.FindById(CarWithImagesReservation.Car.Id);
             }
-            if (carWithImages.Car == null)
+            if (CarWithImagesReservation.Car == null)
             {
                 ModelState.AddModelError("", "Car not found.");
-                return View(carWithImages);
+                return View(CarWithImagesReservation);
             }
-            carWithImages.Images = await imageService.GetImagesOrderByOrderCarId(carWithImages.Car.Id);
+            CarWithImagesReservation.Images = await imageService.GetImagesOrderByOrderCarId(CarWithImagesReservation.Car.Id);
             if (submitButton == "ChangeDate")
             {
                 if ((bool)TempData["Edit"] == true)
                 {
 
                 }
-                var newStartDate = carWithImages.StartDay;
-                var newEndDate = carWithImages.EndDay;
+                var newStartDate = CarWithImagesReservation.StartDay;
+                var newEndDate = CarWithImagesReservation.EndDay;
 
                 if (!newStartDate.HasValue || !newEndDate.HasValue || newStartDate >= newEndDate)
                 {
                     ModelState.AddModelError("", "Invalid dates: Start date must be before end date.");
-                    return View(carWithImages);
+                    return View(CarWithImagesReservation);
                 }
-                bool hasConflict = await reservationService.HasOverlappingReservation(carWithImages.Car.Id, newStartDate.Value, newEndDate.Value);
+                bool hasConflict = await reservationService.HasOverlappingReservation(CarWithImagesReservation.Car.Id, newStartDate.Value, newEndDate.Value);
                 if (!hasConflict)
                 {
                     HttpContext.Session.SetString("StartDate", newStartDate.Value.ToString("yyyy-MM-dd"));
                     HttpContext.Session.SetString("EndDate", newEndDate.Value.ToString("yyyy-MM-dd"));
-                    return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
+                    return RedirectToAction("Reservation", new { id = CarWithImagesReservation.Car.Id });
                 }
                 else
                 {
@@ -121,97 +121,97 @@ namespace RentACar.Controllers
                     TempData["ProposedStartDate"] = newStartDate.Value.ToString("yyyy-MM-dd");
                     TempData["ProposedEndDate"] = newEndDate.Value.ToString("yyyy-MM-dd");
 
-                    var car = await carService.FindById(carWithImages.Car.Id);
+                    var car = await carService.FindById(CarWithImagesReservation.Car.Id);
                     var featuresOfACar = await carFeatureService.GetByCarIDAllFeatures(car.Id);
                     var features = await featureService.GetAllFeaturesByIds(featuresOfACar);
 
-                    carWithImages.Car = car;
-                    carWithImages.Images = await imageService.GetImagesOrderByOrderCarId(carWithImages.Car.Id);
-                    carWithImages.StartDay = newStartDate;
-                    carWithImages.EndDay = newEndDate;
-                    carWithImages.Features = features;
-                    return View(carWithImages);
+                    CarWithImagesReservation.Car = car;
+                    CarWithImagesReservation.Images = await imageService.GetImagesOrderByOrderCarId(CarWithImagesReservation.Car.Id);
+                    CarWithImagesReservation.StartDay = newStartDate;
+                    CarWithImagesReservation.EndDay = newEndDate;
+                    CarWithImagesReservation.Features = features;
+                    return View(CarWithImagesReservation);
                 }
             }
             else if (submitButton == "KeepDates")
             {
-                if (carWithImages.StartDay.HasValue && carWithImages.EndDay.HasValue)
+                if (CarWithImagesReservation.StartDay.HasValue && CarWithImagesReservation.EndDay.HasValue)
                 {
-                    HttpContext.Session.SetString("StartDate", carWithImages.StartDay.Value.ToString("yyyy-MM-dd"));
-                    HttpContext.Session.SetString("EndDate", carWithImages.EndDay.Value.ToString("yyyy-MM-dd"));
+                    HttpContext.Session.SetString("StartDate", CarWithImagesReservation.StartDay.Value.ToString("yyyy-MM-dd"));
+                    HttpContext.Session.SetString("EndDate", CarWithImagesReservation.EndDay.Value.ToString("yyyy-MM-dd"));
                     return RedirectToAction("Index");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Start and end dates are required.");
-                    var car = await carService.FindById(carWithImages.Car.Id);
+                    var car = await carService.FindById(CarWithImagesReservation.Car.Id);
                     var featuresOfACar = await carFeatureService.GetByCarIDAllFeatures(car.Id);
                     var features = await featureService.GetAllFeaturesByIds(featuresOfACar);
-                    carWithImages.Features = features;
-                    return View(carWithImages);
+                    CarWithImagesReservation.Features = features;
+                    return View(CarWithImagesReservation);
                 }
             }
             else if (submitButton == "RevertDates")
             {
 
-                return RedirectToAction("Reservation", new { id = carWithImages.Car.Id });
+                return RedirectToAction("Reservation", new { id = CarWithImagesReservation.Car.Id });
             }
             else if (submitButton == "BookNow")
             {
-                if (!carWithImages.StartDay.HasValue || !carWithImages.EndDay.HasValue)
+                if (!CarWithImagesReservation.StartDay.HasValue || !CarWithImagesReservation.EndDay.HasValue)
                 {
                     ModelState.AddModelError("", "Start and end dates are required.");
-                    return View(carWithImages);
+                    return View(CarWithImagesReservation);
                 }
 
-                DateTime startDay = carWithImages.StartDay.Value;
-                DateTime endDay = carWithImages.EndDay.Value;
+                DateTime startDay = CarWithImagesReservation.StartDay.Value;
+                DateTime endDay = CarWithImagesReservation.EndDay.Value;
                 int totalDays = (int)(endDay - startDay).TotalDays;
 
                 if (totalDays <= 0)
                 {
                     ModelState.AddModelError("", "End date must be after start date.");
-                    return View(carWithImages);
+                    return View(CarWithImagesReservation);
                 }
 
-                bool hasConflict = await reservationService.HasOverlappingReservation(carWithImages.Car.Id, startDay, endDay);
+                bool hasConflict = await reservationService.HasOverlappingReservation(CarWithImagesReservation.Car.Id, startDay, endDay);
                 if (hasConflict)
                 {
                     ModelState.AddModelError("", "The car is already reserved for the selected dates.");
-                    return View(carWithImages);
+                    return View(CarWithImagesReservation);
                 }
 
-                string paidDeliveryPlace = carWithImages.IsSelfPick ? null : carWithImages.CustomAddress;
+                string paidDeliveryPlace = CarWithImagesReservation.IsSelfPick ? null : CarWithImagesReservation.CustomAddress;
 
                 Reservation reservation = new Reservation()
                 {
                     StartDate = startDay,
                     EndDate = endDay,
-                    IsSelfPick = carWithImages.IsSelfPick,
+                    IsSelfPick = CarWithImagesReservation.IsSelfPick,
                     PaidDeliveryPlace = paidDeliveryPlace,
-                    IsReturnBackAtSamePlace = carWithImages.IsReturningBackAtSamePlace,
-                    CarId = carWithImages.Car.Id,
+                    IsReturnBackAtSamePlace = CarWithImagesReservation.IsReturningBackAtSamePlace,
+                    CarId = CarWithImagesReservation.Car.Id,
                     CustomerId = userId.Value,
                     CreateTime = DateTime.Now,
                 };
-                var price = await carService.GetPricePerDayByCarId(carWithImages.Car.Id);
+                var price = await carService.GetPricePerDayByCarId(CarWithImagesReservation.Car.Id);
                 reservation.TotalPrice = reservationService.TotalPriceForOneReservation(reservation, totalDays, price,
-                    carWithImages.IsSelfPick, carWithImages.IsReturningBackAtSamePlace);
+                    CarWithImagesReservation.IsSelfPick, CarWithImagesReservation.IsReturningBackAtSamePlace);
 
                 TempData["TotalPrice"] = reservation.TotalPrice.ToString(CultureInfo.InvariantCulture);
-                TempData["IsSelfPick"] = carWithImages.IsSelfPick.ToString();
+                TempData["IsSelfPick"] = CarWithImagesReservation.IsSelfPick.ToString();
                 TempData["PaidDeliveryPlace"] = paidDeliveryPlace;
-                TempData["IsReturnBackAtSamePlace"] = carWithImages.IsReturningBackAtSamePlace.ToString();
-                TempData["CarId"] = carWithImages.Car.Id.ToString();
+                TempData["IsReturnBackAtSamePlace"] = CarWithImagesReservation.IsReturningBackAtSamePlace.ToString();
+                TempData["CarId"] = CarWithImagesReservation.Car.Id.ToString();
                 TempData["CustomerId"] = userId.Value.ToString();
                 TempData["success"] = $"Days {totalDays} Total price: {reservation.TotalPrice}";
 
                 TempData.Keep("PaidDeliveryPlace");
                 TempData.Keep("IsSelfPick");
 
-                return RedirectToAction("FinalStepsReservation", new { id = carWithImages.Car.Id });
+                return RedirectToAction("FinalStepsReservation", new { id = CarWithImagesReservation.Car.Id });
             }
-            return View(carWithImages);
+            return View(CarWithImagesReservation);
         }
         public async Task<IActionResult> FinalStepsReservation(int id)
         {

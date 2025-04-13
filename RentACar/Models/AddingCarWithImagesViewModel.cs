@@ -64,11 +64,16 @@ namespace RentACar.Models
             public List<IFormFile> Images { get; set; }
          public int CompanyId {  get; set; }
         public SelectList? Companies { get; set; }
+        [Required]
         public string OrderOfImages { get; set; } = "";
+        [Required]
         public List<string> Features { get; set; }=new List<string>();
+        [Required(ErrorMessage ="At least one feature select")]
         public List<string> SelectedFeatures { get; set; }=new List<string>();
+        [Required]
         public int TypeId {  get; set; }
         public SelectList? TypeOptions { get; set; }
+        [Required]
         public bool IsConvertible {  get; set; }
 
     }

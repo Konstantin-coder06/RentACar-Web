@@ -134,7 +134,7 @@
             @if (!string.IsNullOrEmpty(Model.SearchTerm))
             {
                 <div class="clear-search-container">
-                    <a asp-action="Index" asp-controller="Car" class="clear-search-button">
+                    <a asp-action="ClearSearch" asp-controller="Car" class="clear-search-button">
                         <i class="fas fa-times"></i> @Model.SearchTerm
                     </a>
                 </div>
@@ -142,8 +142,16 @@
             @if (!string.IsNullOrEmpty(Model.SortTerm) && Model.SortTerm != "default")
             {
                 <div class="clear-search-container">
-                    <a asp-action="Index" asp-controller="Car" class="clear-search-button">
+                    <a asp-action="ClearSort" asp-controller="Car" class="clear-search-button">
                          @Model.SortTerm
+                    </a>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(Context.Session.GetString("Filter")))
+            {
+                <div class="clear-search-container">
+                    <a asp-action="ClearFilters" asp-controller="Car" class="clear-search-button">
+                        <i class="fas fa-times"></i> Clear Filters
                     </a>
                 </div>
             }
