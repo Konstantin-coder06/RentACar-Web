@@ -141,19 +141,38 @@
                                 <span class="detail-value">@x.CreateTime</span>
                             </div>
                         @if(x.Status=="Coming"){
-                            <button class="action-btn">Modify Booking</button>
-                                <form asp-action="ShowCancelConfirmation" asp-controller="User" method="post">
-                                    <input type="hidden" name="userId" value="@userId" />
-                                    <input type="hidden" name="reservationId" value="@x.ReservationId" />
-                                    <button type="submit" class="action-btn secondary">Cancel Booking</button>
-                                </form>
+                            
+                                    @if (x.Difference >= 2)
+                                    {           
+                                        <div class="detail-row">
+                                       <form asp-action="Reservation" asp-controller="Reservation" method="post">
+                                           @TempData["Edit"]==@true
+                                    <button type="submit" class="action-btn" asp-route-id="@x.CarId">Modify Booking</button>
+                                       </form>
+                                    <form asp-action="ShowCancelConfirmation" asp-controller="User" method="post">
+                                        <input type="hidden" name="userId" value="@userId" />
+                                        <input type="hidden" name="reservationId" value="@x.ReservationId" />
+                                        <button type="submit" class="action-btn secondary">Cancel Booking</button>
+                                    </form>
+                                        </div>
+                                    }
+                                    else{
+                                        <span class="detail-label" style="color:#880000">*You can not cancel this booking! It is too close to happend</span>
+                                    }
+
+                                
                         }
-                        else if(x.Status=="Canceled" || x.Status=="Completed"){
-                            <button class="action-btn" >Book Again</button>
-                            if (x.IsTheCarReservatedForToday!=null)
+                        else if (x.Status == "Canceled" || x.Status == "Completed")
                             {
-                                <span class="detail-label" style="color:#880000">*The Car Is Reservated From: @x.StartDateOfCar To: @x.EndDateOfCar. If You To Book It, You Will Get The Earliest Posible Dates For The Car</span>
-                            }
+                                <form asp-action="BookAgain" asp-controller="User" method="post">
+                                <button type="submit" class="action-btn" name="id" value="@x.CarId">Book Again</button>
+                                </form>
+                                @if (x.IsTheCarReservatedForToday)
+                                {
+                                    <span class="detail-label" style="color:#880000">
+                                        *The Car Is Reserved From: @x.StartDateOfCar?.ToString("dd-MMM-yyyy") To: @x.EndDateOfCar?.ToString("dd-MMM-yyyy"). If You Want To Book It, You Will Get The Earliest Possible Dates For The Car.
+                                    </span>
+                                }
                          
                         } 
                         else if(x.Status=="Active"){

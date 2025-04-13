@@ -443,6 +443,72 @@ namespace RentACar.Core.Services
             }
             return reservations.OrderByDescending(x=>x.Id).ToList();
         }
+
+        public async Task<bool> IsCarReservationForTomorrow(int carId)
+        {
+            var reservation=await reservationsRepository.FindOne(x=>x.CarId == carId && x.StartDate>DateTime.Now.AddDays(2));
+            if (reservation != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public async Task<(DateTime startDate, DateTime endDate)> GetEarliestAvailableDates(int carId, int minimumDurationDays = 2)
+        {
+            // Get the current date and the earliest possible start date (tomorrow)
+            var today = DateTime.Today; // April 13, 2025
+            var earliestPossibleStart = today.AddDays(1); // April 14, 2025
+
+            // Get all reservations for the car, sorted by StartDate
+            var reservations = await reservationsRepository.FindAll(r => r.CarId == carId);
+            var sortedReservations = reservations
+                .Where(r => r.EndDate >= earliestPossibleStart) // Ignore past reservations
+                .OrderBy(r => r.StartDate)
+                .ToList();
+
+            // If there are no reservations, return tomorrow and 2 days later
+            if (!sortedReservations.Any())
+            {
+                return (earliestPossibleStart, earliestPossibleStart.AddDays(minimumDurationDays));
+            }
+
+            // Check for a gap starting from tomorrow
+            var currentDate = earliestPossibleStart;
+
+            for (int i = 0; i < sortedReservations.Count; i++)
+            {
+                var reservation = sortedReservations[i];
+                var reservationStart = reservation.StartDate;
+                var reservationEnd = reservation.EndDate;
+
+                // If there's a gap between currentDate and the start of the reservation
+                if (currentDate < reservationStart)
+                {
+                    var gapDays = (reservationStart - currentDate).Days;
+                    if (gapDays >= minimumDurationDays)
+                    {
+                        // Found a gap that's at least minimumDurationDays long
+                        return (currentDate, currentDate.AddDays(minimumDurationDays));
+                    }
+                }
+
+                // Move currentDate to the end of the current reservation (plus 1 day)
+                currentDate = reservationEnd.AddDays(1);
+
+                // If this is the last reservation, check if we can book after it
+                if (i == sortedReservations.Count - 1)
+                {
+                    // After the last reservation, we can book starting from currentDate
+                    return (currentDate, currentDate.AddDays(minimumDurationDays));
+                }
+            }
+
+            // If we reach here, we didn't find a gap, so book after the last reservation
+            return (currentDate, currentDate.AddDays(minimumDurationDays));
+        }
     }
 }
 

@@ -44,5 +44,7 @@ namespace RentACar.Core.IServices
         Task<(bool isReserved, DateTime? startDate, DateTime? endDate)> IsTheCarReservatedForToday(int carId);
         Task<Reservation>FindById(int id);
         Task<List<Reservation>>GetAllReservationOfCompanyCars(List<int> companyCarIds);
+        Task<bool>IsCarReservationForTomorrow(int carId);
+        Task<(DateTime startDate, DateTime endDate)> GetEarliestAvailableDates(int carId, int minimumDurationDays = 2);
     }
 }

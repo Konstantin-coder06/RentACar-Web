@@ -23,6 +23,10 @@ namespace RentACar.Controllers
         {
             var reservations = await reservationService.GetReservationsByUserId(id);
             var reservationsWithCarInf = await BuildReservationViewModels(reservations);
+            if (TempData["SomethingHappend"]!=null)
+            {
+                TempData["error"] = TempData["SomethingHappend"];
+            }
             var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
             return View(userViewModel);
         }
@@ -92,7 +96,32 @@ namespace RentACar.Controllers
                 return RedirectToAction("Index");
             }
         }
-        
+        [HttpPost]
+        public async Task<IActionResult> BookAgain(int id)
+        {
+            var car = await carService.FindById(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            var isCarAvailableTomorrow = await reservationService.IsCarReservationForTomorrow(car.Id);
+            if (isCarAvailableTomorrow)
+            {
+                // If the car is available tomorrow, set the dates to tomorrow and 2 days later
+                HttpContext.Session.SetString("StartDate", DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
+                HttpContext.Session.SetString("EndDate", DateTime.Now.AddDays(3).ToString("yyyy-MM-dd"));
+            }
+            else
+            {
+                // If the car is not available tomorrow, find the earliest available dates
+                var (startDate, endDate) = await reservationService.GetEarliestAvailableDates(car.Id, minimumDurationDays: 2);
+                HttpContext.Session.SetString("StartDate", startDate.ToString("yyyy-MM-dd"));
+                HttpContext.Session.SetString("EndDate", endDate.ToString("yyyy-MM-dd"));
+            }
+
+            return RedirectToAction("Reservation", "Reservation", new { id = car.Id });
+        }
         private async Task<List<ReservationWithCarInfViewModel>> BuildReservationViewModels(IEnumerable<Reservation> reservations)
         {
             var reservationsWithCarInf = new List<ReservationWithCarInfViewModel>();
@@ -102,17 +131,6 @@ namespace RentACar.Controllers
                 var car = await carService.FindById(x.CarId);
                 var classOfCar = await classOfCarService.GetClassOfCarById(car.ClassOfCarId);
                 var (isReserved, startDate, endDate) = await reservationService.IsTheCarReservatedForToday(car.Id);
-                DateTime startDateOfTheReservatedCar = isReserved ? startDate.Value : new DateTime();
-                DateTime endDateOfTheReservatedCar = isReserved ? endDate.Value : new DateTime();
-
-                if (isReserved)
-                {
-                    Console.WriteLine($"Car is reserved from {startDateOfTheReservatedCar} to {endDateOfTheReservatedCar}");
-                }
-                else
-                {
-                    Console.WriteLine("Car is not reserved for today.");
-                }
 
                 var image = await imageService.ImageByCarId(car.Id);
                 var carCompany = await carCompanyService.GetById(car.CarCompanyId);
@@ -135,9 +153,11 @@ namespace RentACar.Controllers
                     PickUpAddress = x.PaidDeliveryPlace,
                     TotalPrice = x.TotalPrice,
                     IsTheCarReservatedForToday = isReserved,
-                    StartDateOfCar = startDateOfTheReservatedCar,
-                    EndDateOfCar = endDateOfTheReservatedCar,
-                    CreateTime=x.CreateTime,
+                    StartDateOfCar = isReserved ? startDate : null, // Set to null if not reserved
+                    EndDateOfCar = isReserved ? endDate : null,     // Set to null if not reserved
+                    CreateTime = x.CreateTime,
+                    Difference=(int)(x.StartDate-DateTime.Now).TotalDays,
+                    CarId = car.Id,
                 };
                 reservationsWithCarInf.Add(model);
             }

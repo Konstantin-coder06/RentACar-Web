@@ -14,9 +14,11 @@
         public string PickUpAddress {  get; set; }
         public double TotalPrice {  get; set; }
         public DateTime CreateTime { get; set; }
-        public bool? IsTheCarReservatedForToday {  get; set; }
+        public bool IsTheCarReservatedForToday {  get; set; }
         public DateTime? StartDateOfCar { get; set; }
         public DateTime? EndDateOfCar { get; set; }
         public string? CreatedBy {  get; set; }
+        public int Difference {  get; set; }
+        public int CarId {  get; set; }
     }
 }

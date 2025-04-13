@@ -27,6 +27,7 @@ namespace RentACar.Controllers
         [Authorize(Roles ="User")]
         public async Task<IActionResult> Reservation(int id)
         {
+
             DateTime? startDay = null;
             DateTime? endDay = null;
 
@@ -76,6 +77,7 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> Reservation(CarWithImages carWithImages, string submitButton)
         {
+           
             var userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
@@ -93,6 +95,10 @@ namespace RentACar.Controllers
             carWithImages.Images = await imageService.GetImagesOrderByOrderCarId(carWithImages.Car.Id);
             if (submitButton == "ChangeDate")
             {
+                if ((bool)TempData["Edit"] == true)
+                {
+
+                }
                 var newStartDate = carWithImages.StartDay;
                 var newEndDate = carWithImages.EndDay;
 
@@ -340,5 +346,6 @@ namespace RentACar.Controllers
             TempData["success"] = "Reservation successfully created!";
             return RedirectToAction("Index", "Home");
         }
+       
     }
 }
