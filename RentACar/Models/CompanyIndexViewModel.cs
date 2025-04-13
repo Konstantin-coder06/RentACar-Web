@@ -19,5 +19,6 @@
         public int ProcentPerWeek { get; set; }
         public int ProcentPerMonth { get; set; }
         public string? CompanyName {  get; set; }
+        public List<TopCarsViewModel> FilteredCars { get; set; }
     }
 }

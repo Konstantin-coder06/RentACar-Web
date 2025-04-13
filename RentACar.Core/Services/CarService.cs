@@ -293,15 +293,14 @@ namespace RentACar.Core.Services
         {
             if (terms == null || !terms.Any())
             {
-                return await carRepository.FindAll(x=>x.CarCompanyId==companyId);
+                return await carRepository.FindAll(x => x.CarCompanyId == companyId);
             }
 
             return await carRepository.FindAll(x =>
-                terms.Any(term => 
-                    (x.CarCompanyId==companyId && x.Brand != null && x.Brand.ToLower().Contains(term.ToLower())) ||
+                terms.All(term =>
+                    (x.CarCompanyId == companyId && x.Brand != null && x.Brand.ToLower().Contains(term.ToLower())) ||
                     (x.CarCompanyId == companyId && x.Model != null && x.Model.ToLower().Contains(term.ToLower()))));
         }
-
         public async Task<List<int>> GetAllCarsIdByCompanyId(int companyId)
         {
             return (await carRepository.FindAll(x => x.CarCompanyId == companyId)).Select(x=>x.Id).ToList();
@@ -313,31 +312,15 @@ namespace RentACar.Core.Services
                 return (await carRepository.FindAll(x => x.CarCompanyId == companyId)).ToList();
             }
 
-            // Clean and normalize terms
             var searchTerms = terms
                 .Where(t => !string.IsNullOrWhiteSpace(t))
                 .Select(t => t.ToLower().Trim())
                 .ToArray();
 
-            // If no valid terms after cleaning, return all pending cars
             if (!searchTerms.Any())
             {
                 return (await carRepository.FindAll(x => x.CarCompanyId == companyId)).ToList();
             }
-
-            // Single term: match in Brand or Model
-            if (searchTerms.Length == 1)
-            {
-                var term = searchTerms[0];
-                return (await carRepository.FindAll(x =>
-                    x.CarCompanyId == companyId &&
-                    x.Pending == true &&
-                    ((x.Brand != null && x.Brand.ToLower().Contains(term)) ||
-                     (x.Model != null && x.Model.ToLower().Contains(term)))))
-                    .ToList();
-            }
-
-            // Multiple terms: all terms must appear in Brand or Model
             return (await carRepository.FindAll(x =>
                 x.CarCompanyId == companyId &&
                 

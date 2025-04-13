@@ -8,8 +8,13 @@
 @{
     ViewData["HideNavigation"] = true;
     ViewData["HideFooter"] = true;
-    ViewData["Title"] = "Edit Your Car";
-
+    if (User.IsInRole("Company"))
+    {
+        ViewData["Title"] = "Edit Your Car";
+    }
+    else if(User.IsInRole("Admin")){
+        ViewData["Title"] = "Approave Car";
+    }
 }
 <link rel="stylesheet" href="~/css/editCar.css" asp-append-version="true" />
 @if (!ViewData.ModelState.IsValid)

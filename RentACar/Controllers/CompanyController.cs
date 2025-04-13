@@ -48,13 +48,14 @@ namespace RentACar.Controllers
                 ? Array.Empty<string>()
                 : searchTerm.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            var companyCars = await carService.SearchCarsByBrandOrModel(companyId.Value, searchTerms);
-            List<int> companyCarIds = companyCars.Select(c => c.Id).ToList();
+            var allCompanyCars = await carService.GetAllCarsOfCompany(companyId.Value);
+            List<int> companyCarIds = allCompanyCars.Select(c => c.Id).ToList();
 
             var allReservations = await reservationService.GetAllReservationsContaingCompanyIds(companyCarIds);
             var reservationedCars = allReservations.ToList();
-            var reservatedCars = await reservationService.GetAllReservationsForCompany(companyCars);
+            var reservatedCars = await reservationService.GetAllReservationsForCompany(allCompanyCars);
             var customers = new List<CustomerReservationedCarViewModel>();
+            var filteredCars = searchTerms.Any() ? await carService.GetCarsOfCompanyBySearchBrandAndModel(companyId.Value, searchTerms) : allCompanyCars;
 
             foreach (var reservation in reservationedCars.TakeLast(4))
             {
@@ -84,7 +85,7 @@ namespace RentACar.Controllers
             var carsWithCount = new List<TopCarsViewModel>();
             foreach (var x in carsCount)
             {
-                var car = companyCars.FirstOrDefault(c => c.Id == x.CarId);
+                var car = allCompanyCars.FirstOrDefault(c => c.Id == x.CarId);
                 if (car != null)
                 {
                     carsWithCount.Add(new TopCarsViewModel
@@ -130,7 +131,18 @@ namespace RentACar.Controllers
                 ProcentPerWeek = percentagesWeek,
                 Count = reservationedCars.Count,
                 Customers = customers,
-                CompanyName = company.Name
+                CompanyName = company.Name,
+                FilteredCars = filteredCars.Select(car =>
+                {
+                    var carCount = carsCount.FirstOrDefault(c => c.CarId == car.Id);
+                    return new TopCarsViewModel
+                    {
+                        Brand = car.Brand,
+                        Model = car.Model,
+                        CarId = car.Id,
+                        Count = carCount != default ? carCount.Count : 0
+                    };
+                }).ToList()
             };
 
             ViewData["SearchTerm"] = searchTerm;

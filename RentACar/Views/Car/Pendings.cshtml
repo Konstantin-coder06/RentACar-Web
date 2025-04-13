@@ -5,53 +5,64 @@
     ViewData["HideNavigation"] = true;
     ViewData["HideFooter"] = true;
 }
-<link rel="stylesheet" href="~/css/pendings.css" asp-append-version="true" />
-@model CarImagesViewModel
-<div class="container cars-list">
-    <div class="row" id="carList">
-        @if (Model.CarWithImages != null && Model.CarWithImages.Any())
-        { 
-            @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => x.Car.CreatedAt))
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Pending Cars</title>
+    <link rel="stylesheet" href="~/css/pendings.css" asp-append-version="true" />
+</head>
+<body>
+    @model CarImagesViewModel
+    <div class="container cars-list">
+        <div class="row" id="carList">
+            @if (Model.CarWithImages != null && Model.CarWithImages.Any())
             {
-                <div class="col-md-4 mb-4 car-item" data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")">
-                    <div class="card">
-                        <img src="@carWithImages.Images.OrderBy(x=>x.Order).First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
+                @foreach (var carWithImages in Model.CarWithImages.OrderBy(x => x.Car.CreatedAt))
+                {
+                    <div class="col-md-4 mb-4 car-item" data-title="@($"{carWithImages.Car.Brand} {carWithImages.Car.Model}")">
+                        <div class="card">
+                            <img src="@carWithImages.Images.OrderBy(x=>x.Order).First().Url" alt="@carWithImages.Car.Brand" class="card-img-top" />
 
-                        <div class="card-body">
-                            <h5 class="card-title">@carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year</h5>
-                            <p class="card-text">
-                                @carWithImages.Car.Gearbox • @carWithImages.Car.MileageLimitForDay km/rental per day
-                            </p>
-                            <div class="price-container">
-                                <div class="price-text">
-                                    <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / per day</h3>
-                                    <p class="price-week">@carWithImages.Car.PricePerWeek BGN / per week</p>
+                            <div class="card-body">
+                                <h5 class="card-title">@carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year</h5>
+                                <p class="card-text">
+                                    @carWithImages.Car.Gearbox • @carWithImages.Car.MileageLimitForDay km/rental per day
+                                </p>
+                                <div class="price-container">
+                                    <div class="price-text">
+                                        <h3 class="price-day">@carWithImages.Car.PricePerDay BGN / per day</h3>
+                                        <p class="price-week">@carWithImages.Car.PricePerWeek BGN / per week</p>
+                                    </div>
+                                    <a asp-controller="Car" asp-action="EditPendingCar" asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
+                                        Review
+                                    </a>
                                 </div>
-                                <a asp-controller="Car" asp-action="EditPendingCar" asp-route-id="@carWithImages.Car.Id" class="btn btn-primary">
-                                    Review
-                                </a>
                             </div>
                         </div>
                     </div>
+                }
+            }
+            else
+            {
+                <div class="no-cars-container">
+                    <div class="car-animation">
+                        <div class="car-icon">🚗</div>
+                    </div>
+                    <div class="no-cars-icon">📭</div>
+                    <h2 class="no-cars-title">No Cars Available</h2>
+                    <p class="no-cars-message">There are currently no pending cars to review. New vehicle listings will appear here once they're submitted for approval.</p>
+                    @if (User.IsInRole("Company"))
+                    {
+                        <a asp-action="Index" asp-controller="Company" class="no-cars-btn">Return to Dashboard</a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Index" asp-controller="Admin" class="no-cars-btn">Return to Dashboard</a>
+                    }
                 </div>
             }
-        }else{
-            <div class="no-cars-container">
-                <div class="car-animation">
-                    <div class="car-icon">🚗</div>
-                </div>
-                <div class="no-cars-icon">📭</div>
-                <h2 class="no-cars-title">No Cars Available</h2>
-                <p class="no-cars-message">There are currently no pending cars to review. New vehicle listings will appear here once they're submitted for approval.</p>
-                @if (User.IsInRole("Company"))
-                {
-                    <a asp-action="Index" asp-controller="Company" class="no-cars-btn">Return to Dashboard</a>
-                }
-                @if (User.IsInRole("Admin"))
-                {
-                    <a asp-action="Index" asp-controller="Admin" class="no-cars-btn">Return to Dashboard</a>
-                }
-            </div>
-    }
-</div>
-</div>
+        </div>
+    </div>
+</body>
+</html>

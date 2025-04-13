@@ -4,17 +4,6 @@
 @{
     Layout = null;
 }
-@if (!ViewData.ModelState.IsValid)
-{
-    <div class="alert alert-danger">
-        <ul>
-            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-            {
-                <li>@error.ErrorMessage</li>
-            }
-        </ul>
-    </div>
-}
 
 @model FinalStepReservationViewModel
 <!DOCTYPE html>
@@ -26,6 +15,18 @@
     <link rel="stylesheet" href="~/css/FinalStepReservation.css"/>
 </head>
 <body>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
     <div style="height: 40px;"></div>
     <div class="container">
         <div class="header">
