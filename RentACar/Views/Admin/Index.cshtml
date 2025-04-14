@@ -49,10 +49,7 @@
                     <h3>Reports</h3>
                     <span class="msg_count">@Model.ReportCount</span>
                 </a>
-                <a asp-action="Settings" asp-controller="Admin">
-                    <span class="material-symbols-sharp">settings </span>
-                    <h3>settings</h3>
-                </a>
+             
                 <a asp-action="AddCar" asp-controller="Car">
                     <span class="material-symbols-sharp">add </span>
                     <h3>Add Car</h3>
@@ -84,10 +81,7 @@
         <main>
             <h1>Dashbord</h1>
 
-            <div class="date">
-                <input type="date">
-            </div>
-
+         
             <div class="insights">
 
            
@@ -137,12 +131,7 @@
                             <h3>Total Reservation</h3>
                             <h1>@Model.Count</h1>
                         </div>
-                        <div class="progress">
-                            <svg>
-                                <circle r="30" cy="40" cx="40"></circle>
-                            </svg>
-                            <div class="number"><p>80%</p></div>
-                        </div>
+                       
 
                     </div>
                     <small>Last Mounth</small>

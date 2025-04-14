@@ -251,10 +251,9 @@ namespace RentACar.Controllers
             }
             return RedirectToAction("AllReports",reportsViewModel);
         }
-        [Authorize(Roles ="Admin,Company")]
+        [Authorize(Roles = "Admin,Company")]
         public async Task<IActionResult> Analytics()
-        {      
-            var startDate = DateTime.Now.AddDays(-30);       
+        {
             bool isCompany = User.IsInRole("Company");
             List<int> companyCarIds = null;
             IEnumerable<Reservation> resLast24Hours;
@@ -263,11 +262,14 @@ namespace RentACar.Controllers
             IEnumerable<Reservation> resLastWeekPrev;
             IEnumerable<Reservation> resLastMonth;
             IEnumerable<Reservation> resLastMonthPrev;
+            List<(int CarId, int Count)> top10CarIdsWithCounts = new List<(int CarId, int Count)>();
+            List<(string brand, string model, int count)> top10Cars = new List<(string brand, string model, int count)>();
             int companyPendingCarsCount = 0;
+
             if (isCompany)
             {
                 var companyId = HttpContext.Session.GetInt32("CompanyId");
-                if (!companyId.HasValue) return RedirectToAction("Login","Account");
+                if (!companyId.HasValue) return RedirectToAction("Login", "Account");
 
                 var companyCars = await carService.GetAllCarsOfCompany(companyId.Value);
                 companyCarIds = companyCars.Select(c => c.Id).ToList();
@@ -278,46 +280,48 @@ namespace RentACar.Controllers
                 resLastWeekPrev = await reservationService.FindAllForWeekBeforeLastCompany(companyCarIds);
                 resLastMonth = await reservationService.FindAllForLastMonthCompany(companyCarIds);
                 resLastMonthPrev = await reservationService.FindAllForPreviousMonthCompany(companyCarIds);
-              
-                companyPendingCarsCount= isCompany? companyCars.Count(x => x.Pending) : 0;
+
+                companyPendingCarsCount = companyCars.Count(x => x.Pending);
             }
             else if (User.IsInRole("Admin"))
-            {            
+            {
                 resLast24Hours = await reservationService.FindAllForLast24Hours();
                 resLast24HoursPrev = await reservationService.FindAllForLast24HoursBefore24Hours();
                 resLastWeek = await reservationService.FindAllForLastWeek();
                 resLastWeekPrev = await reservationService.FindAllForWeekBeforeLast();
                 resLastMonth = await reservationService.FindAllForLastMonth();
                 resLastMonthPrev = await reservationService.FindAllForPreviousMonth();
+                top10CarIdsWithCounts = await reservationService.GetTop10ReservedCarIds(); // Updated return type
+                top10Cars = await carService.GetTop10ReservedCars(top10CarIdsWithCounts);
             }
             else
             {
                 return BadRequest("User must be Admin or Company.");
             }
+
             var totalLast24Hours = await reservationService.TotalPriceForOnePeriodOfTime(resLast24Hours);
             var totalLast24HoursPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLast24HoursPrev);
             var totalLastWeek = await reservationService.TotalPriceForOnePeriodOfTime(resLastWeek);
             var totalLastWeekPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastWeekPrev);
             var totalLastMonth = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonth);
-            var totalLastMonthPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonthPrev);          
-            var difference24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLast24Hours,totalLast24HoursPrev);
-            var differenceWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastWeek,totalLastWeekPrev);
+            var totalLastMonthPrev = await reservationService.TotalPriceForOnePeriodOfTime(resLastMonthPrev);
+            var difference24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLast24Hours, totalLast24HoursPrev);
+            var differenceWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastWeek, totalLastWeekPrev);
             var differenceMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(totalLastMonth, totalLastMonthPrev);
             var differenceReservation24 = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLast24Hours.Count(), resLast24HoursPrev.Count());
-            var differenceReservationWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastWeek.Count(),resLastWeekPrev.Count());
-            var differenceReservationMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastMonth.Count(), resLastMonthPrev.Count());        
-            var allReservations = await reservationService.GetAllIfItIsNotCompany(companyCarIds);     
-            var top10CarIds = await reservationService.GetTop10ReservedCarIdsByStartDate(startDate,companyCarIds);
-            var top10Cars = await carService.GetTop10ReservedCars(top10CarIds);
-            
+            var differenceReservationWeek = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastWeek.Count(), resLastWeekPrev.Count());
+            var differenceReservationMonth = await reservationService.DifferenceOfPriceBetweenTwoPeriods(resLastMonth.Count(), resLastMonthPrev.Count());
+            var allReservations = await reservationService.GetAllIfItIsNotCompany(companyCarIds);
+
             var top10 = top10Cars.Select(x => new TopCarsViewModel
             {
                 Brand = x.brand,
                 Model = x.model,
-                Count = x.count,
+                Count = x.count, 
             }).ToList();
-            var approvedCarsCount = await carService.CountAsync(x => x.Pending);       
-            var reportCount = await reportService.Count();       
+
+            var approvedCarsCount = await carService.CountAsync(x => x.Pending);
+            var reportCount = await reportService.Count();
             var analyticsViewModel = new AnalyticsViewModel
             {
                 TotalLast24Hours = totalLast24Hours,
@@ -328,7 +332,7 @@ namespace RentACar.Controllers
                 CountMonth = resLastMonth.Count(),
                 TotalPriceForLast24HoursBefore24Hours = totalLast24HoursPrev,
                 TotalPriceForLastWeekBeforeWeek = totalLastWeekPrev,
-                TotalPriceForLastMounthBeforeMonth = totalLastMonthPrev,             
+                TotalPriceForLastMounthBeforeMonth = totalLastMonthPrev,
                 CountAllReservations = allReservations.Count(),
                 Top10Cars = top10,
                 PendingsCount = approvedCarsCount,
@@ -344,10 +348,10 @@ namespace RentACar.Controllers
                 TotalReservationPreviousWeek = resLastWeekPrev.Count(),
                 TotalReservationPreviousMonth = resLastMonthPrev.Count()
             };
-           
+
             return View(analyticsViewModel);
         }
-       
-       
+
+
     }
 }

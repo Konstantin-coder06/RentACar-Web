@@ -80,11 +80,14 @@
                         <span class="msg_count">@Model.ReportCount</span>
                     </a>
                 }
+                @if(User.IsInRole("Company")){
 
-                <a asp-action="Settings" asp-controller="Admin">
+                
+                <a asp-action="Settings" asp-controller="Company">
                     <span class="material-symbols-sharp">settings </span>
                     <h3>settings</h3>
                 </a>
+                }
                 <a asp-action="AddCar" asp-controller="Car">
                     <span class="material-symbols-sharp">add </span>
                     <h3>Add Car</h3>
@@ -94,6 +97,20 @@
                     <span class="material-symbols-sharp">visibility</span>
                     <h3>View Customers Reservations</h3>
                 </a>
+                 }
+                 @if(User.IsInRole("Admin")){
+                    <a asp-action="Add" asp-controller="Feature" asp-route-type="feature">
+                        <span class="material-symbols-sharp">add </span>
+                        <h3>Add Feature</h3>
+                    </a>
+                    <a asp-action="Add" asp-controller="Feature" asp-route-type="class">
+                        <span class="material-symbols-sharp">add </span>
+                        <h3>Add Class</h3>
+                    </a>
+                    <a asp-action="Add" asp-controller="Type">
+                        <span class="material-symbols-sharp">add </span>
+                        <h3>Add Type</h3>
+                    </a>
                  }
                 <a asp-action="Logout" asp-controller="Account">
                     <span class="material-symbols-sharp">logout </span>

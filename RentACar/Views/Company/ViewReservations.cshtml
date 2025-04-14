@@ -37,15 +37,7 @@ var companyId = Context.Session.GetInt32("CompanyId") ?? 0;
                     </form>
                 </div>
             </div>
-            <div class="date-filters">
-                <form asp-action="FilterDate" asp-controller="Company" method="post" class="date-filter-form">
-                    <div class="date-input-container">
-                        <input type="date" name="startDate" value="@ViewBag.StartDateFilter" placeholder="From Date">
-                        <input type="date" name="endDate" value="@ViewBag.EndDateFilter" placeholder="To Date">
-                    </div>
-                    <button type="submit" class="filter-btn">Filter</button>
-                </form>
-            </div>
+           
         </div>
         @if (Model.ReservationCar == null || !Model.ReservationCar.Any())
         {

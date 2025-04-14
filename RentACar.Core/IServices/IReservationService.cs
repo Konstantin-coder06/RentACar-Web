@@ -28,7 +28,7 @@ namespace RentACar.Core.IServices
         Task<int> PercentagesOfDifferentPeriods(double firstPeriod, double lastPeriod);
         Task<List<(Customer customer, string brand, string model, Image image)>> GetCustomersWithReservedCars();
         Task<IEnumerable<Reservation>> GetAllReservationsByStartDate(DateTime startDate);
-        Task<List<int>> GetTop10ReservedCarIdsByStartDate(DateTime startDate,List<int>carIds);
+        Task<List<(int CarId, int Count)>> GetTop10ReservedCarIds();
         Task<IEnumerable<Reservation>> GetAllIfItIsNotCompany(List<int>carIds);
         Task<double> DifferenceOfPriceBetweenTwoPeriods(double total, double totalPrev);
         Task<List<int>> GetAllReservatedCarsId(DateTime? start, DateTime? end);

@@ -111,25 +111,29 @@ namespace RentACar.Core.Services
         {
             return await carRepository.Count();
         }
+        public async Task<Car> FindById(int carId)
+        {
+            return await carRepository.FindOne(x => x.Id == carId);
+        }
 
         public async Task<IEnumerable<Car>> FindAllLimited(Expression<Func<Car, bool>> predicate, int limit)
         {
             return await carRepository.FindAllLimited(predicate,limit);
         }
-        public async Task<List<(string brand, string model, int count)>> GetTop10ReservedCars(List<int> carIds)
+        public async Task<List<(string brand, string model, int count)>> GetTop10ReservedCars(List<(int CarId, int Count)> carIdsWithCounts)
         {
-            var topCars = new List<(string brand, string model, int count)>();
-            
-            foreach (var carId in carIds)
+            var top10Cars = new List<(string brand, string model, int count)>();
+
+            foreach (var carIdWithCount in carIdsWithCounts)
             {
-                var car = await carRepository.FindOne(cr => cr.Id == carId);
-                var brand=car.Brand;
-                var model=car.Model;
-                var count = carIds.Count(id => id == carId);
-                topCars.Add((brand, model, count));
+                var car = await FindById(carIdWithCount.CarId); 
+                if (car != null)
+                {
+                    top10Cars.Add((car.Brand, car.Model, carIdWithCount.Count));
+                }
             }
 
-            return topCars;
+            return top10Cars;
         }
 
         public async Task<IEnumerable<Car>> GetAllCarsOfCompany(int companyId)
@@ -142,10 +146,7 @@ namespace RentACar.Core.Services
             return await carRepository.FindAll(car => !reservedCarIds.Contains(car.Id) && !car.Pending);
         }
 
-        public async Task<Car> FindById(int carId)
-        {
-            return await carRepository.FindOne(x=>x.Id== carId);
-        }
+       
 
         public async Task SetCarUnavailable(int id)
         {

@@ -223,13 +223,11 @@ namespace RentACar.Core.Services
             return await reservationsRepository.FindAll(x => x.CreateTime >= startDate);
 
         }
-        public async Task<List<int>> GetTop10ReservedCarIdsByStartDate(DateTime startDate, List<int> carIds)
+        public async Task<List<(int CarId, int Count)>> GetTop10ReservedCarIds()
         {
-            var reservations = await reservationsRepository.FindAll(x =>
-                (carIds == null || carIds.Contains(x.CarId)) && x.StartDate >= startDate);
+            var reservations = await reservationsRepository.GetAll();
 
-            return reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count)
-            .Take(10).Select(x => x.CarId).ToList();
+            return reservations.GroupBy(x => x.CarId).Select(g => new { CarId = g.Key, Count = g.Count() }).OrderByDescending(x => x.Count).Take(10).Select(x => (x.CarId, x.Count)).ToList();
         }
 
         public async Task<IEnumerable<Reservation>> GetAllIfItIsNotCompany(List<int> carIds)

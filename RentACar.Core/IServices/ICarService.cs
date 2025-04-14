@@ -17,7 +17,7 @@ namespace RentACar.Core.IServices
         Task<IEnumerable<Car>> FindAllPendingCars();
         Task<int> PendingCarsCount();
         Task<int> PendingCompanyCarsCount(int companyId);
-        Task<List<(string brand, string model, int count)>> GetTop10ReservedCars(List<int> carIds);
+        Task<List<(string brand, string model, int count)>> GetTop10ReservedCars(List<(int CarId, int Count)> carIdsWithCounts);
         Task<IEnumerable<Car>> GetAllCarsOfCompany(int companyId);
         Task<IEnumerable<Car>> GetAllNotReservetedAndNotPendingCars(List<int> reservedCarIds);
         Task<Car>FindById(int carId);

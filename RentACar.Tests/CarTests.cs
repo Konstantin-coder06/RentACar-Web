@@ -210,17 +210,18 @@ namespace RentACar.Tests
         {
             var car1 = new Car { Id = 1, Brand = "Toyota", Model = "Camry" };
             var car2 = new Car { Id = 2, Brand = "Honda", Model = "Civic" };
-            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<Car, bool>>>(p => p.Compile()(car1)))).ReturnsAsync(car1);
-            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<Car, bool>>>(p => p.Compile()(car2)))).ReturnsAsync(car2);
-            List<int> carIds = new List<int> { 1, 2, 1 };
-
-            var result = await carService.GetTop10ReservedCars(carIds);
-            Assert.That(result.Count.Equals(3));
-            Assert.That(result[0].Equals(("Toyota", "Camry", 2)));
-            Assert.That(result[1].Equals(("Honda", "Civic", 1)));
-            Assert.That(result[2].Equals(("Toyota", "Camry", 2)));
+            mockRepository.Setup(r => r.FindOne(x=>x.Id==1)).ReturnsAsync(car1);
+            mockRepository.Setup(r => r.FindOne(x=>x.Id==2)).ReturnsAsync(car2);
+            var carIdsWithCounts = new List<(int CarId, int Count)>
+            {
+                (1, 2), 
+                (2, 1)
+            };
+            var result = await carService.GetTop10ReservedCars(carIdsWithCounts);
+            Assert.That(result.Count, Is.EqualTo(2));
+            Assert.That(result[0], Is.EqualTo(("Toyota", "Camry", 2)));
+            Assert.That(result[1], Is.EqualTo(("Honda", "Civic", 1)));
         }
-
         [TestCase(1)]
         public async Task GetAllCarsOfCompany_ReturnsCarsOfCompany(int companyId)
         {
