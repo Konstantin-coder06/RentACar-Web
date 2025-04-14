@@ -17,13 +17,13 @@
     {
         <div class="conflict-message" style="background: #f8d7da; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
             <p style="color: #721c24; margin-bottom: 1rem;">
-                The car is already reserved for the selected dates (@TempData["ProposedStartDate"] to @TempData["ProposedEndDate"]).
-                Do you still want to keep these dates?
+                The car is already reserved for the dates @TempData["ConflictStartDate"] to @TempData["ConflictEndDate"].
+                Do you still want to keep your selected dates?
             </p>
-            <form asp-action="Reservation" asp-controller="Car" method="post">
+            <form asp-action="Reservation" asp-controller="Reservation" method="post">
                 <input type="hidden" name="Car.Id" value="@Model.Car.Id" />
-                <input type="hidden" name="StartDate" value="@TempData["ProposedStartDate"]" />
-                <input type="hidden" name="EndDate" value="@TempData["ProposedEndDate"]" />
+                <input type="hidden" name="StartDay" value="@TempData["ProposedStartDate"]" />
+                <input type="hidden" name="EndDay" value="@TempData["ProposedEndDate"]" />
                 <button type="submit" name="submitButton" value="KeepDates" class="btn btn-primary" style="margin-right: 1rem;">
                     Yes, keep dates
                 </button>

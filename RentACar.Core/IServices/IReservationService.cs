@@ -52,5 +52,6 @@ namespace RentACar.Core.IServices
         int TotalDaysByDates(DateTime startDate, DateTime endDate);
         Task<List<Reservation>> GetAllReservationByStatus(List<(Reservation Reservation, string Status)> reservationsStatuses, string filter);
         Task<List<Reservation>> GetAllStartEndDate(DateTime? startDay, DateTime? endDay);
+        Task<Reservation> GetFirstConflictingReservation(int carId, DateTime startDate, DateTime endDate);
     }
 }

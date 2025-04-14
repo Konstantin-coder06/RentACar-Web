@@ -178,8 +178,15 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterCompany(RegisterCompanyViewModel model)
         {
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("Email", "This email is already registered.");
+                return View(model);
+            }
             if (ModelState.IsValid)
-            {            
+            {
+               
                 var user = new IdentityUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -215,8 +222,15 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("Email", "This email is already registered.");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
+               
                 var user = new IdentityUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

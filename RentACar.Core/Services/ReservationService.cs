@@ -523,8 +523,16 @@ namespace RentACar.Core.Services
           return  (await reservationsRepository.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
                                                                             (!endDay.HasValue || x.StartDate <= endDay))).ToList();
         }
+        public async Task<Reservation> GetFirstConflictingReservation(int carId, DateTime startDate, DateTime endDate)
+        {
+            return await reservationsRepository.FindOne(r => r.CarId == carId &&
+                            r.StartDate < endDate &&
+                            r.EndDate > startDate);
+
+        }
     }
 }
+
 
         
     

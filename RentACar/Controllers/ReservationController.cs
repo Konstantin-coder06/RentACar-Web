@@ -78,7 +78,6 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> Reservation(CarWithImagesReservation CarWithImagesReservation, string submitButton)
         {
-
             var userId = HttpContext.Session.GetInt32("UserId");
             if (!userId.HasValue)
             {
@@ -94,6 +93,7 @@ namespace RentACar.Controllers
                 return View(CarWithImagesReservation);
             }
             CarWithImagesReservation.Images = await imageService.GetImagesOrderByOrderCarId(CarWithImagesReservation.Car.Id);
+
             if (submitButton == "ChangeDate")
             {
                 var newStartDate = CarWithImagesReservation.StartDay;
@@ -113,9 +113,16 @@ namespace RentACar.Controllers
                 }
                 else
                 {
-                    TempData["HasConflict"] = true;
-                    TempData["ProposedStartDate"] = newStartDate.Value.ToString("yyyy-MM-dd");
-                    TempData["ProposedEndDate"] = newEndDate.Value.ToString("yyyy-MM-dd");
+                    // Retrieve the first conflicting reservation
+                    var conflictingReservation = await reservationService.GetFirstConflictingReservation(CarWithImagesReservation.Car.Id, newStartDate.Value, newEndDate.Value);
+                    if (conflictingReservation != null)
+                    {
+                        TempData["HasConflict"] = true;
+                        TempData["ConflictStartDate"] = conflictingReservation.StartDate.ToString("yyyy-MM-dd");
+                        TempData["ConflictEndDate"] = conflictingReservation.EndDate.ToString("yyyy-MM-dd");
+                        TempData["ProposedStartDate"] = newStartDate.Value.ToString("yyyy-MM-dd");
+                        TempData["ProposedEndDate"] = newEndDate.Value.ToString("yyyy-MM-dd");
+                    }
 
                     var car = await carService.FindById(CarWithImagesReservation.Car.Id);
                     var featuresOfACar = await carFeatureService.GetByCarIDAllFeatures(car.Id);
@@ -149,7 +156,6 @@ namespace RentACar.Controllers
             }
             else if (submitButton == "RevertDates")
             {
-
                 return RedirectToAction("Reservation", new { id = CarWithImagesReservation.Car.Id });
             }
             else if (submitButton == "BookNow")
@@ -173,7 +179,17 @@ namespace RentACar.Controllers
                 bool hasConflict = await reservationService.HasOverlappingReservation(CarWithImagesReservation.Car.Id, startDay, endDay);
                 if (hasConflict)
                 {
-                    ModelState.AddModelError("", "The car is already reserved for the selected dates.");
+                    // Retrieve the first conflicting reservation
+                    var conflictingReservation = await reservationService.GetFirstConflictingReservation(CarWithImagesReservation.Car.Id, startDay, endDay);
+                    if (conflictingReservation != null)
+                    {
+                        ModelState.AddModelError("", "The car is already reserved for the selected dates.");
+                        TempData["HasConflict"] = true;
+                        TempData["ConflictStartDate"] = conflictingReservation.StartDate.ToString("yyyy-MM-dd");
+                        TempData["ConflictEndDate"] = conflictingReservation.EndDate.ToString("yyyy-MM-dd");
+                        TempData["ProposedStartDate"] = startDay.ToString("yyyy-MM-dd");
+                        TempData["ProposedEndDate"] = endDay.ToString("yyyy-MM-dd");
+                    }
                     return View(CarWithImagesReservation);
                 }
 
@@ -200,7 +216,6 @@ namespace RentACar.Controllers
                 TempData["IsReturnBackAtSamePlace"] = CarWithImagesReservation.IsReturningBackAtSamePlace.ToString();
                 TempData["CarId"] = CarWithImagesReservation.Car.Id.ToString();
                 TempData["CustomerId"] = userId.Value.ToString();
-             
 
                 TempData.Keep("PaidDeliveryPlace");
                 TempData.Keep("IsSelfPick");
