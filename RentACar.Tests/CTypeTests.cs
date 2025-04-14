@@ -147,5 +147,37 @@ namespace RentACar.Tests
             bool result = await cTypeService.AnyAsync(c => c.Name == "SUV");
             Assert.IsTrue(result);
         }
+        [Test]
+        public async Task IsThereTypeWithThisName_ReturnsTrueWhenTypeExists()
+        {
+            var typeName = "Sedan";
+            var seatCapacity = 5;
+            var cType = new CType { Id = 1, Name = "Sedan", SeatCapacity = 5 };
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CType, bool>>>(expr =>
+                expr.Compile()(new CType { Name = typeName, SeatCapacity = seatCapacity })
+            ))).ReturnsAsync(cType);
+
+            var result = await cTypeService.IsThereTypeWithThisName(typeName, seatCapacity);
+
+            Assert.IsTrue(result, "Expected type to exist");
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CType, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public async Task IsThereTypeWithThisName_ReturnsFalseWhenTypeDoesNotExist()
+        {
+            var typeName = "Van";
+            var seatCapacity = 7;
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CType, bool>>>(expr =>
+                expr.Compile()(new CType { Name = typeName, SeatCapacity = seatCapacity })
+            ))).ReturnsAsync((CType)null);
+
+            var result = await cTypeService.IsThereTypeWithThisName(typeName, seatCapacity);
+
+            Assert.IsFalse(result, "Expected type to not exist");
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CType, bool>>>()), Times.Once());
+        }
     }
 }

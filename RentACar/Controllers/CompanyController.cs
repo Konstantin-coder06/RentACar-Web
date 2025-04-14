@@ -169,10 +169,7 @@ namespace RentACar.Controllers
                     reservationStatuses.Add((reservation, status));
                 }
 
-                reservations = reservationStatuses
-                    .Where(rs => rs.Status == statusFilter)
-                    .Select(rs => rs.Reservation)
-                    .ToList();
+                reservations = await reservationService.GetAllReservationByStatus(reservationStatuses,statusFilter);
 
                 if (!reservations.Any() && statusFilter != "Unknown")
                 {
@@ -198,35 +195,6 @@ namespace RentACar.Controllers
             }    
             TempData["StatusFilter"] = statusFilter;
             return RedirectToAction("ViewReservations", new { id });
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> FilterDate(int id, DateTime? startDate, DateTime? endDate)
-        {
-            var companyId = HttpContext.Session.GetInt32("CompanyId");
-            if (!companyId.HasValue)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            var companyCars = await carService.GetAllCarsIdByCompanyId(companyId.Value);
-            var reservations = await reservationService.GetAllReservationOfCompanyCars(companyCars);
-
-            if (startDate.HasValue)
-            {
-                reservations = reservations.Where(r => r.StartDate >= startDate.Value).ToList();
-            }
-            if (endDate.HasValue)
-            {
-                reservations = reservations.Where(r => r.EndDate <= endDate.Value).ToList();
-            }
-
-            var reservationsWithCarInf = await BuildReservationViewModels(reservations);
-            var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
-
-            TempData["StartDateFilter"] = startDate?.ToString("yyyy-MM-dd");
-            TempData["EndDateFilter"] = endDate?.ToString("yyyy-MM-dd");
-
-            return View("ViewReservations", userViewModel);
         }
         private async Task<List<ReservationWithCarInfViewModel>> BuildReservationViewModels(IEnumerable<Reservation> reservations)
         {
@@ -255,7 +223,7 @@ namespace RentACar.Controllers
                     CarImageHref = image.Url,
                     StartDate = x.StartDate,
                     EndDate = x.EndDate,
-                    Duration = (int)(x.EndDate - x.StartDate).TotalDays,
+                    Duration = reservationService.CalculateTotalDays(x),
                     PickUpAddress = x.PaidDeliveryPlace,
                     TotalPrice = x.TotalPrice,
                     CreateTime = x.CreateTime,

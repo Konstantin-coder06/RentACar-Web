@@ -12,35 +12,43 @@ namespace RentACar.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         ICarService carService;
-       
+       IClassOfCarService classOfCar;
         IReportService reportService;
-        public HomeController(ILogger<HomeController> logger,IReportService reportService, ICarService carService)
+        public HomeController(ILogger<HomeController> logger,IReportService reportService, ICarService carService,IClassOfCarService classOfCar)
         {
             _logger = logger;
             this.reportService= reportService;
             this.carService = carService;
+            this.classOfCar = classOfCar;
         }
 
         public async Task<IActionResult> Index()
         {
+            var standardId=await classOfCar.GetStandardId();
+            var luxuryId = await classOfCar.GetLuxuryId();
+            var economyId = await classOfCar.GetEconomyId();
+            var businessId = await classOfCar.GetBusinessId();
+            var electricId = await classOfCar.GetElectricId();
+            var sportId = await classOfCar.GetSportId();
             StartEndDateWithCarsCountViewModel viewModel = new StartEndDateWithCarsCountViewModel()
             {
                 StartDay = DateTime.Now.AddDays(1),
                 EndDay = DateTime.Now.AddDays(4),
-                StandardCount =await carService.CountOfCarsWithCategory(6),
-                LuxuryCount = await carService.CountOfCarsWithCategory(2),
-                EconomyCount=await carService.CountOfCarsWithCategory(1),
-                BusinessCount=await carService.CountOfCarsWithCategory(4),
-                ElectricCount=await carService.CountOfCarsWithCategory(5),
-                SportCount=await carService.CountOfCarsWithCategory(3),
+                
+                StandardCount =await carService.CountOfCarsWithCategory(standardId),
+                LuxuryCount = await carService.CountOfCarsWithCategory(luxuryId),
+                EconomyCount=await carService.CountOfCarsWithCategory(economyId),
+                BusinessCount=await carService.CountOfCarsWithCategory(businessId),
+                ElectricCount=await carService.CountOfCarsWithCategory(electricId),
+                SportCount=await carService.CountOfCarsWithCategory(sportId),
 
 
-                MinPriceStandard=await carService.MinPriceOfCarByCategory(6),
-                MinPriceLuxury=await carService.MinPriceOfCarByCategory(2),
-                MinPriceEconomy=await carService.MinPriceOfCarByCategory(1),
-                MinPriceBusiness=await carService.MinPriceOfCarByCategory(4),
-                MinPriceElectric=await carService.MinPriceOfCarByCategory(5),
-                MinPriceSport=await carService.MinPriceOfCarByCategory(3),
+                MinPriceStandard=await carService.MinPriceOfCarByCategory(standardId),
+                MinPriceLuxury=await carService.MinPriceOfCarByCategory(luxuryId),
+                MinPriceEconomy=await carService.MinPriceOfCarByCategory(economyId),
+                MinPriceBusiness=await carService.MinPriceOfCarByCategory(businessId),
+                MinPriceElectric=await carService.MinPriceOfCarByCategory(electricId),
+                MinPriceSport=await carService.MinPriceOfCarByCategory(sportId),
             };
 
 

@@ -123,5 +123,29 @@ namespace RentACar.Core.Services
         {
             return await repository.FindAll(x => selectedFeatures.Contains(x.NameOfFeatures));
         }
+
+        public async Task<List<string>> GetAllFeaturesNames()
+        {
+            return (await repository.GetAll()).Select(x => x.NameOfFeatures).ToList();
+        }
+        public async Task<List<string>> GetAllFeaturesNamesOfSelectedFeatures(IEnumerable<Feature> features)
+        {
+            return features.Select(x => x.NameOfFeatures).ToList();
+        }
+
+        public async Task<IEnumerable<Feature>> GetFeatureToDelete(IEnumerable<Feature> features, List<string> newFeatureNames)
+        {
+            return features.Where(f => !newFeatureNames.Contains(f.NameOfFeatures));
+        }
+
+        public async Task<IEnumerable<string>> GetFeatureToAdd(List<string> features, List<string> newFeatureNames)
+        {
+           return newFeatureNames.Where(n => !features.Contains(n));
+        }
+
+        public async Task<Feature> GetFirst(IEnumerable<Feature> features, string featureName)
+        {
+         return  features.FirstOrDefault(f => f.NameOfFeatures == featureName);
+        }
     }
 }

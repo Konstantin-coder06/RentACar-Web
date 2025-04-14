@@ -36,5 +36,16 @@ namespace RentACar.Core.IServices
         Task<IEnumerable<Car>> GetCarsOfCompanyBySearchBrandAndModel(int companyId, string[] terms);
         Task<List<int>>GetAllCarsIdByCompanyId(int companyId);
         Task<List<Car>> SearchCarsByBrandOrModel(int companyId, string[] terms);
+        double TotalPriceOfCar(double price, int days);
+        double PriceOfTaxes(double price);
+        double Difference(double price, double second);
+        Task<IEnumerable<Car>>FilterCarsByCategories(IEnumerable<Car>cars,List<int>categoriesIds);
+        Task<List<Car>>OrderByPrice(List<Car>cars);
+        Task<List<Car>> OrderByDescendingPrice(List<Car> cars);
+        Task<List<Car>> OrderByBrand(List<Car> cars);
+        Task<List<Car>> OrderByDescendingBrand(List<Car> cars);
+        Task<List<Car>> OrderByYear(List<Car> cars);
+        Task<List<Car>> OrderByDescendingYear(List<Car> cars);
+
     }
 }

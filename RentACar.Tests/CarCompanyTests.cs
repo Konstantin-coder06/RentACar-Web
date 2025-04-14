@@ -153,5 +153,176 @@ namespace RentACar.Tests
             bool result = await carCompanyService.AnyAsync(c => c.Name=="Peshovata firma");
             Assert.IsTrue(result);
         }
+        [Test]
+        public async Task GetByUserId_ReturnsCarCompanyWhenFound()
+        {
+            var userId = "user123";
+            var carCompany = new CarCompany { Id = 1, Name = "NASHATA FIRMA", UserId = userId };
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { UserId = userId })
+            ))).ReturnsAsync(carCompany);
+
+            var result = await carCompanyService.GetByUserId(userId);
+
+            Assert.IsNotNull(result, "Expected car company to be found");
+            Assert.That(result.Id, Is.EqualTo(1));
+            Assert.That(result.Name, Is.EqualTo("NASHATA FIRMA"));
+            Assert.That(result.UserId, Is.EqualTo(userId));
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public async Task GetByUserId_ReturnsNullWhenNotFound()
+        {
+            var userId = "user456";
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { UserId = userId })
+            ))).ReturnsAsync((CarCompany)null);
+
+            var result = await carCompanyService.GetByUserId(userId);
+
+            Assert.IsNull(result, "Expected no car company to be found");
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public async Task GetById_ReturnsCarCompanyWhenFound()
+        {
+            var id = 1;
+            var carCompany = new CarCompany { Id = id, Name = "Kastomoni" };
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { Id = id })
+            ))).ReturnsAsync(carCompany);
+
+            var result = await carCompanyService.GetById(id);
+
+            Assert.IsNotNull(result, "Expected car company to be found");
+            Assert.That(result.Id, Is.EqualTo(id));
+            Assert.That(result.Name, Is.EqualTo("Kastomoni"));
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public async Task GetById_ReturnsNullWhenNotFound()
+        {
+            var id = 2;
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { Id = id })
+            ))).ReturnsAsync((CarCompany)null);
+
+            var result = await carCompanyService.GetById(id);
+
+            Assert.IsNull(result, "Expected no car company to be found");
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public async Task GetNameById_ReturnsNameWhenCompanyFound()
+        {
+            var id = 1;
+            var carCompany = new CarCompany { Id = id, Name = "Arsenal AD" };
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { Id = id })
+            ))).ReturnsAsync(carCompany);
+
+            var result = await carCompanyService.GetNameById(id);
+
+            Assert.That(result, Is.EqualTo("Arsenal AD"), "Expected correct company name");
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public void GetNameById_ThrowsNullReferenceExceptionWhenCompanyNotFound()
+        {
+            var id = 3;
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { Id = id })
+            ))).ReturnsAsync((CarCompany)null);
+
+            Assert.ThrowsAsync<NullReferenceException>(async () =>
+                await carCompanyService.GetNameById(id),
+                "Expected NullReferenceException when company not found");
+
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public async Task GetAddressById_ReturnsAddressWhenCompanyFound()
+        {
+            var id = 1;
+            var carCompany = new CarCompany { Id = id, Address = "ul. \"Hadji Dimitur\"" };
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { Id = id })
+            ))).ReturnsAsync(carCompany);
+
+            var result = await carCompanyService.GetAddressById(id);
+
+            Assert.That(result, Is.EqualTo("ul. \"Hadji Dimitur\""), "Expected correct company address");
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public void GetAddressById_ThrowsNullReferenceExceptionWhenCompanyNotFound()
+        {
+            var id = 4;
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { Id = id })
+            ))).ReturnsAsync((CarCompany)null);
+
+            Assert.ThrowsAsync<NullReferenceException>(async () =>
+                await carCompanyService.GetAddressById(id),
+                "Expected NullReferenceException when company not found");
+
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+        }
+
+        [Test]
+        public async Task GetCompanyEmail_ReturnsEmailWhenCompanyAndUserFound()
+        {
+            var id = 1;
+            var userId = "user789";
+            var carCompany = new CarCompany { Id = id, UserId = userId };
+            var identityUser = new IdentityUser { Id = userId, Email = "company@example.com" };
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { Id = id })
+            ))).ReturnsAsync(carCompany);
+            _mockUserManager.Setup(u => u.FindByIdAsync(userId)).ReturnsAsync(identityUser);
+
+            var result = await carCompanyService.GetCompanyEmail(id);
+
+            Assert.That(result, Is.EqualTo("company@example.com"), "Expected correct user email");
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+            _mockUserManager.Verify(u => u.FindByIdAsync(userId), Times.Once());
+        }
+
+      
+        [Test]
+        public async Task GetCompanyEmail_ReturnsNullWhenUserNotFound()
+        {
+            var id = 1;
+            var userId = "user101";
+            var carCompany = new CarCompany { Id = id, UserId = userId };
+
+            mockRepository.Setup(r => r.FindOne(It.Is<Expression<Func<CarCompany, bool>>>(expr =>
+                expr.Compile()(new CarCompany { Id = id })
+            ))).ReturnsAsync(carCompany);
+            _mockUserManager.Setup(u => u.FindByIdAsync(userId)).ReturnsAsync((IdentityUser)null);
+
+            var result = await carCompanyService.GetCompanyEmail(id);
+
+            Assert.IsNull(result, "Expected null when user not found");
+            mockRepository.Verify(r => r.FindOne(It.IsAny<Expression<Func<CarCompany, bool>>>()), Times.Once());
+            _mockUserManager.Verify(u => u.FindByIdAsync(userId), Times.Once());
+        }
     }
 }
+

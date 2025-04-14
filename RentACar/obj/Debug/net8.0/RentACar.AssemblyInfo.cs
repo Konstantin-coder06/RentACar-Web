@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RentACar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abd1697589f63a3042ed3659237c28c51404269f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d11f47626a2bb7b4acfc1b0f3594c5ed1b4835f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("RentACar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RentACar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -329,5 +329,50 @@ namespace RentACar.Core.Services
                     (x.Model != null && x.Model.ToLower().Contains(term)))))
                 .ToList();
         }
+
+        public double TotalPriceOfCar(double price, int days)
+        {
+            return price * days;
+        }
+
+        public double PriceOfTaxes(double price)
+        {
+            return price * 0.09;
+        }
+
+        public double Difference(double price, double second)
+        {
+            return price - second;
+        }
+
+        public async Task<IEnumerable<Car>> FilterCarsByCategories(IEnumerable<Car> cars, List<int> categoriesIds)
+        {
+           return  cars.Where(x => categoriesIds.Contains(x.ClassOfCarId)).ToList();
+        }
+
+        public async Task<List<Car>> OrderByPrice(List<Car> cars)
+        {
+            return cars.OrderBy(x=>x.PricePerDay).ToList();
+        }
+        public async Task<List<Car>> OrderByDescendingPrice(List<Car> cars)
+        {
+            return cars.OrderByDescending(x => x.PricePerDay).ToList();
+        }
+        public async Task<List<Car>> OrderByBrand(List<Car> cars)
+        {
+            return cars.OrderBy(x => x.Brand).ToList();
+        }
+        public async Task<List<Car>> OrderByDescendingBrand(List<Car> cars)
+        {
+            return cars.OrderByDescending(x => x.Brand).ToList();
+        }
+        public async Task<List<Car>> OrderByYear(List<Car> cars)
+        {
+            return cars.OrderBy(x => x.Year).ToList();
+        }
+        public async Task<List<Car>> OrderByDescendingYear(List<Car> cars)
+        {
+            return cars.OrderByDescending(x => x.Year).ToList();
+        }
     }
 }

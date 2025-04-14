@@ -90,7 +90,7 @@ namespace RentACar.Controllers
                         }
                         if (TempData["RservationOnAction"] == null)
                         {
-                            int difference = (int)(reservation.StartDate - DateTime.Now).TotalDays;
+                            int difference = reservationService.CalculateTotalDays(reservation);
                             if (difference <= 2)
                             {
                                 TempData["ReservationAlmostOnAction"] = "The Upcoming Reservation Is Too Close To Be Postponed! Please Select New Dates";
@@ -129,28 +129,28 @@ namespace RentACar.Controllers
             if (selectedCategories.Any())
             {
                 var categoryIds = await classOfCarService.GetAllClassSelectedIds(selectedCategories);
-                cars = cars.Where(x => categoryIds.Contains(x.ClassOfCarId)).ToList();
+                cars = await carService.FilterCarsByCategories(cars, categoryIds);
             }
             var sortOrder = HttpContext.Session.GetString("SortOrder") ?? "default";
             switch (sortOrder)
             {
                 case "Name (A-Z)":
-                    cars = cars.OrderBy(c => c.Brand).ToList();
+                    cars =await carService.OrderByBrand(cars.ToList()); 
                     break;
                 case "Name (Z-A)":
-                    cars = cars.OrderByDescending(c => c.Brand).ToList();
+                    cars = await carService.OrderByDescendingBrand(cars.ToList());
                     break;
                 case "Year (Oldest First)":
-                    cars = cars.OrderBy(c => c.Year).ToList();
+                    cars = await carService.OrderByYear(cars.ToList());
                     break;
                 case "Year (Newest First)":
-                    cars = cars.OrderByDescending(c => c.Year).ToList();
+                    cars = await carService.OrderByDescendingYear(cars.ToList());
                     break;
                 case "Price (Lowest First)":
-                    cars = cars.OrderBy(c => c.PricePerDay).ToList();
+                    cars = await carService.OrderByPrice(cars.ToList());
                     break;
                 case "Price (Highest First)":
-                    cars = cars.OrderByDescending(c => c.PricePerDay).ToList();
+                    cars = await carService.OrderByDescendingPrice(cars.ToList());
                     break;
                 case "default":
                     int seed = DateTime.UtcNow.Date.GetHashCode();
@@ -398,10 +398,10 @@ namespace RentACar.Controllers
             }
 
          
-            List<Reservation> reservations =(await reservationService.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
-                                                                            (!endDay.HasValue || x.StartDate <= endDay))).ToList();
+            List<Reservation> reservations =await reservationService.GetAllStartEndDate(startDay, endDay);
 
-          
+
+
             var cars = new List<Car>();
             if (User.IsInRole("Admin"))
             {
@@ -410,22 +410,20 @@ namespace RentACar.Controllers
             else if (HttpContext.Session.GetInt32("CompanyId").HasValue)
             {
                 var companyId = HttpContext.Session.GetInt32("CompanyId").Value;
-                cars = (await carService.FindAll(x => x.CarCompanyId == companyId)).ToList();
+                cars = (await carService.GetAllCarsOfCompany(companyId)).ToList();
             }
             else
             {
                 var reservedCarIds = reservations.Select(r => r.CarId).ToList();
-                cars = (await carService.GetAll())
-                    .Where(car => !reservedCarIds.Contains(car.Id) && !car.Pending)
-                    .ToList();
+                cars = (await carService.GetAllNotReservetedAndNotPendingCars(reservedCarIds)).ToList();
             }
             switch (sort)
             {
                 case 1:
-                    cars = cars.OrderBy(x => x.PricePerDay).ToList();
+                    cars = await carService.OrderByPrice(cars);
                     break;
                 case 2:
-                    cars = cars.OrderByDescending(x => x.PricePerDay).ToList();
+                    cars = await carService.OrderByDescendingPrice(cars);
                     break;
                 default:
                     break;
@@ -686,9 +684,10 @@ namespace RentACar.Controllers
             var car = await carService.FindById(id);
             var images=await imageService.GetImagesByCarId(car.Id);
             var classes = await classOfCarService.GetAll();
-            var allFeatures = (await featureService.GetAll()).Select(x => x.NameOfFeatures).ToList(); 
+
+            var allFeatures = await featureService.GetAllFeaturesNames();
             var carFeatures = await carFeatureService.GetByCarIDAllFeatureNames(id); 
-            var selectedFeatures = carFeatures.Select(f => f.NameOfFeatures).ToList(); 
+            var selectedFeatures = await featureService.GetAllFeaturesNamesOfSelectedFeatures(carFeatures);
             var carTypes= await cTypeService.GetAll();
 
             var viewModel = new EditCarWithImagesPendingViewModel
@@ -737,7 +736,7 @@ namespace RentACar.Controllers
                 var classes = await classOfCarService.GetAll();
                 var images = await imageService.GetImagesByCarId(id);
                 viewModel.ClassOptions = new SelectList(classes, "Id", "Name");
-                viewModel.Features = (await featureService.GetAll()).Select(x => x.NameOfFeatures).ToList();
+                viewModel.Features = await featureService.GetAllFeaturesNames();
                 viewModel.Images = images.Select(img => new ImageViewModel { Id = img.Id, Url = img.Url, Order = img.Order }).ToList();
                 return View(viewModel);
             }
@@ -784,14 +783,14 @@ namespace RentACar.Controllers
             await carService.Save();
             var allFeatures = await featureService.GetAll(); 
             var currentCarFeatures = await carFeatureService.GetByCarIDAllFeatureNames(id);
-            var currentFeatureNames = currentCarFeatures.Select(f => f.NameOfFeatures).ToList(); 
+            var currentFeatureNames = await featureService.GetAllFeaturesNamesOfSelectedFeatures(currentCarFeatures);
             var newFeatureNames = viewModel.SelectedFeatures ?? new List<string>();
 
             
-            var featuresToRemove = currentCarFeatures.Where(f => !newFeatureNames.Contains(f.NameOfFeatures));
+            var featuresToRemove = await featureService.GetFeatureToDelete(currentCarFeatures,newFeatureNames);
             foreach (var feature in featuresToRemove)
             {
-                var carFeature = await carFeatureService.FindOne(cf => cf.CarId == car.Id && cf.FeatureId == feature.Id);
+                var carFeature = await carFeatureService.GetByCarAndFeatureid(car.Id, feature.Id);
                 if (carFeature != null)
                 {
                     carFeatureService.Delete(carFeature); 
@@ -800,10 +799,10 @@ namespace RentACar.Controllers
             await carFeatureService.Save(); 
 
             
-            var featuresToAdd = newFeatureNames.Where(n => !currentFeatureNames.Contains(n));
+            var featuresToAdd = await featureService.GetFeatureToAdd(currentFeatureNames, newFeatureNames);
             foreach (var featureName in featuresToAdd)
             {
-                var feature = allFeatures.FirstOrDefault(f => f.NameOfFeatures == featureName);
+                var feature = await featureService.GetFirst(allFeatures, featureName);
                 if (feature != null)
                 {
                     var carFeature = new CarFeature

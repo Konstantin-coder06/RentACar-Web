@@ -22,11 +22,18 @@ namespace RentACar.Controllers
         public async Task<IActionResult> Index(int id)
         {
             var reservations = await reservationService.GetReservationsByUserId(id);
+            var statusFilter = TempData["StatusFilter"]?.ToString() ?? "All Reservations";
+            if (statusFilter != "All Reservations")
+            {
+                reservations = await reservationService.GetAllReservationFilteredByStatus(reservations, statusFilter);
+
+            }
             var reservationsWithCarInf = await BuildReservationViewModels(reservations);
             if (TempData["SomethingHappend"]!=null)
             {
                 TempData["error"] = TempData["SomethingHappend"];
             }
+          
             var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
             return View(userViewModel);
         }
@@ -34,42 +41,9 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult> Filter(int id, string statusFilter)
         {
-            var reservations = await reservationService.GetReservationsByUserId(id);
-
-            if (statusFilter != "All Reservations")
-            {
-                reservations = reservations.Where(r => reservationService.GetStatusOfReservation(r).Result == statusFilter).ToList();
-            }
-
-            var reservationsWithCarInf = await BuildReservationViewModels(reservations);
-            var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
-
+            var reservations = await reservationService.GetReservationsByUserId(id);      
             TempData["StatusFilter"] = statusFilter;
-
-            return View("Index", userViewModel);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> FilterDate(int id, DateTime? startDate, DateTime? endDate)
-        {
-            var reservations = await reservationService.GetReservationsByUserId(id);
-
-            if (startDate.HasValue)
-            {
-                reservations = reservations.Where(r => r.StartDate >= startDate.Value).ToList();
-            }
-            if (endDate.HasValue)
-            {
-                reservations = reservations.Where(r => r.EndDate <= endDate.Value).ToList();
-            }
-
-            var reservationsWithCarInf = await BuildReservationViewModels(reservations);
-            var userViewModel = new UserViewModel { ReservationCar = reservationsWithCarInf };
-
-            TempData["StartDateFilter"] = startDate?.ToString("yyyy-MM-dd");
-            TempData["EndDateFilter"] = endDate?.ToString("yyyy-MM-dd");
-
-            return View("Index", userViewModel);
+            return RedirectToAction("Index", new { id });
         }
         [HttpPost]
         public IActionResult ShowCancelConfirmation(int userId,int reservationId)
@@ -147,14 +121,14 @@ namespace RentACar.Controllers
                     CarImageHref = image.Url,
                     StartDate = x.StartDate,
                     EndDate = x.EndDate,
-                    Duration = (int)(x.EndDate - x.StartDate).TotalDays,
+                    Duration = reservationService.CalculateTotalDays(x),
                     PickUpAddress = x.PaidDeliveryPlace,
                     TotalPrice = x.TotalPrice,
                     IsTheCarReservatedForToday = isReserved,
-                    StartDateOfCar = isReserved ? startDate : null, 
-                    EndDateOfCar = isReserved ? endDate : null,     
+                    StartDateOfCar = isReserved ? startDate : null,
+                    EndDateOfCar = isReserved ? endDate : null,
                     CreateTime = x.CreateTime,
-                    Difference=(int)(x.StartDate-DateTime.Now).TotalDays,
+                    Difference = reservationService.CalculateStartDateDifference(x),
                     CarId = car.Id,
                 };
                 reservationsWithCarInf.Add(model);

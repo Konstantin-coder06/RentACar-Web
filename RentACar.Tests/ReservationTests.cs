@@ -175,11 +175,28 @@ namespace RentACar.Tests
             var carId = 1;
             var startDate = DateTime.Now.Date;
             var endDate = DateTime.Now.Date.AddDays(1);
-            mockRepository.Setup(r => r.AnyAsync(It.IsAny<Expression<Func<Reservation, bool>>>())).ReturnsAsync(true);
+
+            var overlappingReservations = new List<Reservation>
+            {
+                new Reservation
+                {
+                    CarId = carId,
+                    StartDate = startDate,
+                    EndDate = endDate
+                }
+            };
+
+            mockRepository.Setup(r => r.FindAll(It.Is<Expression<Func<Reservation, bool>>>(expr =>
+                expr.Compile()(new Reservation
+                {
+                    CarId = carId,
+                    StartDate = startDate,
+                    EndDate = endDate
+                })
+            ))).ReturnsAsync(overlappingReservations);
+
             var result = await reservationService.HasOverlappingReservation(carId, startDate, endDate);
-            Assert.IsTrue(result);
-            mockRepository.Verify(r => r.AnyAsync(It.Is<Expression<Func<Reservation, bool>>>(expr =>
-                expr.Compile()(new Reservation { CarId = carId, StartDate = startDate.AddHours(-1), EndDate = endDate.AddHours(1) }))), Times.Once());
+            Assert.IsTrue(result, "Expected an overlapping reservation to be found");
         }
         [Test]
         public async Task FindAllForLast24Hours_ReturnsReservationsWithin24Hours()

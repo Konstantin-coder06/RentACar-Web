@@ -15,5 +15,10 @@ namespace RentACar.Core.IServices
         Task<bool> IsThereFeatureWithThisName(string featureName);
         Task<IEnumerable<string>> GetAllSelectedNames();
         Task<IEnumerable<Feature>> GetAllSelectedFeatures(List<string>selectedFeatures);
+        Task<List<string>> GetAllFeaturesNames();
+        Task<List<string>> GetAllFeaturesNamesOfSelectedFeatures(IEnumerable<Feature> features);
+        Task<IEnumerable<Feature>> GetFeatureToDelete(IEnumerable<Feature> features, List<string> newFeatureNames);
+        Task<IEnumerable<string>> GetFeatureToAdd(List<string> features,List<string> newFeatureNames);
+        Task<Feature>GetFirst(IEnumerable<Feature> features,string featureName);
     }
 }

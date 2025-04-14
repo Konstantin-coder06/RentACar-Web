@@ -15,5 +15,11 @@ namespace RentACar.Core.IServices
         Task<List<int>> GetAllClassSelectedIds(List<string> selectedCategories);
         Task<bool> IsThereClassWithThisName(string className);
         Task<ClassOfCar>GetClassOfCarById(int id);
+        Task<int> GetStandardId();
+        Task<int> GetLuxuryId();
+        Task<int> GetEconomyId();
+        Task<int> GetBusinessId();
+        Task<int> GetElectricId();
+        Task<int> GetSportId();
     }
 }

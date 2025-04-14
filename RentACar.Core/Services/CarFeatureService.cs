@@ -97,6 +97,9 @@ namespace RentACar.Core.Services
             return carFeatures.Select(x => x.Feature).ToList();
         }
 
-       
+        public async Task<CarFeature> GetByCarAndFeatureid(int carId, int featureId)
+        {
+           return  await carFeatureRepository.FindOne(cf => cf.CarId == carId && cf.FeatureId == featureId);
+        }
     }
 }

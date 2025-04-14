@@ -111,5 +111,35 @@ namespace RentACar.Core.Services
         {
             return await repository.FindOne(x => x.Id == id);
         }
+        public async Task<int> GetStandardId()
+        {
+            var type = await repository.FindOne(x => x.Name == "Standard");
+            return type.Id;
+        }
+        public async Task<int> GetLuxuryId()
+        {
+            var type = await repository.FindOne(x => x.Name == "Luxury");
+            return type.Id;
+        }
+        public async Task<int> GetEconomyId()
+        {
+            var type = await repository.FindOne(x => x.Name == "Economy");
+            return type.Id;
+        }
+        public async Task<int> GetBusinessId()
+        {
+            var type = await repository.FindOne(x => x.Name == "Business");
+            return type.Id;
+        }
+        public async Task<int> GetElectricId()
+        {
+            var type = await repository.FindOne(x => x.Name == "Electric");
+            return type.Id;
+        }
+        public async Task<int> GetSportId()
+        {
+            var type = await repository.FindOne(x => x.Name == "Sport");
+            return type.Id;
+        }
     }
 }

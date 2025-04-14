@@ -12,5 +12,6 @@ namespace RentACar.Core.IServices
     {
         Task<IEnumerable<int>>GetByCarIDAllFeatures(int carID);
         Task<IEnumerable<Feature>> GetByCarIDAllFeatureNames(int carID);
+        Task<CarFeature>GetByCarAndFeatureid(int carId, int featureId);
     } 
     }

@@ -494,6 +494,37 @@ namespace RentACar.Core.Services
             }
             return (currentDate, currentDate.AddDays(minimumDurationDays));
         }
+
+        public async Task<List<Reservation>> GetAllReservationFilteredByStatus(IEnumerable<Reservation> reservations, string status)
+        {
+            return (reservations.Where(r => GetStatusOfReservation(r).Result == status)).ToList();
+        }
+        public int CalculateStartDateDifference(Reservation reservation)
+        {
+            return (int)(reservation.StartDate - DateTime.Now).TotalDays;
+        }
+        public int CalculateTotalDays(Reservation reservation)
+        {
+            return (int)(reservation.EndDate - reservation.StartDate).TotalDays;
+        }
+
+        public int TotalDaysByDates(DateTime startDate, DateTime endDate)
+        {
+           return (int)(endDate - startDate).TotalDays;
+        }
+
+        public async Task<List<Reservation>> GetAllReservationByStatus(List<(Reservation Reservation, string Status)> reservationsStatuses, string filter)
+        {
+            return  reservationsStatuses
+                    .Where(rs => rs.Status == filter)
+                    .Select(rs => rs.Reservation)
+                    .ToList();
+        }
+        public async Task<List<Reservation>> GetAllStartEndDate(DateTime? startDay, DateTime? endDay)
+        {
+          return  (await reservationsRepository.FindAll(x => (!startDay.HasValue || x.StartDate >= startDay) &&
+                                                                            (!endDay.HasValue || x.StartDate <= endDay))).ToList();
+        }
     }
 }
 

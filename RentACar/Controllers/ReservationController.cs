@@ -96,10 +96,6 @@ namespace RentACar.Controllers
             CarWithImagesReservation.Images = await imageService.GetImagesOrderByOrderCarId(CarWithImagesReservation.Car.Id);
             if (submitButton == "ChangeDate")
             {
-                if ((bool)TempData["Edit"] == true)
-                {
-
-                }
                 var newStartDate = CarWithImagesReservation.StartDay;
                 var newEndDate = CarWithImagesReservation.EndDay;
 
@@ -204,7 +200,7 @@ namespace RentACar.Controllers
                 TempData["IsReturnBackAtSamePlace"] = CarWithImagesReservation.IsReturningBackAtSamePlace.ToString();
                 TempData["CarId"] = CarWithImagesReservation.Car.Id.ToString();
                 TempData["CustomerId"] = userId.Value.ToString();
-                TempData["success"] = $"Days {totalDays} Total price: {reservation.TotalPrice}";
+             
 
                 TempData.Keep("PaidDeliveryPlace");
                 TempData.Keep("IsSelfPick");
@@ -232,16 +228,16 @@ namespace RentACar.Controllers
             {
                 endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             }
-            int totalDays = (int)(endDay - startDay).TotalDays;
+            int totalDays = reservationService.TotalDaysByDates(startDay, endDay);
             var image = await imageService.ImageByCarId(id);
             var car = await carService.FindById(id);
-            var price = car.PricePerDay * totalDays;
+            var price = carService.TotalPriceOfCar(car.PricePerDay, totalDays);
             double total = 0;
             if (TempData["TotalPrice"] != null)
             {
                 total = double.Parse(TempData["TotalPrice"].ToString(), CultureInfo.InvariantCulture);
             }
-            var priceOfTaxes = total * 0.09;
+            var priceOfTaxes = carService.PriceOfTaxes(total);
             bool isSelfPick = TempData["IsSelfPick"] != null && bool.Parse(TempData["IsSelfPick"].ToString());
             string paidDeliveryPlace = isSelfPick == false ? TempData["PaidDeliveryPlace"]?.ToString() : null;
 
@@ -262,7 +258,7 @@ namespace RentACar.Controllers
                 Transmittion = car.DriveTrain,
                 LimitForOneDay = car.MileageLimitForDay,
                 TotalPriceWithoutTheDiscount = price,
-                DifferenceTotalPriceWithDiscounted = price - total,
+                DifferenceTotalPriceWithDiscounted = carService.Difference(price, total),
                 TotalPrice = total,
                 PriceOfTaxes = priceOfTaxes,
                 CarId = id,

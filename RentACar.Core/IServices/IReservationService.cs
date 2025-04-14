@@ -46,5 +46,11 @@ namespace RentACar.Core.IServices
         Task<List<Reservation>>GetAllReservationOfCompanyCars(List<int> companyCarIds);
         Task<bool>IsCarReservationForTomorrow(int carId);
         Task<(DateTime startDate, DateTime endDate)> GetEarliestAvailableDates(int carId, int minimumDurationDays = 2);
+        Task<List<Reservation>> GetAllReservationFilteredByStatus(IEnumerable<Reservation> reservations, string status);
+        int CalculateStartDateDifference(Reservation reservation);
+        int CalculateTotalDays(Reservation reservation);
+        int TotalDaysByDates(DateTime startDate, DateTime endDate);
+        Task<List<Reservation>> GetAllReservationByStatus(List<(Reservation Reservation, string Status)> reservationsStatuses, string filter);
+        Task<List<Reservation>> GetAllStartEndDate(DateTime? startDay, DateTime? endDay);
     }
 }
