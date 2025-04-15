@@ -102,61 +102,30 @@ app.MapControllerRoute(
 
 app.Run();
  static async Task CreateRoles(IServiceProvider serviceProvider)
-
 {
-
     var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
     string[] roleNames = { SD.Admin, SD.User, SD.Company };
-
-
-
     foreach (var roleName in roleNames)
-
     {
-
         if (!await roleManager.RoleExistsAsync(roleName))
-
         {
-
             await roleManager.CreateAsync(new IdentityRole(roleName));
-
         }
-
     }
-
 }
  static async Task CreateAdmin(IServiceProvider serviceProvider)
-
 {
-
     var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-
     var adminEmail = "admin@admin.com";
-
     var adminUser = await userManager.FindByEmailAsync(adminEmail);
-
-
-
-
-
     if (adminUser == null)
-
     {
-
         var user = new IdentityUser { UserName = "admin@admin.com", Email = adminEmail };
-
         var result = await userManager.CreateAsync(user, "AdminPassword123!");
-
         if (result.Succeeded)
-
         {
-
             await userManager.AddToRoleAsync(user, SD.Admin); 
-
         }
-
     }
-
 }
 

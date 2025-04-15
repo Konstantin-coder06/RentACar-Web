@@ -24,7 +24,7 @@ namespace RentACar.DataAccess
         public DbSet<Customer>Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<CarCompany>CarCompanies { get; set; }
-      
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -46,6 +46,345 @@ new ClassOfCar { Id = 6, Name = "Standard" },
 new ClassOfCar { Id = 7, Name = "Retro" }
 
 );
+            modelBuilder.Entity<IdentityRole>().HasData(
+            new IdentityRole
+            {
+                Id = "14d0633b-3047-4eb2-b6cd-9c2565ffbb40",
+                Name = "Company",
+                NormalizedName = "COMPANY",
+                ConcurrencyStamp = null
+            },
+            new IdentityRole
+            {
+                Id = "8c796f68-1ca7-41ae-9f17-465876acab20",
+                Name = "User",
+                NormalizedName = "USER",
+                ConcurrencyStamp = null
+            }
+        );
+            modelBuilder.Entity<IdentityUser>().HasData(
+        new IdentityUser
+        {
+            Id = "14818507-0d14-48c7-bc15-f81abe0a1dc2",
+            UserName = "oneclickonedrive@gmail.com",
+            NormalizedUserName = "ONECLICKONEDRIVE@GMAIL.COM",
+            Email = "oneclickonedrive@gmail.com",
+            NormalizedEmail = "ONECLICKONEDRIVE@GMAIL.COM",
+            EmailConfirmed = false,
+            PasswordHash = "AQAAAAIAAYagAAAAEAmk5gKltaxEzJqrLc3/SZ/5i9zEHz0rtSL5ScgFfTW26u2z3snjJlYI/q42MlZrtw==",
+            SecurityStamp = "7BG3CAZ2A2RCPSY4ENWH5GK4GOL2SMIT",
+            ConcurrencyStamp = "242e77d8-b884-4d90-a75c-668cbe8b1bb0",
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        },
+        new IdentityUser
+        {
+            Id = "2575ca69-1258-4767-ac40-4710bb24b67d", UserName = "anditobg@gmail.com", NormalizedUserName = "ANDITOBG@GMAIL.COM", Email = "anditobg@gmail.com", NormalizedEmail = "ANDITOBG@GMAIL.COM", EmailConfirmed = false, PasswordHash = "AQAAAAIAAYagAAAAEAlsa2MMdRhyMUgKFLda83ZC6kV+F5vEVWRtGqeW8TTqMmKp/ILuiqU9iETHMiJ4KQ==", SecurityStamp = "Y2GAED2SIOTPY5W6TPOSTCYGTFFTLY6S", ConcurrencyStamp = "cde74caf-bbcb-462b-9bcd-38dc4c5ad875", PhoneNumber = null, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true, AccessFailedCount = 0
+        },
+        new IdentityUser
+        {
+            Id = "6e993bea-9377-4d0b-abfc-637ed7a8b69e",
+            UserName = "dubailuxury@company.abv.bg",
+            NormalizedUserName = "DUBAILUXURY@COMPANY.ABV.BG",
+            Email = "dubailuxury@company.abv.bg",
+            NormalizedEmail = "DUBAILUXURY@COMPANY.ABV.BG",
+            EmailConfirmed = false,
+            PasswordHash = "AQAAAAIAAYagAAAAELh5jOnWpFjlMDzPsbO32i/BDgnvHO75gAS+8msNrKzhlC6wKABJ+cuw6yoO9ca1yQ==",
+            SecurityStamp = "HXDEUYUVH6YZUBTKYTEVTN4UVV2552WA",
+            ConcurrencyStamp = "e5877398-35da-4428-800e-85d4bf71349b",
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        },
+        new IdentityUser
+        {
+            Id = "8679b5d4-0473-4fc3-bbb2-dd0d128f3a53",
+            UserName = "dimiturstoqnov@gmail.com",
+            NormalizedUserName = "DIMITURSTOQNOV@GMAIL.COM",
+            Email = "dimiturstoqnov@gmail.com",
+            NormalizedEmail = "DIMITURSTOQNOV@GMAIL.COM",
+            EmailConfirmed = false,
+            PasswordHash = "AQAAAAIAAYagAAAAEFFYgk6mKgRJjTqwAg1ppB5J6xKjUXXvwC4tk+47+wWSuvkWkxTJpUwhqox6n78sjw==",
+            SecurityStamp = "OAYYM3H6DKRDLTFWARJWRS6D65RAUYSP",
+            ConcurrencyStamp = "54ac1e5f-79eb-4db3-a58e-fd35d0f3e75a",
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        },
+         new IdentityUser
+         {
+             Id = "9ec0d6cb-0cd4-4b55-87b2-27470215a711",
+             UserName = "mariageorgieva@gmail.com",
+             NormalizedUserName = "MARIAGEORGIEVA@GMAIL.COM",
+             Email = "mariageorgieva@gmail.com",
+             NormalizedEmail = "MARIAGEORGIEVA@GMAIL.COM",
+             EmailConfirmed = false,
+             PasswordHash = "AQAAAAIAAYagAAAAEKzggjgHFWU1AjIaDj4ddYsYcsRh+37xmxqZAPNX+tsXMC61ESdhvCOnk7saTtcZcQ==",
+             SecurityStamp = "6CTCZTEYEZPBPUYKAPXUSOGQY6QRYAGT",
+             ConcurrencyStamp = "42c2e9a7-4a46-4110-a722-5a42179eafa8",
+             PhoneNumber = null,
+             PhoneNumberConfirmed = false,
+             TwoFactorEnabled = false,
+             LockoutEnabled = true,
+             AccessFailedCount = 0
+         },
+        new IdentityUser
+        {
+            Id = "bfd29fba-8052-48d3-87c3-ffad67faca1a",
+            UserName = "kurtach@gmail.com",
+            NormalizedUserName = "KURTACH@GMAIL.COM",
+            Email = "kurtach@gmail.com",
+            NormalizedEmail = "KURTACH@GMAIL.COM",
+            EmailConfirmed = false,
+            PasswordHash = "AQAAAAIAAYagAAAAEGP36dPC/pR6jQBDAJUS22VN9Vt1FPysu6tVvz3JeFN6mNQYJhpnZnje+X2+ZUCC/Q==",
+            SecurityStamp = "5ZBAZEYHK2P2RTN6DIWMI5CKUFMM2YZM",
+            ConcurrencyStamp = "4d2abaac-c77f-4622-bca3-bdcbad71ea5f",
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        }, new IdentityUser
+        {
+            Id = "d37497a5-b222-4e3e-8a6f-34ec9ffe3b16",
+            UserName = "rosen@gmail.com",
+            NormalizedUserName = "ROSEN@GMAIL.COM",
+            Email = "rosen@gmail.com",
+            NormalizedEmail = "ROSEN@GMAIL.COM",
+            EmailConfirmed = false,
+            PasswordHash = "AQAAAAIAAYagAAAAEHQP9dkOMANIVw1qhjjVV2KmU2wEOg8iEV8cmxMxL/rqkbx6GV5M23XxqhHg7+wbEA==",
+            SecurityStamp = "Z2GIRNMTF74UIWIUFILJJDUBS24RL7PN",
+            ConcurrencyStamp = "856e739e-fb2e-4db0-bdab-9a39c302b35a",
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        },
+        new IdentityUser
+        {
+            Id = "ca105f54-8e1b-4bac-8692-a5a3af6c0124",
+            UserName = "peshkan@gmail.com",
+            NormalizedUserName = "PESHKAN@GMAIL.COM",
+            Email = "peshkan@gmail.com",
+            NormalizedEmail = "PESHKAN@GMAIL.COM",
+            EmailConfirmed = false,
+            PasswordHash = "AQAAAAIAAYagAAAAEMKinXBIkpTRVoJmF7xrGHl64a0l5qBElqX/XOcF4UEjS1dUdAiffEVgFTr1PK13Lg==",
+            SecurityStamp = "FQRXCURNZUDMAKPZMNGSG5JC4VQSPIQ2",
+            ConcurrencyStamp = "30564eca-4c17-460c-a251-5376d4b0a210",
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        },
+        new IdentityUser
+        {
+            Id = "ec246a6e-5cb7-48a0-983d-020788e31ad9",
+            UserName = "stoqnkata@gmail.com",
+            NormalizedUserName = "STOQNKATA@GMAIL.COM",
+            Email = "stoqnkata@gmail.com",
+            NormalizedEmail = "STOQNKATA@GMAIL.COM",
+            EmailConfirmed = false,
+            PasswordHash = "AQAAAAIAAYagAAAAEN1dPbAD1m2UbzxGUKqltYuf92pAELZeMzJMku8qkZPPPZ5aQHTCH856+R1xxW2jqw==",
+            SecurityStamp = "TCVOTCVJHJ7OSF65N6NEI2W5GINUFESQ",
+            ConcurrencyStamp = "6392a7ba-060b-41c5-a05d-0299d4872b21",
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        },
+        new IdentityUser
+        {
+            Id = "ecba9c4c-dd9e-4b92-b0c9-30102d68081a",
+            UserName = "yangodrive@gmail.com",
+            NormalizedUserName = "YANGODRIVE@GMAIL.COM",
+            Email = "yangodrive@gmail.com",
+            NormalizedEmail = "YANGODRIVE@GMAIL.COM",
+            EmailConfirmed = false,
+            PasswordHash = "AQAAAAIAAYagAAAAEEyhX5CogWLvxIG1ZK1wxeXiWys+8YLIas0QdI5tadjCPJWx1zk9t/WQhboFgGW1Og==",
+            SecurityStamp = "SL7X4VI5EQSGGZOHDRSLYEXJ2ZMWR6PY",
+            ConcurrencyStamp = "dfc787a4-624c-4f94-8a63-dd16a2a08c83",
+            PhoneNumber = null,
+            PhoneNumberConfirmed = false,
+            TwoFactorEnabled = false,
+            LockoutEnabled = true,
+            AccessFailedCount = 0
+        },
+         new IdentityUser
+         {
+             Id = "f1a432b0-510c-46c1-bb51-696cb688db06",
+             UserName = "konstantinmitkov@gmail.com",
+             NormalizedUserName = "KONSTANTINMITKOV@GMAIL.COM",
+             Email = "konstantinmitkov@gmail.com",
+             NormalizedEmail = "KONSTANTINMITKOV@GMAIL.COM",
+             EmailConfirmed = false,
+             PasswordHash = "AQAAAAIAAYagAAAAENryZeTkwk/Q2dXZoWzdyN6QR3QD+rZVwkch7zeQyMijQKEad0reMYWjMk0rd52mGA==",
+             SecurityStamp = "GITLLRXGQHTB23FNZBZQYH7VPURHEVZB",
+             ConcurrencyStamp = "b3aed364-9454-45b2-9b05-c75a289e0c20",
+             PhoneNumber = null,
+             PhoneNumberConfirmed = false,
+             TwoFactorEnabled = false,
+             LockoutEnabled = true,
+             AccessFailedCount = 0
+         }
+
+    );
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+           new IdentityUserRole<string>
+           {
+               UserId = "2575ca69-1258-4767-ac40-4710bb24b67d",
+               RoleId = "8c796f68-1ca7-41ae-9f17-465876acab20" // Присвоява ролята "Customer" на първия потребител
+           },
+           new IdentityUserRole<string>
+           {
+               UserId = "14818507-0d14-48c7-bc15-f81abe0a1dc2",
+               RoleId = "14d0633b-3047-4eb2-b6cd-9c2565ffbb40" // Присвоява ролята "CarCompanyAdmin" на втория потребител
+           },
+
+           new IdentityUserRole<string>
+           {
+               UserId = "6e993bea-9377-4d0b-abfc-637ed7a8b69e",
+               RoleId = "14d0633b-3047-4eb2-b6cd-9c2565ffbb40" // Присвоява ролята "CarCompanyAdmin" на втория потребител
+           }, new IdentityUserRole<string>
+           {
+               UserId = "ecba9c4c-dd9e-4b92-b0c9-30102d68081a",
+               RoleId = "14d0633b-3047-4eb2-b6cd-9c2565ffbb40" // Присвоява ролята "CarCompanyAdmin" на втория потребител
+           },
+            new IdentityUserRole<string>
+            {
+                UserId = "8679b5d4-0473-4fc3-bbb2-dd0d128f3a53",
+                RoleId = "8c796f68-1ca7-41ae-9f17-465876acab20" // Присвоява ролята "Customer" на първия потребител
+            },
+             new IdentityUserRole<string>
+             {
+                 UserId = "9ec0d6cb-0cd4-4b55-87b2-27470215a711",
+                 RoleId = "8c796f68-1ca7-41ae-9f17-465876acab20" // Присвоява ролята "Customer" на първия потребител
+             },
+
+               new IdentityUserRole<string>
+               {
+                   UserId = "bfd29fba-8052-48d3-87c3-ffad67faca1a",
+                   RoleId = "8c796f68-1ca7-41ae-9f17-465876acab20" // Присвоява ролята "Customer" на първия потребител
+               },
+             new IdentityUserRole<string>
+             {
+                 UserId = "d37497a5-b222-4e3e-8a6f-34ec9ffe3b16",
+                 RoleId = "8c796f68-1ca7-41ae-9f17-465876acab20" // Присвоява ролята "Customer" на първия потребител
+             },
+             new IdentityUserRole<string>
+             {
+                 UserId = "ca105f54-8e1b-4bac-8692-a5a3af6c0124",
+                 RoleId = "8c796f68-1ca7-41ae-9f17-465876acab20" // Присвоява ролята "Customer" на първия потребител
+             },
+             new IdentityUserRole<string>
+             {
+                 UserId = "ec246a6e-5cb7-48a0-983d-020788e31ad9",
+                 RoleId = "8c796f68-1ca7-41ae-9f17-465876acab20" // Присвоява ролята "Customer" на първия потребител
+             },
+               new IdentityUserRole<string>
+               {
+                   UserId = "f1a432b0-510c-46c1-bb51-696cb688db06",
+                   RoleId = "8c796f68-1ca7-41ae-9f17-465876acab20" // Присвоява ролята "Customer" на първия потребител
+               }
+       );
+            modelBuilder.Entity<CarCompany>().HasData(
+           new CarCompany
+           {
+               Id = 1,
+               Name = "Dubai Luxury Cars",
+               Description = "Luxury and sports car rentals in Dubai.",
+               City = "Dubai",
+               Country = "UAE",
+               Address = "Sheikh Zayed Road, Dubai",
+               UserId = "6e993bea-9377-4d0b-abfc-637ed7a8b69e"
+           },
+           new CarCompany
+           {
+               Id = 3,
+               Name = "Yango Drive",
+               Description = "Ultimate luxury cars",
+               City = "Dubai",
+               Country = "UAE",
+               Address = "Sheikh Zayed Road, Dubai",
+               UserId = "ecba9c4c-dd9e-4b92-b0c9-30102d68081a"
+           },
+           new CarCompany
+           {
+               Id = 4,
+               Name = "One click one drive",
+               Description = "Ultimate luxury",
+               City = "Dubai",
+               Country = "UAE",
+               Address = "Sheikh Zayed Road, Dubai",
+               UserId = "14818507-0d14-48c7-bc15-f81abe0a1dc2"
+           }
+       ); modelBuilder.Entity<Customer>().HasData(
+            new Customer
+            {
+                Id = 1,
+                Name = "Maria",
+                UserId = "9ec0d6cb-0cd4-4b55-87b2-27470215a711",
+                BirthDay = new DateTime(1995, 03, 15) // 30 години
+            },
+            new Customer
+            {
+                Id = 2,
+                Name = "Konstantin",
+                UserId = "f1a432b0-510c-46c1-bb51-696cb688db06",
+                BirthDay = new DateTime(1988, 07, 22) // 36 години
+            },
+            new Customer
+            {
+                Id = 3,
+                Name = "Rosen",
+                UserId = "d37497a5-b222-4e3e-8a6f-34ec9ffe3b16",
+                BirthDay = new DateTime(1990, 11, 30) // 34 години
+            },
+            new Customer
+            {
+                Id = 4,
+                Name = "Andrian",
+                UserId = "2575ca69-1258-4767-ac40-4710bb24b67d",
+                BirthDay = new DateTime(2000, 05, 10) // 24 години
+            },
+            new Customer
+            {
+                Id = 5,
+                Name = "Dimitur",
+                UserId = "8679b5d4-0473-4fc3-bbb2-dd0d128f3a53",
+                BirthDay = new DateTime(1992, 09, 05) // 32 години
+            },
+            new Customer
+            {
+                Id = 6,
+                Name = "Stoqn",
+                UserId = "ec246a6e-5cb7-48a0-983d-020788e31ad9",
+                BirthDay = new DateTime(1985, 02, 18) // 40 години
+            },
+            new Customer
+            {
+                Id = 7,
+                Name = "Kurtacha",
+                UserId = "bfd29fba-8052-48d3-87c3-ffad67faca1a",
+                BirthDay = new DateTime(1998, 12, 25) // 26 години
+            },
+            new Customer
+            {
+                Id = 8,
+                Name = "Pesho",
+                UserId = "ca105f54-8e1b-4bac-8692-a5a3af6c0124",
+                BirthDay = new DateTime(2005, 04, 01) // 20 години
+            }
+        );
             modelBuilder.Entity<CType>().HasData(
                 new CType { Id = 1, Name = "Sedan", SeatCapacity = 4 },
                 new CType { Id = 2, Name = "SUV", SeatCapacity = 5 },
@@ -58,8 +397,8 @@ new ClassOfCar { Id = 7, Name = "Retro" }
                 new CType { Id = 9, Name = "Minivan", SeatCapacity = 7 },
                 new CType { Id = 10, Name = "Pickup", SeatCapacity = 2 },
                 new CType { Id = 11, Name = "Pickup", SeatCapacity = 4 },
-                new CType { Id = 12, Name = "Wagon", SeatCapacity = 5 }
-
+                new CType { Id = 12, Name = "Wagon", SeatCapacity = 5 },
+                new CType { Id = 14, Name = "Hatchback", SeatCapacity = 5 }
             );
             modelBuilder.Entity<Car>().HasData(
 new Car { Id = 1, Brand = "Toyota", Model = "Corolla", Gearbox = "Automatic", Year = 2021, PricePerDay = 80, PricePerWeek = 450, MileageLimitForDay = 150, MileageLimitForWeek = 1000, AdditionalMileageCharge = 0.2, EngineCapacity = 1.6, Color = "White", Available = true, Description = "Compact and fuel-efficient", ClassOfCarId = 1, DriveTrain = "Front", HorsePower = 122, ZeroToHundred = 10.8, TopSpeed = 185, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 1 },
@@ -83,8 +422,494 @@ new Car { Id = 18, Brand = "BMW", Model = "M4", Gearbox = "Automatic", Year = 20
 new Car { Id = 19, Brand = "Toyota", Model = "Camry", Gearbox = "Automatic", Year = 2021, PricePerDay = 130, PricePerWeek = 670, MileageLimitForDay = 200, MileageLimitForWeek = 1200, AdditionalMileageCharge = 0.25, EngineCapacity = 2.5, Color = "Red", Available = true, Description = "Dependable sedan", ClassOfCarId = 6, DriveTrain = "Rear", HorsePower = 182, ZeroToHundred = 9.9, TopSpeed = 210, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 1 },
 new Car { Id = 20, Brand = "Tesla", Model = "Cybertruck", Gearbox = "Automatic", Year = 2024, PricePerDay = 2000, PricePerWeek = 12000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 0.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 5, DriveTrain = "Full Wheels", HorsePower = 845, ZeroToHundred = 2.7, TopSpeed = 210, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 11 },
 new Car { Id = 21, Brand = "Land Rover", Model = "Range Rover", Gearbox = "Automatic", Year = 2023, PricePerDay = 1200, PricePerWeek = 7000, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "Black", Available = true, Description = "Sophisticated luxury SUV", ClassOfCarId = 4, DriveTrain = "Full Wheels", HorsePower = 360, ZeroToHundred = 6.9, TopSpeed = 209, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 2 },
-new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Year = 2022, PricePerDay = 220, PricePerWeek = 1100, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "White", Available = true, Description = "Sporty and agile", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 340, ZeroToHundred = 4.4, TopSpeed = 262, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5 }
-);
+new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Year = 2022, PricePerDay = 220, PricePerWeek = 1100, MileageLimitForDay = 300, MileageLimitForWeek = 2000, AdditionalMileageCharge = 1.8, EngineCapacity = 3.0, Color = "White", Available = true, Description = "Sporty and agile", ClassOfCarId = 3, DriveTrain = "Rear", HorsePower = 340, ZeroToHundred = 4.4, TopSpeed = 262, CarCompanyId = 1, Pending = false, CreatedAt = DateTime.ParseExact("2025_01_14_14_30_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture), CTypeId = 5 },
+            new Car
+            {
+                Id = 29,
+                Brand = "BMW",
+                Model = "840",
+                Gearbox = "Automatic",
+                Year = 2023,
+                PricePerDay = 700,
+                PricePerWeek = 4400,
+                MileageLimitForDay = 200,
+                MileageLimitForWeek = 1500,
+                AdditionalMileageCharge = 2.3,
+                EngineCapacity = 3,
+                Color = "Grey",
+                Available = true,
+                Description = "Sporty and luxury",
+                DriveTrain = "Full wheels",
+                HorsePower = 340,
+                ZeroToHundred = 3.9,
+                TopSpeed = 250,
+                ClassOfCarId = 3,
+                CarCompanyId = 1,
+                Pending = false,
+                CreatedAt = DateTime.ParseExact("2025_02_03_15_34_43", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 6,
+                IsConvertable = true
+            },
+            new Car
+            {
+                Id = 30,
+                Brand = "Mercedes-Benz",
+                Model = "S550",
+                Gearbox = "Automatic",
+                Year = 2023,
+                PricePerDay = 700,
+                PricePerWeek = 4400,
+                MileageLimitForDay = 250,
+                MileageLimitForWeek = 1500,
+                AdditionalMileageCharge = 2.3,
+                EngineCapacity = 3,
+                Color = "Silver",
+                Available = true,
+                Description = "Ultimate luxury",
+                DriveTrain = "Full wheels",
+                HorsePower = 435,
+                ZeroToHundred = 4.9,
+                TopSpeed = 250,
+                ClassOfCarId = 2,
+                CarCompanyId = 4,
+                Pending = false,
+                CreatedAt = DateTime.ParseExact("2025_02_03_15_47_23", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 1,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 31,
+                Brand = "Aston Martin",
+                Model = "Vantage",
+                Gearbox = "Automatic",
+                Year = 2023,
+                PricePerDay = 1200,
+                PricePerWeek = 7000,
+                MileageLimitForDay = 250,
+                MileageLimitForWeek = 1500,
+                AdditionalMileageCharge = 2.3,
+                EngineCapacity = 4,
+                Color = "Black",
+                Available = true,
+                Description = "Sporty and luxury",
+                DriveTrain = "Rear",
+                HorsePower = 510,
+                ZeroToHundred = 3.6,
+                TopSpeed = 314,
+                ClassOfCarId = 3,
+                CarCompanyId = 3,
+                Pending = false,
+                CreatedAt = DateTime.ParseExact("2025_02_03_16_23_32", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 5,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 42,
+                Brand = "Mini",
+                Model = "Cooper",
+                Gearbox = "Automatic",
+                Year = 2023,
+                PricePerDay = 250,
+                PricePerWeek = 1575,
+                MileageLimitForDay = 250,
+                MileageLimitForWeek = 1400,
+                AdditionalMileageCharge = 2.3,
+                EngineCapacity = 1.7,
+                Color = "Blue",
+                Available = true,
+                Description = "Small and sporty",
+                DriveTrain = "Front",
+                HorsePower = 208,
+                ZeroToHundred = 6.1,
+                TopSpeed = 240,
+                ClassOfCarId = 6,
+                CarCompanyId = 3,
+                Pending = false,
+                CreatedAt = DateTime.ParseExact("2025_02_04_09_23_45", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 4,
+                IsConvertable = true
+            },
+            new Car
+            {
+                Id = 43,
+                Brand = "Mercedes-Benz",
+                Model = "Maybach",
+                Gearbox = "Automatic",
+                Year = 2024,
+                PricePerDay = 1600,
+                PricePerWeek = 10200,
+                MileageLimitForDay = 300,
+                MileageLimitForWeek = 2400,
+                AdditionalMileageCharge = 2.5,
+                EngineCapacity = 4,
+                Color = "Black",
+                Available = true,
+                Description = "Ultimate luxury",
+                DriveTrain = "Full wheels",
+                HorsePower = 558,
+                ZeroToHundred = 4.9,
+                TopSpeed = 250,
+                ClassOfCarId = 4,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_04_09_26_43", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 3,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 44,
+                Brand = "Porsche",
+                Model = "Cayenne",
+                Gearbox = "Automatic",
+                Year = 2022,
+                PricePerDay = 450,
+                PricePerWeek = 2835,
+                MileageLimitForDay = 300,
+                MileageLimitForWeek = 2400,
+                AdditionalMileageCharge = 2,
+                EngineCapacity = 3,
+                Color = "Silver",
+                Available = true,
+                Description = "Sporty and luxury SUV",
+                DriveTrain = "Full wheels",
+                HorsePower = 340,
+                ZeroToHundred = 6.2,
+                TopSpeed = 245,
+                ClassOfCarId = 2,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_04_09_32_21", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 2,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 48,
+                Brand = "Mercedes-Benz",
+                Model = "SL",
+                Gearbox = "Automatic",
+                Year = 2022,
+                PricePerDay = 800,
+                PricePerWeek = 5040,
+                MileageLimitForDay = 300,
+                MileageLimitForWeek = 2400,
+                AdditionalMileageCharge = 2.3,
+                EngineCapacity = 4,
+                Color = "Silver",
+                Available = true,
+                Description = "Convertable luxury car",
+                DriveTrain = "Full wheels",
+                HorsePower = 585,
+                ZeroToHundred = 3.6,
+                TopSpeed = 315,
+                ClassOfCarId = 3,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_04_09_43_11", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 6,
+                IsConvertable = true
+            },
+            new Car
+            {
+                Id = 49,
+                Brand = "BMW",
+                Model = "520i",
+                Gearbox = "Automatic",
+                Year = 2024,
+                PricePerDay = 300,
+                PricePerWeek = 1890,
+                MileageLimitForDay = 275,
+                MileageLimitForWeek = 2000,
+                AdditionalMileageCharge = 1.6,
+                EngineCapacity = 0,
+                Color = "Black",
+                Available = true,
+                Description = "German Masterpiece",
+                DriveTrain = "Rear",
+                HorsePower = 184,
+                ZeroToHundred = 7.8,
+                TopSpeed = 235,
+                ClassOfCarId = 5,
+                CarCompanyId = 3,
+                Pending = false,
+                CreatedAt = DateTime.ParseExact("2025_02_04_09_46_26", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 1,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 50,
+                Brand = "BMW",
+                Model = "X5",
+                Gearbox = "Automatic",
+                Year = 2023,
+                PricePerDay = 320,
+                PricePerWeek = 2016,
+                MileageLimitForDay = 300,
+                MileageLimitForWeek = 2500,
+                AdditionalMileageCharge = 2.6,
+                EngineCapacity = 3,
+                Color = "Grey",
+                Available = true,
+                Description = "Home on 4 wheels",
+                DriveTrain = "Full wheels",
+                HorsePower = 555,
+                ZeroToHundred = 6.5,
+                TopSpeed = 280,
+                ClassOfCarId = 4,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_04_09_51_32", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 2,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 51,
+                Brand = "Tesla",
+                Model = "Model Y",
+                Gearbox = "Automatic",
+                Year = 2022,
+                PricePerDay = 210,
+                PricePerWeek = 1323,
+                MileageLimitForDay = 350,
+                MileageLimitForWeek = 2500,
+                AdditionalMileageCharge = 1.3,
+                EngineCapacity = 0,
+                Color = "Yellow",
+                Available = true,
+                Description = "3 TONS MICROWAVE",
+                DriveTrain = "Full wheels",
+                HorsePower = 345,
+                ZeroToHundred = 5.1,
+                TopSpeed = 217,
+                ClassOfCarId = 5,
+                CarCompanyId = 3,
+                Pending = false,
+                CreatedAt = DateTime.ParseExact("2025_02_04_10_32_53", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 5,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 53,
+                Brand = "Audi",
+                Model = "A7",
+                Gearbox = "Automatic",
+                Year = 2021,
+                PricePerDay = 250,
+                PricePerWeek = 1400,
+                MileageLimitForDay = 275,
+                MileageLimitForWeek = 1300,
+                AdditionalMileageCharge = 2,
+                EngineCapacity = 2,
+                Color = "Black",
+                Available = true,
+                Description = "Sporty and luxury",
+                DriveTrain = "Full wheels",
+                HorsePower = 245,
+                ZeroToHundred = 6.2,
+                TopSpeed = 250,
+                ClassOfCarId = 2,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_04_11_12_46", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 6,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 54,
+                Brand = "Porsche",
+                Model = "Cayman",
+                Gearbox = "Automatic",
+                Year = 2023,
+                PricePerDay = 600,
+                PricePerWeek = 3200,
+                MileageLimitForDay = 200,
+                MileageLimitForWeek = 1500,
+                AdditionalMileageCharge = 2.3,
+                EngineCapacity = 4,
+                Color = "Black",
+                Available = true,
+                Description = "Sporty and luxury",
+                DriveTrain = "Rear",
+                HorsePower = 500,
+                ZeroToHundred = 3.6,
+                TopSpeed = 314,
+                ClassOfCarId = 3,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_06_12_12_54", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 5,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 55,
+                Brand = "Audi",
+                Model = "Q3",
+                Gearbox = "Automatic",
+                Year = 2023,
+                PricePerDay = 250,
+                PricePerWeek = 1400,
+                MileageLimitForDay = 200,
+                MileageLimitForWeek = 1500,
+                AdditionalMileageCharge = 2,
+                EngineCapacity = 2,
+                Color = "Grey",
+                Available = true,
+                Description = "Small SUV",
+                DriveTrain = "Front",
+                HorsePower = 186,
+                ZeroToHundred = 8.8,
+                TopSpeed = 200,
+                ClassOfCarId = 1,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_07_17_51_13", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 2,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 56,
+                Brand = "Kia",
+                Model = "Telluride",
+                Gearbox = "Automatic",
+                Year = 2023,
+                PricePerDay = 170,
+                PricePerWeek = 1071,
+                MileageLimitForDay = 250,
+                MileageLimitForWeek = 1500,
+                AdditionalMileageCharge = 2.2,
+                EngineCapacity = 3.8,
+                Color = "Blue",
+                Available = false,
+                Description = "One Big SUV",
+                DriveTrain = "Full wheels",
+                HorsePower = 295,
+                ZeroToHundred = 6.6,
+                TopSpeed = 170,
+                ClassOfCarId = 6,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_10_12_14_23", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 2,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 57,
+                Brand = "Kia",
+                Model = "Stinger",
+                Gearbox = "Automatic",
+                Year = 2021,
+                PricePerDay = 110,
+                PricePerWeek = 693,
+                MileageLimitForDay = 300,
+                MileageLimitForWeek = 2200,
+                AdditionalMileageCharge = 2.1,
+                EngineCapacity = 2,
+                Color = "Dark Grey",
+                Available = true,
+                Description = "it is still a kia",
+                DriveTrain = "Full wheels",
+                HorsePower = 197,
+                ZeroToHundred = 8,
+                TopSpeed = 224,
+                ClassOfCarId = 6,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_02_11_14_56_54", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 5,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 60,
+                Brand = "BMW",
+                Model = "X6M",
+                Gearbox = "Automatic",
+                Year = 2021,
+                PricePerDay = 350,
+                PricePerWeek = 2205,
+                MileageLimitForDay = 200,
+                MileageLimitForWeek = 1500,
+                AdditionalMileageCharge = 2,
+                EngineCapacity = 4.4,
+                Color = "Grey",
+                Available = true,
+                Description = "THE ULTIMATE DRIVING MACHINE",
+                DriveTrain = "Full wheels",
+                HorsePower = 625,
+                ZeroToHundred = 3.7,
+                TopSpeed = 250,
+                ClassOfCarId = 4,
+                CarCompanyId = 3,
+                Pending = false,
+                CreatedAt = DateTime.ParseExact("2025_04_02_06_39_48", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 2,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 61,
+                Brand = "Volkswagen",
+                Model = "T-ROC Life",
+                Gearbox = "Automatic",
+                Year = 2024,
+                PricePerDay = 60,
+                PricePerWeek = 378,
+                MileageLimitForDay = 300,
+                MileageLimitForWeek = 2200,
+                AdditionalMileageCharge = 1.6,
+                EngineCapacity = 1.5,
+                Color = "White",
+                Available = true,
+                Description = "Small SUV but practical",
+                DriveTrain = "Full wheels",
+                HorsePower = 150,
+                ZeroToHundred = 8.4,
+                TopSpeed = 200,
+                ClassOfCarId = 1,
+                CarCompanyId = 3,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_04_02_09_44_31", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 2,
+                IsConvertable = false
+            },
+            new Car
+            {
+                Id = 62,
+                Brand = "Cadillac",
+                Model = "Escalade",
+                Gearbox = "Automatic",
+                Year = 2024,
+                PricePerDay = 375,
+                PricePerWeek = 2362,
+                MileageLimitForDay = 300,
+                MileageLimitForWeek = 1600,
+                AdditionalMileageCharge = 2.3,
+                EngineCapacity = 6.2,
+                Color = "Black",
+                Available = true,
+                Description = "THE MAFIA",
+                DriveTrain = "Full wheels",
+                HorsePower = 416,
+                ZeroToHundred = 6.6,
+                TopSpeed = 200,
+                ClassOfCarId = 4,
+                CarCompanyId = 1,
+                Pending = true,
+                CreatedAt = DateTime.ParseExact("2025_04_13_22_26_10", "yyyy_MM_dd_HH_mm_ss", CultureInfo.InvariantCulture),
+                CTypeId = 3,
+                IsConvertable = false
+            }
+        );
 
 
             modelBuilder.Entity<Feature>().HasData(
@@ -137,7 +962,8 @@ new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Yea
       new Feature { Id = 47, NameOfFeatures = "Wireless Internet Access" },
       new Feature { Id = 48, NameOfFeatures = "Active Suspension" },
       new Feature { Id = 49, NameOfFeatures = "Power Adjustable Steering Wheel" },
-      new Feature { Id = 50, NameOfFeatures = "Touchscreen Control Panel" }
+      new Feature { Id = 50, NameOfFeatures = "Touchscreen Control Panel" },
+      new Feature { Id = 51, NameOfFeatures = "Auto-Dimming Rearview Mirror" }
   );
 
             modelBuilder.Entity<Image>().HasData(
@@ -299,8 +1125,157 @@ new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Yea
                 new Image { Id = 156, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624219/toyota-supra-3_p5v7h4.webp", CarId = 22, Order = 3 },
                 new Image { Id = 157, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624220/toyota-supra-4_lqxnfq.webp", CarId = 22, Order = 4 },
                 new Image { Id = 158, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624221/toyota-supra-5_bdk5pw.webp", CarId = 22, Order = 5 },
-                new Image { Id = 159, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624221/toyota-supra-6_dmnvea.webp", CarId = 22, Order = 6 }
-                );
+                new Image { Id = 159, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624221/toyota-supra-6_dmnvea.webp", CarId = 22, Order = 6 },
+
+
+                new Image { Id = 168, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624279/fb06c790-0966-45b8-bb33-3ff8daa27bae_m8-5_jdio3w.webp", CarId = 29, Order = 5 },
+                new Image { Id = 169, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624272/ae7739e8-ee7e-4737-9290-10106e1d319d_m8-7_vvbo9q.webp", CarId = 29, Order = 7 },
+                new Image { Id = 170, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624275/d7403c23-b060-487d-b53f-4b47ee6b6d88_m8-6_c1hgfv.webp", CarId = 29, Order = 6 },
+            new Image { Id = 171, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624274/d08ab2eb-cc07-4aa3-b750-88a1c7e550bb_m8-1_jge5ek.webp", CarId = 29, Order = 1 },
+            new Image { Id = 172, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624265/62b475ca-c950-4b19-a288-c8f76cb77c22_m8-2_rjjzp8.webp", CarId = 29, Order = 2 },
+            new Image { Id = 173, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624265/209c6ba6-4583-46f2-ac3e-2ffc8817e12f_m8-8_uldwdr.webp", CarId = 29, Order = 8 },
+            new Image { Id = 174, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624269/2875b307-22b1-40ec-82cf-8848e4e448a6_m8-3_p86pcj.webp", CarId = 29, Order = 3 },
+            new Image { Id = 175, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624260/6d818001-1a44-4ac1-84db-8d34b21d7781_m8-4_gn7kry.webp", CarId = 29, Order = 4 },
+            new Image { Id = 176, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624277/f4ba43d2-9b58-45ee-9124-e9ab3a691f27_s500-1_ptfknq.webp", CarId = 30, Order = 1 },
+            new Image { Id = 177, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624268/721d9f20-a18e-4f46-8a6b-ae3b938dc35b_s500-2_exazic.webp", CarId = 30, Order = 2 },
+            new Image { Id = 178, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624276/edb09ce5-3ab2-4f24-87fc-95dff9e23112_s500-3_psj78x.webp", CarId = 30, Order = 3 },
+            new Image { Id = 179, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624271/a55b5ab6-04df-4769-a630-2da7e8d33a2f_s500-4_gpnmkd.webp", CarId = 30, Order = 4 },
+            new Image { Id = 180, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624261/8bf7b19a-975d-402a-b122-ac549da2dd5a_s500-5_z43sy3.webp", CarId = 30, Order = 5 },
+            new Image { Id = 181, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624263/036bc54d-80b7-4807-999f-0a0d00151f19_s500-6_nmkeux.webp", CarId = 30, Order = 6 },
+            new Image { Id = 182, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624266/301b678b-9700-45f7-beb7-3ef13db1c22a_s500-7_jrezic.webp", CarId = 30, Order = 7 },
+            new Image { Id = 183, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624272/a80b8d53-ad3e-4b0c-aec0-ad6ef45852f9_s500-8_hj8qmk.webp", CarId = 30, Order = 8 },
+            new Image { Id = 184, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624270/06765e41-ebb4-430d-a456-1948eddfabce_s500-9_svlcnd.webp", CarId = 30, Order = 9 },
+            new Image { Id = 185, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624268/956a0de4-fb58-423c-a686-4d03188dc37c_s500-10_aj2s6a.webp", CarId = 30, Order = 10 },
+            new Image { Id = 186, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624259/4e8303a9-66de-4af4-8d6e-783e7bb05f04_s500-11_p54snz.webp", CarId = 30, Order = 11 },
+            new Image { Id = 187, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624263/21b1a87d-e69b-48c3-8402-3e352e73a766_aston-vantage-1_btxlye.webp", CarId = 31, Order = 1 },
+            new Image { Id = 188, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624275/d8fb37af-2075-4542-84e9-44d889dbea61_aston-vantage-2_fyntld.webp", CarId = 31, Order = 3 },
+            new Image { Id = 189, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624278/f5cc2d5b-cc0c-465a-86ed-e1f430e8cf9f_aston-vantage-6_s2c8mm.webp", CarId = 31, Order = 5 },
+            new Image { Id = 190, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624262/8d838486-948a-45af-8e19-37dbb896f6cf_aston-vantage-7_qws9fm.webp", CarId = 31, Order = 7 },
+            new Image { Id = 191, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624273/cef4c199-3cc0-4a1d-b687-34d21201e5db_aston-vantage-9_oalm5d.webp", CarId = 31, Order = 9 },
+            new Image { Id = 192, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624279/f79ea5a7-4aba-42d2-bb37-dbb62f1cc9e4_aston-vantage-3_mx9flo.webp", CarId = 31, Order = 2 },
+            new Image { Id = 193, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624258/0d216c7e-2714-479e-847b-57b85f9135b7_aston-vantage-8_s2s0pm.webp", CarId = 31, Order = 8 },
+            new Image { Id = 194, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624260/7ac23fbd-a22c-4a01-aeaa-575b6581db7d_aston-vantage-4_abh4x9.webp", CarId = 31, Order = 6 },
+            new Image { Id = 195, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739624267/405b032a-01da-4411-898e-6f2e2e98aa53_aston-vantage-5_cjmqdw.webp", CarId = 31, Order = 4 },
+            new Image { Id = 196, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739628895/cars/Images/19f6420c-160d-429a-9d22-685b14ebd333.webp", CarId = 42, Order = 5 },
+            new Image { Id = 197, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739628896/cars/Images/30454fee-73ab-47a1-832b-55943feb94e8.webp", CarId = 42, Order = 1 },
+            new Image { Id = 198, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739628897/cars/Images/d5fde7b4-8205-4b20-b13c-57200cc74ac4.webp", CarId = 42, Order = 2 },
+            new Image { Id = 199, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739628898/cars/Images/c41640e6-f634-47e6-b87f-331046d72ad5.webp", CarId = 42, Order = 4 },
+            new Image { Id = 200, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739628899/cars/Images/18ed750a-f2d1-413f-8984-44c54eb5781f.webp", CarId = 42, Order = 8 },
+            new Image { Id = 201, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739628899/cars/Images/6a8301dc-7f48-4c9d-841f-c1799c631ae0.webp", CarId = 42, Order = 6 },
+            new Image { Id = 202, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739628900/cars/Images/41ecbee7-656e-4391-94d6-69359050810f.webp", CarId = 42, Order = 3 },
+            new Image { Id = 203, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1739628901/cars/Images/42af69bc-b2cc-47fe-8b22-a8fccb1f01f9.webp", CarId = 42, Order = 7 },
+            new Image { Id = 204, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244955/cars/Images/b8ecd959-f42d-465b-90d2-c5873c10a902.webp", CarId = 43, Order = 0 },
+            new Image { Id = 205, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244956/cars/Images/981c3909-bd3e-4cb9-9a58-16b2bc63f76f.webp", CarId = 43, Order = 0 },
+            new Image { Id = 206, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244957/cars/Images/6812c0d9-2219-46b4-9623-57cc2be612f4.webp", CarId = 43, Order = 0 },
+            new Image { Id = 207, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244957/cars/Images/8195f1e5-73db-44f6-9bd6-0716515472fe.webp", CarId = 43, Order = 0 },
+            new Image { Id = 208, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244958/cars/Images/e7e710df-caed-47d8-aa19-565bc622a315.webp", CarId = 43, Order = 0 },
+            new Image { Id = 209, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244959/cars/Images/ad3adf38-4290-4601-a654-182f3f4acfee.webp", CarId = 43, Order = 0 },
+            new Image { Id = 210, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244959/cars/Images/b2b1a36c-4b28-43b8-bb0e-d8b0c64276db.webp", CarId = 43, Order = 0 },
+            new Image { Id = 211, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244960/cars/Images/63c38baa-ecdf-419f-95ee-6136796a6783.webp", CarId = 43, Order = 0 },
+            new Image { Id = 212, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740244960/cars/Images/eef7ab1a-9d0d-42c9-8bd7-8676d27cd7c0.webp", CarId = 43, Order = 0 },
+            new Image { Id = 213, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740245470/cars/Images/643dfe36-8988-48f3-89b8-69a842f7eeb8.webp", CarId = 44, Order = 0 },
+            new Image { Id = 214, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740245471/cars/Images/2c8150e8-0b38-4ca7-8ea5-447e22e7c1f3.webp", CarId = 44, Order = 0 },
+            new Image { Id = 215, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740245472/cars/Images/4be19a48-5171-458d-af1b-3a6e16fcdc08.webp", CarId = 44, Order = 0 },
+            new Image { Id = 216, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740245472/cars/Images/66d5ca09-6f09-4d31-b5db-9020b0ab0f4f.webp", CarId = 44, Order = 0 },
+            new Image { Id = 217, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740245473/cars/Images/ab850725-3845-4c7d-98c8-e408eab744c5.webp", CarId = 44, Order = 0 },
+            new Image { Id = 228, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733624/cars/Images/d83998be-3cdb-47cb-9c71-e00b50766922.webp", CarId = 48, Order = 9 },
+            new Image { Id = 229, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733625/cars/Images/a7b757da-467c-48c6-8d5b-1bd6a086fdff.webp", CarId = 48, Order = 8 },
+            new Image { Id = 230, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733626/cars/Images/f05f5a8c-f0c4-4de8-a651-b0149efa2ad3.webp", CarId = 48, Order = 7 },
+            new Image { Id = 231, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733627/cars/Images/e2304303-2590-4bc6-bfc6-f73a01727f3f.webp", CarId = 48, Order = 6 },
+            new Image { Id = 232, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733627/cars/Images/e041a947-d333-4130-89b3-789da2c0e869.webp", CarId = 48, Order = 5 },
+            new Image { Id = 233, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733628/cars/Images/3787666c-6597-4b3a-aa6a-3420d58168f4.webp", CarId = 48, Order = 4 },
+            new Image { Id = 234, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733628/cars/Images/c4ed526e-2a6c-4283-acc7-fada941d546d.webp", CarId = 48, Order = 3 },
+            new Image { Id = 235, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733629/cars/Images/bef1c56b-74b1-4afc-821a-9b17f80b75d5.webp", CarId = 48, Order = 1 },
+            new Image { Id = 236, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733630/cars/Images/38d5cdb5-b9da-4f8b-a642-2d4ec2f1ba6e.webp", CarId = 48, Order = 2 },
+            new Image { Id = 237, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740733631/cars/Images/8dab0c22-8f4a-4e0c-a137-9e8ca94b9c36.webp", CarId = 48, Order = 0 },
+            new Image { Id = 238, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735257/cars/Images/cf96bf20-f297-4d6f-8025-08d48ff05005.webp", CarId = 49, Order = 2 },
+            new Image { Id = 239, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735258/cars/Images/a1a0fc6e-274e-4b21-9053-3791e0725ef8.webp", CarId = 49, Order = 3 },
+            new Image { Id = 240, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735259/cars/Images/d221cae8-06c4-4c6a-932a-d11a71130e23.webp", CarId = 49, Order = 4 },
+            new Image { Id = 241, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735259/cars/Images/638d301e-33a9-442f-a040-8bbf6a7a439f.webp", CarId = 49, Order = 5 },
+            new Image { Id = 242, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735260/cars/Images/83af8756-a511-43fa-b83f-265369ff8f6b.webp", CarId = 49, Order = 6 },
+            new Image { Id = 243, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735261/cars/Images/c87adfd2-d75b-44b9-8010-e456608fe51c.webp", CarId = 49, Order = 1 },
+            new Image { Id = 244, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735262/cars/Images/b9d72309-adc2-488c-870c-b5b7ff3af6b6.webp", CarId = 49, Order = 7 },
+            new Image { Id = 245, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735262/cars/Images/807086e3-1c63-4356-9ae8-19864f029a8d.webp", CarId = 49, Order = 8 },
+            new Image { Id = 246, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740735263/cars/Images/f0b7ac54-f417-4f12-b1c4-4693cc31cafa.webp", CarId = 49, Order = 9 },
+            new Image { Id = 247, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740736703/cars/Images/77ec370d-e163-40c8-8d34-cfbf333230e7.webp", CarId = 50, Order = 1 },
+            new Image { Id = 248, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740736704/cars/Images/c7a62841-68fd-48e8-a35e-4956d3f227e8.webp", CarId = 50, Order = 2 },
+            new Image { Id = 249, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740736705/cars/Images/d32232f6-5a31-4b64-9283-5462d52be802.webp", CarId = 50, Order = 3 },
+            new Image { Id = 250, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740736705/cars/Images/381852b3-c708-4004-8b8e-fd9800ff0a99.webp", CarId = 50, Order = 4 },
+            new Image { Id = 251, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740736706/cars/Images/d915d242-25c1-4435-9e60-576945253c0e.webp", CarId = 50, Order = 5 },
+            new Image { Id = 252, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740736707/cars/Images/e3d177d9-d88a-43cd-9e01-e438ea24ed75.webp", CarId = 50, Order = 6 },
+            new Image { Id = 253, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740736707/cars/Images/43c66b93-52ce-46df-ab21-90ab17bdfd99.webp", CarId = 50, Order = 7 },
+            new Image { Id = 254, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740737869/cars/Images/f2f948a0-dcfe-4e72-82b4-08e4484fd39d.webp", CarId = 51, Order = 1 },
+            new Image { Id = 255, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740737870/cars/Images/503df031-1383-4f3b-a61c-a6c0c9a335f6.webp", CarId = 51, Order = 6 },
+            new Image { Id = 256, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740737871/cars/Images/246b04cb-e3e9-4822-b860-de2b194d0f55.webp", CarId = 51, Order = 3 },
+            new Image { Id = 257, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740737872/cars/Images/11bb4295-76a6-4152-a24c-21051dc68346.webp", CarId = 51, Order = 2 },
+            new Image { Id = 258, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740737873/cars/Images/dc9bda3f-2e4c-4889-8552-b8d8cec1bd92.webp", CarId = 51, Order = 4 },
+            new Image { Id = 259, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740737873/cars/Images/61bd5605-ec36-4f0a-8f63-c58779dc6422.webp", CarId = 51, Order = 7 },
+            new Image { Id = 260, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740737874/cars/Images/3a2f6b36-b378-4a04-b257-aadec245b5e0.webp", CarId = 51, Order = 5 },
+              new Image { Id = 266, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740741941/cars/Images/890d6faa-7edd-461a-9575-183e7f0db9cb.jpg", CarId = 53, Order = 3 },
+            new Image { Id = 267, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740741942/cars/Images/063cac4b-c187-446d-ab99-00016f5a3cfc.webp", CarId = 53, Order = 4 },
+            new Image { Id = 268, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740741942/cars/Images/c0856400-5863-49e8-8180-169814b864f5.webp", CarId = 53, Order = 5 },
+            new Image { Id = 269, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740741943/cars/Images/69bfe3c0-e9ff-45bd-bba3-cc1d09ab8db0.webp", CarId = 53, Order = 6 },
+            new Image { Id = 270, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740741944/cars/Images/52969ed3-7af8-420e-bae7-914b9dbf14b0.webp", CarId = 53, Order = 7 },
+            new Image { Id = 271, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740741945/cars/Images/5edd4a6d-32a1-4e1e-9ca4-bdee4df9ed57.webp", CarId = 53, Order = 2 },
+            new Image { Id = 272, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740741946/cars/Images/9f01d256-0bb5-4722-a44c-872fb937b57c.webp", CarId = 53, Order = 1 },
+            new Image { Id = 273, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740767513/cars/Images/0d590574-be75-4d19-a430-9b7e916c42d4.webp", CarId = 54, Order = 0 },
+            new Image { Id = 274, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740767514/cars/Images/e5b6ea72-070a-4838-bfd3-5f94d88d943b.webp", CarId = 54, Order = 1 },
+            new Image { Id = 275, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740767515/cars/Images/d0fd8b96-f2fe-4437-85b2-05db8c0bcd01.webp", CarId = 54, Order = 2 },
+            new Image { Id = 276, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740767515/cars/Images/41e3ab63-b7ea-4143-918b-53b2cc2ce810.webp", CarId = 54, Order = 3 },
+            new Image { Id = 277, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740767516/cars/Images/3a6aaf28-bf71-47a1-b2ce-7e8c32e7abdb.webp", CarId = 54, Order = 4 },
+            new Image { Id = 278, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740767516/cars/Images/350ad644-485a-438c-af0c-6347eb08d8a5.webp", CarId = 54, Order = 5 },
+            new Image { Id = 279, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740767517/cars/Images/271ac88f-b5eb-440b-9175-0c78351cabf2.webp", CarId = 54, Order = 6 },
+            new Image { Id = 280, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740767518/cars/Images/acbba22d-a0ba-4eed-aa07-d390eec5da91.webp", CarId = 54, Order = 7 },
+            new Image { Id = 281, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740769698/cars/Images/66affa34-1130-4486-b6d3-e289798e2efe.webp", CarId = 55, Order = 0 },
+            new Image { Id = 282, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740769699/cars/Images/a92f534c-50d0-4d41-a778-9f152b67ffa1.webp", CarId = 55, Order = 1 },
+            new Image { Id = 283, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740769700/cars/Images/de4374d4-4588-4349-8f40-a0bdce08c574.webp", CarId = 55, Order = 2 },
+            new Image { Id = 284, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740769701/cars/Images/3a110ceb-30b4-4e7a-b744-3ac898cc985c.webp", CarId = 55, Order = 3 },
+            new Image { Id = 285, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740769701/cars/Images/90c2c176-ffb1-444e-aff0-b058ed061b67.webp", CarId = 55, Order = 4 },
+            new Image { Id = 286, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770316/cars/Images/46cd213c-8185-44b4-9ae4-efd3a0f6105b.webp", CarId = 56, Order = 0 },
+            new Image { Id = 287, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770316/cars/Images/2f19ed1e-5fca-4072-bdfe-cee37cf3a242.webp", CarId = 56, Order = 1 },
+            new Image { Id = 288, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770317/cars/Images/661f9f36-0673-4c61-a7a8-09846dea64d9.webp", CarId = 56, Order = 2 },
+            new Image { Id = 289, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770318/cars/Images/4517191a-32d1-4ef6-86d9-9536437879c2.webp", CarId = 56, Order = 3 },
+            new Image { Id = 290, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770318/cars/Images/3a570439-6056-4fec-b5d4-265e25c2674c.webp", CarId = 56, Order = 4 },
+            new Image { Id = 291, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770319/cars/Images/2c377818-6a14-4ae2-a4a1-00c5e2991094.webp", CarId = 56, Order = 5 },
+            new Image { Id = 292, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770319/cars/Images/1b4b05e7-b6a9-4595-8920-aa0d4d8aa86a.webp", CarId = 56, Order = 6 },
+            new Image { Id = 293, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770320/cars/Images/faaa6311-9205-474b-b46e-904345572f13.webp", CarId = 56, Order = 7 },
+            new Image { Id = 294, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770321/cars/Images/bbf3cf5a-3545-42f6-b996-f423ce57486a.webp", CarId = 56, Order = 8 },
+            new Image { Id = 295, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770321/cars/Images/20cd0e2e-aa6f-4e61-a7f3-950296bf0a8d.webp", CarId = 56, Order = 9 },
+            new Image { Id = 296, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740770322/cars/Images/99b3bf06-2a67-45d2-aa61-e644d5c616fd.webp", CarId = 56, Order = 10 },
+            new Image { Id = 297, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927744/cars/Images/1cfd9dbb-412b-42c3-a672-761026f5944c.webp", CarId = 57, Order = 0 },
+            new Image { Id = 298, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927745/cars/Images/037dbd9e-e300-4a9d-8caf-371e72aee63d.webp", CarId = 57, Order = 1 },
+            new Image { Id = 299, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927746/cars/Images/4ce94846-2c01-4cb9-af8c-fc201f68f2d9.webp", CarId = 57, Order = 2 },
+            new Image { Id = 300, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927746/cars/Images/6bc9541e-ed9f-43d6-96f8-2f8c6b06d40f.webp", CarId = 57, Order = 3 },
+            new Image { Id = 301, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927747/cars/Images/0dd509a5-2c32-4ca5-9026-586f88954857.webp", CarId = 57, Order = 4 },
+            new Image { Id = 302, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927748/cars/Images/3debbb94-7179-41e8-a4eb-9ebef712d2d9.webp", CarId = 57, Order = 5 },
+            new Image { Id = 303, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927748/cars/Images/83a93175-82c2-40e5-a626-de64dcb9da1b.webp", CarId = 57, Order = 6 },
+            new Image { Id = 304, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927749/cars/Images/4ef653d5-0ef8-42f8-9589-c6124410e8d2.webp", CarId = 57, Order = 7 },
+            new Image { Id = 305, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927750/cars/Images/26765354-bbb7-463e-b567-d62172291de7.webp", CarId = 57, Order = 8 },
+            new Image { Id = 306, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1740927751/cars/Images/2fa005b6-3072-4ecf-87d0-bc8431151332.webp", CarId = 57, Order = 9 },
+            new Image { Id = 327, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575978/cars/Images/c4e7326b-f54b-49ce-9d74-0071a32928b7.webp", CarId = 60, Order = 0 },
+            new Image { Id = 328, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575979/cars/Images/a205ca4f-165e-476c-babb-52635723f8dd.webp", CarId = 60, Order = 1 },
+            new Image { Id = 329, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575980/cars/Images/f1b07494-277b-4e17-abae-34b8426fe69d.webp", CarId = 60, Order = 2 },
+            new Image { Id = 330, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575980/cars/Images/00884e46-5af8-4cb4-9b26-b7fafef27b0e.webp", CarId = 60, Order = 3 },
+            new Image { Id = 331, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575981/cars/Images/86b00f26-cca0-4ed9-8052-8a0d179c142c.webp", CarId = 60, Order = 4 },
+            new Image { Id = 332, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575982/cars/Images/9f9e64de-5df1-42c5-86f3-c4cdd8537d28.webp", CarId = 60, Order = 5 },
+            new Image { Id = 333, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575983/cars/Images/e15bb144-186c-49c0-9c65-51b22e42428c.webp", CarId = 60, Order = 6 },
+            new Image { Id = 334, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575984/cars/Images/ac8363cb-0f94-44db-ab6e-2f91573b969d.webp", CarId = 60, Order = 7 },
+            new Image { Id = 335, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575984/cars/Images/8c05d3b9-2f50-49be-81f3-b8620f8cb148.webp", CarId = 60, Order = 8 },
+            new Image { Id = 336, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743575985/cars/Images/d17a482c-02c8-4cc6-ab32-ca1683f0edde.webp", CarId = 60, Order = 9 },
+            new Image { Id = 337, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743587063/cars/Images/d53f87c3-40a4-4ba6-886b-1a6b10fd4f73.webp", CarId = 61, Order = 0 },
+            new Image { Id = 338, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743587064/cars/Images/8d0c8326-713c-4590-a088-730da0bafcad.webp", CarId = 61, Order = 1 },
+            new Image { Id = 339, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743587065/cars/Images/fae101d9-932a-4e49-969a-3d9dcd2e45bc.webp", CarId = 61, Order = 2 },
+            new Image { Id = 340, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743587066/cars/Images/a8f7a015-d24b-46d4-b38c-23110ba0814c.webp", CarId = 61, Order = 3 },
+            new Image { Id = 341, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743587067/cars/Images/c3e04bd5-a144-4196-963a-800d60ebb8f5.webp", CarId = 61, Order = 4 },
+            new Image { Id = 342, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1743587068/cars/Images/3c30c3ba-3105-42d5-9ea8-84b8052d1153.webp", CarId = 61, Order = 5 },
+            new Image { Id = 343, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1744583166/cars/Images/f0ade371-a95e-461a-b93e-25702ae0b49c.webp", CarId = 62, Order = 0 },
+            new Image { Id = 344, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1744583167/cars/Images/e8339f34-722f-4dab-89db-f6b21a8f493d.webp", CarId = 62, Order = 1 },
+            new Image { Id = 345, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1744583168/cars/Images/f458d1da-3ba0-4914-aec1-b5d4f1f1c1d2.webp", CarId = 62, Order = 2 },
+            new Image { Id = 346, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1744583169/cars/Images/5429a81e-f652-4a26-a5f6-7b34a13facaf.webp", CarId = 62, Order = 3 },
+            new Image { Id = 347, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1744583169/cars/Images/875e0028-6e2a-4a6a-ad47-abc4e9890bfa.webp", CarId = 62, Order = 4 },
+            new Image { Id = 348, Url = "https://res.cloudinary.com/dhibmotzx/image/upload/v1744583170/cars/Images/c51322a4-9555-4674-b39e-24938af0c96d.webp", CarId = 62, Order = 5 }
+        );
+
             modelBuilder.Entity<CarFeature>().HasData(
             new CarFeature { Id = 1, CarId = 1, FeatureId = 1 },
             new CarFeature { Id = 2, CarId = 1, FeatureId = 3 },
@@ -707,9 +1682,116 @@ new Car { Id = 22, Brand = "Toyota", Model = "Supra", Gearbox = "Automatic", Yea
             new CarFeature { Id = 380, CarId = 22, FeatureId = 17 },
             new CarFeature { Id = 381, CarId = 22, FeatureId = 19 },
             new CarFeature { Id = 382, CarId = 22, FeatureId = 23 },
-            new CarFeature { Id = 383, CarId = 22, FeatureId = 28 }
-            );
-           
+            new CarFeature { Id = 383, CarId = 22, FeatureId = 28 },
+            new CarFeature { Id = 385, CarId = 60, FeatureId = 2 },
+            new CarFeature { Id = 386, CarId = 60, FeatureId = 3 },
+            new CarFeature { Id = 387, CarId = 60, FeatureId = 4 },
+            new CarFeature { Id = 388, CarId = 60, FeatureId = 5 },
+            new CarFeature { Id = 389, CarId = 60, FeatureId = 6 },
+            new CarFeature { Id = 390, CarId = 60, FeatureId = 7 },
+            new CarFeature { Id = 392, CarId = 60, FeatureId = 9 },
+            new CarFeature { Id = 393, CarId = 60, FeatureId = 12 },
+            new CarFeature { Id = 394, CarId = 60, FeatureId = 14 },
+            new CarFeature { Id = 395, CarId = 60, FeatureId = 15 },
+            new CarFeature { Id = 396, CarId = 60, FeatureId = 17 },
+            new CarFeature { Id = 397, CarId = 60, FeatureId = 18 },
+            new CarFeature { Id = 398, CarId = 60, FeatureId = 20 },
+            new CarFeature { Id = 399, CarId = 60, FeatureId = 21 },
+            new CarFeature { Id = 400, CarId = 60, FeatureId = 22 },
+            new CarFeature { Id = 402, CarId = 60, FeatureId = 24 },
+            new CarFeature { Id = 404, CarId = 60, FeatureId = 26 },
+            new CarFeature { Id = 405, CarId = 60, FeatureId = 28 },
+            new CarFeature { Id = 406, CarId = 60, FeatureId = 29 },
+            new CarFeature { Id = 407, CarId = 60, FeatureId = 30 },
+            new CarFeature { Id = 408, CarId = 60, FeatureId = 31 },
+            new CarFeature { Id = 409, CarId = 60, FeatureId = 32 },
+            new CarFeature { Id = 410, CarId = 60, FeatureId = 33 },
+            new CarFeature { Id = 411, CarId = 60, FeatureId = 34 },
+            new CarFeature { Id = 412, CarId = 60, FeatureId = 35 },
+            new CarFeature { Id = 413, CarId = 60, FeatureId = 36 },
+            new CarFeature { Id = 415, CarId = 60, FeatureId = 39 },
+            new CarFeature { Id = 416, CarId = 60, FeatureId = 40 },
+            new CarFeature { Id = 417, CarId = 60, FeatureId = 41 },
+            new CarFeature { Id = 418, CarId = 60, FeatureId = 46 },
+            new CarFeature { Id = 419, CarId = 60, FeatureId = 47 },
+            new CarFeature { Id = 420, CarId = 60, FeatureId = 49 },
+            new CarFeature { Id = 421, CarId = 60, FeatureId = 50 },
+            new CarFeature { Id = 422, CarId = 60, FeatureId = 23 },
+            new CarFeature { Id = 423, CarId = 60, FeatureId = 8 },
+            new CarFeature { Id = 424, CarId = 60, FeatureId = 1 },
+            new CarFeature { Id = 425, CarId = 60, FeatureId = 38 },
+            new CarFeature { Id = 426, CarId = 60, FeatureId = 25 },
+            new CarFeature { Id = 427, CarId = 61, FeatureId = 1 },
+            new CarFeature { Id = 428, CarId = 61, FeatureId = 3 },
+            new CarFeature { Id = 429, CarId = 61, FeatureId = 4 },
+            new CarFeature { Id = 430, CarId = 61, FeatureId = 15 },
+            new CarFeature { Id = 431, CarId = 61, FeatureId = 20 },
+            new CarFeature { Id = 432, CarId = 61, FeatureId = 21 },
+            new CarFeature { Id = 433, CarId = 61, FeatureId = 30 },
+            new CarFeature { Id = 434, CarId = 61, FeatureId = 38 },
+            new CarFeature { Id = 435, CarId = 61, FeatureId = 50 },
+            new CarFeature { Id = 438, CarId = 10, FeatureId = 12 },
+            new CarFeature { Id = 439, CarId = 62, FeatureId = 1 },
+            new CarFeature { Id = 440, CarId = 62, FeatureId = 2 },
+            new CarFeature { Id = 441, CarId = 62, FeatureId = 3 },
+            new CarFeature { Id = 442, CarId = 62, FeatureId = 4 },
+            new CarFeature { Id = 443, CarId = 62, FeatureId = 5 },
+            new CarFeature { Id = 444, CarId = 62, FeatureId = 7 },
+            new CarFeature { Id = 445, CarId = 62, FeatureId = 8 },
+            new CarFeature { Id = 446, CarId = 62, FeatureId = 9 },
+            new CarFeature { Id = 447, CarId = 62, FeatureId = 11 },
+            new CarFeature { Id = 448, CarId = 62, FeatureId = 15 },
+            new CarFeature { Id = 449, CarId = 62, FeatureId = 16 },
+            new CarFeature { Id = 450, CarId = 62, FeatureId = 23 },
+            new CarFeature { Id = 451, CarId = 62, FeatureId = 24 },
+            new CarFeature { Id = 452, CarId = 62, FeatureId = 28 },
+            new CarFeature { Id = 453, CarId = 62, FeatureId = 31 },
+            new CarFeature { Id = 454, CarId = 62, FeatureId = 33 },
+            new CarFeature { Id = 455, CarId = 62, FeatureId = 34 },
+            new CarFeature { Id = 456, CarId = 62, FeatureId = 35 },
+            new CarFeature { Id = 457, CarId = 62, FeatureId = 38 },
+            new CarFeature { Id = 458, CarId = 62, FeatureId = 39 },
+            new CarFeature { Id = 459, CarId = 62, FeatureId = 40 },
+            new CarFeature { Id = 460, CarId = 62, FeatureId = 42 },
+            new CarFeature { Id = 461, CarId = 62, FeatureId = 44 },
+            new CarFeature { Id = 462, CarId = 62, FeatureId = 48 },
+            new CarFeature { Id = 463, CarId = 62, FeatureId = 50 }
+        );
+            modelBuilder.Entity<Report>().HasData(
+          new Report { Id = 1, Title = "Test", Description = "Mnogo hubav", CustomerId = 1, CreateAt = DateTime.ParseExact("2025-02-15 12:32:45.0000000", "yyyy-MM-dd HH:mm:ss.fffffff", CultureInfo.InvariantCulture) },
+          new Report { Id = 2, Title = "Az sum nikola", Description = "LUDDADAA Po TEBB ", CustomerId = 7, CreateAt = DateTime.ParseExact("2025-02-19 12:13:43.0002100", "yyyy-MM-dd HH:mm:ss.fffffff", CultureInfo.InvariantCulture) },
+          new Report { Id = 3, Title = "test", Description = "test", CustomerId = 1, CreateAt = DateTime.ParseExact("2025-02-19 12:28:26.4992463", "yyyy-MM-dd HH:mm:ss.fffffff", CultureInfo.InvariantCulture) },
+          new Report { Id = 4, Title = "Other", Description = "TEST TEST TEST", CustomerId = 1, CreateAt = DateTime.ParseExact("2025-03-10 15:14:22.4521300", "yyyy-MM-dd HH:mm:ss.fffffff", CultureInfo.InvariantCulture) },
+          new Report { Id = 5, Title = "Booking Inquiry", Description = "I have to test this if it works. Please everyone hope to work", CustomerId = 2, CreateAt = DateTime.ParseExact("2025-04-12 14:40:41.3488780", "yyyy-MM-dd HH:mm:ss.fffffff", CultureInfo.InvariantCulture) }
+      );
+            modelBuilder.Entity<Reservation>().HasData(
+                new Reservation { Id = 2, StartDate = new DateTime(2025, 2, 12, 10, 0, 0), EndDate = new DateTime(2025, 2, 15, 10, 0, 0), IsSelfPick = false, PaidDeliveryPlace = "Test s", IsReturnBackAtSamePlace = true, CarId = 1, CustomerId = 1, CreateTime = new DateTime(2025, 2, 10, 10, 0, 0), TotalPrice = 216, IsCanceled = false },
+            new Reservation { Id = 5, StartDate = new DateTime(2025, 2, 16, 10, 0, 0), EndDate = new DateTime(2025, 2, 19, 10, 0, 0), IsSelfPick = false, PaidDeliveryPlace = "Test t", IsReturnBackAtSamePlace = true, CarId = 20, CustomerId = 2, CreateTime = new DateTime(2025, 2, 12, 11, 0, 0), TotalPrice = 5400, IsCanceled = false },
+            new Reservation { Id = 6, StartDate = new DateTime(2025, 2, 16, 0, 0, 0), EndDate = new DateTime(2025, 2, 19, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 22, CustomerId = 1, CreateTime = new DateTime(2025, 2, 14, 13, 16, 18, 138), TotalPrice = 2970, IsCanceled = false },
+            new Reservation { Id = 8, StartDate = new DateTime(2025, 2, 20, 0, 0, 0), EndDate = new DateTime(2025, 2, 23, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 5, CustomerId = 1, CreateTime = new DateTime(2025, 2, 15, 8, 49, 13, 921), TotalPrice = 567, IsCanceled = false },
+            new Reservation { Id = 11, StartDate = new DateTime(2025, 2, 24, 0, 0, 0), EndDate = new DateTime(2025, 2, 27, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 15, CustomerId = 1, CreateTime = new DateTime(2025, 2, 15, 9, 2, 16, 740), TotalPrice = 1350, IsCanceled = false },
+            new Reservation { Id = 12, StartDate = new DateTime(2025, 2, 15, 0, 0, 0), EndDate = new DateTime(2025, 2, 18, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 4, CustomerId = 7, CreateTime = new DateTime(2025, 2, 14, 13, 5, 7, 29), TotalPrice = 675, IsCanceled = false },
+            new Reservation { Id = 13, StartDate = new DateTime(2025, 2, 26, 0, 0, 0), EndDate = new DateTime(2025, 3, 1, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 8, CustomerId = 7, CreateTime = new DateTime(2025, 2, 25, 10, 58, 44, 381), TotalPrice = 3780, IsCanceled = false },
+            new Reservation { Id = 14, StartDate = new DateTime(2025, 3, 2, 0, 0, 0), EndDate = new DateTime(2025, 3, 5, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 42, CustomerId = 7, CreateTime = new DateTime(2025, 2, 26, 10, 59, 48, 347), TotalPrice = 675, IsCanceled = false },
+            new Reservation { Id = 15, StartDate = new DateTime(2025, 2, 27, 0, 0, 0), EndDate = new DateTime(2025, 3, 2, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 21, CustomerId = 1, CreateTime = new DateTime(2025, 2, 26, 8, 0, 31, 391), TotalPrice = 3240, IsCanceled = false },
+            new Reservation { Id = 16, StartDate = new DateTime(2025, 3, 7, 0, 0, 0), EndDate = new DateTime(2025, 3, 10, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 4, CustomerId = 7, CreateTime = new DateTime(2025, 3, 6, 12, 33, 3, 265), TotalPrice = 675, IsCanceled = false },
+            new Reservation { Id = 17, StartDate = new DateTime(2025, 3, 17, 0, 0, 0), EndDate = new DateTime(2025, 3, 20, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 22, CustomerId = 1, CreateTime = new DateTime(2025, 3, 13, 11, 56, 34, 581), TotalPrice = 594, IsCanceled = false },
+            new Reservation { Id = 19, StartDate = new DateTime(2025, 3, 26, 0, 0, 0), EndDate = new DateTime(2025, 3, 29, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 8, CustomerId = 1, CreateTime = new DateTime(2025, 3, 21, 12, 5, 7, 208), TotalPrice = 3780, IsCanceled = false },
+            new Reservation { Id = 20, StartDate = new DateTime(2025, 3, 30, 0, 0, 0), EndDate = new DateTime(2025, 4, 2, 0, 0, 0), IsSelfPick = false, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 10, CustomerId = 1, CreateTime = new DateTime(2025, 3, 24, 9, 29, 59, 234), TotalPrice = 6210, IsCanceled = false },
+            new Reservation { Id = 21, StartDate = new DateTime(2025, 3, 27, 0, 0, 0), EndDate = new DateTime(2025, 3, 30, 0, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 22, CustomerId = 7, CreateTime = new DateTime(2025, 3, 26, 19, 2, 58, 318), TotalPrice = 594, IsCanceled = false },
+            new Reservation { Id = 22, StartDate = new DateTime(2025, 4, 6, 0, 0, 0), EndDate = new DateTime(2025, 4, 9, 0, 0, 0), IsSelfPick = false, PaidDeliveryPlace = "ul. \"DUBAISKA\"", IsReturnBackAtSamePlace = true, CarId = 5, CustomerId = 7, CreateTime = new DateTime(2025, 4, 5, 9, 1, 51, 994), TotalPrice = 617, IsCanceled = false },
+            new Reservation { Id = 23, StartDate = new DateTime(2025, 4, 10, 0, 0, 0), EndDate = new DateTime(2025, 4, 15, 0, 0, 0), IsSelfPick = false, PaidDeliveryPlace = "ul. \"DUBAISKA 2\"", IsReturnBackAtSamePlace = true, CarId = 5, CustomerId = 2, CreateTime = new DateTime(2025, 4, 6, 9, 10, 9, 156), TotalPrice = 995, IsCanceled = false },
+            new Reservation { Id = 24, StartDate = new DateTime(2025, 4, 27, 0, 0, 0), EndDate = new DateTime(2025, 4, 30, 0, 0, 0), IsSelfPick = false, PaidDeliveryPlace = "ul. \"DUBAISKA 2\"", IsReturnBackAtSamePlace = true, CarId = 5, CustomerId = 2, CreateTime = new DateTime(2025, 4, 6, 9, 15, 7, 406), TotalPrice = 617, IsCanceled = false },
+            new Reservation { Id = 25, StartDate = new DateTime(2025, 5, 8, 0, 0, 0), EndDate = new DateTime(2025, 5, 10, 0, 1, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 9, CustomerId = 2, CreateTime = new DateTime(2025, 4, 6, 10, 28, 6, 598), TotalPrice = 630, IsCanceled = false },
+            new Reservation { Id = 26, StartDate = new DateTime(2025, 4, 7, 3, 0, 0), EndDate = new DateTime(2025, 4, 10, 3, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 42, CustomerId = 4, CreateTime = new DateTime(2025, 4, 6, 18, 50, 55, 973), TotalPrice = 675, IsCanceled = false },
+            new Reservation { Id = 27, StartDate = new DateTime(2025, 4, 11, 3, 0, 0), EndDate = new DateTime(2025, 4, 14, 3, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 22, CustomerId = 4, CreateTime = new DateTime(2025, 4, 7, 18, 54, 0, 371), TotalPrice = 594, IsCanceled = false },
+            new Reservation { Id = 28, StartDate = new DateTime(2025, 4, 7, 3, 0, 0), EndDate = new DateTime(2025, 4, 10, 3, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 49, CustomerId = 1, CreateTime = new DateTime(2025, 4, 6, 19, 16, 33, 109), TotalPrice = 810, IsCanceled = false },
+            new Reservation { Id = 29, StartDate = new DateTime(2025, 4, 7, 3, 0, 0), EndDate = new DateTime(2025, 4, 10, 3, 0, 0), IsSelfPick = true, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 60, CustomerId = 2, CreateTime = new DateTime(2025, 4, 6, 19, 51, 10, 745), TotalPrice = 945, IsCanceled = false },
+            new Reservation { Id = 30, StartDate = new DateTime(2025, 4, 12, 3, 0, 0), EndDate = new DateTime(2025, 4, 15, 3, 0, 0), IsSelfPick = false, PaidDeliveryPlace = "Bluewaters Island, Dubai", IsReturnBackAtSamePlace = false, CarId = 51, CustomerId = 1, CreateTime = new DateTime(2025, 4, 11, 9, 12, 47, 307), TotalPrice = 617, IsCanceled = false },
+            new Reservation { Id = 33, StartDate = new DateTime(2025, 4, 14, 3, 0, 0), EndDate = new DateTime(2025, 4, 17, 3, 0, 0), IsSelfPick = false, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 49, CustomerId = 4, CreateTime = new DateTime(2025, 4, 13, 16, 50, 36, 478), TotalPrice = 810, IsCanceled = false },
+            new Reservation { Id = 34, StartDate = new DateTime(2025, 4, 18, 3, 0, 0), EndDate = new DateTime(2025, 4, 20, 3, 0, 0), IsSelfPick = false, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 19, CustomerId = 4, CreateTime = new DateTime(2025, 4, 13, 17, 2, 34, 244), TotalPrice = 259, IsCanceled = false },
+            new Reservation { Id = 36, StartDate = new DateTime(2025, 4, 19, 3, 0, 0), EndDate = new DateTime(2025, 4, 21, 3, 0, 0), IsSelfPick = false, PaidDeliveryPlace = null, IsReturnBackAtSamePlace = false, CarId = 10, CustomerId = 2, CreateTime = new DateTime(2025, 4, 14, 23, 24, 8, 614), TotalPrice = 4140, IsCanceled = false });
+            
             base.OnModelCreating(modelBuilder);
         }
     }
