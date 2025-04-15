@@ -221,7 +221,8 @@ namespace RentACar.Core.Services
                 x.Pending == false);
         }
         
-        public async Task<IEnumerable<Car>> GetFilteredCarsAsync(double minPrice,double maxPrice, List<int> selectedClassIds, List<string> selectedBrands, List<string> selectedColors, List<string> selectedDriveTrains)
+        public async Task<IEnumerable<Car>> GetFilteredCarsAsync(double minPrice,double maxPrice, List<int> selectedClassIds, List<string> selectedBrands, 
+            List<string> selectedColors, List<string> selectedDriveTrains)
         {
             var cars = (await GetAll()).AsQueryable();
 

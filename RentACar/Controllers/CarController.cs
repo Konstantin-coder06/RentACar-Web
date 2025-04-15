@@ -70,7 +70,8 @@ namespace RentACar.Controllers
                 {
 
 
-                    var hasUserReservationForOnePeriod = await reservationService.FindIfUserHasReservationForOnePeriod(startDay, endDay, userId.Value);
+                    var hasUserReservationForOnePeriod = await reservationService.FindIfUserHasReservationForOnePeriod
+                        (startDay, endDay, userId.Value);
                     if (hasUserReservationForOnePeriod !=0)
                     {
                         var reservation = await reservationService.FindById(hasUserReservationForOnePeriod);
@@ -593,7 +594,6 @@ namespace RentACar.Controllers
                     Pending = true,
                     CreatedAt = DateTime.UtcNow,
                     CTypeId=viewModel.TypeId
-
                 };
                 if (admin)
                 {
@@ -605,7 +605,6 @@ namespace RentACar.Controllers
                 }
                 await carService.Add(car);
                 await carService.Save();
-
                 for (int i = 0; i < savedImagePaths.Count; i++)
                 {
                     var carImage = new Image
@@ -617,8 +616,6 @@ namespace RentACar.Controllers
                     await imageService.Add(carImage);
                     await imageService.Save();
                 }
-
-
                 if (viewModel.SelectedFeatures != null && viewModel.SelectedFeatures.Any())
                 {
                     var featureList = features.ToList();

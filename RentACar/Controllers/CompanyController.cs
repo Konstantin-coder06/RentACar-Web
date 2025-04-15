@@ -257,33 +257,28 @@ namespace RentACar.Controllers
         [HttpPost]
         public async Task<IActionResult>EditCompanyInfo(CompanyEditInfoViewModel viewModel)
         {
-            try
-            {             
+            try{             
                 var companyId = HttpContext.Session.GetInt32("CompanyId");
                 if (!companyId.HasValue)
                 {
                     ModelState.AddModelError("", "Session expired. Please log in again.");
                     return View("Settings", viewModel);
                 }
-            
                 var company = await carCompanyService.GetById(companyId.Value);
                 if (company == null)
                 {
                     ModelState.AddModelError("", "Company not found. Please log in again.");
                     return View("Settings", viewModel);
                 }
-
                 if (ModelState.IsValid)
                 {              
                     company.Name = viewModel.CompanyName;
                     company.Address = viewModel.CompanyAddress;
                     company.City = viewModel.CompanyCity;
                     company.Country = viewModel.CompanyCountry;
-                    company.Description = viewModel.CompanyDescription;
-                  
+                    company.Description = viewModel.CompanyDescription;                
                     carCompanyService.Update(company);
-                    await carCompanyService.Save();
-               
+                    await carCompanyService.Save();         
                     var user = await userManager.FindByIdAsync(company.UserId);
                     if (user != null)
                     {
@@ -303,16 +298,13 @@ namespace RentACar.Controllers
                         ModelState.AddModelError("", "Associated user not found.");
                         return View("Settings", viewModel);
                     }
-
                     return RedirectToAction("Index");
                 }
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
                 ModelState.AddModelError("", $"Error saving changes: {ex.Message}");
                 return View("Settings", viewModel);
             }
-
             return View("Settings", viewModel);
         }
     }
