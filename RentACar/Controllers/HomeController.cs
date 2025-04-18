@@ -101,7 +101,7 @@ namespace RentACar.Controllers
         [HttpPost]
         public IActionResult Index(StartEndDateWithCarsCountViewModel model)
         {
-            if (model.StartDay >= model.EndDay)
+            if (model.StartDay == model.EndDay)
             {
                 ModelState.AddModelError("StartDate","The start date must be earlier than the end date.");
             }
