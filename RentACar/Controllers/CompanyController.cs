@@ -53,7 +53,7 @@ namespace RentACar.Controllers
 
             var allReservations = await reservationService.GetAllReservationsContaingCompanyIds(companyCarIds);
             var reservationedCars = allReservations.ToList();
-            var reservatedCars = await reservationService.GetAllReservationsForCompany(allCompanyCars);
+           
             var customers = new List<CustomerReservationedCarViewModel>();
             var filteredCars = searchTerms.Any() ? await carService.GetCarsOfCompanyBySearchBrandAndModel(companyId.Value, searchTerms) : allCompanyCars;
 

@@ -44,5 +44,6 @@ namespace RentACar.Models
         public string TakingPlace {  get; set; }
         [Required]
         public string ReturningPlace {  get; set; }
+        public int ReservationCompanyCount {  get; set; }
     }
 }

@@ -134,7 +134,7 @@
             @if (!string.IsNullOrEmpty(Model.SearchTerm))
             {
                 <div class="clear-search-container">
-                    <a asp-action="ClearSearch" asp-controller="Car" class="clear-search-button">
+                    <a asp-action="Index" asp-controller="Car" class="clear-search-button">
                         <i class="fas fa-times"></i> @Model.SearchTerm
                     </a>
                 </div>
@@ -143,7 +143,7 @@
             {
                 <div class="clear-search-container">
                     <a asp-action="ClearSort" asp-controller="Car" class="clear-search-button">
-                         @Model.SortTerm
+                        <i class="fas fa-times"></i>@Model.SortTerm
                     </a>
                 </div>
             }

@@ -231,6 +231,11 @@ namespace RentACar.Controllers
 
             var companyName = await carCompanyService.GetNameById(companyId) ?? "Unknown Company"; ;
             var companyAddress = await carCompanyService.GetAddressById(companyId) ?? "Unknown Address"; ;
+            var allCompanyCars = await carService.GetAllCarsOfCompany(companyId);
+            List<int> companyCarIds = allCompanyCars.Select(c => c.Id).ToList();
+
+            var allReservations = await reservationService.GetAllReservationsContaingCompanyIds(companyCarIds);
+            var reservationedCars = allReservations.ToList();
             DateTime startDay = new DateTime();
             DateTime endDay = new DateTime();
             var startDayStr = HttpContext.Session.GetString("StartDate");
@@ -278,7 +283,8 @@ namespace RentACar.Controllers
                 PriceOfTaxes = priceOfTaxes,
                 CarId = id,
                 ReturningPlace = returningPlace,
-                TakingPlace = string.IsNullOrWhiteSpace(paidDeliveryPlace) ? companyAddress : paidDeliveryPlace
+                TakingPlace = string.IsNullOrWhiteSpace(paidDeliveryPlace) ? companyAddress : paidDeliveryPlace,
+                ReservationCompanyCount=reservationedCars.Count,
             };
             return View(model);
         }

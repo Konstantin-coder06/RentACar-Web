@@ -182,12 +182,12 @@ namespace RentACar.Controllers
 
             return View(viewModel);
         }
-        [HttpPost]
+        
         public IActionResult ClearSort()
         {
             HttpContext.Session.Remove("SortOrder");
             Console.WriteLine("ClearSort executed");
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Car");
         }
         [HttpPost]
         public IActionResult FilterByCategory(string categories)
