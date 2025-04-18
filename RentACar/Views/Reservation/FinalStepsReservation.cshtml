@@ -106,8 +106,14 @@
                 <div>@Model.TotalPriceWithoutTheDiscount BGN / day</div>
             </div>
             <div class="price-row">
+                @if(Model.DifferenceTotalPriceWithDiscounted<=0){
+                    <div>After your options and discount</div>
+                    <div class="price-discount">+ BGN @Math.Abs(Model.DifferenceTotalPriceWithDiscounted)</div>
+                }
+                else{           
                 <div>After discout</div>
                 <div class="price-discount">- BGN @Model.DifferenceTotalPriceWithDiscounted</div>
+                }
             </div>
         </div>
 
