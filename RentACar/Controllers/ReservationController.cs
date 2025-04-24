@@ -113,7 +113,6 @@ namespace RentACar.Controllers
                 }
                 else
                 {
-                    // Retrieve the first conflicting reservation
                     var conflictingReservation = await reservationService.GetFirstConflictingReservation(CarWithImagesReservation.Car.Id, newStartDate.Value, newEndDate.Value);
                     if (conflictingReservation != null)
                     {
@@ -179,7 +178,6 @@ namespace RentACar.Controllers
                 bool hasConflict = await reservationService.HasOverlappingReservation(CarWithImagesReservation.Car.Id, startDay, endDay);
                 if (hasConflict)
                 {
-                    // Retrieve the first conflicting reservation
                     var conflictingReservation = await reservationService.GetFirstConflictingReservation(CarWithImagesReservation.Car.Id, startDay, endDay);
                     if (conflictingReservation != null)
                     {
@@ -224,6 +222,7 @@ namespace RentACar.Controllers
             }
             return View(CarWithImagesReservation);
         }
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> FinalStepsReservation(int id)
         {
 
@@ -291,6 +290,8 @@ namespace RentACar.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public async Task<IActionResult> FinalStepsReservation(FinalStepReservationViewModel viewModel)
         {
             DateTime? startDay = null;

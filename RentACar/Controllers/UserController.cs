@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACar.Core.IServices;
 using RentACar.Models;
 
@@ -19,6 +20,8 @@ namespace RentACar.Controllers
             this.imageService = imageService;
             this.carCompanyService = carCompanyService;
         }
+        [Authorize(Roles = "User")]
+
         public async Task<IActionResult> Index(int id)
         {
             var reservations = await reservationService.GetReservationsByUserId(id);
@@ -39,6 +42,8 @@ namespace RentACar.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public async Task<IActionResult> Filter(int id, string statusFilter)
         {
             var reservations = await reservationService.GetReservationsByUserId(id);      
@@ -46,6 +51,8 @@ namespace RentACar.Controllers
             return RedirectToAction("Index", new { id });
         }
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public IActionResult ShowCancelConfirmation(int userId,int reservationId)
         {
             TempData["ReservationToCancel"] = reservationId;
@@ -54,6 +61,8 @@ namespace RentACar.Controllers
             return RedirectToAction("Index", new {id=userId});
         }
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public async Task<IActionResult> DeleteReservation(int id)
         {
             var reservation = await reservationService.FindById(id);
@@ -71,6 +80,8 @@ namespace RentACar.Controllers
             }
         }
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public async Task<IActionResult> BookAgain(int id)
         {
             var car = await carService.FindById(id);

@@ -642,6 +642,7 @@ namespace RentACar.Controllers
 
 
         }
+        [Authorize(Roles ="Admin,Company")]
         public async Task<IActionResult> Pendings()
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
@@ -671,7 +672,7 @@ namespace RentACar.Controllers
             };
             return View(carImagesViewModel);
         }
-       
+        [Authorize(Roles = "Admin,Company")]
         public async Task<IActionResult> EditPendingCar(int id)
         {
             if (id == 0)
@@ -726,6 +727,7 @@ namespace RentACar.Controllers
             return View(viewModel);
         }
         [HttpPost("Car/EditPendingCar/{id?}")]
+        [Authorize(Roles = "Admin,Company")]
         public async Task<IActionResult> EditPendingCar(int id, EditCarWithImagesPendingViewModel viewModel)
         {
             if (!ModelState.IsValid)

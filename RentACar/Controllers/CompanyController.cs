@@ -148,6 +148,7 @@ namespace RentACar.Controllers
             ViewData["SearchTerm"] = searchTerm;
             return View(viewModel);
         }
+        [Authorize(Roles = "Company")]
         public async Task<IActionResult> ViewReservations(int id)
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
@@ -233,6 +234,7 @@ namespace RentACar.Controllers
             }
             return reservationsWithCarInf;
         }
+        [Authorize(Roles = "Company")]
         public async Task<IActionResult> Settings()
         {
             var companyId = HttpContext.Session.GetInt32("CompanyId");
@@ -255,6 +257,7 @@ namespace RentACar.Controllers
             return View(companyEditInfoViewModel);
         }
         [HttpPost]
+        [Authorize(Roles = "Company")]
         public async Task<IActionResult>EditCompanyInfo(CompanyEditInfoViewModel viewModel)
         {
             try{             

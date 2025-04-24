@@ -260,6 +260,7 @@ namespace RentACar.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            HttpContext.Session.Clear(); 
             return RedirectToAction("Index", "Home");
         }
         public IActionResult AccessDenied()

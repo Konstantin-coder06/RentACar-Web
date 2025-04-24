@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentACar.Core.IServices;
 using RentACar.Models;
 
@@ -11,11 +12,15 @@ namespace RentACar.Controllers
         {
             this.typeService = typeService;
         }
+        [Authorize(Roles = "Admin")]
+
         public IActionResult Add()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public async Task<IActionResult> Add(AddTypeOfCarViewModel model)
         {
             var isThereAnotherTypeLikeThis=await typeService.IsThereTypeWithThisName(model.Name,model.SeatCapacity);
