@@ -80,11 +80,11 @@ namespace RentACar.Core.Services
 
         public Task<int> PendingCarsCount()
         {
-            return carRepository.CountAsync(x => x.Pending == true);
+            return carRepository.CountAsync(x => x.Pending == true && x.Available == true);
         }
         public Task<int> PendingCompanyCarsCount(int companyId)
         {
-            return carRepository.CountAsync(x=>x.CarCompanyId == companyId && x.Pending==true);
+            return carRepository.CountAsync(x=>x.CarCompanyId == companyId && x.Pending==true &&x.Available == true);
         }
         public Task<int> CountAsync(Expression<Func<Car, bool>> predicate)
         {
@@ -98,13 +98,13 @@ namespace RentACar.Core.Services
 
         public async Task<IEnumerable<Car>> FindAllPendingCarsForAdmin()
         {
-
-            return await carRepository.FindAllLimited(x => x.Pending == true, 8);
+           var cars= await carRepository.FindAllLimited(x => x.Pending == true, 8);
+            return cars.Where(x=>x.Available == true);
         }
         public async Task<IEnumerable<Car>> FindAllPendingCars()
         {
 
-            return await carRepository.FindAll(x => x.Pending == true);
+            return await carRepository.FindAll(x => x.Pending == true && x.Available==true);
         }
 
         public async Task<int> Count()
@@ -167,11 +167,11 @@ namespace RentACar.Core.Services
             {
 
 
-                result = await carRepository.FindAll(x => x.Pending == true && x.CarCompanyId == companyId);
+                result = await carRepository.FindAll(x => x.Pending == true && x.CarCompanyId == companyId &&x.Available == true);
             }
             else
             {
-                result = await carRepository.FindAll(x => x.Pending == true);
+                result = await carRepository.FindAll(x => x.Pending == true && x.Available == true);
             }
             return result.OrderBy(x => x.CreatedAt).ToList();
         }

@@ -281,7 +281,7 @@ namespace RentACar.Controllers
                 resLastMonth = await reservationService.FindAllForLastMonthCompany(companyCarIds);
                 resLastMonthPrev = await reservationService.FindAllForPreviousMonthCompany(companyCarIds);
 
-                companyPendingCarsCount = companyCars.Count(x => x.Pending);
+                companyPendingCarsCount = await carService.PendingCompanyCarsCount(companyId.Value);
             }
             else if (User.IsInRole("Admin"))
             {
@@ -320,7 +320,7 @@ namespace RentACar.Controllers
                 Count = x.count, 
             }).ToList();
 
-            var approvedCarsCount = await carService.CountAsync(x => x.Pending);
+            var approvedCarsCount = await carService.PendingCarsCount();
             var reportCount = await reportService.Count();
             var analyticsViewModel = new AnalyticsViewModel
             {

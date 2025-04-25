@@ -15,6 +15,13 @@
 
 @model StartEndDateWithCarsCountViewModel
 <body>
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
     <div class="container">
         <form asp-action="Index" asp-controller="Home" method="post">
             <section class="hero">

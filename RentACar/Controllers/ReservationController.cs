@@ -247,7 +247,11 @@ namespace RentACar.Controllers
             {
                 endDay = DateTime.ParseExact(endDayStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
             }
-            int totalDays = reservationService.TotalDaysByDates(startDay, endDay);
+            if (startDay == DateTime.MinValue || endDay == DateTime.MinValue)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+                int totalDays = reservationService.TotalDaysByDates(startDay, endDay);
             var image = await imageService.ImageByCarId(id);
             var car = await carService.FindById(id);
             var price = carService.TotalPriceOfCar(car.PricePerDay, totalDays);

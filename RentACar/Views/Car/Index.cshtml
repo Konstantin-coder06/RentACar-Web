@@ -171,13 +171,21 @@
                         <div class="card-body">
                             @if (isCompany || isAdmin)
                             {
-                                @if (carWithImages.Car.Pending == true)
+                                @if (carWithImages.Car.Pending == true && carWithImages.Car.Available==true)
                                 {
                                     <h5 class="card-title">
                                         @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year                                    
                                      </h5>
                                       <h5 class="card-title"><span class="text-danger">Waiting approval</span>
                                           </h5>
+                                }  else if (carWithImages.Car.Available == false)
+                                {
+                                    <h5 class="card-title">
+                                        @carWithImages.Car.Brand @carWithImages.Car.Model @carWithImages.Car.Year
+                                    </h5>
+                                    <h5 class="card-title">
+                                        <span class="text-danger">Deleted</span>
+                                    </h5>
                                 }
                                 else
                                 {
@@ -188,6 +196,7 @@
                                       
                                     
                                 }
+
                             }
                             else
                             {

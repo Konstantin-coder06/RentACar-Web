@@ -152,7 +152,7 @@ namespace RentACar.Tests
         [Test]
         public async Task PendingCarsCount_ReturnsCountOfPendingCars()
         {
-            mockRepository.Setup(r => r.CountAsync(x => x.Pending == true)).ReturnsAsync(5);
+            mockRepository.Setup(r => r.CountAsync(x => x.Pending == true && x.Available == true)).ReturnsAsync(5);
             int count = await carService.PendingCarsCount();
             Assert.That(count.Equals(5));
         }
@@ -179,10 +179,10 @@ namespace RentACar.Tests
         {
             var pendingCars = new List<Car>
             {
-                new Car { Id = 1, Pending = true },
-                new Car { Id = 2, Pending = true }
+                new Car { Id = 1, Pending = true, Available = true },
+                new Car { Id = 2, Pending = true, Available = true }
             };
-            mockRepository.Setup(r => r.FindAll(x => x.Pending == true)).ReturnsAsync(pendingCars);
+            mockRepository.Setup(r => r.FindAll(x => x.Pending == true && x.Available == true)).ReturnsAsync(pendingCars);
             var result = await carService.FindAllPendingCars();
             Assert.AreEqual(2, result.Count(), "Expected 2 pending cars");
             Assert.IsTrue(result.All(c => c.Pending), "All cars should be pending");
@@ -280,9 +280,9 @@ namespace RentACar.Tests
         {
             var cars = new List<Car>
             {
-                new Car { Id = 1, Pending = true, CarCompanyId = 1, CreatedAt = DateTime.Now.AddDays(-1) },
-                new Car { Id = 2, Pending = true, CarCompanyId = 1, CreatedAt = DateTime.Now }
-            };
+                 new Car { Id = 1, Pending = true, Available = true, CarCompanyId = 1, CreatedAt = DateTime.Now.AddDays(-1) },
+                 new Car { Id = 2, Pending = true, Available = true, CarCompanyId = 1, CreatedAt = DateTime.Now }
+             };
             mockRepository.Setup(r => r.FindAll(It.IsAny<Expression<Func<Car, bool>>>())).ReturnsAsync((Expression<Func<Car, bool>> predicate) => cars.Where(predicate.Compile()).ToList());
             var result = await carService.GetAllPendingCompanyCars(companyId);
             Assert.AreEqual(2, result.Count());
@@ -293,7 +293,7 @@ namespace RentACar.Tests
         public async Task PendingCompanyCarsCount_ReturnsCountOfPendingCompanyCars()
         {
             var companyId = 1;
-            mockRepository.Setup(r => r.CountAsync(x => x.CarCompanyId == companyId && x.Pending == true)).ReturnsAsync(3);
+            mockRepository.Setup(r => r.CountAsync(x => x.CarCompanyId == companyId && x.Pending == true && x.Available == true)).ReturnsAsync(3);
             var count = await carService.PendingCompanyCarsCount(companyId);
             Assert.That(count, Is.EqualTo(3), "Expected 3 pending cars for the company");
         }
@@ -303,8 +303,8 @@ namespace RentACar.Tests
         {
             var pendingCars = new List<Car>
             {
-                new Car { Id = 1, Pending = true },
-                new Car { Id = 2, Pending = true }
+                 new Car { Id = 1, Pending = true, Available = true },
+                 new Car { Id = 2, Pending = true, Available = true }
             };
             mockRepository.Setup(r => r.FindAllLimited(x => x.Pending == true, 8)).ReturnsAsync(pendingCars);
             var result = await carService.FindAllPendingCarsForAdmin();
